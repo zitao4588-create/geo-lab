@@ -1,0 +1,96 @@
+{
+  "release": "20260703201836",
+  "deployedAt": "2026-07-03T12:18:36Z",
+  "url": "https://exposure.playgamelab.cn",
+  "previousRelease": "202606300728",
+  "reportId": "diag_mr4wim6t_gfcg0g",
+  "checks": {
+    "homepage": 200,
+    "health": true,
+    "post": true,
+    "get": true,
+    "evidence": true,
+    "markdownExport": true,
+    "htmlExport": true,
+    "evidencePackage": true,
+    "rateLimit": true
+  },
+  "aiMeta": {
+    "provider": "multi",
+    "model": "deepseek-v4-pro",
+    "status": "sampled",
+    "sampledAt": "2026-07-03T12:20:14.167Z",
+    "promptCount": 3,
+    "successCount": 3,
+    "failureCount": 0,
+    "providers": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-pro",
+        "status": "sampled",
+        "promptCount": 3,
+        "successCount": 3,
+        "failureCount": 0,
+        "note": "DeepSeek 官方 OpenAI-compatible API 已完成真实采样。"
+      },
+      {
+        "provider": "doubao",
+        "status": "unavailable",
+        "promptCount": 3,
+        "successCount": 0,
+        "failureCount": 0,
+        "note": "doubao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+      },
+      {
+        "provider": "kimi",
+        "status": "unavailable",
+        "promptCount": 3,
+        "successCount": 0,
+        "failureCount": 0,
+        "note": "kimi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+      },
+      {
+        "provider": "yuanbao",
+        "status": "unavailable",
+        "promptCount": 3,
+        "successCount": 0,
+        "failureCount": 0,
+        "note": "yuanbao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+      },
+      {
+        "provider": "tongyi",
+        "status": "unavailable",
+        "promptCount": 3,
+        "successCount": 0,
+        "failureCount": 0,
+        "note": "tongyi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+      },
+      {
+        "provider": "wenxin",
+        "status": "unavailable",
+        "promptCount": 3,
+        "successCount": 0,
+        "failureCount": 0,
+        "note": "wenxin adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+      }
+    ]
+  },
+  "rateLimit": {
+    "error": "rate_limited",
+    "message": "本小时免费体检次数已用完，请稍后再试或扫码预约人工解读。"
+  },
+  "files": [
+    "evidence-index.json",
+    "evidence-package.json",
+    "export.html",
+    "export.md",
+    "get-report.json",
+    "health.json",
+    "homepage-initial.headers",
+    "homepage.headers",
+    "homepage.html",
+    "input.json",
+    "post-response.json",
+    "rate-limit-response.json"
+  ]
+}

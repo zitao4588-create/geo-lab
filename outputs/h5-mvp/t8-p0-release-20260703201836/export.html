@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>测试本地咖啡馆 GEO 分析成果报告</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #151b24; background: #f5f7fa; }
+    main { max-width: 920px; margin: 0 auto; padding: 42px 24px 72px; }
+    header, section { background: #fff; border: 1px solid #e4e9f0; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+    h1 { margin: 0 0 12px; font-size: 30px; }
+    h2 { margin: 0 0 14px; font-size: 20px; }
+    p, li { line-height: 1.7; }
+    .score { display: inline-flex; align-items: baseline; gap: 8px; color: #f26b21; font-size: 44px; font-weight: 800; }
+    .meta { color: #637083; display: grid; gap: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    td, th { border-top: 1px solid #e8edf4; padding: 10px 8px; text-align: left; vertical-align: top; }
+    ul { padding-left: 20px; }
+    small { color: #7b8491; }
+    @media print { body { background: #fff; } main { padding: 0; } header, section { break-inside: avoid; border-color: #d6dde8; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>测试本地咖啡馆 GEO 分析成果报告</h1>
+      <div class="score">41<small>/100 · 待提升</small></div>
+      <p>测试本地咖啡馆本次 GEO 分析成果得分 41/100（待提升）。DeepSeek 成功采样 3 个问题，品牌提及率 0%；公开页面审计 55/100。</p>
+      <div class="meta">
+        <span>报告 ID：diag_mr4wim6t_gfcg0g</span>
+        <span>生成时间：2026-07-03T12:20:14.167Z</span>
+        <span>真实采样：3/3 · 品牌提及率 0%</span>
+        <span>公开页面审计：55/100</span>
+      </div>
+    </header>
+    <section><h2>核心结论</h2><p>DeepSeek 本次采样没有主动提及“测试本地咖啡馆”，核心瓶颈是公开可查证信息不足或尚未被模型吸收。</p></section>
+    <section><h2>评分拆解</h2><table><thead><tr><th>维度</th><th>权重</th><th>得分</th><th>证据</th><th>依据</th></tr></thead><tbody><tr><td>AI 采样可见度</td><td>32%</td><td>0</td><td>sampled_ai_answer</td><td>DeepSeek 本次成功采样 3 个问题，其中 0 个答案提及“测试本地咖啡馆”。</td></tr><tr><td>可查证基建</td><td>22%</td><td>55</td><td>verified_external</td><td>已审计 8 个公开 URL，0 个通过，8 个需补强。</td></tr><tr><td>竞品压制风险</td><td>18%</td><td>48</td><td>sampled_ai_answer</td><td>已对比 3 个竞品；若竞品在答案中出现多于本品牌，会压低该项。</td></tr><tr><td>语义与场景匹配</td><td>16%</td><td>57</td><td>model_inference</td><td>根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。</td></tr><tr><td>信任与风险解释</td><td>12%</td><td>92</td><td>model_inference</td><td>本次采样没有明显负面信号，但仍需要持续监测。</td></tr></tbody></table></section>
+    <section><h2>平台采样状态</h2><table><thead><tr><th>平台</th><th>状态</th><th>成功/总数</th><th>说明</th></tr></thead><tbody><tr><td>deepseek</td><td>sampled</td><td>3/3</td><td>DeepSeek 官方 OpenAI-compatible API 已完成真实采样。</td></tr><tr><td>doubao</td><td>unavailable</td><td>0/3</td><td>doubao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。</td></tr><tr><td>kimi</td><td>unavailable</td><td>0/3</td><td>kimi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。</td></tr><tr><td>yuanbao</td><td>unavailable</td><td>0/3</td><td>yuanbao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。</td></tr><tr><td>tongyi</td><td>unavailable</td><td>0/3</td><td>tongyi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。</td></tr><tr><td>wenxin</td><td>unavailable</td><td>0/3</td><td>wenxin adapter 已预留，当前未配置官方采样接口；不生成模拟结果。</td></tr></tbody></table></section>
+    <section><h2>公开页面审计</h2><table><thead><tr><th>页面</th><th>状态</th><th>HTTP</th><th>URL</th><th>命中事实</th><th>缺少事实</th></tr></thead><tbody><tr><td>品牌首页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/</td><td>-</td><td>brand、category、entry</td></tr><tr><td>隐私政策页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/privacy/</td><td>-</td><td>privacy、data</td></tr><tr><td>功能说明页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/features/</td><td>-</td><td>feature、category</td></tr><tr><td>FAQ/常见问题</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/faq/</td><td>-</td><td>faq、privacy</td></tr><tr><td>GEO 自证案例</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/geo-case/</td><td>geo</td><td>brand</td></tr><tr><td>robots.txt</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/robots.txt</td><td>-</td><td>sitemap</td></tr><tr><td>sitemap.xml</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/sitemap.xml</td><td>home</td><td>privacy、faq</td></tr><tr><td>llms.txt</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/llms.txt</td><td>-</td><td>brand、category、privacy</td></tr></tbody></table></section>
+    <section><h2>主要问题</h2><ul><li><strong>AI 采样中品牌提及偏低</strong><p>本次 DeepSeek 采样 3 个问题，仅 0 个答案提及“测试本地咖啡馆”。这说明模型当前不容易主动把你放进推荐答案。</p><small>sampled_ai_answer</small></li><li><strong>可查证公开基建不够完整</strong><p>AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。</p><small>model_inference</small></li><li><strong>竞品在对比场景里更容易被模型调用</strong><p>本次采样中，星巴克 1 次 被提及；需要用对比页解释差异。</p><small>sampled_ai_answer</small></li></ul></section>
+    <section><h2>AI 采样答案摘录</h2><ul><li><strong>deepseek / 西安附近有哪些适合办公人群的精品咖啡馆？</strong><p>西安及周边确实有不少适合办公的精品咖啡馆，我根据环境、网络、插座和咖啡品质整理了一些选择： **市区推荐：** 1. **Maan Coffee（漫咖啡）** - 多家分店，空间大、座位多，有WiFi和插座，氛围轻松，很多自由职业者常去。 2. **雕刻时光咖啡馆** - 老牌文艺咖啡馆，环境安静，适合长时间办公，师大路店尤其受欢迎。 3. **Seesaw...</p><small>未提及品牌</small></li><li><strong>deepseek / 本地咖啡馆怎样提升 AI 搜索里的可见度？</strong><p>要让本地咖啡馆在 AI 搜索（比如 ChatGPT、Bing Chat、Perplexity 这类工具）里更容易被找到和推荐，核心是让 AI 能“看到”并“理解”你的店。这和传统 SEO 有相似之处，但更强调信息的结构化、权威性和语义关联。 以下是一些具体、可操作的方法： ### 1. 打好地基：确保基础信息准确且一致 AI 在回答“附近有什么好咖啡馆”时，...</p><small>未提及品牌</small></li><li><strong>deepseek / 附近白领午休适合去哪里买咖啡和轻食？</strong><p>这主要取决于你所在的**具体位置**（比如在哪个商圈或写字楼附近），不过我可以按常见的白领聚集区，给你几个通用的选择思路： **1. 连锁便利店（最快捷、性价比高）** 如果午休时间短，想顺便带杯咖啡和轻食回办公室，**全家、罗森、7-Eleven** 是很稳的选择。它们的冰美式、拿铁出品稳定，搭配饭团、三明治或沙拉，10-20元就能搞定，不用等太久。 **...</p><small>未提及品牌</small></li></ul></section>
+    <section><h2>竞品分析</h2><ul><li><strong>星巴克 · 1 次 · 33.3%</strong><p>补“星巴克 vs 品牌”的对比页，说明功能边界、隐私策略和适用人群。；把对比结论写成表格，覆盖“怎么选/有什么区别/适合谁”问题。；在 FAQ 里解释模型容易误读的功能点，减少把竞品默认当作替代答案。</p><small>附近白领午休适合去哪里买咖啡和轻食？</small></li><li><strong>瑞幸咖啡 · 0 次 · 0%</strong><p>补“瑞幸咖啡 vs 品牌”的对比页，说明功能边界、隐私策略和适用人群。；把对比结论写成表格，覆盖“怎么选/有什么区别/适合谁”问题。；在 FAQ 里解释模型容易误读的功能点，减少把竞品默认当作替代答案。</p><small>本次未提及</small></li><li><strong>本地独立咖啡馆 · 0 次 · 0%</strong><p>补“本地独立咖啡馆 vs 品牌”的对比页，说明功能边界、隐私策略和适用人群。；把对比结论写成表格，覆盖“怎么选/有什么区别/适合谁”问题。；在 FAQ 里解释模型容易误读的功能点，减少把竞品默认当作替代答案。</p><small>本次未提及</small></li></ul></section>
+    <section><h2>优先优化项</h2><ul><li><strong>P0 搭建最小可查证品牌介绍页</strong><p>用一个稳定页面讲清“测试本地咖啡馆 是什么、适合谁、解决什么问题、怎么使用”，并放小程序/产品入口、更新时间和联系方式。</p><small>suggested_supplement</small></li><li><strong>P0 补公开隐私政策和 FAQ</strong><p>把数据是否上传、保存在哪里、是否需要登录、是否有 AI/拍照/支付等边界写清楚，减少模型在风险问题里的误读。</p><small>suggested_supplement</small></li><li><strong>P1 围绕核心场景做内容池</strong><p>优先写 3-5 篇“本地餐饮怎么选”“测试本地咖啡馆和竞品区别”“典型用户怎么用”的短内容，方便 AI 抽取。</p><small>model_inference</small></li><li><strong>P1 补竞品对比和选择标准</strong><p>把 星巴克、瑞幸咖啡、本地独立咖啡馆 的差异写成表格，避免模型只按更常见品牌推荐。</p><small>model_inference</small></li><li><strong>P2 固定 Prompt Universe 做月度复测</strong><p>保留本次 20 个问题作为基线，每月用相同问题复测 DeepSeek，并逐步扩展豆包、Kimi、元宝等平台。</p><small>suggested_supplement</small></li></ul></section>
+    <section><h2>证据边界</h2><p>本报告基于用户提交资料、公开 URL 抓取审计、DeepSeek 官方 API 实时问答采样和透明规则评分生成。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。</p></section>
+  </main>
+</body>
+</html>

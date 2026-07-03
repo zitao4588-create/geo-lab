@@ -1,0 +1,14 @@
+HTTP/1.1 200 Connection established
+
+HTTP/2 200 
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=2592000
+cache-control: public, max-age=0
+content-type: text/html; charset=UTF-8
+date: Fri, 03 Jul 2026 12:20:49 GMT
+etag: W/"1d8-19f27ea7a36"
+last-modified: Fri, 03 Jul 2026 12:18:25 GMT
+via: 1.1 Caddy
+x-powered-by: Express
+content-length: 472
+

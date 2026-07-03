@@ -1,0 +1,412 @@
+{
+  "reportId": "diag_mr4wim6t_gfcg0g",
+  "generatedAt": "2026-07-03T12:20:21.746Z",
+  "input": {
+    "businessName": "测试本地咖啡馆",
+    "description": "一家面向附近办公人群的精品咖啡和轻食门店，用于线上 smoke test。",
+    "links": "https://exposure.playgamelab.cn",
+    "industry": "本地餐饮",
+    "city": "西安",
+    "targetCustomers": "附近写字楼白领、周末逛街人群、需要外带咖啡的顾客",
+    "competitors": "星巴克、瑞幸咖啡、本地独立咖啡馆"
+  },
+  "report": {
+    "score": 41,
+    "scoreLevel": "待提升",
+    "summary": "测试本地咖啡馆本次 GEO 分析成果得分 41/100（待提升）。DeepSeek 成功采样 3 个问题，品牌提及率 0%；公开页面审计 55/100。",
+    "dimensions": [
+      {
+        "code": "AI_SEARCH_VISIBILITY",
+        "name": "AI 采样可见度",
+        "score": 0,
+        "weight": 0.32,
+        "comment": "DeepSeek 本次成功采样 3 个问题，其中 0 个答案提及“测试本地咖啡馆”。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      {
+        "code": "INFRASTRUCTURE",
+        "name": "可查证基建",
+        "score": 55,
+        "weight": 0.22,
+        "comment": "已审计 8 个公开 URL，0 个通过，8 个需补强。",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "code": "COMPETITOR_PRESSURE",
+        "name": "竞品压制风险",
+        "score": 48,
+        "weight": 0.18,
+        "comment": "已对比 3 个竞品；若竞品在答案中出现多于本品牌，会压低该项。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      {
+        "code": "CONTENT_ALIGNMENT",
+        "name": "语义与场景匹配",
+        "score": 57,
+        "weight": 0.16,
+        "comment": "根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。",
+        "evidenceLabel": "model_inference"
+      },
+      {
+        "code": "TRUST_RISK",
+        "name": "信任与风险解释",
+        "score": 92,
+        "weight": 0.12,
+        "comment": "本次采样没有明显负面信号，但仍需要持续监测。",
+        "evidenceLabel": "model_inference"
+      }
+    ],
+    "issues": [
+      {
+        "id": "issue_ai_visibility_low",
+        "title": "AI 采样中品牌提及偏低",
+        "detail": "本次 DeepSeek 采样 3 个问题，仅 0 个答案提及“测试本地咖啡馆”。这说明模型当前不容易主动把你放进推荐答案。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "high"
+      },
+      {
+        "id": "issue_infrastructure_gap",
+        "title": "可查证公开基建不够完整",
+        "detail": "AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。",
+        "evidenceLabel": "model_inference",
+        "severity": "medium"
+      },
+      {
+        "id": "issue_competitor_pressure",
+        "title": "竞品在对比场景里更容易被模型调用",
+        "detail": "本次采样中，星巴克 1 次 被提及；需要用对比页解释差异。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "suggest_official_page",
+        "title": "搭建最小可查证品牌介绍页",
+        "detail": "用一个稳定页面讲清“测试本地咖啡馆 是什么、适合谁、解决什么问题、怎么使用”，并放小程序/产品入口、更新时间和联系方式。",
+        "evidenceLabel": "suggested_supplement",
+        "priority": "P0"
+      },
+      {
+        "id": "suggest_privacy_faq",
+        "title": "补公开隐私政策和 FAQ",
+        "detail": "把数据是否上传、保存在哪里、是否需要登录、是否有 AI/拍照/支付等边界写清楚，减少模型在风险问题里的误读。",
+        "evidenceLabel": "suggested_supplement",
+        "priority": "P0"
+      },
+      {
+        "id": "suggest_content_pool",
+        "title": "围绕核心场景做内容池",
+        "detail": "优先写 3-5 篇“本地餐饮怎么选”“测试本地咖啡馆和竞品区别”“典型用户怎么用”的短内容，方便 AI 抽取。",
+        "evidenceLabel": "model_inference",
+        "priority": "P1"
+      },
+      {
+        "id": "suggest_comparison",
+        "title": "补竞品对比和选择标准",
+        "detail": "把 星巴克、瑞幸咖啡、本地独立咖啡馆 的差异写成表格，避免模型只按更常见品牌推荐。",
+        "evidenceLabel": "model_inference",
+        "priority": "P1"
+      },
+      {
+        "id": "suggest_monitoring",
+        "title": "固定 Prompt Universe 做月度复测",
+        "detail": "保留本次 20 个问题作为基线，每月用相同问题复测 DeepSeek，并逐步扩展豆包、Kimi、元宝等平台。",
+        "evidenceLabel": "suggested_supplement",
+        "priority": "P2"
+      }
+    ]
+  },
+  "providerStatuses": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "sampled",
+      "promptCount": 3,
+      "successCount": 3,
+      "failureCount": 0,
+      "note": "DeepSeek 官方 OpenAI-compatible API 已完成真实采样。"
+    },
+    {
+      "provider": "doubao",
+      "status": "unavailable",
+      "promptCount": 3,
+      "successCount": 0,
+      "failureCount": 0,
+      "note": "doubao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+    },
+    {
+      "provider": "kimi",
+      "status": "unavailable",
+      "promptCount": 3,
+      "successCount": 0,
+      "failureCount": 0,
+      "note": "kimi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+    },
+    {
+      "provider": "yuanbao",
+      "status": "unavailable",
+      "promptCount": 3,
+      "successCount": 0,
+      "failureCount": 0,
+      "note": "yuanbao adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+    },
+    {
+      "provider": "tongyi",
+      "status": "unavailable",
+      "promptCount": 3,
+      "successCount": 0,
+      "failureCount": 0,
+      "note": "tongyi adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+    },
+    {
+      "provider": "wenxin",
+      "status": "unavailable",
+      "promptCount": 3,
+      "successCount": 0,
+      "failureCount": 0,
+      "note": "wenxin adapter 已预留，当前未配置官方采样接口；不生成模拟结果。"
+    }
+  ],
+  "pageAudit": {
+    "baseUrl": "https://exposure.playgamelab.cn",
+    "generatedAt": "2026-07-03T12:19:57.740Z",
+    "score": 55,
+    "targets": [
+      {
+        "id": "home",
+        "name": "品牌首页",
+        "url": "https://exposure.playgamelab.cn/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "title": "AI曝光体检",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "brand",
+          "category",
+          "entry"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：brand、category、entry",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.740Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "privacy",
+        "name": "隐私政策页",
+        "url": "https://exposure.playgamelab.cn/privacy/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "title": "AI曝光体检",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "privacy",
+          "data"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：privacy、data",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.768Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "features",
+        "name": "功能说明页",
+        "url": "https://exposure.playgamelab.cn/features/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "title": "AI曝光体检",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "feature",
+          "category"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：feature、category",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.770Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "faq",
+        "name": "FAQ/常见问题",
+        "url": "https://exposure.playgamelab.cn/faq/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "title": "AI曝光体检",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "faq",
+          "privacy"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：faq、privacy",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.771Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "geo-case",
+        "name": "GEO 自证案例",
+        "url": "https://exposure.playgamelab.cn/geo-case/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "title": "AI曝光体检",
+        "description": "",
+        "matchedFacts": [
+          "geo"
+        ],
+        "missingFacts": [
+          "brand"
+        ],
+        "notes": [
+          "HTTP 200",
+          "命中事实：geo",
+          "缺少事实：brand",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.772Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "robots",
+        "name": "robots.txt",
+        "url": "https://exposure.playgamelab.cn/robots.txt",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "matchedFacts": [],
+        "missingFacts": [
+          "sitemap"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：sitemap"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.773Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "sitemap",
+        "name": "sitemap.xml",
+        "url": "https://exposure.playgamelab.cn/sitemap.xml",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "matchedFacts": [
+          "home"
+        ],
+        "missingFacts": [
+          "privacy",
+          "faq"
+        ],
+        "notes": [
+          "HTTP 200",
+          "命中事实：home",
+          "缺少事实：privacy、faq"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.774Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "llms",
+        "name": "llms.txt",
+        "url": "https://exposure.playgamelab.cn/llms.txt",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "matchedFacts": [],
+        "missingFacts": [
+          "brand",
+          "category",
+          "privacy"
+        ],
+        "notes": [
+          "HTTP 200",
+          "缺少事实：brand、category、privacy"
+        ],
+        "fetchedAt": "2026-07-03T12:19:57.775Z",
+        "evidenceLabel": "verified_external"
+      }
+    ],
+    "summary": {
+      "ok": 0,
+      "warn": 8,
+      "missing": 0,
+      "failed": 0,
+      "note": "完成 8 个 URL 审计：0 个通过，8 个需补强，0 个不可用。"
+    }
+  },
+  "samples": [
+    {
+      "prompt": {
+        "id": "P001",
+        "category": "persona",
+        "prompt": "西安附近有哪些适合办公人群的精品咖啡馆？",
+        "targetFact": "品牌认知"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "success",
+      "sampledAt": "2026-07-03T12:19:57.939Z",
+      "latencyMs": 8457,
+      "answer": "西安及周边确实有不少适合办公的精品咖啡馆，我根据环境、网络、插座和咖啡品质整理了一些选择：\n\n**市区推荐：**\n\n1. **Maan Coffee（漫咖啡）** - 多家分店，空间大、座位多，有WiFi和插座，氛围轻松，很多自由职业者常去。\n\n2. **雕刻时光咖啡馆** - 老牌文艺咖啡馆，环境安静，适合长时间办公，师大路店尤其受欢迎。\n\n3. **Seesaw Coffee** - 精品连锁，咖啡品质高，部分门店有适合办公的座位，设计感强。\n\n4. **Localand 本地书馆咖啡** - 在高新区，结合书店和咖啡，安静有格调，适合专注工作。\n\n5. **浆木咖啡馆** - 南门附近，小而精致，咖啡专业度高，虽然空间不大但氛围很好。\n\n**稍远但值得：**\n\n6. **秦岭脚下的山间咖啡馆** - 比如终南山附近有些民宿兼咖啡馆，环境清幽，适合想远离城市喧嚣时办公，但网络可能不太稳定。\n\n**选择建议：**\n- 需要长时间办公优先选漫咖啡、雕刻时光这类大空间连锁\n- 追求咖啡品质选Seesaw、浆木\n- 想要安静氛围选Localand这类书店咖啡馆\n\n去之前建议查一下营业时间和是否限流，有些网红店周末人多可能不太适合办公。"
+    },
+    {
+      "prompt": {
+        "id": "P002",
+        "category": "brand",
+        "prompt": "本地咖啡馆怎样提升 AI 搜索里的可见度？",
+        "targetFact": "品牌认知"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "success",
+      "sampledAt": "2026-07-03T12:19:57.939Z",
+      "latencyMs": 16226,
+      "answer": "要让本地咖啡馆在 AI 搜索（比如 ChatGPT、Bing Chat、Perplexity 这类工具）里更容易被找到和推荐，核心是让 AI 能“看到”并“理解”你的店。这和传统 SEO 有相似之处，但更强调信息的结构化、权威性和语义关联。\n\n以下是一些具体、可操作的方法：\n\n### 1. 打好地基：确保基础信息准确且一致\n\nAI 在回答“附近有什么好咖啡馆”时，会从多个来源抓取和验证信息。如果信息矛盾，AI 就可能不推荐你。\n\n-   **优化 Google 商家资料（GBP，原 GMB）：**\n    -   **完整度 100%：** 确保名称、地址、电话、营业时间、网站链接准确无误。这是 AI 最信任的数据源之一。\n    -   **选择正确的类别：** 主类别选“咖啡馆”，可以加副类别如“烘培店”、“茶馆”等。\n    -   **写一份详细的“商家简介”：** 用自然语言描述你的特色，比如“由 2010 年历史建筑改造的庭院咖啡馆，提供自家烘焙的单品手冲咖啡和法式甜点”。这段文字会直接被 AI 引用。\n    -   **上传高质量照片：** AI 多模态能力越来越强，它能“看懂”图片。上传店内环境、咖啡拉花、特色餐点、顾客享受时光的照片，并写好描述性文件名和替代文本。\n\n-   **在权威目录和 App 上建立一致档案：**\n    -   确保在大众点评、美团、小红书、高德地图、Apple Maps 等平台上的信息与 GBP 完全一致。AI 会交叉比对，一致性是信任信号。\n\n### 2. 创建 AI 能“读懂”的内容\n\nAI 不是通过关键词堆砌来理解你，而是通过语义。\n\n-   **网站“关于我们”页面：**\n    -   不要只写“我们提供优质咖啡”。要讲故事：“我们的咖啡豆来自埃塞俄比亚耶加雪菲产区，由冠军烘焙师小批量烘焙。店主是 SCA 认证咖啡师，店内所有甜品均为每日清晨手工现做。”\n    -   **结构化数据标记：** 在网站后台添加 Schema.org 标记，明确告诉搜索引擎“这是一家咖啡馆”、“地址是...”、“评分是...”、“提供 Wi-Fi”、“可以带宠物”。这是 AI 理解你网站最直接的方式。\n\n-   **创建“长尾”内容，回答具体问题：**\n    -   AI 经常被用来回答具体问题。你可以在网站博客或小红书创建内容，直接回答这些问题：\n        -   “XX 区适合办公的安静咖啡馆推荐”\n        -   “我们咖啡馆的 5 款夏日特调咖啡测评”\n        -   “如何在家冲煮出我们店同款手冲咖啡？”\n        -   “带娃友好咖啡馆指南：我们的儿童角和无咖啡因饮品”\n\n### 3. 建立语义关联和权威性\n\nAI 会判断你与其他实体（人、地点、事件）的关系。\n\n-   **"
+    },
+    {
+      "prompt": {
+        "id": "P003",
+        "category": "persona",
+        "prompt": "附近白领午休适合去哪里买咖啡和轻食？",
+        "targetFact": "品牌认知"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "success",
+      "sampledAt": "2026-07-03T12:19:57.939Z",
+      "latencyMs": 12270,
+      "answer": "这主要取决于你所在的**具体位置**（比如在哪个商圈或写字楼附近），不过我可以按常见的白领聚集区，给你几个通用的选择思路：\n\n**1. 连锁便利店（最快捷、性价比高）**\n如果午休时间短，想顺便带杯咖啡和轻食回办公室，**全家、罗森、7-Eleven** 是很稳的选择。它们的冰美式、拿铁出品稳定，搭配饭团、三明治或沙拉，10-20元就能搞定，不用等太久。\n\n**2. 连锁咖啡店（环境舒适，适合短暂放空）**\n-   **Manner / M Stand**：如果附近有，它们的性价比和口味在连锁里比较受白领欢迎，轻食通常有可颂、三明治等。\n-   **星巴克 / Costa**：座位相对多，如果想找个地方坐半小时，或者和同事聊点事，比较合适。轻食选择也多，但价格稍高。\n-   **Tims 天好咖啡**：如果喜欢暖食，它们的贝果（Bagel）和农夫卷是特色，搭配咖啡很扎实。\n\n**3. 烘焙店（轻食更丰富）**\n很多白领喜欢去**好利来、巴黎贝甜、多乐之日**这类烘焙店。它们的咖啡通常是现磨的，三明治、沙拉和蛋糕的选择比便利店多，口感也更好，很适合当一顿精致的午餐。\n\n**4. 商场 B1 层的小店（选择最多）**\n如果你在大型商场附近，直接下到负一层美食区。那里通常聚集了各种轻食沙拉店、酸奶碗店、贝果专门店，以及瑞幸、库迪等快取咖啡店。可以边走边逛，换换口味。\n\n**小建议：**\n如果你告诉我大概在哪个城市或哪条路附近，我可以帮你分析得更具体一些。另外，午休高峰（12：00-12：30）人很多，建议用手机提前点单，到店即取，能省下不少排队时间。"
+    }
+  ],
+  "evidencePolicy": {
+    "labels": [
+      "raw_source",
+      "verified_external",
+      "sampled_ai_answer",
+      "model_inference",
+      "suggested_supplement"
+    ],
+    "notes": "本报告基于用户提交资料、公开 URL 抓取审计、DeepSeek 官方 API 实时问答采样和透明规则评分生成。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。"
+  }
+}

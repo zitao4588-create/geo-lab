@@ -5,12 +5,22 @@
 - Completed 2026-07-03 T1 local Git protection and T8 first-batch conversion safeguards:
   - initialized local Git for `geo-lab`,
   - made the first local snapshot commit,
+  - created private GitHub remote `zitao4588-create/geo-lab` and pushed `main`,
   - implemented optional contact submission,
   - added WeChat QR consultation modal and copy action,
   - added stricter diagnosis rate limits,
   - updated first-screen conversion copy and industry shortcut tags,
   - updated footer备案 display, privacy policy, terms, and production runbook,
   - verified typecheck/build, no-contact report creation, GET report, local rate-limit `429`, desktop/mobile QR modal, and frontend bundle secret scan.
+- Deployed 2026-07-03 T8 first-batch release `20260703201836` to `https://exposure.playgamelab.cn`:
+  - previous release was `202606300728`,
+  - smoke report ID `diag_mr4wim6t_gfcg0g`,
+  - homepage returned `200`,
+  - `/api/health` returned `samplingReady=true`,
+  - online no-contact `POST /api/diagnoses` returned `201`,
+  - online `GET /api/diagnoses/:id`, evidence index, Markdown export, HTML export, and evidence package returned `200`,
+  - repeated online POST returned `429`,
+  - release evidence saved under `outputs/h5-mvp/t8-p0-release-20260703201836/`.
 - Completed post-launch optimization directions 1-6 for the final H5 product:
   - re-tested with live `https://fridge.playgamelab.cn`,
   - added URL crawling/page audit for 8 public targets,
@@ -92,19 +102,11 @@
 
 ## Next
 
-- Complete the 2026-07-03 closeout run:
-  - create or bind a private GitHub remote,
-  - push local commits,
-  - package and sync the new H5 build to the Lighthouse server,
-  - redeploy `https://exposure.playgamelab.cn`,
-  - run online smoke for health, diagnosis creation, report fetch, and rate-limit behavior,
-  - save the release number and smoke evidence under `outputs/h5-mvp/`.
 - Review `exposure.playgamelab.cn` compliance before public promotion:
-  - ICP 备案展示口径,
-  - 公安备案展示口径,
-  - 个人/个体工商户主体边界,
-  - contact handoff method,
-  - privacy policy / user agreement copy beyond placeholders.
+  - login to ICP/公安备案 backends or confirm with the access provider whether `exposure.playgamelab.cn` needs a new service item, changed access address, or separate public security filing,
+  - confirm whether the existing备案主体 can publicly promote AI曝光体检 and manual GEO consulting/optimization services,
+  - keep paid service handoff outside the H5 until scope, quote, delivery, refund, and invoice/tax boundaries are confirmed,
+  - keep the current footer caveat visible until final review is complete.
 - Use `冰箱小雷达` final report and screenshots for first outreach review, but keep the evidence caveat visible: DeepSeek sampling does not represent all AI platforms or guaranteed ranking lift.
 - Add the second real sampling platform after DeepSeek:
   - 豆包,

@@ -1,0 +1,14 @@
+{
+  "businessName": "测试本地咖啡馆",
+  "description": "一家面向附近办公人群的精品咖啡和轻食门店，用于线上 smoke test。",
+  "links": "https://exposure.playgamelab.cn",
+  "industry": "本地餐饮",
+  "city": "西安",
+  "targetCustomers": "附近写字楼白领、周末逛街人群、需要外带咖啡的顾客",
+  "competitors": "星巴克、瑞幸咖啡、本地独立咖啡馆",
+  "samplePrompts": [
+    "西安附近有哪些适合办公人群的精品咖啡馆？",
+    "本地咖啡馆怎样提升 AI 搜索里的可见度？",
+    "附近白领午休适合去哪里买咖啡和轻食？"
+  ]
+}

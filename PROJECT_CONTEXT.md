@@ -117,7 +117,16 @@ H5 MVP implementation started on 2026-06-30:
   - repeated local diagnosis creation returned `429`
   - desktop and mobile browser checks confirmed the optional contact flow, industry tags, QR modal, and QR image loading
   - refined frontend bundle scan found no `DEEPSEEK_API_KEY`, `api.deepseek.com`, or OpenAI-style `sk-...` key patterns
-- GitHub private remote push and online redeploy are being handled as the next closeout steps for this run.
+- GitHub private remote created and pushed: `https://github.com/zitao4588-create/geo-lab`.
+- New production release deployed to `https://exposure.playgamelab.cn` as release `20260703201836`, replacing `202606300728`.
+- Online smoke report ID: `diag_mr4wim6t_gfcg0g`.
+- Online smoke passed: homepage `200`, `/api/health` `samplingReady=true`, no-contact `POST /api/diagnoses` `201`, `GET` report `200`, evidence index `200`, Markdown/HTML/evidence-package exports `200`, and repeated POST `429`.
+- Release evidence is stored under `outputs/h5-mvp/t8-p0-release-20260703201836/`.
+- Compliance review status:
+  - Online footer/bundle displays `陕ICP备2026012759号-2`, `陕公网安备61010202000523号`, and the caveat `备案展示以 exposure 子域名最终核验为准`.
+  - Online privacy/terms state that H5 automatic initial diagnosis is free and manual complete diagnosis, interpretation, optimization, monthly retest, pricing, delivery, cycle, and refund boundaries are separately confirmed.
+  - Local备案 evidence still points to Monday Survival: website name `今天你能熬过周一吗`, website address `https://monday.playgamelab.cn`, ICP `陕ICP备2026012759号-2`, and public security filing `陕公网安备61010202000523号`.
+  - Therefore `exposure.playgamelab.cn` remains suitable for technical/internal testing, but public paid promotion still requires final subdomain/service-item/subject confirmation in备案 and公安备案 backends or with the access provider.
 
 Remaining risks:
 
