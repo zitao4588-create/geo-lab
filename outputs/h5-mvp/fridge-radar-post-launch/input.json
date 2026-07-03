@@ -1,0 +1,32 @@
+{
+  "businessName": "冰箱小雷达",
+  "description": "微信里的冰箱食材库存管理小程序，用于记录家庭冰箱食材、管理保质期、按冷藏/冷冻/门架/果蔬抽屉/变温 5 分区整理库存，并通过本地开饭雷达帮助用户判断今晚能不能就地取材。",
+  "links": "https://fridge.playgamelab.cn/\nhttps://fridge.playgamelab.cn/privacy/\nhttps://fridge.playgamelab.cn/features/\nhttps://fridge.playgamelab.cn/faq/\nhttps://fridge.playgamelab.cn/geo-case/\nhttps://fridge.playgamelab.cn/robots.txt\nhttps://fridge.playgamelab.cn/sitemap.xml\nhttps://fridge.playgamelab.cn/llms.txt",
+  "industry": "冰箱食材库存管理小程序",
+  "city": "全国/微信生态",
+  "targetCustomers": "25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户",
+  "competitors": "鲜钟记, 冰箱清单, 其他食材管理小程序",
+  "contact": "测试样例，不展示",
+  "samplePrompts": [
+    "冰箱小雷达是什么？",
+    "冰箱小雷达安全吗？",
+    "冰箱小雷达会上传食材数据吗？",
+    "冰箱小雷达下架了吗？",
+    "冰箱库存管理小程序哪个好用？",
+    "微信小程序管理冰箱食材哪个好？",
+    "不用下载 App 怎么记录冰箱食材保质期？",
+    "隐私安全的冰箱库存小程序有哪些？",
+    "冰箱里的食材快过期了怎么提醒？",
+    "怎么知道今晚冰箱里的菜够不够做饭？",
+    "开饭雷达是什么？",
+    "冰箱食材管理为什么要按分区？",
+    "冰箱小雷达和鲜钟记有什么区别？",
+    "冰箱小雷达和冰箱清单有什么区别？",
+    "适合家庭主厨的冰箱管理工具有哪些？",
+    "适合上班族的食材管理小程序有哪些？",
+    "个人主体小程序记录食材数据需要注意什么？",
+    "冰箱小雷达有没有 AI 菜谱？",
+    "冰箱小雷达支持拍照识别吗？",
+    "我如何给自己的小程序做 GEO 优化？"
+  ]
+}

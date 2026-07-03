@@ -1,0 +1,13 @@
+{
+  "endpoint": "https://exposure.playgamelab.cn",
+  "reportId": "diag_mqztd0nw_ycw6ms",
+  "score": 61,
+  "scoreLevel": "一般",
+  "successCount": 20,
+  "promptCount": 20,
+  "mentionRate": 0.4,
+  "getStatus": 200,
+  "evidenceStatus": 200,
+  "elapsedMs": 36201,
+  "checkedAt": "2026-06-29T22:53:08.037Z"
+}

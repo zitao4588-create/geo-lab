@@ -1,0 +1,606 @@
+{
+  "report": {
+    "id": "diag_mqztd0nw_ycw6ms",
+    "version": "0.2",
+    "brand": "冰箱小雷达",
+    "category": "冰箱食材库存管理小程序",
+    "generatedAt": "2026-06-29T22:53:03.263Z",
+    "riskLevel": "medium",
+    "score": 61,
+    "scoreLevel": "一般",
+    "summary": "冰箱小雷达 本次 GEO 分析成果得分 61/100（一般）。DeepSeek 成功采样 20 个问题，品牌提及率 40%；当前优先级是补可查证品牌页、隐私/FAQ 和场景内容池。",
+    "aiMeta": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "sampled",
+      "sampledAt": "2026-06-29T22:53:03.263Z",
+      "promptCount": 20,
+      "successCount": 20,
+      "failureCount": 0
+    },
+    "evidencePolicy": {
+      "labels": [
+        "raw_source",
+        "verified_external",
+        "sampled_ai_answer",
+        "model_inference",
+        "suggested_supplement"
+      ],
+      "notes": "本报告基于用户提交资料、DeepSeek 官方 API 实时问答采样和透明规则评分生成。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升。"
+    },
+    "stages": {
+      "overview": {
+        "oneLine": "微信里的冰箱食材库存管理小程序，用于记录家庭冰箱食材、管理保质期、按冷藏/冷冻/门架/果蔬抽屉/变温 5 分区整理库存，并通过本地开饭雷达帮助用户判断今晚能不能就地取材。",
+        "city": "全国/微信生态",
+        "targetCustomers": "25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户",
+        "keyFinding": "“冰箱小雷达”具备一定 AI 可见度，下一步应强化证据、竞品对比和信任说明。",
+        "highlights": [
+          "本次 DeepSeek 采样已有 8 个答案提及品牌，说明存在可被模型识别的起点。",
+          "定位已明确为“冰箱食材库存管理小程序”，具备形成品牌知识卡的基础。",
+          "目标客户填写为“25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户”，可转化为 Prompt Universe 和 FAQ。",
+          "已提供公开入口线索，可以继续补官方说明、隐私页和内容池。"
+        ],
+        "risks": [
+          "可查证公开基建不够完整",
+          "隐私、主体或功能边界需要提前解释",
+          "仍缺少持续监测口径"
+        ]
+      },
+      "score": {
+        "label": "GEO 分析成果得分：61/100（一般）",
+        "dimensions": [
+          {
+            "code": "AI_SEARCH_VISIBILITY",
+            "name": "AI 采样可见度",
+            "score": 40,
+            "weight": 0.32,
+            "comment": "DeepSeek 本次成功采样 20 个问题，其中 8 个答案提及“冰箱小雷达”。",
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "code": "INFRASTRUCTURE",
+            "name": "可查证基建",
+            "score": 65,
+            "weight": 0.22,
+            "comment": "根据提交的官网/小程序/隐私/FAQ/内容入口线索计算，重点看 AI 是否有稳定可引用来源。",
+            "evidenceLabel": "model_inference"
+          },
+          {
+            "code": "COMPETITOR_PRESSURE",
+            "name": "竞品压制风险",
+            "score": 78,
+            "weight": 0.18,
+            "comment": "已对比 3 个竞品；若竞品在答案中出现多于本品牌，会压低该项。",
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "code": "CONTENT_ALIGNMENT",
+            "name": "语义与场景匹配",
+            "score": 80,
+            "weight": 0.16,
+            "comment": "根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。",
+            "evidenceLabel": "model_inference"
+          },
+          {
+            "code": "TRUST_RISK",
+            "name": "信任与风险解释",
+            "score": 55,
+            "weight": 0.12,
+            "comment": "采样答案出现 5 类信任/风险信号。",
+            "evidenceLabel": "sampled_ai_answer"
+          }
+        ]
+      },
+      "userProfile": {
+        "groups": [
+          {
+            "title": "直接需求用户",
+            "scenario": "25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户 已经明确在找 冰箱食材库存管理小程序 或替代方案。",
+            "questions": [
+              "冰箱食材库存管理小程序哪个好用？",
+              "冰箱小雷达适合25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户吗？",
+              "全国/微信生态冰箱食材库存管理小程序怎么选？"
+            ]
+          },
+          {
+            "title": "问题驱动用户",
+            "scenario": "用户不一定知道品牌名，只是在搜索“微信里的冰箱食材库存管理小程序，用于记录家庭冰箱食材、管理保质期、按冷藏/冷冻/门架/果蔬抽屉/变温 5 分区整理库存，并通过本地开饭雷达帮助用户判断今晚能不能就地取材。”背后的问题。",
+            "questions": [
+              "微信里的冰箱食材库存管理小程序，用于记录家庭冰箱食材、管理保质期、按冷藏/冷冻/门架/果蔬抽屉/变温 5 分区整理库存，并通过本地开饭雷达帮助用户判断今晚能不能就地取材。怎么解决？",
+              "有没有适合25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户的工具？",
+              "冰箱食材库存管理小程序有什么注意事项？"
+            ]
+          },
+          {
+            "title": "对比决策用户",
+            "scenario": "用户在 AI 里问“哪个更好/有什么区别”，模型会自动拉竞品做比较。",
+            "questions": [
+              "冰箱小雷达和同类产品有什么区别？",
+              "冰箱小雷达靠谱吗？",
+              "隐私安全的冰箱食材库存管理小程序有哪些？"
+            ]
+          }
+        ],
+        "likelyQuestions": [
+          "冰箱小雷达是什么？",
+          "冰箱小雷达安全吗？",
+          "冰箱小雷达会上传食材数据吗？",
+          "冰箱小雷达下架了吗？",
+          "冰箱库存管理小程序哪个好用？",
+          "微信小程序管理冰箱食材哪个好？",
+          "不用下载 App 怎么记录冰箱食材保质期？",
+          "隐私安全的冰箱库存小程序有哪些？"
+        ]
+      },
+      "promptUniverse": {
+        "prompts": [
+          {
+            "id": "P001",
+            "category": "brand",
+            "prompt": "冰箱小雷达是什么？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P002",
+            "category": "risk",
+            "prompt": "冰箱小雷达安全吗？",
+            "targetFact": "隐私与安全"
+          },
+          {
+            "id": "P003",
+            "category": "risk",
+            "prompt": "冰箱小雷达会上传食材数据吗？",
+            "targetFact": "隐私与安全"
+          },
+          {
+            "id": "P004",
+            "category": "risk",
+            "prompt": "冰箱小雷达下架了吗？",
+            "targetFact": "可查证状态"
+          },
+          {
+            "id": "P005",
+            "category": "feature",
+            "prompt": "冰箱库存管理小程序哪个好用？",
+            "targetFact": "推荐场景提及"
+          },
+          {
+            "id": "P006",
+            "category": "feature",
+            "prompt": "微信小程序管理冰箱食材哪个好？",
+            "targetFact": "推荐场景提及"
+          },
+          {
+            "id": "P007",
+            "category": "feature",
+            "prompt": "不用下载 App 怎么记录冰箱食材保质期？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P008",
+            "category": "risk",
+            "prompt": "隐私安全的冰箱库存小程序有哪些？",
+            "targetFact": "隐私与安全"
+          },
+          {
+            "id": "P009",
+            "category": "feature",
+            "prompt": "冰箱里的食材快过期了怎么提醒？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P010",
+            "category": "feature",
+            "prompt": "怎么知道今晚冰箱里的菜够不够做饭？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P011",
+            "category": "brand",
+            "prompt": "开饭雷达是什么？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P012",
+            "category": "feature",
+            "prompt": "冰箱食材管理为什么要按分区？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P013",
+            "category": "competitor",
+            "prompt": "冰箱小雷达和鲜钟记有什么区别？",
+            "targetFact": "竞品对比"
+          },
+          {
+            "id": "P014",
+            "category": "competitor",
+            "prompt": "冰箱小雷达和冰箱清单有什么区别？",
+            "targetFact": "竞品对比"
+          },
+          {
+            "id": "P015",
+            "category": "persona",
+            "prompt": "适合家庭主厨的冰箱管理工具有哪些？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P016",
+            "category": "persona",
+            "prompt": "适合上班族的食材管理小程序有哪些？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P017",
+            "category": "risk",
+            "prompt": "个人主体小程序记录食材数据需要注意什么？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P018",
+            "category": "brand",
+            "prompt": "冰箱小雷达有没有 AI 菜谱？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P019",
+            "category": "brand",
+            "prompt": "冰箱小雷达支持拍照识别吗？",
+            "targetFact": "品牌认知"
+          },
+          {
+            "id": "P020",
+            "category": "geo",
+            "prompt": "我如何给自己的小程序做 GEO 优化？",
+            "targetFact": "GEO 自证"
+          }
+        ]
+      },
+      "aiSearch": {
+        "totalQuestions": 20,
+        "mentionedCount": 8,
+        "mentionRate": 0.4,
+        "topMentionedPrompts": [
+          "冰箱小雷达是什么？",
+          "冰箱小雷达安全吗？",
+          "冰箱小雷达会上传食材数据吗？",
+          "冰箱小雷达下架了吗？",
+          "冰箱小雷达和鲜钟记有什么区别？"
+        ],
+        "missingPrompts": [
+          "冰箱库存管理小程序哪个好用？",
+          "微信小程序管理冰箱食材哪个好？",
+          "不用下载 App 怎么记录冰箱食材保质期？",
+          "隐私安全的冰箱库存小程序有哪些？",
+          "冰箱里的食材快过期了怎么提醒？",
+          "怎么知道今晚冰箱里的菜够不够做饭？",
+          "开饭雷达是什么？",
+          "冰箱食材管理为什么要按分区？"
+        ],
+        "answerSamples": [
+          {
+            "promptId": "P001",
+            "category": "brand",
+            "prompt": "冰箱小雷达是什么？",
+            "answerExcerpt": "“冰箱小雷达”这个说法听起来像是一个非正式的名称或昵称，并不是一个标准的家电或科技产品术语。 基于我目前的知识，它可能指代以下几种情况： 1. **智能冰箱的食材管理功能（最可能的解释）** 现在很多智能冰箱内部装有摄像头，你可以通过手机App远程查看冰箱里有什么。这种能让你“隔空透视”冰箱内部的功能，有时会被用户戏称为“小雷达”，因为它像雷达一样能探测里面...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P002",
+            "category": "risk",
+            "prompt": "冰箱小雷达安全吗？",
+            "answerExcerpt": "“冰箱小雷达”这个名字听起来像是一个智能冰箱管理配件或传感器类产品，比如用来监测冰箱温度、食材库存、开关门状态等。不过目前我无法确认你指的是哪一款具体产品，因为市面上没有广泛知名的、统一叫“冰箱小雷达”的设备。 从一般角度来看，这类智能设备的安全性主要取决于几个方面： 1. **数据隐私** 如果它需要连接手机 App 或云端，就要看厂商是否对数据进行加密、...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+              "存在隐私和个人信息处理疑问",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P003",
+            "category": "risk",
+            "prompt": "冰箱小雷达会上传食材数据吗？",
+            "answerExcerpt": "“冰箱小雷达”听起来像是一个智能冰箱管理配件或应用，可能用于记录食材、提醒保质期等。不过，我目前的知识库里没有关于这个具体产品的详细信息，所以无法确认它是否会上传食材数据。 一般来说，这类智能设备如果具备联网功能，通常会将食材数据上传到云端，以便实现远程查看、智能推荐菜谱或购物清单等功能。但具体是否上传、上传哪些数据、数据如何存储和使用，还是要看该产品的隐私...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+              "存在隐私和个人信息处理疑问",
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P004",
+            "category": "risk",
+            "prompt": "冰箱小雷达下架了吗？",
+            "answerExcerpt": "我不太确定你提到的“冰箱小雷达”具体是指什么产品。这个名字听起来可能是一个智能冰箱管理设备、温度监测器，或者某个品牌的特定功能/配件。 由于我没有关于这个产品的最新市场信息，无法确认它是否已经下架。建议你： 1. **在电商平台搜索**（如淘宝、京东、拼多多等），看看是否还有商家在售。 2. **查看品牌官网**，确认该产品是否仍在产品列表中。 3. **联...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+              "上架状态或可访问性需要补强说明",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P013",
+            "category": "competitor",
+            "prompt": "冰箱小雷达和鲜钟记有什么区别？",
+            "answerExcerpt": "抱歉，我目前的知识储备里没有关于“冰箱小雷达”和“鲜钟记”这两个具体产品的详细信息，所以无法准确告诉你它们的区别。 从名字推测，“冰箱小雷达”可能是一种冰箱管理类的小工具或智能设备，比如用来监测食材新鲜度、库存提醒等；而“鲜钟记”听起来更像是一个品牌名，可能涉及生鲜食品、保鲜技术或相关服务。 如果你能提供更多背景信息，比如它们是什么类型的产品、在哪里看到的，...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [
+              "鲜钟记"
+            ],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P014",
+            "category": "competitor",
+            "prompt": "冰箱小雷达和冰箱清单有什么区别？",
+            "answerExcerpt": "“冰箱小雷达”和“冰箱清单”这两个词听起来像是某种智能冰箱管理功能或第三方应用的名字，而不是行业通用术语。我目前的知识库里没有这两个功能的确切定义，所以没法给你一个权威的对比。 不过，从字面和常见的冰箱管理类功能来推测，它们可能的区别是： - **冰箱清单**：更像是一个手动或半自动的“库存列表”。你可以自己记录冰箱里有什么、数量多少、什么时候买的，类似一个...",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [
+              "冰箱清单"
+            ],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P018",
+            "category": "brand",
+            "prompt": "冰箱小雷达有没有 AI 菜谱？",
+            "answerExcerpt": "我不太确定“冰箱小雷达”具体指的是什么产品。如果它是一个智能冰箱或冰箱管理类的 App，那它是否带有 AI 菜谱功能，要看该产品本身的设计和功能说明。 一般来说，现在一些智能冰箱或食材管理应用确实会提供 AI 菜谱功能，比如根据冰箱里的食材推荐可以做的菜。但“冰箱小雷达”是不是具备这个功能，我没有确切的信息，建议你查看它的官方介绍或直接咨询客服。",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P019",
+            "category": "brand",
+            "prompt": "冰箱小雷达支持拍照识别吗？",
+            "answerExcerpt": "我不太确定你提到的“冰箱小雷达”具体指的是哪款产品。目前市面上有一些智能冰箱管理设备或应用，可能会支持拍照识别食材的功能，但具体是否支持，还得看该产品的官方说明。 如果你能提供更多信息，比如品牌或型号，我可以帮你进一步分析。",
+            "mentionedBrand": true,
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          }
+        ],
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "infrastructure": {
+        "checks": [
+          {
+            "name": "公开入口",
+            "status": "warn",
+            "note": "已提供入口计划，但还不能按线上可访问来源计分。",
+            "evidenceLabel": "raw_source"
+          },
+          {
+            "name": "品牌/官方介绍页",
+            "status": "warn",
+            "note": "需要一个稳定页面说明产品定位、功能边界和二维码入口。",
+            "evidenceLabel": "suggested_supplement"
+          },
+          {
+            "name": "隐私与数据说明",
+            "status": "warn",
+            "note": "建议公开隐私政策、数据存储方式和不上传/少上传边界。",
+            "evidenceLabel": "suggested_supplement"
+          },
+          {
+            "name": "FAQ/案例/内容池",
+            "status": "warn",
+            "note": "建议补 3-5 篇场景说明、FAQ、竞品对比或案例页。",
+            "evidenceLabel": "suggested_supplement"
+          },
+          {
+            "name": "小程序/产品入口",
+            "status": "ok",
+            "note": "提交内容中包含小程序或产品入口线索。",
+            "evidenceLabel": "raw_source"
+          },
+          {
+            "name": "竞品线索",
+            "status": "ok",
+            "note": "已提供竞品，可做推荐/对比问题采样。",
+            "evidenceLabel": "raw_source"
+          }
+        ]
+      },
+      "competitors": {
+        "names": [
+          "鲜钟记",
+          "冰箱清单",
+          "其他食材管理小程序"
+        ],
+        "mentionStats": [
+          {
+            "name": "鲜钟记",
+            "mentionedCount": 1,
+            "mentionRate": 0.05
+          },
+          {
+            "name": "冰箱清单",
+            "mentionedCount": 1,
+            "mentionRate": 0.05
+          },
+          {
+            "name": "其他食材管理小程序",
+            "mentionedCount": 0,
+            "mentionRate": 0
+          }
+        ],
+        "pressureLevel": "low",
+        "note": "本次采样中，鲜钟记 1 次、冰箱清单 1 次 被提及；需要用对比页解释差异。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "geoEffect": {
+        "mentionRate": 0.4,
+        "scenarioCoverage": [
+          {
+            "category": "品牌认知",
+            "total": 4,
+            "mentioned": 3,
+            "rate": 0.75
+          },
+          {
+            "category": "品类推荐",
+            "total": 0,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "功能场景",
+            "total": 6,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "竞品对比",
+            "total": 2,
+            "mentioned": 2,
+            "rate": 1
+          },
+          {
+            "category": "人群场景",
+            "total": 2,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "风险信任",
+            "total": 5,
+            "mentioned": 3,
+            "rate": 0.6
+          },
+          {
+            "category": "GEO 自证",
+            "total": 1,
+            "mentioned": 0,
+            "rate": 0
+          }
+        ],
+        "absorptionNotes": [
+          "模型已经能在部分问题中提及“冰箱小雷达”，下一步要把提及变成更稳定的推荐理由。",
+          "GEO 优化不能只堆关键词，需要让页面包含定义、适用人群、功能边界、证据和常见问答。",
+          "本次只采样 DeepSeek，后续上线商业交付时应扩展到多个国内 AI 平台并保存原始答案。"
+        ],
+        "evidenceLabel": "model_inference"
+      },
+      "sentimentRisk": {
+        "riskLevel": "high",
+        "flags": [
+          "功能边界可能被误读为能力不足",
+          "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+          "存在隐私和个人信息处理疑问",
+          "个人主体/品牌背书信任度需要解释",
+          "上架状态或可访问性需要补强说明"
+        ],
+        "note": "本次采样出现 5 类风险信号，优先用公开说明页和 FAQ 解释边界。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "recommendations": [
+        {
+          "id": "suggest_official_page",
+          "title": "搭建最小可查证品牌介绍页",
+          "detail": "用一个稳定页面讲清“冰箱小雷达是什么、适合谁、解决什么问题、怎么使用”，并放小程序/产品入口、更新时间和联系方式。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P0"
+        },
+        {
+          "id": "suggest_privacy_faq",
+          "title": "补公开隐私政策和FAQ",
+          "detail": "把数据是否上传、保存在哪里、是否需要登录、是否有AI/拍照/支付等边界写清楚，减少模型在风险问题里的误读。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P0"
+        },
+        {
+          "id": "suggest_content_pool",
+          "title": "围绕核心场景做内容池",
+          "detail": "优先写3-5篇“冰箱食材库存管理小程序怎么选”“冰箱小雷达和竞品区别”“典型用户怎么用”的短内容，方便AI抽取。",
+          "evidenceLabel": "model_inference",
+          "priority": "P1"
+        },
+        {
+          "id": "suggest_comparison",
+          "title": "补竞品对比和选择标准",
+          "detail": "把鲜钟记、冰箱清单、其他食材管理小程序的差异写成表格，避免模型只按更常见品牌推荐。",
+          "evidenceLabel": "model_inference",
+          "priority": "P1"
+        },
+        {
+          "id": "suggest_monitoring",
+          "title": "固定Prompt Universe做月度复测",
+          "detail": "保留本次20个问题作为基线，每月用相同问题复测DeepSeek，并逐步扩展豆包、Kimi、元宝等平台。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P2"
+        }
+      ],
+      "roadmap": [
+        {
+          "phase": "P0",
+          "title": "1-2周：补最小可查证基建",
+          "timeline": "1-2 周",
+          "detail": "上线品牌介绍页、隐私政策页、FAQ和产品入口；把标题写成“冰箱小雷达｜冰箱食材库存管理小程序”，先让AI有稳定来源可读。"
+        },
+        {
+          "phase": "P1",
+          "title": "1-3月：补内容池和对比页",
+          "timeline": "1-3 月",
+          "detail": "围绕25-40岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户的真实问题发布场景说明、竞品对比、使用步骤和案例页，并在公众号/知乎/CSDN等公开入口互相引用。"
+        },
+        {
+          "phase": "P2",
+          "title": "3-6月：建立监测和迭代闭环",
+          "timeline": "3-6 月",
+          "detail": "用本次20个成功采样问题做基线，记录提及率、风险词、竞品变化和页面更新，避免只看一次性分数。"
+        }
+      ]
+    },
+    "issues": [
+      {
+        "id": "issue_infrastructure_gap",
+        "title": "可查证公开基建不够完整",
+        "detail": "AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。",
+        "evidenceLabel": "model_inference",
+        "severity": "medium"
+      },
+      {
+        "id": "issue_trust_explanation",
+        "title": "隐私、主体或功能边界需要提前解释",
+        "detail": "采样答案出现的风险信号包括：功能边界可能被误读为能力不足；品牌公开资料不足，AI 倾向回答“不确定/查不到”；存在隐私和个人信息处理疑问。这些问题需要用公开说明页提前消除误解。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      },
+      {
+        "id": "issue_monitoring_needed",
+        "title": "仍缺少持续监测口径",
+        "detail": "单次 DeepSeek 采样只能说明本次模型响应，需要建立固定 Prompt Universe、定期复测和证据留档。",
+        "evidenceLabel": "suggested_supplement",
+        "severity": "medium"
+      }
+    ]
+  }
+}

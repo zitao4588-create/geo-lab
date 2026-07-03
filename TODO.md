@@ -1,0 +1,119 @@
+# TODO
+
+## Immediate
+
+- Completed post-launch optimization directions 1-6 for the final H5 product:
+  - re-tested with live `https://fridge.playgamelab.cn`,
+  - added URL crawling/page audit for 8 public targets,
+  - added multi-provider sampling status structure without fabricating unconfigured platforms,
+  - strengthened competitor analysis with prompts/snippets/misreadings/suggested content,
+  - added Markdown/HTML/evidence package exports and generated PDF artifacts,
+  - completed before/after comparison for `冰箱小雷达`.
+- Deployed release `202606300728` to `https://exposure.playgamelab.cn`.
+- Verified online post-launch report:
+  - report ID `diag_mqzunocs_pzxoqe`,
+  - score `68/100（良好）`,
+  - DeepSeek `20/20`,
+  - brand mention rate `40%`,
+  - page audit `100/100`,
+  - `GET /api/diagnoses/:id/evidence` returned `200`,
+  - export endpoints for Markdown/HTML/evidence package returned `200`,
+  - PDF generated from the online HTML export.
+- Saved post-launch artifacts under `outputs/h5-mvp/fridge-radar-post-launch/`.
+- Completed local and online H5 MVP baseline in `apps/ai-exposure-check-h5`:
+  - dependencies installed,
+  - `npm run typecheck` passed,
+  - `npm run build` passed,
+  - no-key fallback verified,
+  - model-failure fallback verified,
+  - mobile/desktop browser screenshots checked,
+  - local DeepSeek env configured through ignored `.env.local`,
+  - local production service restarted at `http://127.0.0.1:8787`,
+  - production deployment live at `https://exposure.playgamelab.cn`.
+- Completed final H5 report adjustment:
+  - removed quick-preview mode from the product flow,
+  - removed dual-score presentation,
+  - added one `GEO 分析成果得分`,
+  - added DeepSeek real question sampling before scoring,
+  - added `GET /api/diagnoses/:id/evidence`,
+  - added local evidence files under `runtime/evidence/<reportId>/`,
+  - changed missing-key/total-sampling-failure behavior to explicit `503 sampling_unavailable`.
+- Completed the final `冰箱小雷达` test case:
+  - local 20/20 DeepSeek sample success,
+  - local score `61/100（一般）`,
+  - local brand mention rate `40%`,
+  - online 20/20 DeepSeek sample success,
+  - online score `61/100（一般）`,
+  - online brand mention rate `40%`,
+  - `GET /api/diagnoses/:id` and `GET /api/diagnoses/:id/evidence` both returned `200`.
+- Saved final report artifacts under `outputs/h5-mvp/fridge-radar-final/`, including:
+  - `input.json`,
+  - `api-response.json`,
+  - `final-report.md`,
+  - `evidence-index.json`,
+  - `online-smoke.json`,
+  - `comparison-with-reference.md`,
+  - mobile/desktop screenshots.
+- Completed the first real end-to-end diagnosis with DeepSeek enabled, using `冰箱小雷达` as the sample case.
+- Saved the first sample report for review under `outputs/h5-mvp/fridge-radar-sample/`, with:
+  - user input payload,
+  - rule score,
+  - DeepSeek rewrite status,
+  - evidence labels,
+  - final H5 local screenshots,
+  - online HTTPS screenshots,
+  - online smoke test summary.
+- Completed H5 conversion surface polish:
+  - start page copy,
+  - form density,
+  - analysis loading state,
+  - result risk card,
+  - add-WeChat / appointment CTA.
+- Tightened report evidence boundaries:
+  - label `model_inference` and `suggested_supplement`,
+  - avoid claims about real AI ranking lift,
+  - keep contact details out of public report surfaces.
+- Review `sources/source-index.md` and confirm all user-provided sources are represented.
+- Build a first synthesized GEO learning guide from `knowledge/methods/geo-method-map.md`.
+- Turn fridge-radar into a canonical demo case page/package with:
+  - diagnosis findings,
+  - evidence-boundary critique,
+  - report schema mapping,
+  - improved report requirements.
+
+## Next
+
+- Review `exposure.playgamelab.cn` compliance before public promotion:
+  - ICP 备案展示口径,
+  - 公安备案展示口径,
+  - 个人/个体工商户主体边界,
+  - contact handoff method,
+  - privacy policy / user agreement copy beyond placeholders.
+- Use `冰箱小雷达` final report and screenshots for first outreach review, but keep the evidence caveat visible: DeepSeek sampling does not represent all AI platforms or guaranteed ranking lift.
+- Add the second real sampling platform after DeepSeek:
+  - 豆包,
+  - Kimi,
+  - 元宝,
+  - 通义,
+  - 文心 or other available platforms.
+- Productize report export in the H5 UI:
+  - direct PDF button or server-side PDF generation,
+  - evidence package download explanation,
+  - clearer customer handoff copy.
+- Add search/absorption monitoring for `fridge.playgamelab.cn`:
+  - brand query checks,
+  - `site:` checks,
+  - sitemap/llms freshness,
+  - before/after trend history for the same 20 prompts.
+- Decide whether to initialize Git for `geo-lab` after the current no-repo local state is acceptable.
+- Create `agents/geo-diagnosis-agent/spec.md`.
+- Create `agents/geo-content-refiner-agent/spec.md`.
+- Create a minimal CLI or script plan only after the specs are stable.
+
+## Later
+
+- Prepare mini-program reuse plan after H5 MVP proves demand.
+- Add source refresh scripts with explicit user approval.
+- Add report rendering template.
+- Add real AI-search sampling adapters.
+- Add evidence folder format.

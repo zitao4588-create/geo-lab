@@ -1,0 +1,30 @@
+{
+  "version": "0.1",
+  "brand": "",
+  "category": "",
+  "generated_at": "",
+  "evidence_policy": {
+    "labels": ["raw_source", "verified_external", "model_inference", "suggested_supplement"],
+    "notes": "Do not mix verified evidence with simulation or inference."
+  },
+  "stages": {
+    "overview": {},
+    "score": {},
+    "user_profile": {},
+    "prompt_universe": {},
+    "ai_visibility": {},
+    "infrastructure": {},
+    "competitors": {},
+    "selection_absorption": {},
+    "sentiment_risk": {},
+    "recommendations": {},
+    "roadmap": {}
+  },
+  "evidence": {
+    "queries": [],
+    "answers": [],
+    "pages": [],
+    "source_map": []
+  }
+}
+

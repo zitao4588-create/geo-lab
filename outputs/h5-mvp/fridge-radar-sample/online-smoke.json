@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-06-29T21:30:08.351Z",
+  "endpoint": "https://exposure.playgamelab.cn",
+  "postStatus": 201,
+  "getStatus": 200,
+  "reportId": "diag_mqzqeaod_ez3318",
+  "score": 100,
+  "riskLevel": "low",
+  "aiMeta": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-pro",
+    "status": "used"
+  },
+  "getMatched": true
+}

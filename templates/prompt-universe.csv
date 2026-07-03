@@ -1,0 +1,3 @@
+prompt_id,intent,role,scenario,question,priority,target_page,expected_answer_points,risk_terms,measurement_frequency
+P001,choose,目标用户,购买/选择场景,你的用户会如何问这个问题,P0,,,
+

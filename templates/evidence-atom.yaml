@@ -1,0 +1,11 @@
+claim: ""
+evidence: ""
+source_url: ""
+source_type: "official|third_party|user_generated|internal|unknown"
+time_range: ""
+applicable_scope: ""
+limitations: ""
+quotable_sentence: ""
+review_status: "draft|verified|needs_source|expired"
+evidence_label: "raw_source|verified_external|model_inference|suggested_supplement"
+

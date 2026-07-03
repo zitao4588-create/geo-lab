@@ -1,0 +1,125 @@
+{
+  "report": {
+    "id": "diag_mqzq5tep_rylpbo",
+    "version": "0.1",
+    "brand": "冰箱小雷达",
+    "category": "微信小程序 / 家庭冰箱食材库存管理工具",
+    "generatedAt": "2026-06-29T21:23:28.417Z",
+    "riskLevel": "low",
+    "score": 100,
+    "summary": "冰箱小雷达当前在AI推荐中的风险较低，基础信息比较完整，但还需要补充一些关键内容，才能让AI更准确地推荐给家庭用户。",
+    "aiMeta": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "used"
+    },
+    "evidencePolicy": {
+      "labels": [
+        "raw_source",
+        "verified_external",
+        "model_inference",
+        "suggested_supplement"
+      ],
+      "notes": "本报告为 H5 初筛版本，基于用户提交信息和规则推断生成；未进行真实全网采样，不承诺 AI 推荐排名提升。"
+    },
+    "stages": {
+      "overview": {
+        "oneLine": "冰箱小雷达是一款微信里的冰箱食材库存管理小程序，帮助家庭用户按冷藏、冷冻、门架、果蔬抽屉、变温区记录食材、管理保质期，并用本地开饭雷达判断今晚是否适合就地取材。",
+        "city": "线上微信小程序",
+        "targetCustomers": "中国大陆家庭用户，尤其是家庭主厨、上班族和注重隐私的微信用户"
+      },
+      "score": {
+        "label": "低风险",
+        "deductions": []
+      },
+      "userProfile": {
+        "likelyQuestions": [
+          "线上微信小程序有没有适合中国大陆家庭用户，尤其是家庭主厨、上班族和注重隐私的微信用户的微信小程序 / 家庭冰箱食材库存管理工具？",
+          "冰箱小雷达是做什么的，适合什么人？",
+          "冰箱小雷达和鲜钟记有什么区别？"
+        ]
+      },
+      "promptUniverse": {
+        "prompts": [
+          "线上微信小程序微信小程序 / 家庭冰箱食材库存管理工具哪家适合中国大陆家庭用户，尤其是家庭主厨、上班族和注重隐私的微信用户？",
+          "冰箱小雷达是做什么的？靠谱吗？",
+          "冰箱小雷达和鲜钟记怎么选？",
+          "有没有适合中国大陆家庭用户，尤其是家庭主厨、上班族和注重隐私的微信用户的微信小程序 / 家庭冰箱食材库存管理工具推荐？"
+        ]
+      },
+      "aiVisibility": {
+        "mode": "rule_based_preview",
+        "note": "首版 H5 只做信息完整度和 AI 可理解性初筛，后续深度诊断需要真实采样 DeepSeek、豆包、Kimi、元宝等平台答案。"
+      },
+      "infrastructure": {
+        "checks": [
+          {
+            "name": "公开入口",
+            "status": "ok",
+            "note": "已提供公开入口线索。"
+          },
+          {
+            "name": "本地信息",
+            "status": "ok",
+            "note": "已提供城市：线上微信小程序"
+          },
+          {
+            "name": "行业分类",
+            "status": "ok",
+            "note": "已提供行业：微信小程序 / 家庭冰箱食材库存管理工具"
+          }
+        ]
+      },
+      "competitors": {
+        "names": [
+          "鲜钟记",
+          "冰箱清单",
+          "冰箱小助手",
+          "食管家",
+          "厨房故事"
+        ],
+        "note": "已收到竞品线索，深度诊断可进一步做对比采样。"
+      },
+      "selectionAbsorption": {
+        "note": "本阶段无法验证 AI 是否真实引用或吸收你的页面，只能判断公开信息是否足够让模型理解。",
+        "evidenceLabel": "suggested_supplement"
+      },
+      "sentimentRisk": {
+        "note": "暂未接入舆情和评价源，若存在差评、投诉或信息冲突，需要在深度诊断中单独核查。",
+        "evidenceLabel": "suggested_supplement"
+      },
+      "recommendations": [
+        {
+          "id": "suggest_faq",
+          "title": "补3个常见问答",
+          "detail": "把客户最常问的价格、适用人群、服务流程写成FAQ，方便AI直接提取和展示。",
+          "evidenceLabel": "model_inference",
+          "priority": "P1"
+        }
+      ],
+      "roadmap": [
+        {
+          "step": "补充常见问答",
+          "detail": "在FAQ页面添加3个高频问题，比如价格、适用人群、如何开始使用，用简单直白的语言回答。"
+        },
+        {
+          "step": "优化页面描述",
+          "detail": "在首页和功能介绍页突出目标客户和隐私保护，让AI一眼就能看懂你的业务。"
+        },
+        {
+          "step": "检查公开入口",
+          "detail": "确认小程序和网页链接都能正常访问，并在明显位置放置入口，方便AI和用户找到。"
+        }
+      ]
+    },
+    "issues": [
+      {
+        "id": "issue_detail_depth",
+        "title": "现有信息还需要做深度采样验证",
+        "detail": "目前只是初步检查，信息看起来完整，但AI到底会不会推荐，还得看真实搜索结果、引用来源和竞争对手的表现。",
+        "evidenceLabel": "suggested_supplement",
+        "severity": "medium"
+      }
+    ]
+  }
+}

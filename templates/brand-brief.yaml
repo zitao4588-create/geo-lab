@@ -1,0 +1,43 @@
+brand:
+  name: ""
+  category: ""
+  one_line_positioning: ""
+  website: ""
+  app_or_product_url: ""
+  region: "CN"
+  language: "zh-CN"
+
+product:
+  core_features: []
+  target_users: []
+  use_cases: []
+  differentiators: []
+  limitations: []
+
+competitors:
+  - name: ""
+    url: ""
+    notes: ""
+
+geo_scope:
+  platforms:
+    - ChatGPT Search
+    - DeepSeek
+    - Doubao
+    - Kimi
+    - Tongyi
+    - Yuanbao
+  target_intents:
+    - understand
+    - compare
+    - choose
+    - trust_risk
+    - implementation
+  measurement_mode: "manual"
+
+evidence:
+  official_sources: []
+  third_party_sources: []
+  customer_or_user_sources: []
+  unavailable_or_missing_sources: []
+

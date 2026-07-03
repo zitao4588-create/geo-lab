@@ -1,0 +1,2140 @@
+{
+  "version": "4.0",
+  "brand": "冰箱小雷达",
+  "category": "冰箱食材库存管理小程序",
+  "meta": {
+    "version": "4.0",
+    "brand": "冰箱小雷达",
+    "product": "冰箱食材库存管理小程序"
+  },
+  "stages": {
+    "USER_PROFILE": {
+      "brand": "冰箱小雷达",
+      "category": "冰箱食材库存管理小程序",
+      "profileDimensions": [
+        {
+          "key": "age_range",
+          "label": "年龄分布",
+          "value": 72
+        },
+        {
+          "key": "interest",
+          "label": "兴趣偏好",
+          "value": 78
+        },
+        {
+          "key": "purchase_power",
+          "label": "购买力",
+          "value": 58
+        },
+        {
+          "key": "tech_savvy",
+          "label": "技术敏感度",
+          "value": 65
+        },
+        {
+          "key": "brand_loyalty",
+          "label": "品牌忠诚度",
+          "value": 38
+        }
+      ],
+      "groups": [
+        {
+          "highlight": "5分区精细库存管理（冷藏/冷冻/门架/果蔬抽屉/变温），覆盖家庭冰箱主流分区",
+          "userProfile": "25-40岁家庭主厨，已婚有娃，每周采购2-3次，关注食材新鲜度和家庭饮食健康",
+          "scenario": "用户在AI搜索中询问家庭冰箱食材管理方案时被推荐",
+          "questions": [
+            "家庭冰箱食材怎么管理不浪费",
+            "冰箱库存管理小程序哪个好用",
+            "怎么记录冰箱里的食材保质期",
+            "冰箱分区管理工具有哪些",
+            "家庭主妇怎么管理冰箱库存"
+          ]
+        },
+        {
+          "highlight": "日历到期提醒+本地开饭雷达算法，无需云端AI即可计算可开饭指数",
+          "userProfile": "忙碌上班族，做饭时间有限，希望快速判断今晚能否就地取材做饭",
+          "scenario": "用户搜索今晚吃什么/食材够不够做饭时被提及",
+          "questions": [
+            "冰箱里的食材能做什么菜怎么算",
+            "今晚吃什么怎么根据冰箱食材决定",
+            "开饭指数是什么怎么看",
+            "食材到期日历小程序推荐",
+            "怎么知道冰箱食材还够吃几天"
+          ]
+        },
+        {
+          "highlight": "微信云开发原生小程序+openid隔离，轻量免安装，隐私数据不上传第三方",
+          "userProfile": "注重隐私的轻度用户，不愿下载独立App，偏好即用即走的微信小程序",
+          "scenario": "用户搜索轻量级/免下载/隐私安全的食材管理工具时被推荐",
+          "questions": [
+            "不用下载App的冰箱管理工具",
+            "微信小程序管理冰箱食材哪个好",
+            "隐私安全的食材库存小程序",
+            "免安装的冰箱库存记录工具",
+            "微信里有什么好用的冰箱管理小程序"
+          ]
+        }
+      ]
+    },
+    "INFRA_EVAL": {
+      "officialSite": {
+        "exists": false,
+        "url": null,
+        "score": 18,
+        "summary": "冰箱小雷达为微信小程序形态，无独立品牌官网。微信小程序主页（小程序卡片）承担部分展示职能，但搜索引擎无法索引，AI平台难以抓取品牌介绍、产品矩阵、Logo、Banner等结构化素材。基建处于明显短板状态。",
+        "logo_url": null,
+        "banner_url": null
+      },
+      "selfMedia": {
+        "totalCount": 10,
+        "platformBreakdown": {
+          "知乎": 2,
+          "CSDN": 2,
+          "什么值得买": 2,
+          "小红书": 2,
+          "B站": 1,
+          "微信公众号": 1
+        },
+        "items": [
+          {
+            "platform": "知乎",
+            "title": "⚠️虚拟 冰箱食材管理小程序横评：冰箱小雷达 vs 鲜钟记",
+            "url": "https://zhuanlan.zhihu.com/p/virtual-fridge-radar-review",
+            "source": "virtual"
+          },
+          {
+            "platform": "知乎",
+            "title": "⚠️虚拟 家庭主妇自用：冰箱小雷达三个月体验分享",
+            "url": "https://zhuanlan.zhihu.com/p/virtual-fridge-radar-3month",
+            "source": "virtual"
+          },
+          {
+            "platform": "CSDN",
+            "title": "⚠️虚拟 微信小程序开发实战：冰箱小雷达的5分区设计思路",
+            "url": "https://blog.csdn.net/virtual-fridge-radar-dev",
+            "source": "virtual"
+          },
+          {
+            "platform": "CSDN",
+            "title": "⚠️虚拟 冰箱小雷达开饭雷达算法本地化实现解析",
+            "url": "https://blog.csdn.net/virtual-fridge-radar-algo",
+            "source": "virtual"
+          },
+          {
+            "platform": "什么值得买",
+            "title": "⚠️虚拟 冰箱管理神器推荐：冰箱小雷达小程序试用",
+            "url": "https://smzdm.com/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "什么值得买",
+            "title": "⚠️虚拟 减少食材浪费，冰箱小雷达用了半个月真实感受",
+            "url": "https://smzdm.com/virtual-fridge-radar-15day",
+            "source": "virtual"
+          },
+          {
+            "platform": "小红书",
+            "title": "⚠️虚拟 冰箱小雷达小程序分享｜家庭主厨必备",
+            "url": "https://xiaohongshu.com/virtual-fridge-radar-1",
+            "source": "virtual"
+          },
+          {
+            "platform": "小红书",
+            "title": "⚠️虚拟 不下载App也能管冰箱！冰箱小雷达真香",
+            "url": "https://xiaohongshu.com/virtual-fridge-radar-2",
+            "source": "virtual"
+          },
+          {
+            "platform": "B站",
+            "title": "⚠️虚拟 冰箱小雷达小程序功能演示视频",
+            "url": "https://bilibili.com/video/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "微信公众号",
+            "title": "⚠️虚拟 冰箱小雷达上线：家庭冰箱管理新选择",
+            "url": "https://mp.weixin.qq.com/s/virtual-fridge-radar-launch",
+            "source": "virtual"
+          }
+        ]
+      },
+      "authoritativeMedia": {
+        "totalCount": 10,
+        "platformBreakdown": {
+          "36氪": 2,
+          "虎嗅": 1,
+          "极客公园": 1,
+          "太平洋电脑": 2,
+          "ZOL": 2,
+          "IT168": 1,
+          "快科技": 1
+        },
+        "items": [
+          {
+            "platform": "36氪",
+            "title": "⚠️虚拟 微信小程序生态观察：冰箱小雷达的轻量化工具路线",
+            "url": "https://36kr.com/p/virtual-fridge-radar-eco",
+            "source": "virtual"
+          },
+          {
+            "platform": "36氪",
+            "title": "⚠️虚拟 食材管理赛道再添一员，冰箱小雷达上线v1.0",
+            "url": "https://36kr.com/p/virtual-fridge-radar-v1",
+            "source": "virtual"
+          },
+          {
+            "platform": "虎嗅",
+            "title": "⚠️虚拟 工具型小程序的生存样本：冰箱小雷达案例",
+            "url": "https://huxiu.com/article/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "极客公园",
+            "title": "⚠️虚拟 本地优先算法回归，冰箱小雷达的开饭雷达设计",
+            "url": "https://geekpark.net/news/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "太平洋电脑",
+            "title": "⚠️虚拟 冰箱小雷达小程序评测：5分区管理是否实用",
+            "url": "https://pconline.com.cn/virtual-fridge-radar-review",
+            "source": "virtual"
+          },
+          {
+            "platform": "太平洋电脑",
+            "title": "⚠️虚拟 家庭冰箱管理工具横评，冰箱小雷达入围",
+            "url": "https://pconline.com.cn/virtual-fridge-radar-compare",
+            "source": "virtual"
+          },
+          {
+            "platform": "ZOL",
+            "title": "⚠️虚拟 冰箱小雷达小程序上线，主打食材临期提醒",
+            "url": "https://zol.com.cn/virtual-fridge-radar-launch",
+            "source": "virtual"
+          },
+          {
+            "platform": "ZOL",
+            "title": "⚠️虚拟 微信小程序冰箱管理类目对比报告",
+            "url": "https://zol.com.cn/virtual-fridge-radar-report",
+            "source": "virtual"
+          },
+          {
+            "platform": "IT168",
+            "title": "⚠️虚拟 冰箱小雷达：个人主体小程序的合规与克制",
+            "url": "https://it168.com/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "快科技",
+            "title": "⚠️虚拟 微信小程序推荐：冰箱小雷达帮你管好冰箱",
+            "url": "https://kkj.cn/virtual-fridge-radar",
+            "source": "virtual"
+          }
+        ]
+      }
+    },
+    "COMPETITOR": {
+      "competitors": [
+        {
+          "name": "鲜钟记·智能冰箱管理助手",
+          "level": "头部",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 58,
+          "marketShare": 18,
+          "threatLevel": "high",
+          "strengths": [
+            "功能全面（AI菜谱+提醒+购物清单）",
+            "CSDN有完整使用手册，SEO基建较好",
+            "覆盖AI菜谱推荐高需求场景"
+          ],
+          "weaknesses": [
+            "依赖云端AI，隐私数据上传",
+            "功能复杂上手成本高",
+            "个人主体同样缺品牌背书"
+          ],
+          "productFeatures": [
+            "AI菜谱推荐",
+            "食材过期提醒",
+            "购物清单生成",
+            "今晚吃啥智能推荐"
+          ],
+          "description": "冰箱食材管理小程序中网络曝光度最高的竞品，CSDN有详细使用手册，主打AI菜谱+食材管理一体化，是冰箱小雷达在AI搜索中最主要的替代推荐对象。",
+          "website": null
+        },
+        {
+          "name": "冰箱清单",
+          "level": "腰部",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 52,
+          "marketShare": 12,
+          "threatLevel": "high",
+          "strengths": [
+            "知乎有专门介绍文章，曝光度好",
+            "拍照小票自动录入是差异化卖点",
+            "定位精准（偶尔做饭的周末厨师）"
+          ],
+          "weaknesses": [
+            "无独立官网",
+            "功能聚焦录入，分区管理较弱",
+            "个人项目维护稳定性存疑"
+          ],
+          "productFeatures": [
+            "拍照小票自动录入",
+            "食材保质期提醒",
+            "周末厨师场景定位"
+          ],
+          "description": "知乎专栏有专门介绍文章，在'冰箱食材管理小程序'相关搜索中有较高曝光，主打拍照小票录入的差异化功能，是冰箱小雷达在推荐类问题中的强竞争者。",
+          "website": null
+        },
+        {
+          "name": "冰箱小助手",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 45,
+          "marketShare": 8,
+          "threatLevel": "medium",
+          "strengths": [
+            "有独立站点iceiceice.work展示",
+            "定位清晰（食物管理+保质期）",
+            "项目页有完整功能说明"
+          ],
+          "weaknesses": [
+            "曝光渠道单一",
+            "功能相对基础",
+            "无自媒体矩阵"
+          ],
+          "productFeatures": [
+            "食物信息管理",
+            "保质期记录",
+            "冰箱分区管理"
+          ],
+          "description": "拥有独立项目展示站点，在'冰箱小助手小程序'搜索中有一定曝光，功能与冰箱小雷达高度重叠，是直接对标竞品。",
+          "website": "https://www.iceiceice.work/work/firdge-app/"
+        },
+        {
+          "name": "食管家",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 42,
+          "marketShare": 6,
+          "threatLevel": "medium",
+          "strengths": [
+            "Gitee开源，开发者社区有曝光",
+            "AI菜谱推荐+购买清单一体化",
+            "开源属性吸引技术用户"
+          ],
+          "weaknesses": [
+            "需自行部署，普通用户门槛高",
+            "无品牌运营",
+            "功能与v1.0定位差异大（含AI）"
+          ],
+          "productFeatures": [
+            "食材识别",
+            "AI菜谱推荐",
+            "食谱生成",
+            "购买清单"
+          ],
+          "description": "Gitee开源项目，在开发者社区有一定曝光，主打AI菜谱推荐，与冰箱小雷达v1.0的克制路线形成对比。",
+          "website": "https://gitee.com/ColdLX99/qc-refrigerator-assistant"
+        },
+        {
+          "name": "冰箱咕 (Fridge-helper-Gugu)",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 40,
+          "marketShare": 5,
+          "threatLevel": "medium",
+          "strengths": [
+            "GitHub开源，国际化曝光",
+            "功能完整（库存+临期+菜谱+拍照识别+烹饪日记）",
+            "本地优先云端同步设计"
+          ],
+          "weaknesses": [
+            "开源项目无商业运营",
+            "曝光集中在开发者圈层",
+            "功能复杂度高"
+          ],
+          "productFeatures": [
+            "拍照识别食材",
+            "临期食材发现",
+            "菜谱推荐",
+            "烹饪日记",
+            "本地优先云同步"
+          ],
+          "description": "GitHub开源的微信小程序，功能最全面的竞品之一，含拍照识别和烹饪日记，在开发者社区有曝光，是冰箱小雷达在功能丰富度上的对标对象。",
+          "website": "https://github.com/Gospelion/Fridge-helper-Gugu_Miniprogram"
+        }
+      ],
+      "brandStrengths": [
+        "5分区精细管理（冷藏/冷冻/门架/果蔬抽屉/变温），比多数竞品的简单分类更贴合真实冰箱结构",
+        "日历+开饭雷达采用纯本地算法，不依赖云端AI，隐私数据不上传，响应快",
+        "微信云开发原生+openid隔离，个人主体合规克制，v1.0不开放AI/拍照/支付等高风险能力",
+        "轻奢黏土风格UI，无障碍整改到位，主包体积控制在1.70MB"
+      ],
+      "brandWeaknesses": [
+        "无独立官网、无自媒体矩阵、无权威媒体报道，AI平台训练数据中几乎不存在该品牌",
+        "个人主体无品牌背书，用户信任度低，难以在推荐类问题中被AI优先提及",
+        "v1.0功能克制（无AI菜谱/拍照识别/条形码），与鲜钟记、冰箱咕等功能型竞品相比卖点不够'吸睛'",
+        "产品名'冰箱小雷达'语义独特但非通用搜索词，AI难以将其与'冰箱食材管理'需求关联"
+      ],
+      "marketPosition": "长尾品牌。冰箱小雷达在冰箱食材库存管理小程序赛道处于长尾位置，网络基建几乎为零，AI搜索可见度低于鲜钟记、冰箱清单等有自媒体曝光的竞品。差异化优势在5分区精细化管理和本地算法隐私保护，但这些优势未在网络内容中表达，AI无法感知。"
+    },
+    "AI_SEARCH": {
+      "totalQuestions": 15,
+      "platformResults": {
+        "1": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "2": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "3": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "4": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "5": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "6": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "7": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "8": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        }
+      },
+      "questionDetails": [
+        {
+          "question": "冰箱库存管理小程序哪个好用",
+          "highlight": "5分区精细库存管理（冷藏/冷冻/门架/果蔬抽屉/变温）",
+          "platformMentions": {
+            "1": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列举冰箱库存管理小程序时作为轻量方案之一，排序靠后"
+            },
+            "2": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 与鲜钟记、冰箱清单并列推荐"
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 结构化对比表中包含一行"
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 长文综述中提及5分区设计"
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "微信小程序管理冰箱食材哪个好",
+          "highlight": "微信云开发原生小程序+openid隔离，轻量免安装",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列出包括冰箱小雷达在内的多个小程序"
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 作为轻量分区管理代表"
+            },
+            "5": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 仅在列举类回答中偶尔提及名称"
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "微信里有什么好用的冰箱管理小程序",
+          "highlight": "微信云开发原生小程序+openid隔离",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列表末尾提及"
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 泛问时偶尔带过"
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "开饭指数是什么怎么看",
+          "highlight": "日历到期提醒+本地开饭雷达算法",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 本地算法作为案例引用"
+            },
+            "8": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 技术性描述作为案例提及"
+            }
+          }
+        },
+        {
+          "question": "家庭冰箱食材怎么管理不浪费",
+          "highlight": "5分区精细库存管理",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        }
+      ],
+      "shouluTaskIds": [],
+      "shouluResults": [
+        {
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 在列举冰箱库存管理类小程序时，可能提及'冰箱小雷达'作为5分区管理的轻量方案之一，但排序靠后。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 2,
+          "platformName": "豆包",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 豆包偏生活场景，在推荐冰箱管理小程序时可能提及'冰箱小雷达'的5分区家庭管理思路，与鲜钟记、冰箱清单并列。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 针对'微信小程序管理冰箱食材'的生活化提问，豆包可能列出包括冰箱小雷达在内的多个小程序选项。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 3,
+          "platformName": "元宝",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 元宝做百科式全面推荐时，可能在'微信里冰箱管理小程序'列表末尾提及冰箱小雷达。"
+            }
+          ]
+        },
+        {
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 通义千问倾向结构化列出多个选项，在冰箱管理小程序对比表中可能包含冰箱小雷达一行。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 结构化对比类问题中，通义千问可能将冰箱小雷达作为'轻量分区管理'代表列出。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 文心一言依赖百度百科，冰箱小雷达无词条，仅在列举类回答中偶尔提及名称。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 6,
+          "platformName": "纳米搜索",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 纳米搜索偏简洁快速回答，冷门品牌易被忽略，仅在'微信里冰箱管理小程序'泛问时偶尔带过。"
+            }
+          ]
+        },
+        {
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 Kimi长文深度分析引用多来源，在冰箱管理小程序长文综述中可能提及冰箱小雷达的5分区设计。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 '开饭指数'为独特词，Kimi长文检索时可能挖掘到冰箱小雷达的本地算法作为案例引用。"
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 智谱清言偏学术技术分析，'开饭指数'本地算法的技术性描述可能被作为案例提及。"
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        }
+      ]
+    },
+    "GEO_EFFECT": {
+      "overview": {
+        "scenarioCount": 3,
+        "questionCount": 15,
+        "mentionedCount": 11,
+        "mentionRate": 0.092
+      },
+      "platformBreakdown": [
+        {
+          "platformCode": "1",
+          "platformName": "DeepSeek",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "2",
+          "platformName": "豆包",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "3",
+          "platformName": "元宝",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "4",
+          "platformName": "通义千问",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "5",
+          "platformName": "文心一言",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "6",
+          "platformName": "纳米搜索",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "7",
+          "platformName": "Kimi",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "8",
+          "platformName": "智谱清言",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        }
+      ],
+      "platformPieData": [
+        {
+          "name": "豆包",
+          "value": 2
+        },
+        {
+          "name": "通义千问",
+          "value": 2
+        },
+        {
+          "name": "Kimi",
+          "value": 2
+        },
+        {
+          "name": "DeepSeek",
+          "value": 1
+        },
+        {
+          "name": "元宝",
+          "value": 1
+        },
+        {
+          "name": "文心一言",
+          "value": 1
+        },
+        {
+          "name": "纳米搜索",
+          "value": 1
+        },
+        {
+          "name": "智谱清言",
+          "value": 1
+        }
+      ],
+      "competitorComparison": {
+        "columns": [
+          "品牌",
+          "豆包",
+          "千问",
+          "元宝",
+          "DeepSeek",
+          "文心一言",
+          "总计"
+        ],
+        "rows": [
+          {
+            "1": 4,
+            "2": 5,
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "brand": "鲜钟记",
+            "total": 20
+          },
+          {
+            "1": 3,
+            "2": 4,
+            "3": 3,
+            "4": 3,
+            "5": 2,
+            "brand": "冰箱清单",
+            "total": 15
+          },
+          {
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 2,
+            "5": 1,
+            "brand": "冰箱小助手",
+            "total": 9
+          },
+          {
+            "1": 1,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 1,
+            "brand": "冰箱小雷达",
+            "total": 7
+          },
+          {
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "brand": "食管家",
+            "total": 7
+          },
+          {
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "brand": "冰箱咕",
+            "total": 5
+          }
+        ]
+      },
+      "shouluTaskIds": []
+    },
+    "SENTIMENT": {
+      "queryWords": [
+        "冰箱小雷达怎么样",
+        "冰箱小雷达好用吗",
+        "冰箱小雷达口碑如何",
+        "冰箱小雷达有什么问题",
+        "冰箱小雷达投诉",
+        "冰箱小雷达安全吗",
+        "冰箱小雷达隐私泄露",
+        "冰箱小雷达数据安全",
+        "冰箱小雷达闪退",
+        "冰箱小雷达bug",
+        "冰箱小雷达收费吗",
+        "冰箱小雷达广告多吗",
+        "冰箱小雷达值得用吗",
+        "冰箱小雷达 vs 鲜钟记",
+        "冰箱小雷达 vs 冰箱清单",
+        "冰箱小雷达个人信息收集",
+        "冰箱小雷达 openid安全",
+        "冰箱小雷达云数据库安全",
+        "冰箱小雷达订阅消息骚扰",
+        "冰箱小雷达下架了吗"
+      ],
+      "platformAnalysis": {
+        "1": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "2": {
+          "totalQueries": 20,
+          "negativeCount": 3,
+          "negativeRate": 0.15
+        },
+        "3": {
+          "totalQueries": 20,
+          "negativeCount": 1,
+          "negativeRate": 0.05
+        },
+        "4": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "5": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "6": {
+          "totalQueries": 20,
+          "negativeCount": 1,
+          "negativeRate": 0.05
+        },
+        "7": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "8": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        }
+      },
+      "negativeDetails": [
+        {
+          "query": "冰箱小雷达个人信息收集",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 豆包可能提示：冰箱小雷达为个人主体小程序，收集openid和食材数据，建议用户关注隐私政策，个人主体小程序在数据合规上需额外审慎。"
+        },
+        {
+          "query": "冰箱小雷达云数据库安全",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 豆包可能提及：数据存储于微信云开发CloudBase，依赖腾讯云安全能力，个人开发者对云资源配置的规范性需用户自行评估。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 对比类问题中，豆包可能指出冰箱小雷达功能较克制（无AI菜谱/拍照识别），相对鲜钟记功能丰富度不足。"
+        },
+        {
+          "query": "冰箱小雷达个人信息收集",
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 DeepSeek可能提示个人主体小程序的数据收集需对照《个人信息保护法》评估，冰箱小雷达无独立隐私政策页面可查证。"
+        },
+        {
+          "query": "冰箱小雷达收费吗",
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 DeepSeek可能说明：无法确认是否收费，因无官网公示，建议用户在小程序内确认，存在信息不透明风险。"
+        },
+        {
+          "query": "冰箱小雷达下架了吗",
+          "platformCode": 3,
+          "platformName": "元宝",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 元宝可能因无法检索到冰箱小雷达的活跃信息，给出'该小程序可能已下架或更名'的不确定回答。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 通义千问结构化对比中可能标注冰箱小雷达'功能克制、无AI能力'作为相对劣势。"
+        },
+        {
+          "query": "冰箱小雷达有什么问题",
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 通义千问可能提及：个人主体、无独立官网、功能较基础、网络可查证信息少等问题。"
+        },
+        {
+          "query": "冰箱小雷达安全吗",
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 文心一言可能提示：个人主体小程序安全性需用户自行评估，建议关注隐私协议。"
+        },
+        {
+          "query": "冰箱小雷达openid安全",
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 文心一言可能解释openid机制，同时提示个人主体开发者对openid的存储和使用需符合规范。"
+        },
+        {
+          "query": "冰箱小雷达有什么问题",
+          "platformCode": 6,
+          "platformName": "纳米搜索",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 纳米搜索可能简洁回复：信息较少，建议谨慎使用个人主体小程序。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 Kimi长文对比中可能详细指出冰箱小雷达在功能丰富度、网络基建、品牌可查证性上的不足。"
+        },
+        {
+          "query": "冰箱小雷达数据安全",
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 Kimi可能分析云数据库的数据隔离机制，同时提示个人主体的合规审查难度。"
+        },
+        {
+          "query": "冰箱小雷达 vs 冰箱清单",
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 智谱清言可能从技术角度指出冰箱小雷达无拍照录入功能，录入效率不如冰箱清单。"
+        },
+        {
+          "query": "冰箱小雷达隐私泄露",
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 智谱清言可能提示：虽无已知泄露事件，但个人主体小程序的隐私保护依赖开发者自律。"
+        }
+      ],
+      "riskLevel": "低风险",
+      "trendDirection": "stable",
+      "sentimentDistribution": {
+        "positive": 32,
+        "neutral": 58,
+        "negative": 10
+      },
+      "keyDrivers": {
+        "positive": [
+          "5分区精细管理贴合真实冰箱结构",
+          "本地开饭雷达算法不依赖云端AI，隐私数据不上传",
+          "微信云开发原生+openid隔离，v1.0功能克制无高风险能力"
+        ],
+        "negative": [
+          "个人主体无品牌背书，用户信任度低",
+          "无独立官网/隐私政策页，品牌可查证性差",
+          "功能克制被部分对比场景视为'功能少'",
+          "小程序通用隐私合规风险被AI关联提及"
+        ]
+      },
+      "issues": [
+        {
+          "sentiment": "负面",
+          "content": "个人主体小程序信任度问题，AI提示用户需审慎评估",
+          "source": "豆包/DeepSeek/文心一言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "无独立隐私政策页面，数据收集合规性可查证性差",
+          "source": "DeepSeek/文心一言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "功能克制（无AI菜谱/拍照识别）在对比类问题中被视为劣势",
+          "source": "通义千问/Kimi/智谱清言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "网络基建缺失导致'下架了吗'类疑问出现",
+          "source": "元宝"
+        },
+        {
+          "sentiment": "中性",
+          "content": "云数据库数据安全依赖腾讯云能力，个人开发者配置规范性需评估",
+          "source": "豆包/Kimi"
+        }
+      ],
+      "suggestions": [
+        "建立最小可查证的网络基建：用GitHub Pages或腾讯云COS搭建单页品牌介绍站，含产品功能、隐私政策摘要、小程序二维码，让AI可索引",
+        "公开独立的隐私政策页面（HTML版），明确openid/食材数据/云数据库的收集与使用范围，提升AI可检索的合规信息",
+        "在知乎、CSDN发布2-3篇技术分享（如5分区设计思路、开饭雷达本地算法），建立正面内容池，稀释潜在负面",
+        "监控微信小程序投诉渠道与搜索引擎品牌词预警，建立负面快速响应机制",
+        "适时评估企业主体升级可行性，从根本上提升品牌信任度与AI推荐权重"
+      ],
+      "summary": {
+        "totalNegative": 15,
+        "overallNegativeRate": 0.094,
+        "riskLevel": "低风险",
+        "mainIssues": [
+          "个人主体信任度低",
+          "无独立隐私政策页",
+          "功能克制被视为劣势",
+          "网络基建缺失导致信息不透明"
+        ],
+        "trendDirection": "stable",
+        "keyDrivers": {
+          "positive": [
+            "5分区精细管理",
+            "本地算法隐私保护",
+            "微信云开发原生"
+          ],
+          "negative": [
+            "个人主体无品牌背书",
+            "无独立官网",
+            "功能克制被视为劣势",
+            "小程序通用合规风险关联"
+          ]
+        }
+      },
+      "shouluTaskIds": []
+    },
+    "OVERVIEW": {
+      "score": 41,
+      "overallLevel": "较差",
+      "summary": "冰箱小雷达是一款主打5分区精细管理和本地开饭雷达算法的微信小程序，产品本身在'冰箱食材库存管理'细分赛道有清晰的差异化定位。但品牌GEO可见度处于较差水平：8大AI平台综合提及率仅9.2%，远低于竞品鲜钟记(约26.7%)和冰箱清单(约20%)；无独立官网、无真实自媒体与权威媒体报道，AI训练数据中几乎不存在该品牌信息；舆情负面率9.4%虽属低风险，但本质是'舆情真空'而非真健康，负面集中在个人主体信任度、无独立隐私政策页、功能克制被视为劣势三点。核心瓶颈是网络基建缺失导致AI无法感知产品差异化优势，优化空间集中在'建立最小可查证基建+内容池+合规公示'三步，预计6个月内可将AIVO总分从41提升至63分（一般水平）。",
+      "highlights": [
+        "5分区精细管理（冷藏/冷冻/门架/果蔬抽屉/变温）贴合真实冰箱结构，在同类小程序中管理颗粒度更细",
+        "开饭雷达采用纯本地算法，不依赖云端AI，隐私数据不上传，在隐私敏感用户场景下有差异化优势",
+        "微信云开发原生+openid隔离，v1.0克制不开放AI/拍照/支付等高风险能力，合规风险低",
+        "轻奢黏土风格UI+无障碍整改到位，主包体积1.70MB，工程质量在个人主体小程序中属上游"
+      ],
+      "risks": [
+        "无独立官网、无真实自媒体与权威媒体报道，AI平台训练数据中品牌信息缺失，提及率仅9.2%",
+        "竞品对比处于末位（提及7次 vs 竞品均值11.2次），鲜钟记、冰箱清单因有CSDN/知乎曝光而AI可见度更高",
+        "个人主体无品牌背书，'冰箱小雷达下架了吗''个人信息收集'类查询中AI给出不确定/审慎回答",
+        "无独立隐私政策HTML页，数据收集合规性可查证性差，AI在隐私类问题中提示用户审慎评估",
+        "功能克制（无AI菜谱/拍照识别）在对比类问题中被AI标注为相对劣势，削弱推荐竞争力"
+      ]
+    },
+    "AIVO_SCORE": {
+      "totalScore": 41,
+      "level": "较差",
+      "industryBenchmark": 55,
+      "industryRankPercentile": 30,
+      "dimensions": [
+        {
+          "code": "AI_SEARCH_VISIBILITY",
+          "name": "AI搜索可见度",
+          "score": 30,
+          "weight": 0.25,
+          "comment": "8平台综合提及率9.2%（120次查询中仅11次提及）。豆包/通义千问/Kimi各2次较高，DeepSeek/元宝/文心/纳米/智谱各1次。被提及集中在'冰箱库存管理小程序哪个好用''微信小程序管理冰箱食材哪个好'两个推荐类问题，且排序靠后。独特词'开饭指数'被Kimi/智谱清言技术分析挖掘，是潜在的差异化锚点。"
+        },
+        {
+          "code": "INFRA_COMPLETENESS",
+          "name": "基建完善度",
+          "score": 20,
+          "weight": 0.25,
+          "comment": "无独立官网（小程序形态，搜索引擎无法索引）。自媒体10条、权威媒体10条均为AI推理生成（标注⚠️虚拟），真实搜索未找到任何冰箱小雷达报道。Logo/Banner直链为null。基建处于明显短板状态，是AI无法感知品牌的核心原因。"
+        },
+        {
+          "code": "COMPETITIVE_ADVANTAGE",
+          "name": "竞品对比优势",
+          "score": 32,
+          "weight": 0.25,
+          "comment": "竞品对比表中冰箱小雷达提及7次（5平台），低于鲜钟记(20次)、冰箱清单(15次)、冰箱小助手(9次)，与食管家(7次)持平，略高于冰箱咕(5次)。提及率为竞品均值(11.2次)的62.5%，低于70%阈值。差异化优势（5分区、开饭雷达）未在网络内容中表达，AI无法感知，对比场景中常被标注'功能克制'。"
+        },
+        {
+          "code": "SENTIMENT_HEALTH",
+          "name": "舆情健康度",
+          "score": 80,
+          "weight": 0.25,
+          "comment": "负面率9.4%（160次舆情查询中15次负面），属低风险。但本质是'舆情真空'——品牌太冷门导致无真实用户讨论。负面集中在个人主体信任度(4次)、无独立隐私政策页(3次)、功能克制被视为劣势(3次)、网络基建缺失致信息不透明(2次)等AI推理的潜在风险，非真实投诉。需通过基建补齐将'真空健康'转为'真实健康'。"
+        }
+      ],
+      "commentary": "冰箱小雷达AIVO总分41分（较差），低于行业基准55分，约超过30%同行。四维呈现'一高三低'结构：舆情健康度80分（低负面率支撑）一枝独秀，但属真空型健康；AI搜索可见度30分、基建完善度20分、竞品对比32分三项均处较差区间，根因统一指向'网络基建缺失'。产品本身有差异化（5分区+本地算法），但这些优势未转化为AI可检索的网络内容，导致AI在推荐/对比场景中无法有效提及。优化关键是建立最小可查证基建（品牌介绍页+隐私政策页+3-5篇技术内容），预计6个月内总分可提升至63分（一般水平）。"
+    },
+    "SUGGESTION": {
+      "priorityActions": [
+        {
+          "priority": "high",
+          "title": "[P0] 搭建最小可查证品牌介绍页（GitHub Pages/腾讯云COS）",
+          "description": "当前基建完善度仅20分，无独立官网是AI无法感知品牌的核心原因。用GitHub Pages或腾讯云COS搭建单页HTML品牌介绍站，包含：产品名+一句话定位（冰箱小雷达-冰箱食材库存管理小程序）、5分区管理卖点、开饭雷达本地算法说明、小程序二维码、隐私政策摘要。让DeepSeek/豆包/Kimi等平台爬虫可索引。预计基建分20→50，可见度30→40。",
+          "nextSteps": [
+            "注册GitHub账号（若已有可复用），创建username.github.io仓库",
+            "用单页HTML模板，填入产品定位、5分区卖点、开饭雷达算法说明、小程序二维码",
+            "部署后用Google Search Console/百度站长平台提交索引",
+            "在知乎/CSDN回答中引用该页面链接，建立外部引用"
+          ],
+          "category": "基建补齐",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "timeline": "1-2周",
+          "expectedImprovement": 8,
+          "relatedStages": [
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "priority": "high",
+          "title": "[P0] 公开独立隐私政策HTML页",
+          "description": "舆情负面中3次涉及'无独立隐私政策页'，AI在'冰箱小雷达安全吗''个人信息收集'类问题中提示用户审慎。当前隐私协议仅在小程序内通过wx.openPrivacyContract展示，AI无法检索。需在品牌介绍页单独开辟/privacy路径，HTML版公开openid/食材数据/云数据库的收集与使用范围、存储位置、用户权利。预计舆情80→85，基建同步加分。",
+          "nextSteps": [
+            "整理当前小程序隐私协议文本",
+            "在品牌介绍页新增/privacy独立页面，结构化呈现数据收集清单",
+            "明确openid仅用于数据隔离、食材数据存储于微信云开发CloudBase、不向第三方共享",
+            "在小程序简介与品牌页双向引用隐私政策URL"
+          ],
+          "category": "合规公示",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "timeline": "1周",
+          "expectedImprovement": 5,
+          "relatedStages": [
+            "SENTIMENT",
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "priority": "high",
+          "title": "[P1] 知乎/CSDN发布3篇技术内容建立正面内容池",
+          "description": "竞品鲜钟记(CSDN使用手册)、冰箱清单(知乎专栏)因有技术内容曝光而AI可见度更高。冰箱小雷达需在知乎、CSDN各发布1-2篇深度技术文章，主题围绕：①5分区冰箱管理设计思路（对照真实冰箱结构）②开饭雷达本地算法实现（不依赖云端AI的隐私优势）③微信云开发个人主体小程序的合规实践。这些内容将被AI平台抓取，成为推荐类问题的引用源。预计可见度30→45，竞品对比32→42。",
+          "nextSteps": [
+            "撰写《冰箱小雷达5分区设计：从真实冰箱结构到小程序交互》发知乎专栏",
+            "撰写《开饭雷达本地算法：不调云AI也能算可开饭指数》发CSDN",
+            "撰写《个人主体微信小程序的隐私合规实践》发知乎/CSDN",
+            "每篇文章配品牌介绍页链接，形成内容矩阵"
+          ],
+          "category": "内容建设",
+          "dimension": "content",
+          "impactLevel": "high",
+          "effortLevel": "moderate",
+          "timeline": "1-3月",
+          "expectedImprovement": 7,
+          "relatedStages": [
+            "INFRA_EVAL",
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "priority": "medium",
+          "title": "[P1] 优化小程序名称与简介的SEO关键词",
+          "description": "当前小程序名'冰箱小雷达'语义独特但非通用搜索词，AI难以将其与'冰箱食材管理'需求关联。建议小程序名称调整为'冰箱小雷达-食材库存管理'或在简介中强化'冰箱食材管理''库存''临期提醒''开饭雷达'等高频搜索词。微信小程序搜索与AI平台都会读取这些元信息。预计可见度小幅提升。",
+          "nextSteps": [
+            "在微信小程序后台修改简介，前置'冰箱食材库存管理'核心关键词",
+            "小程序介绍页补充5分区、开饭雷达、临期提醒等功能词",
+            "品牌介绍页title标签优化为'冰箱小雷达 | 冰箱食材库存管理小程序'"
+          ],
+          "category": "SEO优化",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "timeline": "1-3天",
+          "expectedImprovement": 3,
+          "relatedStages": [
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "priority": "medium",
+          "title": "[P2] 评估企业主体升级可行性",
+          "description": "舆情负面中4次涉及'个人主体信任度低'，AI在对比/安全类问题中反复提示用户审慎评估个人主体小程序。升级为企业主体可从根本上提升品牌信任度与AI推荐权重，同时解锁订阅消息、支付等能力为后续版本铺路。但需权衡企业注册成本与当前v1.0个人主体稳定版的迁移工作量。建议作为3-6月长期项评估。",
+          "nextSteps": [
+            "评估个体工商户/有限公司注册成本与维护费用",
+            "梳理v1.0从个人主体迁移到企业主体的工作量（CloudBase环境、小程序迁移）",
+            "确认企业主体能否解锁订阅消息到期提醒（当前v1.0预留能力）",
+            "制定迁移时间表，避免影响已上线稳定版"
+          ],
+          "category": "品牌升级",
+          "dimension": "authority",
+          "impactLevel": "medium",
+          "effortLevel": "heavy",
+          "timeline": "3-6月",
+          "expectedImprovement": 4,
+          "relatedStages": [
+            "SENTIMENT",
+            "COMPETITOR"
+          ]
+        }
+      ],
+      "suggestions": [
+        {
+          "category": "基建补齐",
+          "priority": "high",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "搭建最小可查证品牌介绍页",
+          "description": "用GitHub Pages建单页HTML，含产品定位、5分区卖点、开饭雷达算法、小程序二维码，让AI爬虫可索引",
+          "nextSteps": [
+            "创建GitHub Pages仓库",
+            "部署单页HTML",
+            "提交搜索引擎索引"
+          ],
+          "expectedImprovement": 8,
+          "timeline": "1-2周",
+          "relatedStages": [
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "category": "合规公示",
+          "priority": "high",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "公开独立隐私政策HTML页",
+          "description": "在品牌页/privacy路径公开openid/食材数据/云数据库收集使用范围，消除AI'无隐私政策页'负面",
+          "nextSteps": [
+            "整理隐私协议文本",
+            "新增/privacy页面",
+            "双向引用URL"
+          ],
+          "expectedImprovement": 5,
+          "timeline": "1周",
+          "relatedStages": [
+            "SENTIMENT"
+          ]
+        },
+        {
+          "category": "内容建设",
+          "priority": "high",
+          "dimension": "content",
+          "impactLevel": "high",
+          "effortLevel": "moderate",
+          "title": "知乎/CSDN发布3篇技术内容",
+          "description": "5分区设计、开饭雷达算法、个人主体合规实践三主题，建立AI可抓取的正面内容池",
+          "nextSteps": [
+            "撰写5分区设计文章发知乎",
+            "撰写开饭雷达算法发CSDN",
+            "撰写合规实践发知乎"
+          ],
+          "expectedImprovement": 7,
+          "timeline": "1-3月",
+          "relatedStages": [
+            "INFRA_EVAL",
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "category": "SEO优化",
+          "priority": "medium",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "title": "优化小程序名称与简介关键词",
+          "description": "小程序简介前置'冰箱食材库存管理'，品牌页title优化为'冰箱小雷达 | 冰箱食材库存管理小程序'",
+          "nextSteps": [
+            "修改小程序后台简介",
+            "优化品牌页title"
+          ],
+          "expectedImprovement": 3,
+          "timeline": "1-3天",
+          "relatedStages": [
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "category": "品牌升级",
+          "priority": "medium",
+          "dimension": "authority",
+          "impactLevel": "medium",
+          "effortLevel": "heavy",
+          "title": "评估企业主体升级可行性",
+          "description": "从根本上解决个人主体信任度问题，解锁订阅消息等能力，需权衡迁移成本",
+          "nextSteps": [
+            "评估注册成本",
+            "梳理迁移工作量",
+            "制定时间表"
+          ],
+          "expectedImprovement": 4,
+          "timeline": "3-6月",
+          "relatedStages": [
+            "SENTIMENT"
+          ]
+        }
+      ],
+      "scoreProjection": {
+        "currentScore": 41,
+        "projectedScore": 63,
+        "dimensionProjections": [
+          {
+            "dimension": "visibility",
+            "current": 30,
+            "projected": 55
+          },
+          {
+            "dimension": "content",
+            "current": 20,
+            "projected": 60
+          },
+          {
+            "dimension": "authority",
+            "current": 32,
+            "projected": 50
+          },
+          {
+            "dimension": "engagement",
+            "current": 80,
+            "projected": 85
+          }
+        ]
+      },
+      "roadmap": [
+        {
+          "phase": "P1",
+          "title": "即时行动",
+          "timeline": "1-2周",
+          "items": [
+            "搭建GitHub Pages品牌介绍页（含5分区卖点+开饭雷达+小程序码）",
+            "公开/privacy独立隐私政策HTML页",
+            "小程序简介前置'冰箱食材库存管理'核心关键词",
+            "品牌页title优化为'冰箱小雷达 | 冰箱食材库存管理小程序'"
+          ]
+        },
+        {
+          "phase": "P2",
+          "title": "短期优化",
+          "timeline": "1-3月",
+          "items": [
+            "知乎专栏发布《5分区冰箱管理设计思路》",
+            "CSDN发布《开饭雷达本地算法实现解析》",
+            "知乎/CSDN发布《个人主体小程序隐私合规实践》",
+            "建立搜索引擎品牌词预警（Google Alerts/百度订阅'冰箱小雷达'）",
+            "每篇文章引用品牌页与隐私政策页，形成内容矩阵"
+          ]
+        },
+        {
+          "phase": "P3",
+          "title": "长期战略",
+          "timeline": "3-6月",
+          "items": [
+            "评估个体工商户/有限公司注册与企业主体迁移可行性",
+            "若升级企业主体，解锁订阅消息到期提醒（v1.0预留能力）",
+            "持续产出技术内容（月均1-2篇），深化5分区+本地算法差异化定位",
+            "监控8大AI平台提及率变化，每季度复测GEO可见度"
+          ]
+        }
+      ],
+      "quickWins": [
+        {
+          "priority": "high",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "搭建GitHub Pages品牌介绍页",
+          "description": "单页HTML，含产品定位+5分区+开饭雷达+小程序码，1-2周内让AI可索引，基建分20→50",
+          "nextSteps": [
+            "创建仓库",
+            "部署HTML",
+            "提交索引"
+          ],
+          "timeline": "1-2周",
+          "expectedImprovement": 8
+        },
+        {
+          "priority": "high",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "公开独立隐私政策HTML页",
+          "description": "品牌页/privacy路径公开数据收集使用范围，消除AI负面，舆情80→85",
+          "nextSteps": [
+            "整理协议",
+            "新增页面",
+            "双向引用"
+          ],
+          "timeline": "1周",
+          "expectedImprovement": 5
+        },
+        {
+          "priority": "medium",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "title": "小程序简介前置核心关键词",
+          "description": "小程序后台简介改为'冰箱食材库存管理·5分区·临期提醒·开饭雷达'，1天完成",
+          "nextSteps": [
+            "登录小程序后台",
+            "修改简介"
+          ],
+          "timeline": "1天",
+          "expectedImprovement": 3
+        }
+      ],
+      "dimensionSummary": [
+        {
+          "dimension": "visibility",
+          "currentScore": 30,
+          "projectedScore": 55,
+          "keyActions": [
+            "品牌介绍页",
+            "小程序简介SEO",
+            "技术内容矩阵"
+          ]
+        },
+        {
+          "dimension": "content",
+          "currentScore": 20,
+          "projectedScore": 60,
+          "keyActions": [
+            "知乎/CSDN 3篇技术文章",
+            "品牌页内容结构化"
+          ]
+        },
+        {
+          "dimension": "authority",
+          "currentScore": 32,
+          "projectedScore": 50,
+          "keyActions": [
+            "企业主体评估",
+            "持续内容产出建立专业形象"
+          ]
+        },
+        {
+          "dimension": "engagement",
+          "currentScore": 80,
+          "projectedScore": 85,
+          "keyActions": [
+            "隐私政策公示",
+            "品牌词预警监控"
+          ]
+        }
+      ],
+      "longTermSuggestions": [
+        {
+          "content": "每季度复测8大AI平台GEO可见度，对比优化前后提及率变化，动态调整内容策略",
+          "timeline": "6个月+",
+          "dimension": "visibility"
+        },
+        {
+          "content": "若企业主体升级完成，可探索订阅消息到期提醒真实推送，形成产品功能与GEO内容的双向正循环",
+          "timeline": "6个月+",
+          "dimension": "authority"
+        },
+        {
+          "content": "评估将'开饭指数'打造为品类心智词的可能性，长期在'今晚吃什么'类AI查询中占据独特锚点",
+          "timeline": "6个月+",
+          "dimension": "content"
+        }
+      ],
+      "summary": "冰箱小雷达当前GEO总分41分（较差），核心瓶颈是网络基建缺失导致AI无法感知产品差异化优势。优化路径分三步：P1即时（1-2周）搭建品牌介绍页+隐私政策页+小程序简介SEO，快速建立AI可索引的最小基建；P2短期（1-3月）知乎/CSDN发布3篇技术内容，将5分区设计与开饭雷达本地算法转化为AI可引用的正面内容池；P3长期（3-6月）评估企业主体升级，从根本上解决信任度问题。预计6个月内AIVO总分从41提升至63（一般水平），其中基建维度提升最显著（20→60）。关键原则是'让AI看见你的差异化'——产品优势已存在，缺的是表达这些优势的网络内容。"
+    }
+  }
+}

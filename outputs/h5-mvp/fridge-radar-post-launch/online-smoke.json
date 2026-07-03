@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-06-29T23:31:47.636Z",
+  "url": "https://exposure.playgamelab.cn",
+  "deployment": {
+    "release": "202606300728",
+    "service": "active"
+  },
+  "health": {
+    "ok": true,
+    "model": "deepseek-v4-pro",
+    "samplingReady": true,
+    "providers": [
+      {
+        "provider": "deepseek",
+        "status": "ready"
+      },
+      {
+        "provider": "doubao",
+        "status": "unavailable"
+      },
+      {
+        "provider": "kimi",
+        "status": "unavailable"
+      },
+      {
+        "provider": "yuanbao",
+        "status": "unavailable"
+      },
+      {
+        "provider": "tongyi",
+        "status": "unavailable"
+      },
+      {
+        "provider": "wenxin",
+        "status": "unavailable"
+      }
+    ]
+  },
+  "report": {
+    "id": "diag_mqzunocs_pzxoqe",
+    "score": 68,
+    "scoreLevel": "良好",
+    "successCount": 20,
+    "promptCount": 20,
+    "mentionRate": 0.4,
+    "pageAuditScore": 100,
+    "pageAuditSummary": {
+      "ok": 8,
+      "warn": 0,
+      "missing": 0,
+      "failed": 0,
+      "note": "完成 8 个 URL 审计：8 个通过，0 个需补强，0 个不可用。"
+    }
+  },
+  "exports": {
+    "markdown": "online-markdown.md",
+    "html": "online-html.html",
+    "pdf": "online-report.pdf",
+    "evidencePackage": "online-evidencePackage.json"
+  },
+  "screenshots": [
+    "online-mobile-form.png",
+    "online-mobile-result.png",
+    "online-desktop-result.png"
+  ],
+  "securityCheck": {
+    "frontendContainsDeepSeekWord": true,
+    "frontendContainsApiDomain": false,
+    "frontendContainsEnvVar": false,
+    "frontendContainsSkPattern": false
+  }
+}

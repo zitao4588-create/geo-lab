@@ -1,0 +1,4291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO诊断报告</title>
+<style>
+/* ===== CSS Variables ===== */
+:root {
+  --dr-primary: #0d9488;
+  --dr-primary-light: #f0fdfa;
+  --dr-primary-border: #99f6e4;
+  --dr-success: #059669;
+  --dr-success-light: #f0fdf4;
+  --dr-success-border: #a7f3d0;
+  --dr-warning: #d97706;
+  --dr-warning-light: #fffbeb;
+  --dr-warning-border: #fde68a;
+  --dr-danger: #dc2626;
+  --dr-danger-light: #fef2f2;
+  --dr-danger-border: #fecaca;
+  --dr-info: #3b82f6;
+  --dr-info-light: #eff6ff;
+  --dr-info-border: #bfdbfe;
+  --dr-purple: #8b5cf6;
+  --dr-purple-light: #f5f3ff;
+  --dr-sky: #0ea5e9;
+  --dr-sky-light: #f0f9ff;
+  --dr-bg-page: #f7f8fa;
+  --dr-bg-card: #fff;
+  --dr-bg-subtle: #f8fafc;
+  --dr-border: #e5e7eb;
+  --dr-border-light: #e8edf8;
+  --dr-border-subtle: #f1f5f9;
+  --dr-text-primary: #0f172a;
+  --dr-text-secondary: #334155;
+  --dr-text-muted: #475569;
+  --dr-text-tertiary: #64748b;
+  --dr-text-placeholder: #94a3b8;
+  --dr-text-disabled: #cbd5e1;
+  --dr-orange: #f97316;
+  --dr-orange-light: #fff7ed;
+  --dr-bg-bar-track: #e2e8f0;
+  --dr-purple-border: #ddd6fe;
+  --dr-sky-border: #bae6fd;
+  --dr-radius-xs: 4px;
+  --dr-radius-sm: 6px;
+  --dr-radius-md: 8px;
+  --dr-radius-lg: 10px;
+  --dr-radius-xl: 14px;
+  --dr-radius-2xl: 16px;
+}
+
+/* ===== Reset & Base ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: var(--dr-bg-page);
+  color: var(--dr-text-secondary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+:focus-visible {
+  outline: 2px solid var(--dr-primary);
+  outline-offset: 2px;
+}
+
+/* ===== Page Layout ===== */
+.dr-page {
+  min-height: 100vh;
+  padding: 0 0 48px;
+  background: var(--dr-bg-page);
+}
+.dr-content {
+  width: min(1080px, calc(100% - 64px));
+  padding-top: 28px;
+  margin: 0 auto;
+}
+
+/* ===== Hero Section ===== */
+.dr-hero {
+  position: relative;
+  padding: 48px 40px 40px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  border-radius: var(--dr-radius-2xl);
+}
+.dr-hero__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: space-between;
+}
+.dr-hero__main {
+  flex: 1;
+  min-width: 0;
+}
+.dr-hero__badge-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.dr-hero__badge {
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.dr-hero__badge--category {
+  color: #99f6e4;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 12%);
+}
+.dr-hero__badge--report {
+  color: #a5b4fc;
+  background: rgb(99 102 241 / 15%);
+  border: 1px solid rgb(99 102 241 / 20%);
+}
+.dr-hero__title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dr-hero__title-accent {
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dr-hero__subtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+.dr-hero__meta {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.dr-hero__date {
+  font-size: 13px;
+  color: rgb(148 163 184 / 70%);
+}
+.dr-hero__divider-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgb(148 163 184 / 40%);
+}
+.dr-hero__engine {
+  font-size: 13px;
+  color: rgb(148 163 184 / 70%);
+}
+.dr-hero__score-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 20px;
+  align-items: center;
+}
+.dr-hero__score-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dr-hero__score-ring svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+.dr-hero__score-ring-bg {
+  fill: none;
+  stroke: #334155;
+  stroke-width: 8;
+}
+.dr-hero__score-ring-fill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.dr-hero__score-inner { text-align: center; }
+.dr-hero__score-value {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.dr-hero__score-unit {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #64748b;
+}
+.dr-hero__grade-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  padding: 14px 22px;
+  border: 1px solid;
+  border-radius: var(--dr-radius-lg);
+  background: rgb(255 255 255 / 4%);
+  backdrop-filter: blur(8px);
+}
+.dr-hero__grade-label {
+  font-size: 11px;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.dr-hero__grade-value {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+.dr-hero__grade-desc {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ===== Section ===== */
+.dr-section {
+  padding: 32px 32px;
+  margin-bottom: 20px;
+  background: var(--dr-bg-card);
+  border: 1px solid var(--dr-border);
+  border-radius: var(--dr-radius-xl);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+}
+.dr-section__header {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--dr-border-subtle);
+}
+.dr-section__num {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dr-primary);
+  letter-spacing: 0.04em;
+  background: var(--dr-primary-light);
+  padding: 2px 8px;
+  border-radius: var(--dr-radius-xs);
+}
+.dr-section__title-group { flex: 1; }
+.dr-section__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dr-text-primary);
+}
+.dr-section__subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--dr-text-tertiary);
+}
+
+/* ===== 01 Overview ===== */
+.stage-overview__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.stage-overview__stat-card {
+  padding: 16px 14px;
+  text-align: center;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border-light);
+  border-radius: var(--dr-radius-sm);
+}
+.stage-overview__stat-card--score { background: var(--dr-bg-card); border-left: 3px solid var(--dr-primary); }
+.stage-overview__stat-card--highlight { background: var(--dr-bg-card); border-left: 3px solid var(--dr-success); }
+.stage-overview__stat-card--risk { background: var(--dr-bg-card); border-left: 3px solid var(--dr-warning); }
+.stage-overview__stat-value { font-size: 24px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-overview__stat-card--score .stage-overview__stat-value { color: var(--dr-primary); }
+.stage-overview__stat-card--highlight .stage-overview__stat-value { color: var(--dr-success); }
+.stage-overview__stat-card--risk .stage-overview__stat-value { color: var(--dr-warning); }
+.stage-overview__stat-label { margin-top: 2px; font-size: 12px; color: var(--dr-text-muted); }
+.stage-overview__summary {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border);
+  border-radius: var(--dr-radius-sm);
+}
+.stage-overview__summary-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  color: var(--dr-primary);
+  background: var(--dr-primary-light);
+  border-radius: var(--dr-radius-sm);
+}
+.stage-overview__summary-text { font-size: 13px; line-height: 1.7; color: var(--dr-text-secondary); white-space: pre-wrap; }
+.stage-overview__section { margin-top: 20px; }
+.stage-overview__section-title {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dr-success);
+}
+.stage-overview__section-title--risk { color: var(--dr-warning); }
+.stage-overview__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--dr-border-light);
+  border-radius: var(--dr-radius-sm);
+  overflow: hidden;
+}
+.stage-overview__list-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--dr-text-secondary);
+  border-bottom: 1px solid var(--dr-border-subtle);
+}
+.stage-overview__list-item:last-child { border-bottom: none; }
+.stage-overview__list-item--highlight { background: var(--dr-success-light); }
+.stage-overview__list-item--risk { background: var(--dr-warning-light); }
+.stage-overview__list-item { transition: background 0.15s; }
+.stage-overview__list-item:hover { background: var(--dr-bg-subtle); }
+.stage-overview__list-icon { flex-shrink: 0; margin-top: 2px; font-size: 13px; }
+.stage-overview__list-item--highlight .stage-overview__list-icon { color: var(--dr-success); }
+.stage-overview__list-item--risk .stage-overview__list-icon { color: #f59e0b; }
+
+/* ===== 02 AIVO Score ===== */
+.stage-aivo__hero {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 20px;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border);
+  border-radius: var(--dr-radius-lg);
+  overflow: visible;
+}
+.stage-aivo__score-inner { text-align: center; }
+.stage-aivo__score-value { font-size: 28px; font-weight: 700; line-height: 1; }
+.stage-aivo__score-unit { margin-top: 2px; font-size: 12px; color: var(--dr-text-placeholder); }
+.stage-aivo__hero-info { flex: 1; }
+.stage-aivo__level-tag { padding: 4px 16px; font-size: 14px; }
+.stage-aivo__commentary { margin-top: 12px; font-size: 14px; line-height: 1.7; color: var(--dr-text-muted); }
+.stage-aivo__benchmark {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 8px 14px;
+  font-size: 13px;
+  background: rgb(255 255 255 / 60%);
+  border-radius: var(--dr-radius-md);
+}
+.stage-aivo__benchmark-label { color: var(--dr-text-tertiary); }
+.stage-aivo__benchmark-value { font-weight: 700; color: var(--dr-primary); }
+.stage-aivo__benchmark-rank { color: var(--dr-text-muted); }
+.stage-aivo__benchmark-rank strong { color: var(--dr-success); }
+.stage-aivo__dimensions { margin-top: 24px; }
+.stage-aivo__dimensions-title { margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-aivo__dimension-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.stage-aivo__dimension-card {
+  padding: 16px;
+  background: var(--dr-bg-card);
+  border: 1px solid var(--dr-border-light);
+  border-left: 3px solid var(--dim-color);
+  border-radius: var(--dr-radius-md);
+}
+.stage-aivo__dimension-score { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; }
+.stage-aivo__dimension-num { font-size: 22px; font-weight: 700; color: var(--dim-color); }
+.stage-aivo__dimension-weight { font-size: 12px; font-weight: 600; color: var(--dr-text-placeholder); }
+.stage-aivo__dimension-name { margin-bottom: 6px; font-size: 14px; font-weight: 600; color: var(--dr-text-primary); }
+.stage-aivo__dimension-comment { margin-bottom: 10px; font-size: 12px; line-height: 1.6; color: var(--dr-text-tertiary); }
+
+/* ===== 03 User Profile ===== */
+.stage-user-profile { display: flex; flex-wrap: wrap; gap: 24px; }
+.stage-up__radar-section {
+  width: 100%;
+  padding: 24px;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border);
+  border-radius: var(--dr-radius-lg);
+  box-sizing: border-box;
+  overflow: visible;
+}
+.stage-up__section-title { margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-up__radar-row { display: flex; gap: 24px; align-items: flex-start; }
+.stage-up__radar-chart-wrap { flex-shrink: 0; width: 220px; max-width: 100%; overflow: visible; }
+.stage-up__dimension-list {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stage-up__dim-item { display: flex; gap: 8px; align-items: center; }
+.stage-up__dim-label { width: 72px; font-size: 13px; color: var(--dr-text-muted); text-align: right; white-space: nowrap; }
+.stage-up__dim-bar { flex: 1; height: 8px; background: var(--dr-bg-bar-track); border-radius: var(--dr-radius-xs); overflow: hidden; }
+.stage-up__dim-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+.stage-up__dim-value { width: 28px; font-size: 14px; font-weight: 700; color: var(--dr-primary); }
+.stage-up__groups { flex: 1; min-width: 260px; }
+.stage-up__groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.stage-up__group-card { padding: 18px; background: var(--dr-bg-card); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+.stage-up__group-highlight { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-up__group-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--dr-primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.stage-up__group-profile, .stage-up__group-scenario { margin-bottom: 8px; font-size: 13px; line-height: 1.7; color: var(--dr-text-muted); }
+.stage-up__group-profile strong, .stage-up__group-scenario strong { color: var(--dr-text-primary); }
+.stage-up__questions-label { margin-bottom: 6px; font-size: 12px; font-weight: 600; color: var(--dr-text-tertiary); }
+.stage-up__questions-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.stage-up__question-tag {
+  max-width: 240px;
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px 8px;
+  border-radius: var(--dr-radius-sm);
+  color: var(--dr-primary);
+  background: var(--dr-primary-light);
+  border: 1px solid var(--dr-primary-border);
+}
+
+/* ===== 04 AI Search ===== */
+.stage-ais__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.stage-ais__stat-card {
+  padding: 20px 16px;
+  text-align: center;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border-light);
+  border-radius: var(--dr-radius-md);
+}
+.stage-ais__stat-card--primary { background: var(--dr-bg-card); border-left: 3px solid var(--dr-primary); }
+.stage-ais__stat-value { font-size: 26px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-ais__stat-card--primary .stage-ais__stat-value { color: var(--dr-primary); }
+.stage-ais__stat-unit { font-size: 14px; font-weight: 600; }
+.stage-ais__stat-label { margin-top: 4px; font-size: 12px; color: var(--dr-text-tertiary); }
+.stage-ais__section { margin-top: 24px; }
+.stage-ais__section-title { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-ais__section-count { margin-left: auto; font-size: 12px; font-weight: 500; color: var(--dr-text-placeholder); }
+.stage-ais__platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.stage-ais__platform-card { padding: 16px; background: var(--dr-danger-light); border: 1px solid var(--dr-danger-border); border-radius: var(--dr-radius-md); }
+.stage-ais__platform-card--mentioned { background: var(--dr-success-light); border-color: var(--dr-success-border); }
+.stage-ais__platform-header { display: flex; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.stage-ais__platform-name { font-size: 14px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-ais__platform-tag { font-size: 11px; font-weight: 600; border-radius: var(--dr-radius-sm); padding: 2px 8px; background: var(--dr-bg-subtle); color: var(--dr-text-tertiary); }
+.stage-ais__platform-metrics { display: flex; gap: 12px; font-size: 12px; color: var(--dr-text-tertiary); }
+.stage-ais__platform-metrics strong { color: var(--dr-text-primary); }
+.stage-ais__question-table { border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); overflow: hidden; }
+.stage-ais__qtable-head {
+  display: flex;
+  gap: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dr-text-tertiary);
+  background: var(--dr-bg-subtle);
+  border-bottom: 1px solid var(--dr-border-light);
+}
+.stage-ais__qtable-row {
+  display: flex;
+  gap: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--dr-border-subtle);
+  transition: background 0.15s;
+}
+.stage-ais__qtable-row:last-child { border-bottom: none; }
+.stage-ais__qtable-row:hover { background: var(--dr-bg-subtle); }
+.stage-ais__qtable-col--question { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; }
+.stage-ais__qtable-col--platforms { flex-shrink: 0; width: 180px; display: flex; align-items: center; justify-content: flex-end; }
+.stage-ais__q-text { font-size: 13px; font-weight: 600; color: var(--dr-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 0; max-width: 50%; }
+.stage-ais__q-highlight { font-size: 11px; color: var(--dr-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+.stage-ais__q-mentions { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
+.stage-ais__q-mention-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 20px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.stage-ais__q-mention-dot--yes { color: var(--dr-success); background: var(--dr-success-light); border: 1px solid var(--dr-success-border); }
+.stage-ais__q-mention-dot--no { color: var(--dr-text-tertiary); background: var(--dr-bg-subtle); border: 1px solid var(--dr-bg-bar-track); }
+
+/* ===== 05 Infra Eval ===== */
+.stage-infra__grid { display: flex; flex-direction: column; gap: 16px; }
+.stage-infra__card { overflow: hidden; background: var(--dr-bg-card); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+.stage-infra__card--site { border-left: 3px solid var(--dr-primary); }
+.stage-infra__card-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--dr-bg-subtle);
+  border-bottom: 1px solid var(--dr-border-subtle);
+}
+.stage-infra__card-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; font-size: 16px; border-radius: var(--dr-radius-md); }
+.stage-infra__card-icon--site { color: var(--dr-primary); background: var(--dr-primary-light); }
+.stage-infra__card-icon--media { color: var(--dr-sky); background: var(--dr-sky-light); }
+.stage-infra__card-icon--auth { color: var(--dr-purple); background: var(--dr-purple-light); }
+.stage-infra__card-title { flex: 1; font-size: 14px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-infra__card-body { display: flex; flex-direction: column; gap: 12px; padding: 16px; }
+.stage-infra__banner { overflow: hidden; border-radius: var(--dr-radius-md); }
+.stage-infra__banner-img { display: block; width: 100%; max-height: 200px; object-fit: cover; border-radius: var(--dr-radius-md); }
+.stage-infra__logo-row { display: flex; align-items: center; }
+.stage-infra__logo-img { width: 48px; height: 48px; object-fit: contain; border-radius: var(--dr-radius-md); background: var(--dr-bg-subtle); }
+.stage-infra__field { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+.stage-infra__label { flex-shrink: 0; min-width: 48px; font-weight: 600; color: var(--dr-text-tertiary); }
+.stage-infra__link { color: var(--dr-primary); word-break: break-all; text-decoration: none; }
+.stage-infra__link:hover { text-decoration: underline; }
+.stage-infra__score-bar { display: flex; flex: 1; gap: 12px; align-items: center; }
+.stage-infra__score-track { flex: 1; height: 8px; background: var(--dr-bg-bar-track); border-radius: var(--dr-radius-xs); overflow: hidden; }
+.stage-infra__score-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+.stage-infra__score-num { flex-shrink: 0; font-size: 14px; font-weight: 700; }
+.stage-infra__summary { font-size: 13px; line-height: 1.7; color: var(--dr-text-muted); }
+.stage-infra__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.stage-infra__tag { border-radius: var(--dr-radius-sm); }
+.stage-infra__media-item { display: flex; gap: 8px; align-items: center; padding: 4px 0; font-size: 13px; }
+
+/* ===== 06 Competitor ===== */
+.stage-comp__chart-section { margin-bottom: 24px; padding: 20px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border); border-radius: var(--dr-radius-lg); }
+.stage-comp__chart-section .dr-hbar-chart { width: 100%; max-width: 480px; }
+.stage-comp__section { margin-top: 24px; }
+.stage-comp__section-title { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-comp__compare-table { margin-bottom: 20px; border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); overflow: hidden; }
+.stage-comp__ctable-head {
+  display: flex;
+  gap: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dr-text-tertiary);
+  background: var(--dr-bg-subtle);
+  border-bottom: 1px solid var(--dr-border-light);
+}
+.stage-comp__ctable-row { display: flex; gap: 0; padding: 12px 16px; border-bottom: 1px solid var(--dr-border-subtle); transition: background 0.15s; }
+.stage-comp__ctable-row:last-child { border-bottom: none; }
+.stage-comp__ctable-row:hover { background: var(--dr-bg-subtle); }
+.stage-comp__ctable-col--name { flex: 0 0 100px; min-width: 72px; display: flex; gap: 8px; align-items: center; }
+.stage-comp__ctable-col--dim { flex-shrink: 0; width: 80px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--dr-text-secondary); }
+.stage-comp__ctable-col--wide { flex: 1; min-width: 140px; justify-content: flex-start; flex-wrap: wrap; }
+.stage-comp__ctable-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--dr-primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.stage-comp__ctable-name { font-size: 13px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-comp__ctable-score { font-size: 16px; font-weight: 700; }
+.stage-comp__ctable-tag { font-size: 10px; border-radius: 4px; }
+.stage-comp__ctable-features { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+.stage-comp__ctable-chip { display: inline-block; padding: 1px 6px; font-size: 11px; line-height: 18px; border-radius: 4px; white-space: nowrap; }
+.stage-comp__ctable-chip--blue { color: var(--dr-info); background: var(--dr-info-light); border: 1px solid var(--dr-info-border); }
+.stage-comp__ctable-chip--green { color: var(--dr-success); background: var(--dr-success-light); border: 1px solid var(--dr-success-border); }
+.stage-comp__ctable-chip--red { color: var(--dr-danger); background: var(--dr-danger-light); border: 1px solid var(--dr-danger-border); }
+.stage-comp__position-text { padding: 16px 20px; font-size: 14px; line-height: 1.7; color: var(--dr-text-secondary); background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+
+/* Competitor Advantage Logic */
+.stage-comp__advantage { margin-top: 24px; }
+.stage-comp__advantage-title { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-comp__advantage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.stage-comp__advantage-card { padding: 16px; background: var(--dr-bg-card); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-lg); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.stage-comp__advantage-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgb(15 23 42 / 8%); }
+.stage-comp__advantage-card--brand { background: linear-gradient(135deg, var(--dr-primary-light) 0%, #f0fdfa 100%); border-color: var(--dr-primary-border); border-top: 3px solid var(--dr-primary); }
+.stage-comp__advantage-card--competitor { border-top: 3px solid var(--dr-border); }
+.stage-comp__advantage-card--competitor:hover { border-top-color: var(--dr-warning); }
+.stage-comp__advantage-header { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+.stage-comp__advantage-badge { display: inline-flex; align-items: center; justify-content: center; padding: 2px 10px; font-size: 11px; font-weight: 700; border-radius: 999px; }
+.stage-comp__advantage-badge--brand { color: var(--dr-primary); background: rgb(13 148 136 / 12%); }
+.stage-comp__advantage-badge--competitor { color: var(--dr-text-tertiary); background: var(--dr-bg-subtle); }
+.stage-comp__advantage-name { font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-comp__advantage-score { margin-left: auto; font-size: 18px; font-weight: 700; }
+.stage-comp__advantage-list { display: flex; flex-direction: column; gap: 6px; }
+.stage-comp__advantage-item { display: flex; gap: 6px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: var(--dr-text-muted); }
+.stage-comp__advantage-icon { flex-shrink: 0; margin-top: 3px; font-size: 10px; }
+.stage-comp__advantage-item--strength .stage-comp__advantage-icon { color: var(--dr-success); }
+.stage-comp__advantage-item--weakness .stage-comp__advantage-icon { color: var(--dr-danger); }
+.stage-comp__advantage-item--strength { color: var(--dr-text-secondary); }
+.stage-comp__advantage-item--weakness { color: var(--dr-text-tertiary); }
+.stage-comp__advantage-vs { display: flex; gap: 8px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--dr-border-subtle); font-size: 12px; color: var(--dr-text-placeholder); }
+.stage-comp__advantage-vs-arrow { color: var(--dr-primary); font-weight: 700; }
+
+/* ===== 07 GEO Effect ===== */
+.stage-geo__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stage-geo__stat-card { padding: 16px 14px; text-align: center; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+.stage-geo__stat-card--highlight { background: var(--dr-bg-card); border-left: 3px solid var(--dr-primary); }
+.stage-geo__stat-value { font-size: 26px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-geo__stat-card--highlight .stage-geo__stat-value { color: var(--dr-primary); }
+.stage-geo__stat-unit { font-size: 14px; font-weight: 600; }
+.stage-geo__stat-label { margin-top: 4px; font-size: 12px; color: var(--dr-text-tertiary); }
+.stage-geo__stat-hint { margin-top: 2px; font-size: 10px; color: var(--dr-text-placeholder); }
+.stage-geo__section { margin-top: 24px; }
+.stage-geo__section-title { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-geo__chart-row { display: flex; gap: 20px; align-items: center; }
+.stage-geo__breakdown-list { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.stage-geo__breakdown-item { display: flex; gap: 12px; align-items: center; }
+.stage-geo__breakdown-name { width: 80px; font-size: 13px; font-weight: 600; color: var(--dr-text-secondary); }
+.stage-geo__breakdown-bar { flex: 1; height: 8px; overflow: hidden; background: var(--dr-border-subtle); border-radius: 999px; }
+.stage-geo__breakdown-fill { height: 100%; background: linear-gradient(90deg, var(--dr-primary), #2dd4bf); border-radius: 999px; transition: width 0.6s ease; }
+.stage-geo__breakdown-rate { width: 60px; font-size: 14px; font-weight: 700; color: var(--dr-primary); text-align: right; }
+
+/* ===== 08 Sentiment ===== */
+.stage-sentiment__top-row { display: flex; gap: 16px; align-items: stretch; margin-bottom: 16px; }
+.stage-sentiment__indicators { display: flex; flex: 1; gap: 12px; }
+.stage-sentiment__indicator {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--dr-bg-subtle);
+  border: 1px solid var(--dr-border-light);
+  border-radius: var(--dr-radius-md);
+}
+.stage-sentiment__indicator-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; font-size: 16px; border-radius: var(--dr-radius-sm); flex-shrink: 0; }
+.stage-sentiment__indicator-icon--up { color: var(--dr-success); background: var(--dr-success-light); }
+.stage-sentiment__indicator-icon--stable { color: var(--dr-text-tertiary); background: var(--dr-bg-subtle); }
+.stage-sentiment__indicator-icon--down { color: var(--dr-danger); background: var(--dr-danger-light); }
+.stage-sentiment__indicator-content { min-width: 0; }
+.stage-sentiment__indicator-label { font-size: 11px; color: var(--dr-text-tertiary); }
+.stage-sentiment__indicator-value { font-size: 16px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-sentiment__mini-chart { flex-shrink: 0; width: 120px; max-width: 100%; padding: 10px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); box-sizing: border-box; overflow: visible; }
+.stage-sentiment__drivers { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.stage-sentiment__driver-group { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.stage-sentiment__driver-title { display: inline-flex; gap: 4px; align-items: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.stage-sentiment__driver-title--positive { color: var(--dr-success); }
+.stage-sentiment__driver-title--negative { color: var(--dr-danger); }
+.stage-sentiment__driver-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.stage-sentiment__driver-tag { display: inline-block; padding: 2px 10px; font-size: 12px; line-height: 1.6; border-radius: 4px; }
+.stage-sentiment__driver-tag--positive { color: var(--dr-success); background: var(--dr-success-light); border: 1px solid var(--dr-success-border); }
+.stage-sentiment__driver-tag--negative { color: var(--dr-danger); background: var(--dr-danger-light); border: 1px solid var(--dr-danger-border); }
+.stage-sentiment__section { margin-top: 20px; }
+.stage-sentiment__section-title { display: flex; gap: 6px; align-items: center; margin-bottom: 10px; font-size: 14px; font-weight: 700; color: var(--dr-text-primary); }
+.stage-sentiment__section-count { margin-left: auto; font-size: 12px; font-weight: 400; color: var(--dr-text-placeholder); }
+.stage-sentiment__issue-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-sm); overflow: hidden; }
+.stage-sentiment__issue-row { display: flex; gap: 8px; align-items: center; padding: 8px 12px; font-size: 13px; border-bottom: 1px solid var(--dr-border-subtle); transition: background 0.15s; }
+.stage-sentiment__issue-row:last-child { border-bottom: none; }
+.stage-sentiment__issue-row:hover { background: var(--dr-bg-subtle); }
+.stage-sentiment__issue-tag { font-size: 11px; border-radius: 4px; flex-shrink: 0; line-height: 1; padding: 2px 6px; }
+.stage-sentiment__issue-text { flex: 1; min-width: 0; color: var(--dr-text-secondary); line-height: 1.5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stage-sentiment__issue-source { flex-shrink: 0; font-size: 11px; color: var(--dr-text-placeholder); }
+.stage-sentiment__suggestion-list { margin: 0; padding: 0; padding-left: 20px; list-style: none; counter-reset: suggestion; }
+.stage-sentiment__suggestion-item { position: relative; padding: 6px 0; font-size: 13px; line-height: 1.6; color: var(--dr-text-secondary); counter-increment: suggestion; }
+.stage-sentiment__suggestion-item::before {
+  position: absolute;
+  left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dr-primary);
+  background: var(--dr-primary-light);
+  border-radius: 4px;
+  content: counter(suggestion);
+}
+
+/* ===== 09 Suggestion ===== */
+.sg-section { margin-bottom: 28px; }
+.sg-section__header { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
+.sg-section__icon-wrap { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 40px; height: 40px; font-size: 18px; border-radius: var(--dr-radius-md); }
+.sg-section__icon-wrap--projection { color: var(--dr-success); background: var(--dr-success-light); border: 1px solid var(--dr-success-border); }
+.sg-section__icon-wrap--dims { color: var(--dr-primary); background: var(--dr-primary-light); border: 1px solid var(--dr-primary-border); }
+.sg-section__icon-wrap--quickwin { color: var(--dr-warning); background: var(--dr-warning-light); border: 1px solid var(--dr-warning-border); }
+.sg-section__icon-wrap--actions { color: var(--dr-danger); background: var(--dr-danger-light); border: 1px solid var(--dr-danger-border); }
+.sg-section__icon-wrap--roadmap { color: var(--dr-info); background: var(--dr-info-light); border: 1px solid var(--dr-info-border); }
+.sg-section__icon-wrap--longterm { color: var(--dr-purple); background: var(--dr-purple-light); border: 1px solid var(--dr-purple-border); }
+.sg-section__title { font-size: 16px; font-weight: 700; color: var(--dr-text-primary); }
+.sg-section__subtitle { margin-top: 2px; font-size: 14px; color: var(--dr-text-tertiary); }
+.sg-projection { padding: 20px; background: linear-gradient(135deg, var(--dr-success-light) 0%, #f0fdf4 50%, var(--dr-info-light) 100%); border: 1px solid var(--dr-success-border); border-radius: var(--dr-radius-lg); }
+.sg-projection__header { display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.sg-projection__title-group { display: flex; gap: 12px; align-items: center; }
+.sg-projection__score-compare { display: flex; gap: 16px; align-items: center; }
+.sg-projection__score-item { text-align: center; }
+.sg-projection__score-label { margin-bottom: 4px; font-size: 12px; font-weight: 600; color: var(--dr-text-tertiary); }
+.sg-projection__score-value { font-size: 32px; font-weight: 700; line-height: 1; }
+.sg-projection__arrow { display: flex; flex-direction: column; gap: 2px; align-items: center; font-size: 20px; color: var(--dr-text-placeholder); }
+.sg-projection__delta { font-size: 14px; font-weight: 700; }
+.sg-projection__dims { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.sg-projection__dim-bar { display: flex; gap: 12px; align-items: center; }
+.sg-projection__dim-label { flex-shrink: 0; width: 80px; font-size: 13px; font-weight: 600; color: var(--dr-text-secondary); }
+.sg-projection__dim-track { position: relative; flex: 1; height: 8px; overflow: hidden; background: var(--dr-border-subtle); border-radius: 4px; }
+.sg-projection__dim-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+.sg-projection__dim-fill--current { z-index: 2; }
+.sg-projection__dim-fill--projected { z-index: 1; }
+.sg-projection__dim-nums { flex-shrink: 0; display: flex; gap: 4px; align-items: center; font-size: 13px; font-weight: 700; }
+.sg-projection__dim-arrow { color: var(--dr-text-placeholder); font-weight: 400; }
+.sg-dims__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.sg-dims__card { padding: 16px; background: var(--dr-bg-card); border: 1px solid var(--dr-border-light); border-top: 3px solid var(--dim-accent); border-radius: var(--dr-radius-lg); transition: box-shadow 0.2s ease; }
+.sg-dims__card:hover { box-shadow: 0 4px 16px rgb(15 23 42 / 8%); }
+.sg-dims__card-header { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; }
+.sg-dims__card-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.sg-dims__card-name { font-size: 14px; font-weight: 700; color: var(--dr-text-primary); }
+.sg-dims__card-scores { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; }
+.sg-dims__card-current, .sg-dims__card-projected { display: flex; flex-direction: column; gap: 2px; }
+.sg-dims__card-score-num { font-size: 22px; font-weight: 700; line-height: 1; }
+.sg-dims__card-score-label { font-size: 11px; color: var(--dr-text-placeholder); }
+.sg-dims__card-arrow { font-size: 16px; color: var(--dr-text-disabled); }
+.sg-dims__card-delta { margin-left: auto; font-size: 16px; font-weight: 700; }
+.sg-dims__card-actions { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 1px solid var(--dr-border-subtle); }
+.sg-dims__card-action { display: flex; gap: 6px; align-items: flex-start; font-size: 12px; line-height: 1.5; color: var(--dr-text-tertiary); }
+.sg-dims__card-action-icon { flex-shrink: 0; margin-top: 3px; font-size: 10px; color: var(--dr-text-placeholder); }
+.sg-quickwins__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.sg-quickwins__card { position: relative; padding: 16px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid var(--dr-warning-border); border-radius: var(--dr-radius-lg); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.sg-quickwins__card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgb(245 158 11 / 15%); }
+.sg-quickwins__card-badge { display: inline-block; padding: 2px 10px; margin-bottom: 10px; font-size: 11px; font-weight: 700; color: #92400e; background: rgb(245 158 11 / 20%); border-radius: 999px; }
+.sg-quickwins__card-title { margin-bottom: 6px; font-size: 15px; font-weight: 700; color: var(--dr-text-primary); line-height: 1.4; }
+.sg-quickwins__card-desc { margin-bottom: 10px; font-size: 13px; line-height: 1.6; color: var(--dr-text-tertiary); }
+.sg-quickwins__card-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
+.sg-quickwins__card-tag { padding: 2px 8px; font-size: 11px; font-weight: 600; border-radius: var(--dr-radius-sm); }
+.sg-quickwins__card-timeline { display: flex; gap: 4px; align-items: center; padding: 2px 8px; font-size: 11px; color: var(--dr-text-tertiary); background: rgb(255 255 255 / 60%); border-radius: var(--dr-radius-sm); }
+.sg-quickwins__card-impact { padding: 2px 8px; font-size: 11px; font-weight: 700; color: var(--dr-success); background: var(--dr-success-light); border-radius: var(--dr-radius-sm); }
+.sg-quickwins__card-steps { display: flex; flex-direction: column; gap: 4px; padding-top: 10px; border-top: 1px solid rgb(245 158 11 / 20%); }
+.sg-quickwins__step { display: flex; gap: 6px; align-items: flex-start; font-size: 12px; line-height: 1.5; color: #78350f; }
+.sg-quickwins__step-icon { flex-shrink: 0; margin-top: 3px; font-size: 10px; color: var(--dr-warning); }
+.sg-actions__priority-bar { margin-bottom: 20px; padding: 14px 16px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+.sg-actions__priority-track { display: flex; height: 8px; overflow: hidden; border-radius: 4px; }
+.sg-actions__priority-seg { transition: width 0.3s; }
+.sg-actions__priority-seg--urgent { background: var(--dr-danger); }
+.sg-actions__priority-seg--high { background: var(--dr-orange); }
+.sg-actions__priority-seg--medium { background: var(--dr-warning); }
+.sg-actions__priority-seg--low { background: var(--dr-success); }
+.sg-actions__priority-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--dr-text-tertiary); }
+.sg-actions__legend-item { display: flex; gap: 4px; align-items: center; }
+.sg-actions__legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; }
+.sg-actions__legend-dot--urgent { background: var(--dr-danger); }
+.sg-actions__legend-dot--high { background: var(--dr-orange); }
+.sg-actions__legend-dot--medium { background: var(--dr-warning); }
+.sg-actions__legend-dot--low { background: var(--dr-success); }
+.sg-actions__list { display: flex; flex-direction: column; gap: 10px; }
+.sg-action-card { border-left: 4px solid; border-radius: var(--dr-radius-md); overflow: hidden; transition: box-shadow 0.15s ease; }
+.sg-action-card:hover { box-shadow: 0 2px 12px rgb(15 23 42 / 6%); }
+.sg-action-card--urgent { background: var(--dr-danger-light); border-left-color: var(--dr-danger); }
+.sg-action-card--medium { background: var(--dr-warning-light); border-left-color: var(--dr-warning); }
+.sg-action-card--low { background: var(--dr-success-light); border-left-color: var(--dr-success); }
+.sg-action-card__header { display: flex; gap: 10px; align-items: center; padding: 14px 16px; }
+.sg-action-card__step { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; font-size: 12px; font-weight: 700; color: #fff; background: var(--dr-primary); border-radius: 50%; flex-shrink: 0; }
+.sg-action-card__meta { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+.sg-action-card__priority-tag { font-size: 11px; border-radius: var(--dr-radius-sm); }
+.sg-action-card__dim-tag { padding: 1px 8px; font-size: 11px; font-weight: 600; border: 1px solid; border-radius: var(--dr-radius-sm); white-space: nowrap; }
+.sg-action-card__title { flex: 1; min-width: 0; font-size: 14px; font-weight: 700; color: var(--dr-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sg-action-card__badges { display: flex; gap: 6px; flex-shrink: 0; }
+.sg-action-card__badge { padding: 2px 8px; font-size: 11px; font-weight: 600; border-radius: var(--dr-radius-sm); white-space: nowrap; }
+.sg-action-card__badge--impact { color: #fff; }
+.sg-action-card__badge--impact.high { background: var(--dr-danger); }
+.sg-action-card__badge--impact.medium { background: var(--dr-warning); }
+.sg-action-card__badge--impact.low { background: var(--dr-text-tertiary); }
+.sg-action-card__badge--effort { background: var(--dr-border-subtle); color: var(--dr-text-muted); }
+.sg-action-card__badge--effort.quick_win { background: var(--dr-success-light); color: var(--dr-success); }
+.sg-action-card__badge--effort.moderate { background: var(--dr-info-light); color: var(--dr-info); }
+.sg-action-card__badge--effort.heavy { background: var(--dr-danger-light); color: var(--dr-danger); }
+.sg-action-card__badge--score { background: var(--dr-primary-light); color: var(--dr-primary); }
+.sg-action-card__detail { padding: 0 16px 16px 52px; }
+.sg-action-card__desc { font-size: 13px; line-height: 1.7; color: var(--dr-text-muted); }
+.sg-action-card__timeline-tag { display: inline-flex; gap: 4px; align-items: center; margin-top: 8px; padding: 3px 10px; font-size: 12px; color: var(--dr-text-muted); background: var(--dr-border-subtle); border-radius: var(--dr-radius-sm); }
+.sg-action-card__evidence { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+.sg-action-card__evidence-label { font-size: 12px; font-weight: 600; color: var(--dr-text-placeholder); }
+.sg-action-card__evidence-tag { padding: 2px 8px; font-size: 11px; font-weight: 600; color: var(--dr-primary); background: var(--dr-primary-light); border-radius: var(--dr-radius-sm); }
+.sg-action-card__steps { margin-top: 12px; }
+.sg-action-card__steps-label { margin-bottom: 6px; font-size: 12px; font-weight: 700; color: var(--dr-primary); }
+.sg-action-card__step-item { display: flex; gap: 6px; align-items: flex-start; padding: 3px 0; font-size: 13px; line-height: 1.5; color: var(--dr-text-muted); }
+.sg-action-card__step-icon { flex-shrink: 0; margin-top: 3px; font-size: 10px; color: var(--dr-primary); }
+.sg-roadmap__timeline { display: flex; gap: 0; align-items: flex-start; }
+.sg-roadmap__phase { flex: 1; min-width: 0; }
+.sg-roadmap__phase-connector { width: 32px; height: 2px; margin: 20px -16px 0; background: linear-gradient(90deg, var(--dr-primary-border), var(--dr-info-border)); flex-shrink: 0; }
+.sg-roadmap__phase-header { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+.sg-roadmap__phase-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; font-weight: 700; color: #fff; border-radius: var(--dr-radius-lg); flex-shrink: 0; }
+.sg-roadmap__phase--0 .sg-roadmap__phase-badge { background: var(--dr-danger); }
+.sg-roadmap__phase--1 .sg-roadmap__phase-badge { background: var(--dr-warning); }
+.sg-roadmap__phase--2 .sg-roadmap__phase-badge { background: var(--dr-success); }
+.sg-roadmap__phase-title { font-size: 14px; font-weight: 700; color: var(--dr-text-primary); }
+.sg-roadmap__phase-timeline { font-size: 12px; color: var(--dr-text-placeholder); }
+.sg-roadmap__phase-items { display: flex; flex-direction: column; gap: 6px; padding: 14px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); }
+.sg-roadmap__item { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: var(--dr-text-muted); }
+.sg-roadmap__item-dot { flex-shrink: 0; width: 6px; height: 6px; margin-top: 7px; background: var(--dr-text-placeholder); border-radius: 50%; }
+.sg-roadmap__phase--0 .sg-roadmap__item-dot { background: var(--dr-danger); }
+.sg-roadmap__phase--1 .sg-roadmap__item-dot { background: var(--dr-warning); }
+.sg-roadmap__phase--2 .sg-roadmap__item-dot { background: var(--dr-success); }
+.sg-longterm__list { display: flex; flex-direction: column; gap: 8px; }
+.sg-longterm__item { display: flex; gap: 12px; align-items: center; padding: 12px 16px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border-light); border-radius: var(--dr-radius-md); transition: border-color 0.15s ease; }
+.sg-longterm__item:hover { border-color: var(--dr-primary-border); }
+.sg-longterm__num { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; font-size: 12px; font-weight: 700; color: var(--dr-primary); background: var(--dr-primary-light); border-radius: 50%; }
+.sg-longterm__content { flex: 1; min-width: 0; }
+.sg-longterm__text-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.sg-longterm__text { font-size: 14px; line-height: 1.5; color: var(--dr-text-secondary); }
+.sg-longterm__timeline { display: inline-block; padding: 1px 8px; font-size: 11px; color: var(--dr-primary); background: var(--dr-primary-light); border-radius: 999px; white-space: nowrap; }
+.sg-summary { display: flex; gap: 16px; padding: 24px; background: var(--dr-bg-subtle); border: 1px solid var(--dr-border); border-radius: var(--dr-radius-lg); }
+.sg-summary__icon-wrap { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 44px; height: 44px; font-size: 20px; color: var(--dr-primary); background: var(--dr-bg-card); border-radius: var(--dr-radius-md); }
+.sg-summary__label { margin-bottom: 6px; font-size: 13px; font-weight: 700; color: var(--dr-primary); }
+.sg-summary__text { font-size: 14px; line-height: 1.8; color: var(--dr-text-secondary); }
+
+/* ===== Executive Summary ===== */
+.dr-summary {
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  background: var(--dr-bg-card);
+  border: 1px solid var(--dr-border);
+  border-left: 4px solid var(--dr-primary);
+  border-radius: var(--dr-radius-xl);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+}
+.dr-summary__title { margin: 0 0 20px; font-size: 18px; font-weight: 600; color: var(--dr-text-primary); }
+.dr-summary__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.dr-summary__item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: var(--dr-radius-lg); }
+.dr-summary__item--positive { background: var(--dr-success-light); border: 1px solid var(--dr-success-border); }
+.dr-summary__item--negative { background: var(--dr-danger-light); border: 1px solid var(--dr-danger-border); }
+.dr-summary__item--action { background: var(--dr-primary-light); border: 1px solid var(--dr-primary-border); }
+.dr-summary__icon { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; border-radius: 999px; }
+.dr-summary__item--positive .dr-summary__icon { color: var(--dr-success); background: var(--dr-success-light); }
+.dr-summary__item--negative .dr-summary__icon { color: var(--dr-danger); background: var(--dr-danger-light); }
+.dr-summary__item--action .dr-summary__icon { color: var(--dr-primary); background: var(--dr-primary-light); }
+.dr-summary__text { font-size: 14px; line-height: 1.6; color: var(--dr-text-secondary); }
+
+/* ===== Report Footer ===== */
+.dr-footer { margin-top: 40px; }
+.dr-footer__divider { height: 1px; margin-bottom: 28px; background: linear-gradient(90deg, transparent, var(--dr-border) 20%, var(--dr-border) 80%, transparent); }
+.dr-footer__content { display: flex; flex-direction: column; gap: 16px; padding: 0 8px; }
+.dr-footer__block { padding: 14px 18px; background: var(--dr-bg-subtle); border-radius: var(--dr-radius-lg); }
+.dr-footer__title { margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--dr-text-muted); }
+.dr-footer__text { font-size: 13px; line-height: 1.8; color: var(--dr-text-tertiary); }
+.dr-footer__meta { display: flex; gap: 24px; padding-top: 14px; font-size: 12px; color: var(--dr-text-placeholder); }
+
+/* ===== Right-side Floating Navigation ===== */
+.dr-side-nav {
+  position: fixed;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 5px 8px 6px;
+  background: rgb(255 255 255 / 92%);
+  border: 1px solid var(--dr-border-light);
+  border-radius: var(--dr-radius-xl);
+  box-shadow: 0 2px 16px rgb(15 23 42 / 8%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.dr-side-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px 4px 4px;
+  text-decoration: none;
+  border-radius: var(--dr-radius-md);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.dr-side-nav__item:hover {
+  background: var(--dr-primary-light);
+}
+.dr-side-nav__item--active {
+  background: var(--dr-primary-light);
+}
+.dr-side-nav__num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dr-text-placeholder);
+  border-radius: 6px;
+  transition: all 0.2s;
+  user-select: none;
+}
+.dr-side-nav__item:hover .dr-side-nav__num {
+  color: var(--dr-primary);
+  background: rgb(13 148 136 / 10%);
+}
+.dr-side-nav__item--active .dr-side-nav__num {
+  color: #fff;
+  background: var(--dr-primary);
+}
+.dr-side-nav__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dr-text-tertiary);
+  transition: color 0.15s, font-weight 0.15s;
+  line-height: 1;
+}
+.dr-side-nav__item:hover .dr-side-nav__label {
+  color: var(--dr-text-secondary);
+}
+.dr-side-nav__item--active .dr-side-nav__label {
+  color: var(--dr-primary);
+  font-weight: 700;
+}
+.dr-side-nav__divider {
+  width: 20px;
+  height: 1px;
+  background: var(--dr-border-subtle);
+  margin: 2px 0 2px 4px;
+  flex-shrink: 0;
+}
+
+/* ===== SVG Chart Styles ===== */
+.dr-radar-chart {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+.dr-radar-chart__grid { fill: none; stroke: var(--dr-bg-bar-track); stroke-width: 1; }
+.dr-radar-chart__axis { stroke: var(--dr-bg-bar-track); stroke-width: 1; }
+.dr-radar-chart__area { transition: opacity 0.3s; }
+.dr-radar-chart__area:hover { opacity: 0.85 !important; }
+.dr-radar-chart__dot { transition: r 0.2s; }
+.dr-radar-chart__dot:hover { r: 6; }
+.dr-radar-chart__label { font-size: 12px; fill: var(--dr-text-muted); font-weight: 600; }
+
+.dr-donut-chart { display: block; width: 100%; margin: 0 auto; }
+.dr-donut-chart__center-text { font-size: 16px; font-weight: 700; fill: var(--dr-text-primary); }
+.dr-donut-chart__center-label { font-size: 10px; fill: var(--dr-text-tertiary); }
+
+.dr-hbar-chart { display: block; width: 100%; }
+.dr-hbar-chart__bar-bg { fill: var(--dr-border-subtle); rx: 4; }
+.dr-hbar-chart__bar-fill { rx: 4; transition: width 0.6s ease; }
+.dr-hbar-chart__label { font-size: 12px; fill: var(--dr-text-secondary); font-weight: 600; }
+.dr-hbar-chart__value { font-size: 12px; fill: var(--dr-text-primary); font-weight: 700; }
+
+/* ===== Entrance Animations (disabled) ===== */
+.dr-section {
+  opacity: 1;
+  transform: none;
+}
+.dr-hero {
+  opacity: 1;
+  transform: none;
+}
+.dr-summary {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Hero Gradient Animation ===== */
+.dr-hero__gradient-anim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 60%, #1e293b 100%);
+  background-size: 300% 300%;
+  animation: heroGradient 8s ease infinite;
+  border-radius: inherit;
+}
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Card Hover Effects ===== */
+.stage-overview__stat-card:hover,
+.stage-aivo__dimension-card:hover,
+.stage-up__group-card:hover,
+.stage-ais__platform-card:hover,
+.stage-infra__card:hover,
+.stage-geo__stat-card:hover,
+.stage-sentiment__indicator:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgb(15 23 42 / 8%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stage-overview__stat-card,
+.stage-aivo__dimension-card,
+.stage-up__group-card,
+.stage-ais__platform-card,
+.stage-infra__card,
+.stage-geo__stat-card,
+.stage-sentiment__indicator {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .dr-side-nav { display: none; }
+  .dr-content { width: calc(100% - 32px); padding-right: 0; }
+  .dr-hero__body { flex-direction: column; text-align: center; }
+  .dr-hero__title { font-size: 26px; text-align: center; }
+  .dr-hero__badge-row { justify-content: center; }
+  .dr-hero__meta { justify-content: center; }
+  .dr-hero__score-group { justify-content: center; }
+  .stage-overview__stats { grid-template-columns: repeat(2, 1fr); }
+  .stage-geo__stats { grid-template-columns: repeat(2, 1fr); }
+  .stage-comp__compare-table { overflow-x: auto; }
+  .sg-roadmap__timeline { flex-wrap: wrap; }
+  .sg-roadmap__phase { min-width: 200px; }
+}
+@media (max-width: 768px) {
+  .dr-page { padding-top: 0; }
+  .dr-content { width: calc(100% - 24px); }
+  .dr-hero { padding: 36px 20px; }
+  .dr-hero__title { font-size: 24px; }
+  .dr-hero__subtitle { font-size: 16px; }
+  .dr-section { padding: 24px 18px; }
+  .stage-overview__stats { grid-template-columns: 1fr; }
+  .stage-ais__stats { grid-template-columns: 1fr; }
+  .stage-ais__platform-grid { grid-template-columns: 1fr; }
+  .stage-ais__qtable-col--platforms { width: 120px; }
+  .stage-aivo__hero { flex-direction: column; }
+  .stage-up__radar-section { width: 100%; }
+  .stage-up__radar-row { flex-direction: column; align-items: center; }
+  .stage-up__radar-chart-wrap { width: 100%; max-width: 240px; }
+  .stage-up__dimension-list { grid-template-columns: 1fr; }
+  .stage-up__groups { min-width: 0; }
+  .stage-geo__stats { grid-template-columns: repeat(2, 1fr); }
+  .stage-geo__chart-row { flex-direction: column; }
+  .stage-sentiment__top-row { flex-direction: column; }
+  .stage-sentiment__indicators { flex-direction: column; }
+  .stage-sentiment__mini-chart { width: 100%; }
+  .sg-projection__header { flex-direction: column; align-items: flex-start; }
+  .sg-dims__grid { grid-template-columns: 1fr; }
+  .sg-quickwins__grid { grid-template-columns: 1fr; }
+  .sg-roadmap__timeline { flex-direction: column; }
+  .sg-roadmap__phase-connector { width: 2px; height: 24px; margin: 0 0 0 17px; background: linear-gradient(180deg, var(--dr-primary-border), var(--dr-info-border)); }
+  .stage-comp__compare-table { overflow-x: auto; }
+  .stage-comp__ctable-col--dim { width: 80px; }
+}
+@media print {
+  body { background: #fff !important; }
+  .dr-side-nav { display: none !important; }
+  .dr-page { min-height: auto !important; padding: 0 !important; background: #fff !important; }
+  .dr-content { width: 100% !important; max-width: 100% !important; padding: 0 !important; }
+  .dr-hero { background: var(--dr-bg-subtle) !important; color: var(--dr-text-primary) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .dr-hero__title, .dr-hero__subtitle { color: var(--dr-text-primary) !important; }
+  .dr-hero__date { color: var(--dr-text-tertiary) !important; }
+  .dr-section { page-break-inside: avoid; break-inside: avoid; border: 1px solid var(--dr-bg-bar-track) !important; box-shadow: none !important; opacity: 1 !important; transform: none !important; }
+  .dr-hero { opacity: 1 !important; transform: none !important; }
+  .dr-summary { opacity: 1 !important; transform: none !important; }
+  .dr-footer { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="dr-page">
+<nav class="dr-side-nav" id="side-nav"></nav>
+<div class="dr-content">
+  <div id="hero-section"></div>
+  <div id="section-overview"></div>
+  <div id="section-aivo"></div>
+  <div id="section-profile"></div>
+  <div id="section-search"></div>
+  <div id="section-infra"></div>
+  <div id="section-competitor"></div>
+  <div id="section-geo"></div>
+  <div id="section-sentiment"></div>
+  <div id="section-suggestion"></div>
+  <div id="executive-summary"></div>
+  <div id="report-footer"></div>
+</div>
+</div>
+
+<script id="report-data" type="application/json">{
+  "version": "4.0",
+  "brand": "冰箱小雷达",
+  "category": "冰箱食材库存管理小程序",
+  "meta": {
+    "version": "4.0",
+    "brand": "冰箱小雷达",
+    "product": "冰箱食材库存管理小程序"
+  },
+  "stages": {
+    "USER_PROFILE": {
+      "brand": "冰箱小雷达",
+      "category": "冰箱食材库存管理小程序",
+      "profileDimensions": [
+        {
+          "key": "age_range",
+          "label": "年龄分布",
+          "value": 72
+        },
+        {
+          "key": "interest",
+          "label": "兴趣偏好",
+          "value": 78
+        },
+        {
+          "key": "purchase_power",
+          "label": "购买力",
+          "value": 58
+        },
+        {
+          "key": "tech_savvy",
+          "label": "技术敏感度",
+          "value": 65
+        },
+        {
+          "key": "brand_loyalty",
+          "label": "品牌忠诚度",
+          "value": 38
+        }
+      ],
+      "groups": [
+        {
+          "highlight": "5分区精细库存管理（冷藏/冷冻/门架/果蔬抽屉/变温），覆盖家庭冰箱主流分区",
+          "userProfile": "25-40岁家庭主厨，已婚有娃，每周采购2-3次，关注食材新鲜度和家庭饮食健康",
+          "scenario": "用户在AI搜索中询问家庭冰箱食材管理方案时被推荐",
+          "questions": [
+            "家庭冰箱食材怎么管理不浪费",
+            "冰箱库存管理小程序哪个好用",
+            "怎么记录冰箱里的食材保质期",
+            "冰箱分区管理工具有哪些",
+            "家庭主妇怎么管理冰箱库存"
+          ]
+        },
+        {
+          "highlight": "日历到期提醒+本地开饭雷达算法，无需云端AI即可计算可开饭指数",
+          "userProfile": "忙碌上班族，做饭时间有限，希望快速判断今晚能否就地取材做饭",
+          "scenario": "用户搜索今晚吃什么/食材够不够做饭时被提及",
+          "questions": [
+            "冰箱里的食材能做什么菜怎么算",
+            "今晚吃什么怎么根据冰箱食材决定",
+            "开饭指数是什么怎么看",
+            "食材到期日历小程序推荐",
+            "怎么知道冰箱食材还够吃几天"
+          ]
+        },
+        {
+          "highlight": "微信云开发原生小程序+openid隔离，轻量免安装，隐私数据不上传第三方",
+          "userProfile": "注重隐私的轻度用户，不愿下载独立App，偏好即用即走的微信小程序",
+          "scenario": "用户搜索轻量级/免下载/隐私安全的食材管理工具时被推荐",
+          "questions": [
+            "不用下载App的冰箱管理工具",
+            "微信小程序管理冰箱食材哪个好",
+            "隐私安全的食材库存小程序",
+            "免安装的冰箱库存记录工具",
+            "微信里有什么好用的冰箱管理小程序"
+          ]
+        }
+      ]
+    },
+    "INFRA_EVAL": {
+      "officialSite": {
+        "exists": false,
+        "url": null,
+        "score": 18,
+        "summary": "冰箱小雷达为微信小程序形态，无独立品牌官网。微信小程序主页（小程序卡片）承担部分展示职能，但搜索引擎无法索引，AI平台难以抓取品牌介绍、产品矩阵、Logo、Banner等结构化素材。基建处于明显短板状态。",
+        "logo_url": null,
+        "banner_url": null
+      },
+      "selfMedia": {
+        "totalCount": 10,
+        "platformBreakdown": {
+          "知乎": 2,
+          "CSDN": 2,
+          "什么值得买": 2,
+          "小红书": 2,
+          "B站": 1,
+          "微信公众号": 1
+        },
+        "items": [
+          {
+            "platform": "知乎",
+            "title": "⚠️虚拟 冰箱食材管理小程序横评：冰箱小雷达 vs 鲜钟记",
+            "url": "https://zhuanlan.zhihu.com/p/virtual-fridge-radar-review",
+            "source": "virtual"
+          },
+          {
+            "platform": "知乎",
+            "title": "⚠️虚拟 家庭主妇自用：冰箱小雷达三个月体验分享",
+            "url": "https://zhuanlan.zhihu.com/p/virtual-fridge-radar-3month",
+            "source": "virtual"
+          },
+          {
+            "platform": "CSDN",
+            "title": "⚠️虚拟 微信小程序开发实战：冰箱小雷达的5分区设计思路",
+            "url": "https://blog.csdn.net/virtual-fridge-radar-dev",
+            "source": "virtual"
+          },
+          {
+            "platform": "CSDN",
+            "title": "⚠️虚拟 冰箱小雷达开饭雷达算法本地化实现解析",
+            "url": "https://blog.csdn.net/virtual-fridge-radar-algo",
+            "source": "virtual"
+          },
+          {
+            "platform": "什么值得买",
+            "title": "⚠️虚拟 冰箱管理神器推荐：冰箱小雷达小程序试用",
+            "url": "https://smzdm.com/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "什么值得买",
+            "title": "⚠️虚拟 减少食材浪费，冰箱小雷达用了半个月真实感受",
+            "url": "https://smzdm.com/virtual-fridge-radar-15day",
+            "source": "virtual"
+          },
+          {
+            "platform": "小红书",
+            "title": "⚠️虚拟 冰箱小雷达小程序分享｜家庭主厨必备",
+            "url": "https://xiaohongshu.com/virtual-fridge-radar-1",
+            "source": "virtual"
+          },
+          {
+            "platform": "小红书",
+            "title": "⚠️虚拟 不下载App也能管冰箱！冰箱小雷达真香",
+            "url": "https://xiaohongshu.com/virtual-fridge-radar-2",
+            "source": "virtual"
+          },
+          {
+            "platform": "B站",
+            "title": "⚠️虚拟 冰箱小雷达小程序功能演示视频",
+            "url": "https://bilibili.com/video/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "微信公众号",
+            "title": "⚠️虚拟 冰箱小雷达上线：家庭冰箱管理新选择",
+            "url": "https://mp.weixin.qq.com/s/virtual-fridge-radar-launch",
+            "source": "virtual"
+          }
+        ]
+      },
+      "authoritativeMedia": {
+        "totalCount": 10,
+        "platformBreakdown": {
+          "36氪": 2,
+          "虎嗅": 1,
+          "极客公园": 1,
+          "太平洋电脑": 2,
+          "ZOL": 2,
+          "IT168": 1,
+          "快科技": 1
+        },
+        "items": [
+          {
+            "platform": "36氪",
+            "title": "⚠️虚拟 微信小程序生态观察：冰箱小雷达的轻量化工具路线",
+            "url": "https://36kr.com/p/virtual-fridge-radar-eco",
+            "source": "virtual"
+          },
+          {
+            "platform": "36氪",
+            "title": "⚠️虚拟 食材管理赛道再添一员，冰箱小雷达上线v1.0",
+            "url": "https://36kr.com/p/virtual-fridge-radar-v1",
+            "source": "virtual"
+          },
+          {
+            "platform": "虎嗅",
+            "title": "⚠️虚拟 工具型小程序的生存样本：冰箱小雷达案例",
+            "url": "https://huxiu.com/article/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "极客公园",
+            "title": "⚠️虚拟 本地优先算法回归，冰箱小雷达的开饭雷达设计",
+            "url": "https://geekpark.net/news/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "太平洋电脑",
+            "title": "⚠️虚拟 冰箱小雷达小程序评测：5分区管理是否实用",
+            "url": "https://pconline.com.cn/virtual-fridge-radar-review",
+            "source": "virtual"
+          },
+          {
+            "platform": "太平洋电脑",
+            "title": "⚠️虚拟 家庭冰箱管理工具横评，冰箱小雷达入围",
+            "url": "https://pconline.com.cn/virtual-fridge-radar-compare",
+            "source": "virtual"
+          },
+          {
+            "platform": "ZOL",
+            "title": "⚠️虚拟 冰箱小雷达小程序上线，主打食材临期提醒",
+            "url": "https://zol.com.cn/virtual-fridge-radar-launch",
+            "source": "virtual"
+          },
+          {
+            "platform": "ZOL",
+            "title": "⚠️虚拟 微信小程序冰箱管理类目对比报告",
+            "url": "https://zol.com.cn/virtual-fridge-radar-report",
+            "source": "virtual"
+          },
+          {
+            "platform": "IT168",
+            "title": "⚠️虚拟 冰箱小雷达：个人主体小程序的合规与克制",
+            "url": "https://it168.com/virtual-fridge-radar",
+            "source": "virtual"
+          },
+          {
+            "platform": "快科技",
+            "title": "⚠️虚拟 微信小程序推荐：冰箱小雷达帮你管好冰箱",
+            "url": "https://kkj.cn/virtual-fridge-radar",
+            "source": "virtual"
+          }
+        ]
+      }
+    },
+    "COMPETITOR": {
+      "competitors": [
+        {
+          "name": "鲜钟记·智能冰箱管理助手",
+          "level": "头部",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 58,
+          "marketShare": 18,
+          "threatLevel": "high",
+          "strengths": [
+            "功能全面（AI菜谱+提醒+购物清单）",
+            "CSDN有完整使用手册，SEO基建较好",
+            "覆盖AI菜谱推荐高需求场景"
+          ],
+          "weaknesses": [
+            "依赖云端AI，隐私数据上传",
+            "功能复杂上手成本高",
+            "个人主体同样缺品牌背书"
+          ],
+          "productFeatures": [
+            "AI菜谱推荐",
+            "食材过期提醒",
+            "购物清单生成",
+            "今晚吃啥智能推荐"
+          ],
+          "description": "冰箱食材管理小程序中网络曝光度最高的竞品，CSDN有详细使用手册，主打AI菜谱+食材管理一体化，是冰箱小雷达在AI搜索中最主要的替代推荐对象。",
+          "website": null
+        },
+        {
+          "name": "冰箱清单",
+          "level": "腰部",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 52,
+          "marketShare": 12,
+          "threatLevel": "high",
+          "strengths": [
+            "知乎有专门介绍文章，曝光度好",
+            "拍照小票自动录入是差异化卖点",
+            "定位精准（偶尔做饭的周末厨师）"
+          ],
+          "weaknesses": [
+            "无独立官网",
+            "功能聚焦录入，分区管理较弱",
+            "个人项目维护稳定性存疑"
+          ],
+          "productFeatures": [
+            "拍照小票自动录入",
+            "食材保质期提醒",
+            "周末厨师场景定位"
+          ],
+          "description": "知乎专栏有专门介绍文章，在'冰箱食材管理小程序'相关搜索中有较高曝光，主打拍照小票录入的差异化功能，是冰箱小雷达在推荐类问题中的强竞争者。",
+          "website": null
+        },
+        {
+          "name": "冰箱小助手",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 45,
+          "marketShare": 8,
+          "threatLevel": "medium",
+          "strengths": [
+            "有独立站点iceiceice.work展示",
+            "定位清晰（食物管理+保质期）",
+            "项目页有完整功能说明"
+          ],
+          "weaknesses": [
+            "曝光渠道单一",
+            "功能相对基础",
+            "无自媒体矩阵"
+          ],
+          "productFeatures": [
+            "食物信息管理",
+            "保质期记录",
+            "冰箱分区管理"
+          ],
+          "description": "拥有独立项目展示站点，在'冰箱小助手小程序'搜索中有一定曝光，功能与冰箱小雷达高度重叠，是直接对标竞品。",
+          "website": "https://www.iceiceice.work/work/firdge-app/"
+        },
+        {
+          "name": "食管家",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 42,
+          "marketShare": 6,
+          "threatLevel": "medium",
+          "strengths": [
+            "Gitee开源，开发者社区有曝光",
+            "AI菜谱推荐+购买清单一体化",
+            "开源属性吸引技术用户"
+          ],
+          "weaknesses": [
+            "需自行部署，普通用户门槛高",
+            "无品牌运营",
+            "功能与v1.0定位差异大（含AI）"
+          ],
+          "productFeatures": [
+            "食材识别",
+            "AI菜谱推荐",
+            "食谱生成",
+            "购买清单"
+          ],
+          "description": "Gitee开源项目，在开发者社区有一定曝光，主打AI菜谱推荐，与冰箱小雷达v1.0的克制路线形成对比。",
+          "website": "https://gitee.com/ColdLX99/qc-refrigerator-assistant"
+        },
+        {
+          "name": "冰箱咕 (Fridge-helper-Gugu)",
+          "level": "长尾",
+          "category": "冰箱食材库存管理小程序",
+          "geoScore": 40,
+          "marketShare": 5,
+          "threatLevel": "medium",
+          "strengths": [
+            "GitHub开源，国际化曝光",
+            "功能完整（库存+临期+菜谱+拍照识别+烹饪日记）",
+            "本地优先云端同步设计"
+          ],
+          "weaknesses": [
+            "开源项目无商业运营",
+            "曝光集中在开发者圈层",
+            "功能复杂度高"
+          ],
+          "productFeatures": [
+            "拍照识别食材",
+            "临期食材发现",
+            "菜谱推荐",
+            "烹饪日记",
+            "本地优先云同步"
+          ],
+          "description": "GitHub开源的微信小程序，功能最全面的竞品之一，含拍照识别和烹饪日记，在开发者社区有曝光，是冰箱小雷达在功能丰富度上的对标对象。",
+          "website": "https://github.com/Gospelion/Fridge-helper-Gugu_Miniprogram"
+        }
+      ],
+      "brandStrengths": [
+        "5分区精细管理（冷藏/冷冻/门架/果蔬抽屉/变温），比多数竞品的简单分类更贴合真实冰箱结构",
+        "日历+开饭雷达采用纯本地算法，不依赖云端AI，隐私数据不上传，响应快",
+        "微信云开发原生+openid隔离，个人主体合规克制，v1.0不开放AI/拍照/支付等高风险能力",
+        "轻奢黏土风格UI，无障碍整改到位，主包体积控制在1.70MB"
+      ],
+      "brandWeaknesses": [
+        "无独立官网、无自媒体矩阵、无权威媒体报道，AI平台训练数据中几乎不存在该品牌",
+        "个人主体无品牌背书，用户信任度低，难以在推荐类问题中被AI优先提及",
+        "v1.0功能克制（无AI菜谱/拍照识别/条形码），与鲜钟记、冰箱咕等功能型竞品相比卖点不够'吸睛'",
+        "产品名'冰箱小雷达'语义独特但非通用搜索词，AI难以将其与'冰箱食材管理'需求关联"
+      ],
+      "marketPosition": "长尾品牌。冰箱小雷达在冰箱食材库存管理小程序赛道处于长尾位置，网络基建几乎为零，AI搜索可见度低于鲜钟记、冰箱清单等有自媒体曝光的竞品。差异化优势在5分区精细化管理和本地算法隐私保护，但这些优势未在网络内容中表达，AI无法感知。"
+    },
+    "AI_SEARCH": {
+      "totalQuestions": 15,
+      "platformResults": {
+        "1": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "2": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "3": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "4": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "5": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "6": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        },
+        "7": {
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133
+        },
+        "8": {
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067
+        }
+      },
+      "questionDetails": [
+        {
+          "question": "冰箱库存管理小程序哪个好用",
+          "highlight": "5分区精细库存管理（冷藏/冷冻/门架/果蔬抽屉/变温）",
+          "platformMentions": {
+            "1": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列举冰箱库存管理小程序时作为轻量方案之一，排序靠后"
+            },
+            "2": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 与鲜钟记、冰箱清单并列推荐"
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 结构化对比表中包含一行"
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 长文综述中提及5分区设计"
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "微信小程序管理冰箱食材哪个好",
+          "highlight": "微信云开发原生小程序+openid隔离，轻量免安装",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列出包括冰箱小雷达在内的多个小程序"
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 作为轻量分区管理代表"
+            },
+            "5": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 仅在列举类回答中偶尔提及名称"
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "微信里有什么好用的冰箱管理小程序",
+          "highlight": "微信云开发原生小程序+openid隔离",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 列表末尾提及"
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 泛问时偶尔带过"
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        },
+        {
+          "question": "开饭指数是什么怎么看",
+          "highlight": "日历到期提醒+本地开饭雷达算法",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 本地算法作为案例引用"
+            },
+            "8": {
+              "mentioned": true,
+              "snippet": "⚠️虚拟 技术性描述作为案例提及"
+            }
+          }
+        },
+        {
+          "question": "家庭冰箱食材怎么管理不浪费",
+          "highlight": "5分区精细库存管理",
+          "platformMentions": {
+            "1": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "2": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "3": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "4": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "5": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "6": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "7": {
+              "mentioned": false,
+              "snippet": null
+            },
+            "8": {
+              "mentioned": false,
+              "snippet": null
+            }
+          }
+        }
+      ],
+      "shouluTaskIds": [],
+      "shouluResults": [
+        {
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 在列举冰箱库存管理类小程序时，可能提及'冰箱小雷达'作为5分区管理的轻量方案之一，但排序靠后。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 2,
+          "platformName": "豆包",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 豆包偏生活场景，在推荐冰箱管理小程序时可能提及'冰箱小雷达'的5分区家庭管理思路，与鲜钟记、冰箱清单并列。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 针对'微信小程序管理冰箱食材'的生活化提问，豆包可能列出包括冰箱小雷达在内的多个小程序选项。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 3,
+          "platformName": "元宝",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 元宝做百科式全面推荐时，可能在'微信里冰箱管理小程序'列表末尾提及冰箱小雷达。"
+            }
+          ]
+        },
+        {
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 通义千问倾向结构化列出多个选项，在冰箱管理小程序对比表中可能包含冰箱小雷达一行。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 结构化对比类问题中，通义千问可能将冰箱小雷达作为'轻量分区管理'代表列出。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 文心一言依赖百度百科，冰箱小雷达无词条，仅在列举类回答中偶尔提及名称。"
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 6,
+          "platformName": "纳米搜索",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 纳米搜索偏简洁快速回答，冷门品牌易被忽略，仅在'微信里冰箱管理小程序'泛问时偶尔带过。"
+            }
+          ]
+        },
+        {
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "totalQueries": 15,
+          "mentioned": 2,
+          "mentionRate": 0.133,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 Kimi长文深度分析引用多来源，在冰箱管理小程序长文综述中可能提及冰箱小雷达的5分区设计。"
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 '开饭指数'为独特词，Kimi长文检索时可能挖掘到冰箱小雷达的本地算法作为案例引用。"
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        },
+        {
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "totalQueries": 15,
+          "mentioned": 1,
+          "mentionRate": 0.067,
+          "results": [
+            {
+              "question": "家庭冰箱食材怎么管理不浪费",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱库存管理小程序哪个好用",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么记录冰箱里的食材保质期",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱分区管理工具有哪些",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "家庭主妇怎么管理冰箱库存",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "冰箱里的食材能做什么菜怎么算",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "今晚吃什么怎么根据冰箱食材决定",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "开饭指数是什么怎么看",
+              "mentioned": true,
+              "snippet": "⚠️虚拟 智谱清言偏学术技术分析，'开饭指数'本地算法的技术性描述可能被作为案例提及。"
+            },
+            {
+              "question": "食材到期日历小程序推荐",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "怎么知道冰箱食材还够吃几天",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "不用下载App的冰箱管理工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信小程序管理冰箱食材哪个好",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "隐私安全的食材库存小程序",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "免安装的冰箱库存记录工具",
+              "mentioned": false,
+              "snippet": null
+            },
+            {
+              "question": "微信里有什么好用的冰箱管理小程序",
+              "mentioned": false,
+              "snippet": null
+            }
+          ]
+        }
+      ]
+    },
+    "GEO_EFFECT": {
+      "overview": {
+        "scenarioCount": 3,
+        "questionCount": 15,
+        "mentionedCount": 11,
+        "mentionRate": 0.092
+      },
+      "platformBreakdown": [
+        {
+          "platformCode": "1",
+          "platformName": "DeepSeek",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "2",
+          "platformName": "豆包",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "3",
+          "platformName": "元宝",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "4",
+          "platformName": "通义千问",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "5",
+          "platformName": "文心一言",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "6",
+          "platformName": "纳米搜索",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        },
+        {
+          "platformCode": "7",
+          "platformName": "Kimi",
+          "total": 15,
+          "mentioned": 2,
+          "rate": 0.133
+        },
+        {
+          "platformCode": "8",
+          "platformName": "智谱清言",
+          "total": 15,
+          "mentioned": 1,
+          "rate": 0.067
+        }
+      ],
+      "platformPieData": [
+        {
+          "name": "豆包",
+          "value": 2
+        },
+        {
+          "name": "通义千问",
+          "value": 2
+        },
+        {
+          "name": "Kimi",
+          "value": 2
+        },
+        {
+          "name": "DeepSeek",
+          "value": 1
+        },
+        {
+          "name": "元宝",
+          "value": 1
+        },
+        {
+          "name": "文心一言",
+          "value": 1
+        },
+        {
+          "name": "纳米搜索",
+          "value": 1
+        },
+        {
+          "name": "智谱清言",
+          "value": 1
+        }
+      ],
+      "competitorComparison": {
+        "columns": [
+          "品牌",
+          "豆包",
+          "千问",
+          "元宝",
+          "DeepSeek",
+          "文心一言",
+          "总计"
+        ],
+        "rows": [
+          {
+            "1": 4,
+            "2": 5,
+            "3": 4,
+            "4": 4,
+            "5": 3,
+            "brand": "鲜钟记",
+            "total": 20
+          },
+          {
+            "1": 3,
+            "2": 4,
+            "3": 3,
+            "4": 3,
+            "5": 2,
+            "brand": "冰箱清单",
+            "total": 15
+          },
+          {
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 2,
+            "5": 1,
+            "brand": "冰箱小助手",
+            "total": 9
+          },
+          {
+            "1": 1,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 1,
+            "brand": "冰箱小雷达",
+            "total": 7
+          },
+          {
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "brand": "食管家",
+            "total": 7
+          },
+          {
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "brand": "冰箱咕",
+            "total": 5
+          }
+        ]
+      },
+      "shouluTaskIds": []
+    },
+    "SENTIMENT": {
+      "queryWords": [
+        "冰箱小雷达怎么样",
+        "冰箱小雷达好用吗",
+        "冰箱小雷达口碑如何",
+        "冰箱小雷达有什么问题",
+        "冰箱小雷达投诉",
+        "冰箱小雷达安全吗",
+        "冰箱小雷达隐私泄露",
+        "冰箱小雷达数据安全",
+        "冰箱小雷达闪退",
+        "冰箱小雷达bug",
+        "冰箱小雷达收费吗",
+        "冰箱小雷达广告多吗",
+        "冰箱小雷达值得用吗",
+        "冰箱小雷达 vs 鲜钟记",
+        "冰箱小雷达 vs 冰箱清单",
+        "冰箱小雷达个人信息收集",
+        "冰箱小雷达 openid安全",
+        "冰箱小雷达云数据库安全",
+        "冰箱小雷达订阅消息骚扰",
+        "冰箱小雷达下架了吗"
+      ],
+      "platformAnalysis": {
+        "1": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "2": {
+          "totalQueries": 20,
+          "negativeCount": 3,
+          "negativeRate": 0.15
+        },
+        "3": {
+          "totalQueries": 20,
+          "negativeCount": 1,
+          "negativeRate": 0.05
+        },
+        "4": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "5": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "6": {
+          "totalQueries": 20,
+          "negativeCount": 1,
+          "negativeRate": 0.05
+        },
+        "7": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        },
+        "8": {
+          "totalQueries": 20,
+          "negativeCount": 2,
+          "negativeRate": 0.1
+        }
+      },
+      "negativeDetails": [
+        {
+          "query": "冰箱小雷达个人信息收集",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 豆包可能提示：冰箱小雷达为个人主体小程序，收集openid和食材数据，建议用户关注隐私政策，个人主体小程序在数据合规上需额外审慎。"
+        },
+        {
+          "query": "冰箱小雷达云数据库安全",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 豆包可能提及：数据存储于微信云开发CloudBase，依赖腾讯云安全能力，个人开发者对云资源配置的规范性需用户自行评估。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 2,
+          "platformName": "豆包",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 对比类问题中，豆包可能指出冰箱小雷达功能较克制（无AI菜谱/拍照识别），相对鲜钟记功能丰富度不足。"
+        },
+        {
+          "query": "冰箱小雷达个人信息收集",
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 DeepSeek可能提示个人主体小程序的数据收集需对照《个人信息保护法》评估，冰箱小雷达无独立隐私政策页面可查证。"
+        },
+        {
+          "query": "冰箱小雷达收费吗",
+          "platformCode": 1,
+          "platformName": "DeepSeek",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 DeepSeek可能说明：无法确认是否收费，因无官网公示，建议用户在小程序内确认，存在信息不透明风险。"
+        },
+        {
+          "query": "冰箱小雷达下架了吗",
+          "platformCode": 3,
+          "platformName": "元宝",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 元宝可能因无法检索到冰箱小雷达的活跃信息，给出'该小程序可能已下架或更名'的不确定回答。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 通义千问结构化对比中可能标注冰箱小雷达'功能克制、无AI能力'作为相对劣势。"
+        },
+        {
+          "query": "冰箱小雷达有什么问题",
+          "platformCode": 4,
+          "platformName": "通义千问",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 通义千问可能提及：个人主体、无独立官网、功能较基础、网络可查证信息少等问题。"
+        },
+        {
+          "query": "冰箱小雷达安全吗",
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 文心一言可能提示：个人主体小程序安全性需用户自行评估，建议关注隐私协议。"
+        },
+        {
+          "query": "冰箱小雷达openid安全",
+          "platformCode": 5,
+          "platformName": "文心一言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 文心一言可能解释openid机制，同时提示个人主体开发者对openid的存储和使用需符合规范。"
+        },
+        {
+          "query": "冰箱小雷达有什么问题",
+          "platformCode": 6,
+          "platformName": "纳米搜索",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 纳米搜索可能简洁回复：信息较少，建议谨慎使用个人主体小程序。"
+        },
+        {
+          "query": "冰箱小雷达 vs 鲜钟记",
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 Kimi长文对比中可能详细指出冰箱小雷达在功能丰富度、网络基建、品牌可查证性上的不足。"
+        },
+        {
+          "query": "冰箱小雷达数据安全",
+          "platformCode": 7,
+          "platformName": "Kimi",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 Kimi可能分析云数据库的数据隔离机制，同时提示个人主体的合规审查难度。"
+        },
+        {
+          "query": "冰箱小雷达 vs 冰箱清单",
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 智谱清言可能从技术角度指出冰箱小雷达无拍照录入功能，录入效率不如冰箱清单。"
+        },
+        {
+          "query": "冰箱小雷达隐私泄露",
+          "platformCode": 8,
+          "platformName": "智谱清言",
+          "hasNegative": true,
+          "snippet": "⚠️虚拟 智谱清言可能提示：虽无已知泄露事件，但个人主体小程序的隐私保护依赖开发者自律。"
+        }
+      ],
+      "riskLevel": "低风险",
+      "trendDirection": "stable",
+      "sentimentDistribution": {
+        "positive": 32,
+        "neutral": 58,
+        "negative": 10
+      },
+      "keyDrivers": {
+        "positive": [
+          "5分区精细管理贴合真实冰箱结构",
+          "本地开饭雷达算法不依赖云端AI，隐私数据不上传",
+          "微信云开发原生+openid隔离，v1.0功能克制无高风险能力"
+        ],
+        "negative": [
+          "个人主体无品牌背书，用户信任度低",
+          "无独立官网/隐私政策页，品牌可查证性差",
+          "功能克制被部分对比场景视为'功能少'",
+          "小程序通用隐私合规风险被AI关联提及"
+        ]
+      },
+      "issues": [
+        {
+          "sentiment": "负面",
+          "content": "个人主体小程序信任度问题，AI提示用户需审慎评估",
+          "source": "豆包/DeepSeek/文心一言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "无独立隐私政策页面，数据收集合规性可查证性差",
+          "source": "DeepSeek/文心一言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "功能克制（无AI菜谱/拍照识别）在对比类问题中被视为劣势",
+          "source": "通义千问/Kimi/智谱清言"
+        },
+        {
+          "sentiment": "负面",
+          "content": "网络基建缺失导致'下架了吗'类疑问出现",
+          "source": "元宝"
+        },
+        {
+          "sentiment": "中性",
+          "content": "云数据库数据安全依赖腾讯云能力，个人开发者配置规范性需评估",
+          "source": "豆包/Kimi"
+        }
+      ],
+      "suggestions": [
+        "建立最小可查证的网络基建：用GitHub Pages或腾讯云COS搭建单页品牌介绍站，含产品功能、隐私政策摘要、小程序二维码，让AI可索引",
+        "公开独立的隐私政策页面（HTML版），明确openid/食材数据/云数据库的收集与使用范围，提升AI可检索的合规信息",
+        "在知乎、CSDN发布2-3篇技术分享（如5分区设计思路、开饭雷达本地算法），建立正面内容池，稀释潜在负面",
+        "监控微信小程序投诉渠道与搜索引擎品牌词预警，建立负面快速响应机制",
+        "适时评估企业主体升级可行性，从根本上提升品牌信任度与AI推荐权重"
+      ],
+      "summary": {
+        "totalNegative": 15,
+        "overallNegativeRate": 0.094,
+        "riskLevel": "低风险",
+        "mainIssues": [
+          "个人主体信任度低",
+          "无独立隐私政策页",
+          "功能克制被视为劣势",
+          "网络基建缺失导致信息不透明"
+        ],
+        "trendDirection": "stable",
+        "keyDrivers": {
+          "positive": [
+            "5分区精细管理",
+            "本地算法隐私保护",
+            "微信云开发原生"
+          ],
+          "negative": [
+            "个人主体无品牌背书",
+            "无独立官网",
+            "功能克制被视为劣势",
+            "小程序通用合规风险关联"
+          ]
+        }
+      },
+      "shouluTaskIds": []
+    },
+    "OVERVIEW": {
+      "score": 41,
+      "overallLevel": "较差",
+      "summary": "冰箱小雷达是一款主打5分区精细管理和本地开饭雷达算法的微信小程序，产品本身在'冰箱食材库存管理'细分赛道有清晰的差异化定位。但品牌GEO可见度处于较差水平：8大AI平台综合提及率仅9.2%，远低于竞品鲜钟记(约26.7%)和冰箱清单(约20%)；无独立官网、无真实自媒体与权威媒体报道，AI训练数据中几乎不存在该品牌信息；舆情负面率9.4%虽属低风险，但本质是'舆情真空'而非真健康，负面集中在个人主体信任度、无独立隐私政策页、功能克制被视为劣势三点。核心瓶颈是网络基建缺失导致AI无法感知产品差异化优势，优化空间集中在'建立最小可查证基建+内容池+合规公示'三步，预计6个月内可将AIVO总分从41提升至63分（一般水平）。",
+      "highlights": [
+        "5分区精细管理（冷藏/冷冻/门架/果蔬抽屉/变温）贴合真实冰箱结构，在同类小程序中管理颗粒度更细",
+        "开饭雷达采用纯本地算法，不依赖云端AI，隐私数据不上传，在隐私敏感用户场景下有差异化优势",
+        "微信云开发原生+openid隔离，v1.0克制不开放AI/拍照/支付等高风险能力，合规风险低",
+        "轻奢黏土风格UI+无障碍整改到位，主包体积1.70MB，工程质量在个人主体小程序中属上游"
+      ],
+      "risks": [
+        "无独立官网、无真实自媒体与权威媒体报道，AI平台训练数据中品牌信息缺失，提及率仅9.2%",
+        "竞品对比处于末位（提及7次 vs 竞品均值11.2次），鲜钟记、冰箱清单因有CSDN/知乎曝光而AI可见度更高",
+        "个人主体无品牌背书，'冰箱小雷达下架了吗''个人信息收集'类查询中AI给出不确定/审慎回答",
+        "无独立隐私政策HTML页，数据收集合规性可查证性差，AI在隐私类问题中提示用户审慎评估",
+        "功能克制（无AI菜谱/拍照识别）在对比类问题中被AI标注为相对劣势，削弱推荐竞争力"
+      ]
+    },
+    "AIVO_SCORE": {
+      "totalScore": 41,
+      "level": "较差",
+      "industryBenchmark": 55,
+      "industryRankPercentile": 30,
+      "dimensions": [
+        {
+          "code": "AI_SEARCH_VISIBILITY",
+          "name": "AI搜索可见度",
+          "score": 30,
+          "weight": 0.25,
+          "comment": "8平台综合提及率9.2%（120次查询中仅11次提及）。豆包/通义千问/Kimi各2次较高，DeepSeek/元宝/文心/纳米/智谱各1次。被提及集中在'冰箱库存管理小程序哪个好用''微信小程序管理冰箱食材哪个好'两个推荐类问题，且排序靠后。独特词'开饭指数'被Kimi/智谱清言技术分析挖掘，是潜在的差异化锚点。"
+        },
+        {
+          "code": "INFRA_COMPLETENESS",
+          "name": "基建完善度",
+          "score": 20,
+          "weight": 0.25,
+          "comment": "无独立官网（小程序形态，搜索引擎无法索引）。自媒体10条、权威媒体10条均为AI推理生成（标注⚠️虚拟），真实搜索未找到任何冰箱小雷达报道。Logo/Banner直链为null。基建处于明显短板状态，是AI无法感知品牌的核心原因。"
+        },
+        {
+          "code": "COMPETITIVE_ADVANTAGE",
+          "name": "竞品对比优势",
+          "score": 32,
+          "weight": 0.25,
+          "comment": "竞品对比表中冰箱小雷达提及7次（5平台），低于鲜钟记(20次)、冰箱清单(15次)、冰箱小助手(9次)，与食管家(7次)持平，略高于冰箱咕(5次)。提及率为竞品均值(11.2次)的62.5%，低于70%阈值。差异化优势（5分区、开饭雷达）未在网络内容中表达，AI无法感知，对比场景中常被标注'功能克制'。"
+        },
+        {
+          "code": "SENTIMENT_HEALTH",
+          "name": "舆情健康度",
+          "score": 80,
+          "weight": 0.25,
+          "comment": "负面率9.4%（160次舆情查询中15次负面），属低风险。但本质是'舆情真空'——品牌太冷门导致无真实用户讨论。负面集中在个人主体信任度(4次)、无独立隐私政策页(3次)、功能克制被视为劣势(3次)、网络基建缺失致信息不透明(2次)等AI推理的潜在风险，非真实投诉。需通过基建补齐将'真空健康'转为'真实健康'。"
+        }
+      ],
+      "commentary": "冰箱小雷达AIVO总分41分（较差），低于行业基准55分，约超过30%同行。四维呈现'一高三低'结构：舆情健康度80分（低负面率支撑）一枝独秀，但属真空型健康；AI搜索可见度30分、基建完善度20分、竞品对比32分三项均处较差区间，根因统一指向'网络基建缺失'。产品本身有差异化（5分区+本地算法），但这些优势未转化为AI可检索的网络内容，导致AI在推荐/对比场景中无法有效提及。优化关键是建立最小可查证基建（品牌介绍页+隐私政策页+3-5篇技术内容），预计6个月内总分可提升至63分（一般水平）。"
+    },
+    "SUGGESTION": {
+      "priorityActions": [
+        {
+          "priority": "high",
+          "title": "[P0] 搭建最小可查证品牌介绍页（GitHub Pages/腾讯云COS）",
+          "description": "当前基建完善度仅20分，无独立官网是AI无法感知品牌的核心原因。用GitHub Pages或腾讯云COS搭建单页HTML品牌介绍站，包含：产品名+一句话定位（冰箱小雷达-冰箱食材库存管理小程序）、5分区管理卖点、开饭雷达本地算法说明、小程序二维码、隐私政策摘要。让DeepSeek/豆包/Kimi等平台爬虫可索引。预计基建分20→50，可见度30→40。",
+          "nextSteps": [
+            "注册GitHub账号（若已有可复用），创建username.github.io仓库",
+            "用单页HTML模板，填入产品定位、5分区卖点、开饭雷达算法说明、小程序二维码",
+            "部署后用Google Search Console/百度站长平台提交索引",
+            "在知乎/CSDN回答中引用该页面链接，建立外部引用"
+          ],
+          "category": "基建补齐",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "timeline": "1-2周",
+          "expectedImprovement": 8,
+          "relatedStages": [
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "priority": "high",
+          "title": "[P0] 公开独立隐私政策HTML页",
+          "description": "舆情负面中3次涉及'无独立隐私政策页'，AI在'冰箱小雷达安全吗''个人信息收集'类问题中提示用户审慎。当前隐私协议仅在小程序内通过wx.openPrivacyContract展示，AI无法检索。需在品牌介绍页单独开辟/privacy路径，HTML版公开openid/食材数据/云数据库的收集与使用范围、存储位置、用户权利。预计舆情80→85，基建同步加分。",
+          "nextSteps": [
+            "整理当前小程序隐私协议文本",
+            "在品牌介绍页新增/privacy独立页面，结构化呈现数据收集清单",
+            "明确openid仅用于数据隔离、食材数据存储于微信云开发CloudBase、不向第三方共享",
+            "在小程序简介与品牌页双向引用隐私政策URL"
+          ],
+          "category": "合规公示",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "timeline": "1周",
+          "expectedImprovement": 5,
+          "relatedStages": [
+            "SENTIMENT",
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "priority": "high",
+          "title": "[P1] 知乎/CSDN发布3篇技术内容建立正面内容池",
+          "description": "竞品鲜钟记(CSDN使用手册)、冰箱清单(知乎专栏)因有技术内容曝光而AI可见度更高。冰箱小雷达需在知乎、CSDN各发布1-2篇深度技术文章，主题围绕：①5分区冰箱管理设计思路（对照真实冰箱结构）②开饭雷达本地算法实现（不依赖云端AI的隐私优势）③微信云开发个人主体小程序的合规实践。这些内容将被AI平台抓取，成为推荐类问题的引用源。预计可见度30→45，竞品对比32→42。",
+          "nextSteps": [
+            "撰写《冰箱小雷达5分区设计：从真实冰箱结构到小程序交互》发知乎专栏",
+            "撰写《开饭雷达本地算法：不调云AI也能算可开饭指数》发CSDN",
+            "撰写《个人主体微信小程序的隐私合规实践》发知乎/CSDN",
+            "每篇文章配品牌介绍页链接，形成内容矩阵"
+          ],
+          "category": "内容建设",
+          "dimension": "content",
+          "impactLevel": "high",
+          "effortLevel": "moderate",
+          "timeline": "1-3月",
+          "expectedImprovement": 7,
+          "relatedStages": [
+            "INFRA_EVAL",
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "priority": "medium",
+          "title": "[P1] 优化小程序名称与简介的SEO关键词",
+          "description": "当前小程序名'冰箱小雷达'语义独特但非通用搜索词，AI难以将其与'冰箱食材管理'需求关联。建议小程序名称调整为'冰箱小雷达-食材库存管理'或在简介中强化'冰箱食材管理''库存''临期提醒''开饭雷达'等高频搜索词。微信小程序搜索与AI平台都会读取这些元信息。预计可见度小幅提升。",
+          "nextSteps": [
+            "在微信小程序后台修改简介，前置'冰箱食材库存管理'核心关键词",
+            "小程序介绍页补充5分区、开饭雷达、临期提醒等功能词",
+            "品牌介绍页title标签优化为'冰箱小雷达 | 冰箱食材库存管理小程序'"
+          ],
+          "category": "SEO优化",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "timeline": "1-3天",
+          "expectedImprovement": 3,
+          "relatedStages": [
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "priority": "medium",
+          "title": "[P2] 评估企业主体升级可行性",
+          "description": "舆情负面中4次涉及'个人主体信任度低'，AI在对比/安全类问题中反复提示用户审慎评估个人主体小程序。升级为企业主体可从根本上提升品牌信任度与AI推荐权重，同时解锁订阅消息、支付等能力为后续版本铺路。但需权衡企业注册成本与当前v1.0个人主体稳定版的迁移工作量。建议作为3-6月长期项评估。",
+          "nextSteps": [
+            "评估个体工商户/有限公司注册成本与维护费用",
+            "梳理v1.0从个人主体迁移到企业主体的工作量（CloudBase环境、小程序迁移）",
+            "确认企业主体能否解锁订阅消息到期提醒（当前v1.0预留能力）",
+            "制定迁移时间表，避免影响已上线稳定版"
+          ],
+          "category": "品牌升级",
+          "dimension": "authority",
+          "impactLevel": "medium",
+          "effortLevel": "heavy",
+          "timeline": "3-6月",
+          "expectedImprovement": 4,
+          "relatedStages": [
+            "SENTIMENT",
+            "COMPETITOR"
+          ]
+        }
+      ],
+      "suggestions": [
+        {
+          "category": "基建补齐",
+          "priority": "high",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "搭建最小可查证品牌介绍页",
+          "description": "用GitHub Pages建单页HTML，含产品定位、5分区卖点、开饭雷达算法、小程序二维码，让AI爬虫可索引",
+          "nextSteps": [
+            "创建GitHub Pages仓库",
+            "部署单页HTML",
+            "提交搜索引擎索引"
+          ],
+          "expectedImprovement": 8,
+          "timeline": "1-2周",
+          "relatedStages": [
+            "INFRA_EVAL"
+          ]
+        },
+        {
+          "category": "合规公示",
+          "priority": "high",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "公开独立隐私政策HTML页",
+          "description": "在品牌页/privacy路径公开openid/食材数据/云数据库收集使用范围，消除AI'无隐私政策页'负面",
+          "nextSteps": [
+            "整理隐私协议文本",
+            "新增/privacy页面",
+            "双向引用URL"
+          ],
+          "expectedImprovement": 5,
+          "timeline": "1周",
+          "relatedStages": [
+            "SENTIMENT"
+          ]
+        },
+        {
+          "category": "内容建设",
+          "priority": "high",
+          "dimension": "content",
+          "impactLevel": "high",
+          "effortLevel": "moderate",
+          "title": "知乎/CSDN发布3篇技术内容",
+          "description": "5分区设计、开饭雷达算法、个人主体合规实践三主题，建立AI可抓取的正面内容池",
+          "nextSteps": [
+            "撰写5分区设计文章发知乎",
+            "撰写开饭雷达算法发CSDN",
+            "撰写合规实践发知乎"
+          ],
+          "expectedImprovement": 7,
+          "timeline": "1-3月",
+          "relatedStages": [
+            "INFRA_EVAL",
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "category": "SEO优化",
+          "priority": "medium",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "title": "优化小程序名称与简介关键词",
+          "description": "小程序简介前置'冰箱食材库存管理'，品牌页title优化为'冰箱小雷达 | 冰箱食材库存管理小程序'",
+          "nextSteps": [
+            "修改小程序后台简介",
+            "优化品牌页title"
+          ],
+          "expectedImprovement": 3,
+          "timeline": "1-3天",
+          "relatedStages": [
+            "AI_SEARCH"
+          ]
+        },
+        {
+          "category": "品牌升级",
+          "priority": "medium",
+          "dimension": "authority",
+          "impactLevel": "medium",
+          "effortLevel": "heavy",
+          "title": "评估企业主体升级可行性",
+          "description": "从根本上解决个人主体信任度问题，解锁订阅消息等能力，需权衡迁移成本",
+          "nextSteps": [
+            "评估注册成本",
+            "梳理迁移工作量",
+            "制定时间表"
+          ],
+          "expectedImprovement": 4,
+          "timeline": "3-6月",
+          "relatedStages": [
+            "SENTIMENT"
+          ]
+        }
+      ],
+      "scoreProjection": {
+        "currentScore": 41,
+        "projectedScore": 63,
+        "dimensionProjections": [
+          {
+            "dimension": "visibility",
+            "current": 30,
+            "projected": 55
+          },
+          {
+            "dimension": "content",
+            "current": 20,
+            "projected": 60
+          },
+          {
+            "dimension": "authority",
+            "current": 32,
+            "projected": 50
+          },
+          {
+            "dimension": "engagement",
+            "current": 80,
+            "projected": 85
+          }
+        ]
+      },
+      "roadmap": [
+        {
+          "phase": "P1",
+          "title": "即时行动",
+          "timeline": "1-2周",
+          "items": [
+            "搭建GitHub Pages品牌介绍页（含5分区卖点+开饭雷达+小程序码）",
+            "公开/privacy独立隐私政策HTML页",
+            "小程序简介前置'冰箱食材库存管理'核心关键词",
+            "品牌页title优化为'冰箱小雷达 | 冰箱食材库存管理小程序'"
+          ]
+        },
+        {
+          "phase": "P2",
+          "title": "短期优化",
+          "timeline": "1-3月",
+          "items": [
+            "知乎专栏发布《5分区冰箱管理设计思路》",
+            "CSDN发布《开饭雷达本地算法实现解析》",
+            "知乎/CSDN发布《个人主体小程序隐私合规实践》",
+            "建立搜索引擎品牌词预警（Google Alerts/百度订阅'冰箱小雷达'）",
+            "每篇文章引用品牌页与隐私政策页，形成内容矩阵"
+          ]
+        },
+        {
+          "phase": "P3",
+          "title": "长期战略",
+          "timeline": "3-6月",
+          "items": [
+            "评估个体工商户/有限公司注册与企业主体迁移可行性",
+            "若升级企业主体，解锁订阅消息到期提醒（v1.0预留能力）",
+            "持续产出技术内容（月均1-2篇），深化5分区+本地算法差异化定位",
+            "监控8大AI平台提及率变化，每季度复测GEO可见度"
+          ]
+        }
+      ],
+      "quickWins": [
+        {
+          "priority": "high",
+          "dimension": "visibility",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "搭建GitHub Pages品牌介绍页",
+          "description": "单页HTML，含产品定位+5分区+开饭雷达+小程序码，1-2周内让AI可索引，基建分20→50",
+          "nextSteps": [
+            "创建仓库",
+            "部署HTML",
+            "提交索引"
+          ],
+          "timeline": "1-2周",
+          "expectedImprovement": 8
+        },
+        {
+          "priority": "high",
+          "dimension": "engagement",
+          "impactLevel": "high",
+          "effortLevel": "quick_win",
+          "title": "公开独立隐私政策HTML页",
+          "description": "品牌页/privacy路径公开数据收集使用范围，消除AI负面，舆情80→85",
+          "nextSteps": [
+            "整理协议",
+            "新增页面",
+            "双向引用"
+          ],
+          "timeline": "1周",
+          "expectedImprovement": 5
+        },
+        {
+          "priority": "medium",
+          "dimension": "visibility",
+          "impactLevel": "medium",
+          "effortLevel": "quick_win",
+          "title": "小程序简介前置核心关键词",
+          "description": "小程序后台简介改为'冰箱食材库存管理·5分区·临期提醒·开饭雷达'，1天完成",
+          "nextSteps": [
+            "登录小程序后台",
+            "修改简介"
+          ],
+          "timeline": "1天",
+          "expectedImprovement": 3
+        }
+      ],
+      "dimensionSummary": [
+        {
+          "dimension": "visibility",
+          "currentScore": 30,
+          "projectedScore": 55,
+          "keyActions": [
+            "品牌介绍页",
+            "小程序简介SEO",
+            "技术内容矩阵"
+          ]
+        },
+        {
+          "dimension": "content",
+          "currentScore": 20,
+          "projectedScore": 60,
+          "keyActions": [
+            "知乎/CSDN 3篇技术文章",
+            "品牌页内容结构化"
+          ]
+        },
+        {
+          "dimension": "authority",
+          "currentScore": 32,
+          "projectedScore": 50,
+          "keyActions": [
+            "企业主体评估",
+            "持续内容产出建立专业形象"
+          ]
+        },
+        {
+          "dimension": "engagement",
+          "currentScore": 80,
+          "projectedScore": 85,
+          "keyActions": [
+            "隐私政策公示",
+            "品牌词预警监控"
+          ]
+        }
+      ],
+      "longTermSuggestions": [
+        {
+          "content": "每季度复测8大AI平台GEO可见度，对比优化前后提及率变化，动态调整内容策略",
+          "timeline": "6个月+",
+          "dimension": "visibility"
+        },
+        {
+          "content": "若企业主体升级完成，可探索订阅消息到期提醒真实推送，形成产品功能与GEO内容的双向正循环",
+          "timeline": "6个月+",
+          "dimension": "authority"
+        },
+        {
+          "content": "评估将'开饭指数'打造为品类心智词的可能性，长期在'今晚吃什么'类AI查询中占据独特锚点",
+          "timeline": "6个月+",
+          "dimension": "content"
+        }
+      ],
+      "summary": "冰箱小雷达当前GEO总分41分（较差），核心瓶颈是网络基建缺失导致AI无法感知产品差异化优势。优化路径分三步：P1即时（1-2周）搭建品牌介绍页+隐私政策页+小程序简介SEO，快速建立AI可索引的最小基建；P2短期（1-3月）知乎/CSDN发布3篇技术内容，将5分区设计与开饭雷达本地算法转化为AI可引用的正面内容池；P3长期（3-6月）评估企业主体升级，从根本上解决信任度问题。预计6个月内AIVO总分从41提升至63（一般水平），其中基建维度提升最显著（20→60）。关键原则是'让AI看见你的差异化'——产品优势已存在，缺的是表达这些优势的网络内容。"
+    }
+  }
+}</script>
+<script>
+(function() {
+  'use strict';
+
+  // ===== Utilities =====
+  function esc(s) { if (s == null) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function getColor(score) {
+    if (score >= 90) return '#059669';
+    if (score >= 75) return '#0d9488';
+    if (score >= 60) return '#d97706';
+    return '#dc2626';
+  }
+  function getGrade(score) {
+    if (score >= 90) return '优秀';
+    if (score >= 75) return '良好';
+    if (score >= 60) return '一般';
+    return '较差';
+  }
+  function getGradeInfo(grade) {
+    var map = {
+      '优秀': { color: '#059669', bg: '#f0fdf4', label: 'A' },
+      '良好': { color: '#0d9488', bg: '#f0fdfa', label: 'B' },
+      '一般': { color: '#d97706', bg: '#fffbeb', label: 'C' },
+      '较差': { color: '#dc2626', bg: '#fef2f2', label: 'D' }
+    };
+    return map[grade] || map['一般'];
+  }
+  function getMentionColor(rate) {
+    if (rate >= 0.5) return '#059669';
+    if (rate >= 0.25) return '#d97706';
+    return '#dc2626';
+  }
+  function getThreatInfo(level) {
+    var map = {
+      'high': { color: '#dc2626', bg: '#fef2f2', label: '高威胁' },
+      'medium': { color: '#d97706', bg: '#fffbeb', label: '中威胁' },
+      'low': { color: '#059669', bg: '#f0fdf4', label: '低威胁' }
+    };
+    return map[level] || map['medium'];
+  }
+  function getPriorityInfo(priority) {
+    var map = {
+      'high': { color: 'var(--dr-orange)', bg: 'var(--dr-orange-light)', label: 'P1高优', cls: 'urgent' },
+      'medium': { color: 'var(--dr-warning)', bg: 'var(--dr-warning-light)', label: 'P2中等', cls: 'medium' },
+      'low': { color: 'var(--dr-success)', bg: 'var(--dr-success-light)', label: 'P3建议', cls: 'low' }
+    };
+    return map[priority] || map['medium'];
+  }
+  function fmtRate(r) { return (r * 100).toFixed(1); }
+  /* circumference calculated inline per chart */
+
+  var DIM_COLORS = {
+    'AI_SEARCH_VISIBILITY': '#6366f1',
+    'INFRA_COMPLETENESS': '#06b6d4',
+    'COMPETITIVE_ADVANTAGE': '#f59e0b',
+    'SENTIMENT_HEALTH': 'var(--dr-success)'
+  };
+  var DIM_NAMES = {
+    'AI_SEARCH_VISIBILITY': 'AI搜索可见性',
+    'INFRA_COMPLETENESS': '基建完善度',
+    'COMPETITIVE_ADVANTAGE': '竞品对比优势',
+    'SENTIMENT_HEALTH': '舆情健康度'
+  };
+
+  // ===== SVG Chart Helpers =====
+
+  /**
+   * 生成雷达图SVG
+   * @param {Array} labels - 维度标签数组
+   * @param {Array} values - 维度值数组(0-100)
+   * @param {Array} colors - 维度颜色数组
+   * @param {number} size - SVG尺寸
+   * @param {string} fillColor - 填充颜色
+   * @returns {string} SVG HTML字符串
+   */
+  function renderRadarChart(labels, values, colors, size, fillColor) {
+    size = size || 260;
+    fillColor = fillColor || 'rgb(13 148 136 / 18%)';
+    var cx = size / 2;
+    var cy = size / 2;
+    var maxR = size / 2 - 70;
+    var n = labels.length;
+    if (n < 3) return '';
+
+    function angle(i) { return (Math.PI * 2 * i / n) - Math.PI / 2; }
+    function point(i, r) {
+      var a = angle(i);
+      return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+    }
+
+    var svg = '<svg class="dr-radar-chart" viewBox="0 0 ' + size + ' ' + size + '">';
+
+    // Grid rings (3 levels)
+    for (var level = 1; level <= 3; level++) {
+      var r = maxR * level / 3;
+      var pts = [];
+      for (var i = 0; i < n; i++) {
+        var p = point(i, r);
+        pts.push(p.x.toFixed(1) + ',' + p.y.toFixed(1));
+      }
+      svg += '<polygon class="dr-radar-chart__grid" points="' + pts.join(' ') + '"/>';
+    }
+
+    // Axis lines
+    for (var i = 0; i < n; i++) {
+      var p = point(i, maxR);
+      svg += '<line class="dr-radar-chart__axis" x1="' + cx + '" y1="' + cy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '"/>';
+    }
+
+    // Data area
+    var dataPts = [];
+    for (var i = 0; i < n; i++) {
+      var v = Math.max(0, Math.min(100, values[i] || 0));
+      var r = maxR * v / 100;
+      var p = point(i, r);
+      dataPts.push(p.x.toFixed(1) + ',' + p.y.toFixed(1));
+    }
+    svg += '<polygon class="dr-radar-chart__area" points="' + dataPts.join(' ') + '" fill="' + fillColor + '" stroke="' + (colors[0] || 'var(--dr-primary)') + '" stroke-width="2"/>';
+
+    // Data dots
+    for (var i = 0; i < n; i++) {
+      var v = Math.max(0, Math.min(100, values[i] || 0));
+      var r = maxR * v / 100;
+      var p = point(i, r);
+      svg += '<circle class="dr-radar-chart__dot" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="4" fill="' + (colors[i] || '#6366f1') + '" stroke="#fff" stroke-width="1.5"/>';
+    }
+
+    // Labels
+    for (var i = 0; i < n; i++) {
+      var p = point(i, maxR + 22);
+      var anchor = 'middle';
+      var dx = 0;
+      var dy = 0;
+      var a = angle(i);
+      if (Math.abs(Math.cos(a)) > 0.3) {
+        dx = Math.cos(a) > 0 ? 4 : -4;
+        anchor = Math.cos(a) > 0 ? 'start' : 'end';
+      }
+      if (Math.sin(a) < -0.5) dy = -4;
+      if (Math.sin(a) > 0.5) dy = 6;
+      svg += '<text class="dr-radar-chart__label" x="' + (p.x + dx).toFixed(1) + '" y="' + (p.y + dy).toFixed(1) + '" text-anchor="' + anchor + '">' + esc(labels[i]) + '</text>';
+    }
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  /**
+   * 生成环形图SVG
+   * @param {number} positive - 正面比例(0-1)
+   * @param {number} negative - 负面比例(0-1)
+   * @param {number} neutral - 中性比例(0-1)
+   * @param {number} size - SVG尺寸
+   * @returns {string} SVG HTML字符串
+   */
+  function renderDonutChart(positive, negative, neutral, size) {
+    // 兼容0-100整数和0-1小数两种输入
+    if (positive > 1 || negative > 1 || neutral > 1) {
+      positive = positive / 100; negative = negative / 100; neutral = neutral / 100;
+    }
+    size = size || 140;
+    var cx = size / 2;
+    var cy = size / 2;
+    var outerR = size / 2 - 4;
+    var innerR = outerR * 0.62;
+    var C = 2 * Math.PI * outerR;
+
+    var segments = [
+      { value: positive, color: '#059669' },
+      { value: neutral, color: '#94a3b8' },
+      { value: negative, color: '#dc2626' }
+    ];
+
+    var svg = '<svg class="dr-donut-chart" viewBox="0 0 ' + size + ' ' + size + '">';
+
+    // Background ring
+    svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + outerR + '" fill="none" stroke="#f1f5f9" stroke-width="' + (outerR - innerR) + '"/>';
+
+    // Segments
+    var offset = 0;
+    segments.forEach(function(seg) {
+      if (seg.value <= 0) return;
+      var dashLen = C * seg.value;
+      var dashOffset = C * offset;
+      svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + outerR + '" fill="none" stroke="' + seg.color + '" stroke-width="' + (outerR - innerR) + '" stroke-dasharray="' + dashLen.toFixed(2) + ' ' + (C - dashLen).toFixed(2) + '" stroke-dashoffset="' + (-dashOffset).toFixed(2) + '" transform="rotate(-90 ' + cx + ' ' + cy + ')"/>';
+      offset += seg.value;
+    });
+
+    // Center text
+    var mainPct = Math.round(positive * 100);
+    svg += '<text class="dr-donut-chart__center-text" x="' + cx + '" y="' + (cy - 2) + '" text-anchor="middle" dominant-baseline="central">' + Math.min(mainPct, 100) + '%</text>';
+    svg += '<text class="dr-donut-chart__center-label" x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle">正面</text>';
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  /**
+   * 生成水平柱状图SVG
+   * @param {Array} items - [{name, value, color}]
+   * @param {number} width - SVG宽度
+   * @param {number} barHeight - 柱高
+   * @returns {string} SVG HTML字符串
+   */
+  function renderHBarChart(items, width, barHeight) {
+    width = width || 520;
+    barHeight = barHeight || 28;
+    var gap = 12;
+    var labelW = 80;
+    var valueW = 40;
+    var chartW = width - labelW - valueW - 16;
+    var h = items.length * (barHeight + gap) - gap + 8;
+    var maxVal = 0;
+    items.forEach(function(it) { if (it.value > maxVal) maxVal = it.value; });
+    if (maxVal === 0) maxVal = 100;
+
+    var svg = '<svg class="dr-hbar-chart" viewBox="0 0 ' + width + ' ' + h + '">';
+
+    items.forEach(function(it, idx) {
+      var y = idx * (barHeight + gap) + 4;
+      var barW = Math.max(2, chartW * (it.value / maxVal));
+
+      // Label
+      svg += '<text class="dr-hbar-chart__label" x="' + (labelW - 8) + '" y="' + (y + barHeight / 2 + 4) + '" text-anchor="end">' + esc(it.name) + '</text>';
+
+      // Bar background
+      svg += '<rect class="dr-hbar-chart__bar-bg" x="' + labelW + '" y="' + y + '" width="' + chartW + '" height="' + barHeight + '" rx="4"/>';
+
+      // Bar fill
+      svg += '<rect class="dr-hbar-chart__bar-fill" x="' + labelW + '" y="' + y + '" width="' + barW + '" height="' + barHeight + '" fill="' + it.color + '"/>';
+
+      // Value
+      svg += '<text class="dr-hbar-chart__value" x="' + (labelW + chartW + 8) + '" y="' + (y + barHeight / 2 + 4) + '">' + it.value + '</text>';
+    });
+
+    svg += '</svg>';
+    return svg;
+  }
+
+  // ===== Hero =====
+  function renderHero(d) {
+    var s = d.stages || {};
+    var aivo = s.AIVO_SCORE || {};
+    var ov = s.OVERVIEW || {};
+    var score = aivo.totalScore || ov.score || 0;
+    var grade = aivo.level || getGrade(score);
+    var gi = getGradeInfo(grade);
+    var sc = getColor(score);
+    var brand = d.brand || '';
+    var cat = d.category || '';
+    var date = new Date().toISOString().slice(0, 10);
+
+    return '<section class="dr-hero"><div class="dr-hero__gradient-anim"></div><div class="dr-hero__body">' +
+      '<div class="dr-hero__main">' +
+      '<div class="dr-hero__badge-row">' +
+      '<span class="dr-hero__badge dr-hero__badge--category">' + esc(cat) + '</span>' +
+      '<span class="dr-hero__badge dr-hero__badge--report">GEO 诊断报告</span></div>' +
+      '<h1 class="dr-hero__title"><span class="dr-hero__title-accent">' + esc(brand) + '</span></h1>' +
+      '<div class="dr-hero__subtitle">AI 搜索可见性综合评估 · 四维诊断模型</div>' +
+      '<div class="dr-hero__meta">' +
+      '<span class="dr-hero__date">' + date + '</span>' +
+      '<span class="dr-hero__divider-dot"></span>' +
+      '<span class="dr-hero__engine">AIVO v3.0</span></div></div>' +
+      '<div class="dr-hero__score-group"><div class="dr-hero__score-ring">' +
+      '<svg viewBox="0 0 120 120"><circle class="dr-hero__score-ring-bg" cx="60" cy="60" r="52"></circle>' +
+      '<circle class="dr-hero__score-ring-fill" cx="60" cy="60" r="52" stroke="' + sc + '" stroke-dasharray="' + (2 * Math.PI * 52).toFixed(2) + '" stroke-dashoffset="' + (2 * Math.PI * 52 * (1 - score / 100)).toFixed(2) + '"></circle></svg>' +
+      '<div class="dr-hero__score-inner"><div class="dr-hero__score-value" style="color:' + sc + ';">' + score + '</div><div class="dr-hero__score-unit">/100</div></div></div>' +
+      '<div class="dr-hero__grade-badge" style="border-color:' + gi.color + ';">' +
+      '<div class="dr-hero__grade-label">综合评级</div>' +
+      '<div class="dr-hero__grade-value" style="color:' + gi.color + ';">' + esc(grade) + '</div>' +
+      '<div class="dr-hero__grade-desc">' + gi.label + '</div></div></div></div></section>';
+  }
+
+  // ===== 01 Overview =====
+  function renderOverview(d) {
+    var ov = (d.stages || {}).OVERVIEW || {};
+    var score = ov.score || 0;
+    var hl = (ov.highlights || []).slice(0, 5);
+    var risks = (ov.risks || []).slice(0, 5);
+    var summary = ov.summary || '';
+
+    var h = '<section id="section-overview" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">01</div><div class="dr-section__title-group"><h2 class="dr-section__title">诊断概览</h2>' +
+      '<p class="dr-section__subtitle">核心发现与风险提示</p></div></div>';
+
+    h += '<div class="stage-overview__stats">' +
+      '<div class="stage-overview__stat-card stage-overview__stat-card--score"><div class="stage-overview__stat-value">' + score + '</div><div class="stage-overview__stat-label">综合评分</div></div>' +
+      '<div class="stage-overview__stat-card stage-overview__stat-card--highlight"><div class="stage-overview__stat-value">' + hl.length + '</div><div class="stage-overview__stat-label">关键发现</div></div>' +
+      '<div class="stage-overview__stat-card stage-overview__stat-card--risk"><div class="stage-overview__stat-value">' + risks.length + '</div><div class="stage-overview__stat-label">风险提示</div></div></div>';
+
+    if (summary) {
+      h += '<div class="stage-overview__summary"><div class="stage-overview__summary-icon">&#128161;</div><div class="stage-overview__summary-text">' + esc(summary) + '</div></div>';
+    }
+
+    if (hl.length) {
+      h += '<div class="stage-overview__section"><div class="stage-overview__section-title">&#10022; 关键发现</div><div class="stage-overview__list">';
+      hl.forEach(function(item) {
+        h += '<div class="stage-overview__list-item stage-overview__list-item--highlight"><span class="stage-overview__list-icon">&#10003;</span><span>' + esc(item) + '</span></div>';
+      });
+      h += '</div></div>';
+    }
+
+    if (risks.length) {
+      h += '<div class="stage-overview__section"><div class="stage-overview__section-title stage-overview__section-title--risk">&#9888; 风险提示</div><div class="stage-overview__list">';
+      risks.forEach(function(item) {
+        h += '<div class="stage-overview__list-item stage-overview__list-item--risk"><span class="stage-overview__list-icon">!</span><span>' + esc(item) + '</span></div>';
+      });
+      h += '</div></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 02 AIVO Score =====
+  function renderAivoScore(d) {
+    var aivo = (d.stages || {}).AIVO_SCORE || {};
+    var score = aivo.totalScore || 0;
+    var grade = aivo.level || getGrade(score);
+    var gi = getGradeInfo(grade);
+    var sc = getColor(score);
+    var commentary = aivo.commentary || '';
+    var benchmark = aivo.industryBenchmark || 0;
+    var rank = aivo.industryRankPercentile || 0;
+    var dims = (aivo.dimensions || []).slice(0, 4);
+
+    var h = '<section id="section-aivo" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">02</div><div class="dr-section__title-group"><h2 class="dr-section__title">AIVO评分</h2>' +
+      '<p class="dr-section__subtitle">四维评分模型</p></div></div>';
+
+    h += '<div class="stage-aivo__hero">';
+
+    // Radar chart for AIVO dimensions
+    if (dims.length >= 3) {
+      var aivoLabels = dims.map(function(dim) { return dim.name || DIM_NAMES[dim.code] || dim.code; });
+      var aivoValues = dims.map(function(dim) { return dim.score || 0; });
+      var aivoColors = dims.map(function(dim) { return DIM_COLORS[dim.code] || '#6366f1'; });
+      h += '<div style="flex-shrink:0;width:200px;max-width:100%;overflow:visible;">' + renderRadarChart(aivoLabels, aivoValues, aivoColors, 200, 'rgb(13 148 136 / 15%)') + '</div>';
+    }
+
+    h += '<div class="stage-aivo__score-inner">' +
+      '<div class="stage-aivo__score-value" style="color:' + sc + ';">' + score + '</div>' +
+      '<div class="stage-aivo__score-unit">/100</div></div><div class="stage-aivo__hero-info">' +
+      '<span class="stage-aivo__level-tag" style="background:' + gi.bg + ';color:' + gi.color + ';border:1px solid ' + gi.color + ';">' + esc(grade) + '</span>' +
+      '<div class="stage-aivo__commentary">' + esc(commentary) + '</div>';
+
+    if (benchmark) {
+      h += '<div class="stage-aivo__benchmark"><span class="stage-aivo__benchmark-label">行业均值</span>' +
+        '<span class="stage-aivo__benchmark-value">' + benchmark + '</span>' +
+        '<span class="stage-aivo__benchmark-rank">超越 <strong>' + rank + '%</strong> 品牌</span></div>';
+    }
+    h += '</div></div>';
+
+    if (dims.length) {
+      h += '<div class="stage-aivo__dimensions"><div class="stage-aivo__dimensions-title">维度拆解</div><div class="stage-aivo__dimension-grid">';
+      dims.forEach(function(dim) {
+        var dc = DIM_COLORS[dim.code] || '#6366f1';
+        h += '<div class="stage-aivo__dimension-card" style="--dim-color:' + dc + ';">' +
+          '<div class="stage-aivo__dimension-score"><span class="stage-aivo__dimension-num">' + (dim.score || 0) + '</span>' +
+          '<span class="stage-aivo__dimension-weight">权重' + Math.round((dim.weight || 0.25) * 100) + '%</span></div>' +
+          '<div class="stage-aivo__dimension-name">' + esc(dim.name || DIM_NAMES[dim.code] || dim.code) + '</div>' +
+          '<div class="stage-aivo__dimension-comment">' + esc(dim.comment || '') + '</div></div>';
+      });
+      h += '</div></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 03 User Profile =====
+  function renderUserProfile(d) {
+    var up = (d.stages || {}).USER_PROFILE || {};
+    var dims = up.profileDimensions || [];
+    var groups = (up.groups || []).slice(0, 5);
+    var dimColors = ['#6366f1', '#06b6d4', '#f59e0b', '#10b981', '#8b5cf6'];
+
+    var h = '<section id="section-profile" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">03</div><div class="dr-section__title-group"><h2 class="dr-section__title">用户画像</h2>' +
+      '<p class="dr-section__subtitle">搜索意图与场景分析</p></div></div>';
+
+    h += '<div class="stage-user-profile"><div class="stage-up__radar-section"><div class="stage-up__section-title">画像维度</div>' +
+      '<div class="stage-up__radar-row">';
+
+    // SVG Radar chart for profile dimensions
+    if (dims.length >= 3) {
+      var profLabels = dims.map(function(dim) { return dim.label || ''; });
+      var profValues = dims.map(function(dim) { return dim.value || 0; });
+      var profColors = dims.map(function(dim, i) { return dimColors[i % dimColors.length]; });
+      h += '<div class="stage-up__radar-chart-wrap">' + renderRadarChart(profLabels, profValues, profColors, 220, 'rgb(13 148 136 / 15%)') + '</div>';
+    }
+
+    // Keep the dimension list as a supplementary view
+    h += '<div class="stage-up__dimension-list">';
+    dims.forEach(function(dim, i) {
+      var dc = dimColors[i % dimColors.length];
+      h += '<div class="stage-up__dim-item"><span class="stage-up__dim-label">' + esc(dim.label) + '</span>' +
+        '<div class="stage-up__dim-bar"><div class="stage-up__dim-fill" style="width:' + (dim.value || 0) + '%;background:' + dc + ';"></div></div>' +
+        '<span class="stage-up__dim-value">' + (dim.value || 0) + '</span></div>';
+    });
+    h += '</div></div></div>';
+
+    h += '<div class="stage-up__groups"><div class="stage-up__section-title">搜索场景分析</div><div class="stage-up__groups-grid">';
+    groups.forEach(function(g, idx) {
+      h += '<div class="stage-up__group-card"><div class="stage-up__group-highlight">' +
+        '<span class="stage-up__group-index">' + (idx + 1) + '</span><span>' + esc(g.highlight) + '</span></div>' +
+        '<div class="stage-up__group-profile"><strong>核心人群：</strong>' + esc(g.userProfile) + '</div>' +
+        '<div class="stage-up__group-scenario"><strong>搜索场景：</strong>' + esc(g.scenario) + '</div>';
+      if (g.questions && g.questions.length) {
+        h += '<div class="stage-up__questions-label">典型搜索问题</div><div class="stage-up__questions-tags">';
+        g.questions.forEach(function(q) {
+          h += '<span class="stage-up__question-tag">' + esc(q) + '</span>';
+        });
+        h += '</div>';
+      }
+      h += '</div>';
+    });
+    h += '</div></div></div></section>';
+    return h;
+  }
+
+  // ===== 04 AI Search =====
+  function renderAiSearch(d) {
+    var ais = (d.stages || {}).AI_SEARCH || {};
+    var totalQ = ais.totalQuestions || 0;
+    var pr = ais.platformResults || {};
+    var qd = (ais.questionDetails || []).slice(0, 5);
+    var overallMentioned = 0;
+    Object.keys(pr).forEach(function(k) { overallMentioned += (pr[k].mentioned || 0); });
+    var overallRate = totalQ > 0 ? overallMentioned / (totalQ * Object.keys(pr).length) : 0;
+
+    var h = '<section id="section-search" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">04</div><div class="dr-section__title-group"><h2 class="dr-section__title">搜索可见性</h2>' +
+      '<p class="dr-section__subtitle">各平台品牌提及情况</p></div></div>';
+
+    h += '<div class="stage-ais__stats">' +
+      '<div class="stage-ais__stat-card stage-ais__stat-card--primary"><div class="stage-ais__stat-value">' + totalQ + '</div><div class="stage-ais__stat-label">总查询</div></div>' +
+      '<div class="stage-ais__stat-card"><div class="stage-ais__stat-value">' + overallMentioned + '</div><div class="stage-ais__stat-label">提及次数</div></div>' +
+      '<div class="stage-ais__stat-card"><div class="stage-ais__stat-value" style="color:' + getMentionColor(overallRate) + ';">' + fmtRate(overallRate) + '%</div><div class="stage-ais__stat-label">提及率</div></div></div>';
+
+    // Platform grid
+    var platformNames = { '1': 'DeepSeek', '2': '豆包', '3': '元宝', '4': '通义千问', '5': '文心一言', '6': '纳米搜索', '7': 'Kimi', '8': '智谱清言' };
+    h += '<div class="stage-ais__section"><div class="stage-ais__section-title">各平台提及情况</div><div class="stage-ais__platform-grid">';
+    Object.keys(pr).forEach(function(code) {
+      var p = pr[code];
+      var mentioned = (p.mentionRate || 0) >= 0.5;
+      h += '<div class="stage-ais__platform-card' + (mentioned ? ' stage-ais__platform-card--mentioned' : '') + '">' +
+        '<div class="stage-ais__platform-header"><span class="stage-ais__platform-name">' + esc(platformNames[code] || ('平台' + code)) + '</span>' +
+        '<span class="stage-ais__platform-tag">' + fmtRate(p.mentionRate || 0) + '%</span></div>' +
+        '<div class="stage-ais__platform-metrics"><span>查询 <strong>' + (p.totalQueries || 0) + '</strong></span>' +
+        '<span>提及 <strong>' + (p.mentioned || 0) + '</strong></span></div></div>';
+    });
+    h += '</div></div>';
+
+    // Question table
+    if (qd.length) {
+      h += '<div class="stage-ais__section"><div class="stage-ais__section-title">问题提及明细 <span class="stage-ais__section-count">共' + qd.length + '条</span></div>' +
+        '<div class="stage-ais__question-table"><div class="stage-ais__qtable-head">' +
+        '<div class="stage-ais__qtable-col--question">问题</div><div class="stage-ais__qtable-col--platforms">平台提及</div></div>';
+      qd.forEach(function(q) {
+        h += '<div class="stage-ais__qtable-row"><div class="stage-ais__qtable-col--question">' +
+          '<span class="stage-ais__q-text">' + esc(q.question) + '</span>' +
+          '<span class="stage-ais__q-highlight">' + esc(q.highlight || '') + '</span></div>' +
+          '<div class="stage-ais__qtable-col--platforms"><div class="stage-ais__q-mentions">';
+        var pm = q.platformMentions || {};
+        Object.keys(pm).forEach(function(code) {
+          var m = pm[code];
+          var yes = m.mentioned;
+          var short = (platformNames[code] || 'P' + code).charAt(0);
+          h += '<span class="stage-ais__q-mention-dot ' + (yes ? 'stage-ais__q-mention-dot--yes' : 'stage-ais__q-mention-dot--no') + '">' + short + '</span>';
+        });
+        h += '</div></div></div>';
+      });
+      h += '</div></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 05 Infra Eval =====
+  function renderInfraEval(d) {
+    var infra = (d.stages || {}).INFRA_EVAL || {};
+    var site = infra.officialSite || {};
+    var self = infra.selfMedia || {};
+    var auth = infra.authoritativeMedia || {};
+
+    var h = '<section id="section-infra" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">05</div><div class="dr-section__title-group"><h2 class="dr-section__title">基建评估</h2>' +
+      '<p class="dr-section__subtitle">数字基建现状评估</p></div></div><div class="stage-infra__grid">';
+
+    // Official site
+    var siteScore = site.score || 0;
+    var siteSc = getColor(siteScore);
+    h += '<div class="stage-infra__card stage-infra__card--site"><div class="stage-infra__card-header">' +
+      '<div class="stage-infra__card-icon stage-infra__card-icon--site">&#127760;</div>' +
+      '<div class="stage-infra__card-title">官网评估</div></div><div class="stage-infra__card-body">';
+    if (site.url) {
+      h += '<div class="stage-infra__field"><span class="stage-infra__label">网址</span><a class="stage-infra__link" href="' + esc(site.url) + '">' + esc(site.url) + '</a></div>';
+    }
+    h += '<div class="stage-infra__field"><span class="stage-infra__label">评分</span><div class="stage-infra__score-bar">' +
+      '<div class="stage-infra__score-track"><div class="stage-infra__score-fill" style="width:' + siteScore + '%;background:' + siteSc + ';"></div></div>' +
+      '<span class="stage-infra__score-num" style="color:' + siteSc + ';">' + siteScore + '</span></div></div>';
+    if (site.summary) h += '<div class="stage-infra__summary">' + esc(site.summary) + '</div>';
+    h += '</div></div>';
+
+    // Self media
+    h += '<div class="stage-infra__card"><div class="stage-infra__card-header">' +
+      '<div class="stage-infra__card-icon stage-infra__card-icon--media">&#128241;</div>' +
+      '<div class="stage-infra__card-title">自媒体矩阵</div><span class="stage-infra__tag">' + (self.totalCount || 0) + '条</span></div>' +
+      '<div class="stage-infra__card-body"><div class="stage-infra__tags">';
+    var pb = self.platformBreakdown || {};
+    Object.keys(pb).forEach(function(p) {
+      h += '<span class="stage-infra__tag" style="padding:2px 8px;font-size:11px;background:var(--dr-sky-light);color:var(--dr-sky);border:1px solid #bae6fd;border-radius:var(--dr-radius-sm);">' + esc(p) + ' ' + pb[p] + '</span>';
+    });
+    h += '</div></div></div>';
+
+    // Authoritative media
+    h += '<div class="stage-infra__card"><div class="stage-infra__card-header">' +
+      '<div class="stage-infra__card-icon stage-infra__card-icon--auth">&#128240;</div>' +
+      '<div class="stage-infra__card-title">权威媒体背书</div><span class="stage-infra__tag">' + (auth.totalCount || 0) + '条</span></div>' +
+      '<div class="stage-infra__card-body"><div class="stage-infra__tags">';
+    var ab = auth.platformBreakdown || {};
+    Object.keys(ab).forEach(function(p) {
+      h += '<span class="stage-infra__tag" style="padding:2px 8px;font-size:11px;background:var(--dr-purple-light);color:var(--dr-purple);border:1px solid #ddd6fe;border-radius:var(--dr-radius-sm);">' + esc(p) + ' ' + ab[p] + '</span>';
+    });
+    h += '</div></div></div></div></section>';
+    return h;
+  }
+
+  // ===== 06 Competitor =====
+  function renderCompetitor(d) {
+    var comp = (d.stages || {}).COMPETITOR || {};
+    var competitors = (comp.competitors || []).slice(0, 5);
+    var position = comp.marketPosition || '';
+    var brandName = d.brand || '本品牌';
+    var brandScore = (d.stages || {}).AIVO_SCORE ? ((d.stages || {}).AIVO_SCORE).totalScore || 0 : 0;
+
+    var h = '<section id="section-competitor" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">06</div><div class="dr-section__title-group"><h2 class="dr-section__title">竞品分析</h2>' +
+      '<p class="dr-section__subtitle">竞品可见度对比与威胁评估</p></div></div>';
+
+    if (competitors.length) {
+      // Horizontal bar chart for competitor visibility
+      var barItems = [];
+      competitors.forEach(function(c) {
+        barItems.push({ name: c.name || '', value: c.geoScore || 0, color: '#94a3b8' });
+      });
+      barItems.unshift({ name: brandName, value: brandScore, color: 'var(--dr-primary)' });
+
+      h += '<div class="stage-comp__chart-section"><div class="stage-comp__section-title">可见度对比</div>' +
+        renderHBarChart(barItems, 520, 28) + '</div>';
+
+      h += '<div class="stage-comp__section"><div class="stage-comp__section-title">竞品详情</div>' +
+        '<div class="stage-comp__compare-table"><div class="stage-comp__ctable-head">' +
+        '<div class="stage-comp__ctable-col--name">品牌</div><div class="stage-comp__ctable-col--dim">可见度</div>' +
+        '<div class="stage-comp__ctable-col--dim">市场份额</div><div class="stage-comp__ctable-col--dim">威胁等级</div>' +
+        '<div class="stage-comp__ctable-col--wide">产品特点</div></div>';
+      competitors.forEach(function(c, i) {
+        var ti = getThreatInfo(c.threatLevel);
+        var geoSc = getColor(c.geoScore || 0);
+        h += '<div class="stage-comp__ctable-row"><div class="stage-comp__ctable-col--name">' +
+          '<span class="stage-comp__ctable-rank">' + (i + 1) + '</span>' +
+          '<span class="stage-comp__ctable-name">' + esc(c.name) + '</span></div>' +
+          '<div class="stage-comp__ctable-col--dim"><span class="stage-comp__ctable-score" style="color:' + geoSc + ';">' + (c.geoScore || 0) + '</span></div>' +
+          '<div class="stage-comp__ctable-col--dim">' + (c.marketShare || 0) + '%</div>' +
+          '<div class="stage-comp__ctable-col--dim"><span class="stage-comp__ctable-tag" style="background:' + ti.bg + ';color:' + ti.color + ';padding:2px 8px;font-size:11px;border-radius:4px;">' + ti.label + '</span></div>' +
+          '<div class="stage-comp__ctable-col--wide"><div class="stage-comp__ctable-features">';
+        (c.productFeatures || []).forEach(function(f) {
+          h += '<span class="stage-comp__ctable-chip stage-comp__ctable-chip--blue">' + esc(f) + '</span>';
+        });
+        h += '</div></div></div>';
+      });
+      h += '</div></div>';
+
+      // Advantage Logic section
+      h += '<div class="stage-comp__advantage"><div class="stage-comp__advantage-title">优势逻辑</div>' +
+        '<div class="stage-comp__advantage-grid">';
+
+      // Brand card
+      var brandStrengths = comp.brandStrengths || [];
+      var brandWeaknesses = comp.brandWeaknesses || [];
+      if (!brandStrengths.length && !brandWeaknesses.length) {
+        // Auto-generate from AIVO dimensions
+        var dims = ((d.stages || {}).AIVO_SCORE || {}).dimensions || [];
+        dims.forEach(function(dim) {
+          var s = dim.score || 0;
+          if (s >= 70) brandStrengths.push(dim.name + '表现优秀（' + s + '分）');
+          else if (s < 50) brandWeaknesses.push(dim.name + '有待提升（' + s + '分）');
+        });
+      }
+      h += '<div class="stage-comp__advantage-card stage-comp__advantage-card--brand">' +
+        '<div class="stage-comp__advantage-header">' +
+        '<span class="stage-comp__advantage-badge stage-comp__advantage-badge--brand">本品牌</span>' +
+        '<span class="stage-comp__advantage-name">' + esc(brandName) + '</span>' +
+        '<span class="stage-comp__advantage-score" style="color:' + getColor(brandScore) + ';">' + brandScore + '</span></div>' +
+        '<div class="stage-comp__advantage-list">';
+      brandStrengths.forEach(function(s) {
+        h += '<div class="stage-comp__advantage-item stage-comp__advantage-item--strength">' +
+          '<span class="stage-comp__advantage-icon">&#9650;</span><span>' + esc(s) + '</span></div>';
+      });
+      brandWeaknesses.forEach(function(w) {
+        h += '<div class="stage-comp__advantage-item stage-comp__advantage-item--weakness">' +
+          '<span class="stage-comp__advantage-icon">&#9660;</span><span>' + esc(w) + '</span></div>';
+      });
+      h += '</div></div>';
+
+      // Competitor cards
+      competitors.slice(0, 3).forEach(function(c) {
+        var diff = brandScore - (c.geoScore || 0);
+        var diffText = diff > 0 ? '领先 ' + diff + ' 分' : (diff < 0 ? '落后 ' + Math.abs(diff) + ' 分' : '持平');
+        var diffColor = diff >= 0 ? 'var(--dr-success)' : 'var(--dr-danger)';
+        h += '<div class="stage-comp__advantage-card stage-comp__advantage-card--competitor">' +
+          '<div class="stage-comp__advantage-header">' +
+          '<span class="stage-comp__advantage-badge stage-comp__advantage-badge--competitor">竞品</span>' +
+          '<span class="stage-comp__advantage-name">' + esc(c.name) + '</span>' +
+          '<span class="stage-comp__advantage-score" style="color:' + getColor(c.geoScore || 0) + ';">' + (c.geoScore || 0) + '</span></div>' +
+          '<div class="stage-comp__advantage-list">';
+        (c.productFeatures || []).forEach(function(f) {
+          h += '<div class="stage-comp__advantage-item stage-comp__advantage-item--strength">' +
+            '<span class="stage-comp__advantage-icon">&#9650;</span><span>' + esc(f) + '</span></div>';
+        });
+        (c.weaknesses || []).forEach(function(w) {
+          h += '<div class="stage-comp__advantage-item stage-comp__advantage-item--weakness">' +
+            '<span class="stage-comp__advantage-icon">&#9660;</span><span>' + esc(w) + '</span></div>';
+        });
+        h += '</div>' +
+          '<div class="stage-comp__advantage-vs">' +
+          '<span>vs ' + esc(brandName) + '</span>' +
+          '<span class="stage-comp__advantage-vs-arrow" style="color:' + diffColor + ';">' + diffText + '</span></div></div>';
+      });
+
+      h += '</div></div>';
+    }
+
+    if (position) {
+      h += '<div class="stage-comp__position" style="margin-top:24px;"><div class="stage-comp__section-title">市场定位</div>' +
+        '<p class="stage-comp__position-text">' + esc(position) + '</p></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 07 GEO Effect =====
+  function renderGeoEffect(d) {
+    var geo = (d.stages || {}).GEO_EFFECT || {};
+    var ov = geo.overview || {};
+    var breakdown = (geo.platformBreakdown || []).slice(0, 8);
+
+    var h = '<section id="section-geo" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">07</div><div class="dr-section__title-group"><h2 class="dr-section__title">收录效果</h2>' +
+      '<p class="dr-section__subtitle">收录与提及率统计</p></div></div>';
+
+    h += '<div class="stage-geo__stats">' +
+      '<div class="stage-geo__stat-card stage-geo__stat-card--highlight"><div class="stage-geo__stat-value">' + (ov.scenarioCount || 0) + '</div><div class="stage-geo__stat-label">搜索场景</div></div>' +
+      '<div class="stage-geo__stat-card"><div class="stage-geo__stat-value">' + (ov.questionCount || 0) + '</div><div class="stage-geo__stat-label">测试问题</div></div>' +
+      '<div class="stage-geo__stat-card"><div class="stage-geo__stat-value">' + (ov.mentionedCount || 0) + '</div><div class="stage-geo__stat-label">品牌提及</div></div>' +
+      '<div class="stage-geo__stat-card"><div class="stage-geo__stat-value" style="color:' + getMentionColor(ov.mentionRate || 0) + ';">' + fmtRate(ov.mentionRate || 0) + '%</div><div class="stage-geo__stat-label">提及率</div></div></div>';
+
+    if (breakdown.length) {
+      h += '<div class="stage-geo__section"><div class="stage-geo__section-title">各平台提及分布</div><div class="stage-geo__chart-row"><div class="stage-geo__breakdown-list">';
+      breakdown.forEach(function(b) {
+        var rate = b.rate || 0;
+        h += '<div class="stage-geo__breakdown-item"><span class="stage-geo__breakdown-name">' + esc(b.platformName) + '</span>' +
+          '<div class="stage-geo__breakdown-bar"><div class="stage-geo__breakdown-fill" style="width:' + (rate * 100) + '%;"></div></div>' +
+          '<span class="stage-geo__breakdown-rate">' + fmtRate(rate) + '%</span></div>';
+      });
+      h += '</div></div></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 08 Sentiment =====
+  function renderSentiment(d) {
+    var sen = (d.stages || {}).SENTIMENT || {};
+    var summary = sen.summary || {};
+    var riskLevel = summary.riskLevel || sen.riskLevel || '低风险';
+    var trend = summary.trendDirection || sen.trendDirection || 'stable';
+    var dist = sen.sentimentDistribution || {};
+    var drivers = sen.keyDrivers || {};
+    var issues = (sen.issues || []).slice(0, 5);
+    var suggestions = (sen.suggestions || []).slice(0, 5);
+    var negRate = summary.overallNegativeRate || 0;
+
+    var trendMap = { 'up': { cls: 'up', emoji: '&#128200;' }, 'stable': { cls: 'stable', emoji: '&#10145;' }, 'down': { cls: 'down', emoji: '&#128201;' } };
+    var trendInfo = trendMap[trend] || trendMap['stable'];
+
+    var h = '<section id="section-sentiment" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">08</div><div class="dr-section__title-group"><h2 class="dr-section__title">舆情分析</h2>' +
+      '<p class="dr-section__subtitle">口碑评价与风险预警</p></div></div>';
+
+    h += '<div class="stage-sentiment__top-row"><div class="stage-sentiment__indicators">' +
+      '<div class="stage-sentiment__indicator"><div class="stage-sentiment__indicator-icon stage-sentiment__indicator-icon--' + trendInfo.cls + '">' + trendInfo.emoji + '</div>' +
+      '<div class="stage-sentiment__indicator-content"><div class="stage-sentiment__indicator-label">风险等级</div><div class="stage-sentiment__indicator-value">' + esc(riskLevel) + '</div></div></div>' +
+      '<div class="stage-sentiment__indicator"><div class="stage-sentiment__indicator-icon stage-sentiment__indicator-icon--' + trendInfo.cls + '">' + trendInfo.emoji + '</div>' +
+      '<div class="stage-sentiment__indicator-content"><div class="stage-sentiment__indicator-label">舆情趋势</div><div class="stage-sentiment__indicator-value">' + esc(trend === 'up' ? '上升' : trend === 'down' ? '下降' : '平稳') + '</div></div></div></div>' +
+      '<div class="stage-sentiment__mini-chart">' + renderDonutChart(dist.positive || 0, dist.negative || 0, dist.neutral || 0, 120) + '</div></div>';
+
+    // Drivers
+    if (drivers.positive || drivers.negative) {
+      h += '<div class="stage-sentiment__drivers">';
+      if (drivers.positive && drivers.positive.length) {
+        h += '<div class="stage-sentiment__driver-group"><span class="stage-sentiment__driver-title stage-sentiment__driver-title--positive">&#10022; 正面口碑</span><div class="stage-sentiment__driver-tags">';
+        drivers.positive.forEach(function(k) { h += '<span class="stage-sentiment__driver-tag stage-sentiment__driver-tag--positive">' + esc(k) + '</span>'; });
+        h += '</div></div>';
+      }
+      if (drivers.negative && drivers.negative.length) {
+        h += '<div class="stage-sentiment__driver-group"><span class="stage-sentiment__driver-title stage-sentiment__driver-title--negative">&#10022; 负面口碑</span><div class="stage-sentiment__driver-tags">';
+        drivers.negative.forEach(function(k) { h += '<span class="stage-sentiment__driver-tag stage-sentiment__driver-tag--negative">' + esc(k) + '</span>'; });
+        h += '</div></div>';
+      }
+      h += '</div>';
+    }
+
+    // Issues
+    if (issues.length) {
+      h += '<div class="stage-sentiment__section"><div class="stage-sentiment__section-title">舆情问题 <span class="stage-sentiment__section-count">共' + issues.length + '条</span></div>' +
+        '<div class="stage-sentiment__issue-list">';
+      issues.forEach(function(issue) {
+        var isNeg = issue.sentiment === '负面';
+        h += '<div class="stage-sentiment__issue-row">' +
+          '<span class="stage-sentiment__issue-tag" style="background:' + (isNeg ? '#fef2f2' : '#f0fdf4') + ';color:' + (isNeg ? '#dc2626' : '#059669') + ';">' + esc(issue.sentiment || '中性') + '</span>' +
+          '<span class="stage-sentiment__issue-text">' + esc(issue.content) + '</span>' +
+          '<span class="stage-sentiment__issue-source">' + esc(issue.source || '') + '</span></div>';
+      });
+      h += '</div></div>';
+    }
+
+    // Suggestions
+    if (suggestions.length) {
+      h += '<div class="stage-sentiment__section"><div class="stage-sentiment__section-title">应对建议</div><ol class="stage-sentiment__suggestion-list">';
+      suggestions.forEach(function(s) { h += '<li class="stage-sentiment__suggestion-item">' + esc(s) + '</li>'; });
+      h += '</ol></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== 09 Suggestion =====
+  function renderSuggestion(d) {
+    var sug = (d.stages || {}).SUGGESTION || {};
+    var proj = sug.scoreProjection || {};
+    var quickWins = (sug.quickWins || []).slice(0, 3);
+    var actions = (sug.priorityActions || sug.suggestions || []).slice(0, 5);
+    var roadmap = sug.roadmap || [];
+    var summary = sug.summary || '';
+    var dimSummary = sug.dimensionSummary || [];
+    var longTerm = sug.longTermSuggestions || [];
+
+    var h = '<section id="section-suggestion" class="dr-section"><div class="dr-section__header">' +
+      '<div class="dr-section__num">09</div><div class="dr-section__title-group"><h2 class="dr-section__title">综合建议</h2>' +
+      '<p class="dr-section__subtitle">优化建议与行动路线</p></div></div>';
+
+    // Score projection
+    var curScore = proj.currentScore || 0;
+    var projScore = proj.projectedScore || 0;
+    var delta = projScore - curScore;
+    var curSc = getColor(curScore);
+
+    h += '<div class="sg-section sg-projection"><div class="sg-projection__header">' +
+      '<div class="sg-projection__title-group"><div class="sg-section__icon-wrap sg-section__icon-wrap--projection">&#128200;</div><div>' +
+      '<div class="sg-section__title">AIVO分数预测</div><div class="sg-section__subtitle">执行优化建议后的预期提升</div></div></div>' +
+      '<div class="sg-projection__score-compare"><div class="sg-projection__score-item"><div class="sg-projection__score-label">当前</div>' +
+      '<div class="sg-projection__score-value" style="color:' + curSc + ';">' + curScore + '</div></div>' +
+      '<div class="sg-projection__arrow">&rarr;</div><div class="sg-projection__score-item"><div class="sg-projection__score-label">预测</div>' +
+      '<div class="sg-projection__score-value" style="color:var(--dr-success);">' + projScore + '</div></div>' +
+      '<div class="sg-projection__delta" style="color:var(--dr-success);">(+' + delta + ')</div></div></div>';
+
+    if (dimSummary.length) {
+      h += '<div class="sg-projection__dims">';
+      var dimColorMap = { 'visibility': '#6366f1', 'content': '#06b6d4', 'authority': 'var(--dr-success)', 'engagement': '#f59e0b' };
+      var dimLabelMap = { 'visibility': '搜索可见度', 'content': '内容适配度', 'authority': '权威性', 'engagement': '用户参与度' };
+      dimSummary.forEach(function(ds) {
+        var dc = dimColorMap[ds.dimension] || '#6366f1';
+        var dl = dimLabelMap[ds.dimension] || ds.dimension;
+        var cur = ds.currentScore || 0;
+        var pro = ds.projectedScore || 0;
+        h += '<div class="sg-projection__dim-bar"><span class="sg-projection__dim-label">' + esc(dl) + '</span>' +
+          '<div class="sg-projection__dim-track"><div class="sg-projection__dim-fill sg-projection__dim-fill--current" style="width:' + cur + '%;background:' + dc + ';opacity:0.3;"></div>' +
+          '<div class="sg-projection__dim-fill sg-projection__dim-fill--projected" style="width:' + pro + '%;background:' + dc + ';"></div></div>' +
+          '<div class="sg-projection__dim-nums"><span style="color:' + dc + ';">' + cur + '</span>' +
+          '<span class="sg-projection__dim-arrow">&rarr;</span><span style="color:var(--dr-success);">' + pro + '</span></div></div>';
+      });
+      h += '</div>';
+    }
+    h += '</div>';
+
+    // Quick Wins
+    if (quickWins.length) {
+      h += '<div class="sg-section"><div class="sg-section__header"><div class="sg-section__icon-wrap sg-section__icon-wrap--quickwin">&#9889;</div><div>' +
+        '<div class="sg-section__title">快速赢利点</div><div class="sg-section__subtitle">低成本高收益的即时优化</div></div></div>' +
+        '<div class="sg-quickwins__grid">';
+      quickWins.forEach(function(qw) {
+        h += '<div class="sg-quickwins__card"><span class="sg-quickwins__card-badge">Quick Win</span>' +
+          '<div class="sg-quickwins__card-title">' + esc(qw.title) + '</div>' +
+          '<div class="sg-quickwins__card-desc">' + esc(qw.description) + '</div>' +
+          '<div class="sg-quickwins__card-meta"><span class="sg-quickwins__card-timeline">&#9201; ' + esc(qw.timeline || '') + '</span>' +
+          '<span class="sg-quickwins__card-impact">+' + (qw.expectedImprovement || 0) + '分</span></div>';
+        if (qw.nextSteps && qw.nextSteps.length) {
+          h += '<div class="sg-quickwins__card-steps">';
+          qw.nextSteps.forEach(function(s) { h += '<div class="sg-quickwins__step"><span class="sg-quickwins__step-icon">&#9656;</span><span>' + esc(s) + '</span></div>'; });
+          h += '</div>';
+        }
+        h += '</div>';
+      });
+      h += '</div></div>';
+    }
+
+    // Priority Actions
+    if (actions.length) {
+      h += '<div class="sg-section"><div class="sg-section__header"><div class="sg-section__icon-wrap sg-section__icon-wrap--actions">&#127919;</div><div>' +
+        '<div class="sg-section__title">优先行动建议</div><div class="sg-section__subtitle">按优先级排序的优化行动</div></div></div>';
+
+      // Priority bar
+      var counts = { high: 0, medium: 0, low: 0 };
+      actions.forEach(function(a) { counts[a.priority] = (counts[a.priority] || 0) + 1; });
+      var total = actions.length || 1;
+      h += '<div class="sg-actions__priority-bar"><div class="sg-actions__priority-track">' +
+        '<div class="sg-actions__priority-seg sg-actions__priority-seg--urgent" style="width:' + ((counts.high || 0) / total * 100) + '%;"></div>' +
+        '<div class="sg-actions__priority-seg sg-actions__priority-seg--high" style="width:0%;"></div>' +
+        '<div class="sg-actions__priority-seg sg-actions__priority-seg--medium" style="width:' + ((counts.medium || 0) / total * 100) + '%;"></div>' +
+        '<div class="sg-actions__priority-seg sg-actions__priority-seg--low" style="width:' + ((counts.low || 0) / total * 100) + '%;"></div></div>' +
+        '<div class="sg-actions__priority-legend">' +
+        '<span class="sg-actions__legend-item"><span class="sg-actions__legend-dot sg-actions__legend-dot--urgent"></span>紧急</span>' +
+        '<span class="sg-actions__legend-item"><span class="sg-actions__legend-dot sg-actions__legend-dot--high"></span>高优</span>' +
+        '<span class="sg-actions__legend-item"><span class="sg-actions__legend-dot sg-actions__legend-dot--medium"></span>中等</span>' +
+        '<span class="sg-actions__legend-item"><span class="sg-actions__legend-dot sg-actions__legend-dot--low"></span>建议</span></div></div>';
+
+      h += '<div class="sg-actions__list">';
+      actions.forEach(function(a, idx) {
+        var pi = getPriorityInfo(a.priority);
+        var impactCls = a.impactLevel || 'medium';
+        var effortCls = a.effortLevel || 'moderate';
+        h += '<div class="sg-action-card sg-action-card--' + pi.cls + '">' +
+          '<div class="sg-action-card__header"><span class="sg-action-card__step">' + (idx + 1) + '</span>' +
+          '<div class="sg-action-card__meta"><span class="sg-action-card__priority-tag" style="background:' + pi.bg + ';color:' + pi.color + ';">' + pi.label + '</span></div>' +
+          '<span class="sg-action-card__title">' + esc(a.title) + '</span>' +
+          '<div class="sg-action-card__badges">' +
+          '<span class="sg-action-card__badge sg-action-card__badge--impact ' + impactCls + '">+' + (a.expectedImprovement || 0) + '分</span>' +
+          '<span class="sg-action-card__badge sg-action-card__badge--effort ' + effortCls + '">' + esc(a.effortLevel || '') + '</span></div></div>' +
+          '<div class="sg-action-card__detail"><div class="sg-action-card__desc">' + esc(a.description) + '</div>' +
+          '<div class="sg-action-card__timeline-tag">&#9201; ' + esc(a.timeline || '') + '</div></div></div>';
+      });
+      h += '</div></div>';
+    }
+
+    // Roadmap
+    if (roadmap.length) {
+      h += '<div class="sg-section"><div class="sg-section__header"><div class="sg-section__icon-wrap sg-section__icon-wrap--roadmap">&#128506;</div><div>' +
+        '<div class="sg-section__title">实施路线图</div><div class="sg-section__subtitle">分阶段优化路径</div></div></div>' +
+        '<div class="sg-roadmap__timeline">';
+      roadmap.forEach(function(phase, idx) {
+        if (idx > 0) h += '<div class="sg-roadmap__phase-connector"></div>';
+        h += '<div class="sg-roadmap__phase sg-roadmap__phase--' + idx + '"><div class="sg-roadmap__phase-header">' +
+          '<span class="sg-roadmap__phase-badge">' + (idx + 1) + '</span><div>' +
+          '<div class="sg-roadmap__phase-title">' + esc(phase.title) + '</div>' +
+          '<div class="sg-roadmap__phase-timeline">' + esc(phase.timeline || '') + '</div></div></div>' +
+          '<div class="sg-roadmap__phase-items">';
+        (phase.items || []).forEach(function(item) {
+          h += '<div class="sg-roadmap__item"><span class="sg-roadmap__item-dot"></span><span>' + esc(item) + '</span></div>';
+        });
+        h += '</div></div>';
+      });
+      h += '</div></div>';
+    }
+
+    // Summary
+    if (summary) {
+      h += '<div class="sg-section"><div class="sg-summary"><div class="sg-summary__icon-wrap">&#128172;</div><div>' +
+        '<div class="sg-summary__label">综合评语</div><div class="sg-summary__text">' + esc(summary) + '</div></div></div></div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  // ===== Executive Summary =====
+  function renderSummary(d) {
+    var ov = (d.stages || {}).OVERVIEW || {};
+    var sug = (d.stages || {}).SUGGESTION || {};
+    var highlights = (ov.highlights || []).slice(0, 2);
+    var risks = (ov.risks || []).slice(0, 2);
+    var actions = (sug.quickWins || []).slice(0, 2);
+    if (!actions.length) actions = (sug.priorityActions || []).slice(0, 2);
+
+    var items = [];
+    highlights.forEach(function(h) { items.push({ type: 'positive', icon: '&#10003;', text: h }); });
+    risks.forEach(function(r) { items.push({ type: 'negative', icon: '&#9888;', text: r }); });
+    actions.forEach(function(a) { items.push({ type: 'action', icon: '&rarr;', text: a.title || a }); });
+
+    var h = '<div class="dr-summary"><h3 class="dr-summary__title">执行摘要</h3><div class="dr-summary__grid">';
+    items.forEach(function(item) {
+      h += '<div class="dr-summary__item dr-summary__item--' + item.type + '">' +
+        '<span class="dr-summary__icon">' + item.icon + '</span>' +
+        '<span class="dr-summary__text">' + esc(item.text) + '</span></div>';
+    });
+    h += '</div></div>';
+    return h;
+  }
+
+  // ===== Footer =====
+  function renderFooter(d) {
+    var date = new Date().toISOString().slice(0, 10);
+    return '<section class="dr-footer"><div class="dr-footer__divider"></div><div class="dr-footer__content">' +
+      '<div class="dr-footer__block"><div class="dr-footer__title">评估方法</div>' +
+      '<div class="dr-footer__text">基于AIVO四维评分模型（AI可见性 + 内容适配度 + 权威性 + 用户参与度），对品牌在AI搜索场景中的可见度进行量化评估。三轮流水线驱动，9章节完整诊断。</div></div>' +
+      '<div class="dr-footer__meta"><span>生成时间：' + date + '</span><span>评估引擎：GEO AIVO v3.0</span></div></div></section>';
+  }
+
+  // ===== Main =====
+  function init() {
+    var dataEl = document.getElementById('report-data');
+    if (!dataEl) return;
+    var raw = dataEl.textContent;
+    if (!raw || raw.trim() === '{}') {
+      document.querySelector('.dr-content').innerHTML = '<div style="text-align:center;padding:80px 20px;color:var(--dr-text-placeholder);"><div style="font-size:48px;margin-bottom:16px;">&#128202;</div><div style="font-size:18px;font-weight:600;color:var(--dr-text-secondary);">暂无诊断数据</div><div style="font-size:14px;margin-top:8px;">请确认报告数据已正确加载</div></div>';
+      return;
+    }
+    var d;
+    try { d = JSON.parse(raw); } catch(e) { console.error('Failed to parse report data', e); return; }
+
+    document.title = (d.brand || '') + ' · ' + (d.category || '') + ' GEO诊断报告';
+
+    var sections = [
+      ['hero-section', renderHero],
+      ['section-overview', renderOverview],
+      ['section-aivo', renderAivoScore],
+      ['section-profile', renderUserProfile],
+      ['section-search', renderAiSearch],
+      ['section-infra', renderInfraEval],
+      ['section-competitor', renderCompetitor],
+      ['section-geo', renderGeoEffect],
+      ['section-sentiment', renderSentiment],
+      ['section-suggestion', renderSuggestion],
+      ['executive-summary', renderSummary],
+      ['report-footer', renderFooter]
+    ];
+
+    sections.forEach(function(pair) {
+      var el = document.getElementById(pair[0]);
+      if (el) {
+        try { el.innerHTML = pair[1](d); } catch(e) { console.error('Render error for ' + pair[0], e); }
+      }
+    });
+
+    // ===== Build Side Navigation =====
+    var navSections = [
+      { id: 'section-overview', num: '01', label: '诊断概览' },
+      { id: 'section-aivo', num: '02', label: 'AIVO评分' },
+      { id: 'section-profile', num: '03', label: '用户画像' },
+      { id: 'section-search', num: '04', label: '搜索可见性' },
+      { id: 'section-infra', num: '05', label: '基建评估' },
+      { id: 'section-competitor', num: '06', label: '竞品分析' },
+      { id: 'section-geo', num: '07', label: '收录效果' },
+      { id: 'section-sentiment', num: '08', label: '舆情分析' },
+      { id: 'section-suggestion', num: '09', label: '综合建议' }
+    ];
+
+    var sideNav = document.getElementById('side-nav');
+    if (sideNav) {
+      var navHtml = '';
+      navSections.forEach(function(sec, idx) {
+        if (idx > 0) navHtml += '<div class="dr-side-nav__divider"></div>';
+        navHtml += '<a class="dr-side-nav__item" data-target="' + sec.id + '">' +
+          '<span class="dr-side-nav__num">' + sec.num + '</span>' +
+          '<span class="dr-side-nav__label">' + esc(sec.label) + '</span></a>';
+      });
+      sideNav.innerHTML = navHtml;
+
+      // Click to scroll
+      sideNav.addEventListener('click', function(e) {
+        var item = e.target.closest('.dr-side-nav__item');
+        if (!item) return;
+        var targetId = item.getAttribute('data-target');
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    // ===== IntersectionObserver for side nav highlighting & entrance animations =====
+    var navItems = sideNav ? sideNav.querySelectorAll('.dr-side-nav__item') : [];
+    var activeNavIdx = -1;
+
+    function setActiveNav(idx) {
+      if (idx === activeNavIdx) return;
+      activeNavIdx = idx;
+      navItems.forEach(function(ni, i) {
+        if (i === idx) {
+          ni.classList.add('dr-side-nav__item--active');
+        } else {
+          ni.classList.remove('dr-side-nav__item--active');
+        }
+      });
+    }
+
+    // Observe sections for nav highlighting
+    var navObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var secId = entry.target.id;
+          var idx = navSections.findIndex(function(s) { return s.id === secId; });
+          if (idx >= 0) setActiveNav(idx);
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    navSections.forEach(function(sec) {
+      var el = document.getElementById(sec.id);
+      if (el) navObserver.observe(el);
+    });
+
+    // Set first nav item active by default
+    setActiveNav(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
