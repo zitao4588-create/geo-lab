@@ -5,6 +5,11 @@ import { createDiagnosis, getDiagnosis } from './api';
 
 type Screen = 'start' | 'form' | 'loading' | 'result';
 
+const DEFAULT_CONSULT_WECHAT_TEXT = '请扫码添加微信';
+const CONSULT_WECHAT_ID = import.meta.env.VITE_CONSULT_WECHAT_ID?.trim() || DEFAULT_CONSULT_WECHAT_TEXT;
+const CONSULT_QR_PATH = '/wechat-qr.jpg';
+const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
+
 const emptyForm: DiagnosisInput = {
   businessName: '',
   description: '',
@@ -21,8 +26,7 @@ const requiredFields: Array<keyof DiagnosisInput> = [
   'description',
   'industry',
   'city',
-  'targetCustomers',
-  'contact'
+  'targetCustomers'
 ];
 
 export function App() {
@@ -101,7 +105,7 @@ export function App() {
           />
         )}
         {screen === 'loading' && <LoadingScreen step={loadingStep} />}
-        {screen === 'result' && report && <ResultScreen report={report} onRestart={() => {
+        {screen === 'result' && report && <ResultScreen report={report} hasContact={Boolean(form.contact?.trim())} onRestart={() => {
           setReport(null);
           setForm(emptyForm);
           window.history.replaceState(null, '', window.location.pathname);
@@ -130,8 +134,8 @@ function StartScreen({ onStart }: { onStart: () => void }) {
   return (
     <section className="screen start-screen">
       <div className="hero-copy">
-        <h1>AI曝光体检</h1>
-        <p>生成一份可追溯的 GEO 分析成果报告</p>
+        <h1>顾客问 AI，会提到你吗？</h1>
+        <p>30 秒填写资料，免费生成一份 AI 曝光体检报告</p>
       </div>
 
       <div className="hero-illustration" aria-hidden="true">
@@ -151,10 +155,10 @@ function StartScreen({ onStart }: { onStart: () => void }) {
       </ul>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
-        开始 GEO 分析
+        免费测一次
       </Button>
 
-      <p className="privacy-note">联系方式只用于咨询承接，不展示在报告页面</p>
+      <p className="privacy-note">不留联系方式也能先看报告；需要人工解读再扫码咨询</p>
       <ComplianceLinks />
 
       <div className="bottom-tabs" aria-label="分析内容">
@@ -209,6 +213,18 @@ function FormScreen({
         </Field>
         <Field label="所在行业" required>
           <Input value={form.industry} placeholder="例如：冰箱食材库存管理小程序" onChange={(value) => onChange('industry', String(value))} />
+          <div className="industry-tags" aria-label="常见行业快捷选择">
+            {industryTags.map((tag) => (
+              <button
+                type="button"
+                className={form.industry === tag ? 'active' : ''}
+                key={tag}
+                onClick={() => onChange('industry', tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </Field>
         <Field label="所在城市" required>
           <Input value={form.city} placeholder="线上产品可填：全国/微信生态" onChange={(value) => onChange('city', String(value))} />
@@ -229,7 +245,7 @@ function FormScreen({
             onChange={(value) => onChange('competitors', String(value))}
           />
         </Field>
-        <Field label="联系方式" required>
+        <Field label="联系方式（选填）">
           <Input value={form.contact} placeholder="微信或手机号，仅用于后续联系" onChange={(value) => onChange('contact', String(value))} />
         </Field>
       </div>
@@ -284,7 +300,8 @@ function LoadingScreen({ step }: { step: number }) {
   );
 }
 
-function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestart: () => void }) {
+function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisReport; hasContact: boolean; onRestart: () => void }) {
+  const [consultOpen, setConsultOpen] = useState(false);
   const risk = riskMeta(report.riskLevel);
   const scoreDeg = Math.round((report.score / 100) * 360);
   return (
@@ -438,6 +455,9 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
 
       {report.exports && (
         <ResultBlock title="报告导出">
+          {!hasContact && (
+            <p className="export-notice">可先查看报告；如需 PDF 或人工解读，请扫码联系后确认交付范围。</p>
+          )}
           <div className="export-grid">
             <a href={report.exports.html} target="_blank" rel="noreferrer">HTML报告</a>
             <a href={report.exports.markdown} target="_blank" rel="noreferrer">Markdown</a>
@@ -449,15 +469,53 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
       <div className="cta-card">
         <h3>需要把报告落成内容和页面？</h3>
         <div className="cta-actions">
-          <Button block theme="light" variant="outline">添加微信咨询</Button>
-          <Button block theme="primary">预约完整体检</Button>
+          <Button block theme="light" variant="outline" onClick={() => setConsultOpen(true)}>添加微信咨询</Button>
+          <Button block theme="primary" onClick={() => setConsultOpen(true)}>预约完整体检</Button>
         </div>
         <p>下一步可以人工核验多平台答案、补品牌页/FAQ/隐私页，并建立月度复测。</p>
       </div>
 
       <Button block theme="default" variant="text" onClick={onRestart}>重新分析</Button>
       <ComplianceLinks />
+      {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
+  );
+}
+
+function ConsultModal({ onClose }: { onClose: () => void }) {
+  const hasWechatId = CONSULT_WECHAT_ID !== DEFAULT_CONSULT_WECHAT_TEXT;
+
+  const copyWechat = async () => {
+    if (!navigator.clipboard) {
+      Toast('当前浏览器不支持一键复制，请长按二维码添加');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(CONSULT_WECHAT_ID);
+      Toast(hasWechatId ? '已复制微信号' : '已复制添加说明');
+    } catch {
+      Toast('复制失败，请长按二维码添加');
+    }
+  };
+
+  return (
+    <div className="consult-modal" role="dialog" aria-modal="true" aria-label="添加微信咨询">
+      <button className="consult-backdrop" type="button" aria-label="关闭咨询弹层" onClick={onClose} />
+      <div className="consult-panel">
+        <button className="consult-close" type="button" aria-label="关闭" onClick={onClose}>×</button>
+        <h3>扫码添加微信</h3>
+        <p>发送报告 ID，可预约人工完整体检和页面优化建议。</p>
+        <img src={CONSULT_QR_PATH} alt="微信咨询二维码" />
+        <div className="consult-code">
+          <span>微信号</span>
+          <strong>{CONSULT_WECHAT_ID}</strong>
+        </div>
+        <Button block theme="primary" onClick={copyWechat}>
+          {hasWechatId ? '复制微信号' : '复制添加说明'}
+        </Button>
+      </div>
+    </div>
   );
 }
 
@@ -546,7 +604,9 @@ function ComplianceLinks() {
     <nav className="compliance-links" aria-label="合规链接">
       <a href="/privacy.html">隐私政策</a>
       <a href="/terms.html">用户协议</a>
-      <span>备案号待填</span>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">陕ICP备2026012759号-2</a>
+      <a href="https://www.beian.gov.cn/" target="_blank" rel="noreferrer">陕公网安备61010202000523号</a>
+      <span>备案展示以 exposure 子域名最终核验为准</span>
     </nav>
   );
 }

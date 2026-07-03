@@ -15,8 +15,88 @@ dotenv.config();
 const app = express();
 const port = Number(process.env.PORT || 8787);
 const clientDist = path.resolve(process.cwd(), 'dist/client');
+const hourlyIpLimit = readPositiveInteger(process.env.DIAGNOSES_IP_HOURLY_LIMIT, 1);
+const globalDailyLimit = readPositiveInteger(process.env.DIAGNOSES_GLOBAL_DAILY_LIMIT, 30);
+const hourMs = 60 * 60 * 1000;
 
+app.set('trust proxy', 'loopback');
 app.use(express.json({ limit: '64kb' }));
+
+interface RateLimitEntry {
+  count: number;
+  resetAt: number;
+}
+
+const hourlyIpRequests = new Map<string, RateLimitEntry>();
+let globalDailyRequests: RateLimitEntry = {
+  count: 0,
+  resetAt: nextUtcDayStart(Date.now())
+};
+
+function rateLimitDiagnoses(req: express.Request, res: express.Response, next: express.NextFunction) {
+  const now = Date.now();
+  resetExpiredLimits(now);
+  pruneExpiredIpEntries(now);
+
+  const ip = getClientIp(req);
+  const ipEntry = hourlyIpRequests.get(ip) ?? { count: 0, resetAt: now + hourMs };
+  if (ipEntry.count >= hourlyIpLimit) {
+    sendRateLimit(res, ipEntry.resetAt, '本小时免费体检次数已用完，请稍后再试或扫码预约人工解读。');
+    return;
+  }
+
+  if (globalDailyRequests.count >= globalDailyLimit) {
+    sendRateLimit(res, globalDailyRequests.resetAt, '今天免费体检名额已用完，请明天再试或扫码预约人工解读。');
+    return;
+  }
+
+  ipEntry.count += 1;
+  hourlyIpRequests.set(ip, ipEntry);
+  globalDailyRequests.count += 1;
+  next();
+}
+
+function resetExpiredLimits(now: number) {
+  if (now >= globalDailyRequests.resetAt) {
+    globalDailyRequests = {
+      count: 0,
+      resetAt: nextUtcDayStart(now)
+    };
+  }
+}
+
+function pruneExpiredIpEntries(now: number) {
+  for (const [ip, entry] of hourlyIpRequests) {
+    if (now >= entry.resetAt) {
+      hourlyIpRequests.delete(ip);
+    }
+  }
+}
+
+function sendRateLimit(res: express.Response, resetAt: number, message: string) {
+  const retryAfterSeconds = Math.max(1, Math.ceil((resetAt - Date.now()) / 1000));
+  res.setHeader('Retry-After', String(retryAfterSeconds));
+  res.status(429).json({
+    error: 'rate_limited',
+    message
+  });
+}
+
+function getClientIp(req: express.Request) {
+  const forwardedFor = req.headers['x-forwarded-for'];
+  const firstForwardedIp = Array.isArray(forwardedFor) ? forwardedFor[0] : forwardedFor?.split(',')[0];
+  return (firstForwardedIp || req.ip || req.socket.remoteAddress || 'unknown').trim();
+}
+
+function nextUtcDayStart(now: number) {
+  const date = new Date(now);
+  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1);
+}
+
+function readPositiveInteger(value: string | undefined, fallback: number) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : fallback;
+}
 
 app.get('/api/health', (_req, res) => {
   const runtime = getDeepSeekRuntime();
@@ -29,7 +109,7 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-app.post('/api/diagnoses', async (req, res, next) => {
+app.post('/api/diagnoses', rateLimitDiagnoses, async (req, res, next) => {
   try {
     const input = diagnosisInputSchema.parse(req.body);
     const prompts = buildPromptUniverse(input);

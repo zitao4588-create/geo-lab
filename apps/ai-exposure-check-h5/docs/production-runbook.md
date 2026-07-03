@@ -36,10 +36,20 @@ chmod 600 /opt/playgamelab/ai-exposure-check-h5/.env
 ```bash
 PORT=3020
 RUNTIME_DIR=/opt/playgamelab/ai-exposure-check-h5/runtime
+DIAGNOSES_IP_HOURLY_LIMIT=1
+DIAGNOSES_GLOBAL_DAILY_LIMIT=30
 DEEPSEEK_BASE_URL=https://api.deepseek.com
 DEEPSEEK_MODEL=deepseek-v4-pro
 DEEPSEEK_API_KEY=
 ```
+
+前端微信号展示使用 Vite 构建期变量：
+
+```bash
+VITE_CONSULT_WECHAT_ID=
+```
+
+如果没有配置具体微信号，结果页咨询弹层仍会展示二维码，但复制按钮只复制添加说明。
 
 不要把真实 `DEEPSEEK_API_KEY`、腾讯云 `SecretId`、`SecretKey`、服务器 IP 或 SSH 私钥写入仓库、文档、日志、前端 bundle 或输出报告。
 

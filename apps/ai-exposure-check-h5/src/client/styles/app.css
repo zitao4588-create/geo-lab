@@ -117,9 +117,10 @@ textarea {
 }
 
 .hero-copy h1 {
-  margin: 0;
+  max-width: 310px;
+  margin: 0 auto;
   color: #0c1118;
-  font-size: 42px;
+  font-size: 34px;
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: 0;
@@ -434,6 +435,30 @@ textarea {
 
 .field .t-input__wrap {
   padding: 0 12px;
+}
+
+.industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.industry-tags button {
+  min-height: 30px;
+  border: 1px solid #dce5f1;
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #4c5868;
+  background: #f8fafc;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.industry-tags button.active {
+  border-color: rgba(31, 111, 255, 0.42);
+  color: var(--accent);
+  background: #eef4ff;
+  font-weight: 700;
 }
 
 .error-text {
@@ -1019,6 +1044,13 @@ textarea {
   gap: 8px;
 }
 
+.export-notice {
+  margin: 0 0 10px;
+  color: #697482;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .export-grid a {
   min-height: 40px;
   border: 1px solid #dce5f1;
@@ -1115,6 +1147,92 @@ textarea {
   font-size: 12px;
   line-height: 1.45;
   text-align: center;
+}
+
+.consult-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.consult-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.consult-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  border-radius: 8px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+  text-align: center;
+}
+
+.consult-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  color: #64748b;
+  background: #f1f5f9;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.consult-panel h3 {
+  margin: 2px 32px 6px;
+  color: #101820;
+  font-size: 18px;
+}
+
+.consult-panel p {
+  margin: 0 auto 14px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.consult-panel img {
+  width: 210px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.consult-code {
+  margin: 12px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 9px 10px;
+  display: grid;
+  gap: 3px;
+  text-align: left;
+}
+
+.consult-code span {
+  color: #8a929e;
+  font-size: 11px;
+}
+
+.consult-code strong {
+  color: #1a2330;
+  font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 .desktop-preview {

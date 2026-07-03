@@ -8,6 +8,6 @@ export const diagnosisInputSchema = z.object({
   city: z.string().trim().min(1, '请填写所在城市').max(80),
   targetCustomers: z.string().trim().min(1, '请填写目标客户').max(240),
   competitors: z.string().trim().max(300).optional().default(''),
-  contact: z.string().trim().min(1, '请填写联系方式').max(120),
+  contact: z.string().trim().max(120).optional().default(''),
   samplePrompts: z.array(z.string().trim().min(3).max(240)).max(30).optional()
 });

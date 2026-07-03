@@ -63,7 +63,7 @@ export async function saveDiagnosis(
       businessName: input.businessName,
       industry: input.industry,
       city: input.city,
-      contact: input.contact,
+      contact: input.contact ?? '',
       riskLevel: report.riskLevel,
       score: report.score,
       scoreLevel: report.scoreLevel,

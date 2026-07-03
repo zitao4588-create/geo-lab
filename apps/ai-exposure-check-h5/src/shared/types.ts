@@ -21,7 +21,7 @@ export interface DiagnosisInput {
   city: string;
   targetCustomers: string;
   competitors?: string;
-  contact: string;
+  contact?: string;
   samplePrompts?: string[];
 }
 
