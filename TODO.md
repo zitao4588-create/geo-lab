@@ -2,6 +2,15 @@
 
 ## Immediate
 
+- Completed 2026-07-03 T1 local Git protection and T8 first-batch conversion safeguards:
+  - initialized local Git for `geo-lab`,
+  - made the first local snapshot commit,
+  - implemented optional contact submission,
+  - added WeChat QR consultation modal and copy action,
+  - added stricter diagnosis rate limits,
+  - updated first-screen conversion copy and industry shortcut tags,
+  - updated footer备案 display, privacy policy, terms, and production runbook,
+  - verified typecheck/build, no-contact report creation, GET report, local rate-limit `429`, desktop/mobile QR modal, and frontend bundle secret scan.
 - Completed post-launch optimization directions 1-6 for the final H5 product:
   - re-tested with live `https://fridge.playgamelab.cn`,
   - added URL crawling/page audit for 8 public targets,
@@ -83,6 +92,13 @@
 
 ## Next
 
+- Complete the 2026-07-03 closeout run:
+  - create or bind a private GitHub remote,
+  - push local commits,
+  - package and sync the new H5 build to the Lighthouse server,
+  - redeploy `https://exposure.playgamelab.cn`,
+  - run online smoke for health, diagnosis creation, report fetch, and rate-limit behavior,
+  - save the release number and smoke evidence under `outputs/h5-mvp/`.
 - Review `exposure.playgamelab.cn` compliance before public promotion:
   - ICP 备案展示口径,
   - 公安备案展示口径,
@@ -105,7 +121,6 @@
   - `site:` checks,
   - sitemap/llms freshness,
   - before/after trend history for the same 20 prompts.
-- Decide whether to initialize Git for `geo-lab` after the current no-repo local state is acceptable.
 - Create `agents/geo-diagnosis-agent/spec.md`.
 - Create `agents/geo-content-refiner-agent/spec.md`.
 - Create a minimal CLI or script plan only after the specs are stable.

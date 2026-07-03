@@ -96,6 +96,29 @@ H5 MVP implementation started on 2026-06-30:
 - Frontend mobile form/result screenshots were checked. The form contains no `快速初筛` copy and the UI still shows one `GEO 分析成果得分`.
 - Security check: frontend bundle contains display text `DeepSeek`, but does not contain `api.deepseek.com`, `DEEPSEEK_API_KEY`, or common `sk-...` key patterns.
 
+2026-07-03 T1 Git protection and T8 first-batch conversion safeguards:
+
+- Initialized local Git for `/Users/qzt/Developer/geo-lab`.
+- Created local commits:
+  - `3a04856 Initial geo-lab snapshot`
+  - `2c3b706 Implement H5 conversion safeguards`
+- Confirmed ignored runtime/secret/build surfaces stay out of Git, including `.env.local`, `node_modules/`, `dist/`, and `apps/ai-exposure-check-h5/runtime/`.
+- Copied the user-provided WeChat QR image from `/Users/qzt/Downloads/IMG_2538.jpg` to `apps/ai-exposure-check-h5/public/wechat-qr.jpg`.
+- Changed the H5 contact field from required to optional across frontend validation, shared types, server validation, and stored report input.
+- Changed result-page consultation CTAs to open a QR modal with copy action instead of inert buttons.
+- Added stricter in-memory anti-abuse limits for diagnosis creation: default single IP `1/hour`, global `30/day`, both configurable by environment variables.
+- Kept the existing safety behavior: no API key or total sampling failure returns `503 sampling_unavailable` instead of generating a fake report.
+- Updated first-screen copy, start CTA, industry shortcut tags, export guidance, footer备案 display, privacy policy, terms, and production runbook.
+- Local verification passed:
+  - `npm run typecheck`
+  - `npm run build`
+  - local no-contact `POST /api/diagnoses` returned `201`, report `diag_mr4v7m7n_0x9v8d`
+  - local `GET /api/diagnoses/diag_mr4v7m7n_0x9v8d` returned `200`
+  - repeated local diagnosis creation returned `429`
+  - desktop and mobile browser checks confirmed the optional contact flow, industry tags, QR modal, and QR image loading
+  - refined frontend bundle scan found no `DEEPSEEK_API_KEY`, `api.deepseek.com`, or OpenAI-style `sk-...` key patterns
+- GitHub private remote push and online redeploy are being handled as the next closeout steps for this run.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for technical/internal testing first. Public commercial use still needs a separate ICP/公安备案 display and主体/收费 boundary review.

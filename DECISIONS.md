@@ -186,3 +186,49 @@ Result:
 - Before launch: score `61/100`, DeepSeek mention rate `40%`.
 - After launch: score `68/100`, DeepSeek mention rate `40%`, page audit `100/100`.
 - Interpretation: infrastructure improved materially, but model mention rate did not move in the same run; next work should focus on absorption, external citations, and repeated monitoring rather than assuming immediate AI visibility lift.
+
+## 2026-07-03: Initialize Git Before Further H5 Changes
+
+Decision: initialize local Git for `/Users/qzt/Developer/geo-lab` and make a first repository snapshot before continuing conversion/product changes.
+
+Reason: the workspace now contains a deployable H5 product plus research material. Further product changes and deployment work need rollback points, remote backup, and explicit ignored-secret boundaries.
+
+Boundary:
+
+- `.env.local`, runtime data, dependencies, and build output stay ignored.
+- GitHub remote creation and first push are treated as an explicit external sync step.
+
+## 2026-07-03: Use Optional Contact Plus QR Handoff For Free Initial Check
+
+Decision: make `contact` optional and let users generate the free H5 initial diagnosis without leaving contact details. Result-page consultation and appointment CTAs open the WeChat QR modal instead.
+
+Reason: forcing contact before report generation increases drop-off and mixes the free initial check with paid/manual service conversion too early. QR handoff keeps the initial report usable while still giving a clear consultation path.
+
+Boundary:
+
+- Report export and evidence package viewing must not be blocked when contact is empty.
+- The QR image is a public product asset; no phone number or personal contact identifier is hardcoded into the frontend bundle.
+
+## 2026-07-03: Add Strict In-Memory Diagnosis Rate Limits
+
+Decision: protect `POST /api/diagnoses` with default in-memory limits of one diagnosis per IP per hour and 30 diagnoses globally per day.
+
+Reason: each diagnosis can trigger real model sampling. Before adding accounts, billing, or a durable queue, strict local limits are the simplest guardrail against accidental cost spikes or lightweight abuse.
+
+Boundary:
+
+- Limits are process-memory only and reset on restart.
+- This does not add a database, login, payment, queue, or Docker.
+- Environment variables can loosen or tighten the limits during controlled tests.
+
+## 2026-07-03: Show备案 Information With Explicit Subdomain Review Caveat
+
+Decision: display `陕ICP备2026012759号-2` and `陕公网安备61010202000523号` in the H5 footer and legal pages, while explicitly noting that `exposure.playgamelab.cn` needs final subdomain/subject review before public commercial promotion.
+
+Reason: the product needs a more formal compliance surface than placeholders, but current local备案 evidence is not enough to treat the exposure subdomain as fully cleared for public paid promotion.
+
+Boundary:
+
+- H5 automatic initial diagnosis remains free.
+- Manual complete diagnosis, interpretation, and optimization services require separately confirmed scope and pricing.
+- No online payment, contract flow, or paid entitlement is added in this batch.

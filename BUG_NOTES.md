@@ -101,3 +101,13 @@ Cause: the fact dictionary had content words for privacy/FAQ/features, but not t
 Fix: added path tokens such as `/privacy/`, `/faq/`, and `/features/` to the fact dictionary.
 
 Verification: regenerated the post-launch report; page audit became `100/100` with 8/8 targets passing.
+
+## 2026-07-03: In-App Browser DOM Snapshot Was Unavailable During QR Modal QA
+
+Symptom: the in-app browser QA path could open the H5 page, but the DOM snapshot helper failed with a runtime error before returning an accessibility snapshot.
+
+Cause: the browser tool runtime did not expose the expected incremental snapshot function in this session.
+
+Workaround: verified the same frontend behavior through Playwright-style locators, direct browser evaluation, screenshots, and console checks instead of relying on the DOM snapshot helper.
+
+Verification: desktop and mobile checks confirmed no required-contact blocking, industry shortcut tags worked, result CTAs opened the QR modal, `/wechat-qr.jpg` loaded with nonzero natural dimensions, and no console errors or warnings were observed.
