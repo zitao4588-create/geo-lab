@@ -128,6 +128,16 @@ H5 MVP implementation started on 2026-06-30:
   - Local备案 evidence still points to Monday Survival: website name `今天你能熬过周一吗`, website address `https://monday.playgamelab.cn`, ICP `陕ICP备2026012759号-2`, and public security filing `陕公网安备61010202000523号`.
   - Therefore `exposure.playgamelab.cn` remains suitable for technical/internal testing, but public paid promotion still requires final subdomain/service-item/subject confirmation in备案 and公安备案 backends or with the access provider.
 
+2026-07-05 UI refresh release:
+
+- Full UI/UX redesign of the H5 (start/form/loading/result) for a cleaner, more premium look: dark navy hero with an AI chat demo on the start screen, report-cover score card with risk-colored ring, grouped form fields, calmer provider status display, and a single consult CTA.
+- Fixed a real bug: the consult modal was hijacked out of the viewport by a retained `transform` from the screen entrance animation (`fill-mode: both`).
+- All compliance surfaces kept unchanged in meaning:备案 numbers, subdomain caveat, privacy/terms links, evidence-boundary and no-simulated-results copy.
+- Code commit: `dc6b59d Redesign H5 UI for premium feel and conversion`.
+- New production release deployed to `https://exposure.playgamelab.cn` as release `20260705175108`, replacing `20260703201836` (kept for rollback).
+- Online smoke passed: homepage `200` with new bundle hashes, `/api/health` `samplingReady=true`, privacy/terms `200`, pre-existing report `diag_mr4wim6t_gfcg0g` still `200` (shared RUNTIME_DIR), test `POST /api/diagnoses` generated `diag_mr7m81bl_mzlv8i` with `aiMeta.successCount=20/20`, report/evidence/exports all `200`, bundle contains no key patterns, and mobile/desktop online screenshots show no horizontal overflow.
+- Release evidence is stored under `outputs/h5-mvp/ui-refresh-release-20260705175108/`.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for technical/internal testing first. Public commercial use still needs a separate ICP/公安备案 display and主体/收费 boundary review.

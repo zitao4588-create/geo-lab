@@ -43,7 +43,9 @@ VITE_CONSULT_WECHAT_ID=
 
 ## Production Notes
 
-第一阶段线上入口使用 `https://exposure.playgamelab.cn`，同一个 Node/Express 服务提供静态 H5 和 API。2026-07-03 release `20260703201836` 已上线 optional contact、微信二维码咨询弹层、严格限流、合规文案和首屏转化优化。
+第一阶段线上入口使用 `https://exposure.playgamelab.cn`，同一个 Node/Express 服务提供静态 H5 和 API。2026-07-05 release `20260705175108` 已上线 UI 全面焕新：深色首页叙事 + AI 对话演示、报告封面得分卡、表单分组和咨询弹层修复，合规文案保持不变。
+
+上一轮 2026-07-03 release `20260703201836` 上线了 optional contact、微信二维码咨询弹层、严格限流、合规文案和首屏转化优化。
 
 上一轮 2026-06-30 release `202606300728` 已完成上线后 URL 审计、报告导出和 `冰箱小雷达` before/after 复测。
 
