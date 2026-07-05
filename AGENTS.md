@@ -38,8 +38,9 @@ When analyzing GEO materials:
 
 For a new ChatGPT/Codex session in this project:
 
-1. Read `README.md`.
-2. Read `PROJECT_CONTEXT.md`.
-3. Read `sources/source-index.md`.
-4. Read only the source files relevant to the task.
+1. Read `HANDOFF-CODEX.md` for the latest session handoff (progress, todos, promotion plan, pitfalls).
+2. Read `README.md`.
+3. Read `PROJECT_CONTEXT.md`.
+4. Read `sources/source-index.md`.
+5. Read only the source files relevant to the task.
 
