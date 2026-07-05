@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Button, Input, Loading, Progress, Textarea, Toast } from 'tdesign-mobile-react';
+import { Button, Input, Textarea, Toast } from 'tdesign-mobile-react';
 import type { DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
 import { createDiagnosis, getDiagnosis } from './api';
 
@@ -55,7 +55,7 @@ export function App() {
   useEffect(() => {
     if (screen !== 'loading') return undefined;
     const timer = window.setInterval(() => {
-      setLoadingStep((current) => Math.min(current + 1, 4));
+      setLoadingStep((current) => Math.min(current + 1, 3));
     }, 1100);
     return () => window.clearInterval(timer);
   }, [screen]);
@@ -92,7 +92,7 @@ export function App() {
 
   return (
     <main className="app-shell">
-      <div className="phone-frame">
+      <div className={`phone-frame is-${screen}`}>
         <Header screen={screen} onBack={() => setScreen(screen === 'result' ? 'form' : 'start')} />
         {screen === 'start' && <StartScreen onStart={() => setScreen('form')} />}
         {screen === 'form' && (
@@ -125,7 +125,7 @@ function Header({ screen, onBack }: { screen: Screen; onBack: () => void }) {
         <span aria-hidden="true">‹</span>
       </button>
       <strong>AI曝光体检</strong>
-      <span className="wechat-dots" aria-hidden="true">•••</span>
+      <span className="top-spacer" aria-hidden="true" />
     </header>
   );
 }
@@ -134,38 +134,39 @@ function StartScreen({ onStart }: { onStart: () => void }) {
   return (
     <section className="screen start-screen">
       <div className="hero-copy">
-        <h1>顾客问 AI，会提到你吗？</h1>
-        <p>30 秒填写资料，免费生成一份 AI 曝光体检报告</p>
+        <p className="hero-eyebrow">GEO 曝光诊断 · 免费</p>
+        <h1>顾客问 AI 时<br />会提到你吗？</h1>
+        <p className="hero-sub">30 秒填写资料，生成一份基于真实采样的 AI 曝光体检报告</p>
       </div>
 
-      <div className="hero-illustration" aria-hidden="true">
-        <div className="paper">
-          <span />
-          <span />
-          <span />
+      <div className="chat-demo" aria-hidden="true">
+        <div className="chat-user"><span>这类产品，哪家值得选？</span></div>
+        <div className="chat-ai">
+          <span className="chat-avatar">AI</span>
+          <div className="chat-answer">
+            <p>大家常提到这几家：</p>
+            <div className="chat-brands">
+              <span>竞品 A</span>
+              <span>竞品 B</span>
+              <em>你的品牌？</em>
+            </div>
+          </div>
         </div>
-        <div className="glass" />
-        <div className="shield">✓</div>
+        <small className="chat-note">DeepSeek 官方 API · 真实问答采样</small>
       </div>
 
       <ul className="promise-list">
-        <li><span>✓</span>用 DeepSeek 真实问答采样，不再只看资料完整度</li>
-        <li><span>✓</span>输出一个 GEO 分析成果得分和完整行动路线</li>
-        <li><span>✓</span>保留证据边界，适合后续人工深度交付</li>
+        <li><strong>真实采样</strong>调用 DeepSeek 官方 API 提问，答案原文留档</li>
+        <li><strong>完整报告</strong>评分拆解、竞品对比、行动路线等 9 个模块</li>
+        <li><strong>证据边界</strong>每条结论都标注来源，可追溯、不夸大</li>
       </ul>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
         免费测一次
       </Button>
+      <p className="privacy-note">无需注册 · 不留联系方式也能先看报告</p>
 
-      <p className="privacy-note">不留联系方式也能先看报告；需要人工解读再扫码咨询</p>
       <ComplianceLinks />
-
-      <div className="bottom-tabs" aria-label="分析内容">
-        <span>真实采样<br /><small>DeepSeek API</small></span>
-        <span>完整报告<br /><small>9个模块</small></span>
-        <span>证据留档<br /><small>可追溯</small></span>
-      </div>
     </section>
   );
 }
@@ -192,6 +193,7 @@ function FormScreen({
       </div>
 
       <div className="form-stack">
+        <p className="group-label">基础信息</p>
         <Field label="产品/门店名称" required>
           <Input value={form.businessName} placeholder="例如：冰箱小雷达" onChange={(value) => onChange('businessName', String(value))} />
         </Field>
@@ -201,14 +203,6 @@ function FormScreen({
             placeholder="说清楚你为谁解决什么问题，不要只写口号"
             autosize={{ minRows: 2, maxRows: 4 }}
             onChange={(value) => onChange('description', String(value))}
-          />
-        </Field>
-        <Field label="公开入口（官网/小程序/公众号/抖音/隐私页）">
-          <Textarea
-            value={form.links}
-            placeholder="粘贴公开链接；没有官网也可以写小程序、公众号、隐私政策入口"
-            autosize={{ minRows: 2, maxRows: 5 }}
-            onChange={(value) => onChange('links', String(value))}
           />
         </Field>
         <Field label="所在行业" required>
@@ -237,7 +231,17 @@ function FormScreen({
             onChange={(value) => onChange('targetCustomers', String(value))}
           />
         </Field>
-        <Field label="竞品名称（选填）">
+
+        <p className="group-label">补充信息<span>选填 · 填得越全，采样和审计越准</span></p>
+        <Field label="公开入口（官网/小程序/公众号/抖音/隐私页）">
+          <Textarea
+            value={form.links}
+            placeholder="粘贴公开链接；没有官网也可以写小程序、公众号、隐私政策入口"
+            autosize={{ minRows: 2, maxRows: 5 }}
+            onChange={(value) => onChange('links', String(value))}
+          />
+        </Field>
+        <Field label="竞品名称">
           <Textarea
             value={form.competitors}
             placeholder="填写 1-5 个客户会拿来比较的竞品"
@@ -245,7 +249,7 @@ function FormScreen({
             onChange={(value) => onChange('competitors', String(value))}
           />
         </Field>
-        <Field label="联系方式（选填）">
+        <Field label="联系方式">
           <Input value={form.contact} placeholder="微信或手机号，仅用于后续联系" onChange={(value) => onChange('contact', String(value))} />
         </Field>
       </div>
@@ -281,21 +285,26 @@ function LoadingScreen({ step }: { step: number }) {
         <h2>正在生成 GEO 报告</h2>
         <p>系统正在做真实问答采样，请不要关闭页面</p>
       </div>
-      <div className="progress-ring">
-        <Progress percentage={Math.min(20 + step * 18, 96)} theme="circle" size="large" />
+      <div className="scan-ring" role="status" aria-label="正在采样">
+        <span className="ring-track" aria-hidden="true" />
+        <span className="ring-arc" aria-hidden="true" />
+        <div className="ring-core">
+          <strong>{Math.min(step + 1, tasks.length)}<small>/{tasks.length}</small></strong>
+          <span>采样中</span>
+        </div>
       </div>
       <div className="task-card">
-        {tasks.map((task, index) => (
-          <div className="task-row" key={task}>
-            <span className={index <= step ? 'task-dot done' : 'task-dot'}>{index <= step ? '✓' : ''}</span>
-            <span>{task}</span>
-          </div>
-        ))}
+        {tasks.map((task, index) => {
+          const state = index <= step ? 'done' : index === step + 1 ? 'active' : '';
+          return (
+            <div className={`task-row ${state}`} key={task}>
+              <span className={`task-dot ${state}`}>{index <= step ? '✓' : ''}</span>
+              <span>{task}</span>
+            </div>
+          );
+        })}
       </div>
-      <div className="tip-card">
-        <Loading size="20px" />
-        <p>本报告使用 DeepSeek 本次返回答案作为采样证据，不把它包装成全网确定排名。</p>
-      </div>
+      <p className="loading-note">本报告使用 DeepSeek 本次返回答案作为采样证据，不把它包装成全网确定排名。</p>
     </section>
   );
 }
@@ -304,26 +313,34 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
   const [consultOpen, setConsultOpen] = useState(false);
   const risk = riskMeta(report.riskLevel);
   const scoreDeg = Math.round((report.score / 100) * 360);
+  const sampledProviders = report.stages.aiSearch.providerBreakdown.filter(
+    (provider) => provider.status === 'sampled' || provider.status === 'partial'
+  );
+  const unavailableProviders = report.stages.aiSearch.providerBreakdown.filter(
+    (provider) => provider.status !== 'sampled' && provider.status !== 'partial'
+  );
   return (
     <section className="screen result-screen">
       <StepHeader current={3} />
       <h2 className="result-heading">GEO 分析成果报告</h2>
       <div className="report-meta">
-        <span>报告 {report.id}</span>
-        <span>{formatDate(report.generatedAt)}</span>
+        <span>编号 {report.id}</span>
       </div>
 
-      <div className={`score-card ${report.riskLevel}`} style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}>
-        <span className="score-kicker">GEO 分析成果得分</span>
-        <div className="gauge">
-          <span>{report.score}<small>分</small></span>
+      <div className={`report-cover ${report.riskLevel}`} style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}>
+        <span className="cover-kicker">GEO 分析成果得分</span>
+        <div className="cover-ring">
+          <div>
+            <strong>{report.score}</strong>
+            <small>/ 100</small>
+          </div>
         </div>
-        <strong>{report.scoreLevel} · {risk.label}</strong>
-        <p>{report.summary}</p>
-        <p className="model-line">
-          DeepSeek 真实采样
-          <span>{report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
-        </p>
+        <span className="cover-chip">{report.scoreLevel} · {risk.label}</span>
+        <p className="cover-summary">{report.summary}</p>
+        <div className="cover-foot">
+          <span>DeepSeek 真实采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
+          <span>{formatDate(report.generatedAt)}</span>
+        </div>
       </div>
 
       <section className="evidence-card">
@@ -357,13 +374,20 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
           <Metric label="品牌提及率" value={`${Math.round(report.stages.aiSearch.mentionRate * 1000) / 10}%`} />
           <Metric label="提及问题数" value={`${report.stages.aiSearch.mentionedCount}`} />
         </div>
-        <div className="provider-strip">
-          {report.stages.aiSearch.providerBreakdown.map((provider) => (
-            <span className={provider.status} key={provider.provider}>
-              {provider.provider} · {provider.status === 'sampled' || provider.status === 'partial' ? `${provider.successCount}/${provider.promptCount}` : '未配置'}
-            </span>
-          ))}
-        </div>
+        {sampledProviders.length > 0 && (
+          <div className="provider-strip">
+            {sampledProviders.map((provider) => (
+              <span className={provider.status} key={provider.provider}>
+                {provider.provider} · {provider.successCount}/{provider.promptCount}
+              </span>
+            ))}
+          </div>
+        )}
+        {unavailableProviders.length > 0 && (
+          <p className="provider-note">
+            {unavailableProviders.map((provider) => provider.provider).join(' / ')} 未配置，不生成模拟结果
+          </p>
+        )}
         <div className="answer-list">
           {report.stages.aiSearch.answerSamples.slice(0, 4).map((answer) => (
             <article className="answer-card" key={answer.promptId}>
@@ -372,7 +396,10 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
                 <EvidenceBadge label={answer.evidenceLabel} />
               </div>
               <p>{answer.answerExcerpt}</p>
-              <small>{answer.mentionedBrand ? '已提及品牌' : '未提及品牌'}{answer.mentionedCompetitors.length ? ` · 竞品：${answer.mentionedCompetitors.join('、')}` : ''}</small>
+              <small className={answer.mentionedBrand ? 'hit' : 'miss'}>
+                {answer.mentionedBrand ? '已提及品牌' : '未提及品牌'}
+                {answer.mentionedCompetitors.length ? ` · 竞品：${answer.mentionedCompetitors.join('、')}` : ''}
+              </small>
             </article>
           ))}
         </div>
@@ -426,7 +453,7 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
       <ResultBlock title="优先优化项">
         {report.stages.recommendations.slice(0, 5).map((suggestion) => (
           <div className="suggestion-row" key={suggestion.id}>
-            <span>{suggestion.priority}</span>
+            <span className={`pri ${suggestion.priority}`}>{suggestion.priority}</span>
             <div>
               <div className="row-title">
                 <strong>{suggestion.title}</strong>
@@ -468,14 +495,13 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
 
       <div className="cta-card">
         <h3>需要把报告落成内容和页面？</h3>
-        <div className="cta-actions">
-          <Button block theme="light" variant="outline" onClick={() => setConsultOpen(true)}>添加微信咨询</Button>
-          <Button block theme="primary" onClick={() => setConsultOpen(true)}>预约完整体检</Button>
-        </div>
-        <p>下一步可以人工核验多平台答案、补品牌页/FAQ/隐私页，并建立月度复测。</p>
+        <p>下一步可以人工核验多平台答案、补品牌页 / FAQ / 隐私页，并建立月度复测。</p>
+        <Button block theme="primary" className="cta-button" onClick={() => setConsultOpen(true)}>
+          添加微信 · 预约完整体检
+        </Button>
       </div>
 
-      <Button block theme="default" variant="text" onClick={onRestart}>重新分析</Button>
+      <Button block theme="default" variant="text" className="restart-button" onClick={onRestart}>重新分析</Button>
       <ComplianceLinks />
       {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
@@ -511,7 +537,7 @@ function ConsultModal({ onClose }: { onClose: () => void }) {
           <span>微信号</span>
           <strong>{CONSULT_WECHAT_ID}</strong>
         </div>
-        <Button block theme="primary" onClick={copyWechat}>
+        <Button block theme="primary" className="cta-button" onClick={copyWechat}>
           {hasWechatId ? '复制微信号' : '复制添加说明'}
         </Button>
       </div>
@@ -575,8 +601,8 @@ function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
   return (
     <aside className="desktop-preview" aria-hidden="true">
       <div>
-        <strong>最终报告预览</strong>
-        <p>同一套采样证据和报告结构，后续可复用到小程序报告页。</p>
+        <strong>让 AI 主动提到你的品牌</strong>
+        <p>基于真实问答采样的 GEO 分析报告：评分拆解、竞品对比、证据留档、行动路线。</p>
       </div>
       <div className="preview-panel">
         <span>AI曝光体检</span>
