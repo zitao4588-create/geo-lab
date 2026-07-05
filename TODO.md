@@ -2,6 +2,13 @@
 
 ## Immediate
 
+- Completed 2026-07-05 H5 UI refresh and production release `20260705175108`:
+  - redesigned all four H5 screens (dark hero + AI chat demo, grouped form, honest loading progress, report-cover score card, single consult CTA),
+  - fixed the consult modal being positioned off-viewport by a retained screen-animation transform,
+  - kept all compliance and evidence-boundary copy unchanged in meaning,
+  - deployed to `https://exposure.playgamelab.cn`, replacing `20260703201836` (kept for rollback),
+  - online smoke passed: homepage/privacy/terms `200`, health `samplingReady=true`, old report ID still `200`, new smoke report `diag_mr7m81bl_mzlv8i` with 20/20 samples, report/evidence/exports `200`, in-window repeat POST `429`, no bundle secrets, no mobile/desktop overflow,
+  - release evidence under `outputs/h5-mvp/ui-refresh-release-20260705175108/`.
 - Completed 2026-07-03 T1 local Git protection and T8 first-batch conversion safeguards:
   - initialized local Git for `geo-lab`,
   - made the first local snapshot commit,
