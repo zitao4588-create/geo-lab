@@ -1,13 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Textarea, Toast } from 'tdesign-mobile-react';
 import type { DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
-import { createDiagnosis, getDiagnosis } from './api';
+import { ApiError, createDiagnosis, getDiagnosis } from './api';
 
 type Screen = 'start' | 'form' | 'loading' | 'result';
 
 const DEFAULT_CONSULT_WECHAT_TEXT = '请扫码添加微信';
 const CONSULT_WECHAT_ID = import.meta.env.VITE_CONSULT_WECHAT_ID?.trim() || DEFAULT_CONSULT_WECHAT_TEXT;
 const CONSULT_QR_PATH = '/wechat-qr.jpg';
+const FORM_DRAFT_KEY = 'aiec_form_draft';
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
 
 const emptyForm: DiagnosisInput = {
@@ -29,12 +30,28 @@ const requiredFields: Array<keyof DiagnosisInput> = [
   'targetCustomers'
 ];
 
+function readDraft(): DiagnosisInput {
+  try {
+    const raw = sessionStorage.getItem(FORM_DRAFT_KEY);
+    if (raw) return { ...emptyForm, ...(JSON.parse(raw) as Partial<DiagnosisInput>) };
+  } catch {
+    /* 草稿损坏时直接用空表单 */
+  }
+  return emptyForm;
+}
+
+function prefersReducedMotion() {
+  return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export function App() {
   const [screen, setScreen] = useState<Screen>('start');
-  const [form, setForm] = useState<DiagnosisInput>(emptyForm);
+  const [form, setForm] = useState<DiagnosisInput>(readDraft);
   const [report, setReport] = useState<DiagnosisReport | null>(null);
   const [loadingStep, setLoadingStep] = useState(0);
+  const [loadingSeconds, setLoadingSeconds] = useState(0);
   const [error, setError] = useState('');
+  const [errorCode, setErrorCode] = useState('');
 
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
@@ -60,6 +77,34 @@ export function App() {
     return () => window.clearInterval(timer);
   }, [screen]);
 
+  useEffect(() => {
+    if (screen !== 'loading') return undefined;
+    setLoadingSeconds(0);
+    const startedAt = Date.now();
+    const timer = window.setInterval(() => {
+      setLoadingSeconds(Math.round((Date.now() - startedAt) / 1000));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [screen]);
+
+  useEffect(() => {
+    if (screen !== 'loading') return undefined;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [screen]);
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(FORM_DRAFT_KEY, JSON.stringify(form));
+    } catch {
+      /* 隐私模式等场景下忽略 */
+    }
+  }, [form]);
+
   const canSubmit = useMemo(
     () => requiredFields.every((field) => typeof form[field] === 'string' && form[field].trim().length > 0),
     [form]
@@ -76,16 +121,23 @@ export function App() {
     }
 
     setError('');
+    setErrorCode('');
     setLoadingStep(0);
     setScreen('loading');
 
     try {
       const result = await createDiagnosis(form);
       setReport(result.report);
+      try {
+        sessionStorage.removeItem(FORM_DRAFT_KEY);
+      } catch {
+        /* ignore */
+      }
       window.history.replaceState(null, '', `?report=${result.report.id}`);
       setScreen('result');
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : '生成失败，请稍后再试');
+      setErrorCode(submitError instanceof ApiError ? submitError.code : '');
       setScreen('form');
     }
   };
@@ -99,15 +151,21 @@ export function App() {
           <FormScreen
             form={form}
             error={error}
+            errorCode={errorCode}
             canSubmit={canSubmit}
             onChange={updateForm}
             onSubmit={submit}
           />
         )}
-        {screen === 'loading' && <LoadingScreen step={loadingStep} />}
+        {screen === 'loading' && <LoadingScreen step={loadingStep} seconds={loadingSeconds} />}
         {screen === 'result' && report && <ResultScreen report={report} onRestart={() => {
           setReport(null);
           setForm(emptyForm);
+          try {
+            sessionStorage.removeItem(FORM_DRAFT_KEY);
+          } catch {
+            /* ignore */
+          }
           window.history.replaceState(null, '', window.location.pathname);
           setScreen('start');
         }} />}
@@ -168,16 +226,41 @@ function StartScreen({ onStart }: { onStart: () => void }) {
 function FormScreen({
   form,
   error,
+  errorCode,
   canSubmit,
   onChange,
   onSubmit
 }: {
   form: DiagnosisInput;
   error: string;
+  errorCode: string;
   canSubmit: boolean;
   onChange: (field: keyof DiagnosisInput, value: string) => void;
   onSubmit: () => void;
 }) {
+  const [consultOpen, setConsultOpen] = useState(false);
+  const missingFields = requiredFields.filter((field) => {
+    const value = form[field];
+    return typeof value !== 'string' || value.trim().length === 0;
+  });
+  const rateLimited = errorCode === 'rate_limited';
+
+  const handleSubmit = () => {
+    if (missingFields.length > 0) {
+      const target = document.getElementById(`field-${missingFields[0]}`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.remove('field-flash');
+        void target.getBoundingClientRect();
+        target.classList.add('field-flash');
+        window.setTimeout(() => target.classList.remove('field-flash'), 1400);
+      }
+      Toast('请先补齐必填信息');
+      return;
+    }
+    onSubmit();
+  };
+
   return (
     <section className="screen form-screen">
       <StepHeader current={1} />
@@ -188,10 +271,10 @@ function FormScreen({
 
       <div className="form-stack">
         <p className="group-label">基础信息</p>
-        <Field label="产品/门店名称" required>
+        <Field id="field-businessName" label="产品/门店名称" required>
           <Input value={form.businessName} placeholder="例如：冰箱小雷达" onChange={(value) => onChange('businessName', String(value))} />
         </Field>
-        <Field label="一句话介绍" required>
+        <Field id="field-description" label="一句话介绍" required>
           <Textarea
             value={form.description}
             placeholder="例如：帮家庭管理冰箱食材、提醒临期食品的小程序"
@@ -199,7 +282,7 @@ function FormScreen({
             onChange={(value) => onChange('description', String(value))}
           />
         </Field>
-        <Field label="所在行业" required>
+        <Field id="field-industry" label="所在行业" required>
           <Input value={form.industry} placeholder="例如：小程序工具" onChange={(value) => onChange('industry', String(value))} />
           <div className="industry-tags" aria-label="常见行业快捷选择">
             {industryTags.map((tag) => (
@@ -214,10 +297,10 @@ function FormScreen({
             ))}
           </div>
         </Field>
-        <Field label="所在城市" required>
+        <Field id="field-city" label="所在城市" required>
           <Input value={form.city} placeholder="例如：西安 / 全国" onChange={(value) => onChange('city', String(value))} />
         </Field>
-        <Field label="目标客户" required>
+        <Field id="field-targetCustomers" label="目标客户" required>
           <Textarea
             value={form.targetCustomers}
             placeholder="例如：家庭主厨、上班族、小店老板"
@@ -245,19 +328,48 @@ function FormScreen({
         </Field>
       </div>
 
-      {error && <p className="error-text">{error}</p>}
+      {rateLimited ? (
+        <div className="rate-card">
+          <strong>免费名额暂时用完了</strong>
+          <p>{error}</p>
+          <Button block theme="primary" className="cta-button" onClick={() => setConsultOpen(true)}>
+            扫码预约人工解读
+          </Button>
+          <small>每天 30 个免费名额 · 每份报告都是真实采样</small>
+        </div>
+      ) : (
+        error && <p className="error-text">{error}</p>
+      )}
 
-      <Button block size="large" theme="primary" className="primary-action" disabled={!canSubmit} onClick={onSubmit}>
+      <Button
+        block
+        size="large"
+        theme="primary"
+        className={`primary-action ${canSubmit ? '' : 'is-not-ready'}`}
+        onClick={handleSubmit}
+      >
         生成 GEO 分析报告
       </Button>
+      {missingFields.length > 0 && <p className="missing-hint">还差 {missingFields.length} 项必填</p>}
       <p className="form-hint">真实采样通常需要 20-60 秒。若模型服务暂不可用，系统会明确提示，不会返回伪报告。</p>
+      {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
   );
 }
 
-function Field({ label, required = false, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function Field({
+  id,
+  label,
+  required = false,
+  children
+}: {
+  id?: string;
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <label className="field">
+    <label className="field" id={id}>
       <span>
         {label}
         {required && <em>*</em>}
@@ -267,14 +379,27 @@ function Field({ label, required = false, children }: { label: string; required?
   );
 }
 
-function LoadingScreen({ step }: { step: number }) {
+function LoadingScreen({ step, seconds }: { step: number; seconds: number }) {
   const tasks = ['生成采样问题', '调用 DeepSeek 回答', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
+  const tips = [
+    '本报告使用 DeepSeek 本次返回答案作为采样证据，不把它包装成全网确定排名。',
+    'GEO 小知识：AI 更容易引用有明确定义、适用人群和边界说明的页面。',
+    'GEO 小知识：品牌页、FAQ 和隐私说明，是 AI 理解你的三块基石。',
+    'GEO 小知识：竞品对比页能帮 AI 在「怎么选」的问题里想起你。'
+  ];
+  const tipIndex = Math.floor(seconds / 7) % tips.length;
+  const statusCopy =
+    seconds >= 150
+      ? '仍在生成中，最长可能需要 3-4 分钟，请保持页面打开'
+      : seconds >= 60
+        ? '大模型采样偶尔较慢，报告生成后不会丢失，请再等一会儿'
+        : '系统正在做真实问答采样，请不要关闭页面';
   return (
     <section className="screen loading-screen">
       <StepHeader current={2} />
       <div className="loading-copy">
         <h2>正在生成 GEO 报告</h2>
-        <p>系统正在做真实问答采样，请不要关闭页面</p>
+        <p>{statusCopy}</p>
       </div>
       <div className="scan-ring" role="status" aria-label="正在采样">
         <span className="ring-track" aria-hidden="true" />
@@ -295,13 +420,17 @@ function LoadingScreen({ step }: { step: number }) {
           );
         })}
       </div>
-      <p className="loading-note">本报告使用 DeepSeek 本次返回答案作为采样证据，不把它包装成全网确定排名。</p>
+      <p className="loading-note" key={tipIndex}>{tips[tipIndex]}</p>
     </section>
   );
 }
 
 function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestart: () => void }) {
   const [consultOpen, setConsultOpen] = useState(false);
+  const [showBar, setShowBar] = useState(false);
+  const [displayScore, setDisplayScore] = useState(() => (prefersReducedMotion() ? report.score : 0));
+  const coverRef = useRef<HTMLDivElement | null>(null);
+  const ctaRef = useRef<HTMLDivElement | null>(null);
   const risk = riskMeta(report.riskLevel);
   const scoreDeg = Math.round((report.score / 100) * 360);
   const sampledProviders = report.stages.aiSearch.providerBreakdown.filter(
@@ -310,19 +439,74 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   const unavailableProviders = report.stages.aiSearch.providerBreakdown.filter(
     (provider) => provider.status !== 'sampled' && provider.status !== 'partial'
   );
+  const answerSamples = report.stages.aiSearch.answerSamples.slice(0, 4);
+  const auditTargets = report.stages.infrastructure.pageAudit.targets.slice(0, 8);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      setDisplayScore(report.score);
+      return undefined;
+    }
+    let raf = 0;
+    const started = performance.now();
+    const duration = 900;
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - started) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayScore(Math.round(eased * report.score));
+      if (progress < 1) raf = window.requestAnimationFrame(tick);
+    };
+    raf = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(raf);
+  }, [report.score]);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return undefined;
+    let coverVisible = true;
+    let ctaVisible = false;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === coverRef.current) coverVisible = entry.isIntersecting;
+        if (entry.target === ctaRef.current) ctaVisible = entry.isIntersecting;
+      }
+      setShowBar(!coverVisible && !ctaVisible);
+    });
+    if (coverRef.current) observer.observe(coverRef.current);
+    if (ctaRef.current) observer.observe(ctaRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const copyReportLink = async () => {
+    if (!navigator.clipboard) {
+      Toast('当前浏览器不支持一键复制，请手动复制地址栏链接');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      Toast('已复制报告链接');
+    } catch {
+      Toast('复制失败，请手动复制地址栏链接');
+    }
+  };
+
   return (
     <section className="screen result-screen">
       <StepHeader current={3} />
       <h2 className="result-heading">GEO 分析成果报告</h2>
       <div className="report-meta">
         <span>编号 {report.id}</span>
+        <button type="button" className="copy-link" onClick={copyReportLink}>复制报告链接</button>
       </div>
 
-      <div className={`report-cover ${report.riskLevel}`} style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}>
+      <div
+        ref={coverRef}
+        className={`report-cover ${report.riskLevel}`}
+        style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}
+      >
         <span className="cover-kicker">GEO 分析成果得分</span>
         <div className="cover-ring">
           <div>
-            <strong>{report.score}</strong>
+            <strong>{displayScore}</strong>
             <small>/ 100</small>
           </div>
         </div>
@@ -379,21 +563,25 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
             {unavailableProviders.map((provider) => provider.provider).join(' / ')} 未配置，不生成模拟结果
           </p>
         )}
-        <div className="answer-list">
-          {report.stages.aiSearch.answerSamples.slice(0, 4).map((answer) => (
-            <article className="answer-card" key={answer.promptId}>
-              <div>
-                <strong>{answer.prompt}</strong>
-                <EvidenceBadge label={answer.evidenceLabel} />
-              </div>
-              <p>{answer.answerExcerpt}</p>
-              <small className={answer.mentionedBrand ? 'hit' : 'miss'}>
-                {answer.mentionedBrand ? '已提及品牌' : '未提及品牌'}
-                {answer.mentionedCompetitors.length ? ` · 竞品：${answer.mentionedCompetitors.join('、')}` : ''}
-              </small>
-            </article>
-          ))}
-        </div>
+        {answerSamples.length > 0 && (
+          <Collapse summary={`查看 ${answerSamples.length} 条采样答案原文`}>
+            <div className="answer-list">
+              {answerSamples.map((answer) => (
+                <article className="answer-card" key={answer.promptId}>
+                  <div>
+                    <strong>{answer.prompt}</strong>
+                    <EvidenceBadge label={answer.evidenceLabel} />
+                  </div>
+                  <p>{answer.answerExcerpt}</p>
+                  <small className={answer.mentionedBrand ? 'hit' : 'miss'}>
+                    {answer.mentionedBrand ? '已提及品牌' : '未提及品牌'}
+                    {answer.mentionedCompetitors.length ? ` · 竞品：${answer.mentionedCompetitors.join('、')}` : ''}
+                  </small>
+                </article>
+              ))}
+            </div>
+          </Collapse>
+        )}
       </ResultBlock>
 
       <ResultBlock title="公开基建">
@@ -410,15 +598,19 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
             </div>
           ))}
         </div>
-        <div className="audit-list">
-          {report.stages.infrastructure.pageAudit.targets.slice(0, 8).map((target) => (
-            <div className={`audit-row ${target.status}`} key={target.id}>
-              <strong>{target.name}</strong>
-              <span>{target.status} · HTTP {target.httpStatus ?? '-'}</span>
-              <p>{target.title || target.url}</p>
+        {auditTargets.length > 0 && (
+          <Collapse summary={`查看 ${auditTargets.length} 个页面审计明细`}>
+            <div className="audit-list">
+              {auditTargets.map((target) => (
+                <div className={`audit-row ${target.status}`} key={target.id}>
+                  <strong>{target.name}</strong>
+                  <span>{target.status} · HTTP {target.httpStatus ?? '-'}</span>
+                  <p>{target.title || target.url}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </Collapse>
+        )}
       </ResultBlock>
 
       <ResultBlock title="竞品与信任风险">
@@ -482,7 +674,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         </ResultBlock>
       )}
 
-      <div className="cta-card">
+      <div className="cta-card" ref={ctaRef}>
         <h3>需要把报告落成内容和页面？</h3>
         <p>下一步可以人工核验多平台答案、补品牌页 / FAQ / 隐私页，并建立月度复测。</p>
         <Button block theme="primary" className="cta-button" onClick={() => setConsultOpen(true)}>
@@ -492,8 +684,27 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
 
       <Button block theme="default" variant="text" className="restart-button" onClick={onRestart}>重新分析</Button>
       <ComplianceLinks />
+
+      <div className={`consult-bar ${showBar ? 'show' : ''}`} aria-hidden={!showBar}>
+        <span>需要人工解读这份报告？</span>
+        <button type="button" tabIndex={showBar ? 0 : -1} onClick={() => setConsultOpen(true)}>添加微信</button>
+      </div>
+
       {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
+  );
+}
+
+function Collapse({ summary, children }: { summary: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="collapse">
+      <button type="button" className="collapse-toggle" aria-expanded={open} onClick={() => setOpen((current) => !current)}>
+        <span>{open ? '收起' : summary}</span>
+        <em aria-hidden="true" className={open ? 'up' : ''}>▾</em>
+      </button>
+      {open && <div className="collapse-body">{children}</div>}
+    </div>
   );
 }
 
