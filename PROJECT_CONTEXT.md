@@ -154,7 +154,9 @@ H5 MVP implementation started on 2026-06-30:
 - Read-only backend/public filing checks confirmed the current filing surfaces are still centered on `playgamelab.cn` and a personal subject/service context, while the public-security record name and from-domain do not specifically name `exposure.playgamelab.cn`.
 - Current allowed boundary: `exposure.playgamelab.cn` can continue as a delivery/demo/report entry with footer备案 caveat, no price/payment/order/contract flow, and no promise of AI ranking or multi-platform coverage.
 - Public hard promotion, paid ads, or a more explicit commercial landing-page posture should wait until ICP/Tencent service naming and public-security domain/from-domain display are confirmed or updated.
-- `marketing/README.md` is now treated as a planned promotion-material index only; the actual channel copy and poster assets still need to be created and reviewed item by item.
+- `marketing/` now contains the first promotion-material batch committed as `c31873b`: WeChat article, Zhihu answers, Xiaohongshu posts, Moments/groups copy, short-video script, and two poster PNGs with HTML sources. The materials are drafts for user review, not published content.
+- A local follow-up revised `marketing/wechat-article-fridge-case.md` into a less AI-flavored version and added `marketing/image-prompts.md` with illustration prompts plus a real-screenshot checklist. These should be reviewed with the same evidence and compliance red lines before release.
+- The consultation QR image already exists at `apps/ai-exposure-check-h5/public/wechat-qr.jpg`, copied earlier from `/Users/qzt/Downloads/IMG_2538.jpg`. The remaining `VITE_CONSULT_WECHAT_ID` task is for the copyable WeChat ID text in the modal, not for the QR image itself.
 
 Remaining risks:
 

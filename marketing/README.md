@@ -14,6 +14,7 @@
 | `xiaohongshu-posts.md` | 小红书图文 ×3 | 初稿完成，待配图发布 |
 | `moments-and-groups.md` | 朋友圈系列 + 微信群版本 | 初稿完成，第 3 条需授权后填空 |
 | `video-script-01.md` | 40 秒短视频分镜脚本 | 初稿完成，待拍摄 |
+| `image-prompts.md` | 全物料配图方案、真实截图清单、GPT Image 插画提示词 | 初稿完成，真实截图需从线上报告页截取 |
 | `posters/poster-xhs-cover.png` | 小红书封面图（1080×1440） | 已生成（源文件 `.html` 同目录，可改字重新截图） |
 | `posters/poster-square.png` | 朋友圈/群分享方图（1080×1080） | 已生成（同上） |
 

@@ -135,13 +135,15 @@
   - send the source with `POST /api/diagnoses`,
   - validate/store it in `submissions.jsonl`,
   - use it for the first promotion-channel review.
-- Decide whether to keep `marketing/README.md` as a tracked promotion-material index, then create the actual first-batch materials under `marketing/`:
-  - WeChat article draft,
+- Review and publish the first-batch marketing materials under `marketing/`:
+  - WeChat article draft, including the local less-AI-flavored revision,
   - Zhihu answer drafts,
   - Xiaohongshu post drafts,
   - Moments/groups copy,
   - short-video script,
-  - poster assets after source tracking and consult WeChat ID are ready.
+  - poster PNGs and reusable HTML sources,
+  - `image-prompts.md` screenshot checklist and GPT Image illustration prompts.
+  Publishing remains a manual user action after the red-line checklist in `marketing/README.md` is checked.
 - Use `冰箱小雷达` final report and screenshots for first outreach review, but keep the evidence caveat visible: DeepSeek sampling does not represent all AI platforms or guaranteed ranking lift.
 - Add the second real sampling platform after DeepSeek:
   - 豆包,
