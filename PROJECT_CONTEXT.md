@@ -138,6 +138,15 @@ H5 MVP implementation started on 2026-06-30:
 - Online smoke passed: homepage `200` with new bundle hashes, `/api/health` `samplingReady=true`, privacy/terms `200`, pre-existing report `diag_mr4wim6t_gfcg0g` still `200` (shared RUNTIME_DIR), test `POST /api/diagnoses` generated `diag_mr7m81bl_mzlv8i` with `aiMeta.successCount=20/20`, report/evidence/exports all `200`, bundle contains no key patterns, and mobile/desktop online screenshots show no horizontal overflow.
 - Release evidence is stored under `outputs/h5-mvp/ui-refresh-release-20260705175108/`.
 
+2026-07-06 UX batch release:
+
+- Declutter pass on the start screen (single trust line replaces eyebrow chip, promise descriptions and card note), unified "例如：…" placeholders, and the contact field removed from the form — contact intent now flows only through the post-report WeChat CTA (API keeps accepting optional contact).
+- Conversion/waiting improvements: sticky consult bar on the result page, copy-report-link action, collapsible answer/audit evidence, score count-up, tappable not-ready submit with missing-field targeting, in-page rate-limit consult card, staged loading copy with rotating GEO tips and a beforeunload guard, sessionStorage form draft, chat-demo entrance animation, SVG favicon, legal pages aligned to the design tokens.
+- Code commits: `da7a339`, `f783016`.
+- Deployed to `https://exposure.playgamelab.cn` as release `20260706165543`, replacing `20260705175108` (kept for rollback).
+- Online smoke: homepage/health/legal/favicon `200` with new bundle hashes, existing report and all exports `200`, no horizontal overflow on mobile/desktop shots, consult bar verified live mid-scroll. No new POST sampling this round (server source unchanged; quota saved) — noted as a deliberate runbook deviation.
+- Release evidence under `outputs/h5-mvp/ux-batch-release-20260706165543/`.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for technical/internal testing first. Public commercial use still needs a separate ICP/公安备案 display and主体/收费 boundary review.

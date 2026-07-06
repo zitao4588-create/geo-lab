@@ -14,16 +14,17 @@
 - 代码位置：`apps/ai-exposure-check-h5/`（React+Vite+TDesign Mobile / Node+Express，无数据库/登录/支付）
 - 第一阶段红线：不引入数据库、登录、支付、Docker、队列（见 `AGENTS.md`）
 
-## 2. 当前线上状态（截至 2026-07-05 晚）
+## 2. 当前线上状态（截至 2026-07-06）
 
-- **线上 release：`20260705175108`（UI 焕新版）**，上一版 `20260703201836` 保留在服务器可回滚。
-- 服务健康：homepage/privacy/terms 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
-- 本轮 git 提交（已推送 `zitao4588-create/geo-lab` main）：
-  - `dc6b59d` Redesign H5 UI for premium feel and conversion —— UI 焕新本体
-  - `249799b` Record UI refresh production deployment 20260705175108
-  - `7a44ede` Record rate-limit verification and TODO closeout
-  - `070ff36` Add H5 promotion plan draft v1
-- 验收证据：`outputs/h5-mvp/ui-refresh-release-20260705175108/`（部署摘要、smoke 报告、导出、线上四屏截图）。
+- **线上 release：`20260706165543`（UX 批次）**，上一版 `20260705175108` 保留在服务器可回滚。
+- 服务健康：homepage/privacy/terms/favicon 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
+- 近两轮 git 提交（已推送 `zitao4588-create/geo-lab` main）：
+  - `dc6b59d` UI 焕新本体（2026-07-05 release `20260705175108`）
+  - `070ff36` 推广方案草案 v1
+  - `da7a339` 首页减法 / 占位统一 / 移除表单联系方式字段
+  - `f783016` 转化与等待体验批次（悬浮咨询条、429 引导卡、草稿保存、折叠、count-up、favicon、合规页配色等）
+- 验收证据：`outputs/h5-mvp/ui-refresh-release-20260705175108/` 与 `outputs/h5-mvp/ux-batch-release-20260706165543/`。
+- 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 sessionStorage（key `aiec_form_draft`）；采样中挂 beforeunload 确认。
 - 线上 smoke 报告：`diag_mr7m81bl_mzlv8i`（42 分，20/20 采样）。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
 
 ### 2.1 本轮 UI 焕新做了什么（设计意图，别无意破坏）
@@ -66,8 +67,7 @@
 
 ### P1 —— 推广物料与产品增强
 
-- 报告分享海报：深色报告封面 → 可保存图片（含二维码），小红书/朋友圈传播件。
-- 429 软着陆：名额用完时给「明日名额 + 扫码预约」引导卡（当前只有 Toast 文案）。
+- 报告分享海报：深色报告封面 → 可保存图片（含二维码），小红书/朋友圈传播件。（429 软着陆已随 `f783016` 上线，不再是待办）
 - 第二真实采样平台（豆包/Kimi/通义等，需用户提供对应 API key；adapter 结构已预留，见 `src/server/deepseek.ts` 的 providers 登记，未配置平台必须继续返回 unavailable，**禁止模拟结果**）。
 - H5 内 PDF 导出按钮（当前 PDF 靠 HTML 报告手工生成）。
 - `fridge.playgamelab.cn` 月度复测基线 + 给「AI曝光体检」自己做 GEO 自证（固定 20 题，公开提及率曲线，推广方案 §3）。

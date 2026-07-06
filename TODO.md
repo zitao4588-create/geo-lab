@@ -2,6 +2,13 @@
 
 ## Immediate
 
+- Completed 2026-07-06 UX batch and production release `20260706165543`:
+  - decluttered start screen, unified form placeholders, removed the contact field (post-report WeChat CTA is the only contact path),
+  - sticky consult bar, copy-report-link, collapsible evidence, score count-up on the result page,
+  - tappable not-ready submit with missing-field targeting, in-page 429 consult card,
+  - staged loading copy, rotating GEO tips, beforeunload guard, sessionStorage form draft,
+  - chat-demo entrance animation, SVG favicon, legal pages aligned to design tokens,
+  - online smoke passed with new bundle hashes; evidence under `outputs/h5-mvp/ux-batch-release-20260706165543/`.
 - Completed 2026-07-05 H5 UI refresh and production release `20260705175108`:
   - redesigned all four H5 screens (dark hero + AI chat demo, grouped form, honest loading progress, report-cover score card, single consult CTA),
   - fixed the consult modal being positioned off-viewport by a retained screen-animation transform,
