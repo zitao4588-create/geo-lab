@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 540px; height: 720px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 44px 40px 36px;
+    background:
+      radial-gradient(120% 70% at 88% -10%, rgba(84, 120, 255, 0.34), transparent 55%),
+      radial-gradient(90% 60% at -15% 105%, rgba(46, 92, 230, 0.24), transparent 58%),
+      linear-gradient(178deg, #0d1730 0%, #0a1122 96%);
+  }
+  .chip {
+    align-self: center;
+    padding: 7px 16px;
+    border: 1px solid rgba(143, 176, 255, 0.3);
+    border-radius: 999px;
+    color: #a8c0ff;
+    background: rgba(94, 130, 255, 0.12);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  h1 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 44px;
+    line-height: 1.35;
+    font-weight: 800;
+  }
+  h1 em { font-style: normal; color: #e9bc74; }
+  .sub {
+    margin-top: 14px;
+    text-align: center;
+    color: rgba(203, 213, 231, 0.72);
+    font-size: 16px;
+  }
+  .chat {
+    margin-top: 34px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    display: grid;
+    gap: 14px;
+  }
+  .q { display: flex; justify-content: flex-end; }
+  .q span {
+    padding: 11px 16px;
+    border-radius: 16px 16px 5px 16px;
+    background: linear-gradient(155deg, #4a7dff, #2e5ce6);
+    font-size: 16px;
+  }
+  .a { display: flex; gap: 10px; align-items: flex-start; }
+  .avatar {
+    flex: 0 0 auto;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #3d6bff, #2447cc);
+    font-size: 11px; font-weight: 800;
+  }
+  .bubble {
+    flex: 1;
+    padding: 13px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 5px 16px 16px 16px;
+    background: rgba(11, 19, 38, 0.5);
+  }
+  .bubble p { color: rgba(226, 233, 248, 0.85); font-size: 14.5px; }
+  .brands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+  .brands span {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13.5px;
+  }
+  .brands em {
+    padding: 6px 14px;
+    border: 1.5px dashed rgba(233, 188, 116, 0.7);
+    border-radius: 999px;
+    background: rgba(233, 188, 116, 0.09);
+    color: #e9bc74;
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .spacer { flex: 1; }
+  .cta {
+    height: 62px;
+    border-radius: 18px;
+    display: grid; place-items: center;
+    background: linear-gradient(155deg, #4a7dff 0%, #2e5ce6 58%, #2447cc 100%);
+    box-shadow: 0 16px 34px -10px rgba(46, 92, 230, 0.55);
+    font-size: 21px; font-weight: 800; letter-spacing: 0.04em;
+  }
+  .url {
+    margin-top: 14px;
+    text-align: center;
+    color: rgba(203, 213, 231, 0.85);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .fine {
+    margin-top: 12px;
+    text-align: center;
+    color: rgba(148, 163, 190, 0.5);
+    font-size: 10.5px;
+  }
+</style>
+</head>
+<body>
+  <div class="chip">AI曝光体检 · 免费内测</div>
+  <h1>你的店<br /><em>AI 根本不知道？</em></h1>
+  <p class="sub">顾客已经开始问 AI 了，答案里有你吗</p>
+
+  <div class="chat">
+    <div class="q"><span>这类产品，哪家值得选？</span></div>
+    <div class="a">
+      <span class="avatar">AI</span>
+      <div class="bubble">
+        <p>大家常提到这几家：</p>
+        <div class="brands">
+          <span>竞品 A</span>
+          <span>竞品 B</span>
+          <em>你的品牌？</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="cta">30 秒免费测一次</div>
+  <p class="url">exposure.playgamelab.cn</p>
+  <p class="fine">DeepSeek 单平台真实采样 · 代表当次回答 · 不承诺排名提升</p>
+</body>
+</html>

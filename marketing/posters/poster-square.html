@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 540px; height: 540px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 44px 30px;
+    background:
+      radial-gradient(120% 70% at 88% -10%, rgba(84, 120, 255, 0.34), transparent 55%),
+      radial-gradient(90% 60% at -15% 105%, rgba(46, 92, 230, 0.24), transparent 58%),
+      linear-gradient(178deg, #0d1730 0%, #0a1122 96%);
+  }
+  .brand {
+    color: rgba(168, 192, 255, 0.85);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+  h1 {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .ring {
+    width: 148px;
+    height: 148px;
+    margin: 26px 0 20px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(closest-side, #111d3b 71%, transparent 72%),
+      conic-gradient(#e9bc74 0deg 210deg, rgba(255, 255, 255, 0.1) 210deg 360deg);
+  }
+  .ring strong {
+    font-size: 62px;
+    font-weight: 800;
+    color: #e9bc74;
+    line-height: 1;
+  }
+  .hint {
+    color: rgba(203, 213, 231, 0.72);
+    font-size: 15px;
+  }
+  .spacer { flex: 1; }
+  .cta {
+    align-self: stretch;
+    height: 54px;
+    border-radius: 16px;
+    display: grid; place-items: center;
+    background: linear-gradient(155deg, #4a7dff 0%, #2e5ce6 58%, #2447cc 100%);
+    box-shadow: 0 14px 30px -10px rgba(46, 92, 230, 0.55);
+    font-size: 18px; font-weight: 800; letter-spacing: 0.04em;
+  }
+  .url {
+    margin-top: 12px;
+    color: rgba(203, 213, 231, 0.85);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .fine {
+    margin-top: 9px;
+    color: rgba(148, 163, 190, 0.5);
+    font-size: 9.5px;
+  }
+</style>
+</head>
+<body>
+  <div class="brand">AI曝光体检</div>
+  <h1>顾客问 AI 时<br />会提到你吗？</h1>
+  <div class="ring"><strong>?</strong></div>
+  <p class="hint">你的 GEO 得分，测了才知道 · 免费</p>
+  <div class="spacer"></div>
+  <div class="cta">30 秒生成体检报告</div>
+  <p class="url">exposure.playgamelab.cn</p>
+  <p class="fine">DeepSeek 单平台真实采样 · 代表当次回答 · 不承诺排名提升</p>
+</body>
+</html>
