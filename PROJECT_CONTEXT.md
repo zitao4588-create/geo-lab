@@ -147,8 +147,17 @@ H5 MVP implementation started on 2026-06-30:
 - Online smoke: homepage/health/legal/favicon `200` with new bundle hashes, existing report and all exports `200`, no horizontal overflow on mobile/desktop shots, consult bar verified live mid-scroll. No new POST sampling this round (server source unchanged; quota saved) — noted as a deliberate runbook deviation.
 - Release evidence under `outputs/h5-mvp/ux-batch-release-20260706165543/`.
 
+2026-07-06 Claude Code sync and compliance boundary update:
+
+- Synced the Claude Code H5 changes into the project context: UI refresh release `20260705175108`, UX/conversion release `20260706165543`, and the promotion-plan draft under `knowledge/product/h5-promotion-plan.md`.
+- The user clarified the H5 is a delivery/report/demo product surface. Transactions, paid scope, quote confirmation, payment, invoice/tax, refund, and formal service delivery boundaries happen outside the H5.
+- Read-only backend/public filing checks confirmed the current filing surfaces are still centered on `playgamelab.cn` and a personal subject/service context, while the public-security record name and from-domain do not specifically name `exposure.playgamelab.cn`.
+- Current allowed boundary: `exposure.playgamelab.cn` can continue as a delivery/demo/report entry with footer备案 caveat, no price/payment/order/contract flow, and no promise of AI ranking or multi-platform coverage.
+- Public hard promotion, paid ads, or a more explicit commercial landing-page posture should wait until ICP/Tencent service naming and public-security domain/from-domain display are confirmed or updated.
+- `marketing/README.md` is now treated as a planned promotion-material index only; the actual channel copy and poster assets still need to be created and reviewed item by item.
+
 Remaining risks:
 
-- `exposure.playgamelab.cn` is suitable for technical/internal testing first. Public commercial use still needs a separate ICP/公安备案 display and主体/收费 boundary review.
+- `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
 - Current real sampling covers DeepSeek only. It must not be sold as full multi-platform AI visibility proof until additional platform adapters are connected to real, compliant sampling APIs.
 - URL crawling/page audit is intentionally lightweight. It verifies availability and target facts, but does not yet measure search-engine indexing, WeChat search absorption, external citations, or traffic attribution.

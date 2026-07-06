@@ -8,7 +8,7 @@
 
 ## 1. 项目一句话
 
-「AI曝光体检」：免费 H5 工具，用户填 30 秒业务资料，系统拿 20 个真实问题调 DeepSeek 官方 API 采样，生成带原始答案证据的 GEO 分析报告；转化目标是加微信 → 付费人工完整体检/GEO 优化服务。
+「AI曝光体检」：免费 H5 工具，用户填 30 秒业务资料，系统拿 20 个真实问题调 DeepSeek 官方 API 采样，生成带原始答案证据的 GEO 分析报告；转化目标是报告交付后加微信咨询，人工完整体检/GEO 优化服务的范围、报价、交易与交付确认在 H5 外完成。
 
 - 线上入口：`https://exposure.playgamelab.cn`
 - 代码位置：`apps/ai-exposure-check-h5/`（React+Vite+TDesign Mobile / Node+Express，无数据库/登录/支付）
@@ -26,6 +26,13 @@
 - 验收证据：`outputs/h5-mvp/ui-refresh-release-20260705175108/` 与 `outputs/h5-mvp/ux-batch-release-20260706165543/`。
 - 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 sessionStorage（key `aiec_form_draft`）；采样中挂 beforeunload 确认。
 - 线上 smoke 报告：`diag_mr7m81bl_mzlv8i`（42 分，20/20 采样）。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
+
+### 2.2 2026-07-06 Codex 同步补充
+
+- 用户确认：这个 H5 只作为交付产品/报告入口，交易在别的端口或链路完成。
+- 已做只读备案口径核验：当前备案展示和后台状态支持继续作为谨慎的交付/demo/report entry 使用；公开硬广、投流或更商业化的落地页口径仍需 ICP/Tencent 服务名称与公安备案 domain/from-domain 对齐。
+- 当前边界：H5 内不放价格、支付、订单、合同、付费权益、发票/税务或退款流程；微信二维码只做报告后的咨询入口；页脚备案 caveat 继续保留。
+- `marketing/` 物料初稿已于 2026-07-06 完成：公众号长文、知乎回答 ×2、小红书 ×3、朋友圈/群文案、短视频脚本、两张海报 PNG（HTML 源可复用重生成）。案例数字全部来自 outputs/ 真实报告（61→68、基建 0→100、提及率 40% 不变）。发布前按 `marketing/README.md` 红线清单逐条核对，发布动作由用户执行。
 
 ### 2.1 本轮 UI 焕新做了什么（设计意图，别无意破坏）
 
@@ -61,7 +68,7 @@
 
 | 事项 | 谁做 | 说明 |
 |---|---|---|
-| 备案口径复核 | **仅用户可做** | 登录 ICP/公安备案后台或问接入商，确认 exposure 子域名与主体能否公开商业推广。**这是推广阶段 2 的硬门槛**，完成前只能内测口径（不投流、不硬广）。 |
+| 备案/主体/收费边界 | 用户已配合后台核验，开发同步文档 | 结论：H5 维持交付/demo/report entry，不在 H5 内交易；公开硬广或投流前仍需确认/更新 ICP/Tencent 服务名称与公安备案 domain/from-domain。 |
 | 配置 `VITE_CONSULT_WECHAT_ID` | 用户给微信号 → 开发执行 | Vite 构建期变量（写入本地 `.env.local`，不进仓库），改完需重新构建+部署。当前弹层只有二维码可用，复制按钮只能复制「添加说明」。 |
 | `?from=` 来源追踪 | 开发 | 首页读 query 参数，随 POST 提交写入 `submissions.jsonl`（需同步改 `validation.ts` schema 与前端 `api.ts`/`App.tsx`）。没有它推广渠道无法归因。当前项目**零访问统计**。 |
 
@@ -82,7 +89,7 @@
 
 方案从四个硬约束反推，执行前必读全文：
 
-1. **备案未复核完 → 只能「内测邀请/个人项目分享」口径**，不投流不硬广，付费只在微信内谈；
+1. **备案/服务名称/domain-from-domain 未对齐前 → 只能「内测邀请/个人项目分享」口径**，不投流不硬广，交易不在 H5 内完成；
 2. **每天 30 份名额上限 → 目标是高意向填满，不是冲流量**；名额限制本身当卖点讲（「每份都是真实采样成本」）；
 3. **单平台采样 → 所有素材禁止承诺 AI 排名/推荐提升**；
 4. **先补转化闭环（微信号 + 来源追踪）再开始**。
@@ -97,7 +104,7 @@
 2. 无 key 或采样全失败 → `503 sampling_unavailable`，**永远不用规则模板冒充最终报告**。
 3. 密钥管理：DEEPSEEK key 只在本地 `.env.local`（gitignored）和服务器 `.env`；不进仓库、bundle、日志、报告。服务器 IP 不写入任何项目文档。
 4. `sources/` 原始快照 append-only。
-5. 合规文案（备案号 + caveat + 隐私/协议）保持展示，直到备案复核完成。
+5. 合规文案（备案号 + caveat + 隐私/协议）保持展示；H5 维持交付/report/demo 入口，不承载交易、支付、订单或合同。
 6. 与用户中文沟通；改文件前先说明改哪些、为什么（`AGENTS.md`）。
 
 ## 7. 本轮踩坑记录（避免重复付学费）
@@ -123,4 +130,4 @@ ssh lighthouse-lab 'systemctl is-active ai-exposure-check-h5.service; readlink /
 cd apps/ai-exposure-check-h5 && npm run typecheck
 ```
 
-预期：200 / `samplingReady=true` / `active` / current 指向 `20260705175108` / typecheck 通过。
+预期：200 / `samplingReady=true` / `active` / current 指向 `20260706165543` / typecheck 通过。

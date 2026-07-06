@@ -2,6 +2,11 @@
 
 ## Immediate
 
+- Completed 2026-07-06 Claude Code sync and compliance-boundary clarification:
+  - synced the UI refresh release `20260705175108`, UX/conversion release `20260706165543`, and promotion-plan draft into the project context,
+  - recorded the user's product boundary: H5 is a delivery/report/demo surface; transaction, quote, payment, invoice/tax, refund, and formal service delivery confirmation happen outside the H5,
+  - narrowed the remaining compliance gate to public promotion posture: ICP/Tencent service naming and公安备案 domain/from-domain alignment still need confirmation/update before hard promotion or paid ads,
+  - kept the current footer备案 caveat and no-payment/no-order H5 boundary.
 - Completed 2026-07-06 UX batch and production release `20260706165543`:
   - decluttered start screen, unified form placeholders, removed the contact field (post-report WeChat CTA is the only contact path),
   - sticky consult bar, copy-report-link, collapsible evidence, score count-up on the result page,
@@ -116,11 +121,27 @@
 
 ## Next
 
-- Review `exposure.playgamelab.cn` compliance before public promotion:
-  - login to ICP/公安备案 backends or confirm with the access provider whether `exposure.playgamelab.cn` needs a new service item, changed access address, or separate public security filing,
-  - confirm whether the existing备案主体 can publicly promote AI曝光体检 and manual GEO consulting/optimization services,
-  - keep paid service handoff outside the H5 until scope, quote, delivery, refund, and invoice/tax boundaries are confirmed,
-  - keep the current footer caveat visible until final review is complete.
+- Keep the H5 delivery-only boundary:
+  - no price, payment, order, contract, paid entitlement, invoice/tax, or refund flow inside the H5,
+  - keep manual service scope/quote/payment/delivery confirmation outside the H5,
+  - keep the footer备案 caveat visible until public-promotion备案 alignment is done.
+- Before public hard promotion or paid ads, complete the remaining filing alignment:
+  - confirm/update ICP/Tencent service naming so the public-facing service name matches `AI曝光体检` or the actual H5 use,
+  - confirm/update公安备案 domain/from-domain display for `exposure.playgamelab.cn` if required by the access provider or local authority,
+  - keep "inner test / build in public / personal project sharing" wording before that alignment is finished.
+- Configure `VITE_CONSULT_WECHAT_ID` and redeploy so the QR modal copy button copies the actual WeChat ID instead of generic add-WeChat instructions.
+- Implement lightweight `?from=` source tracking:
+  - read query parameters on the H5 start/form flow,
+  - send the source with `POST /api/diagnoses`,
+  - validate/store it in `submissions.jsonl`,
+  - use it for the first promotion-channel review.
+- Decide whether to keep `marketing/README.md` as a tracked promotion-material index, then create the actual first-batch materials under `marketing/`:
+  - WeChat article draft,
+  - Zhihu answer drafts,
+  - Xiaohongshu post drafts,
+  - Moments/groups copy,
+  - short-video script,
+  - poster assets after source tracking and consult WeChat ID are ready.
 - Use `冰箱小雷达` final report and screenshots for first outreach review, but keep the evidence caveat visible: DeepSeek sampling does not represent all AI platforms or guaranteed ranking lift.
 - Add the second real sampling platform after DeepSeek:
   - 豆包,

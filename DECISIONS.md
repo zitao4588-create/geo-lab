@@ -232,3 +232,17 @@ Boundary:
 - H5 automatic initial diagnosis remains free.
 - Manual complete diagnosis, interpretation, and optimization services require separately confirmed scope and pricing.
 - No online payment, contract flow, or paid entitlement is added in this batch.
+
+## 2026-07-06: Keep The H5 As Delivery-Only Product Surface
+
+Decision: treat `AI曝光体检` H5 as a delivery/report/demo surface. It can collect a free report request, show the generated report, and guide users to WeChat consultation, but transaction, quote, payment, invoice/tax, refund, and formal service delivery confirmation happen outside the H5.
+
+Reason: the current ICP/Tencent/public-security filing surfaces are suitable for a cautious delivery/demo posture, but public hard promotion and explicit commercial transaction posture require service-name and domain/from-domain alignment. Keeping the H5 delivery-only avoids turning the page into a payment/order/contract surface before that review is complete.
+
+Boundary:
+
+- No price table, payment button, order flow, contract flow, paid entitlement, invoice/tax promise, or refund policy is added to the H5.
+- WeChat QR/consultation can remain as post-report handoff, but service scope and quote are confirmed outside the H5.
+- Footer备案 numbers and the exposure-subdomain caveat stay visible.
+- Public hard promotion or paid ads wait for ICP/Tencent service naming and公安备案 domain/from-domain confirmation or update.
+- The product must still not promise AI ranking, recommendation lift, or multi-platform coverage from DeepSeek-only sampling.
