@@ -16,7 +16,7 @@
 
 ## 2. 当前线上状态（截至 2026-07-06）
 
-- **线上 release：`20260706165543`（UX 批次）**，上一版 `20260705175108` 保留在服务器可回滚。
+- **线上 release：`20260706212541`（微信号复制批次）**，上一版 `20260706165543` 保留在服务器可回滚。
 - 服务健康：homepage/privacy/terms/favicon 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
 - 近两轮 git 提交（已推送 `zitao4588-create/geo-lab` main）：
   - `dc6b59d` UI 焕新本体（2026-07-05 release `20260705175108`）
@@ -34,6 +34,7 @@
 - 当前边界：H5 内不放价格、支付、订单、合同、付费权益、发票/税务或退款流程；微信二维码只做报告后的咨询入口；页脚备案 caveat 继续保留。
 - `marketing/` 物料初稿已于 2026-07-06 完成并提交 `c31873b`：公众号长文、知乎回答 ×2、小红书 ×3、朋友圈/群文案、短视频脚本、两张海报 PNG（HTML 源可复用重生成）。案例数字全部来自 outputs/ 真实报告（61→68、基建 0→100、提及率 40% 不变）。发布前按 `marketing/README.md` 红线清单逐条核对，发布动作由用户执行。
 - 本地后续增量：`marketing/wechat-article-fridge-case.md` 已改成「去 AI 味版」，并新增 `marketing/image-prompts.md`（真实截图清单 + GPT Image 插画提示词）。这两项仍需纳入同步提交。
+- 2026-07-06 后续完成：所有 GPT Image 配图和线上真实报告截图已生成并提交，公众号草稿已创建成功（不发布），`VITE_CONSULT_WECHAT_ID` 已用本地 ignored `.env.local` 构建进线上 release `20260706212541`；线上咨询弹层已验证显示可复制微信号。证据见 `outputs/h5-mvp/wechat-id-release-20260706212541/`。
 
 ### 2.1 本轮 UI 焕新做了什么（设计意图，别无意破坏）
 
@@ -70,7 +71,6 @@
 | 事项 | 谁做 | 说明 |
 |---|---|---|
 | 备案/主体/收费边界 | 用户已配合后台核验，开发同步文档 | 结论：H5 维持交付/demo/report entry，不在 H5 内交易；公开硬广或投流前仍需确认/更新 ICP/Tencent 服务名称与公安备案 domain/from-domain。 |
-| 配置 `VITE_CONSULT_WECHAT_ID` | 用户给微信号 → 开发执行 | Vite 构建期变量（写入本地 `.env.local`，不进仓库），改完需重新构建+部署。二维码图片已在 `apps/ai-exposure-check-h5/public/wechat-qr.jpg`；当前缺的是可复制的微信号文本，未配置时按钮只复制「添加说明」。 |
 | `?from=` 来源追踪 | 开发 | 首页读 query 参数，随 POST 提交写入 `submissions.jsonl`（需同步改 `validation.ts` schema 与前端 `api.ts`/`App.tsx`）。没有它推广渠道无法归因。当前项目**零访问统计**。 |
 
 ### P1 —— 推广物料与产品增强

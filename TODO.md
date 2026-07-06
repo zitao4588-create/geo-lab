@@ -7,6 +7,11 @@
   - recorded the user's product boundary: H5 is a delivery/report/demo surface; transaction, quote, payment, invoice/tax, refund, and formal service delivery confirmation happen outside the H5,
   - narrowed the remaining compliance gate to public promotion posture: ICP/Tencent service naming and公安备案 domain/from-domain alignment still need confirmation/update before hard promotion or paid ads,
   - kept the current footer备案 caveat and no-payment/no-order H5 boundary.
+- Completed 2026-07-06 marketing visuals, WeChat draft, and online WeChat-ID release:
+  - generated and committed the first-batch GPT Image visual assets plus real report screenshots,
+  - uploaded the "less AI-flavored" WeChat article and article images to the WeChat Official Account draft box without publishing,
+  - configured the copyable consultation WeChat ID through ignored local env and deployed production release `20260706212541`,
+  - verified the live consult modal displays the configured WeChat ID; evidence under `outputs/h5-mvp/wechat-id-release-20260706212541/`.
 - Completed 2026-07-06 UX batch and production release `20260706165543`:
   - decluttered start screen, unified form placeholders, removed the contact field (post-report WeChat CTA is the only contact path),
   - sticky consult bar, copy-report-link, collapsible evidence, score count-up on the result page,
@@ -129,7 +134,6 @@
   - confirm/update ICP/Tencent service naming so the public-facing service name matches `AI曝光体检` or the actual H5 use,
   - confirm/update公安备案 domain/from-domain display for `exposure.playgamelab.cn` if required by the access provider or local authority,
   - keep "inner test / build in public / personal project sharing" wording before that alignment is finished.
-- Configure `VITE_CONSULT_WECHAT_ID` and redeploy so the QR modal copy button copies the actual WeChat ID instead of generic add-WeChat instructions.
 - Implement lightweight `?from=` source tracking:
   - read query parameters on the H5 start/form flow,
   - send the source with `POST /api/diagnoses`,

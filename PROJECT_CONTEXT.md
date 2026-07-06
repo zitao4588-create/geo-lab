@@ -158,6 +158,15 @@ H5 MVP implementation started on 2026-06-30:
 - A local follow-up revised `marketing/wechat-article-fridge-case.md` into a less AI-flavored version and added `marketing/image-prompts.md` with illustration prompts plus a real-screenshot checklist. These should be reviewed with the same evidence and compliance red lines before release.
 - The consultation QR image already exists at `apps/ai-exposure-check-h5/public/wechat-qr.jpg`, copied earlier from `/Users/qzt/Downloads/IMG_2538.jpg`. The remaining `VITE_CONSULT_WECHAT_ID` task is for the copyable WeChat ID text in the modal, not for the QR image itself.
 
+2026-07-06 marketing draft and WeChat-ID release:
+
+- Generated the full first-batch visual assets from `marketing/image-prompts.md`: W1/W2/W3, X1/X2/X3, V1, M1, plus a compressed W1 cover image under `marketing/posters/generated/`.
+- Captured real report screenshots from the live report page under `marketing/posters/screenshots/`; these are evidence screenshots, not AI-generated report mockups.
+- Uploaded the "less AI-flavored" WeChat article and its article-specific images to the WeChat Official Account draft box. The draft was created successfully through the official draft API; it was not published.
+- Built and deployed release `20260706212541` to `https://exposure.playgamelab.cn` so the consultation modal copies the configured WeChat ID instead of the generic add-WeChat instruction.
+- Verification passed: `npm run typecheck`, `npm run build`, bundle scan for DeepSeek secrets, release precheck on port `8790`, production service `active`, homepage `200`, `/api/health` `samplingReady=true`, existing report page `200`, and Playwright verification that the live consult modal displays the configured WeChat ID.
+- Release evidence is stored under `outputs/h5-mvp/wechat-id-release-20260706212541/`.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
