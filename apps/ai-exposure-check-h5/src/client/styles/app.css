@@ -185,25 +185,12 @@ textarea {
 }
 
 .hero-copy {
-  padding-top: 22px;
+  padding-top: 42px;
   text-align: center;
 }
 
-.hero-eyebrow {
-  display: inline-flex;
-  margin: 0 auto;
-  padding: 5px 13px;
-  border: 1px solid rgba(143, 176, 255, 0.28);
-  border-radius: 999px;
-  color: #a8c0ff;
-  background: rgba(94, 130, 255, 0.1);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
 .hero-copy h1 {
-  margin: 16px 0 0;
+  margin: 0;
   color: #fff;
   font-size: 30px;
   line-height: 1.32;
@@ -212,16 +199,15 @@ textarea {
 }
 
 .hero-sub {
-  margin: 12px auto 0;
-  max-width: 272px;
+  margin: 13px auto 0;
   color: rgba(203, 213, 231, 0.72);
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .chat-demo {
-  margin: 24px 2px 22px;
-  padding: 16px 16px 13px;
+  margin: 28px 2px 0;
+  padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
@@ -304,52 +290,12 @@ textarea {
   font-weight: 700;
 }
 
-.chat-note {
-  display: block;
+.trust-line {
+  margin: 18px 0 22px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 11px;
-  letter-spacing: 0.03em;
-}
-
-.promise-list {
-  list-style: none;
-  margin: 0 0 24px;
-  padding: 0 6px;
-  display: grid;
-  gap: 11px;
-}
-
-.promise-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  color: rgba(203, 213, 231, 0.75);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.promise-list li::before {
-  content: "✓";
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  border: 1px solid rgba(94, 130, 255, 0.3);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: rgba(94, 130, 255, 0.16);
-  color: #8fb0ff;
-  font-size: 10px;
-  font-weight: 800;
-  transform: translateY(1px);
-}
-
-.promise-list strong {
-  flex: 0 0 auto;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
+  color: rgba(203, 213, 231, 0.55);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
 }
 
 /* ---------- buttons ---------- */

@@ -105,7 +105,7 @@ export function App() {
           />
         )}
         {screen === 'loading' && <LoadingScreen step={loadingStep} />}
-        {screen === 'result' && report && <ResultScreen report={report} hasContact={Boolean(form.contact?.trim())} onRestart={() => {
+        {screen === 'result' && report && <ResultScreen report={report} onRestart={() => {
           setReport(null);
           setForm(emptyForm);
           window.history.replaceState(null, '', window.location.pathname);
@@ -134,9 +134,8 @@ function StartScreen({ onStart }: { onStart: () => void }) {
   return (
     <section className="screen start-screen">
       <div className="hero-copy">
-        <p className="hero-eyebrow">GEO 曝光诊断 · 免费</p>
         <h1>顾客问 AI 时<br />会提到你吗？</h1>
-        <p className="hero-sub">30 秒填写资料，生成一份基于真实采样的 AI 曝光体检报告</p>
+        <p className="hero-sub">30 秒生成你的 AI 曝光体检报告</p>
       </div>
 
       <div className="chat-demo" aria-hidden="true">
@@ -152,19 +151,14 @@ function StartScreen({ onStart }: { onStart: () => void }) {
             </div>
           </div>
         </div>
-        <small className="chat-note">DeepSeek 官方 API · 真实问答采样</small>
       </div>
 
-      <ul className="promise-list">
-        <li><strong>真实采样</strong>调用 DeepSeek 官方 API 提问，答案原文留档</li>
-        <li><strong>完整报告</strong>评分拆解、竞品对比、行动路线等 9 个模块</li>
-        <li><strong>证据边界</strong>每条结论都标注来源，可追溯、不夸大</li>
-      </ul>
+      <p className="trust-line">DeepSeek 真实采样 · 9 大报告模块 · 证据可追溯</p>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
         免费测一次
       </Button>
-      <p className="privacy-note">无需注册 · 不留联系方式也能先看报告</p>
+      <p className="privacy-note">无需注册 · 无需留联系方式</p>
 
       <ComplianceLinks />
     </section>
@@ -200,13 +194,13 @@ function FormScreen({
         <Field label="一句话介绍" required>
           <Textarea
             value={form.description}
-            placeholder="说清楚你为谁解决什么问题，不要只写口号"
+            placeholder="例如：帮家庭管理冰箱食材、提醒临期食品的小程序"
             autosize={{ minRows: 2, maxRows: 4 }}
             onChange={(value) => onChange('description', String(value))}
           />
         </Field>
         <Field label="所在行业" required>
-          <Input value={form.industry} placeholder="例如：冰箱食材库存管理小程序" onChange={(value) => onChange('industry', String(value))} />
+          <Input value={form.industry} placeholder="例如：小程序工具" onChange={(value) => onChange('industry', String(value))} />
           <div className="industry-tags" aria-label="常见行业快捷选择">
             {industryTags.map((tag) => (
               <button
@@ -221,22 +215,22 @@ function FormScreen({
           </div>
         </Field>
         <Field label="所在城市" required>
-          <Input value={form.city} placeholder="线上产品可填：全国/微信生态" onChange={(value) => onChange('city', String(value))} />
+          <Input value={form.city} placeholder="例如：西安 / 全国" onChange={(value) => onChange('city', String(value))} />
         </Field>
         <Field label="目标客户" required>
           <Textarea
             value={form.targetCustomers}
-            placeholder="写具体人群，例如：家庭主厨、上班族、自由职业者、小店老板"
+            placeholder="例如：家庭主厨、上班族、小店老板"
             autosize={{ minRows: 2, maxRows: 4 }}
             onChange={(value) => onChange('targetCustomers', String(value))}
           />
         </Field>
 
         <p className="group-label">补充信息<span>选填 · 填得越全，采样和审计越准</span></p>
-        <Field label="公开入口（官网/小程序/公众号/抖音/隐私页）">
+        <Field label="公开入口（官网/小程序/公众号等）">
           <Textarea
             value={form.links}
-            placeholder="粘贴公开链接；没有官网也可以写小程序、公众号、隐私政策入口"
+            placeholder="例如：https://xxx.com、小程序「冰箱小雷达」"
             autosize={{ minRows: 2, maxRows: 5 }}
             onChange={(value) => onChange('links', String(value))}
           />
@@ -244,13 +238,10 @@ function FormScreen({
         <Field label="竞品名称">
           <Textarea
             value={form.competitors}
-            placeholder="填写 1-5 个客户会拿来比较的竞品"
+            placeholder="例如：大众点评、美团"
             autosize={{ minRows: 2, maxRows: 4 }}
             onChange={(value) => onChange('competitors', String(value))}
           />
-        </Field>
-        <Field label="联系方式">
-          <Input value={form.contact} placeholder="微信或手机号，仅用于后续联系" onChange={(value) => onChange('contact', String(value))} />
         </Field>
       </div>
 
@@ -309,7 +300,7 @@ function LoadingScreen({ step }: { step: number }) {
   );
 }
 
-function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisReport; hasContact: boolean; onRestart: () => void }) {
+function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestart: () => void }) {
   const [consultOpen, setConsultOpen] = useState(false);
   const risk = riskMeta(report.riskLevel);
   const scoreDeg = Math.round((report.score / 100) * 360);
@@ -482,9 +473,7 @@ function ResultScreen({ report, hasContact, onRestart }: { report: DiagnosisRepo
 
       {report.exports && (
         <ResultBlock title="报告导出">
-          {!hasContact && (
-            <p className="export-notice">可先查看报告；如需 PDF 或人工解读，请扫码联系后确认交付范围。</p>
-          )}
+          <p className="export-notice">可先查看报告；如需 PDF 或人工解读，请扫码联系后确认交付范围。</p>
           <div className="export-grid">
             <a href={report.exports.html} target="_blank" rel="noreferrer">HTML报告</a>
             <a href={report.exports.markdown} target="_blank" rel="noreferrer">Markdown</a>
