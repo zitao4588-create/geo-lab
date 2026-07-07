@@ -246,3 +246,37 @@ Boundary:
 - Footer备案 numbers and the exposure-subdomain caveat stay visible.
 - Public hard promotion or paid ads wait for ICP/Tencent service naming and公安备案 domain/from-domain confirmation or update.
 - The product must still not promise AI ranking, recommendation lift, or multi-platform coverage from DeepSeek-only sampling.
+
+## 2026-07-07: Use A Concise Competitor-Risk Headline
+
+Decision: use `别让 AI / 只推荐竞品` as the H5 first-screen headline and `AI曝光体检 · 别让 AI 只推荐竞品` as the browser title.
+
+Reason: the earlier question-style headline was accurate but less direct. The new headline is shorter, clearer, and immediately frames the practical GEO risk without promising ranking improvement.
+
+Boundary:
+
+- The headline must not be expanded into a guarantee that the tool can force AI recommendation or ranking lift.
+- Supporting copy should keep the real scope: `30 秒看清你的 AI 曝光风险` and DeepSeek-based initial diagnosis.
+
+## 2026-07-07: Store Promotion Source Internally Only
+
+Decision: accept hidden `?from=` / `?utm_source=` attribution from the H5 and write the sanitized value to `runtime/submissions.jsonl`, but do not expose it in public report pages, exported reports, or evidence packages.
+
+Reason: first-batch promotion needs lightweight channel review before any analytics stack exists. Runtime JSONL is enough for the current delivery/demo phase and avoids adding database, login, tracking SDK, cookies, or admin infrastructure.
+
+Boundary:
+
+- Source strings stay short and non-sensitive.
+- This is operational attribution, not evidence for GEO report scoring.
+- The implementation must remain compatible with the no-database/no-login/no-payment constraint.
+
+## 2026-07-07: Avoid Costly Online POST Smoke For UI/Attribution-Only Releases
+
+Decision: for releases that do not change sampling behavior, production smoke can verify build, bundle, health, existing report reads, service state, and deployed schema/code without sending a fresh online `POST /api/diagnoses`.
+
+Reason: each new diagnosis can consume real DeepSeek sampling quota and interact with strict rate limits. For UI/title/source-field releases, a controlled POST should be reserved for explicit acceptance checks or first real campaign traffic.
+
+Boundary:
+
+- If sampling logic, validation required fields, storage write behavior, or report generation changes materially, run a controlled POST smoke and record the report ID.
+- When POST smoke is skipped, document that it was skipped and specify what was verified instead.

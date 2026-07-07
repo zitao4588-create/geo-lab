@@ -167,6 +167,17 @@ H5 MVP implementation started on 2026-06-30:
 - Verification passed: `npm run typecheck`, `npm run build`, bundle scan for DeepSeek secrets, release precheck on port `8790`, production service `active`, homepage `200`, `/api/health` `samplingReady=true`, existing report page `200`, and Playwright verification that the live consult modal displays the configured WeChat ID.
 - Release evidence is stored under `outputs/h5-mvp/wechat-id-release-20260706212541/`.
 
+2026-07-07 H5 title/form polish and source-tracking release:
+
+- Polished the first-screen positioning into a concise pain-oriented headline: `别让 AI / 只推荐竞品`, with browser title `AI曝光体检 · 别让 AI 只推荐竞品`.
+- Unified all visible form fields to single-line inputs for a consistent mobile rhythm.
+- Added lightweight hidden promotion attribution from `?from=` / `?utm_source=`. The frontend sends sanitized `source`, the server validates it, and runtime storage writes it to `runtime/submissions.jsonl`; public report and evidence exports do not expose this field.
+- Code commit: `2fcca26 Add H5 source tracking and headline polish`.
+- Deployed to `https://exposure.playgamelab.cn` as release `20260707095202`, replacing `20260706212541` (kept for rollback).
+- Verification passed: `npm run typecheck`, `npm run build`, frontend bundle scan found no `DEEPSEEK_API_KEY`, `api.deepseek.com`, `DEEPSEEK_BASE_URL`, `DEEPSEEK_MODEL`, or OpenAI-style `sk-...` key patterns; release precheck on port `8790`; production service `active`; homepage `200`; `/api/health` `samplingReady=true`; privacy/terms `200`; existing report `diag_mqzunocs_pzxoqe` returned `200` with score `68/100` and DeepSeek `20/20`; deployed code/schema accepts sanitized `source`.
+- No new online `POST /api/diagnoses` was sent in this release smoke to avoid consuming DeepSeek quota and resetting/triggering rate limits. Source tracking was verified by deployed schema/current code, and should be confirmed with the first real campaign submission or a deliberately approved controlled POST.
+- In-app browser visual preview could not be completed because the browser automation page was blocked by URL-policy/localhost-refusal behavior; curl/systemd smoke checks were used for production verification.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.

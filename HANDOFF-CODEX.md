@@ -14,18 +14,16 @@
 - 代码位置：`apps/ai-exposure-check-h5/`（React+Vite+TDesign Mobile / Node+Express，无数据库/登录/支付）
 - 第一阶段红线：不引入数据库、登录、支付、Docker、队列（见 `AGENTS.md`）
 
-## 2. 当前线上状态（截至 2026-07-06）
+## 2. 当前线上状态（截至 2026-07-07）
 
-- **线上 release：`20260706212541`（微信号复制批次）**，上一版 `20260706165543` 保留在服务器可回滚。
+- **线上 release：`20260707095202`（标题/表单统一/来源追踪批次）**，上一版 `20260706212541` 保留在服务器可回滚。
 - 服务健康：homepage/privacy/terms/favicon 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
 - 近两轮 git 提交（已推送 `zitao4588-create/geo-lab` main）：
-  - `dc6b59d` UI 焕新本体（2026-07-05 release `20260705175108`）
-  - `070ff36` 推广方案草案 v1
-  - `da7a339` 首页减法 / 占位统一 / 移除表单联系方式字段
   - `f783016` 转化与等待体验批次（悬浮咨询条、429 引导卡、草稿保存、折叠、count-up、favicon、合规页配色等）
-- 验收证据：`outputs/h5-mvp/ui-refresh-release-20260705175108/` 与 `outputs/h5-mvp/ux-batch-release-20260706165543/`。
+  - `2fcca26` 标题/表单统一/来源追踪批次（release `20260707095202`）
+- 验收证据：历史 UI/UX release 证据在 `outputs/h5-mvp/ui-refresh-release-20260705175108/`、`outputs/h5-mvp/ux-batch-release-20260706165543/`、`outputs/h5-mvp/wechat-id-release-20260706212541/`；`20260707095202` 本轮未新建采样证据目录，smoke 记录见 `PROJECT_CONTEXT.md`。
 - 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 sessionStorage（key `aiec_form_draft`）；采样中挂 beforeunload 确认。
-- 线上 smoke 报告：`diag_mr7m81bl_mzlv8i`（42 分，20/20 采样）。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
+- 最近一次新建线上 smoke 报告仍是 `diag_mr7m81bl_mzlv8i`（42 分，20/20 采样）。本轮 `20260707095202` 未发新 POST；读取验证使用既有报告。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
 
 ### 2.2 2026-07-06 Codex 同步补充
 
@@ -35,6 +33,7 @@
 - `marketing/` 物料初稿已于 2026-07-06 完成并提交 `c31873b`：公众号长文、知乎回答 ×2、小红书 ×3、朋友圈/群文案、短视频脚本、两张海报 PNG（HTML 源可复用重生成）。案例数字全部来自 outputs/ 真实报告（61→68、基建 0→100、提及率 40% 不变）。发布前按 `marketing/README.md` 红线清单逐条核对，发布动作由用户执行。
 - 本地后续增量：`marketing/wechat-article-fridge-case.md` 已改成「去 AI 味版」，并新增 `marketing/image-prompts.md`（真实截图清单 + GPT Image 插画提示词）。这两项仍需纳入同步提交。
 - 2026-07-06 后续完成：所有 GPT Image 配图和线上真实报告截图已生成并提交，公众号草稿已创建成功（不发布），`VITE_CONSULT_WECHAT_ID` 已用本地 ignored `.env.local` 构建进线上 release `20260706212541`；线上咨询弹层已验证显示可复制微信号。证据见 `outputs/h5-mvp/wechat-id-release-20260706212541/`。
+- 2026-07-07 后续完成：首屏标题改为 `别让 AI / 只推荐竞品`，所有可见表单字段统一为单行输入，H5 读取 `?from=` / `?utm_source=` 并把 sanitized `source` 写入 `runtime/submissions.jsonl`。该字段只用于运营归因，不进入公开 report/evidence/export。线上 release `20260707095202` 已部署并通过 curl/systemd smoke；本轮未发新线上 POST，以节省 DeepSeek 配额。
 
 ### 2.1 本轮 UI 焕新做了什么（设计意图，别无意破坏）
 
@@ -71,7 +70,7 @@
 | 事项 | 谁做 | 说明 |
 |---|---|---|
 | 备案/主体/收费边界 | 用户已配合后台核验，开发同步文档 | 结论：H5 维持交付/demo/report entry，不在 H5 内交易；公开硬广或投流前仍需确认/更新 ICP/Tencent 服务名称与公安备案 domain/from-domain。 |
-| `?from=` 来源追踪 | 开发 | 首页读 query 参数，随 POST 提交写入 `submissions.jsonl`（需同步改 `validation.ts` schema 与前端 `api.ts`/`App.tsx`）。没有它推广渠道无法归因。当前项目**零访问统计**。 |
+| `?from=` 来源追踪 | 已完成 | release `20260707095202` 已读 query 参数并随 POST 写入 `submissions.jsonl`。未接入访问统计或埋点 SDK；首批推广只做提交来源归因。 |
 
 ### P1 —— 推广物料与产品增强
 
@@ -93,7 +92,7 @@
 1. **备案/服务名称/domain-from-domain 未对齐前 → 只能「内测邀请/个人项目分享」口径**，不投流不硬广，交易不在 H5 内完成；
 2. **每天 30 份名额上限 → 目标是高意向填满，不是冲流量**；名额限制本身当卖点讲（「每份都是真实采样成本」）；
 3. **单平台采样 → 所有素材禁止承诺 AI 排名/推荐提升**；
-4. **先补转化闭环（微信号 + 来源追踪）再开始**。
+4. **微信号 + 来源追踪闭环已补齐**；下一步是小流量验证来源归因和咨询转化。
 
 三阶段：阶段 0 补闭环+朋友圈试水（1-3 天）→ 阶段 1 内测口径内容播种 4 周（朋友圈/公众号/知乎/即刻/小红书，build in public 人设，两周后校准数据）→ 阶段 2 放大（双前提：备案通过 + 第二平台上线；短视频、异业合作、垂直群、才考虑投流）。
 
@@ -131,4 +130,4 @@ ssh lighthouse-lab 'systemctl is-active ai-exposure-check-h5.service; readlink /
 cd apps/ai-exposure-check-h5 && npm run typecheck
 ```
 
-预期：200 / `samplingReady=true` / `active` / current 指向 `20260706165543` / typecheck 通过。
+预期：200 / `samplingReady=true` / `active` / current 指向 `20260707095202` / typecheck 通过。

@@ -2,13 +2,14 @@
 
 ## Immediate
 
-- Completed locally 2026-07-07 H5 title/form polish and lightweight source tracking:
+- Completed and deployed 2026-07-07 H5 title/form polish and lightweight source tracking:
   - changed the start-screen headline to `别让 AI / 只推荐竞品` and synced the browser title,
   - unified all visible form fields to single-line inputs for a consistent mobile rhythm,
   - implemented hidden `?from=` / `?utm_source=` attribution capture on the H5,
-  - validated and stores `source` in `runtime/submissions.jsonl` for promotion-channel review,
-  - verified `npm run typecheck`, `npm run build`, and server schema parsing,
-  - not deployed yet; production release and online smoke still require user confirmation.
+  - validated and stores `source` in `runtime/submissions.jsonl` for promotion-channel review while keeping it out of public reports/exports,
+  - committed as `2fcca26` and deployed production release `20260707095202`,
+  - verified `npm run typecheck`, `npm run build`, bundle secret scan, release precheck, production service `active`, homepage/health/legal pages, existing report `diag_mqzunocs_pzxoqe`, and deployed source schema parsing,
+  - did not run a new online diagnosis POST in smoke to avoid DeepSeek quota/rate-limit cost; confirm attribution with the first real campaign submission or an explicitly approved controlled POST.
 - Completed 2026-07-06 Claude Code sync and compliance-boundary clarification:
   - synced the UI refresh release `20260705175108`, UX/conversion release `20260706165543`, and promotion-plan draft into the project context,
   - recorded the user's product boundary: H5 is a delivery/report/demo surface; transaction, quote, payment, invoice/tax, refund, and formal service delivery confirmation happen outside the H5,
@@ -141,10 +142,10 @@
   - confirm/update ICP/Tencent service naming so the public-facing service name matches `AI曝光体检` or the actual H5 use,
   - confirm/update公安备案 domain/from-domain display for `exposure.playgamelab.cn` if required by the access provider or local authority,
   - keep "inner test / build in public / personal project sharing" wording before that alignment is finished.
-- After user confirms deployment, release and smoke test the 2026-07-07 H5 polish/source-tracking batch:
-  - verify `?from=xhs` is accepted online and written to `submissions.jsonl`,
-  - verify homepage title and form field rhythm on mobile,
-  - keep the H5 delivery-only/no-payment boundary unchanged.
+- After the first real channel submission, review promotion attribution in `runtime/submissions.jsonl`:
+  - confirm `?from=` / `?utm_source=` is being stored as expected,
+  - keep source labels short and channel-safe, such as `wechat`, `moments`, `xhs`, `zhihu`,
+  - do not expose source attribution in public report pages or evidence exports.
 - Review and publish the first-batch marketing materials under `marketing/`:
   - WeChat article draft, including the local less-AI-flavored revision,
   - Zhihu answer drafts,

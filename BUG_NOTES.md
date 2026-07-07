@@ -111,3 +111,23 @@ Cause: the browser tool runtime did not expose the expected incremental snapshot
 Workaround: verified the same frontend behavior through Playwright-style locators, direct browser evaluation, screenshots, and console checks instead of relying on the DOM snapshot helper.
 
 Verification: desktop and mobile checks confirmed no required-contact blocking, industry shortcut tags worked, result CTAs opened the QR modal, `/wechat-qr.jpg` loaded with nonzero natural dimensions, and no console errors or warnings were observed.
+
+## 2026-07-07: Release Precheck Initially Hit An Old Port 8790 Process
+
+Symptom: the first precheck request to `127.0.0.1:8790` returned the previous homepage title even though the uploaded release files already contained the new title.
+
+Cause: an older temporary Node precheck process was still listening on port `8790`, so curl was hitting the stale process instead of the newly uploaded release.
+
+Fix: checked the listener PID on the server, killed the old temporary precheck process, started the new release on port `8790`, and repeated health/homepage checks before switching the `current` symlink.
+
+Verification: release `20260707095202` precheck returned `/api/health` with `samplingReady=true` and homepage title `AI曝光体检 · 别让 AI 只推荐竞品`; production was then switched and systemd reported `active`.
+
+## 2026-07-07: In-App Browser Visual Smoke Was Blocked During Production Preview
+
+Symptom: attempting to open the production URL with the in-app browser preview path showed a tool-side URL-policy/localhost-refusal error instead of the live H5 page.
+
+Cause: the browser automation context was still tied to an old localhost preview state and refused the navigation path; this was a tooling/browser-control problem, not an application response failure.
+
+Workaround: used bounded production curl/systemd checks instead: homepage `200`, `/api/health` `samplingReady=true`, privacy/terms `200`, existing report `diag_mqzunocs_pzxoqe` `200`, current release symlink, and deployed bundle/title checks.
+
+Verification: production release `20260707095202` is active and serving the new title/bundle. A fresh visual browser pass can be run later if a UI screenshot is specifically needed.
