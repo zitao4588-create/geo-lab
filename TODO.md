@@ -2,6 +2,13 @@
 
 ## Immediate
 
+- Completed locally 2026-07-07 H5 title/form polish and lightweight source tracking:
+  - changed the start-screen headline to `别让 AI / 只推荐竞品` and synced the browser title,
+  - unified all visible form fields to single-line inputs for a consistent mobile rhythm,
+  - implemented hidden `?from=` / `?utm_source=` attribution capture on the H5,
+  - validated and stores `source` in `runtime/submissions.jsonl` for promotion-channel review,
+  - verified `npm run typecheck`, `npm run build`, and server schema parsing,
+  - not deployed yet; production release and online smoke still require user confirmation.
 - Completed 2026-07-06 Claude Code sync and compliance-boundary clarification:
   - synced the UI refresh release `20260705175108`, UX/conversion release `20260706165543`, and promotion-plan draft into the project context,
   - recorded the user's product boundary: H5 is a delivery/report/demo surface; transaction, quote, payment, invoice/tax, refund, and formal service delivery confirmation happen outside the H5,
@@ -134,11 +141,10 @@
   - confirm/update ICP/Tencent service naming so the public-facing service name matches `AI曝光体检` or the actual H5 use,
   - confirm/update公安备案 domain/from-domain display for `exposure.playgamelab.cn` if required by the access provider or local authority,
   - keep "inner test / build in public / personal project sharing" wording before that alignment is finished.
-- Implement lightweight `?from=` source tracking:
-  - read query parameters on the H5 start/form flow,
-  - send the source with `POST /api/diagnoses`,
-  - validate/store it in `submissions.jsonl`,
-  - use it for the first promotion-channel review.
+- After user confirms deployment, release and smoke test the 2026-07-07 H5 polish/source-tracking batch:
+  - verify `?from=xhs` is accepted online and written to `submissions.jsonl`,
+  - verify homepage title and form field rhythm on mobile,
+  - keep the H5 delivery-only/no-payment boundary unchanged.
 - Review and publish the first-batch marketing materials under `marketing/`:
   - WeChat article draft, including the local less-AI-flavored revision,
   - Zhihu answer drafts,

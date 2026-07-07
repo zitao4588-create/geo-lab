@@ -9,5 +9,12 @@ export const diagnosisInputSchema = z.object({
   targetCustomers: z.string().trim().min(1, '请填写目标客户').max(240),
   competitors: z.string().trim().max(300).optional().default(''),
   contact: z.string().trim().max(120).optional().default(''),
+  source: z
+    .string()
+    .trim()
+    .max(80)
+    .optional()
+    .default('')
+    .transform((value) => value.replace(/[\r\n\t]+/gu, ' ')),
   samplePrompts: z.array(z.string().trim().min(3).max(240)).max(30).optional()
 });

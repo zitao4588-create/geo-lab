@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Input, Textarea, Toast } from 'tdesign-mobile-react';
+import { Button, Input, Toast } from 'tdesign-mobile-react';
 import type { DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
 import { ApiError, createDiagnosis, getDiagnosis } from './api';
 
@@ -9,6 +9,7 @@ const DEFAULT_CONSULT_WECHAT_TEXT = '请扫码添加微信';
 const CONSULT_WECHAT_ID = import.meta.env.VITE_CONSULT_WECHAT_ID?.trim() || DEFAULT_CONSULT_WECHAT_TEXT;
 const CONSULT_QR_PATH = '/wechat-qr.jpg';
 const FORM_DRAFT_KEY = 'aiec_form_draft';
+const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
 
 const emptyForm: DiagnosisInput = {
@@ -19,7 +20,8 @@ const emptyForm: DiagnosisInput = {
   city: '',
   targetCustomers: '',
   competitors: '',
-  contact: ''
+  contact: '',
+  source: ''
 };
 
 const requiredFields: Array<keyof DiagnosisInput> = [
@@ -40,13 +42,31 @@ function readDraft(): DiagnosisInput {
   return emptyForm;
 }
 
+function readAttributionSource() {
+  if (typeof window === 'undefined') return '';
+  const search = new URLSearchParams(window.location.search);
+  for (const key of SOURCE_QUERY_KEYS) {
+    const value = cleanAttributionSource(search.get(key) || '');
+    if (value) return value;
+  }
+  return '';
+}
+
+function cleanAttributionSource(value: string) {
+  return value.trim().replace(/[\r\n\t]+/gu, ' ').slice(0, 80);
+}
+
 function prefersReducedMotion() {
   return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 export function App() {
   const [screen, setScreen] = useState<Screen>('start');
-  const [form, setForm] = useState<DiagnosisInput>(readDraft);
+  const [form, setForm] = useState<DiagnosisInput>(() => {
+    const draft = readDraft();
+    const source = readAttributionSource();
+    return source ? { ...draft, source } : draft;
+  });
   const [report, setReport] = useState<DiagnosisReport | null>(null);
   const [loadingStep, setLoadingStep] = useState(0);
   const [loadingSeconds, setLoadingSeconds] = useState(0);
@@ -192,8 +212,8 @@ function StartScreen({ onStart }: { onStart: () => void }) {
   return (
     <section className="screen start-screen">
       <div className="hero-copy">
-        <h1>顾客问 AI 时<br />会提到你吗？</h1>
-        <p className="hero-sub">30 秒生成你的 AI 曝光体检报告</p>
+        <h1>别让 AI<br />只推荐竞品</h1>
+        <p className="hero-sub">30 秒看清你的 AI 曝光风险</p>
       </div>
 
       <div className="chat-demo" aria-hidden="true">
@@ -275,12 +295,7 @@ function FormScreen({
           <Input value={form.businessName} placeholder="例如：冰箱小雷达" onChange={(value) => onChange('businessName', String(value))} />
         </Field>
         <Field id="field-description" label="一句话介绍" required>
-          <Textarea
-            value={form.description}
-            placeholder="例如：帮家庭管理冰箱食材、提醒临期食品的小程序"
-            autosize={{ minRows: 2, maxRows: 4 }}
-            onChange={(value) => onChange('description', String(value))}
-          />
+          <Input value={form.description} placeholder="例如：帮家庭管理冰箱食材、提醒临期食品的小程序" onChange={(value) => onChange('description', String(value))} />
         </Field>
         <Field id="field-industry" label="所在行业" required>
           <Input value={form.industry} placeholder="例如：小程序工具" onChange={(value) => onChange('industry', String(value))} />
@@ -301,30 +316,15 @@ function FormScreen({
           <Input value={form.city} placeholder="例如：西安 / 全国" onChange={(value) => onChange('city', String(value))} />
         </Field>
         <Field id="field-targetCustomers" label="目标客户" required>
-          <Textarea
-            value={form.targetCustomers}
-            placeholder="例如：家庭主厨、上班族、小店老板"
-            autosize={{ minRows: 2, maxRows: 4 }}
-            onChange={(value) => onChange('targetCustomers', String(value))}
-          />
+          <Input value={form.targetCustomers} placeholder="例如：家庭主厨、上班族、小店老板" onChange={(value) => onChange('targetCustomers', String(value))} />
         </Field>
 
         <p className="group-label">补充信息<span>选填 · 填得越全，采样和审计越准</span></p>
         <Field label="公开入口（官网/小程序/公众号等）">
-          <Textarea
-            value={form.links}
-            placeholder="例如：https://xxx.com、小程序「冰箱小雷达」"
-            autosize={{ minRows: 2, maxRows: 5 }}
-            onChange={(value) => onChange('links', String(value))}
-          />
+          <Input value={form.links} placeholder="例如：https://xxx.com、小程序「冰箱小雷达」" onChange={(value) => onChange('links', String(value))} />
         </Field>
         <Field label="竞品名称">
-          <Textarea
-            value={form.competitors}
-            placeholder="例如：大众点评、美团"
-            autosize={{ minRows: 2, maxRows: 4 }}
-            onChange={(value) => onChange('competitors', String(value))}
-          />
+          <Input value={form.competitors} placeholder="例如：大众点评、美团" onChange={(value) => onChange('competitors', String(value))} />
         </Field>
       </div>
 
