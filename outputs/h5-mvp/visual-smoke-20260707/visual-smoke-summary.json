@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-07-07T02:20:46.630Z",
+  "reportId": "diag_mra0oo9j_xnru7x",
+  "results": [
+    {
+      "name": "mobile-start",
+      "url": "https://exposure.playgamelab.cn/?from=visual_smoke",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "overflow": 0,
+      "hasHeadline": true,
+      "hasReportHeading": false,
+      "hasConsultCopy": false,
+      "consoleIssues": []
+    },
+    {
+      "name": "desktop-start",
+      "url": "https://exposure.playgamelab.cn/?from=visual_smoke",
+      "viewport": {
+        "width": 1366,
+        "height": 900
+      },
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "overflow": 0,
+      "hasHeadline": true,
+      "hasReportHeading": true,
+      "hasConsultCopy": false,
+      "consoleIssues": []
+    },
+    {
+      "name": "mobile-report",
+      "url": "https://exposure.playgamelab.cn/?report=diag_mra0oo9j_xnru7x",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "overflow": 0,
+      "hasHeadline": false,
+      "hasReportHeading": true,
+      "hasConsultCopy": true,
+      "consoleIssues": [],
+      "modal": {
+        "visible": true,
+        "qr": {
+          "complete": true,
+          "naturalWidth": 888,
+          "naturalHeight": 692,
+          "alt": "微信咨询二维码"
+        },
+        "hasWechatId": true,
+        "hasCopyButton": true
+      }
+    },
+    {
+      "name": "desktop-report",
+      "url": "https://exposure.playgamelab.cn/?report=diag_mra0oo9j_xnru7x",
+      "viewport": {
+        "width": 1366,
+        "height": 900
+      },
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "overflow": 0,
+      "hasHeadline": false,
+      "hasReportHeading": true,
+      "hasConsultCopy": true,
+      "consoleIssues": []
+    }
+  ]
+}

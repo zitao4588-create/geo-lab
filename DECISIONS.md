@@ -280,3 +280,28 @@ Boundary:
 
 - If sampling logic, validation required fields, storage write behavior, or report generation changes materially, run a controlled POST smoke and record the report ID.
 - When POST smoke is skipped, document that it was skipped and specify what was verified instead.
+
+## 2026-07-07: Use One Approved Controlled POST To Validate Attribution
+
+Decision: after release `20260707095202`, use exactly one explicitly approved controlled online `POST /api/diagnoses` with a short non-sensitive source label (`codex_test`) to verify end-to-end attribution before real promotion traffic.
+
+Reason: deployed schema/code verification proved that `source` was accepted, but only a real POST could confirm the production runtime row in `submissions.jsonl` and prove that public report/export surfaces did not leak operational attribution. One controlled POST is enough for this acceptance check and avoids repeated DeepSeek quota/rate-limit cost.
+
+Boundary:
+
+- Controlled attribution checks should use short, non-sensitive labels.
+- Record the generated report ID and whether public exports expose internal fields.
+- Do not repeat costly POST checks for visual-only smoke; reuse an existing report unless sampling, storage, validation, or report generation behavior changed.
+- Continue to keep source attribution operational only, not part of GEO evidence scoring.
+
+## 2026-07-08: Add Static Discovery Surfaces Before Expecting Search Inclusion
+
+Decision: add real `robots.txt`, valid `sitemap.xml`, and a crawler-readable static introduction page for `AI曝光体检` before expecting WeChat search or web search to discover the H5 reliably.
+
+Reason: the H5 is primarily a React app and report tool. Its previous `/robots.txt` and `/sitemap.xml` paths fell through to the SPA homepage, which was poor crawler hygiene. A static HTML page gives crawlers and share previews a stable, text-readable explanation of the product, evidence boundaries, and `冰箱小雷达` case without requiring JavaScript execution.
+
+Boundary:
+
+- This is a discovery and crawling hygiene improvement, not a guarantee of WeChat search inclusion, ranking, traffic, or conversion.
+- The static page must keep the same compliance boundaries as the H5: no price/payment/order/contract flow, no AI ranking guarantee, no fabricated multi-platform results, and clear DeepSeek-only sampling scope.
+- Generated report URLs remain private-by-link operational artifacts and should not be added to the public sitemap.

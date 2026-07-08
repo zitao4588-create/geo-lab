@@ -2,6 +2,19 @@
 
 ## Immediate
 
+- Completed 2026-07-08 search discoverability release:
+  - added real `robots.txt`, valid `sitemap.xml`, and static introduction/case page `ai-exposure-check.html`,
+  - added canonical, sitemap link, and no-JS fallback to the H5 `index.html`,
+  - deployed production release `20260708163730`,
+  - verified typecheck/build, XML validity, bundle secret scan, 8790 precheck, production service `active`, current symlink, homepage, health, robots, sitemap, static page, and existing report read,
+  - did not send a new diagnosis POST because this release only changed static discovery surfaces.
+- Completed 2026-07-07 controlled source-attribution and visual-smoke closeout:
+  - with explicit user approval, sent one controlled online `POST /api/diagnoses` using `source: codex_test`,
+  - generated validation report `diag_mra0oo9j_xnru7x` with score `68/100（良好）`, DeepSeek `20/20`, and page audit `100/100`,
+  - verified report, evidence, Markdown, HTML, and evidence-package endpoints all returned `200`,
+  - confirmed server `runtime/submissions.jsonl` stores `source: "codex_test"` while public report/export surfaces do not expose `codex_test`, `source`, or `contact`,
+  - completed mobile/desktop screenshot-level visual smoke without a second POST; evidence under `outputs/h5-mvp/visual-smoke-20260707/`,
+  - confirmed stable score ring displays `68`, no horizontal overflow, no console error/warning, and the mobile consult modal/QR/WeChat copy UI work.
 - Completed and deployed 2026-07-07 H5 title/form polish and lightweight source tracking:
   - changed the start-screen headline to `别让 AI / 只推荐竞品` and synced the browser title,
   - unified all visible form fields to single-line inputs for a consistent mobile rhythm,
@@ -142,10 +155,14 @@
   - confirm/update ICP/Tencent service naming so the public-facing service name matches `AI曝光体检` or the actual H5 use,
   - confirm/update公安备案 domain/from-domain display for `exposure.playgamelab.cn` if required by the access provider or local authority,
   - keep "inner test / build in public / personal project sharing" wording before that alignment is finished.
-- After the first real channel submission, review promotion attribution in `runtime/submissions.jsonl`:
-  - confirm `?from=` / `?utm_source=` is being stored as expected,
+- During the first real channel submission, review promotion attribution and consultation conversion:
+  - controlled `codex_test` attribution has been verified; now confirm real channel labels such as `wechat`, `moments`, `xhs`, or `zhihu`,
   - keep source labels short and channel-safe, such as `wechat`, `moments`, `xhs`, `zhihu`,
   - do not expose source attribution in public report pages or evidence exports.
+- Monitor discovery after the static-entry release:
+  - check whether `https://exposure.playgamelab.cn/ai-exposure-check.html` is fetched or searchable after content distribution starts,
+  - do not treat robots/sitemap as a guarantee of WeChat search inclusion,
+  - use公众号/朋友圈/微信群 content to create real in-ecosystem signals for `AI曝光体检`.
 - Review and publish the first-batch marketing materials under `marketing/`:
   - WeChat article draft, including the local less-AI-flavored revision,
   - Zhihu answer drafts,

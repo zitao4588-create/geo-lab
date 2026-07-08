@@ -108,6 +108,9 @@ sudo systemctl reload caddy
 ```bash
 curl -I https://exposure.playgamelab.cn/
 curl -sS https://exposure.playgamelab.cn/api/health
+curl -I https://exposure.playgamelab.cn/robots.txt
+curl -I https://exposure.playgamelab.cn/sitemap.xml
+curl -I https://exposure.playgamelab.cn/ai-exposure-check.html
 ```
 
 再提交一个不含真实隐私的测试 payload 到：
@@ -120,6 +123,9 @@ POST https://exposure.playgamelab.cn/api/diagnoses
 
 - 首页返回 200。
 - `/api/health` 返回 `model=deepseek-v4-pro`。
+- `/robots.txt` 返回 `text/plain`，并指向 `https://exposure.playgamelab.cn/sitemap.xml`。
+- `/sitemap.xml` 返回 `application/xml`，并列出首页、静态介绍页、隐私政策和用户协议。
+- `/ai-exposure-check.html` 返回独立静态 HTML，不应被 SPA fallback 成首页。
 - `POST /api/diagnoses` 返回报告 ID，且 `aiMeta.successCount > 0`。
 - `GET /api/diagnoses/:id` 可刷新查询。
 - `GET /api/diagnoses/:id/evidence` 返回证据索引。

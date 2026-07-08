@@ -131,3 +131,13 @@ Cause: the browser automation context was still tied to an old localhost preview
 Workaround: used bounded production curl/systemd checks instead: homepage `200`, `/api/health` `samplingReady=true`, privacy/terms `200`, existing report `diag_mqzunocs_pzxoqe` `200`, current release symlink, and deployed bundle/title checks.
 
 Verification: production release `20260707095202` is active and serving the new title/bundle. A fresh visual browser pass can be run later if a UI screenshot is specifically needed.
+
+## 2026-07-07: Visual Smoke Needed Elevated Chromium And Stable Selectors
+
+Symptom: the first Playwright visual smoke attempt failed with macOS Mach port permission errors. After rerunning outside the sandbox, two script-side checks failed: `getByText('GEO 分析成果报告')` matched both the heading and footer text, and a later stable-score check used the wrong selector `.score-number strong`.
+
+Cause: headless Chromium needs elevated macOS process permissions in this Codex environment. The selector failures were QA-script issues, not application failures. An early screenshot also caught the score count-up animation before it finished, temporarily showing a lower ring number than the final report score.
+
+Workaround: reran headless Chromium with approved elevated execution, changed the report wait to `getByRole('heading', { name: 'GEO 分析成果报告' })`, changed the score selector to `.cover-ring strong`, and waited for the 900ms count-up animation to settle before taking stable report screenshots.
+
+Verification: `outputs/h5-mvp/visual-smoke-20260707/visual-smoke-summary.json` and `visual-smoke-stable-report-summary.json` show mobile/desktop start and report checks with no horizontal overflow, no console issues, loaded consult QR, and stable displayed score `68`.

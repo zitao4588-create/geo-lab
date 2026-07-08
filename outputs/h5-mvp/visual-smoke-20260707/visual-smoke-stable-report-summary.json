@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-07-07T02:22:44.459Z",
+  "reportId": "diag_mra0oo9j_xnru7x",
+  "results": [
+    {
+      "name": "mobile-report-stable",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0,
+      "displayedScore": "68",
+      "summaryHas68": true,
+      "hasReportHeading": true,
+      "consoleIssues": []
+    },
+    {
+      "name": "desktop-report-stable",
+      "viewport": {
+        "width": 1366,
+        "height": 900
+      },
+      "overflow": 0,
+      "displayedScore": "68",
+      "summaryHas68": true,
+      "hasReportHeading": true,
+      "consoleIssues": []
+    }
+  ]
+}

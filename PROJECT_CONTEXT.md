@@ -178,8 +178,32 @@ H5 MVP implementation started on 2026-06-30:
 - No new online `POST /api/diagnoses` was sent in this release smoke to avoid consuming DeepSeek quota and resetting/triggering rate limits. Source tracking was verified by deployed schema/current code, and should be confirmed with the first real campaign submission or a deliberately approved controlled POST.
 - In-app browser visual preview could not be completed because the browser automation page was blocked by URL-policy/localhost-refusal behavior; curl/systemd smoke checks were used for production verification.
 
+2026-07-07 controlled attribution and visual smoke closeout:
+
+- With explicit user approval, sent one controlled online `POST /api/diagnoses` using the canonical `冰箱小雷达` payload plus `source: codex_test`.
+- New online validation report: `diag_mra0oo9j_xnru7x`, score `68/100（良好）`, risk `medium`, DeepSeek `20/20`, page audit `100/100`.
+- Verified public reads and exports: `GET /api/diagnoses/:id`, `/evidence`, `/export/markdown`, `/export/html`, and `/export/evidence-package` all returned `200`.
+- Verified server runtime attribution: `runtime/submissions.jsonl` contains the new report row with `source: "codex_test"` and empty `contact`.
+- Verified public privacy boundary: the report JSON, Markdown export, and evidence package do not expose `codex_test`, `source`, or `contact`.
+- Completed screenshot-level visual smoke with Playwright for mobile and desktop start/report pages. Evidence is stored under `outputs/h5-mvp/visual-smoke-20260707/`.
+- Visual smoke results: no horizontal overflow, no console error/warning, mobile consult modal opens, QR image loads, WeChat ID/copy button are visible, and stable report score ring shows `68` after the count-up animation completes.
+- No additional diagnosis POST was sent during the visual smoke; it reused `diag_mra0oo9j_xnru7x`.
+
+2026-07-08 search discoverability release:
+
+- Added crawler-readable static discovery files for the H5:
+  - `apps/ai-exposure-check-h5/public/robots.txt`,
+  - `apps/ai-exposure-check-h5/public/sitemap.xml`,
+  - `apps/ai-exposure-check-h5/public/ai-exposure-check.html`.
+- Updated `apps/ai-exposure-check-h5/index.html` with canonical, sitemap link, and a no-JS fallback pointing to the static introduction page.
+- The static introduction page explains `AI曝光体检`, the GEO initial-diagnosis workflow, report modules, the `冰箱小雷达` case, and evidence boundaries. It keeps the same constraints: no ranking guarantee, DeepSeek-only real sampling for now, no simulated unconfigured-platform results, and no transaction/payment/order flow inside the H5.
+- Deployed production release `20260708163730` to `https://exposure.playgamelab.cn`, replacing `20260707095202` (kept for rollback).
+- Verification passed: `npm run typecheck`, `npm run build`, sitemap XML validation, frontend bundle secret scan, release precheck on port `8790`, production service `active`, current symlink `releases/20260708163730`, homepage `200`, `/api/health` `samplingReady=true`, `/robots.txt` `text/plain`, `/sitemap.xml` `application/xml`, `/ai-exposure-check.html` `200`, and existing report `diag_mra0oo9j_xnru7x` still `200`.
+- No new online `POST /api/diagnoses` was sent in this release smoke because the change only affects static discovery surfaces and existing report reads.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
 - Current real sampling covers DeepSeek only. It must not be sold as full multi-platform AI visibility proof until additional platform adapters are connected to real, compliant sampling APIs.
 - URL crawling/page audit is intentionally lightweight. It verifies availability and target facts, but does not yet measure search-engine indexing, WeChat search absorption, external citations, or traffic attribution.
+- Newly added robots/sitemap/static page lower the crawling barrier, but they do not guarantee immediate WeChat search inclusion or ranking. Actual discovery still depends on external crawlers, content distribution, links, and WeChat ecosystem signals.

@@ -14,16 +14,18 @@
 - 代码位置：`apps/ai-exposure-check-h5/`（React+Vite+TDesign Mobile / Node+Express，无数据库/登录/支付）
 - 第一阶段红线：不引入数据库、登录、支付、Docker、队列（见 `AGENTS.md`）
 
-## 2. 当前线上状态（截至 2026-07-07）
+## 2. 当前线上状态（截至 2026-07-08）
 
-- **线上 release：`20260707095202`（标题/表单统一/来源追踪批次）**，上一版 `20260706212541` 保留在服务器可回滚。
+- **线上 release：`20260708163730`（搜索发现性批次：robots/sitemap/静态介绍页）**，上一版 `20260707095202` 保留在服务器可回滚。
 - 服务健康：homepage/privacy/terms/favicon 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
-- 近两轮 git 提交（已推送 `zitao4588-create/geo-lab` main）：
+- 近两轮已推送 git 提交（`zitao4588-create/geo-lab` main）：
   - `f783016` 转化与等待体验批次（悬浮咨询条、429 引导卡、草稿保存、折叠、count-up、favicon、合规页配色等）
   - `2fcca26` 标题/表单统一/来源追踪批次（release `20260707095202`）
-- 验收证据：历史 UI/UX release 证据在 `outputs/h5-mvp/ui-refresh-release-20260705175108/`、`outputs/h5-mvp/ux-batch-release-20260706165543/`、`outputs/h5-mvp/wechat-id-release-20260706212541/`；`20260707095202` 本轮未新建采样证据目录，smoke 记录见 `PROJECT_CONTEXT.md`。
+- 注意：`20260708163730` 是从当前工作区部署的收录静态文件批次，尚未单独提交到 Git。
+- 验收证据：历史 UI/UX release 证据在 `outputs/h5-mvp/ui-refresh-release-20260705175108/`、`outputs/h5-mvp/ux-batch-release-20260706165543/`、`outputs/h5-mvp/wechat-id-release-20260706212541/`；`20260707095202` 后续受控归因/视觉 smoke 证据见 `outputs/h5-mvp/visual-smoke-20260707/` 和 `PROJECT_CONTEXT.md`。
 - 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 sessionStorage（key `aiec_form_draft`）；采样中挂 beforeunload 确认。
-- 最近一次新建线上 smoke 报告仍是 `diag_mr7m81bl_mzlv8i`（42 分，20/20 采样）。本轮 `20260707095202` 未发新 POST；读取验证使用既有报告。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
+- 最近一次受控线上验证报告是 `diag_mra0oo9j_xnru7x`（冰箱小雷达，68 分，20/20 采样，`source=codex_test` 已写入服务器 `runtime/submissions.jsonl`）。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
+- 2026-07-08 新增搜索发现性入口：`/robots.txt` 返回 `text/plain`，`/sitemap.xml` 返回 `application/xml` 并列出首页、`/ai-exposure-check.html`、隐私、协议；`/ai-exposure-check.html` 是可直接抓取的静态介绍页和冰箱小雷达案例页。首页 `index.html` 已加 canonical、sitemap link 和 noscript fallback。
 
 ### 2.2 2026-07-06 Codex 同步补充
 
@@ -33,7 +35,8 @@
 - `marketing/` 物料初稿已于 2026-07-06 完成并提交 `c31873b`：公众号长文、知乎回答 ×2、小红书 ×3、朋友圈/群文案、短视频脚本、两张海报 PNG（HTML 源可复用重生成）。案例数字全部来自 outputs/ 真实报告（61→68、基建 0→100、提及率 40% 不变）。发布前按 `marketing/README.md` 红线清单逐条核对，发布动作由用户执行。
 - 本地后续增量：`marketing/wechat-article-fridge-case.md` 已改成「去 AI 味版」，并新增 `marketing/image-prompts.md`（真实截图清单 + GPT Image 插画提示词）。这两项仍需纳入同步提交。
 - 2026-07-06 后续完成：所有 GPT Image 配图和线上真实报告截图已生成并提交，公众号草稿已创建成功（不发布），`VITE_CONSULT_WECHAT_ID` 已用本地 ignored `.env.local` 构建进线上 release `20260706212541`；线上咨询弹层已验证显示可复制微信号。证据见 `outputs/h5-mvp/wechat-id-release-20260706212541/`。
-- 2026-07-07 后续完成：首屏标题改为 `别让 AI / 只推荐竞品`，所有可见表单字段统一为单行输入，H5 读取 `?from=` / `?utm_source=` 并把 sanitized `source` 写入 `runtime/submissions.jsonl`。该字段只用于运营归因，不进入公开 report/evidence/export。线上 release `20260707095202` 已部署并通过 curl/systemd smoke；本轮未发新线上 POST，以节省 DeepSeek 配额。
+- 2026-07-07 后续完成：首屏标题改为 `别让 AI / 只推荐竞品`，所有可见表单字段统一为单行输入，H5 读取 `?from=` / `?utm_source=` 并把 sanitized `source` 写入 `runtime/submissions.jsonl`。该字段只用于运营归因，不进入公开 report/evidence/export。线上 release `20260707095202` 已部署并通过 curl/systemd smoke。
+- 2026-07-07 Codex 收尾：经用户明确同意，发起一次受控线上 POST 验证归因闭环，生成 `diag_mra0oo9j_xnru7x`；确认公开报告、Markdown、HTML、evidence package 均不暴露 `codex_test` / `source` / `contact`。随后用 Playwright 做移动端/桌面截图级 visual smoke，不再发第二次 POST；无横向溢出、无 console error/warning，咨询弹窗/二维码/微信号复制 UI 正常，稳定态评分环显示 `68`。Playwright 截图需 sandbox 外 headless Chromium；早截图会拍到 count-up 动画中途，稳定截图需等约 1 秒。
 
 ### 2.1 本轮 UI 焕新做了什么（设计意图，别无意破坏）
 
@@ -60,8 +63,8 @@
   5. 预检：release 目录里 `set -a; . ../../.env; set +a; PORT=8790 RUNTIME_DIR=/opt/.../runtime node dist/server/server/index.js`，curl health/homepage 后 kill（用 ss 查 pid，pkill 匹配不到环境变量）；
   6. `ln -sfn releases/<ts> current && sudo systemctl restart ai-exposure-check-h5.service`；
   7. 按 `apps/ai-exposure-check-h5/docs/production-runbook.md` 跑线上验收。
-- 回滚：`ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260703201836 /opt/playgamelab/ai-exposure-check-h5/current && sudo systemctl restart ai-exposure-check-h5.service`
-- 服务器现有 5 个 release，磁盘 30%，暂不清理；稳定后可手动删最老两个（禁止批量 rm）。
+- 回滚：`ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260707095202 /opt/playgamelab/ai-exposure-check-h5/current && sudo systemctl restart ai-exposure-check-h5.service`
+- 服务器现有 9 个 release，暂不清理；稳定后可手动删最老两个（禁止批量 rm）。
 
 ## 4. 待办事项（按优先级；`TODO.md` 是正式清单，本节是执行视角汇总）
 
@@ -70,7 +73,8 @@
 | 事项 | 谁做 | 说明 |
 |---|---|---|
 | 备案/主体/收费边界 | 用户已配合后台核验，开发同步文档 | 结论：H5 维持交付/demo/report entry，不在 H5 内交易；公开硬广或投流前仍需确认/更新 ICP/Tencent 服务名称与公安备案 domain/from-domain。 |
-| `?from=` 来源追踪 | 已完成 | release `20260707095202` 已读 query 参数并随 POST 写入 `submissions.jsonl`。未接入访问统计或埋点 SDK；首批推广只做提交来源归因。 |
+| `?from=` 来源追踪 | 已完成 | release `20260707095202` 已读 query 参数并随 POST 写入 `submissions.jsonl`；`source=codex_test` 已受控验证。未接入访问统计或埋点 SDK；首批推广只做提交来源归因。 |
+| 搜索发现性基础 | 已完成 | release `20260708163730` 已补 robots、sitemap、静态介绍页和首页 noscript fallback；这只是降低抓取门槛，不保证微信搜一搜立即收录或排名。 |
 
 ### P1 —— 推广物料与产品增强
 

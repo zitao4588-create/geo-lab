@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI曝光体检是一个面向品牌和小产品的 GEO 初筛工具：提交业务资料后，基于 DeepSeek 真实问答采样、公开页面轻量审计和证据边界生成 AI 曝光分析报告。" />
+    <link rel="canonical" href="https://exposure.playgamelab.cn/ai-exposure-check.html" />
+    <title>AI曝光体检是什么 - GEO 分析报告与冰箱小雷达案例</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #10192b;
+        --muted: #5d6b85;
+        --line: #dfe6f3;
+        --soft: #f5f7fb;
+        --blue: #2e5ce6;
+        --gold: #b7791f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.75;
+        background: var(--soft);
+      }
+
+      header,
+      main,
+      footer {
+        width: min(880px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 44px 0 24px;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 36px;
+      }
+
+      section {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 12px;
+        line-height: 1.25;
+      }
+
+      h1 {
+        max-width: 720px;
+        font-size: clamp(30px, 7vw, 52px);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      ul,
+      ol {
+        margin: 0;
+        padding-left: 22px;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .eyebrow {
+        margin-bottom: 12px;
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .lead {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 8px;
+        background: var(--blue);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .metric {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fafcff;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 24px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .label {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      footer {
+        padding: 0 0 34px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          padding-top: 32px;
+        }
+
+        section {
+          padding: 20px;
+        }
+
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">AI曝光体检 · GEO 初筛报告</p>
+      <h1>别让 AI 只推荐竞品</h1>
+      <p class="lead">AI曝光体检是一个面向品牌、小程序、独立产品和本地服务的 H5 初筛工具。你提交业务资料和公开入口后，系统会基于 DeepSeek 真实问答采样、公开页面轻量审计和规则评分生成一份可追溯的 GEO 分析报告。</p>
+      <div class="cta">
+        <a class="button" href="/?from=organic_static">免费测一次</a>
+        <a class="button secondary" href="#case">查看案例</a>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="what-is-geo">
+        <h2 id="what-is-geo">AI曝光体检看什么</h2>
+        <p>GEO 指 Generative Engine Optimization，也就是让品牌和产品更容易被大模型理解、引用和推荐的内容工程。AI曝光体检不把 GEO 当作魔法排名技巧，而是先做四件事：</p>
+        <ol>
+          <li>把品牌、产品、城市、目标客户和竞品整理成可采样的问题集合。</li>
+          <li>调用已配置的模型服务进行真实问答采样，记录每次回答证据。</li>
+          <li>检查公开页面、隐私页、FAQ、案例页、robots、sitemap、llms 等基础内容是否可访问。</li>
+          <li>把采样结果、页面审计和规则评分合成一份初筛报告。</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="report-modules">
+        <h2 id="report-modules">报告包含哪些模块</h2>
+        <ul>
+          <li>GEO 分析成果得分和风险等级。</li>
+          <li>DeepSeek 本次真实采样的成功数、提及率和答案摘录。</li>
+          <li>竞品风险、品牌基础设施、公开页面审计和内容缺口。</li>
+          <li>证据边界说明：哪些来自用户资料，哪些是公开页面审计，哪些是模型推断和建议补充。</li>
+          <li>下一步执行路线：先补基础页面，再做 FAQ/案例/对比内容，最后进入月度复测。</li>
+        </ul>
+      </section>
+
+      <section id="case" aria-labelledby="fridge-case">
+        <h2 id="fridge-case">案例：冰箱小雷达</h2>
+        <p>冰箱小雷达是一个微信里的冰箱食材库存管理小程序。我们用同一组 20 个问题做过上线前后对比，目标不是证明“排名提升”，而是看公开内容基建和 AI 可理解材料有没有变得更扎实。</p>
+        <div class="metric-grid">
+          <div class="metric">
+            <strong>61 -> 68</strong>
+            <span>GEO 初筛得分变化</span>
+          </div>
+          <div class="metric">
+            <strong>40%</strong>
+            <span>DeepSeek 品牌提及率保持不变</span>
+          </div>
+          <div class="metric">
+            <strong>100/100</strong>
+            <span>公开页面轻量审计得分</span>
+          </div>
+        </div>
+        <p class="note">这组数字来自项目内真实报告样本。它说明公开页面、隐私页、FAQ、案例页、sitemap 和 llms 等基础设施变好了；但单次 DeepSeek 采样不能代表所有 AI 平台，也不能承诺长期排名或推荐提升。</p>
+      </section>
+
+      <section aria-labelledby="boundaries">
+        <h2 id="boundaries">重要边界</h2>
+        <ul>
+          <li><span class="label">不承诺排名：</span>报告只反映本次采样和页面审计，不代表全网排名、长期引用率、真实流量或商业结果。</li>
+          <li><span class="label">不生成模拟结果：</span>未配置的平台会标记为 unavailable，不会伪造豆包、Kimi、通义、文心等平台答案。</li>
+          <li><span class="label">不在 H5 内交易：</span>当前 H5 只做免费初筛和报告入口，不包含价格、支付、订单、合同、发票或退款流程。</li>
+          <li><span class="label">证据可追溯：</span>报告会保留采样答案、页面审计和导出文件，便于人工复核。</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="start">
+        <h2 id="start">开始一次体检</h2>
+        <p>如果你有一个品牌、小程序、独立产品或本地服务，可以先提交产品名称、一句话介绍、行业、城市、目标客户和公开入口。系统通常会在几十秒到几分钟内生成一份初筛报告。</p>
+        <p><a class="button" href="/?from=organic_static_bottom">进入 AI曝光体检 H5</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="/privacy.html">隐私政策</a> · <a href="/terms.html">用户协议</a></p>
+      <p>备案展示以 exposure 子域名最终核验为准。AI曝光体检当前用于交付、演示和报告入口；公开商业推广前仍需完成主体、备案展示和收费边界复核。</p>
+    </footer>
+  </body>
+</html>

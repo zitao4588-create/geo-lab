@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://exposure.playgamelab.cn/sitemap.xml
