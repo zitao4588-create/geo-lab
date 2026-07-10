@@ -10,4 +10,5 @@ build/
 outputs/tmp/
 outputs/cache/
 apps/ai-exposure-check-h5/runtime/
+apps/ai-exposure-check-h5/.playwright-cli/
 apps/ai-exposure-check-h5/.env.local

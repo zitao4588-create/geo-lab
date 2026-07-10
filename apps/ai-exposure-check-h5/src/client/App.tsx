@@ -9,6 +9,7 @@ const DEFAULT_CONSULT_WECHAT_TEXT = '请扫码添加微信';
 const CONSULT_WECHAT_ID = import.meta.env.VITE_CONSULT_WECHAT_ID?.trim() || DEFAULT_CONSULT_WECHAT_TEXT;
 const CONSULT_QR_PATH = '/wechat-qr.jpg';
 const FORM_DRAFT_KEY = 'aiec_form_draft';
+const PENDING_REQUEST_KEY = 'aiec_pending_request';
 const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
 
@@ -54,6 +55,62 @@ function readAttributionSource() {
 
 function cleanAttributionSource(value: string) {
   return value.trim().replace(/[\r\n\t]+/gu, ' ').slice(0, 80);
+}
+
+function readPendingRequest() {
+  try {
+    const raw = sessionStorage.getItem(PENDING_REQUEST_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { id?: string; signature?: string };
+    if (!parsed.id || !/^[A-Za-z0-9_-]{12,80}$/u.test(parsed.id)) return null;
+    return { id: parsed.id, signature: parsed.signature || '' };
+  } catch {
+    return null;
+  }
+}
+
+function ensurePendingRequestId(input: DiagnosisInput) {
+  const signature = buildFormSignature(input);
+  const pending = readPendingRequest();
+  if (pending?.signature === signature) return pending.id;
+
+  const id = createClientRequestId();
+  try {
+    sessionStorage.setItem(PENDING_REQUEST_KEY, JSON.stringify({ id, signature }));
+  } catch {
+    /* 隐私模式等场景下不影响正常提交 */
+  }
+  return id;
+}
+
+function clearPendingRequestId() {
+  try {
+    sessionStorage.removeItem(PENDING_REQUEST_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+function createClientRequestId() {
+  const seed = typeof globalThis.crypto?.randomUUID === 'function'
+    ? globalThis.crypto.randomUUID()
+    : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+  return `req_${seed.replace(/[^A-Za-z0-9_-]/gu, '').slice(0, 70)}`;
+}
+
+function buildFormSignature(input: DiagnosisInput) {
+  return JSON.stringify({
+    businessName: input.businessName.trim(),
+    description: input.description.trim(),
+    links: (input.links || '').trim(),
+    industry: input.industry.trim(),
+    city: input.city.trim(),
+    targetCustomers: input.targetCustomers.trim(),
+    competitors: (input.competitors || '').trim(),
+    contact: (input.contact || '').trim(),
+    source: (input.source || '').trim(),
+    samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim())
+  });
 }
 
 function prefersReducedMotion() {
@@ -146,13 +203,15 @@ export function App() {
     setScreen('loading');
 
     try {
-      const result = await createDiagnosis(form);
+      const clientRequestId = ensurePendingRequestId(form);
+      const result = await createDiagnosis({ ...form, clientRequestId });
       setReport(result.report);
       try {
         sessionStorage.removeItem(FORM_DRAFT_KEY);
       } catch {
         /* ignore */
       }
+      clearPendingRequestId();
       window.history.replaceState(null, '', `?report=${result.report.id}`);
       setScreen('result');
     } catch (submitError) {
@@ -186,6 +245,7 @@ export function App() {
           } catch {
             /* ignore */
           }
+          clearPendingRequestId();
           window.history.replaceState(null, '', window.location.pathname);
           setScreen('start');
         }} />}

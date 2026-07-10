@@ -16,5 +16,11 @@ export const diagnosisInputSchema = z.object({
     .optional()
     .default('')
     .transform((value) => value.replace(/[\r\n\t]+/gu, ' ')),
+  clientRequestId: z
+    .string()
+    .trim()
+    .regex(/^[A-Za-z0-9_-]{12,80}$/u, '请求编号格式不正确')
+    .optional()
+    .default(''),
   samplePrompts: z.array(z.string().trim().min(3).max(240)).max(30).optional()
 });

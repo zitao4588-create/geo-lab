@@ -7,7 +7,15 @@ import { diagnosisInputSchema } from './validation.js';
 import { buildFinalGeoReport, buildPromptUniverse } from './rules.js';
 import { getDeepSeekRuntime, polishFinalReportWithDeepSeek, sampleAiProviders, SamplingUnavailableError } from './deepseek.js';
 import { auditSubmittedPages } from './pageAudit.js';
-import { readDiagnosis, readEvidenceIndex, readExportFile, saveDiagnosis } from './storage.js';
+import {
+  buildDiagnosisRequestFingerprint,
+  readDiagnosis,
+  readDiagnosisByClientRequestId,
+  readEvidenceIndex,
+  readExportFile,
+  saveDiagnosis
+} from './storage.js';
+import type { DiagnosisInput, DiagnosisReport } from '../shared/types.js';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 dotenv.config();
@@ -28,12 +36,18 @@ interface RateLimitEntry {
 }
 
 const hourlyIpRequests = new Map<string, RateLimitEntry>();
+interface InFlightDiagnosis {
+  requestFingerprint: string;
+  promise: Promise<DiagnosisReport>;
+}
+
+const inFlightDiagnoses = new Map<string, InFlightDiagnosis>();
 let globalDailyRequests: RateLimitEntry = {
   count: 0,
   resetAt: nextUtcDayStart(Date.now())
 };
 
-function rateLimitDiagnoses(req: express.Request, res: express.Response, next: express.NextFunction) {
+function consumeDiagnosisQuota(req: express.Request, res: express.Response) {
   const now = Date.now();
   resetExpiredLimits(now);
   pruneExpiredIpEntries(now);
@@ -42,18 +56,18 @@ function rateLimitDiagnoses(req: express.Request, res: express.Response, next: e
   const ipEntry = hourlyIpRequests.get(ip) ?? { count: 0, resetAt: now + hourMs };
   if (ipEntry.count >= hourlyIpLimit) {
     sendRateLimit(res, ipEntry.resetAt, '本小时免费体检次数已用完，请稍后再试或扫码预约人工解读。');
-    return;
+    return false;
   }
 
   if (globalDailyRequests.count >= globalDailyLimit) {
     sendRateLimit(res, globalDailyRequests.resetAt, '今天免费体检名额已用完，请明天再试或扫码预约人工解读。');
-    return;
+    return false;
   }
 
   ipEntry.count += 1;
   hourlyIpRequests.set(ip, ipEntry);
   globalDailyRequests.count += 1;
-  next();
+  return true;
 }
 
 function resetExpiredLimits(now: number) {
@@ -109,26 +123,82 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-app.post('/api/diagnoses', rateLimitDiagnoses, async (req, res, next) => {
+app.post('/api/diagnoses', async (req, res, next) => {
+  let runningDiagnosis: Promise<DiagnosisReport> | null = null;
+  let clientRequestId = '';
+  let requestFingerprint = '';
+
   try {
     const input = diagnosisInputSchema.parse(req.body);
-    const prompts = buildPromptUniverse(input);
-    const pageAudit = await auditSubmittedPages(input);
-    const { samples, providerStatuses } = await sampleAiProviders(prompts);
-    const successfulSamples = samples.filter((sample) => sample.status === 'success');
+    clientRequestId = input.clientRequestId || '';
 
-    if (successfulSamples.length === 0) {
-      throw new SamplingUnavailableError('DeepSeek 本次采样全部失败，无法生成最终 GEO 分析报告');
+    if (clientRequestId) {
+      requestFingerprint = buildDiagnosisRequestFingerprint(input);
+      const existingDiagnosis = await readDiagnosisByClientRequestId(clientRequestId, requestFingerprint);
+      if (existingDiagnosis.status === 'conflict') {
+        sendIdempotencyConflict(res);
+        return;
+      }
+      if (existingDiagnosis.status === 'found') {
+        res.status(200).json({ report: existingDiagnosis.report });
+        return;
+      }
+
+      const inFlightDiagnosis = inFlightDiagnoses.get(clientRequestId);
+      if (inFlightDiagnosis) {
+        if (inFlightDiagnosis.requestFingerprint !== requestFingerprint) {
+          sendIdempotencyConflict(res);
+          return;
+        }
+        const report = await inFlightDiagnosis.promise;
+        res.status(200).json({ report });
+        return;
+      }
     }
 
-    const baseReport = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
-    const report = await polishFinalReportWithDeepSeek(input, baseReport);
-    await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
+    if (!consumeDiagnosisQuota(req, res)) return;
+
+    runningDiagnosis = generateDiagnosis(input);
+    if (clientRequestId) {
+      inFlightDiagnoses.set(clientRequestId, {
+        requestFingerprint,
+        promise: runningDiagnosis
+      });
+    }
+
+    const report = await runningDiagnosis;
     res.status(201).json({ report });
   } catch (error) {
     next(error);
+  } finally {
+    if (clientRequestId && runningDiagnosis && inFlightDiagnoses.get(clientRequestId)?.promise === runningDiagnosis) {
+      inFlightDiagnoses.delete(clientRequestId);
+    }
   }
 });
+
+function sendIdempotencyConflict(res: express.Response) {
+  res.status(409).json({
+    error: 'idempotency_conflict',
+    message: '这次提交的请求编号已用于另一份体检，请返回后重新提交。'
+  });
+}
+
+async function generateDiagnosis(input: DiagnosisInput) {
+  const prompts = buildPromptUniverse(input);
+  const pageAudit = await auditSubmittedPages(input);
+  const { samples, providerStatuses } = await sampleAiProviders(prompts);
+  const successfulSamples = samples.filter((sample) => sample.status === 'success');
+
+  if (successfulSamples.length === 0) {
+    throw new SamplingUnavailableError('DeepSeek 本次采样全部失败，无法生成最终 GEO 分析报告');
+  }
+
+  const baseReport = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
+  const report = await polishFinalReportWithDeepSeek(input, baseReport);
+  await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
+  return report;
+}
 
 app.get('/api/diagnoses/:id', async (req, res) => {
   const id = req.params.id;

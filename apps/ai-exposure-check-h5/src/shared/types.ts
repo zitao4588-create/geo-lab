@@ -23,6 +23,7 @@ export interface DiagnosisInput {
   competitors?: string;
   contact?: string;
   source?: string;
+  clientRequestId?: string;
   samplePrompts?: string[];
 }
 

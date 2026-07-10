@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { AiProviderStatus, AiSample, DiagnosisEvidenceIndex, DiagnosisInput, DiagnosisReport, PageAuditResult } from '../shared/types.js';
@@ -9,9 +10,22 @@ interface StoredDiagnosis {
   savedAt: string;
 }
 
+interface StoredRequestIndex {
+  clientRequestId: string;
+  requestFingerprint: string;
+  reportId: string;
+  savedAt: string;
+}
+
+export type DiagnosisRequestLookup =
+  | { status: 'missing' }
+  | { status: 'conflict' }
+  | { status: 'found'; report: DiagnosisReport };
+
 const runtimeDir = path.resolve(process.cwd(), process.env.RUNTIME_DIR || 'runtime');
 const diagnosisDir = path.join(runtimeDir, 'diagnoses');
 const evidenceDir = path.join(runtimeDir, 'evidence');
+const requestIndexDir = path.join(runtimeDir, 'request-index');
 const submissionsFile = path.join(runtimeDir, 'submissions.jsonl');
 
 export async function saveDiagnosis(
@@ -56,6 +70,21 @@ export async function saveDiagnosis(
     'utf8'
   );
 
+  const clientRequestId = cleanClientRequestId(input.clientRequestId);
+  if (clientRequestId) {
+    await mkdir(requestIndexDir, { recursive: true });
+    await writeFile(
+      path.join(requestIndexDir, `${clientRequestId}.json`),
+      `${JSON.stringify({
+        clientRequestId,
+        requestFingerprint: buildDiagnosisRequestFingerprint(input),
+        reportId: report.id,
+        savedAt
+      } satisfies StoredRequestIndex, null, 2)}\n`,
+      'utf8'
+    );
+  }
+
   await appendFile(
     submissionsFile,
     `${JSON.stringify({
@@ -85,6 +114,46 @@ export async function readDiagnosis(id: string): Promise<DiagnosisReport | null>
   } catch {
     return null;
   }
+}
+
+export async function readDiagnosisByClientRequestId(
+  clientRequestId: string,
+  requestFingerprint: string
+): Promise<DiagnosisRequestLookup> {
+  const safeClientRequestId = cleanClientRequestId(clientRequestId);
+  if (!safeClientRequestId) return { status: 'missing' };
+
+  try {
+    const file = await readFile(path.join(requestIndexDir, `${safeClientRequestId}.json`), 'utf8');
+    const stored = JSON.parse(file) as StoredRequestIndex;
+    if (stored.clientRequestId !== safeClientRequestId || stored.requestFingerprint !== requestFingerprint) {
+      return { status: 'conflict' };
+    }
+
+    const report = await readDiagnosis(stored.reportId);
+    if (!report) throw new Error(`request_index_report_missing:${safeClientRequestId}`);
+    return { status: 'found', report };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return { status: 'missing' };
+    throw error;
+  }
+}
+
+export function buildDiagnosisRequestFingerprint(input: DiagnosisInput) {
+  const normalizedInput = {
+    businessName: input.businessName.trim(),
+    description: input.description.trim(),
+    links: (input.links || '').trim(),
+    industry: input.industry.trim(),
+    city: input.city.trim(),
+    targetCustomers: input.targetCustomers.trim(),
+    competitors: (input.competitors || '').trim(),
+    contact: (input.contact || '').trim(),
+    source: (input.source || '').trim(),
+    samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim())
+  };
+
+  return createHash('sha256').update(JSON.stringify(normalizedInput)).digest('hex');
 }
 
 export async function readEvidenceIndex(id: string): Promise<DiagnosisEvidenceIndex | null> {
@@ -157,4 +226,9 @@ ${rows}
 
 function escapePipe(value: string) {
   return value.replace(/\|/gu, '\\|');
+}
+
+function cleanClientRequestId(value: string | undefined) {
+  const trimmed = value?.trim() ?? '';
+  return /^[A-Za-z0-9_-]{12,80}$/u.test(trimmed) ? trimmed : '';
 }
