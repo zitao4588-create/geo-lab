@@ -8,7 +8,7 @@
 
 - React/Vite 静态 H5。
 - Node/Express API。
-- 本地 JSON runtime 存储。
+- 本地 JSON runtime 存储，包括 `diagnoses/`、`evidence/`、`submissions.jsonl` 和 `request-index/`。
 - DeepSeek `deepseek-v4-pro` 真实问答采样。
 - 单一 `GEO 分析成果得分` 报告。
 - `runtime/evidence/<reportId>/` 证据目录。
@@ -113,11 +113,13 @@ curl -I https://exposure.playgamelab.cn/sitemap.xml
 curl -I https://exposure.playgamelab.cn/ai-exposure-check.html
 ```
 
-再提交一个不含真实隐私的测试 payload 到：
+只有当本次 release 修改了提交、校验、存储或报告生成行为，并且已获得用户对真实模型成本的明确授权时，才提交一个不含真实隐私、带稳定 `clientRequestId` 的受控 payload 到：
 
 ```text
 POST https://exposure.playgamelab.cn/api/diagnoses
 ```
+
+UI、静态页面或纯展示 release 默认跳过新诊断 POST，复用既有报告做 smoke，避免浪费模型额度。恢复可靠性 release 的受控流程是：首次请求在服务端开始生成后让客户端超时，再用完全相同 payload 和 request ID 重试；报告落盘后可再次重放同 ID；最后只替换 request ID 验证 `429`。整套流程只允许生成一份真实报告。
 
 验收点：
 
@@ -127,6 +129,10 @@ POST https://exposure.playgamelab.cn/api/diagnoses
 - `/sitemap.xml` 返回 `application/xml`，并列出首页、静态介绍页、隐私政策和用户协议。
 - `/ai-exposure-check.html` 返回独立静态 HTML，不应被 SPA fallback 成首页。
 - `POST /api/diagnoses` 返回报告 ID，且 `aiMeta.successCount > 0`。
+- 首次成功生成返回 `201`；同 request ID 的 in-flight 或持久恢复返回 `200` 和同一报告 ID。
+- 同 request ID 搭配不同表单内容返回 `409 idempotency_conflict`。
+- 同一 IP 使用不同 request ID 时仍按现有限流返回 `429 rate_limited`。
+- `runtime/request-index/<clientRequestId>.json` 指向本次报告，`submissions.jsonl` 只新增一行。
 - `GET /api/diagnoses/:id` 可刷新查询。
 - `GET /api/diagnoses/:id/evidence` 返回证据索引。
 - `GET /api/diagnoses/:id/export/markdown` 返回 Markdown。
@@ -134,6 +140,7 @@ POST https://exposure.playgamelab.cn/api/diagnoses
 - `GET /api/diagnoses/:id/export/evidence-package` 返回证据包 JSON。
 - 前端 bundle 不包含 API key。
 - 公开报告不展示联系方式。
+- 公开报告和 evidence package 不展示 `clientRequestId` 或 request ID。
 - 移动端和桌面端截图无明显溢出。
 
 ## 合规占位

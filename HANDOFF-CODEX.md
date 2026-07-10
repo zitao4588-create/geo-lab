@@ -1,7 +1,7 @@
 # Codex 交接文档
 
-交接日期：2026-07-05
-交接人：Claude Code（本轮完成 H5 UI 焕新 + 生产部署 + 推广方案）
+交接日期：2026-07-10
+交接人：Codex（本轮完成报告提交恢复可靠性、生产部署与真实受控验收）
 阅读顺序建议：本文档 → `AGENTS.md` → `PROJECT_CONTEXT.md` → `TODO.md` → 按任务读源码
 
 ---
@@ -14,17 +14,17 @@
 - 代码位置：`apps/ai-exposure-check-h5/`（React+Vite+TDesign Mobile / Node+Express，无数据库/登录/支付）
 - 第一阶段红线：不引入数据库、登录、支付、Docker、队列（见 `AGENTS.md`）
 
-## 2. 当前线上状态（截至 2026-07-08）
+## 2. 当前线上状态（截至 2026-07-10）
 
-- **线上 release：`20260708163730`（搜索发现性批次：robots/sitemap/静态介绍页）**，上一版 `20260707095202` 保留在服务器可回滚。
+- **线上 release：`20260710114018`（报告提交与恢复可靠性批次）**，上一版 `20260708163730` 保留在服务器可回滚。
 - 服务健康：homepage/privacy/terms/favicon 200，`/api/health` `model=deepseek-v4-pro`、`samplingReady=true`，systemd `active`。
-- 近两轮已推送 git 提交（`zitao4588-create/geo-lab` main）：
-  - `f783016` 转化与等待体验批次（悬浮咨询条、429 引导卡、草稿保存、折叠、count-up、favicon、合规页配色等）
-  - `2fcca26` 标题/表单统一/来源追踪批次（release `20260707095202`）
-- 注意：`20260708163730` 是从当前工作区部署的收录静态文件批次，尚未单独提交到 Git。
-- 验收证据：历史 UI/UX release 证据在 `outputs/h5-mvp/ui-refresh-release-20260705175108/`、`outputs/h5-mvp/ux-batch-release-20260706165543/`、`outputs/h5-mvp/wechat-id-release-20260706212541/`；`20260707095202` 后续受控归因/视觉 smoke 证据见 `outputs/h5-mvp/visual-smoke-20260707/` 和 `PROJECT_CONTEXT.md`。
-- 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 sessionStorage（key `aiec_form_draft`）；采样中挂 beforeunload 确认。
-- 最近一次受控线上验证报告是 `diag_mra0oo9j_xnru7x`（冰箱小雷达，68 分，20/20 采样，`source=codex_test` 已写入服务器 `runtime/submissions.jsonl`）。另有一份垃圾测试报告 `diag_mr7saxjg_8u68br`（限流测试失误产物，可忽略，勿引用）。
+- 最新已推送提交（`zitao4588-create/geo-lab` main）：
+  - `0ca1179` 报告提交与恢复可靠性（release `20260710114018`）
+  - `ed5d836` 搜索发现性静态文件（release `20260708163730`）
+- 验收证据：恢复可靠性见 `outputs/h5-mvp/idempotency-recovery-20260710/acceptance.md`；历史 UI/UX、微信号与 visual smoke 证据仍在各自 `outputs/h5-mvp/` release 目录。
+- 交互要点（勿无意回退）：联系方式已从表单移除（联系只走结果页微信 CTA，API 仍兼容可选 contact）；提交按钮灰态可点击并定位缺失字段；429 显示页面内引导卡；表单草稿存 `sessionStorage`（`aiec_form_draft`）；待恢复请求存 `aiec_pending_request`；采样中挂 beforeunload 确认。
+- 最新可靠性受控报告是 `diag_mrenc8ay_27tgnk`（虚构测试品牌，38 分，DeepSeek 20/20，`source=codex_prod_recovery` 只写内部 submission）。它只证明提交恢复，不可作为推广案例。`冰箱小雷达` 的正式受控案例仍是 `diag_mra0oo9j_xnru7x`。
+- 线上恢复验证已闭环：首个客户端 5 秒超时，同 ID 重试返回 `200`，持久重放仍返回同一报告，不同 ID 返回 `429`，服务器只有一个 request index 和一条 submission，公开报告/证据包不泄露 request ID。
 - 2026-07-08 新增搜索发现性入口：`/robots.txt` 返回 `text/plain`，`/sitemap.xml` 返回 `application/xml` 并列出首页、`/ai-exposure-check.html`、隐私、协议；`/ai-exposure-check.html` 是可直接抓取的静态介绍页和冰箱小雷达案例页。首页 `index.html` 已加 canonical、sitemap link 和 noscript fallback。
 
 ### 2.2 2026-07-06 Codex 同步补充
@@ -51,7 +51,7 @@
 ## 3. 服务器与部署事实（安全边界：服务器 IP、SSH 私钥、API key 一律不写入仓库）
 
 - SSH：本机 `~/.ssh/config` 有别名 `lighthouse-lab`（user ubuntu，密钥 `lighthouse_lab_ed25519`，passwordless sudo 可用）。**别名可写文档，IP 不可。**
-- 目录布局：`/opt/playgamelab/ai-exposure-check-h5/{releases/<ts>, current -> releases/<ts>, runtime, .env}`
+- 目录布局：`/opt/playgamelab/ai-exposure-check-h5/{releases/<ts>, current -> releases/<ts>, runtime, .env}`；runtime 现在还包含 `request-index/<clientRequestId>.json`。
 - systemd：`ai-exposure-check-h5.service`。注意 **PORT=3020 和 RUNTIME_DIR（绝对路径）写在 unit 的 Environment= 里，不在 .env 里**；.env 只有 DEEPSEEK_* 三个键。`RUNTIME_DIR` 是共享绝对路径 → 切 release 不丢历史报告。
 - Caddy 反代 `exposure.playgamelab.cn → 127.0.0.1:3020`；Node 只监听 127.0.0.1。
 - 服务器 Node v22.23.0；限流为进程内存实现（1 份/IP/小时，30 份/天全局），**重启即清零**。
@@ -63,8 +63,8 @@
   5. 预检：release 目录里 `set -a; . ../../.env; set +a; PORT=8790 RUNTIME_DIR=/opt/.../runtime node dist/server/server/index.js`，curl health/homepage 后 kill（用 ss 查 pid，pkill 匹配不到环境变量）；
   6. `ln -sfn releases/<ts> current && sudo systemctl restart ai-exposure-check-h5.service`；
   7. 按 `apps/ai-exposure-check-h5/docs/production-runbook.md` 跑线上验收。
-- 回滚：`ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260707095202 /opt/playgamelab/ai-exposure-check-h5/current && sudo systemctl restart ai-exposure-check-h5.service`
-- 服务器现有 9 个 release，暂不清理；稳定后可手动删最老两个（禁止批量 rm）。
+- 当前回滚：`ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260708163730 /opt/playgamelab/ai-exposure-check-h5/current && sudo systemctl restart ai-exposure-check-h5.service`
+- 不记录易过期的 release 数量；需要清理时先逐项 inventory，再手动确认，禁止批量 rm。
 
 ## 4. 待办事项（按优先级；`TODO.md` 是正式清单，本节是执行视角汇总）
 
@@ -75,6 +75,7 @@
 | 备案/主体/收费边界 | 用户已配合后台核验，开发同步文档 | 结论：H5 维持交付/demo/report entry，不在 H5 内交易；公开硬广或投流前仍需确认/更新 ICP/Tencent 服务名称与公安备案 domain/from-domain。 |
 | `?from=` 来源追踪 | 已完成 | release `20260707095202` 已读 query 参数并随 POST 写入 `submissions.jsonl`；`source=codex_test` 已受控验证。未接入访问统计或埋点 SDK；首批推广只做提交来源归因。 |
 | 搜索发现性基础 | 已完成 | release `20260708163730` 已补 robots、sitemap、静态介绍页和首页 noscript fallback；这只是降低抓取门槛，不保证微信搜一搜立即收录或排名。 |
+| 报告提交恢复 | 已完成 | release `20260710114018` 已支持同 request ID 的 in-flight/落盘恢复；真实断线验收和不同 ID `429` 均已通过。 |
 
 ### P1 —— 推广物料与产品增强
 
@@ -115,12 +116,13 @@
 
 1. **`fill-mode: both` 残留恒等 transform**：`.screen` 入场动画曾把 `position: fixed` 的咨询弹层劫持出视口（恒等矩阵也算 containing block）。已修复——`.screen` 动画不要加 fill-mode，弹层也别移进带 transform 的容器。
 2. **限流测试要在窗口内做**：IP 窗口 1 小时。窗口过期后重复 POST 返回 201 是正确行为；上轮因此误产生一份垃圾报告并白烧 20 次采样。验证 429 要在同窗口内立刻重发（被拒时零成本）。
-3. **`POST /api/diagnoses` 可能超过 3 分钟**（20 题采样 + polish）。客户端 curl 超时 ≠ 失败，Express 会继续处理并落盘；以 `runtime/diagnoses/` 或 GET 查询为准。
+3. **`POST /api/diagnoses` 仍可能较慢**（20 题采样 + polish）。2026-07-10 真实受控运行从首个采样到完整落盘约 76.3 秒；客户端超时不等于服务端失败，同一表单重试必须复用 `aiec_pending_request`，不要生成新 request ID。
 4. macOS 自带 rsync 是 2.6.9：不支持 `--info=`，用 `--stats`。
 5. Playwright 升级后需 `npx playwright install chromium` 重下浏览器。
 6. Vite 会把 `public/` 拷进 `dist/client`；服务端只 serve `dist/client`（release 里独立的 `public/` 目录只是随包，未被 serve）。
 7. TDesign 样式覆盖：主按钮渐变需要 `.primary-action.t-button` 双类压过 `.t-button--primary`；输入框聚焦态用 `.field:focus-within` 包一层做。
 8. 本地预览：`.claude/launch.json` 已配置 vite dev server（gitignored）；本地 API 在 8787，vite 代理 `/api`。
+9. 预检 SSH 中断不一定会带走远端 Node；切换前必须用 `ss` 确认 `8790` 已释放，只终止本轮明确 PID。
 
 ## 8. 快速自检（新会话接手后 5 分钟）
 
@@ -134,4 +136,4 @@ ssh lighthouse-lab 'systemctl is-active ai-exposure-check-h5.service; readlink /
 cd apps/ai-exposure-check-h5 && npm run typecheck
 ```
 
-预期：200 / `samplingReady=true` / `active` / current 指向 `20260707095202` / typecheck 通过。
+预期：200 / `samplingReady=true` / `active` / current 指向 `20260710114018` / typecheck 通过。

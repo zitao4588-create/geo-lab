@@ -201,9 +201,24 @@ H5 MVP implementation started on 2026-06-30:
 - Verification passed: `npm run typecheck`, `npm run build`, sitemap XML validation, frontend bundle secret scan, release precheck on port `8790`, production service `active`, current symlink `releases/20260708163730`, homepage `200`, `/api/health` `samplingReady=true`, `/robots.txt` `text/plain`, `/sitemap.xml` `application/xml`, `/ai-exposure-check.html` `200`, and existing report `diag_mra0oo9j_xnru7x` still `200`.
 - No new online `POST /api/diagnoses` was sent in this release smoke because the change only affects static discovery surfaces and existing report reads.
 
+2026-07-10 report submission and recovery reliability release:
+
+- Root cause of the July 8 usability incident: the server had generated and saved the report, but the client did not receive/finalize the response; a second submission then hit the existing one-per-IP hourly limit.
+- Added a frontend `clientRequestId` stored with the form signature in `sessionStorage` (`aiec_pending_request`). Reloads and retries of the same form reuse the same ID; successful completion clears it.
+- Added in-flight request coalescing plus persistent `runtime/request-index/<clientRequestId>.json` lookup before quota consumption. A matching retry returns the same report; the same ID with different normalized input returns `409 idempotency_conflict`.
+- Kept the original limits unchanged: a genuinely different request ID still consumes/checks the one-per-IP hourly and 30/day global quotas. No database, login, payment, queue, Docker, new sampling platform, scoring change, or new UI was added.
+- Added Node integration tests with a local OpenAI-compatible fake provider for lost responses, in-flight and persisted retry, process restart recovery, different-ID `429`, invalid-ID `400`, sampling failure `503`, single-write behavior, and request-ID privacy.
+- Local verification passed: `npm run typecheck`, `npm run build`, `npm test` (2/2), bundle secret scan, API integration checks, and a real-browser offline/reload/retry flow. Controlled record: `outputs/h5-mvp/idempotency-recovery-20260710/acceptance.md`.
+- Code commit `0ca1179 Fix H5 diagnosis retry recovery` was pushed to `origin/main` and deployed as production release `20260710114018`, replacing `20260708163730` (kept for rollback).
+- Production smoke passed: systemd `active`, homepage/health/robots/sitemap/static introduction page `200`, existing July 8 report and export still `200`, deployed frontend contains `aiec_pending_request`, and invalid request ID returns `400` without model usage.
+- With explicit approval, one real controlled response-loss test generated `diag_mrenc8ay_27tgnk` with DeepSeek `20/20`. The first client timed out after 5 seconds; the same-ID retry returned `200`, persisted replay returned the same report in about 1.15 seconds, and a different ID returned `429` without another model run.
+- Server evidence shows one request index and one submission row for the report; public report/evidence exports do not expose request ID. From first sample start to request-index save took about `76.3` seconds, with per-prompt average `9285ms` and max `16979ms`.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
 - Current real sampling covers DeepSeek only. It must not be sold as full multi-platform AI visibility proof until additional platform adapters are connected to real, compliant sampling APIs.
 - URL crawling/page audit is intentionally lightweight. It verifies availability and target facts, but does not yet measure search-engine indexing, WeChat search absorption, external citations, or traffic attribution.
 - Newly added robots/sitemap/static page lower the crawling barrier, but they do not guarantee immediate WeChat search inclusion or ranking. Actual discovery still depends on external crawlers, content distribution, links, and WeChat ecosystem signals.
+- Recent real generation still takes roughly 76 seconds, so the current visible `20-60 秒` estimate is optimistic. Copy adjustment or a separately designed quick mode remains future work.
+- Idempotency is durable for the current single-instance, shared-runtime deployment. Rate-limit counters remain process-memory only and reset on restart; request-index JSON is not a multi-instance coordination system.

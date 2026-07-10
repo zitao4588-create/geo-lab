@@ -141,3 +141,23 @@ Cause: headless Chromium needs elevated macOS process permissions in this Codex 
 Workaround: reran headless Chromium with approved elevated execution, changed the report wait to `getByRole('heading', { name: 'GEO 分析成果报告' })`, changed the score selector to `.cover-ring strong`, and waited for the 900ms count-up animation to settle before taking stable report screenshots.
 
 Verification: `outputs/h5-mvp/visual-smoke-20260707/visual-smoke-summary.json` and `visual-smoke-stable-report-summary.json` show mobile/desktop start and report checks with no horizontal overflow, no console issues, loaded consult QR, and stable displayed score `68`.
+
+## 2026-07-10: Generated Report Was Lost To The Client And Retry Hit The Hourly Limit
+
+Symptom: the July 8 diagnosis generated a valid server-side report, but the client did not display the result. Retrying from the same IP showed the hourly free quota as exhausted.
+
+Cause: diagnosis quota was consumed before generation, while submissions had no stable client request ID. A disconnected/lost response was therefore indistinguishable from a new diagnosis attempt.
+
+Fix: added form-bound client request IDs, matching in-flight request coalescing, persistent request-to-report indexes, and input fingerprints. Matching retries are resolved before quota consumption; mismatched reuse returns `409`.
+
+Verification: local integration and browser tests passed. Production release `20260710114018` generated controlled report `diag_mrenc8ay_27tgnk`; the first client timed out, same-ID retry returned `200`, persisted replay returned the same ID, different-ID submission returned `429`, and runtime contains one submission row.
+
+## 2026-07-10: Port 8790 Precheck Process Survived SSH Session Exit
+
+Symptom: after interrupting the SSH command that launched the temporary precheck server, `127.0.0.1:8790` was still listening.
+
+Cause: the local SSH session exited without forwarding the interrupt to the detached remote Node process.
+
+Fix: identified the exact listener PID with `ss`, terminated only that temporary PID, and verified port `8790` was empty before switching production.
+
+Verification: the production service on `3020` remained active throughout; the new release was switched only after the temporary port was clean.

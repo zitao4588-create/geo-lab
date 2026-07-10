@@ -2,6 +2,15 @@
 
 ## Immediate
 
+- Completed 2026-07-10 report submission and recovery reliability release:
+  - added frontend form-bound `clientRequestId` persistence in `sessionStorage`, in-flight request coalescing, persistent runtime request indexes, and input-fingerprint conflict protection,
+  - kept scoring, evidence packages, DeepSeek-only sampling, existing UI, and one-IP/hour plus 30/day limits unchanged,
+  - added integration tests covering response loss, same-ID retry, process restart, different-ID `429`, invalid-ID `400`, sampling failure `503`, single-write behavior, and request-ID privacy,
+  - passed `npm run typecheck`, `npm run build`, `npm test` (2/2), bundle secret scan, and real-browser offline/reload/retry acceptance,
+  - committed and pushed `0ca1179`, deployed release `20260710114018`, and kept `20260708163730` for rollback,
+  - with explicit approval, generated controlled production report `diag_mrenc8ay_27tgnk` with DeepSeek `20/20`; first client timed out, same-ID retry and persisted replay returned `200`, and a different ID returned `429`,
+  - confirmed one request index, one submission row, no request-ID exposure in public report/evidence package, and no error-level service logs,
+  - recorded local and production evidence in `outputs/h5-mvp/idempotency-recovery-20260710/acceptance.md`.
 - Completed 2026-07-08 search discoverability release:
   - added real `robots.txt`, valid `sitemap.xml`, and static introduction/case page `ai-exposure-check.html`,
   - added canonical, sitemap link, and no-JS fallback to the H5 `index.html`,
@@ -147,6 +156,7 @@
 
 ## Next
 
+- Correct the visible generation-time expectation in a separate UX change: the latest controlled production run took about `76.3` seconds from first sample to complete persistence, so `20-60 秒` is too optimistic. Do not mix this copy/performance change into the completed reliability release.
 - Keep the H5 delivery-only boundary:
   - no price, payment, order, contract, paid entitlement, invoice/tax, or refund flow inside the H5,
   - keep manual service scope/quote/payment/delivery confirmation outside the H5,

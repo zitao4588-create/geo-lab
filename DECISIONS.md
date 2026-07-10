@@ -305,3 +305,24 @@ Boundary:
 - This is a discovery and crawling hygiene improvement, not a guarantee of WeChat search inclusion, ranking, traffic, or conversion.
 - The static page must keep the same compliance boundaries as the H5: no price/payment/order/contract flow, no AI ranking guarantee, no fabricated multi-platform results, and clear DeepSeek-only sampling scope.
 - Generated report URLs remain private-by-link operational artifacts and should not be added to the public sitemap.
+
+## 2026-07-10: Resolve Matching Diagnosis Retries Before Consuming Quota
+
+Decision: each H5 submission may include a form-bound `clientRequestId`. The server checks a matching in-flight task or persistent runtime request index before consuming the existing diagnosis quota, so a lost response or retry can return the same generated report.
+
+Reason: a real report was generated and saved on July 8, but the client did not display/finalize the response. Retrying the same diagnosis then hit the one-per-IP hourly limit and looked like both a missing report and exhausted quota. The reliability contract must distinguish a retry of the same work from a new diagnosis.
+
+Implementation:
+
+- The frontend stores `{ id, signature }` in `sessionStorage` under `aiec_pending_request` and reuses it only while the normalized form signature matches.
+- The server coalesces matching in-flight requests and stores `runtime/request-index/<clientRequestId>.json` after report artifacts are written.
+- Request indexes include a SHA-256 fingerprint of normalized inputs. Reusing an ID with different input returns `409 idempotency_conflict`.
+- Matching in-flight or persisted retries return `200`; a first successful generation still returns `201`.
+
+Boundary:
+
+- Existing one-IP/hour and 30/day limits remain unchanged for new request IDs.
+- Failed generation creates no report index and keeps the existing quota-consumption semantics.
+- Request IDs stay internal and are excluded from `submissions.jsonl`, public reports, and evidence packages.
+- This remains a local-file, single-instance design; no database, login, queue, payment, Docker, or new UI was introduced.
+- Costly production recovery checks require explicit user approval and should generate exactly one real report, then use same-ID replay and different-ID `429` for the remaining assertions.
