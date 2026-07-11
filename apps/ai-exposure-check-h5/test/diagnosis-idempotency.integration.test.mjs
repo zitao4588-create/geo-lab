@@ -83,7 +83,7 @@ test('lost response and retries recover one persisted report without consuming a
   assert.equal(provider.callCount, callsBeforeRestart, 'persistent recovery must not call the model again');
 });
 
-test('20 prompt diagnosis uses five concurrent samples and skips optional polish by default', async (context) => {
+test('default 10 prompt diagnosis uses five concurrent samples and skips optional polish', async (context) => {
   const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-sampling-speed-'));
   const provider = await startFakeOpenAiServer({ delayMs: 200 });
   const appServer = await startAppServer({ runtimeDir, providerBaseUrl: provider.baseUrl });
@@ -99,21 +99,23 @@ test('20 prompt diagnosis uses five concurrent samples and skips optional polish
   assert.equal(health.sampleMaxRetries, 1);
   assert.equal(health.polishEnabled, false);
 
-  const payload = {
-    ...buildPayload('req_controlled_speed_01'),
-    samplePrompts: Array.from({ length: 20 }, (_, index) => `第 ${index + 1} 条受控并发采样问题是什么？`)
-  };
+  const payload = buildPayload('req_controlled_speed_01');
+  delete payload.samplePrompts;
   const startedAt = Date.now();
   const result = await postJson(appServer.url, payload);
   const durationMs = Date.now() - startedAt;
 
   assert.equal(result.status, 201);
-  assert.equal(result.body.report.aiMeta.promptCount, 20);
-  assert.equal(result.body.report.aiMeta.successCount, 20);
-  assert.equal(provider.callCount, 20, 'default path should not add a report-polish model call');
+  assert.equal(result.body.report.aiMeta.promptCount, 10);
+  assert.equal(result.body.report.aiMeta.successCount, 10);
+  assert.deepEqual(
+    result.body.report.stages.promptUniverse.prompts.map((prompt) => prompt.id),
+    ['P001', 'P002', 'P003', 'P005', 'P006', 'P011', 'P013', 'P015', 'P017', 'P020']
+  );
+  assert.equal(provider.callCount, 10, 'default path should not add a report-polish model call');
   assert.equal(provider.peakConcurrency, 5);
-  assert.ok(durationMs < 2_000, `controlled 20-prompt run took ${durationMs}ms`);
-  context.diagnostic(`controlled 20-prompt wall time: ${durationMs}ms`);
+  assert.ok(durationMs < 1_500, `controlled 10-prompt run took ${durationMs}ms`);
+  context.diagnostic(`controlled 10-prompt wall time: ${durationMs}ms`);
 });
 
 test('DeepSeek, Hy3, and Qwen sample in parallel with provider-specific non-thinking parameters', async (context) => {

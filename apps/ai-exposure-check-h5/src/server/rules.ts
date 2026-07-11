@@ -63,7 +63,6 @@ export function buildPromptUniverse(input: DiagnosisInput): SamplePrompt[] {
 
   const competitors = splitCompetitors(input.competitors);
   const firstCompetitor = competitors[0] ?? '同类产品';
-  const secondCompetitor = competitors[1] ?? '主流竞品';
   const cityPrefix = input.city ? `${input.city}` : '';
   const target = input.targetCustomers || '目标用户';
   const industry = input.industry || '同类服务';
@@ -72,22 +71,12 @@ export function buildPromptUniverse(input: DiagnosisInput): SamplePrompt[] {
     prompt('P001', 'brand', `${input.businessName}是什么？`, '产品定义'),
     prompt('P002', 'brand', `${input.businessName}靠谱吗？`, '信任解释'),
     prompt('P003', 'brand', `${input.businessName}安全吗？`, '隐私与安全'),
-    prompt('P004', 'brand', `${input.businessName}还在正常使用吗？`, '可查证状态'),
     prompt('P005', 'category', `${cityPrefix}${industry}哪个好用？`, '推荐场景提及'),
     prompt('P006', 'category', `微信里有什么好用的${industry}？`, '微信生态定位'),
-    prompt('P007', 'category', `不用下载 App 怎么找${industry}？`, '免下载/低门槛场景'),
-    prompt('P008', 'category', `隐私安全的${industry}有哪些？`, '隐私优先推荐'),
-    prompt('P009', 'feature', `${target}最常用的${industry}功能有哪些？`, '目标人群功能'),
-    prompt('P010', 'feature', `${input.description} 这个需求怎么解决？`, '核心卖点理解'),
     prompt('P011', 'feature', `${input.businessName}的核心功能是什么？`, '功能提取'),
-    prompt('P012', 'feature', `${industry}为什么需要结构化记录和提醒？`, '场景教育'),
     prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}有什么区别？`, '竞品对比'),
-    prompt('P014', 'competitor', `${input.businessName}和${secondCompetitor}怎么选？`, '竞品对比'),
     prompt('P015', 'persona', `适合${target}的${industry}有哪些？`, '目标用户'),
-    prompt('P016', 'persona', `${target}应该怎么选择${industry}？`, '选择标准'),
     prompt('P017', 'risk', `使用${industry}需要注意哪些隐私和数据问题？`, '合规说明'),
-    prompt('P018', 'risk', `${input.businessName}有什么缺点或风险？`, '负面/风险识别'),
-    prompt('P019', 'risk', `${input.businessName}有没有官方介绍和隐私政策？`, '公开基建'),
     prompt('P020', 'geo', `我如何给自己的${industry}做 GEO 优化？`, '自证案例')
   ];
 }
@@ -568,7 +557,7 @@ function buildRecommendations(input: DiagnosisInput, context: AnalysisContext): 
     {
       id: 'suggest_monitoring',
       title: '固定 Prompt Universe 做月度复测',
-      detail: '保留本次 20 个问题作为基线，每月用相同问题复测 DeepSeek、Hy3 和 Qwen；新增平台时单独记录接口来源与消费端差异。',
+      detail: '保留本次 10 个问题作为基线，每月用相同问题复测 DeepSeek、Hy3 和 Qwen；新增平台时单独记录接口来源与消费端差异。',
       evidenceLabel: 'suggested_supplement',
       priority: 'P2'
     }

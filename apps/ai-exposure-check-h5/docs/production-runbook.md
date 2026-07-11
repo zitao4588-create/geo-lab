@@ -56,7 +56,7 @@ QWEN_SAMPLE_CONCURRENCY=4
 QWEN_SAMPLE_MAX_RETRIES=1
 ```
 
-DeepSeek 生产默认并发 5，Hy3 和 Qwen 默认并发 4；三个 provider 外层并行。各 provider 最多重试 1 次，避免异常请求放大等待。`DEEPSEEK_POLISH_ENABLED=false` 会跳过不影响评分和证据的二次文案润色，缩短报告关键路径。
+DeepSeek 生产默认并发 5，Hy3 和 Qwen 默认并发 4；三个 provider 外层并行。默认问题集为每个平台 10 条，三个生产平台合计 30 次调用。各 provider 最多重试 1 次，避免异常请求放大等待。`DEEPSEEK_POLISH_ENABLED=false` 会跳过不影响评分和证据的二次文案润色，缩短报告关键路径。
 
 前端微信号展示使用 Vite 构建期变量：
 

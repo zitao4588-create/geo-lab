@@ -41,7 +41,7 @@ VITE_CONSULT_WECHAT_ID=
 ```
 
 DeepSeek、Hy3、Qwen 至少配置一个 API Key 才能生成报告；全部未配置时，后端返回 `503 sampling_unavailable`，不再用规则模板冒充最终报告。
-每个已配置平台默认执行同一组 20 条独立采样，平台之间并行，平台内部按各自 `*_SAMPLE_CONCURRENCY` 限流。页面审计也与采样并行执行。总调用量会随已配置平台数线性增加。
+每个已配置平台默认执行同一组 10 条核心采样，平台之间并行，平台内部按各自 `*_SAMPLE_CONCURRENCY` 限流。三个生产平台合计 30 次调用；页面审计也与采样并行执行。总调用量会随已配置平台数线性增加。
 采样请求默认最多重试 1 次，可通过各 provider 的 `*_SAMPLE_MAX_RETRIES` 在 0-2 之间调整，避免 SDK 默认 2 次重试放大异常等待。
 `DEEPSEEK_POLISH_ENABLED` 默认关闭，避免在评分和证据已经生成后再等待一次只改建议文案的模型请求；设为 `true` 可恢复该可选润色。
 没有 `VITE_CONSULT_WECHAT_ID` 时，结果页仍展示二维码，复制按钮只复制添加说明。
