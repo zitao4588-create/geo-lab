@@ -2,6 +2,15 @@
 
 ## Immediate
 
+- Completed 2026-07-11 three-cloud/four-model free-tier release:
+  - moved DeepSeek sampling from the official API to Alibaba Bailian `deepseek-v4-pro`, sharing the Bailian workspace credential with `qwen3.7-plus`,
+  - enabled Tencent TokenHub `hy3` and Volcengine Ark Doubao in the same outer parallel stage, with independent provider switches and quota-error fallback across five authorized Doubao model families,
+  - restricted the Bailian production key to the production server IP and only `deepseek-v4-pro` plus `qwen3.7-plus`; both Alibaba models have free-tier-only stop enabled,
+  - updated H5, static discovery page, privacy, terms, README, runbook, project context, and report copy to describe three cloud platforms and four real API samples without claiming consumer-app search results,
+  - passed typecheck, production build, `git diff --check`, 5/5 integration tests, pre-release health/static checks, and real Chrome homepage/form inspection,
+  - committed and pushed `b4d6000`, deployed release `20260711132550`, and kept `20260711082835` for rollback,
+  - generated controlled production report `diag_mrfxefwo_5gpi7o`: four providers each sampled 1/1 successfully in about `10.6s`; persisted report read returned `200` in about `301ms`.
+- Continue manual free-quota monitoring: Alibaba is hard-stopped at free-tier exhaustion; Tencent and Volcengine still require console checks and immediate provider disable/switch before any paid usage.
 - Completed 2026-07-10 report submission and recovery reliability release:
   - added frontend form-bound `clientRequestId` persistence in `sessionStorage`, in-flight request coalescing, persistent runtime request indexes, and input-fingerprint conflict protection,
   - kept scoring, evidence packages, DeepSeek-only sampling, existing UI, and one-IP/hour plus 30/day limits unchanged,

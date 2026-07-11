@@ -236,11 +236,20 @@ H5 MVP implementation started on 2026-06-30:
 - Tencent TokenHub's same-day usage page showed about `13.64K` tokens consumed by `hy3`; it did not expose a machine-readable free remaining balance or free-only stop state. The existing one-IP/hour and 30/day product limits remain the conservative application guardrail.
 - The local implementation adds independent `DEEPSEEK_ENABLED`, `QWEN_ENABLED`, `HY3_ENABLED`, and `DOUBAO_ENABLED` switches. The old `DEEPSEEK_API_KEY` is ignored by the sampling code.
 
+2026-07-11 three-cloud/four-model production release:
+
+- Commit `b4d6000` was pushed to `origin/main` and deployed as release `20260711132550`, replacing `20260711082835` (kept for rollback).
+- The server environment now enables Bailian DeepSeek, Bailian Qwen, Tencent Hy3, and Volcengine Doubao. The environment file remains mode `600`; the pre-change environment was backed up before the atomic merge.
+- Verification passed: `npm run typecheck`, `npm run build`, `npm test` (5/5), `git diff --check`, release precheck on port `8790`, frontend bundle copy checks, systemd `active`, production homepage/privacy/terms/static introduction page `200`, and `/api/health` with `samplingReady=true` plus four `ready` providers.
+- Real Chrome checks confirmed the deployed homepage and form show the three-cloud/four-model wording without visible overflow. No form submission was made through the browser.
+- With prior explicit approval, a one-question controlled production diagnosis generated `diag_mrfxefwo_5gpi7o` in about `10.6s`. DeepSeek, Hy3, Qwen, and Doubao each returned `1/1` successful sample; persisted report recovery returned `200` in about `301ms`.
+- The controlled one-question result proves all four production adapters and parallel aggregation work. It does not yet measure the default 10-question-per-model end-to-end latency.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
-- Production real sampling covers DeepSeek, Hy3, and Qwen. Doubao is locally verified but is not production evidence until its adapter and server configuration are deployed and a controlled production diagnosis succeeds.
+- Alibaba's free-tier-only stop is enabled for DeepSeek and Qwen. Tencent and Volcengine do not expose an equivalent reliable free-balance signal to the H5, so their console balances still require manual monitoring and provider disable/switch before paid usage.
 - URL crawling/page audit is intentionally lightweight. It verifies availability and target facts, but does not yet measure search-engine indexing, WeChat search absorption, external citations, or traffic attribution.
 - Newly added robots/sitemap/static page lower the crawling barrier, but they do not guarantee immediate WeChat search inclusion or ranking. Actual discovery still depends on external crawlers, content distribution, links, and WeChat ecosystem signals.
-- The last controlled three-provider 20-prompt diagnosis took about `48.6` seconds. The current 10-prompt production default should be faster, but its real end-to-end latency has not yet been measured; adding Doubao may introduce a new slowest-provider boundary.
+- The latest four-provider one-question diagnosis took about `10.6s`; the previous three-provider 20-prompt diagnosis took about `48.6s`. The current default 10-question-per-provider path has not yet been measured end to end and will be bounded by the slowest provider plus page audit.
 - Idempotency is durable for the current single-instance, shared-runtime deployment. Rate-limit counters remain process-memory only and reset on restart; request-index JSON is not a multi-instance coordination system.
