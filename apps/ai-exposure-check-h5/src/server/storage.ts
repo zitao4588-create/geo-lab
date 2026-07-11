@@ -197,7 +197,7 @@ function buildEvidenceIndex(report: DiagnosisReport, samples: AiSample[], genera
       { type: 'html', path: `runtime/evidence/${report.id}/exports/report.html` },
       { type: 'evidence_package', path: `runtime/evidence/${report.id}/exports/evidence-package.json` }
     ],
-    notes: 'samples.json 保存本次 DeepSeek 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；联系方式只保存在 submissions.jsonl，不进入公开报告。'
+    notes: 'samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；联系方式只保存在 submissions.jsonl，不进入公开报告。'
   };
 }
 
@@ -206,7 +206,7 @@ function buildEvidenceMarkdown(report: DiagnosisReport, samples: AiSample[], evi
     .map((sample) => {
       const status = sample.status === 'success' ? '成功' : `失败：${sample.error ?? 'unknown'}`;
       const answer = sample.answer ? sample.answer.replace(/\n+/gu, ' ').slice(0, 180) : '';
-      return `| ${sample.prompt.id} | ${sample.prompt.category} | ${escapePipe(sample.prompt.prompt)} | ${status} | ${escapePipe(answer)} |`;
+      return `| ${sample.provider} | ${sample.prompt.id} | ${sample.prompt.category} | ${escapePipe(sample.prompt.prompt)} | ${status} | ${escapePipe(answer)} |`;
     })
     .join('\n');
 
@@ -216,10 +216,10 @@ function buildEvidenceMarkdown(report: DiagnosisReport, samples: AiSample[], evi
 - 生成时间：${evidenceIndex.generatedAt}
 - 采样模型：${evidenceIndex.model}
 - 成功采样：${evidenceIndex.successCount}/${evidenceIndex.promptCount}
-- 证据边界：本文件只记录本次 DeepSeek API 返回结果，不代表全网排名或长期稳定结果。
+- 证据边界：本文件只记录本次各平台 API 返回结果，不代表对应消费端产品、全网排名或长期稳定结果。
 
-| ID | 分类 | Prompt | 状态 | 回答摘录 |
-| --- | --- | --- | --- | --- |
+| 平台 | ID | 分类 | Prompt | 状态 | 回答摘录 |
+| --- | --- | --- | --- | --- | --- |
 ${rows}
 `;
 }

@@ -5,6 +5,22 @@ interface DeepSeekConfig {
   apiKey?: string;
   baseUrl: string;
   model: string;
+  sampleConcurrency: number;
+  sampleMaxRetries: number;
+  polishEnabled: boolean;
+}
+
+interface SamplingProviderConfig {
+  provider: 'deepseek' | 'hy3' | 'qwen';
+  apiKey?: string;
+  baseUrl: string;
+  model: string;
+  sampleConcurrency: number;
+  sampleMaxRetries: number;
+  timeoutMs: number;
+  maxTokens: number;
+  readyNote: string;
+  sampledNote: string;
 }
 
 interface NarrativeJsonResult {
@@ -22,70 +38,81 @@ export class SamplingUnavailableError extends Error {
 
 export function getDeepSeekRuntime() {
   const config = getConfig();
-  const deepseekStatus: AiProviderStatus = {
-    provider: 'deepseek',
-    model: config.model,
-    status: config.apiKey ? 'ready' : 'unavailable',
-    promptCount: 0,
-    successCount: 0,
-    failureCount: 0,
-    note: config.apiKey ? 'DeepSeek 官方 API key 已配置，可进行真实采样。' : 'DeepSeek 未配置。'
-  };
+  const samplingConfigs = getSamplingProviderConfigs();
+  const samplingProviders = samplingConfigs.map((providerConfig) => buildRuntimeProviderStatus(providerConfig));
 
   return {
     provider: 'deepseek' as const,
     model: config.model,
-    hasApiKey: Boolean(config.apiKey),
-    providers: [deepseekStatus, ...buildUnavailableProviderStatuses(['deepseek'], undefined, 0)]
+    hasApiKey: samplingConfigs.some((providerConfig) => Boolean(providerConfig.apiKey)),
+    configuredProviderCount: samplingConfigs.filter((providerConfig) => Boolean(providerConfig.apiKey)).length,
+    sampleConcurrency: config.sampleConcurrency,
+    sampleMaxRetries: config.sampleMaxRetries,
+    polishEnabled: config.polishEnabled,
+    providers: [
+      ...samplingProviders,
+      ...buildUnavailableProviderStatuses(samplingConfigs.map((providerConfig) => providerConfig.provider), 0)
+    ]
   };
 }
 
 export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samples: AiSample[]; providerStatuses: AiProviderStatus[] }> {
-  const samples = await sampleDeepSeekAnswers(prompts);
-  const successCount = samples.filter((sample) => sample.status === 'success').length;
-  const failureCount = samples.filter((sample) => sample.status === 'failed').length;
-  const config = getConfig();
-  const providerStatuses: AiProviderStatus[] = [
-    {
-      provider: 'deepseek',
+  const samplingConfigs = getSamplingProviderConfigs();
+  const configuredProviders = samplingConfigs.filter(isConfiguredProvider);
+  if (configuredProviders.length === 0) {
+    throw new SamplingUnavailableError('当前服务未配置可用的 AI 采样 key，无法生成最终 GEO 分析报告');
+  }
+
+  const providerResults = await Promise.all(configuredProviders.map(async (config) => {
+    const samples = await sampleProviderAnswers(config, prompts);
+    const successCount = samples.filter((sample) => sample.status === 'success').length;
+    const failureCount = samples.filter((sample) => sample.status === 'failed').length;
+    const status: AiProviderStatus = {
+      provider: config.provider,
       model: config.model,
       status: successCount > 0 && failureCount > 0 ? 'partial' : successCount > 0 ? 'sampled' : 'unavailable',
       promptCount: prompts.length,
       successCount,
       failureCount,
-      note: successCount > 0 ? 'DeepSeek 官方 OpenAI-compatible API 已完成真实采样。' : 'DeepSeek 未返回可用采样。'
-    },
-    ...buildUnavailableProviderStatuses(['deepseek'], undefined, prompts.length)
+      note: successCount > 0 ? config.sampledNote : `${config.provider} 本次未返回可用采样。`
+    };
+    return { samples, status };
+  }));
+
+  const samples = providerResults.flatMap((result) => result.samples);
+  const providerStatuses: AiProviderStatus[] = [
+    ...providerResults.map((result) => result.status),
+    ...samplingConfigs
+      .filter((config) => !config.apiKey)
+      .map((config) => buildRuntimeProviderStatus(config, prompts.length)),
+    ...buildUnavailableProviderStatuses(samplingConfigs.map((config) => config.provider), prompts.length)
   ];
 
   return { samples, providerStatuses };
 }
 
-async function sampleDeepSeekAnswers(prompts: SamplePrompt[]): Promise<AiSample[]> {
-  const config = getConfig();
-  if (!config.apiKey) {
-    throw new SamplingUnavailableError('当前服务未配置 DeepSeek 采样 key，无法生成最终 GEO 分析报告');
-  }
-
+async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: string }, prompts: SamplePrompt[]): Promise<AiSample[]> {
   const client = new OpenAI({
     apiKey: config.apiKey,
     baseURL: config.baseUrl,
-    timeout: 18_000
+    timeout: config.timeoutMs,
+    maxRetries: config.sampleMaxRetries
   });
 
   const boundedPrompts = prompts.slice(0, 24);
-  return runWithConcurrency(boundedPrompts, 3, (prompt) => sampleOne(client, config.model, prompt));
+  return runWithConcurrency(boundedPrompts, config.sampleConcurrency, (prompt) => sampleOne(client, config, prompt));
 }
 
 export async function polishFinalReportWithDeepSeek(input: DiagnosisInput, report: DiagnosisReport): Promise<DiagnosisReport> {
   const config = getConfig();
-  if (!config.apiKey) return report;
+  if (!config.apiKey || !config.polishEnabled) return report;
 
   try {
     const client = new OpenAI({
       apiKey: config.apiKey,
       baseURL: config.baseUrl,
-      timeout: 12_000
+      timeout: 12_000,
+      maxRetries: 0
     });
 
     const completion = await client.chat.completions.create({
@@ -151,16 +178,16 @@ export async function polishFinalReportWithDeepSeek(input: DiagnosisInput, repor
   }
 }
 
-async function sampleOne(client: OpenAI, model: string, prompt: SamplePrompt): Promise<AiSample> {
+async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt: SamplePrompt): Promise<AiSample> {
   const startedAt = Date.now();
   const sampledAt = new Date().toISOString();
 
   try {
     const completion = await client.chat.completions.create({
-      model,
-      temperature: 0.2,
-      max_tokens: 650,
-      thinking: { type: 'disabled' },
+      model: config.model,
+      max_tokens: config.maxTokens,
+      ...(config.provider === 'deepseek' ? { temperature: 0.2 } : {}),
+      ...(config.provider === 'qwen' ? { enable_thinking: false } : { thinking: { type: 'disabled' } }),
       messages: [
         {
           role: 'system',
@@ -178,8 +205,8 @@ async function sampleOne(client: OpenAI, model: string, prompt: SamplePrompt): P
     if (!answer) {
       return {
         prompt,
-        provider: 'deepseek',
-        model,
+        provider: config.provider,
+        model: config.model,
         status: 'failed',
         sampledAt,
         latencyMs: Date.now() - startedAt,
@@ -189,8 +216,8 @@ async function sampleOne(client: OpenAI, model: string, prompt: SamplePrompt): P
 
     return {
       prompt,
-      provider: 'deepseek',
-      model,
+      provider: config.provider,
+      model: config.model,
       status: 'success',
       sampledAt,
       latencyMs: Date.now() - startedAt,
@@ -199,8 +226,8 @@ async function sampleOne(client: OpenAI, model: string, prompt: SamplePrompt): P
   } catch (error) {
     return {
       prompt,
-      provider: 'deepseek',
-      model,
+      provider: config.provider,
+      model: config.model,
       status: 'failed',
       sampledAt,
       latencyMs: Date.now() - startedAt,
@@ -242,22 +269,97 @@ function getConfig(): DeepSeekConfig {
   return {
     apiKey: process.env.DEEPSEEK_API_KEY,
     baseUrl: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com',
-    model: process.env.DEEPSEEK_MODEL || 'deepseek-v4-pro'
+    model: process.env.DEEPSEEK_MODEL || 'deepseek-v4-pro',
+    sampleConcurrency: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_CONCURRENCY, 5, 1, 10),
+    sampleMaxRetries: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_MAX_RETRIES, 1, 0, 2),
+    polishEnabled: readBoolean(process.env.DEEPSEEK_POLISH_ENABLED, false)
   };
 }
 
-function buildUnavailableProviderStatuses(exclude: AiProvider[] = [], model: string | undefined, promptCount: number): AiProviderStatus[] {
-  const providers: AiProvider[] = ['deepseek', 'doubao', 'kimi', 'yuanbao', 'tongyi', 'wenxin'];
+function getSamplingProviderConfigs(): SamplingProviderConfig[] {
+  const deepseek = getConfig();
+  return [
+    {
+      provider: 'deepseek',
+      apiKey: deepseek.apiKey,
+      baseUrl: deepseek.baseUrl,
+      model: deepseek.model,
+      sampleConcurrency: deepseek.sampleConcurrency,
+      sampleMaxRetries: deepseek.sampleMaxRetries,
+      timeoutMs: 18_000,
+      maxTokens: 650,
+      readyNote: 'DeepSeek 官方 API key 已配置，可进行真实采样。',
+      sampledNote: 'DeepSeek 官方 OpenAI-compatible API 已完成真实采样。'
+    },
+    {
+      provider: 'hy3',
+      apiKey: process.env.HY3_API_KEY,
+      baseUrl: process.env.HY3_BASE_URL || 'https://tokenhub.tencentmaas.com/v1',
+      model: process.env.HY3_MODEL || 'hy3',
+      sampleConcurrency: readBoundedInteger(process.env.HY3_SAMPLE_CONCURRENCY, 4, 1, 8),
+      sampleMaxRetries: readBoundedInteger(process.env.HY3_SAMPLE_MAX_RETRIES, 1, 0, 2),
+      timeoutMs: 20_000,
+      maxTokens: 500,
+      readyNote: '腾讯 TokenHub Hy3 API key 已配置，可进行真实采样。',
+      sampledNote: '腾讯 TokenHub Hy3 API 已完成真实采样。'
+    },
+    {
+      provider: 'qwen',
+      apiKey: process.env.QWEN_API_KEY,
+      baseUrl: process.env.QWEN_BASE_URL || 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+      model: process.env.QWEN_MODEL || 'qwen3.7-plus',
+      sampleConcurrency: readBoundedInteger(process.env.QWEN_SAMPLE_CONCURRENCY, 4, 1, 8),
+      sampleMaxRetries: readBoundedInteger(process.env.QWEN_SAMPLE_MAX_RETRIES, 1, 0, 2),
+      timeoutMs: 20_000,
+      maxTokens: 500,
+      readyNote: '阿里云百炼 Qwen API key 已配置，可进行真实采样。',
+      sampledNote: '阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。'
+    }
+  ];
+}
+
+function isConfiguredProvider(config: SamplingProviderConfig): config is SamplingProviderConfig & { apiKey: string } {
+  return Boolean(config.apiKey);
+}
+
+function buildRuntimeProviderStatus(config: SamplingProviderConfig, promptCount = 0): AiProviderStatus {
+  return {
+    provider: config.provider,
+    model: config.model,
+    status: config.apiKey ? 'ready' : 'unavailable',
+    promptCount,
+    successCount: 0,
+    failureCount: 0,
+    note: config.apiKey ? config.readyNote : `${config.provider} 官方采样接口未配置。`
+  };
+}
+
+function readBoundedInteger(value: string | undefined, fallback: number, min: number, max: number) {
+  if (!value?.trim()) return fallback;
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(max, Math.max(min, Math.floor(parsed)));
+}
+
+function readBoolean(value: string | undefined, fallback: boolean) {
+  if (value === undefined) return fallback;
+  const normalized = value.trim().toLowerCase();
+  if (['1', 'true', 'yes', 'on'].includes(normalized)) return true;
+  if (['0', 'false', 'no', 'off'].includes(normalized)) return false;
+  return fallback;
+}
+
+function buildUnavailableProviderStatuses(exclude: AiProvider[] = [], promptCount: number): AiProviderStatus[] {
+  const providers: AiProvider[] = ['deepseek', 'hy3', 'qwen', 'doubao', 'kimi', 'yuanbao', 'tongyi', 'wenxin'];
   return providers
     .filter((provider) => !exclude.includes(provider))
     .map((provider) => ({
       provider,
-      model: provider === 'deepseek' ? model : undefined,
       status: 'unavailable',
       promptCount,
       successCount: 0,
       failureCount: 0,
-      note: provider === 'deepseek' ? 'DeepSeek 未配置。' : `${provider} adapter 已预留，当前未配置官方采样接口；不生成模拟结果。`
+      note: `${provider} adapter 已预留，当前未配置官方采样接口；不生成模拟结果。`
     }));
 }
 

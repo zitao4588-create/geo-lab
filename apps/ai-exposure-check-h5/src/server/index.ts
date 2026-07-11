@@ -119,6 +119,10 @@ app.get('/api/health', (_req, res) => {
     service: 'ai-exposure-check-h5',
     model: runtime.model,
     samplingReady: runtime.hasApiKey,
+    configuredProviderCount: runtime.configuredProviderCount,
+    sampleConcurrency: runtime.sampleConcurrency,
+    sampleMaxRetries: runtime.sampleMaxRetries,
+    polishEnabled: runtime.polishEnabled,
     providers: runtime.providers
   });
 });
@@ -185,18 +189,36 @@ function sendIdempotencyConflict(res: express.Response) {
 }
 
 async function generateDiagnosis(input: DiagnosisInput) {
+  const startedAt = Date.now();
   const prompts = buildPromptUniverse(input);
-  const pageAudit = await auditSubmittedPages(input);
-  const { samples, providerStatuses } = await sampleAiProviders(prompts);
+  const samplingStartedAt = Date.now();
+  const samplingPromise = sampleAiProviders(prompts).then((result) => ({
+    ...result,
+    durationMs: Date.now() - samplingStartedAt
+  }));
+  const [pageAudit, sampling] = await Promise.all([
+    auditSubmittedPages(input),
+    samplingPromise
+  ]);
+  const { samples, providerStatuses } = sampling;
   const successfulSamples = samples.filter((sample) => sample.status === 'success');
 
   if (successfulSamples.length === 0) {
-    throw new SamplingUnavailableError('DeepSeek 本次采样全部失败，无法生成最终 GEO 分析报告');
+    throw new SamplingUnavailableError('本次所有 AI 平台采样均失败，无法生成最终 GEO 分析报告');
   }
 
   const baseReport = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
   const report = await polishFinalReportWithDeepSeek(input, baseReport);
   await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
+  console.info(JSON.stringify({
+    event: 'diagnosis_generated',
+    reportId: report.id,
+    promptCount: prompts.length,
+    successCount: successfulSamples.length,
+    failureCount: samples.length - successfulSamples.length,
+    samplingDurationMs: sampling.durationMs,
+    totalDurationMs: Date.now() - startedAt
+  }));
   return report;
 }
 

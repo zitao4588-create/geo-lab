@@ -100,6 +100,11 @@ export function buildFinalGeoReport(
 ): DiagnosisReport {
   const id = `diag_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
   const context = analyzeSamples(input, samples, pageAudit, providerStatuses);
+  const sampledProviderStatuses = providerStatuses.filter((provider) => provider.status === 'sampled' || provider.status === 'partial');
+  const sampledProviderNames = sampledProviderStatuses.map((provider) => provider.provider).join('、');
+  const sampledModelNames = sampledProviderStatuses
+    .map((provider) => provider.model)
+    .filter((model): model is string => Boolean(model));
 
   if (context.successfulSamples.length === 0) {
     throw new Error('no_successful_samples');
@@ -112,13 +117,13 @@ export function buildFinalGeoReport(
   const issues = buildIssues(input, context, dimensions);
   const recommendations = buildRecommendations(input, context);
   const roadmap = buildRoadmap(input, context);
-  const topMentionedPrompts = context.analyzedAnswers
+  const topMentionedPrompts = unique(context.analyzedAnswers
     .filter((item) => item.mentionedBrand)
-    .map((item) => item.prompt)
+    .map((item) => item.prompt))
     .slice(0, 5);
-  const missingPrompts = context.analyzedAnswers
+  const missingPrompts = unique(context.analyzedAnswers
     .filter((item) => !item.mentionedBrand)
-    .map((item) => item.prompt)
+    .map((item) => item.prompt))
     .slice(0, 8);
 
   return {
@@ -133,7 +138,7 @@ export function buildFinalGeoReport(
     summary: buildSummary(input, score, scoreLevel, context),
     aiMeta: {
       provider: 'multi',
-      model: providerStatuses.find((provider) => provider.provider === 'deepseek')?.model ?? samples[0]?.model ?? process.env.DEEPSEEK_MODEL ?? 'deepseek-v4-pro',
+      model: sampledModelNames.join(' + ') || samples[0]?.model || 'unavailable',
       status: context.failedSamples.length > 0 ? 'partial' : 'sampled',
       sampledAt: new Date().toISOString(),
       promptCount: samples.length,
@@ -144,7 +149,7 @@ export function buildFinalGeoReport(
     evidencePolicy: {
       labels: ['raw_source', 'verified_external', 'sampled_ai_answer', 'model_inference', 'suggested_supplement'],
       notes:
-        '本报告基于用户提交资料、公开 URL 抓取审计、DeepSeek 官方 API 实时问答采样和透明规则评分生成。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。'
+        `本报告基于用户提交资料、公开 URL 抓取审计、${sampledProviderNames || '已配置模型'} API 实时问答采样和透明规则评分生成。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。`
     },
     stages: {
       overview: {
@@ -161,7 +166,7 @@ export function buildFinalGeoReport(
       },
       userProfile: buildUserProfile(input),
       promptUniverse: {
-        prompts: samples.map((sample) => sample.prompt)
+        prompts: uniquePrompts(samples)
       },
       aiSearch: {
         totalQuestions: context.successfulSamples.length,
@@ -243,6 +248,15 @@ function analyzeSamples(
   };
 }
 
+function uniquePrompts(samples: AiSample[]) {
+  const seen = new Set<string>();
+  return samples.flatMap((sample) => {
+    if (seen.has(sample.prompt.id)) return [];
+    seen.add(sample.prompt.id);
+    return [sample.prompt];
+  });
+}
+
 function analyzeAnswer(brand: string, competitors: string[], sample: AiSample): ReportAnswerSample {
   const answer = sample.answer ?? '';
   const mentionedBrand = includesTerm(answer, brand);
@@ -286,7 +300,7 @@ function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): 
       name: 'AI 采样可见度',
       score: clampScore(Math.round(context.mentionRate * 100)),
       weight: 0.32,
-      comment: `DeepSeek 本次成功采样 ${context.successfulSamples.length} 个问题，其中 ${context.mentionedCount} 个答案提及“${input.businessName}”。`,
+      comment: `本次多平台成功采样 ${context.successfulSamples.length} 个回答样本，其中 ${context.mentionedCount} 个答案提及“${input.businessName}”。`,
       evidenceLabel: 'sampled_ai_answer'
     },
     {
@@ -453,7 +467,7 @@ function buildIssues(input: DiagnosisInput, context: AnalysisContext, dimensions
     issues.push({
       id: 'issue_ai_visibility_low',
       title: 'AI 采样中品牌提及偏低',
-      detail: `本次 DeepSeek 采样 ${context.successfulSamples.length} 个问题，仅 ${context.mentionedCount} 个答案提及“${input.businessName}”。这说明模型当前不容易主动把你放进推荐答案。`,
+      detail: `本次多平台采样 ${context.successfulSamples.length} 个回答样本，仅 ${context.mentionedCount} 个答案提及“${input.businessName}”。这说明模型当前不容易主动把你放进推荐答案。`,
       evidenceLabel: 'sampled_ai_answer',
       severity: 'high'
     });
@@ -507,7 +521,7 @@ function buildIssues(input: DiagnosisInput, context: AnalysisContext, dimensions
     issues.push({
       id: 'issue_monitoring_needed',
       title: '仍缺少持续监测口径',
-      detail: '单次 DeepSeek 采样只能说明本次模型响应，需要建立固定 Prompt Universe、定期复测和证据留档。',
+      detail: '单次多平台 API 采样只能说明本次模型响应，需要建立固定 Prompt Universe、定期复测和证据留档。',
       evidenceLabel: 'suggested_supplement',
       severity: 'medium'
     });
@@ -554,7 +568,7 @@ function buildRecommendations(input: DiagnosisInput, context: AnalysisContext): 
     {
       id: 'suggest_monitoring',
       title: '固定 Prompt Universe 做月度复测',
-      detail: '保留本次 20 个问题作为基线，每月用相同问题复测 DeepSeek，并逐步扩展豆包、Kimi、元宝等平台。',
+      detail: '保留本次 20 个问题作为基线，每月用相同问题复测 DeepSeek、Hy3 和 Qwen；新增平台时单独记录接口来源与消费端差异。',
       evidenceLabel: 'suggested_supplement',
       priority: 'P2'
     }
@@ -666,7 +680,7 @@ function buildHighlights(input: DiagnosisInput, context: AnalysisContext) {
   ];
 
   if (context.mentionedCount > 0) {
-    highlights.unshift(`本次 DeepSeek 采样已有 ${context.mentionedCount} 个答案提及品牌，说明存在可被模型识别的起点。`);
+    highlights.unshift(`本次多平台采样已有 ${context.mentionedCount} 个答案提及品牌，说明存在可被模型识别的起点。`);
   }
 
   if (context.pageAudit.targets.length > 0 && context.pageAudit.score >= 80) {
@@ -680,7 +694,7 @@ function buildHighlights(input: DiagnosisInput, context: AnalysisContext) {
 
 function buildKeyFinding(input: DiagnosisInput, context: AnalysisContext) {
   if (context.mentionRate === 0) {
-    return `DeepSeek 本次采样没有主动提及“${input.businessName}”，核心瓶颈是公开可查证信息不足或尚未被模型吸收。`;
+    return `本次多平台采样没有主动提及“${input.businessName}”，核心瓶颈是公开可查证信息不足或尚未被模型吸收。`;
   }
   if (context.mentionRate < 0.25) {
     return `“${input.businessName}”已经在少量问题里出现，但还没有形成稳定推荐理由。`;
@@ -689,7 +703,7 @@ function buildKeyFinding(input: DiagnosisInput, context: AnalysisContext) {
 }
 
 function buildSummary(input: DiagnosisInput, score: number, scoreLevel: DiagnosisReport['scoreLevel'], context: AnalysisContext) {
-  return `${input.businessName}本次 GEO 分析成果得分 ${score}/100（${scoreLevel}）。DeepSeek 成功采样 ${context.successfulSamples.length} 个问题，品牌提及率 ${toPercent(context.mentionRate)}；公开页面审计 ${context.pageAudit.score}/100。`;
+  return `${input.businessName}本次 GEO 分析成果得分 ${score}/100（${scoreLevel}）。多平台成功采样 ${context.successfulSamples.length} 个回答样本，品牌提及率 ${toPercent(context.mentionRate)}；公开页面审计 ${context.pageAudit.score}/100。`;
 }
 
 function buildCompetitorNote(context: AnalysisContext) {
@@ -728,7 +742,7 @@ function buildCompetitorMentionStats(context: AnalysisContext): DiagnosisReport[
 
 function buildSentimentNote(context: AnalysisContext) {
   if (context.riskFlags.length === 0) {
-    return '本次 DeepSeek 采样没有发现明显负面或信任风险词；这不代表长期舆情安全，仍需定期复测。';
+    return '本次多平台采样没有发现明显负面或信任风险词；这不代表长期舆情安全，仍需定期复测。';
   }
   return `本次采样出现 ${context.riskFlags.length} 类风险信号，优先用公开说明页和 FAQ 解释边界。`;
 }

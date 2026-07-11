@@ -7,7 +7,7 @@ export type EvidenceLabel =
 
 export type RiskLevel = 'high' | 'medium' | 'low';
 
-export type AiProvider = 'deepseek' | 'doubao' | 'kimi' | 'yuanbao' | 'tongyi' | 'wenxin';
+export type AiProvider = 'deepseek' | 'hy3' | 'qwen' | 'doubao' | 'kimi' | 'yuanbao' | 'tongyi' | 'wenxin';
 
 export type AiSamplingStatus = 'ready' | 'sampled' | 'partial' | 'unavailable';
 

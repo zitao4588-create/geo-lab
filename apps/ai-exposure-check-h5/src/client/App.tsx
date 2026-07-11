@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Toast } from 'tdesign-mobile-react';
-import type { DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
+import type { AiProvider, DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
 import { ApiError, createDiagnosis, getDiagnosis } from './api';
 
 type Screen = 'start' | 'form' | 'loading' | 'result';
@@ -12,6 +12,16 @@ const FORM_DRAFT_KEY = 'aiec_form_draft';
 const PENDING_REQUEST_KEY = 'aiec_pending_request';
 const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
+const providerLabels: Record<AiProvider, string> = {
+  deepseek: 'DeepSeek',
+  hy3: 'Hy3',
+  qwen: 'Qwen',
+  doubao: '豆包',
+  kimi: 'Kimi',
+  yuanbao: '元宝',
+  tongyi: '通义',
+  wenxin: '文心'
+};
 
 const emptyForm: DiagnosisInput = {
   businessName: '',
@@ -291,7 +301,7 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         </div>
       </div>
 
-      <p className="trust-line">DeepSeek 真实采样 · 9 大报告模块 · 证据可追溯</p>
+      <p className="trust-line">多平台真实采样 · 9 大报告模块 · 证据可追溯</p>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
         免费测一次
@@ -346,7 +356,7 @@ function FormScreen({
       <StepHeader current={1} />
       <div className="section-title">
         <h2>填写业务资料</h2>
-        <p>系统会据此生成采样问题，并调用 DeepSeek 生成最终 GEO 报告</p>
+        <p>系统会据此生成采样问题，并调用多个 AI API 生成最终 GEO 报告</p>
       </div>
 
       <div className="form-stack">
@@ -440,9 +450,9 @@ function Field({
 }
 
 function LoadingScreen({ step, seconds }: { step: number; seconds: number }) {
-  const tasks = ['生成采样问题', '调用 DeepSeek 回答', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
+  const tasks = ['生成采样问题', '并行调用多个 AI', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
   const tips = [
-    '本报告使用 DeepSeek 本次返回答案作为采样证据，不把它包装成全网确定排名。',
+    '本报告使用各 API 本次返回答案作为采样证据，不把它包装成消费端搜索或全网确定排名。',
     'GEO 小知识：AI 更容易引用有明确定义、适用人群和边界说明的页面。',
     'GEO 小知识：品牌页、FAQ 和隐私说明，是 AI 理解你的三块基石。',
     'GEO 小知识：竞品对比页能帮 AI 在「怎么选」的问题里想起你。'
@@ -573,7 +583,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         <span className="cover-chip">{report.scoreLevel} · {risk.label}</span>
         <p className="cover-summary">{report.summary}</p>
         <div className="cover-foot">
-          <span>DeepSeek 真实采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
+          <span>多平台真实采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
           <span>{formatDate(report.generatedAt)}</span>
         </div>
       </div>
@@ -607,29 +617,29 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         <div className="metric-grid">
           <Metric label="成功采样" value={`${report.aiMeta.successCount}/${report.aiMeta.promptCount}`} />
           <Metric label="品牌提及率" value={`${Math.round(report.stages.aiSearch.mentionRate * 1000) / 10}%`} />
-          <Metric label="提及问题数" value={`${report.stages.aiSearch.mentionedCount}`} />
+          <Metric label="提及回答数" value={`${report.stages.aiSearch.mentionedCount}`} />
         </div>
         {sampledProviders.length > 0 && (
           <div className="provider-strip">
             {sampledProviders.map((provider) => (
               <span className={provider.status} key={provider.provider}>
-                {provider.provider} · {provider.successCount}/{provider.promptCount}
+                {providerLabels[provider.provider]} · {provider.successCount}/{provider.promptCount}
               </span>
             ))}
           </div>
         )}
         {unavailableProviders.length > 0 && (
           <p className="provider-note">
-            {unavailableProviders.map((provider) => provider.provider).join(' / ')} 未配置，不生成模拟结果
+            {unavailableProviders.map((provider) => providerLabels[provider.provider]).join(' / ')} 未配置，不生成模拟结果
           </p>
         )}
         {answerSamples.length > 0 && (
           <Collapse summary={`查看 ${answerSamples.length} 条采样答案原文`}>
             <div className="answer-list">
               {answerSamples.map((answer) => (
-                <article className="answer-card" key={answer.promptId}>
+                <article className="answer-card" key={`${answer.provider}:${answer.promptId}`}>
                   <div>
-                    <strong>{answer.prompt}</strong>
+                    <strong>{providerLabels[answer.provider]} · {answer.prompt}</strong>
                     <EvidenceBadge label={answer.evidenceLabel} />
                   </div>
                   <p>{answer.answerExcerpt}</p>

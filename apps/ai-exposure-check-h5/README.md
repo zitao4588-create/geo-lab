@@ -1,6 +1,6 @@
 # AI曝光体检 H5
 
-第一阶段 H5 产品：无登录、无支付、无数据库，用于收集业务信息并生成带真实 DeepSeek 采样证据、公开 URL 审计和导出包的 GEO 分析成果报告。
+第一阶段 H5 产品：无登录、无支付、无数据库，用于收集业务信息并生成带 DeepSeek、Hy3、Qwen 真实 API 采样证据、公开 URL 审计和导出包的 GEO 分析成果报告。
 
 ## Commands
 
@@ -24,10 +24,26 @@ DIAGNOSES_GLOBAL_DAILY_LIMIT=30
 DEEPSEEK_API_KEY=...
 DEEPSEEK_BASE_URL=https://api.deepseek.com
 DEEPSEEK_MODEL=deepseek-v4-pro
+DEEPSEEK_SAMPLE_CONCURRENCY=5
+DEEPSEEK_SAMPLE_MAX_RETRIES=1
+DEEPSEEK_POLISH_ENABLED=false
+HY3_API_KEY=...
+HY3_BASE_URL=https://tokenhub.tencentmaas.com/v1
+HY3_MODEL=hy3
+HY3_SAMPLE_CONCURRENCY=4
+HY3_SAMPLE_MAX_RETRIES=1
+QWEN_API_KEY=...
+QWEN_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+QWEN_MODEL=qwen3.7-plus
+QWEN_SAMPLE_CONCURRENCY=4
+QWEN_SAMPLE_MAX_RETRIES=1
 VITE_CONSULT_WECHAT_ID=
 ```
 
-没有 `DEEPSEEK_API_KEY` 时，后端会返回 `503 sampling_unavailable`，不再用规则模板冒充最终报告。
+DeepSeek、Hy3、Qwen 至少配置一个 API Key 才能生成报告；全部未配置时，后端返回 `503 sampling_unavailable`，不再用规则模板冒充最终报告。
+每个已配置平台默认执行同一组 20 条独立采样，平台之间并行，平台内部按各自 `*_SAMPLE_CONCURRENCY` 限流。页面审计也与采样并行执行。总调用量会随已配置平台数线性增加。
+采样请求默认最多重试 1 次，可通过各 provider 的 `*_SAMPLE_MAX_RETRIES` 在 0-2 之间调整，避免 SDK 默认 2 次重试放大异常等待。
+`DEEPSEEK_POLISH_ENABLED` 默认关闭，避免在评分和证据已经生成后再等待一次只改建议文案的模型请求；设为 `true` 可恢复该可选润色。
 没有 `VITE_CONSULT_WECHAT_ID` 时，结果页仍展示二维码，复制按钮只复制添加说明。
 
 ## API
@@ -39,7 +55,7 @@ VITE_CONSULT_WECHAT_ID=
 - `GET /api/diagnoses/:id/export/html`：导出 HTML 报告。
 - `GET /api/diagnoses/:id/export/evidence-package`：导出证据包 JSON。
 
-当前真实采样平台只有 DeepSeek。豆包、Kimi、元宝、通义、文心等平台只登记 adapter 状态，未配置时明确返回 `unavailable`，不生成模拟结果。
+当前真实采样 adapter 包括 DeepSeek 官方 API、腾讯 TokenHub Hy3 和阿里云百炼 Qwen。豆包、Kimi、元宝、通义消费端、文心等仍只登记状态，未配置时明确返回 `unavailable`，不生成模拟结果。API 响应不等于对应消费端产品的搜索结果。
 
 ## Production Notes
 

@@ -3,6 +3,8 @@ import { pathToFileURL } from 'node:url';
 
 export async function startFakeOpenAiServer({ delayMs = 80, fail = false, port = 0 } = {}) {
   let callCount = 0;
+  let activeCount = 0;
+  let peakConcurrency = 0;
   const requests = [];
 
   const server = http.createServer(async (request, response) => {
@@ -17,35 +19,42 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, port =
 
     const body = JSON.parse(rawBody);
     callCount += 1;
+    const callId = callCount;
+    activeCount += 1;
+    peakConcurrency = Math.max(peakConcurrency, activeCount);
     requests.push(body);
-    await delay(delayMs);
+    try {
+      await delay(delayMs);
 
-    if (fail) {
-      response.writeHead(500, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ error: { message: 'controlled_provider_failure', type: 'server_error' } }));
-      return;
+      if (fail) {
+        response.writeHead(500, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: { message: 'controlled_provider_failure', type: 'server_error' } }));
+        return;
+      }
+
+      const isPolishRequest = body.response_format?.type === 'json_object';
+      const content = isPolishRequest
+        ? JSON.stringify({ recommendations: [], roadmap: [] })
+        : '这是本地受控采样回答，仅用于验证请求恢复，不代表真实平台结果。';
+
+      response.writeHead(200, { 'Content-Type': 'application/json' });
+      response.end(JSON.stringify({
+        id: `chatcmpl-controlled-${callId}`,
+        object: 'chat.completion',
+        created: Math.floor(Date.now() / 1000),
+        model: body.model || 'controlled-model',
+        choices: [
+          {
+            index: 0,
+            message: { role: 'assistant', content },
+            finish_reason: 'stop'
+          }
+        ],
+        usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 }
+      }));
+    } finally {
+      activeCount -= 1;
     }
-
-    const isPolishRequest = body.response_format?.type === 'json_object';
-    const content = isPolishRequest
-      ? JSON.stringify({ recommendations: [], roadmap: [] })
-      : '这是本地受控采样回答，仅用于验证请求恢复，不代表真实平台结果。';
-
-    response.writeHead(200, { 'Content-Type': 'application/json' });
-    response.end(JSON.stringify({
-      id: `chatcmpl-controlled-${callCount}`,
-      object: 'chat.completion',
-      created: Math.floor(Date.now() / 1000),
-      model: body.model || 'controlled-model',
-      choices: [
-        {
-          index: 0,
-          message: { role: 'assistant', content },
-          finish_reason: 'stop'
-        }
-      ],
-      usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 }
-    }));
   });
 
   await new Promise((resolve, reject) => {
@@ -60,6 +69,9 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, port =
     baseUrl: `http://127.0.0.1:${address.port}/v1`,
     get callCount() {
       return callCount;
+    },
+    get peakConcurrency() {
+      return peakConcurrency;
     },
     requests,
     close: () => new Promise((resolve, reject) => {
