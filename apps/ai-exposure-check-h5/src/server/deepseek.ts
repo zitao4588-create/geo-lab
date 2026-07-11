@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import OpenAI, { type ClientOptions } from 'openai';
 import type { AiProvider, AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, SamplePrompt } from '../shared/types.js';
 
 interface DeepSeekConfig {
@@ -96,7 +96,8 @@ async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: 
     apiKey: config.apiKey,
     baseURL: config.baseUrl,
     timeout: config.timeoutMs,
-    maxRetries: config.sampleMaxRetries
+    maxRetries: config.sampleMaxRetries,
+    ...(config.provider === 'qwen' ? { fetch: globalThis.fetch as unknown as ClientOptions['fetch'] } : {})
   });
 
   const boundedPrompts = prompts.slice(0, 24);
