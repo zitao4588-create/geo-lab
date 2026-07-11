@@ -2,6 +2,13 @@
 
 ## Immediate
 
+- Completed 2026-07-11 DeepSeek free-tier fallback release:
+  - added `deepseek-v4-pro -> deepseek-v4-flash -> failed sample` routing without legacy-model fallback,
+  - limited fallback to explicit quota/access/rate-limit/model-unavailable errors; timeout, `5xx`, and empty answers do not cross models,
+  - added Flash to the IP-restricted Bailian production key and production environment,
+  - passed typecheck, build, `git diff --check`, and integration tests `6/6`,
+  - committed and pushed `02e36cd`, deployed release `20260711141454`, and kept `20260711132550` for rollback,
+  - verified systemd `active`, four ready providers, and all public pages `200` without a real diagnosis POST.
 - Completed 2026-07-11 three-cloud/four-model free-tier release:
   - moved DeepSeek sampling from the official API to Alibaba Bailian `deepseek-v4-pro`, sharing the Bailian workspace credential with `qwen3.7-plus`,
   - enabled Tencent TokenHub `hy3` and Volcengine Ark Doubao in the same outer parallel stage, with independent provider switches and quota-error fallback across five authorized Doubao model families,

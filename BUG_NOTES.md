@@ -161,3 +161,13 @@ Cause: the local SSH session exited without forwarding the interrupt to the deta
 Fix: identified the exact listener PID with `ss`, terminated only that temporary PID, and verified port `8790` was empty before switching production.
 
 Verification: the production service on `3020` remained active throughout; the new release was switched only after the temporary port was clean.
+
+## 2026-07-11: Npm Precheck Left A Grandchild Node Process On Port 8790
+
+Symptom: the first fallback-release precheck appeared healthy, but `ss` showed port `8790` was still owned by an older Node process from release `20260711132550`.
+
+Cause: the earlier `nohup npm --prefix <release> start` launch stored the npm wrapper PID. Stopping that PID did not terminate the detached grandchild Node process, so a later health request could hit stale code.
+
+Fix: inspected the exact listener PID and command, terminated only the stale precheck process, verified the port was empty, then launched the new release with `env -C <release> node dist/server/server/index.js`. This makes the stored PID the actual Node process.
+
+Verification: the clean precheck PID had working directory `releases/20260711141454`; homepage and health returned `200`, all four providers were ready, and port `8790` was empty after stopping the recorded PID. Production was switched only after this verification.

@@ -245,6 +245,14 @@ H5 MVP implementation started on 2026-06-30:
 - With prior explicit approval, a one-question controlled production diagnosis generated `diag_mrfxefwo_5gpi7o` in about `10.6s`. DeepSeek, Hy3, Qwen, and Doubao each returned `1/1` successful sample; persisted report recovery returned `200` in about `301ms`.
 - The controlled one-question result proves all four production adapters and parallel aggregation work. It does not yet measure the default 10-question-per-model end-to-end latency.
 
+2026-07-11 DeepSeek free-tier fallback release:
+
+- Commit `02e36cd` was pushed to `origin/main` and deployed as release `20260711141454`, replacing `20260711132550` (kept for rollback).
+- DeepSeek now samples `deepseek-v4-pro` first and switches to `deepseek-v4-flash` only for explicit `402/403/404/429` quota, free-tier, access, rate-limit, or model-availability failures. Timeouts, `5xx`, and empty answers do not trigger cross-model replay; if Flash also fails, the DeepSeek sample stays failed instead of falling back to legacy models.
+- The Bailian production key remains IP-restricted and custom-scoped to `qwen3.7-plus`, `deepseek-v4-pro`, and `deepseek-v4-flash`. The server environment includes `DEEPSEEK_FALLBACK_MODELS=deepseek-v4-flash` and remains mode `600` with a pre-change backup.
+- Verification passed: typecheck, production build, `git diff --check`, integration tests `6/6`, clean release precheck on port `8790`, production systemd `active`, current symlink, public health with four ready providers, and homepage/privacy/terms/static introduction page `200`.
+- No production diagnosis POST was sent for this release, so no additional cloud-model quota was consumed during deployment smoke.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
