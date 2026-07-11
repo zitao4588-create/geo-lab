@@ -13,10 +13,10 @@ const PENDING_REQUEST_KEY = 'aiec_pending_request';
 const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
 const providerLabels: Record<AiProvider, string> = {
-  deepseek: 'DeepSeek',
-  hy3: 'Hy3',
-  qwen: 'Qwen',
-  doubao: '豆包',
+  deepseek: 'DeepSeek（百炼）',
+  hy3: '腾讯混元',
+  qwen: '阿里千问',
+  doubao: '火山豆包',
   kimi: 'Kimi',
   yuanbao: '元宝',
   tongyi: '通义',
@@ -301,7 +301,7 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         </div>
       </div>
 
-      <p className="trust-line">多平台真实采样 · 9 大报告模块 · 证据可追溯</p>
+      <p className="trust-line">三家云平台 · 4 个模型真实采样 · 证据可追溯</p>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
         免费测一次
@@ -356,7 +356,7 @@ function FormScreen({
       <StepHeader current={1} />
       <div className="section-title">
         <h2>填写业务资料</h2>
-        <p>系统会据此生成采样问题，并调用多个 AI API 生成最终 GEO 报告</p>
+        <p>免费版会并行调用 DeepSeek、千问、混元、豆包，生成最终 GEO 报告</p>
       </div>
 
       <div className="form-stack">
@@ -421,7 +421,7 @@ function FormScreen({
         生成 GEO 分析报告
       </Button>
       {missingFields.length > 0 && <p className="missing-hint">还差 {missingFields.length} 项必填</p>}
-      <p className="form-hint">真实采样通常需要 20-60 秒。若模型服务暂不可用，系统会明确提示，不会返回伪报告。</p>
+      <p className="form-hint">四个模型并行采样，通常需要 20-60 秒。免费额度或模型服务不可用时会明确提示，不返回伪报告。</p>
       {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
   );
@@ -450,7 +450,7 @@ function Field({
 }
 
 function LoadingScreen({ step, seconds }: { step: number; seconds: number }) {
-  const tasks = ['生成采样问题', '并行调用多个 AI', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
+  const tasks = ['生成采样问题', '并行采样四个模型', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
   const tips = [
     '本报告使用各 API 本次返回答案作为采样证据，不把它包装成消费端搜索或全网确定排名。',
     'GEO 小知识：AI 更容易引用有明确定义、适用人群和边界说明的页面。',
@@ -583,7 +583,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         <span className="cover-chip">{report.scoreLevel} · {risk.label}</span>
         <p className="cover-summary">{report.summary}</p>
         <div className="cover-foot">
-          <span>多平台真实采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
+          <span>四模型 GEO 采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
           <span>{formatDate(report.generatedAt)}</span>
         </div>
       </div>

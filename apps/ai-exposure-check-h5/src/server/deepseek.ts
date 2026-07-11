@@ -1,5 +1,5 @@
 import OpenAI, { type ClientOptions } from 'openai';
-import type { AiProvider, AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, SamplePrompt } from '../shared/types.js';
+import type { AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, SamplePrompt } from '../shared/types.js';
 
 interface DeepSeekConfig {
   apiKey?: string;
@@ -11,10 +11,11 @@ interface DeepSeekConfig {
 }
 
 interface SamplingProviderConfig {
-  provider: 'deepseek' | 'hy3' | 'qwen';
+  provider: 'deepseek' | 'hy3' | 'qwen' | 'doubao';
   apiKey?: string;
   baseUrl: string;
   model: string;
+  fallbackModels?: string[];
   sampleConcurrency: number;
   sampleMaxRetries: number;
   timeoutMs: number;
@@ -28,6 +29,8 @@ interface NarrativeJsonResult {
   recommendations?: Array<{ title?: string; detail?: string }>;
   roadmap?: Array<{ title?: string; detail?: string }>;
 }
+
+let preferredDoubaoModel: string | undefined;
 
 export class SamplingUnavailableError extends Error {
   constructor(message = '真实 AI 采样暂不可用，请稍后再试') {
@@ -49,10 +52,7 @@ export function getDeepSeekRuntime() {
     sampleConcurrency: config.sampleConcurrency,
     sampleMaxRetries: config.sampleMaxRetries,
     polishEnabled: config.polishEnabled,
-    providers: [
-      ...samplingProviders,
-      ...buildUnavailableProviderStatuses(samplingConfigs.map((providerConfig) => providerConfig.provider), 0)
-    ]
+    providers: samplingProviders
   };
 }
 
@@ -69,7 +69,7 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
     const failureCount = samples.filter((sample) => sample.status === 'failed').length;
     const status: AiProviderStatus = {
       provider: config.provider,
-      model: config.model,
+      model: samples.find((sample) => sample.status === 'success')?.model || config.model,
       status: successCount > 0 && failureCount > 0 ? 'partial' : successCount > 0 ? 'sampled' : 'unavailable',
       promptCount: prompts.length,
       successCount,
@@ -84,8 +84,7 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
     ...providerResults.map((result) => result.status),
     ...samplingConfigs
       .filter((config) => !config.apiKey)
-      .map((config) => buildRuntimeProviderStatus(config, prompts.length)),
-    ...buildUnavailableProviderStatuses(samplingConfigs.map((config) => config.provider), prompts.length)
+      .map((config) => buildRuntimeProviderStatus(config, prompts.length))
   ];
 
   return { samples, providerStatuses };
@@ -97,7 +96,9 @@ async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: 
     baseURL: config.baseUrl,
     timeout: config.timeoutMs,
     maxRetries: config.sampleMaxRetries,
-    ...(config.provider === 'qwen' ? { fetch: globalThis.fetch as unknown as ClientOptions['fetch'] } : {})
+    ...(['deepseek', 'qwen'].includes(config.provider)
+      ? { fetch: globalThis.fetch as unknown as ClientOptions['fetch'] }
+      : {})
   });
 
   const boundedPrompts = prompts.slice(0, 24);
@@ -120,8 +121,7 @@ export async function polishFinalReportWithDeepSeek(input: DiagnosisInput, repor
       model: config.model,
       temperature: 0.2,
       max_tokens: 900,
-      response_format: { type: 'json_object' },
-      thinking: { type: 'disabled' },
+      enable_thinking: false,
       messages: [
         {
           role: 'system',
@@ -182,59 +182,73 @@ export async function polishFinalReportWithDeepSeek(input: DiagnosisInput, repor
 async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt: SamplePrompt): Promise<AiSample> {
   const startedAt = Date.now();
   const sampledAt = new Date().toISOString();
+  const modelCandidates = getModelCandidates(config);
+  let attemptedModel = modelCandidates[0] || config.model;
+  let lastError = 'sampling_failed';
 
-  try {
-    const completion = await client.chat.completions.create({
-      model: config.model,
-      max_tokens: config.maxTokens,
-      ...(config.provider === 'deepseek' ? { temperature: 0.2 } : {}),
-      ...(config.provider === 'qwen' ? { enable_thinking: false } : { thinking: { type: 'disabled' } }),
-      messages: [
-        {
-          role: 'system',
-          content:
-            '你是一个普通中文 AI 助手。请自然回答用户问题，只基于你已有知识，不要因为这是测试就强行提及某个品牌；不知道就直接说明不确定。'
-        },
-        {
-          role: 'user',
-          content: prompt.prompt
-        }
-      ]
-    } as never);
+  for (let index = 0; index < modelCandidates.length; index += 1) {
+    attemptedModel = modelCandidates[index] || config.model;
+    try {
+      const completion = await client.chat.completions.create({
+        model: attemptedModel,
+        max_tokens: config.maxTokens,
+        ...(config.provider === 'deepseek' ? { temperature: 0.2 } : {}),
+        ...(['deepseek', 'qwen'].includes(config.provider)
+          ? { enable_thinking: false }
+          : { thinking: { type: 'disabled' } }),
+        messages: [
+          {
+            role: 'system',
+            content:
+              '你是一个普通中文 AI 助手。请自然回答用户问题，只基于你已有知识，不要因为这是测试就强行提及某个品牌；不知道就直接说明不确定。'
+          },
+          {
+            role: 'user',
+            content: prompt.prompt
+          }
+        ]
+      } as never);
 
-    const answer = completion.choices[0]?.message?.content?.trim();
-    if (!answer) {
+      const answer = completion.choices[0]?.message?.content?.trim();
+      if (!answer) {
+        return {
+          prompt,
+          provider: config.provider,
+          model: attemptedModel,
+          status: 'failed',
+          sampledAt,
+          latencyMs: Date.now() - startedAt,
+          error: 'empty_answer'
+        };
+      }
+
+      if (config.provider === 'doubao') preferredDoubaoModel = attemptedModel;
       return {
         prompt,
         provider: config.provider,
-        model: config.model,
-        status: 'failed',
+        model: attemptedModel,
+        status: 'success',
         sampledAt,
         latencyMs: Date.now() - startedAt,
-        error: 'empty_answer'
+        answer
       };
+    } catch (error) {
+      lastError = error instanceof Error ? safeError(error.message) : 'sampling_failed';
+      const nextModel = modelCandidates[index + 1];
+      if (config.provider !== 'doubao' || !nextModel || !shouldFallbackDoubaoModel(error)) break;
+      preferredDoubaoModel = nextModel;
     }
-
-    return {
-      prompt,
-      provider: config.provider,
-      model: config.model,
-      status: 'success',
-      sampledAt,
-      latencyMs: Date.now() - startedAt,
-      answer
-    };
-  } catch (error) {
-    return {
-      prompt,
-      provider: config.provider,
-      model: config.model,
-      status: 'failed',
-      sampledAt,
-      latencyMs: Date.now() - startedAt,
-      error: error instanceof Error ? safeError(error.message) : 'sampling_failed'
-    };
   }
+
+  return {
+    prompt,
+    provider: config.provider,
+    model: attemptedModel,
+    status: 'failed',
+    sampledAt,
+    latencyMs: Date.now() - startedAt,
+    error: lastError
+  };
 }
 
 function mergeNarrative(report: DiagnosisReport, ai: NarrativeJsonResult): DiagnosisReport {
@@ -267,9 +281,13 @@ function mergeNarrative(report: DiagnosisReport, ai: NarrativeJsonResult): Diagn
 }
 
 function getConfig(): DeepSeekConfig {
+  const bailianApiKey = process.env.BAILIAN_API_KEY || process.env.QWEN_API_KEY;
   return {
-    apiKey: process.env.DEEPSEEK_API_KEY,
-    baseUrl: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com',
+    apiKey: readBoolean(process.env.DEEPSEEK_ENABLED, true) ? bailianApiKey : undefined,
+    baseUrl:
+      process.env.BAILIAN_BASE_URL ||
+      process.env.QWEN_BASE_URL ||
+      'https://dashscope.aliyuncs.com/compatible-mode/v1',
     model: process.env.DEEPSEEK_MODEL || 'deepseek-v4-pro',
     sampleConcurrency: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_CONCURRENCY, 5, 1, 10),
     sampleMaxRetries: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_MAX_RETRIES, 1, 0, 2),
@@ -279,6 +297,11 @@ function getConfig(): DeepSeekConfig {
 
 function getSamplingProviderConfigs(): SamplingProviderConfig[] {
   const deepseek = getConfig();
+  const bailianApiKey = process.env.BAILIAN_API_KEY || process.env.QWEN_API_KEY;
+  const bailianBaseUrl =
+    process.env.BAILIAN_BASE_URL ||
+    process.env.QWEN_BASE_URL ||
+    'https://dashscope.aliyuncs.com/compatible-mode/v1';
   return [
     {
       provider: 'deepseek',
@@ -289,12 +312,12 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       sampleMaxRetries: deepseek.sampleMaxRetries,
       timeoutMs: 18_000,
       maxTokens: 650,
-      readyNote: 'DeepSeek 官方 API key 已配置，可进行真实采样。',
-      sampledNote: 'DeepSeek 官方 OpenAI-compatible API 已完成真实采样。'
+      readyNote: '阿里云百炼 DeepSeek 免费额度接口已配置，可进行真实采样。',
+      sampledNote: '阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。'
     },
     {
       provider: 'hy3',
-      apiKey: process.env.HY3_API_KEY,
+      apiKey: readBoolean(process.env.HY3_ENABLED, true) ? process.env.HY3_API_KEY : undefined,
       baseUrl: process.env.HY3_BASE_URL || 'https://tokenhub.tencentmaas.com/v1',
       model: process.env.HY3_MODEL || 'hy3',
       sampleConcurrency: readBoundedInteger(process.env.HY3_SAMPLE_CONCURRENCY, 4, 1, 8),
@@ -306,8 +329,8 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
     },
     {
       provider: 'qwen',
-      apiKey: process.env.QWEN_API_KEY,
-      baseUrl: process.env.QWEN_BASE_URL || 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+      apiKey: readBoolean(process.env.QWEN_ENABLED, true) ? bailianApiKey : undefined,
+      baseUrl: bailianBaseUrl,
       model: process.env.QWEN_MODEL || 'qwen3.7-plus',
       sampleConcurrency: readBoundedInteger(process.env.QWEN_SAMPLE_CONCURRENCY, 4, 1, 8),
       sampleMaxRetries: readBoundedInteger(process.env.QWEN_SAMPLE_MAX_RETRIES, 1, 0, 2),
@@ -315,6 +338,26 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       maxTokens: 500,
       readyNote: '阿里云百炼 Qwen API key 已配置，可进行真实采样。',
       sampledNote: '阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。'
+    },
+    {
+      provider: 'doubao',
+      apiKey: readBoolean(process.env.DOUBAO_ENABLED, true)
+        ? process.env.DOUBAO_API_KEY || process.env.ARK_API_KEY
+        : undefined,
+      baseUrl: process.env.DOUBAO_BASE_URL || 'https://ark.cn-beijing.volces.com/api/v3',
+      model: process.env.DOUBAO_MODEL || 'doubao-seed-2-0-lite-260215',
+      fallbackModels: readCsv(process.env.DOUBAO_FALLBACK_MODELS, [
+        'doubao-seed-2-0-mini-260215',
+        'doubao-seed-2-1-turbo-260628',
+        'doubao-seed-1-8-251228',
+        'doubao-seed-2-1-pro-260628'
+      ]),
+      sampleConcurrency: readBoundedInteger(process.env.DOUBAO_SAMPLE_CONCURRENCY, 4, 1, 8),
+      sampleMaxRetries: readBoundedInteger(process.env.DOUBAO_SAMPLE_MAX_RETRIES, 1, 0, 2),
+      timeoutMs: 20_000,
+      maxTokens: 500,
+      readyNote: '火山方舟豆包 API key 已配置，可进行真实采样。',
+      sampledNote: '火山方舟豆包 OpenAI-compatible API 已完成真实采样。'
     }
   ];
 }
@@ -350,18 +393,28 @@ function readBoolean(value: string | undefined, fallback: boolean) {
   return fallback;
 }
 
-function buildUnavailableProviderStatuses(exclude: AiProvider[] = [], promptCount: number): AiProviderStatus[] {
-  const providers: AiProvider[] = ['deepseek', 'hy3', 'qwen', 'doubao', 'kimi', 'yuanbao', 'tongyi', 'wenxin'];
-  return providers
-    .filter((provider) => !exclude.includes(provider))
-    .map((provider) => ({
-      provider,
-      status: 'unavailable',
-      promptCount,
-      successCount: 0,
-      failureCount: 0,
-      note: `${provider} adapter 已预留，当前未配置官方采样接口；不生成模拟结果。`
-    }));
+function readCsv(value: string | undefined, fallback: string[]) {
+  const items = (value || fallback.join(','))
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+  return [...new Set(items)];
+}
+
+function getModelCandidates(config: SamplingProviderConfig) {
+  const models = [...new Set([config.model, ...(config.fallbackModels || [])])];
+  if (config.provider !== 'doubao' || !preferredDoubaoModel) return models;
+  const preferredIndex = models.indexOf(preferredDoubaoModel);
+  return preferredIndex >= 0 ? models.slice(preferredIndex) : models;
+}
+
+function shouldFallbackDoubaoModel(error: unknown) {
+  if (!error || typeof error !== 'object') return false;
+  const status = 'status' in error && typeof error.status === 'number' ? error.status : undefined;
+  if (status !== undefined && [402, 403, 404, 429].includes(status)) return true;
+  const code = 'code' in error ? String(error.code || '') : '';
+  const message = error instanceof Error ? error.message : String(error);
+  return /quota|rate.?limit|balance|billing|overdue|not activated|insufficient|exhaust|resource.?package/iu.test(`${code} ${message}`);
 }
 
 async function runWithConcurrency<TInput, TOutput>(

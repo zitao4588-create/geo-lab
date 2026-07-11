@@ -118,23 +118,29 @@ test('default 10 prompt diagnosis uses five concurrent samples and skips optiona
   context.diagnostic(`controlled 10-prompt wall time: ${durationMs}ms`);
 });
 
-test('DeepSeek, Hy3, and Qwen sample in parallel with provider-specific non-thinking parameters', async (context) => {
+test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific non-thinking parameters', async (context) => {
   const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-multi-provider-'));
   const provider = await startFakeOpenAiServer({ delayMs: 200 });
   const appServer = await startAppServer({
     runtimeDir,
     providerBaseUrl: provider.baseUrl,
     appEnv: {
+      HY3_ENABLED: 'true',
       HY3_API_KEY: 'controlled-hy3-key',
       HY3_BASE_URL: provider.baseUrl,
       HY3_MODEL: 'controlled-hy3',
       HY3_SAMPLE_CONCURRENCY: '4',
       HY3_SAMPLE_MAX_RETRIES: '0',
-      QWEN_API_KEY: 'controlled-qwen-key',
-      QWEN_BASE_URL: provider.baseUrl,
+      QWEN_ENABLED: 'true',
       QWEN_MODEL: 'controlled-qwen',
       QWEN_SAMPLE_CONCURRENCY: '4',
-      QWEN_SAMPLE_MAX_RETRIES: '0'
+      QWEN_SAMPLE_MAX_RETRIES: '0',
+      DOUBAO_ENABLED: 'true',
+      DOUBAO_API_KEY: 'controlled-doubao-key',
+      DOUBAO_BASE_URL: provider.baseUrl,
+      DOUBAO_MODEL: 'controlled-doubao',
+      DOUBAO_SAMPLE_CONCURRENCY: '4',
+      DOUBAO_SAMPLE_MAX_RETRIES: '0'
     }
   });
 
@@ -145,7 +151,7 @@ test('DeepSeek, Hy3, and Qwen sample in parallel with provider-specific non-thin
 
   const healthResponse = await fetch(`${appServer.url}/api/health`);
   const health = await healthResponse.json();
-  assert.equal(health.configuredProviderCount, 3);
+  assert.equal(health.configuredProviderCount, 4);
 
   const payload = {
     ...buildPayload('req_controlled_multi_provider_01'),
@@ -156,26 +162,81 @@ test('DeepSeek, Hy3, and Qwen sample in parallel with provider-specific non-thin
   const durationMs = Date.now() - startedAt;
 
   assert.equal(result.status, 201);
-  assert.equal(result.body.report.aiMeta.promptCount, 15);
-  assert.equal(result.body.report.aiMeta.successCount, 15);
+  assert.equal(result.body.report.aiMeta.promptCount, 20);
+  assert.equal(result.body.report.aiMeta.successCount, 20);
   assert.equal(result.body.report.stages.promptUniverse.prompts.length, 5);
-  assert.equal(provider.callCount, 15);
-  assert.equal(provider.peakConcurrency, 13);
+  assert.equal(provider.callCount, 20);
+  assert.equal(provider.peakConcurrency, 17);
   assert.ok(durationMs < 1_500, `controlled multi-provider run took ${durationMs}ms`);
 
   const statusByProvider = Object.fromEntries(result.body.report.aiMeta.providers.map((status) => [status.provider, status]));
   assert.equal(statusByProvider.deepseek.status, 'sampled');
   assert.equal(statusByProvider.hy3.status, 'sampled');
   assert.equal(statusByProvider.qwen.status, 'sampled');
+  assert.equal(statusByProvider.doubao.status, 'sampled');
 
   const deepseekRequest = provider.requests.find((request) => request.model === 'controlled-model');
   const hy3Request = provider.requests.find((request) => request.model === 'controlled-hy3');
   const qwenRequest = provider.requests.find((request) => request.model === 'controlled-qwen');
-  assert.deepEqual(deepseekRequest.thinking, { type: 'disabled' });
+  const doubaoRequest = provider.requests.find((request) => request.model === 'controlled-doubao');
+  assert.equal(deepseekRequest.enable_thinking, false);
+  assert.equal(deepseekRequest.thinking, undefined);
   assert.deepEqual(hy3Request.thinking, { type: 'disabled' });
   assert.equal(qwenRequest.enable_thinking, false);
   assert.equal(qwenRequest.thinking, undefined);
-  context.diagnostic(`controlled three-provider wall time: ${durationMs}ms`);
+  assert.deepEqual(doubaoRequest.thinking, { type: 'disabled' });
+  context.diagnostic(`controlled four-provider wall time: ${durationMs}ms`);
+});
+
+test('Doubao falls back to the next configured model after a quota failure', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-doubao-fallback-'));
+  const provider = await startFakeOpenAiServer({
+    delayMs: 20,
+    failModels: {
+      'controlled-doubao-primary': {
+        status: 429,
+        code: 'quota_exhausted',
+        message: 'controlled model quota exhausted'
+      }
+    }
+  });
+  const appServer = await startAppServer({
+    runtimeDir,
+    providerBaseUrl: provider.baseUrl,
+    appEnv: {
+      DEEPSEEK_ENABLED: 'false',
+      DOUBAO_ENABLED: 'true',
+      DOUBAO_API_KEY: 'controlled-doubao-key',
+      DOUBAO_BASE_URL: provider.baseUrl,
+      DOUBAO_MODEL: 'controlled-doubao-primary',
+      DOUBAO_FALLBACK_MODELS: 'controlled-doubao-fallback',
+      DOUBAO_SAMPLE_CONCURRENCY: '1',
+      DOUBAO_SAMPLE_MAX_RETRIES: '0'
+    }
+  });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const result = await postJson(appServer.url, {
+    ...buildPayload('req_controlled_doubao_fallback_01'),
+    samplePrompts: ['豆包额度切换受控问题是什么？']
+  });
+
+  assert.equal(result.status, 201);
+  assert.equal(result.body.report.aiMeta.promptCount, 1);
+  assert.equal(result.body.report.aiMeta.successCount, 1);
+  assert.equal(provider.callCount, 2);
+  assert.deepEqual(provider.requests.map((request) => request.model), [
+    'controlled-doubao-primary',
+    'controlled-doubao-fallback'
+  ]);
+
+  const doubaoStatus = result.body.report.aiMeta.providers.find((status) => status.provider === 'doubao');
+  assert.equal(doubaoStatus.status, 'sampled');
+  assert.equal(doubaoStatus.model, 'controlled-doubao-fallback');
 });
 
 test('validation and shared failing requests do not create a report or duplicate in-flight sampling', async (context) => {
@@ -250,14 +311,22 @@ async function startAppServer({ runtimeDir, providerBaseUrl, appEnv = {} }) {
       RUNTIME_DIR: runtimeDir,
       DIAGNOSES_IP_HOURLY_LIMIT: '1',
       DIAGNOSES_GLOBAL_DAILY_LIMIT: '30',
-      DEEPSEEK_API_KEY: 'controlled-test-key',
-      DEEPSEEK_BASE_URL: providerBaseUrl,
+      BAILIAN_API_KEY: 'controlled-test-key',
+      BAILIAN_BASE_URL: providerBaseUrl,
+      DEEPSEEK_API_KEY: '',
+      DEEPSEEK_BASE_URL: '',
+      DEEPSEEK_ENABLED: 'true',
       DEEPSEEK_MODEL: 'controlled-model',
       DEEPSEEK_SAMPLE_CONCURRENCY: '5',
       DEEPSEEK_SAMPLE_MAX_RETRIES: '1',
       DEEPSEEK_POLISH_ENABLED: 'false',
+      HY3_ENABLED: 'false',
       HY3_API_KEY: '',
+      QWEN_ENABLED: 'false',
       QWEN_API_KEY: '',
+      DOUBAO_ENABLED: 'false',
+      DOUBAO_API_KEY: '',
+      ARK_API_KEY: '',
       ...appEnv
     },
     stdio: ['ignore', 'pipe', 'pipe']

@@ -557,7 +557,7 @@ function buildRecommendations(input: DiagnosisInput, context: AnalysisContext): 
     {
       id: 'suggest_monitoring',
       title: '固定 Prompt Universe 做月度复测',
-      detail: '保留本次 10 个问题作为基线，每月用相同问题复测 DeepSeek、Hy3 和 Qwen；新增平台时单独记录接口来源与消费端差异。',
+      detail: '保留本次 10 个问题作为基线，每月用相同问题复测 DeepSeek、千问、混元和豆包；分别记录 API 来源、模型版本与消费端差异。',
       evidenceLabel: 'suggested_supplement',
       priority: 'P2'
     }

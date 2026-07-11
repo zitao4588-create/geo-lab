@@ -1,5 +1,32 @@
 # Decisions
 
+## 2026-07-11: Route DeepSeek Through Alibaba Bailian Free Tier
+
+Decision: stop using the DeepSeek official API for the H5. Use the existing Alibaba Bailian OpenAI-compatible credential for both `deepseek-v4-pro` and `qwen3.7-plus`, while continuing to sample Tencent TokenHub `hy3` and Volcengine Ark Doubao in parallel.
+
+Reason: the user wants the free H5 to cover three cloud platforms and four models without consuming the DeepSeek official account. Bailian currently provides a hard “free quota exhausted, stop service” control for both Alibaba-hosted models.
+
+Boundary:
+
+- The product describes API answer sampling, not the consumer apps' search results or guaranteed rankings.
+- On 2026-07-11, Bailian showed `1,000,000 / 1,000,000` free tokens for `deepseek-v4-pro` and `977,829 / 1,000,000` for `qwen3.7-plus`, expiring on 2026-10-10; both had free-tier-only stop enabled.
+- The production workspace key is restricted to the production server IP and to the two selected models. A controlled server-side `deepseek-v4-pro` call returned HTTP `200` after the model permission was added; the key was not reset or broadened to all models.
+- These balances are point-in-time evidence. Each provider also has an explicit runtime enable switch so operations can disable it before paid usage.
+- Tencent and Volcengine still require console monitoring because their normal inference responses do not provide a reliable free-balance signal to the H5.
+
+## 2026-07-11: Enable Doubao Collaboration Rewards With Quota-Aware Fallback
+
+Decision: with explicit user consent, authorize the collaboration reward plan for Doubao Seed 2.0 Lite, 2.0 Mini, 2.1 Turbo, 1.8, and 2.1 Pro plus their preset inference endpoints. Configure the H5 to use those models in that order and fall back only after explicit activation, quota, balance, billing, resource-package, or rate-limit errors.
+
+Reason: the user wants to consume available free resources before paid usage while keeping diagnosis latency bounded through provider-level parallelism and model-level fallback.
+
+Boundary:
+
+- The reward plan grants model/endpoint data-collection permission; it was not enabled until the user explicitly agreed.
+- Reward packages are normally issued around 11:00 the next day and are valid for 30 days.
+- Volcengine billing controls resource-package deduction order. The H5 cannot guarantee or detect that reward quota is consumed before initial free quota.
+- Chat responses do not expose reliable free-balance state. Console balance remains the source of truth, and exhausted free quota can otherwise roll into postpaid usage.
+
 ## 2026-06-28: Use Local Knowledge Project First
 
 Decision: create `geo-lab` as a local, file-based project first under `/Users/qzt/Developer/Playground`.

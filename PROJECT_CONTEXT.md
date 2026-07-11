@@ -18,7 +18,7 @@ It contains:
 - Source snapshots from X/Twitter, doc pages, GitHub resources, and local fridge-radar artifacts.
 - Synthesized method notes.
 - Product roadmap and templates for future agent work.
-- A mobile-first H5 AI exposure diagnosis product for lead capture and DeepSeek-sampled GEO reports.
+- A mobile-first H5 AI exposure diagnosis product for lead capture and four-model GEO sampling reports.
 
 ## Current Constraints
 
@@ -49,8 +49,8 @@ H5 MVP implementation started on 2026-06-30:
 - Location: `apps/ai-exposure-check-h5`
 - Frontend: React + Vite + TypeScript + Tencent TDesign Mobile React.
 - Backend: Node.js + Express + TypeScript.
-- Model adapter: DeepSeek OpenAI-compatible API, default model `deepseek-v4-pro`.
-- Report mode: DeepSeek `deepseek-v4-pro` real question sampling first, then transparent rule scoring into one `GEO 分析成果得分`.
+- Model adapters: Alibaba Bailian DeepSeek and Qwen, Tencent TokenHub Hunyuan, and Volcengine Ark Doubao through OpenAI-compatible APIs.
+- Report mode: four models sample the same 10-question set in parallel, then transparent rule scoring produces one `GEO 分析成果得分`.
 - Runtime storage: local `runtime/diagnoses/*.json`, `runtime/evidence/<reportId>/`, and `runtime/submissions.jsonl`, ignored by Git.
 
 2026-06-30 closeout status:
@@ -214,11 +214,33 @@ H5 MVP implementation started on 2026-06-30:
 - With explicit approval, one real controlled response-loss test generated `diag_mrenc8ay_27tgnk` with DeepSeek `20/20`. The first client timed out after 5 seconds; the same-ID retry returned `200`, persisted replay returned the same report in about 1.15 seconds, and a different ID returned `429` without another model run.
 - Server evidence shows one request index and one submission row for the report; public report/evidence exports do not expose request ID. From first sample start to request-index save took about `76.3` seconds, with per-prompt average `9285ms` and max `16979ms`.
 
+2026-07-11 multi-provider speed work and Doubao intake:
+
+- Production sampling now uses DeepSeek `deepseek-v4-pro`, Tencent TokenHub `hy3`, and Alibaba Model Studio `qwen3.7-plus` in parallel. The default prompt universe was reduced from 20 to 10 prompts per provider, so the current three-provider production path makes 30 model calls per diagnosis.
+- Qwen's Node transport `Premature close` failure was fixed by using Node 22 native `fetch`. A controlled public diagnosis completed with all three providers at `20/20` before the default prompt reduction; total sampling time was about `48.6` seconds.
+- The local H5 branch now includes a fourth OpenAI-compatible adapter for Volcengine Ark Doubao, targeting `doubao-seed-2-0-lite-260215`, concurrency `4`, one retry, and disabled thinking. Local typecheck, production build, and all five integration tests pass; the controlled four-provider test completed in about `455ms`, and quota fallback completed in about `171ms`.
+- The user confirmed all required Volcengine Ark model services are activated and that the Ark console currently shows free quota. The exact free-quota amount and expiry were intentionally not recorded because they can change.
+- A live console check on 2026-07-11 showed initial free resource packages of 500,000 remaining tokens each for Doubao Seed 2.0 Lite, 2.0 Mini, 2.1 Turbo, 2.1 Pro, and 1.8. These balances are a point-in-time snapshot, not a durable guarantee.
+- The Doubao runtime order is 2.0 Lite -> 2.0 Mini -> 2.1 Turbo -> 1.8 -> 2.1 Pro. Explicit activation/quota/balance/rate-limit errors trigger fallback; proactive switching still depends on the console's free-resource balance because ordinary Chat responses do not identify the free-to-paid boundary.
+- With explicit user consent, the collaboration reward plan was enabled on 2026-07-11 for Doubao Seed 2.0 Lite, 2.0 Mini, 2.1 Turbo, 1.8, and 2.1 Pro plus their preset inference endpoints. All five model cards were rechecked in the console and showed `已授权` with no `立即授权` action.
+- Reward packages are normally issued around 11:00 the next day and remain valid for 30 days. The desired operating order is reward quota first and initial free quota second, but the actual package deduction order is controlled by Volcengine billing and cannot be selected or verified by this H5.
+- One controlled real Doubao request succeeded with a valid answer in about `899ms` and one completion token. The existing `DOUBAO_API_KEY` is stored only in ignored `apps/ai-exposure-check-h5/.env.local` with mode `600`; its value is not documented.
+- Doubao code and configuration are locally verified and awaiting commit, push, and deployment under the user's explicit L4 authorization.
+
+2026-07-11 free-tier product scope update:
+
+- The user changed the DeepSeek decision: DeepSeek remains in the free H5, but moves from the DeepSeek official API to Alibaba Bailian `deepseek-v4-pro`. The same Bailian credential also serves `qwen3.7-plus`; Tencent TokenHub serves `hy3`, and Volcengine Ark serves Doubao.
+- The free product promise is now three cloud platforms and four model APIs: Bailian DeepSeek, Alibaba Qwen, Tencent Hunyuan/Hy3, and Volcengine Doubao. API samples are not represented as consumer-app search results.
+- A live Bailian console check showed `deepseek-v4-pro` at `1,000,000 / 1,000,000` free tokens and `qwen3.7-plus` at `977,829 / 1,000,000`, both expiring on 2026-10-10 with `免费额度用完即停` enabled.
+- The production Bailian workspace key remains IP-restricted and now authorizes only `qwen3.7-plus` and `deepseek-v4-pro`. A controlled request from the allowlisted production server returned HTTP `200` for `deepseek-v4-pro` in about `1.43s`; local requests correctly remain blocked by the IP allowlist.
+- Tencent TokenHub's same-day usage page showed about `13.64K` tokens consumed by `hy3`; it did not expose a machine-readable free remaining balance or free-only stop state. The existing one-IP/hour and 30/day product limits remain the conservative application guardrail.
+- The local implementation adds independent `DEEPSEEK_ENABLED`, `QWEN_ENABLED`, `HY3_ENABLED`, and `DOUBAO_ENABLED` switches. The old `DEEPSEEK_API_KEY` is ignored by the sampling code.
+
 Remaining risks:
 
 - `exposure.playgamelab.cn` is suitable for delivery/demo/report entry first. Public commercial promotion still needs ICP/Tencent service naming and公安备案 domain/from-domain alignment review.
-- Current real sampling covers DeepSeek only. It must not be sold as full multi-platform AI visibility proof until additional platform adapters are connected to real, compliant sampling APIs.
+- Production real sampling covers DeepSeek, Hy3, and Qwen. Doubao is locally verified but is not production evidence until its adapter and server configuration are deployed and a controlled production diagnosis succeeds.
 - URL crawling/page audit is intentionally lightweight. It verifies availability and target facts, but does not yet measure search-engine indexing, WeChat search absorption, external citations, or traffic attribution.
 - Newly added robots/sitemap/static page lower the crawling barrier, but they do not guarantee immediate WeChat search inclusion or ranking. Actual discovery still depends on external crawlers, content distribution, links, and WeChat ecosystem signals.
-- Recent real generation still takes roughly 76 seconds, so the current visible `20-60 秒` estimate is optimistic. Copy adjustment or a separately designed quick mode remains future work.
+- The last controlled three-provider 20-prompt diagnosis took about `48.6` seconds. The current 10-prompt production default should be faster, but its real end-to-end latency has not yet been measured; adding Doubao may introduce a new slowest-provider boundary.
 - Idempotency is durable for the current single-instance, shared-runtime deployment. Rate-limit counters remain process-memory only and reset on restart; request-index JSON is not a multi-instance coordination system.

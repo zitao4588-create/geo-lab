@@ -182,13 +182,13 @@
   - poster PNGs and reusable HTML sources,
   - `image-prompts.md` screenshot checklist and GPT Image illustration prompts.
   Publishing remains a manual user action after the red-line checklist in `marketing/README.md` is checked.
-- Use `冰箱小雷达` final report and screenshots for first outreach review, but keep the evidence caveat visible: DeepSeek sampling does not represent all AI platforms or guaranteed ranking lift.
-- Add the second real sampling platform after DeepSeek:
-  - 豆包,
-  - Kimi,
-  - 元宝,
-  - 通义,
-  - 文心 or other available platforms.
+- Use `冰箱小雷达` historical report and screenshots for first outreach review, but label it as an earlier DeepSeek-only case and keep the evidence caveat visible.
+- Finish and deploy the free three-cloud/four-model sampling release:
+  - Alibaba Bailian DeepSeek and Qwen,
+  - Tencent TokenHub Hunyuan/Hy3,
+  - Volcengine Ark Doubao,
+  - verify all four providers are `ready` without exposing keys,
+  - monitor free balances and disable a provider before paid usage.
 - Productize report export in the H5 UI:
   - direct PDF button or server-side PDF generation,
   - evidence package download explanation,

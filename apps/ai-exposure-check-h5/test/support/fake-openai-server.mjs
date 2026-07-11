@@ -1,7 +1,7 @@
 import http from 'node:http';
 import { pathToFileURL } from 'node:url';
 
-export async function startFakeOpenAiServer({ delayMs = 80, fail = false, port = 0 } = {}) {
+export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failModels = {}, port = 0 } = {}) {
   let callCount = 0;
   let activeCount = 0;
   let peakConcurrency = 0;
@@ -29,6 +29,19 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, port =
       if (fail) {
         response.writeHead(500, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify({ error: { message: 'controlled_provider_failure', type: 'server_error' } }));
+        return;
+      }
+
+      const modelFailure = failModels[body.model];
+      if (modelFailure) {
+        response.writeHead(modelFailure.status || 429, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({
+          error: {
+            message: modelFailure.message || 'controlled_model_quota_exhausted',
+            type: modelFailure.type || 'rate_limit_error',
+            code: modelFailure.code || 'quota_exhausted'
+          }
+        }));
         return;
       }
 
