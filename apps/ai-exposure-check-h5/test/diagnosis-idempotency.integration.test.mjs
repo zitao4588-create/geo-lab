@@ -188,6 +188,52 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
   context.diagnostic(`controlled four-provider wall time: ${durationMs}ms`);
 });
 
+test('Bailian DeepSeek falls back from v4-pro to v4-flash after free quota exhaustion', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-deepseek-fallback-'));
+  const provider = await startFakeOpenAiServer({
+    delayMs: 20,
+    failModels: {
+      'controlled-deepseek-pro': {
+        status: 403,
+        code: 'AllocationQuota.FreeTierOnly',
+        message: 'controlled free tier quota exhausted'
+      }
+    }
+  });
+  const appServer = await startAppServer({
+    runtimeDir,
+    providerBaseUrl: provider.baseUrl,
+    appEnv: {
+      DEEPSEEK_MODEL: 'controlled-deepseek-pro',
+      DEEPSEEK_FALLBACK_MODELS: 'controlled-deepseek-flash',
+      DEEPSEEK_SAMPLE_CONCURRENCY: '1',
+      DEEPSEEK_SAMPLE_MAX_RETRIES: '0'
+    }
+  });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const result = await postJson(appServer.url, {
+    ...buildPayload('req_controlled_deepseek_fallback_01'),
+    samplePrompts: ['百炼 DeepSeek 免费额度切换受控问题是什么？']
+  });
+
+  assert.equal(result.status, 201);
+  assert.equal(result.body.report.aiMeta.promptCount, 1);
+  assert.equal(result.body.report.aiMeta.successCount, 1);
+  assert.deepEqual(provider.requests.map((request) => request.model), [
+    'controlled-deepseek-pro',
+    'controlled-deepseek-flash'
+  ]);
+
+  const deepseekStatus = result.body.report.aiMeta.providers.find((status) => status.provider === 'deepseek');
+  assert.equal(deepseekStatus.status, 'sampled');
+  assert.equal(deepseekStatus.model, 'controlled-deepseek-flash');
+});
+
 test('Doubao falls back to the next configured model after a quota failure', async (context) => {
   const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-doubao-fallback-'));
   const provider = await startFakeOpenAiServer({

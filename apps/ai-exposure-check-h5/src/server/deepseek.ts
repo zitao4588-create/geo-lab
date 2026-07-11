@@ -5,6 +5,7 @@ interface DeepSeekConfig {
   apiKey?: string;
   baseUrl: string;
   model: string;
+  fallbackModels: string[];
   sampleConcurrency: number;
   sampleMaxRetries: number;
   polishEnabled: boolean;
@@ -30,7 +31,7 @@ interface NarrativeJsonResult {
   roadmap?: Array<{ title?: string; detail?: string }>;
 }
 
-let preferredDoubaoModel: string | undefined;
+const preferredProviderModels = new Map<SamplingProviderConfig['provider'], string>();
 
 export class SamplingUnavailableError extends Error {
   constructor(message = '真实 AI 采样暂不可用，请稍后再试') {
@@ -222,7 +223,7 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
         };
       }
 
-      if (config.provider === 'doubao') preferredDoubaoModel = attemptedModel;
+      if (config.fallbackModels?.length) preferredProviderModels.set(config.provider, attemptedModel);
       return {
         prompt,
         provider: config.provider,
@@ -235,8 +236,8 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
     } catch (error) {
       lastError = error instanceof Error ? safeError(error.message) : 'sampling_failed';
       const nextModel = modelCandidates[index + 1];
-      if (config.provider !== 'doubao' || !nextModel || !shouldFallbackDoubaoModel(error)) break;
-      preferredDoubaoModel = nextModel;
+      if (!nextModel || !shouldFallbackProviderModel(config.provider, error)) break;
+      preferredProviderModels.set(config.provider, nextModel);
     }
   }
 
@@ -289,6 +290,7 @@ function getConfig(): DeepSeekConfig {
       process.env.QWEN_BASE_URL ||
       'https://dashscope.aliyuncs.com/compatible-mode/v1',
     model: process.env.DEEPSEEK_MODEL || 'deepseek-v4-pro',
+    fallbackModels: readCsv(process.env.DEEPSEEK_FALLBACK_MODELS, ['deepseek-v4-flash']),
     sampleConcurrency: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_CONCURRENCY, 5, 1, 10),
     sampleMaxRetries: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_MAX_RETRIES, 1, 0, 2),
     polishEnabled: readBoolean(process.env.DEEPSEEK_POLISH_ENABLED, false)
@@ -308,6 +310,7 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       apiKey: deepseek.apiKey,
       baseUrl: deepseek.baseUrl,
       model: deepseek.model,
+      fallbackModels: deepseek.fallbackModels,
       sampleConcurrency: deepseek.sampleConcurrency,
       sampleMaxRetries: deepseek.sampleMaxRetries,
       timeoutMs: 18_000,
@@ -403,18 +406,20 @@ function readCsv(value: string | undefined, fallback: string[]) {
 
 function getModelCandidates(config: SamplingProviderConfig) {
   const models = [...new Set([config.model, ...(config.fallbackModels || [])])];
-  if (config.provider !== 'doubao' || !preferredDoubaoModel) return models;
-  const preferredIndex = models.indexOf(preferredDoubaoModel);
+  const preferredModel = preferredProviderModels.get(config.provider);
+  if (!preferredModel) return models;
+  const preferredIndex = models.indexOf(preferredModel);
   return preferredIndex >= 0 ? models.slice(preferredIndex) : models;
 }
 
-function shouldFallbackDoubaoModel(error: unknown) {
+function shouldFallbackProviderModel(provider: SamplingProviderConfig['provider'], error: unknown) {
+  if (!['deepseek', 'doubao'].includes(provider)) return false;
   if (!error || typeof error !== 'object') return false;
   const status = 'status' in error && typeof error.status === 'number' ? error.status : undefined;
-  if (status !== undefined && [402, 403, 404, 429].includes(status)) return true;
+  if (status !== undefined) return [402, 403, 404, 429].includes(status);
   const code = 'code' in error ? String(error.code || '') : '';
   const message = error instanceof Error ? error.message : String(error);
-  return /quota|rate.?limit|balance|billing|overdue|not activated|insufficient|exhaust|resource.?package/iu.test(`${code} ${message}`);
+  return /quota|free.?tier|allocation|rate.?limit|balance|billing|overdue|access.?denied|not activated|not found|not exist|unavailable|insufficient|exhaust|resource.?package/iu.test(`${code} ${message}`);
 }
 
 async function runWithConcurrency<TInput, TOutput>(

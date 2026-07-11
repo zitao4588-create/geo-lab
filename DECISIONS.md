@@ -9,6 +9,7 @@ Reason: the user wants the free H5 to cover three cloud platforms and four model
 Boundary:
 
 - The product describes API answer sampling, not the consumer apps' search results or guaranteed rankings.
+- DeepSeek uses `deepseek-v4-pro` first and `deepseek-v4-flash` only after explicit quota, free-tier, balance, rate-limit, access, or model-availability errors. If both are unavailable, DeepSeek stays failed for that sample; the runtime does not fall back to legacy V3, R1, or distilled models.
 - On 2026-07-11, Bailian showed `1,000,000 / 1,000,000` free tokens for `deepseek-v4-pro` and `977,829 / 1,000,000` for `qwen3.7-plus`, expiring on 2026-10-10; both had free-tier-only stop enabled.
 - The production workspace key is restricted to the production server IP and to the two selected models. A controlled server-side `deepseek-v4-pro` call returned HTTP `200` after the model permission was added; the key was not reset or broadened to all models.
 - These balances are point-in-time evidence. Each provider also has an explicit runtime enable switch so operations can disable it before paid usage.
