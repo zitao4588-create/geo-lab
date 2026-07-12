@@ -305,3 +305,42 @@ Remaining risks:
 - Commit `5c798b3` was pushed on `codex/source-recognition-hardening` to the verified private remote and deployed as release `20260712095412`, replacing `20260711141454` (kept for rollback).
 - Release precheck and public smoke passed: systemd active, current symlink correct, four providers ready, homepage/health/robots/sitemap/static page and existing-report query/evidence/exports all `200`, and bundle secret scan passed.
 - No production diagnosis POST was sent because the Goal excluded production-data changes. This release is C3, not a newly proven C4 user completion.
+
+2026-07-12 G1 entity evaluator and source preflight (local C2):
+
+- Added a human-labeled hierarchy benchmark for brand, marketing name, product/service, primary model, city, and store scope.
+- Entity matching now accepts safe aliases while rejecting generic category words. Primary-model claims take precedence over incidental related-model mentions.
+- Model identifiers are no longer Panasonic-specific; deterministic coverage includes ES-LM55, S9000, and X-PRO3.
+- Source fact conflicts are audited before quota consumption and provider sampling. The controlled ES-LV9C/ES-LM55 conflict produced zero provider calls; a corrected same-IP request then succeeded, proving no quota slot was consumed.
+- Submitted-source trust and site-infrastructure completeness are separate data and display metrics across H5, Markdown, HTML, and evidence package.
+- Verification passed: typecheck, 59/59 tests, build, diff check, and four dual-viewport browser checks with no overflow or console errors/warnings. Evidence: `outputs/h5-mvp/optimization-loop/g1-entity-evaluator/`.
+- No real provider call, commit, push, deployment, production write, or cloud/account change occurred.
+
+2026-07-12 G2 official content and structured evidence (local C2):
+
+- Unified the public definition: AI曝光体检 is a multi-model GEO entity-recognition and public-evidence diagnostic tool for brand and product owners.
+- Homepage, static introduction, features, FAQ, privacy, terms, evidence-boundary example, `llms.txt`, sitemap, canonical metadata, and JSON-LD now use consistent facts and explicitly exclude medical/body-image checks, privacy-leak scanning, and ad-exposure analytics.
+- Replaced the old metric-led “case” presentation with a traceable evidence-boundary example that does not imply ranking, traffic, recommendation, or commercial uplift.
+- PageAudit now uses the real `/privacy.html` route and a generic fact dictionary instead of fridge-project hardcoding.
+- Verification passed: content contract 4/4, typecheck, build, diff check, 63/63 tests, PageAudit 8/8 with source and infrastructure both 100, and desktop/mobile visual QA with no overflow or console errors/warnings.
+- Evidence: `outputs/h5-mvp/optimization-loop/g2-official-content-evidence/`. No real provider call, commit, push, deployment, production write, or cloud/account change occurred.
+
+2026-07-12 G3 domain prompts and PageAudit source safety (local C2):
+
+- Physical-product, software/mini-program, and local-service prompt universes now follow distinct real decision questions instead of shaver-, WeChat-, or enterprise-contract-specific templates.
+- PageAudit now fail-closes on private/reserved IPv4/IPv6, DNS rebinding signals, private redirects, redirect loops, unsupported MIME, oversized streaming bodies, and timeouts. Test-only loopback access is explicit and isolated to spawned integration fixtures.
+- Dynamic rendering is an explicit injected fallback for JavaScript shells; rendered content remains subject to byte limits and does not upgrade local city/store scope without facts.
+- Source targets now carry final URL, canonical, matched snippets, fetched timestamp, content hash, freshness, and render mode. H5, Markdown, HTML, and evidence package expose the same provenance fields.
+- User-submitted candidate URLs can enter a local `pending_review` queue but are never auto-verified and do not trigger search discovery.
+- Verification passed: G3 9/9, batch matrix 20/20, full suite 73/73, typecheck/build/diff, L01/L03/L04 boundaries, and dual-viewport UI with zero overflow or console errors/warnings.
+- Evidence: `outputs/h5-mvp/optimization-loop/g3-domain-prompt-source/`. Real provider calls 0; no commit, push, deployment, production write, search call, or cloud/account change.
+
+2026-07-12 G4 local production candidate (C2, waiting for production authorization):
+
+- Health now separates configured credentials, active cost permission, and persisted last real success. Tencent and Volcengine default fail-closed unless a manual confirmation flag and future expiration are both present.
+- The latest operation stores provider/model success rate, classified failures, fallback count, P50/P95, slowest prompt ID, and PageAudit/sampling/total duration without form or prompt text.
+- Hourly-IP and global-daily limits persist atomically across single-instance restarts; client identifiers are salted SHA-256 values, not raw IPs.
+- Added executable release precheck and artifact scanner plus a release/rollback/read-only-smoke checklist. The form now states a realistic 1-4 minute external-service-dependent wait.
+- Verification passed: G4 5/5, integration 8/8, full suite 78/78, release precheck 13/13, final artifact scan 28 files, build/typecheck/diff, fallback/failure/restart paths, and dual-viewport UI with no overflow or console errors/warnings.
+- Evidence: `outputs/h5-mvp/optimization-loop/g4-production-c4-operations/`. Real provider calls 0; no commit, push, deploy, production POST/write, key/allowlist/DNS or cloud-account change.
+- G4 remains active at the mandatory user gate. Current delivery level is C2, not C3/C4.

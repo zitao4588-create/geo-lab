@@ -1,0 +1,15 @@
+{
+  "fixture": "local_no_provider_calls",
+  "samplingReady": false,
+  "configurationReady": true,
+  "configuredProviderCount": 2,
+  "samplingAllowedProviderCount": 0,
+  "providers": [
+    { "provider": "deepseek", "configured": false, "samplingAllowed": false, "costGuard": "disabled" },
+    { "provider": "hy3", "configured": true, "samplingAllowed": false, "costGuard": "unknown" },
+    { "provider": "qwen", "configured": false, "samplingAllowed": false, "costGuard": "disabled" },
+    { "provider": "doubao", "configured": true, "samplingAllowed": false, "costGuard": "unknown" }
+  ],
+  "latestOperation": null,
+  "providerRequests": 0
+}

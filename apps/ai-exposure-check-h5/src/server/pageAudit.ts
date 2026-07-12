@@ -1,4 +1,34 @@
+import { createHash } from 'node:crypto';
+import { lookup } from 'node:dns/promises';
+import { isIP } from 'node:net';
 import type { BusinessType, DiagnosisInput, PageAuditResult, PageAuditTarget } from '../shared/types.js';
+import { extractModelIdentifiers, includesEntityAlias } from './entityIdentity.js';
+
+type ResolveHostname = (hostname: string) => Promise<string[]>;
+
+export interface PageAuditOptions {
+  fetchImpl?: typeof fetch;
+  resolveHostname?: ResolveHostname;
+  renderPage?: (url: string, signal: AbortSignal) => Promise<string>;
+  timeoutMs?: number;
+  maxBytes?: number;
+  maxRedirects?: number;
+  allowedPrivateHosts?: string[];
+}
+
+interface FetchedResource {
+  status: number;
+  contentType: string;
+  text: string;
+  finalUrl: string;
+  fetchedAt: string;
+  contentHash: string;
+  freshness: PageAuditTarget['freshness'];
+  sourceUpdatedAt?: string;
+  renderMode: PageAuditTarget['renderMode'];
+}
+
+const nativeFetch = globalThis.fetch;
 
 interface AuditSpec {
   id: string;
@@ -9,7 +39,7 @@ interface AuditSpec {
 }
 
 const discoverySpecs: AuditSpec[] = [
-  { id: 'privacy', name: '隐私政策页', path: '/privacy/', requiredFacts: ['privacy', 'data'], kind: 'html' },
+  { id: 'privacy', name: '隐私政策页', path: '/privacy.html', requiredFacts: ['privacy', 'data'], kind: 'html' },
   { id: 'features', name: '功能说明页', path: '/features/', requiredFacts: ['feature', 'category'], kind: 'html' },
   { id: 'faq', name: 'FAQ/常见问题', path: '/faq/', requiredFacts: ['faq', 'privacy'], kind: 'html' },
   { id: 'geo-case', name: 'GEO 自证案例', path: '/geo-case/', requiredFacts: ['geo', 'brand'], kind: 'html' },
@@ -18,7 +48,7 @@ const discoverySpecs: AuditSpec[] = [
   { id: 'llms', name: 'llms.txt', path: '/llms.txt', requiredFacts: ['brand', 'category', 'privacy'], kind: 'text' }
 ];
 
-export async function auditSubmittedPages(input: DiagnosisInput): Promise<PageAuditResult> {
+export async function auditSubmittedPages(input: DiagnosisInput, options: PageAuditOptions = {}): Promise<PageAuditResult> {
   const submittedUrls = extractSubmittedUrls(input.links ?? '');
   const generatedAt = new Date().toISOString();
 
@@ -26,6 +56,8 @@ export async function auditSubmittedPages(input: DiagnosisInput): Promise<PageAu
     return {
       generatedAt,
       score: 0,
+      submittedSourceScore: 0,
+      siteInfrastructureScore: 0,
       targets: [],
       summary: {
         ok: 0,
@@ -42,26 +74,32 @@ export async function auditSubmittedPages(input: DiagnosisInput): Promise<PageAu
   const baseUrl = `${parsed.protocol}//${parsed.host}`;
   const facts = buildFactDictionary(input);
   const targets = await Promise.all([
-    auditSubmittedUrl(submittedUrl, input),
-    ...discoverySpecs.map((spec) => auditDiscoveredUrl(baseUrl, spec, facts))
+    auditSubmittedUrl(submittedUrl, input, options),
+    ...discoverySpecs.map((spec) => auditDiscoveredUrl(baseUrl, spec, facts, options))
   ]);
   const summary = summarizeTargets(targets);
+  const submittedSourceScore = scoreSubmittedSource(targets[0]);
+  const siteInfrastructureScore = scoreTargets(targets.slice(1));
 
   return {
     baseUrl,
     generatedAt,
     score: scoreTargets(targets),
+    submittedSourceScore,
+    siteInfrastructureScore,
     targets,
-    summary
+    summary: {
+      ...summary,
+      note: `${summary.note} 提交来源 ${submittedSourceScore}/100，站点基建 ${siteInfrastructureScore}/100。`
+    }
   };
 }
 
-async function auditSubmittedUrl(url: string, input: DiagnosisInput): Promise<PageAuditTarget> {
-  const fetchedAt = new Date().toISOString();
+async function auditSubmittedUrl(url: string, input: DiagnosisInput, options: PageAuditOptions): Promise<PageAuditTarget> {
+  const startedAt = new Date().toISOString();
   try {
-    const response = await fetchWithTimeout(url, 8_000);
-    const contentType = response.headers.get('content-type') ?? '';
-    const html = await response.text();
+    const resource = await fetchAuditResource(url, 'html', options);
+    const html = resource.text;
     const visibleText = normalizeText(htmlToText(html));
     const title = extractTitle(html);
     const description = extractMetaDescription(html);
@@ -70,14 +108,14 @@ async function auditSubmittedUrl(url: string, input: DiagnosisInput): Promise<Pa
     const businessType = inferBusinessType(input);
     const scopeRelation = determineScopeRelation(input, businessType, url, visibleText, sourceRelation);
     const { matchedFacts, missingFacts } = buildSubmittedFacts(input, businessType, url, title, description, visibleText, sourceRelation);
-    const okHttp = response.status >= 200 && response.status < 300;
+    const okHttp = resource.status >= 200 && resource.status < 300;
     const status = !okHttp
       ? 'missing'
       : sourceRelation === 'entity_matched' && scopeRelation === 'matched' && missingFacts.length === 0
         ? 'ok'
         : 'warn';
     const notes = [
-      `HTTP ${response.status}`,
+      `HTTP ${resource.status}`,
       sourceRelation === 'entity_matched' ? '页面内容与目标实体匹配。' : sourceRelation === 'unrelated' ? '页面内容与目标实体不匹配。' : '页面与目标实体的关系无法确认。',
       scopeNote(scopeRelation),
       ...(matchedFacts.length > 0 ? [`命中事实：${matchedFacts.join('、')}`] : []),
@@ -89,19 +127,25 @@ async function auditSubmittedUrl(url: string, input: DiagnosisInput): Promise<Pa
       name: '用户提交入口',
       url,
       status,
-      httpStatus: response.status,
-      contentType,
+      httpStatus: resource.status,
+      contentType: resource.contentType,
       title,
       description,
       canonicalUrl,
       matchedFacts,
       missingFacts,
       notes,
-      fetchedAt,
+      fetchedAt: resource.fetchedAt,
       evidenceLabel: okHttp ? 'verified_external' : 'suggested_supplement',
       sourceRelation,
       scopeRelation,
-      submitted: true
+      submitted: true,
+      finalUrl: resource.finalUrl,
+      contentHash: resource.contentHash,
+      matchedEvidence: buildMatchedEvidence(visibleText, matchedFacts, input),
+      freshness: resource.freshness,
+      sourceUpdatedAt: resource.sourceUpdatedAt,
+      renderMode: resource.renderMode
     };
   } catch (error) {
     return {
@@ -112,48 +156,54 @@ async function auditSubmittedUrl(url: string, input: DiagnosisInput): Promise<Pa
       matchedFacts: [],
       missingFacts: ['页面可访问性', '实体关系', '业务范围'],
       notes: [error instanceof Error ? safeError(error.message) : '抓取失败'],
-      fetchedAt,
+      fetchedAt: startedAt,
       evidenceLabel: 'suggested_supplement',
       sourceRelation: 'unknown',
       scopeRelation: 'unknown',
-      submitted: true
+      submitted: true,
+      freshness: 'invalid'
     };
   }
 }
 
-async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Record<string, string[]>): Promise<PageAuditTarget> {
+async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Record<string, string[]>, options: PageAuditOptions): Promise<PageAuditTarget> {
   const url = new URL(spec.path, baseUrl).toString();
   const fetchedAt = new Date().toISOString();
 
   try {
-    const response = await fetchWithTimeout(url, 8_000);
-    const contentType = response.headers.get('content-type') ?? '';
-    const text = await response.text();
+    const resource = await fetchAuditResource(url, spec.kind, options);
+    const text = resource.text;
     const visibleText = normalizeText(spec.kind === 'html' ? htmlToText(text) : text);
     const title = spec.kind === 'html' ? extractTitle(text) : undefined;
     const description = spec.kind === 'html' ? extractMetaDescription(text) : undefined;
     const matchedFacts = findMatchedFacts(visibleText, spec.requiredFacts, facts);
     const missingFacts = spec.requiredFacts.filter((fact) => !matchedFacts.includes(fact));
-    const okHttp = response.status >= 200 && response.status < 300;
+    const okHttp = resource.status >= 200 && resource.status < 300;
     const status = !okHttp ? 'missing' : missingFacts.length === 0 ? 'ok' : 'warn';
-    const notes = buildNotes(spec, response.status, matchedFacts, missingFacts);
+    const notes = buildNotes(spec, resource.status, matchedFacts, missingFacts);
 
     return {
       id: spec.id,
       name: spec.name,
       url,
       status,
-      httpStatus: response.status,
-      contentType,
+      httpStatus: resource.status,
+      contentType: resource.contentType,
       title,
       description,
       matchedFacts,
       missingFacts,
       notes,
-      fetchedAt,
+      fetchedAt: resource.fetchedAt,
       evidenceLabel: okHttp ? 'verified_external' : 'suggested_supplement',
       sourceRelation: status === 'ok' ? 'entity_matched' : 'unknown',
-      scopeRelation: status === 'ok' ? 'matched' : 'unknown'
+      scopeRelation: status === 'ok' ? 'matched' : 'unknown',
+      finalUrl: resource.finalUrl,
+      contentHash: resource.contentHash,
+      matchedEvidence: buildDictionaryEvidence(visibleText, matchedFacts, facts),
+      freshness: resource.freshness,
+      sourceUpdatedAt: resource.sourceUpdatedAt,
+      renderMode: resource.renderMode
     };
   } catch (error) {
     return {
@@ -167,7 +217,8 @@ async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Recor
       fetchedAt,
       evidenceLabel: 'suggested_supplement',
       sourceRelation: 'unknown',
-      scopeRelation: 'unknown'
+      scopeRelation: 'unknown',
+      freshness: 'invalid'
     };
   }
 }
@@ -202,7 +253,7 @@ function determineSourceRelation(
   const pageNormalized = normalizeIdentity(pageIdentity);
   const submittedNormalized = normalizeIdentity(submittedIdentity);
   if (!pageNormalized) return 'unknown';
-  if (pageNormalized.includes(normalizeIdentity(input.businessName)) || submittedNormalized.includes(pageNormalized)) return 'entity_matched';
+  if (includesEntityAlias(pageIdentity, input) || pageNormalized.includes(normalizeIdentity(input.businessName)) || submittedNormalized.includes(pageNormalized)) return 'entity_matched';
 
   const generic = /^(官网|首页|产品|服务|工具|软件|应用|平台|小程序|门店|门店服务|本地服务|电动剃须刀|剃须刀|家电|天气|天气预报)$/u;
   const pageTerms = pageIdentity.match(/[\p{Script=Han}]{2,12}/gu) ?? [];
@@ -273,7 +324,7 @@ function buildSubmittedFacts(
 }
 
 function extractPrimaryModels(value: string) {
-  return unique((decodeURIComponent(value).match(/\bES-[A-Z0-9]+\b/giu) ?? []).map((model) => model.toUpperCase()));
+  return extractModelIdentifiers(decodeURIComponent(value));
 }
 
 function extractCanonical(html: string, fallbackUrl: string) {
@@ -296,16 +347,16 @@ function scopeNote(value: PageAuditTarget['scopeRelation']) {
 
 function buildFactDictionary(input: DiagnosisInput): Record<string, string[]> {
   return {
-    brand: [input.businessName, '冰箱小雷达', 'Fridge Radar'],
-    category: [input.industry, '冰箱食材库存管理', '食材库存', '小程序'],
-    entry: ['小程序', '二维码', '微信'],
-    privacy: ['隐私', 'privacy', '/privacy/', '个人信息', '不默认上传', 'CloudBase', 'openid', '数据'],
-    data: ['食材数据', '云开发', '隔离', '本地', '第三方 AI'],
-    feature: ['5 分区', '五分区', '/features/', 'features', '冷藏', '冷冻', '门架', '果蔬', '变温', '开饭雷达', '临期提醒', '到期日历'],
+    brand: [input.businessName],
+    category: [input.industry, 'GEO', '诊断工具', '软件', '小程序', '应用', '平台'],
+    entry: ['产品入口', '公开入口', '使用', '功能', '报告'],
+    privacy: ['隐私', 'privacy', '/privacy.html', '个人信息', '数据'],
+    data: ['数据', '业务资料', '模型服务', '联系方式', '本地 runtime'],
+    feature: ['功能', '/features/', 'features', '实体认知', '自然推荐', '来源可信度', '站点基建', '报告'],
     faq: ['常见问题', 'FAQ', '/faq/', 'faq', '问答', '是否'],
-    geo: ['GEO', 'AI', '可见', '自证', '提示词', 'llms.txt'],
+    geo: ['GEO', 'AI', '实体认知', '公开证据', '证据边界', 'llms.txt'],
     sitemap: ['Sitemap', 'sitemap.xml'],
-    home: ['/', 'fridge.playgamelab.cn'],
+    home: ['/', new URL((input.links ?? '').match(/https?:\/\/[^\s，,；;]+/u)?.[0] ?? 'https://example.com').host],
     features: ['/features'],
     faq_path: ['/faq']
   };
@@ -313,6 +364,33 @@ function buildFactDictionary(input: DiagnosisInput): Record<string, string[]> {
 
 function findMatchedFacts(text: string, requiredFacts: string[], facts: Record<string, string[]>) {
   return requiredFacts.filter((fact) => (facts[fact] ?? [fact]).some((keyword) => text.includes(normalizeText(keyword))));
+}
+
+function buildMatchedEvidence(text: string, matchedFacts: string[], input: DiagnosisInput) {
+  const aliases = [
+    input.businessName,
+    input.businessName.replace(input.city, '').replace(/(?:具体)?门店(?:服务)?|产品|软件|小程序|应用|平台/gu, '').trim(),
+    input.industry
+  ].filter(Boolean);
+  return matchedFacts.map((fact) => {
+    const keywords = fact === 'brand' ? aliases : fact === 'category' ? [input.industry] : [fact];
+    return { fact, snippet: findSnippet(text, keywords) ?? fact };
+  });
+}
+
+function buildDictionaryEvidence(text: string, matchedFacts: string[], facts: Record<string, string[]>) {
+  return matchedFacts.map((fact) => ({ fact, snippet: findSnippet(text, facts[fact] ?? [fact]) ?? fact }));
+}
+
+function findSnippet(text: string, keywords: string[]) {
+  const normalized = normalizeText(text);
+  for (const keyword of keywords) {
+    const needle = normalizeText(keyword);
+    if (!needle) continue;
+    const index = normalized.indexOf(needle);
+    if (index >= 0) return normalized.slice(Math.max(0, index - 32), Math.min(normalized.length, index + needle.length + 64));
+  }
+  return undefined;
 }
 
 function summarizeTargets(targets: PageAuditTarget[]) {
@@ -339,6 +417,15 @@ function scoreTargets(targets: PageAuditTarget[]) {
   return Math.round((weighted / targets.length) * 100);
 }
 
+function scoreSubmittedSource(target: PageAuditTarget | undefined) {
+  if (!target || target.status === 'missing' || target.status === 'failed' || target.sourceRelation === 'unrelated') return 0;
+  if (target.sourceRelation !== 'entity_matched') return 20;
+  if (target.scopeRelation === 'matched' && target.status === 'ok') return 100;
+  if (target.scopeRelation === 'partial') return 60;
+  if (target.scopeRelation === 'mismatched') return 30;
+  return 40;
+}
+
 function buildNotes(spec: AuditSpec, httpStatus: number, matchedFacts: string[], missingFacts: string[]) {
   const notes = [`HTTP ${httpStatus}`];
   if (matchedFacts.length > 0) notes.push(`命中事实：${matchedFacts.join('、')}`);
@@ -346,19 +433,176 @@ function buildNotes(spec: AuditSpec, httpStatus: number, matchedFacts: string[],
   return notes;
 }
 
-async function fetchWithTimeout(url: string, timeoutMs: number) {
+export async function validateAuditUrl(
+  value: string,
+  options: { resolveHostname?: ResolveHostname; allowedPrivateHosts?: string[]; recheck?: boolean } = {}
+) {
+  const parsed = new URL(value);
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') throw new Error('unsupported_url_protocol');
+  if (parsed.username || parsed.password) throw new Error('url_credentials_not_allowed');
+  const hostname = parsed.hostname.replace(/^\[|\]$/gu, '');
+  const allowed = new Set(options.allowedPrivateHosts ?? configuredPrivateHosts());
+  if (allowed.has(hostname)) return [hostname];
+  if (isIP(hostname)) {
+    if (isPrivateOrReservedAddress(hostname)) throw new Error('private_or_reserved_address');
+    return [hostname];
+  }
+  const resolver = options.resolveHostname ?? defaultResolveHostname;
+  const first = await resolver(hostname);
+  if (first.length === 0 || first.some(isPrivateOrReservedAddress)) throw new Error('private_or_reserved_address');
+  if (options.recheck) {
+    const second = await resolver(hostname);
+    if (second.length === 0 || second.some(isPrivateOrReservedAddress) || !sameAddresses(first, second)) {
+      throw new Error('dns_rebinding_or_private_address');
+    }
+  }
+  return first;
+}
+
+async function fetchAuditResource(url: string, kind: AuditSpec['kind'], options: PageAuditOptions): Promise<FetchedResource> {
+  const timeoutMs = options.timeoutMs ?? 8_000;
+  const maxBytes = options.maxBytes ?? 1_000_000;
+  const maxRedirects = options.maxRedirects ?? 4;
+  const fetchImpl = options.fetchImpl ?? globalThis.fetch;
+  const resolveHostname = options.resolveHostname ?? (fetchImpl === nativeFetch ? undefined : async () => ['93.184.216.34']);
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const timer = setTimeout(() => controller.abort(new Error('fetch_timeout')), timeoutMs);
   try {
-    return await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        'user-agent': 'AIExposureCheckH5/0.4 (+https://exposure.playgamelab.cn)'
+    let currentUrl = url;
+    const visited = new Set<string>();
+    for (let hop = 0; hop <= maxRedirects; hop += 1) {
+      if (visited.has(currentUrl)) throw new Error('redirect_loop');
+      visited.add(currentUrl);
+      await validateAuditUrl(currentUrl, {
+        resolveHostname,
+        allowedPrivateHosts: options.allowedPrivateHosts,
+        recheck: true
+      });
+      let response: Response;
+      try {
+        response = await fetchImpl(currentUrl, {
+          signal: controller.signal,
+          redirect: 'manual',
+          headers: { 'user-agent': 'AIExposureCheckH5/0.5 (+https://exposure.playgamelab.cn)' }
+        });
+      } catch (error) {
+        if (controller.signal.aborted || (error instanceof DOMException && error.name === 'AbortError')) throw new Error('fetch_timeout');
+        throw error;
       }
-    });
+      if (isRedirect(response.status)) {
+        const location = response.headers.get('location');
+        if (!location) throw new Error('redirect_without_location');
+        if (hop >= maxRedirects) throw new Error('too_many_redirects');
+        currentUrl = new URL(location, currentUrl).toString();
+        continue;
+      }
+      const contentType = response.headers.get('content-type') ?? '';
+      const declaredLength = Number(response.headers.get('content-length') ?? 0);
+      if (declaredLength > maxBytes) throw new Error('response_too_large');
+      if (response.ok && !isSupportedContentType(contentType, kind)) throw new Error('unsupported_content_type');
+      let text = await readResponseText(response, maxBytes);
+      let renderMode: PageAuditTarget['renderMode'] = 'static';
+      if (kind === 'html' && response.ok && options.renderPage && looksLikeJavaScriptShell(text)) {
+        const rendered = await options.renderPage(currentUrl, controller.signal);
+        if (new TextEncoder().encode(rendered).byteLength > maxBytes) throw new Error('rendered_response_too_large');
+        text = rendered;
+        renderMode = 'controlled_dynamic';
+      }
+      const fetchedAt = new Date().toISOString();
+      const sourceUpdatedAt = normalizeHttpDate(response.headers.get('last-modified'));
+      return {
+        status: response.status,
+        contentType,
+        text,
+        finalUrl: currentUrl,
+        fetchedAt,
+        contentHash: createHash('sha256').update(text).digest('hex'),
+        freshness: determineFreshness(sourceUpdatedAt, fetchedAt),
+        sourceUpdatedAt,
+        renderMode
+      };
+    }
+    throw new Error('too_many_redirects');
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function defaultResolveHostname(hostname: string) {
+  const records = await lookup(hostname, { all: true, verbatim: true });
+  return records.map((record) => record.address);
+}
+
+function configuredPrivateHosts() {
+  return (process.env.PAGE_AUDIT_ALLOW_PRIVATE_HOSTS ?? '').split(',').map((value) => value.trim()).filter(Boolean);
+}
+
+function isPrivateOrReservedAddress(address: string) {
+  const mapped = address.match(/^::ffff:(\d{1,3}(?:\.\d{1,3}){3})$/iu)?.[1];
+  if (mapped) return isPrivateOrReservedAddress(mapped);
+  if (address === '::1' || address === '::' || /^::ffff:/iu.test(address) || /^fe[89ab][0-9a-f]:/iu.test(address) || /^(?:fc|fd)/iu.test(address) || /^2001:db8:/iu.test(address)) return true;
+  if (!/^\d{1,3}(?:\.\d{1,3}){3}$/u.test(address)) return false;
+  const [a = -1, b = -1] = address.split('.').map(Number);
+  return a === 0 || a === 10 || a === 127 || a >= 224
+    || (a === 100 && b >= 64 && b <= 127)
+    || (a === 169 && b === 254)
+    || (a === 172 && b >= 16 && b <= 31)
+    || (a === 192 && b === 0)
+    || (a === 192 && b === 2)
+    || (a === 192 && b === 168)
+    || (a === 198 && (b === 18 || b === 19 || b === 51))
+    || (a === 203 && b === 0);
+}
+
+function sameAddresses(left: string[], right: string[]) {
+  return [...left].sort().join(',') === [...right].sort().join(',');
+}
+
+function isRedirect(status: number) {
+  return status === 301 || status === 302 || status === 303 || status === 307 || status === 308;
+}
+
+function isSupportedContentType(contentType: string, kind: AuditSpec['kind']) {
+  const normalized = contentType.toLowerCase().split(';')[0]?.trim() ?? '';
+  if (kind === 'html') return normalized === 'text/html' || normalized === 'application/xhtml+xml';
+  if (kind === 'xml') return normalized === 'application/xml' || normalized === 'text/xml';
+  return normalized === 'text/plain';
+}
+
+function looksLikeJavaScriptShell(html: string) {
+  const visible = normalizeText(htmlToText(html));
+  return visible.length < 80 && /<script\b|id=["'](?:app|root)["']/iu.test(html);
+}
+
+async function readResponseText(response: Response, maxBytes: number) {
+  if (!response.body) return '';
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let size = 0;
+  let text = '';
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > maxBytes) {
+      await reader.cancel('response_too_large');
+      throw new Error('response_too_large');
+    }
+    text += decoder.decode(value, { stream: true });
+  }
+  return text + decoder.decode();
+}
+
+function normalizeHttpDate(value: string | null) {
+  if (!value) return undefined;
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+}
+
+function determineFreshness(sourceUpdatedAt: string | undefined, fetchedAt: string): PageAuditTarget['freshness'] {
+  if (!sourceUpdatedAt) return 'current';
+  const ageDays = (Date.parse(fetchedAt) - Date.parse(sourceUpdatedAt)) / 86_400_000;
+  return ageDays > 180 ? 'possibly_stale' : 'current';
 }
 
 function extractTitle(html: string) {

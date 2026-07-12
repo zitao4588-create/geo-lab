@@ -81,6 +81,15 @@ test('lost response and retries recover one persisted report without consuming a
   assert.equal(afterRestart.status, 200);
   assert.equal(afterRestart.body.report.id, recovered.body.report.id);
   assert.equal(provider.callCount, callsBeforeRestart, 'persistent recovery must not call the model again');
+
+  const differentAfterRestart = await postJson(appServer.url, {
+    ...payload,
+    clientRequestId: 'req_controlled_recovery_03'
+  });
+  assert.equal(differentAfterRestart.status, 429, 'hourly quota must survive process restart');
+  assert.equal(provider.callCount, callsBeforeRestart, 'persistent limiter must stop before model sampling');
+  const rateLimitState = await readFile(path.join(runtimeDir, 'rate-limits.json'), 'utf8');
+  assert.doesNotMatch(rateLimitState, /127\.0\.0\.1|::ffff/u);
 });
 
 test('default 10 prompt diagnosis uses five concurrent samples and skips optional polish', async (context) => {
@@ -115,6 +124,18 @@ test('default 10 prompt diagnosis uses five concurrent samples and skips optiona
   assert.equal(provider.callCount, 10, 'default path should not add a report-polish model call');
   assert.equal(provider.peakConcurrency, 5);
   assert.ok(durationMs < 1_500, `controlled 10-prompt run took ${durationMs}ms`);
+  const observedHealth = await (await fetch(`${appServer.url}/api/health`)).json();
+  assert.ok(observedHealth.latestOperation.totalDurationMs > 0);
+  assert.ok(observedHealth.latestOperation.samplingDurationMs > 0);
+  assert.ok(observedHealth.latestOperation.pageAuditDurationMs >= 0);
+  const observedDeepSeek = observedHealth.providers.find((item) => item.provider === 'deepseek');
+  assert.equal(observedDeepSeek.successRate, 1);
+  assert.equal(observedDeepSeek.fallbackCount, 0);
+  assert.ok(observedDeepSeek.p50LatencyMs > 0);
+  assert.ok(observedDeepSeek.p95LatencyMs >= observedDeepSeek.p50LatencyMs);
+  assert.match(observedDeepSeek.slowestPromptId, /^P\d{3}$/u);
+  const operationFile = await readFile(path.join(runtimeDir, 'operations', 'latest.json'), 'utf8');
+  assert.doesNotMatch(operationFile, new RegExp(payload.businessName, 'u'));
   context.diagnostic(`controlled 10-prompt wall time: ${durationMs}ms`);
 });
 
@@ -126,6 +147,8 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
     providerBaseUrl: provider.baseUrl,
     appEnv: {
       HY3_ENABLED: 'true',
+      HY3_COST_GUARD_CONFIRMED: 'true',
+      HY3_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       HY3_API_KEY: 'controlled-hy3-key',
       HY3_BASE_URL: provider.baseUrl,
       HY3_MODEL: 'controlled-hy3',
@@ -136,6 +159,8 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
       QWEN_SAMPLE_CONCURRENCY: '4',
       QWEN_SAMPLE_MAX_RETRIES: '0',
       DOUBAO_ENABLED: 'true',
+      DOUBAO_COST_GUARD_CONFIRMED: 'true',
+      DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       DOUBAO_API_KEY: 'controlled-doubao-key',
       DOUBAO_BASE_URL: provider.baseUrl,
       DOUBAO_MODEL: 'controlled-doubao',
@@ -252,6 +277,8 @@ test('Doubao falls back to the next configured model after a quota failure', asy
     appEnv: {
       DEEPSEEK_ENABLED: 'false',
       DOUBAO_ENABLED: 'true',
+      DOUBAO_COST_GUARD_CONFIRMED: 'true',
+      DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       DOUBAO_API_KEY: 'controlled-doubao-key',
       DOUBAO_BASE_URL: provider.baseUrl,
       DOUBAO_MODEL: 'controlled-doubao-primary',
@@ -360,6 +387,52 @@ test('input preflight blocks sparse ambiguous submissions before quota or model 
   assert.equal(provider.callCount, 1);
 });
 
+test('verified source conflict is rejected before quota and provider sampling', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-source-conflict-'));
+  const provider = await startFakeOpenAiServer({
+    delayMs: 20,
+    pages: {
+      '/fixtures/panasonic-es-lm55': '<!doctype html><html><head><title>松下大锤子2.0剃须刀 ES-LM55</title><meta name="description" content="松下 ES-LM55 五刀头电动剃须刀"></head><body>ES-LM55 五刀头 电动剃须刀</body></html>'
+    }
+  });
+  const appServer = await startAppServer({ runtimeDir, providerBaseUrl: provider.baseUrl });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const base = {
+    businessName: '松下大锤子2.0剃须刀',
+    description: '用户填写型号 ES-LV9C 的五刀头电动剃须刀',
+    links: `${provider.origin}/fixtures/panasonic-es-lm55`,
+    industry: '电动剃须刀',
+    city: '全国',
+    targetCustomers: '重视剃净效率和正规售后的成年男性',
+    competitors: '同类产品',
+    confirmedBusinessType: 'physical_product',
+    samplePrompts: ['松下大锤子2.0剃须刀对应什么型号？']
+  };
+
+  const preflight = await postJsonAt(appServer.url, '/api/diagnoses/preflight', base);
+  assert.equal(preflight.status, 200);
+  assert.equal(preflight.body.assessment.status, 'needs_confirmation');
+  assert.equal(provider.callCount, 0);
+
+  const rejected = await postJson(appServer.url, { ...base, clientRequestId: 'req_source_conflict_01' });
+  assert.equal(rejected.status, 422);
+  assert.equal(rejected.body.error, 'input_confirmation_required');
+  assert.equal(provider.callCount, 0, 'source conflict must stop before provider sampling');
+
+  const corrected = await postJson(appServer.url, {
+    ...base,
+    description: '官方型号 ES-LM55 的五刀头电动剃须刀',
+    clientRequestId: 'req_source_corrected_01'
+  });
+  assert.equal(corrected.status, 201, 'rejected conflict must not consume the IP quota slot');
+  assert.equal(provider.callCount, 1);
+});
+
 function buildPayload(clientRequestId) {
   return {
     businessName: '请求恢复受控测试',
@@ -384,6 +457,7 @@ async function startAppServer({ runtimeDir, providerBaseUrl, appEnv = {} }) {
       ...process.env,
       PORT: String(port),
       RUNTIME_DIR: runtimeDir,
+      PAGE_AUDIT_ALLOW_PRIVATE_HOSTS: '127.0.0.1',
       DIAGNOSES_IP_HOURLY_LIMIT: '1',
       DIAGNOSES_GLOBAL_DAILY_LIMIT: '30',
       BAILIAN_API_KEY: 'controlled-test-key',
@@ -446,7 +520,11 @@ function beginPost(baseUrl, payload) {
 }
 
 async function postJson(baseUrl, payload) {
-  const response = await fetch(`${baseUrl}/api/diagnoses`, {
+  return postJsonAt(baseUrl, '/api/diagnoses', payload);
+}
+
+async function postJsonAt(baseUrl, pathname, payload) {
+  const response = await fetch(`${baseUrl}${pathname}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

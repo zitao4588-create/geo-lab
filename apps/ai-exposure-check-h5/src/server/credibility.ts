@@ -7,6 +7,15 @@ import type {
   PageAuditResult,
   ReportAnswerSample
 } from '../shared/types.js';
+import {
+  buildEntityAliases,
+  extractClaimedPrimaryModels,
+  extractModelIdentifiers,
+  extractVerifiedOfficialModels,
+  findSubmittedModelConflict,
+  includesEntityAlias,
+  isScopeVerifiedTarget
+} from './entityIdentity.js';
 
 const physicalTerms = /剃须刀|商品|产品|设备|电器|刀头|马达|防水|续航|家电|食品|服装|家具|硬件/u;
 const softwareTerms = /小程序|软件|应用|App|平台|SaaS|网站|数字工具|管理工具/u;
@@ -103,15 +112,34 @@ export function assessDiagnosisInput(input: DiagnosisInput): InputAssessment {
   };
 }
 
+export function assessDiagnosisSource(input: DiagnosisInput, pageAudit: PageAuditResult): InputAssessment {
+  const base = assessDiagnosisInput(input);
+  const submitted = pageAudit.targets.find((target) => target.submitted);
+  const officialSourceStatus = submitted?.sourceRelation === 'entity_matched' ? 'verified' : base.officialSourceStatus;
+  const conflict = findSubmittedModelConflict(input, pageAudit);
+
+  if (!conflict) return { ...base, officialSourceStatus };
+
+  const finding = `用户填写型号 ${conflict.submittedModels.join('、')} 与已核验官方型号 ${conflict.officialModels.join('、')} 冲突。`;
+  return {
+    ...base,
+    status: 'needs_confirmation',
+    officialSourceStatus,
+    findings: unique([...base.findings, finding]),
+    requiredActions: unique([...base.requiredActions, '请先修正型号，或确认要以官方页面主型号继续。']),
+    note: '已核验来源与提交事实冲突；确认前不会消耗多模型采样或诊断限额。'
+  };
+}
+
 export function classifyAnswer(
   input: DiagnosisInput,
   businessType: BusinessType,
   prompt: string,
   answer: string,
   pageAudit: PageAuditResult
-): Pick<ReportAnswerSample, 'brandedPrompt' | 'naturalRecommendation' | 'entityRecognition' | 'recognitionReason'> {
-  const brandedPrompt = includesNormalized(prompt, input.businessName);
-  const mentionedBrand = includesNormalized(answer, input.businessName);
+): Pick<ReportAnswerSample, 'mentionedBrand' | 'brandedPrompt' | 'naturalRecommendation' | 'entityRecognition' | 'recognitionReason'> {
+  const brandedPrompt = includesEntityAlias(prompt, input);
+  const mentionedBrand = includesEntityAlias(answer, input);
   const naturalRecommendation = !brandedPrompt && mentionedBrand;
   const hasVerifiedSource = pageAudit.targets.some(isScopeVerifiedTarget);
   const factTerms = extractFactTerms(input, pageAudit);
@@ -122,15 +150,19 @@ export function classifyAnswer(
       ? softwareCoreTerms.test(answer) && softwareDomainTerms.test(answer)
       : true;
 
-  const officialModels = unique(pageAudit.targets.filter(isScopeVerifiedTarget).flatMap((target) => [target.url, target.title ?? '', target.description ?? '', ...target.matchedFacts])
-    .flatMap((value) => value.match(/\bES-[A-Z0-9]+\b/giu) ?? [])
-    .map((value) => value.toUpperCase()));
-  const answerModels = unique((answer.match(/\bES-[A-Z0-9]+\b/giu) ?? []).map((value) => value.toUpperCase()));
-  const conflictingModel = officialModels.length > 0 && answerModels.length > 0 && answerModels.every((model) => !officialModels.includes(model));
+  const officialModels = extractVerifiedOfficialModels(pageAudit);
+  const answerModels = extractModelIdentifiers(answer);
+  const claimedPrimaryModels = extractClaimedPrimaryModels(answer);
+  const conflictingModel = officialModels.length > 0 && (
+    claimedPrimaryModels.length > 0
+      ? claimedPrimaryModels.some((model) => !officialModels.includes(model))
+      : answerModels.length > 0 && answerModels.every((model) => !officialModels.includes(model))
+  );
 
   if (conflictingModel) {
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation: false,
       entityRecognition: 'misrecognized',
       recognitionReason: `答案型号 ${answerModels.join('、')} 与已核验型号 ${officialModels.join('、')} 冲突。`
@@ -140,6 +172,7 @@ export function classifyAnswer(
   if (businessType === 'software_or_miniprogram' && hardwareMisreadTerms.test(answer) && !softwareTargetDefinition.test(answer)) {
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation: false,
       entityRecognition: 'misrecognized',
       recognitionReason: '软件/小程序被回答成硬件、传感器或家电功能。'
@@ -149,6 +182,7 @@ export function classifyAnswer(
   if (businessType === 'physical_product' && softwareIdentityTerms.test(answer) && !physicalIdentityTerms.test(answer)) {
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation: false,
       entityRecognition: 'misrecognized',
       recognitionReason: '实体商品被回答成软件、小程序或数字平台。'
@@ -158,6 +192,7 @@ export function classifyAnswer(
   if (uncertaintyTerms.test(answer)) {
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation: false,
       entityRecognition: 'uncertain',
       recognitionReason: '答案包含不确定、非官方或无法确认等表述。'
@@ -165,9 +200,12 @@ export function classifyAnswer(
   }
 
   if (!mentionedBrand) {
-    if (hasVerifiedSource && matchedTerms.length >= 1 && identityMatchesType) {
+    const officialModelAnchor = answerModels.some((model) => officialModels.includes(model));
+    const claimedVerifiedPrimaryModel = claimedPrimaryModels.some((model) => officialModels.includes(model));
+    if (hasVerifiedSource && officialModelAnchor && matchedTerms.length >= 1 && (identityMatchesType || claimedVerifiedPrimaryModel)) {
       return {
         brandedPrompt,
+        mentionedBrand,
         naturalRecommendation,
         entityRecognition: 'supported',
         recognitionReason: `答案未复述完整品牌名，但与官方实体事实一致：${matchedTerms.slice(0, 3).join('、')}。`
@@ -175,6 +213,7 @@ export function classifyAnswer(
     }
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation: false,
       entityRecognition: 'not_verifiable',
       recognitionReason: '答案未提及目标实体。'
@@ -186,6 +225,7 @@ export function classifyAnswer(
   if (hasVerifiedSource && enoughFacts) {
     return {
       brandedPrompt,
+      mentionedBrand,
       naturalRecommendation,
       entityRecognition: 'supported',
       recognitionReason: `答案与已核验实体事实一致：${matchedTerms.slice(0, 3).join('、')}。`
@@ -194,19 +234,13 @@ export function classifyAnswer(
 
   return {
     brandedPrompt,
+    mentionedBrand,
     naturalRecommendation: false,
     entityRecognition: 'not_verifiable',
     recognitionReason: hasVerifiedSource
       ? '答案提到品牌，但与已核验实体事实的匹配不足。'
       : '没有已核验官方来源，不能把字符串复述认定为正确实体识别。'
   };
-}
-
-function isScopeVerifiedTarget(target: PageAuditResult['targets'][number]) {
-  return target.status === 'ok'
-    && target.sourceRelation !== 'unrelated'
-    && target.scopeRelation !== 'partial'
-    && target.scopeRelation !== 'mismatched';
 }
 
 export function buildProviderConflicts(answers: ReportAnswerSample[]) {
@@ -237,6 +271,7 @@ export function calculateProviderAgreement(answers: ReportAnswerSample[]) {
 
 function extractFactTerms(input: DiagnosisInput, pageAudit: PageAuditResult) {
   const text = [
+    ...buildEntityAliases(input),
     input.description,
     input.industry,
     ...pageAudit.targets.flatMap((target) => [target.title ?? '', target.description ?? '', ...target.matchedFacts])

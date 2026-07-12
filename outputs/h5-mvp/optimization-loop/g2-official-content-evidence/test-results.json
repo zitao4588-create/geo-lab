@@ -1,0 +1,21 @@
+{
+  "goal": "G2",
+  "completedAt": "2026-07-12T19:51:17+08:00",
+  "realProviderCalls": 0,
+  "checks": {
+    "contentContract": { "passed": 4, "failed": 0 },
+    "fullTestRun": { "passed": 63, "failed": 0 },
+    "typecheck": "passed",
+    "build": "passed",
+    "gitDiffCheck": "passed",
+    "pageAuditSubmittedSourceScore": 100,
+    "pageAuditSiteInfrastructureScore": 100,
+    "pageAuditOkTargets": 8,
+    "desktop": { "viewport": "1440x1000", "overflow": 0, "consoleErrors": 0, "consoleWarnings": 0 },
+    "mobile": { "viewport": "390x844", "overflow": 0, "faqArticles": 7, "jsonLdBlocks": 1 }
+  },
+  "notes": [
+    "The first sandboxed full test run had eight EPERM listen failures because 127.0.0.1 binding was denied.",
+    "The same full suite passed 63/63 outside the sandbox; no assertion was changed or skipped."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "requiredArtifactChecks": 11,
+  "canonicalCheck": true,
+  "clientBundleSecretScan": {
+    "ok": true,
+    "scannedFiles": 14,
+    "findingRules": []
+  },
+  "commands": [
+    "npm run typecheck",
+    "npm test",
+    "npm run release:precheck",
+    "git diff --check"
+  ]
+}

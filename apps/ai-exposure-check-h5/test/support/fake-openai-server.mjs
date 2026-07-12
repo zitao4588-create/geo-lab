@@ -1,13 +1,19 @@
 import http from 'node:http';
 import { pathToFileURL } from 'node:url';
 
-export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failModels = {}, port = 0 } = {}) {
+export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failModels = {}, pages = {}, port = 0 } = {}) {
   let callCount = 0;
   let activeCount = 0;
   let peakConcurrency = 0;
   const requests = [];
 
   const server = http.createServer(async (request, response) => {
+    if (request.method === 'GET' && Object.hasOwn(pages, request.url)) {
+      response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      response.end(pages[request.url]);
+      return;
+    }
+
     if (request.method !== 'POST' || request.url !== '/v1/chat/completions') {
       response.writeHead(404, { 'Content-Type': 'application/json' });
       response.end(JSON.stringify({ error: { message: 'not_found' } }));
@@ -79,6 +85,7 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failMo
   if (!address || typeof address === 'string') throw new Error('fake_provider_address_unavailable');
 
   return {
+    origin: `http://127.0.0.1:${address.port}`,
     baseUrl: `http://127.0.0.1:${address.port}/v1`,
     get callCount() {
       return callCount;

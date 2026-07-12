@@ -5,9 +5,11 @@ import { existsSync } from 'node:fs';
 import { ZodError } from 'zod';
 import { diagnosisInputSchema } from './validation.js';
 import { buildFinalGeoReport, buildPromptUniverse } from './rules.js';
-import { assessDiagnosisInput } from './credibility.js';
+import { assessDiagnosisInput, assessDiagnosisSource } from './credibility.js';
 import { getDeepSeekRuntime, polishFinalReportWithDeepSeek, sampleAiProviders, SamplingUnavailableError } from './deepseek.js';
 import { auditSubmittedPages } from './pageAudit.js';
+import { readLatestOperation, recordOperation, summarizeOperation } from './operations.js';
+import { PersistentRateLimiter } from './rateLimiter.js';
 import {
   buildDiagnosisRequestFingerprint,
   readDiagnosis,
@@ -26,66 +28,33 @@ const port = Number(process.env.PORT || 8787);
 const clientDist = path.resolve(process.cwd(), 'dist/client');
 const hourlyIpLimit = readPositiveInteger(process.env.DIAGNOSES_IP_HOURLY_LIMIT, 1);
 const globalDailyLimit = readPositiveInteger(process.env.DIAGNOSES_GLOBAL_DAILY_LIMIT, 30);
-const hourMs = 60 * 60 * 1000;
+const runtimeDir = path.resolve(process.cwd(), process.env.RUNTIME_DIR || 'runtime');
+const rateLimiter = new PersistentRateLimiter({ runtimeDir, hourlyIpLimit, globalDailyLimit });
 
 app.set('trust proxy', 'loopback');
 app.use(express.json({ limit: '64kb' }));
 
-interface RateLimitEntry {
-  count: number;
-  resetAt: number;
-}
-
-const hourlyIpRequests = new Map<string, RateLimitEntry>();
 interface InFlightDiagnosis {
   requestFingerprint: string;
   promise: Promise<DiagnosisReport>;
 }
 
 const inFlightDiagnoses = new Map<string, InFlightDiagnosis>();
-let globalDailyRequests: RateLimitEntry = {
-  count: 0,
-  resetAt: nextUtcDayStart(Date.now())
-};
 
-function consumeDiagnosisQuota(req: express.Request, res: express.Response) {
-  const now = Date.now();
-  resetExpiredLimits(now);
-  pruneExpiredIpEntries(now);
-
+async function consumeDiagnosisQuota(req: express.Request, res: express.Response) {
   const ip = getClientIp(req);
-  const ipEntry = hourlyIpRequests.get(ip) ?? { count: 0, resetAt: now + hourMs };
-  if (ipEntry.count >= hourlyIpLimit) {
-    sendRateLimit(res, ipEntry.resetAt, '本小时免费体检次数已用完，请稍后再试或扫码预约人工解读。');
+  const decision = await rateLimiter.consume(ip);
+  if (!decision.allowed) {
+    sendRateLimit(
+      res,
+      decision.resetAt,
+      decision.reason === 'ip_hourly'
+        ? '本小时免费体检次数已用完，请稍后再试或扫码预约人工解读。'
+        : '今天免费体检名额已用完，请明天再试或扫码预约人工解读。'
+    );
     return false;
   }
-
-  if (globalDailyRequests.count >= globalDailyLimit) {
-    sendRateLimit(res, globalDailyRequests.resetAt, '今天免费体检名额已用完，请明天再试或扫码预约人工解读。');
-    return false;
-  }
-
-  ipEntry.count += 1;
-  hourlyIpRequests.set(ip, ipEntry);
-  globalDailyRequests.count += 1;
   return true;
-}
-
-function resetExpiredLimits(now: number) {
-  if (now >= globalDailyRequests.resetAt) {
-    globalDailyRequests = {
-      count: 0,
-      resetAt: nextUtcDayStart(now)
-    };
-  }
-}
-
-function pruneExpiredIpEntries(now: number) {
-  for (const [ip, entry] of hourlyIpRequests) {
-    if (now >= entry.resetAt) {
-      hourlyIpRequests.delete(ip);
-    }
-  }
 }
 
 function sendRateLimit(res: express.Response, resetAt: number, message: string) {
@@ -103,35 +72,62 @@ function getClientIp(req: express.Request) {
   return (firstForwardedIp || req.ip || req.socket.remoteAddress || 'unknown').trim();
 }
 
-function nextUtcDayStart(now: number) {
-  const date = new Date(now);
-  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + 1);
-}
-
 function readPositiveInteger(value: string | undefined, fallback: number) {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : fallback;
 }
 
-app.get('/api/health', (_req, res) => {
+app.get('/api/health', async (_req, res, next) => {
+  try {
   const runtime = getDeepSeekRuntime();
+  const latestOperation = await readLatestOperation(runtimeDir);
+  const providers = runtime.providers.map((provider) => {
+    const latest = latestOperation?.providers.find((item) => item.provider === provider.provider);
+    return latest ? {
+      ...provider,
+      successRate: latest.successRate,
+      fallbackCount: latest.fallbackCount,
+      p50LatencyMs: latest.p50LatencyMs,
+      p95LatencyMs: latest.p95LatencyMs,
+      slowestPromptId: latest.slowestPromptId,
+      failureTypes: latest.failureTypes,
+      lastRealSuccessAt: latest.lastRealSuccessAt
+    } : provider;
+  });
   res.json({
     ok: true,
     service: 'ai-exposure-check-h5',
     model: runtime.model,
     samplingReady: runtime.hasApiKey,
+    configurationReady: runtime.hasConfiguredKey,
     configuredProviderCount: runtime.configuredProviderCount,
+    samplingAllowedProviderCount: runtime.samplingAllowedProviderCount,
     sampleConcurrency: runtime.sampleConcurrency,
     sampleMaxRetries: runtime.sampleMaxRetries,
     polishEnabled: runtime.polishEnabled,
-    providers: runtime.providers
+    providers,
+    latestOperation: latestOperation ? {
+      recordedAt: latestOperation.recordedAt,
+      pageAuditDurationMs: latestOperation.pageAuditDurationMs,
+      samplingDurationMs: latestOperation.samplingDurationMs,
+      totalDurationMs: latestOperation.totalDurationMs
+    } : null
   });
+  } catch (error) {
+    next(error);
+  }
 });
 
-app.post('/api/diagnoses/preflight', (req, res, next) => {
+app.post('/api/diagnoses/preflight', async (req, res, next) => {
   try {
     const input = diagnosisInputSchema.parse(req.body);
-    res.json({ assessment: assessDiagnosisInput(input) });
+    const initialAssessment = assessDiagnosisInput(input);
+    if (initialAssessment.status !== 'ready' || !/https?:\/\//u.test(input.links ?? '')) {
+      res.json({ assessment: initialAssessment });
+      return;
+    }
+    const pageAudit = await auditSubmittedPages(input);
+    res.json({ assessment: assessDiagnosisSource(input, pageAudit), pageAudit });
   } catch (error) {
     next(error);
   }
@@ -179,9 +175,23 @@ app.post('/api/diagnoses', async (req, res, next) => {
       }
     }
 
-    if (!consumeDiagnosisQuota(req, res)) return;
+    const pageAuditStartedAt = Date.now();
+    const pageAudit = await auditSubmittedPages(input);
+    const pageAuditDurationMs = Date.now() - pageAuditStartedAt;
+    const sourceAssessment = assessDiagnosisSource(input, pageAudit);
+    if (sourceAssessment.status !== 'ready') {
+      res.status(422).json({
+        error: 'input_confirmation_required',
+        message: sourceAssessment.note,
+        assessment: sourceAssessment,
+        pageAudit
+      });
+      return;
+    }
 
-    runningDiagnosis = generateDiagnosis(input);
+    if (!await consumeDiagnosisQuota(req, res)) return;
+
+    runningDiagnosis = generateDiagnosis(input, pageAudit, pageAuditDurationMs);
     if (clientRequestId) {
       inFlightDiagnoses.set(clientRequestId, {
         requestFingerprint,
@@ -207,18 +217,14 @@ function sendIdempotencyConflict(res: express.Response) {
   });
 }
 
-async function generateDiagnosis(input: DiagnosisInput) {
+async function generateDiagnosis(input: DiagnosisInput, pageAudit: Awaited<ReturnType<typeof auditSubmittedPages>>, pageAuditDurationMs: number) {
   const startedAt = Date.now();
   const prompts = buildPromptUniverse(input);
   const samplingStartedAt = Date.now();
-  const samplingPromise = sampleAiProviders(prompts).then((result) => ({
+  const sampling = await sampleAiProviders(prompts).then((result) => ({
     ...result,
     durationMs: Date.now() - samplingStartedAt
   }));
-  const [pageAudit, sampling] = await Promise.all([
-    auditSubmittedPages(input),
-    samplingPromise
-  ]);
   const { samples, providerStatuses } = sampling;
   const successfulSamples = samples.filter((sample) => sample.status === 'success');
 
@@ -229,6 +235,15 @@ async function generateDiagnosis(input: DiagnosisInput) {
   const baseReport = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
   const report = await polishFinalReportWithDeepSeek(input, baseReport);
   await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
+  const totalDurationMs = Date.now() - startedAt;
+  const operation = summarizeOperation({
+    reportId: report.id,
+    samples,
+    pageAuditDurationMs,
+    samplingDurationMs: sampling.durationMs,
+    totalDurationMs
+  });
+  await recordOperation(operation, runtimeDir);
   console.info(JSON.stringify({
     event: 'diagnosis_generated',
     reportId: report.id,
@@ -236,7 +251,9 @@ async function generateDiagnosis(input: DiagnosisInput) {
     successCount: successfulSamples.length,
     failureCount: samples.length - successfulSamples.length,
     samplingDurationMs: sampling.durationMs,
-    totalDurationMs: Date.now() - startedAt
+    pageAuditDurationMs,
+    totalDurationMs,
+    providers: operation.providers
   }));
   return report;
 }

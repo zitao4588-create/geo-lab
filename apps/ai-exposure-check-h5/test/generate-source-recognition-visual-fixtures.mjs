@@ -78,12 +78,22 @@ function unrelatedAudit() {
 }
 
 function auditTarget({ status, score, sourceRelation, scopeRelation, title, matchedFacts, missingFacts }) {
+  const submittedSourceScore = sourceRelation === 'entity_matched' && scopeRelation === 'matched'
+    ? 100
+    : sourceRelation === 'entity_matched' && scopeRelation === 'partial'
+      ? 60
+      : sourceRelation === 'entity_matched'
+        ? 30
+        : 0;
   return {
-    generatedAt: new Date().toISOString(), score,
+    generatedAt: new Date().toISOString(), score, submittedSourceScore, siteInfrastructureScore: 0,
     targets: [{
       id: 'submitted', name: '用户提交入口', url: 'https://example.invalid/fixture', status, httpStatus: 200, title, description: '',
       matchedFacts, missingFacts, notes: [`source=${sourceRelation}`, `scope=${scopeRelation}`], fetchedAt: new Date().toISOString(),
-      evidenceLabel: 'verified_external', sourceRelation, scopeRelation, submitted: true
+      evidenceLabel: 'verified_external', sourceRelation, scopeRelation, submitted: true,
+      finalUrl: 'https://example.invalid/fixture', canonicalUrl: 'https://example.invalid/canonical-fixture',
+      contentHash: 'a'.repeat(64), matchedEvidence: matchedFacts.map((fact) => ({ fact, snippet: `fixture:${fact}` })),
+      freshness: scopeRelation === 'partial' ? 'possibly_stale' : 'current', renderMode: scopeRelation === 'partial' ? 'controlled_dynamic' : 'static'
     }],
     summary: { ok: status === 'ok' ? 1 : 0, warn: status === 'warn' ? 1 : 0, missing: 0, failed: 0, note: '本地来源关系 fixture' }
   };

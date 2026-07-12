@@ -21,6 +21,9 @@ test('audits the submitted Panasonic product URL and binds the official model to
     assert.equal(submitted?.sourceRelation, 'entity_matched');
     assert.equal(submitted?.scopeRelation, 'matched');
     assert.ok(submitted?.matchedFacts.includes('ES-LM55'));
+    assert.equal(audit.submittedSourceScore, 100);
+    assert.equal(audit.siteInfrastructureScore, 0);
+    assert.notEqual(audit.submittedSourceScore, audit.siteInfrastructureScore);
   });
 });
 

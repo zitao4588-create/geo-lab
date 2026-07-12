@@ -77,6 +77,16 @@ export interface AiProviderStatus {
   successCount: number;
   failureCount: number;
   note: string;
+  configured?: boolean;
+  samplingAllowed?: boolean;
+  costGuard?: 'provider_enforced' | 'manually_confirmed' | 'unknown' | 'disabled';
+  successRate?: number;
+  fallbackCount?: number;
+  p50LatencyMs?: number | null;
+  p95LatencyMs?: number | null;
+  slowestPromptId?: string;
+  failureTypes?: Record<string, number>;
+  lastRealSuccessAt?: string;
 }
 
 export interface AiSample {
@@ -88,6 +98,8 @@ export interface AiSample {
   latencyMs: number;
   answer?: string;
   error?: string;
+  fallbackUsed?: boolean;
+  failureType?: string;
 }
 
 export interface PageAuditTarget {
@@ -108,12 +120,21 @@ export interface PageAuditTarget {
   scopeRelation?: 'matched' | 'partial' | 'mismatched' | 'unknown';
   submitted?: boolean;
   canonicalUrl?: string;
+  finalUrl?: string;
+  contentHash?: string;
+  matchedEvidence?: Array<{ fact: string; snippet: string }>;
+  freshness?: 'current' | 'possibly_stale' | 'invalid';
+  sourceUpdatedAt?: string;
+  renderMode?: 'static' | 'controlled_dynamic';
 }
 
 export interface PageAuditResult {
   baseUrl?: string;
   generatedAt: string;
+  /** Legacy aggregate kept for schema compatibility. User-facing surfaces use the two scores below. */
   score: number;
+  submittedSourceScore: number;
+  siteInfrastructureScore: number;
   targets: PageAuditTarget[];
   summary: {
     ok: number;

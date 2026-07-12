@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "loopId": "ai-exposure-optimization-g1-g4",
+  "project": "/Users/qzt/Developer/geo-lab",
+  "createdAt": "2026-07-12T19:16:57+08:00",
+  "updatedAt": "2026-07-13T01:08:46+08:00",
+  "status": "in_progress",
+  "activeGoal": "G4",
+  "lastCompletedCheckpoint": "g3_completed_c2",
+  "lastNotificationKey": "g4_all_l3_l4_authorized_20260713",
+  "automation": {
+    "id": "ai-g1-g4-loop",
+    "name": "AI曝光体检 G1-G4 Loop",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "interval": "hourly",
+    "targetThreadId": "019f521f-74d2-7473-a048-3737fcd721b2"
+  },
+  "authorization": {
+    "automaticLevel": "L2",
+    "commit": true,
+    "push": true,
+    "deploy": true,
+    "productionWrite": true,
+    "paidCalls": true,
+    "cloudOrAccountChanges": true,
+    "authorizedAt": "2026-07-13T01:08:46+08:00",
+    "authorizedByUserMessage": "确认授权",
+    "scope": "new branch commit/push; read-only three-cloud console review and bounded cost-guard configuration; existing H5 deployment; exactly one controlled production diagnosis and report write"
+  },
+  "goals": [
+    {
+      "id": "G1",
+      "title": "实体判定器与采样前来源核验",
+      "status": "completed",
+      "completionLevel": "C2",
+      "outputDir": "outputs/h5-mvp/optimization-loop/g1-entity-evaluator",
+      "lastCheckpoint": "completion_audit_passed",
+      "verification": [
+        "typecheck_pass",
+        "test_59_of_59_pass",
+        "build_pass",
+        "diff_check_pass",
+        "entity_benchmark_6_of_6_pass",
+        "source_conflict_zero_provider_calls_and_zero_quota",
+        "visual_4_of_4_pass",
+        "real_provider_calls_0"
+      ]
+    },
+    {
+      "id": "G2",
+      "title": "AI曝光体检官方内容与结构化证据",
+      "status": "completed",
+      "completionLevel": "C2",
+      "outputDir": "outputs/h5-mvp/optimization-loop/g2-official-content-evidence",
+      "lastCheckpoint": "completion_audit_passed",
+      "verification": [
+        "content_contract_4_of_4_pass",
+        "typecheck_pass",
+        "test_63_of_63_pass",
+        "build_pass",
+        "diff_check_pass",
+        "pageaudit_8_of_8_pass",
+        "submitted_source_100",
+        "site_infrastructure_100",
+        "dual_viewport_visual_pass",
+        "console_errors_and_warnings_0",
+        "real_provider_calls_0"
+      ]
+    },
+    {
+      "id": "G3",
+      "title": "业务类型 Prompt、PageAudit 与来源安全体系",
+      "status": "completed",
+      "completionLevel": "C2",
+      "outputDir": "outputs/h5-mvp/optimization-loop/g3-domain-prompt-source",
+      "lastCheckpoint": "completion_audit_passed",
+      "verification": [
+        "domain_prompt_3_of_3_pass",
+        "g3_specific_9_of_9_pass",
+        "batch_matrix_20_of_20_pass",
+        "test_73_of_73_pass",
+        "typecheck_pass",
+        "build_pass",
+        "diff_check_pass",
+        "pageaudit_security_matrix_pass",
+        "l01_partial_l03_mismatched_l04_unverified",
+        "cross_surface_provenance_pass",
+        "dual_viewport_visual_pass",
+        "console_errors_and_warnings_0",
+        "real_provider_calls_0"
+      ]
+    },
+    {
+      "id": "G4",
+      "title": "生产 C4、额度保护与运行观测",
+      "status": "in_progress",
+      "completionLevel": "C2",
+      "outputDir": "outputs/h5-mvp/optimization-loop/g4-production-c4-operations",
+      "lastCheckpoint": "authorized_release_precheck_passed",
+      "verification": [
+        "g4_specific_5_of_5_pass",
+        "integration_8_of_8_pass",
+        "test_78_of_78_pass",
+        "batch_matrix_20_of_20_pass",
+        "typecheck_pass",
+        "build_pass",
+        "diff_check_pass",
+        "release_precheck_13_of_13_pass",
+        "final_artifact_scan_28_files_pass",
+        "persistent_rate_limit_restart_pass",
+        "cost_guard_zero_request_fail_close_pass",
+        "observability_metrics_pass",
+        "fallback_fault_injection_pass",
+        "dual_viewport_visual_pass",
+        "console_errors_and_warnings_0",
+        "real_provider_calls_0"
+      ]
+    }
+  ],
+  "blocked": null,
+  "nextAction": "Create an isolated branch and commit/push only the G1-G4 scope. Then inspect the three cloud consoles without exposing secrets and choose bounded Tencent/Volcengine guard deadlines before deployment."
+}

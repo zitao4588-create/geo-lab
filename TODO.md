@@ -267,3 +267,11 @@
 - [x] Rebuild Phase B with fresh PageAudit and saved 200/200 successful real provider samples; no new model calls.
 - [x] Commit and push the isolated Goal branch to the verified private remote.
 - [x] Deploy release `20260712095412` through the documented release/symlink/systemd flow and complete read-only online smoke.
+
+## AI Exposure Optimization Loop
+
+- [x] G1: entity evaluator, hierarchy benchmark, source conflict preflight, and source/infrastructure metric split (local C2).
+- [x] G2: AI曝光体检 official content and structured evidence (local C2; 63/63 tests, PageAudit 8/8, dual-viewport QA).
+- [x] G3: business-type prompts, PageAudit rendering/provenance/security (local C2; 73/73 tests and dual-viewport QA).
+- [x] G4 local L2: production-candidate reliability, persistent quota protection, latency/observability, release precheck and dual-viewport QA.
+- [ ] G4 production gate: wait for itemized commit/push, deploy, one production POST/write, cost and console authorization; only then attempt C3/C4.

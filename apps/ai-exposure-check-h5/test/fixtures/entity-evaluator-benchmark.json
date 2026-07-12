@@ -1,0 +1,92 @@
+[
+  {
+    "id": "A01",
+    "title": "完整商品名与官方主型号",
+    "businessType": "physical_product",
+    "input": {
+      "businessName": "松下大锤子2.0剃须刀",
+      "description": "官方型号 ES-LM55 的五刀头电动剃须刀",
+      "industry": "电动剃须刀",
+      "city": "全国",
+      "targetCustomers": "重视剃净效率和正规售后的成年男性"
+    },
+    "prompt": "松下大锤子2.0剃须刀对应什么型号？",
+    "answer": "松下大锤子2.0是 ES-LM55 五刀头电动剃须刀。",
+    "expected": { "brandedPrompt": true, "mentionedBrand": true, "naturalRecommendation": false, "entityRecognition": "supported" }
+  },
+  {
+    "id": "A02",
+    "title": "本地服务合理简称",
+    "businessType": "local_service",
+    "input": {
+      "businessName": "海底捞西安门店服务",
+      "description": "提供门店餐饮、排队和预约信息的本地餐饮服务",
+      "industry": "火锅餐饮门店服务",
+      "city": "西安",
+      "targetCustomers": "需要到店用餐和预约的西安顾客"
+    },
+    "prompt": "海底捞西安门店适合哪些顾客？",
+    "answer": "海底捞在西安提供火锅餐饮、排队和预约服务。",
+    "expected": { "brandedPrompt": true, "mentionedBrand": true, "naturalRecommendation": false, "entityRecognition": "supported" }
+  },
+  {
+    "id": "A03",
+    "title": "无品牌问题主动推荐合理简称",
+    "businessType": "local_service",
+    "input": {
+      "businessName": "海底捞西安门店服务",
+      "description": "提供门店餐饮、排队和预约信息的本地餐饮服务",
+      "industry": "火锅餐饮门店服务",
+      "city": "西安",
+      "targetCustomers": "需要到店用餐和预约的西安顾客"
+    },
+    "prompt": "西安有哪些可以预约的火锅店？",
+    "answer": "可以考虑海底捞西安门店，并以官方门店页确认地址和预约状态。",
+    "expected": { "brandedPrompt": false, "mentionedBrand": true, "naturalRecommendation": true, "entityRecognition": "supported" }
+  },
+  {
+    "id": "A04",
+    "title": "只有通用品类词不能绑定实体",
+    "businessType": "local_service",
+    "input": {
+      "businessName": "海底捞西安门店服务",
+      "description": "提供门店餐饮、排队和预约信息的本地餐饮服务",
+      "industry": "火锅餐饮门店服务",
+      "city": "西安",
+      "targetCustomers": "需要到店用餐和预约的西安顾客"
+    },
+    "prompt": "西安火锅餐饮怎么选？",
+    "answer": "选择火锅餐饮门店时要核对地址、营业时间和预约状态。",
+    "expected": { "brandedPrompt": false, "mentionedBrand": false, "naturalRecommendation": false, "entityRecognition": "not_verifiable" }
+  },
+  {
+    "id": "A05",
+    "title": "错误主型号不能被相关型号掩盖",
+    "businessType": "physical_product",
+    "input": {
+      "businessName": "松下大锤子2.0剃须刀",
+      "description": "官方型号 ES-LM55 的五刀头电动剃须刀",
+      "industry": "电动剃须刀",
+      "city": "全国",
+      "targetCustomers": "重视剃净效率和正规售后的成年男性"
+    },
+    "prompt": "松下大锤子2.0剃须刀的官方主型号是什么？",
+    "answer": "这款产品的官方主型号是 ES-LV9C，ES-LM55 只是同类产品。",
+    "expected": { "brandedPrompt": true, "mentionedBrand": false, "naturalRecommendation": false, "entityRecognition": "misrecognized" }
+  },
+  {
+    "id": "A06",
+    "title": "正确主型号可同时提及相关产品",
+    "businessType": "physical_product",
+    "input": {
+      "businessName": "松下大锤子2.0剃须刀",
+      "description": "官方型号 ES-LM55 的五刀头电动剃须刀",
+      "industry": "电动剃须刀",
+      "city": "全国",
+      "targetCustomers": "重视剃净效率和正规售后的成年男性"
+    },
+    "prompt": "松下大锤子2.0剃须刀的官方主型号是什么？",
+    "answer": "官方主型号是 ES-LM55；ES-LV9C 是页面里的相关产品，不是当前主型号。",
+    "expected": { "brandedPrompt": true, "mentionedBrand": false, "naturalRecommendation": false, "entityRecognition": "supported" }
+  }
+]

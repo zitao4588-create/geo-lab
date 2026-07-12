@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-07-12T19:37:51+08:00",
+  "goal": "G1 entity evaluator and source preflight",
+  "completionLevel": "C2",
+  "realProviderCalls": 0,
+  "checks": {
+    "typecheck": "passed",
+    "tests": { "status": "passed", "passed": 59, "failed": 0 },
+    "build": "passed",
+    "diffCheck": "passed",
+    "secretScan": "passed_with_documented_placeholder_matches_only"
+  },
+  "benchmark": {
+    "hierarchyLabels": ["brand", "marketingName", "productOrService", "primaryModel", "city", "store"],
+    "cases": 6,
+    "passed": 6,
+    "genericModelExamples": ["ES-LM55", "S9000", "X-PRO3"]
+  },
+  "sourceConflictGate": {
+    "preflightStatus": "needs_confirmation",
+    "diagnosisStatus": 422,
+    "providerCallsBeforeCorrection": 0,
+    "quotaConsumedBeforeCorrection": false,
+    "correctedDiagnosisStatus": 201,
+    "controlledProviderCallsAfterCorrection": 1
+  },
+  "sourceMetrics": {
+    "submittedSourceScore": 100,
+    "siteInfrastructureScore": 0,
+    "surfaces": ["H5", "Markdown", "HTML", "evidence-package"]
+  },
+  "visual": {
+    "states": 2,
+    "viewports": ["390x844", "1440x1000"],
+    "checks": 4,
+    "horizontalOverflow": 0,
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  }
+}

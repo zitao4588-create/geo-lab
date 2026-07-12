@@ -11,6 +11,8 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",
+    "release:scan": "node scripts/scan-release-artifacts.mjs dist/client",
+    "release:precheck": "npm run build && node scripts/release-precheck.mjs",
     "test": "npm run build:server && node --test test/*.test.mjs",
     "start": "node dist/server/server/index.js"
   },

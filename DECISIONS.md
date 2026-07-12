@@ -433,3 +433,70 @@ Boundary:
 - Only scope-verified targets can support correct entity-recognition rates or score availability.
 - Submitted facts that conflict with a verified primary model must remain explicit, high-severity evidence conflicts.
 - No search provider, database, login, payment, cloud permission, or production-data change is introduced.
+
+## 2026-07-12: Verify Source Facts Before Consuming Diagnosis Quota
+
+Decision: after deterministic input readiness passes, audit the submitted source and reject a verified primary-model conflict before consuming the diagnosis quota or starting provider sampling.
+
+Reason: the previous flow ran PageAudit and provider sampling concurrently after quota consumption. A user-visible ES-LV9C/ES-LM55 conflict was reported only after paying the sampling cost.
+
+Boundary:
+
+- Missing or partial sources still follow the existing credibility/withheld-score contract; only a verified direct fact conflict blocks this G1 path.
+- Idempotent persisted/in-flight recovery remains before a fresh PageAudit, so a matching retry does not repeat work.
+- No real provider, production write, database, login, payment, Docker, or cloud configuration change is part of G1.
+
+## 2026-07-12: Separate Submitted Source Trust From Site Infrastructure Completeness
+
+Decision: keep submitted-source trust and site-infrastructure completeness as independent scores and user-facing labels.
+
+Reason: a valid official product page can prove the entity and primary model even when the host lacks this H5's preferred FAQ, privacy, sitemap, and llms endpoints. Combining both into one low aggregate made a verified source look untrustworthy.
+
+Boundary: source trust controls whether entity facts can be verified; site infrastructure remains a separate optimization dimension and does not inherit a high score from one valid product page.
+
+## 2026-07-12: Use One Explicit Product Definition Across Human And Machine Surfaces
+
+Decision: define AI曝光体检 as a multi-model GEO entity-recognition and public-evidence diagnostic tool for brand and product owners, and publish the same definition in human-readable pages, metadata, JSON-LD, sitemap-linked surfaces, and `llms.txt`.
+
+Reason: “AI exposure check” and “体检” are ambiguous without a category and exclusions. The previous copy could be interpreted as medical/body-image inspection, privacy-leak scanning, or advertising exposure analytics.
+
+Boundary:
+
+- Public content explains inputs, workflow, four output dimensions, privacy handling, scoring limits, and evidence provenance.
+- Historical samples are evidence-boundary examples, not customer outcome claims.
+- Publishing content does not prove search indexing, model absorption, natural recommendation, traffic, or commercial uplift.
+- G2 does not include deployment, real model retesting, paid promotion, or cross-platform publishing.
+
+## 2026-07-12: Fail Closed Before PageAudit Network Access
+
+Decision: PageAudit validates protocol, credentials, IP ranges and a stable double DNS resolution before every manually handled redirect hop; it limits MIME, timeout and streaming bytes before treating content as evidence.
+
+Reason: a user-submitted URL is untrusted input. The previous direct `fetch` with automatic redirects could reach private resources, follow unsafe redirects or allocate an unbounded body.
+
+Boundary:
+
+- Production defaults reject private and reserved IPv4/IPv6. Test-only loopback requires an explicit child-process allowlist.
+- A dynamic renderer is optional and caller-injected; it only handles detected JavaScript shells and cannot upgrade entity scope by itself.
+- Search discovery is not added. User URLs enter a local `pending_review` candidate queue and remain unverified until PageAudit confirms entity and scope.
+- This design does not add a proxy, browser cloud service, database, queue, login, provider, or paid API.
+
+## 2026-07-12: Provider Configuration Is Not Runtime Or Cost Readiness
+
+Decision: health and sampling must distinguish `configured`, `samplingAllowed`, `costGuard`, and `lastRealSuccessAt`. Tencent and Volcengine require both manual confirmation and a future expiration; missing or expired confirmation is fail-close.
+
+Reason: an API key and a historical successful call do not prove that a new call is authorized, free, or safe from postpaid billing. A permanent boolean can also outlive the console evidence it represented.
+
+Boundary:
+
+- DeepSeek/Qwen retain provider-enforced free-only handling; Tencent/Volcengine require time-bounded manual evidence.
+- A `ready` health state only means current configuration and cost gate permit sampling, not that the provider just succeeded.
+- Runtime observations record only operational aggregates and Prompt IDs, not form data or Prompt text.
+- Production commit/push/deploy/POST remain behind the explicit G4 confirmation gate.
+
+## 2026-07-12: Persist Single-Instance Rate Limits Without Raw IPs
+
+Decision: persist hourly client and global daily quota counters in one atomic JSON state file, using salted SHA-256 client identifiers.
+
+Reason: process-memory limits reset on restart, allowing accidental quota bursts immediately after a deploy or crash.
+
+Boundary: this is only valid for the current single-instance deployment. Multi-instance coordination still requires a separate design and is not implied by this file.

@@ -100,6 +100,8 @@ export async function saveDiagnosis(
       sampledPrompts: report.aiMeta.promptCount,
       successfulSamples: report.aiMeta.successCount,
       pageAuditScore: pageAudit.score,
+      submittedSourceScore: pageAudit.submittedSourceScore,
+      siteInfrastructureScore: pageAudit.siteInfrastructureScore,
       savedAt
     })}\n`,
     'utf8'

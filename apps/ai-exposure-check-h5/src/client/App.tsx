@@ -299,7 +299,7 @@ function StartScreen({ onStart }: { onStart: () => void }) {
     <section className="screen start-screen">
       <div className="hero-copy">
         <h1>别让 AI<br />只推荐竞品</h1>
-        <p className="hero-sub">30 秒看清你的 AI 曝光风险</p>
+        <p className="hero-sub">多模型 GEO 实体认知与公开证据诊断</p>
       </div>
 
       <div className="chat-demo" aria-hidden="true">
@@ -467,7 +467,7 @@ function FormScreen({
         生成 GEO 分析报告
       </Button>
       {missingFields.length > 0 && <p className="missing-hint">还差 {missingFields.length} 项必填</p>}
-      <p className="form-hint">四个模型并行采样，通常需要 20-60 秒。免费额度或模型服务不可用时会明确提示，不返回伪报告。</p>
+      <p className="form-hint">模型并行采样通常需要 1-4 分钟，实际取决于已启用平台和外部服务响应。额度或模型不可用时会明确提示，不返回伪报告。</p>
       {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
     </section>
   );
@@ -760,7 +760,8 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
 
       <ResultBlock title="公开基建">
         <div className="metric-grid">
-          <Metric label="页面审计分" value={report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.score}` : '未检测'} />
+          <Metric label="提交来源可信度" value={report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.submittedSourceScore ?? report.stages.infrastructure.pageAudit.score}` : '未检测'} />
+          <Metric label="站点基建完整度" value={report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.siteInfrastructureScore ?? report.stages.infrastructure.pageAudit.score}` : '未检测'} />
           <Metric label="通过页面" value={`${report.stages.infrastructure.pageAudit.summary.ok}`} />
           <Metric label="需补强" value={`${report.stages.infrastructure.pageAudit.summary.warn}`} />
         </div>
@@ -780,6 +781,13 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
                   <strong>{target.name}</strong>
                   <span>{target.status} · HTTP {target.httpStatus ?? '-'}</span>
                   <p>{target.title || target.url}</p>
+                  <small>
+                    范围：{target.scopeRelation === 'matched' ? '匹配' : target.scopeRelation === 'partial' ? '部分匹配' : target.scopeRelation === 'mismatched' ? '不匹配' : '未知'}
+                    {' · '}时效：{target.freshness === 'current' ? '当前' : target.freshness === 'possibly_stale' ? '可能过期' : target.freshness === 'invalid' ? '失效' : '未记录'}
+                    {' · '}{target.renderMode === 'controlled_dynamic' ? '受控动态渲染' : target.renderMode === 'static' ? '静态抓取' : '抓取方式未记录'}
+                  </small>
+                  {target.canonicalUrl && target.canonicalUrl !== target.url && <p>canonical：{target.canonicalUrl}</p>}
+                  {target.contentHash && <small>内容哈希：{target.contentHash.slice(0, 12)}</small>}
                 </div>
               ))}
             </div>

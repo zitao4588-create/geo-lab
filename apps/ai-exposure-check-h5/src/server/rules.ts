@@ -20,6 +20,7 @@ import {
   classifyAnswer,
   inferBusinessType
 } from './credibility.js';
+import { findSubmittedModelConflict, isScopeVerifiedTarget } from './entityIdentity.js';
 
 interface AnalysisContext {
   competitors: string[];
@@ -84,15 +85,15 @@ export function buildPromptUniverse(input: DiagnosisInput): SamplePrompt[] {
 
   if (businessType === 'physical_product') {
     return [
-      prompt('P001', 'brand', `${input.businessName}对应的官方型号和产品定位是什么？`, '官方名称与型号'),
-      prompt('P002', 'brand', `${input.businessName}适合什么胡须和使用场景？`, '适用场景'),
-      prompt('P003', 'brand', `${input.businessName}有哪些可核验的安全标准和正规购买渠道？`, '安全与渠道'),
+      prompt('P001', 'brand', `${input.businessName}对应的官方主型号和产品定位是什么？`, '官方名称与主型号'),
+      prompt('P002', 'brand', `${input.businessName}适合哪些人群和使用场景？`, '适用场景'),
+      prompt('P003', 'brand', `${input.businessName}有哪些可核验的安全标准和正规购买渠道？`, '安全与购买渠道'),
       prompt('P005', 'category', `${industry}怎么选，关键规格有哪些？`, '品类选择标准'),
       prompt('P006', 'category', `适合${target}的${industry}有哪些？`, '无品牌人群推荐'),
-      prompt('P011', 'feature', `${input.businessName}的刀头、动力、防水和续航规格是什么？`, '核心规格'),
-      prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}有什么区别？`, '竞品对比'),
+      prompt('P011', 'feature', `${input.businessName}的核心规格、耗材和维护要求是什么？`, '核心规格与耗材'),
+      prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}按同口径规格比较有什么区别？`, '同口径竞品对比'),
       prompt('P015', 'persona', `${target}选择${industry}时最容易踩什么坑？`, '决策风险'),
-      prompt('P017', 'risk', `${industry}的售后、耗材和使用安全需要注意什么？`, '售后与安全'),
+      prompt('P017', 'risk', `${industry}的保修、售后和使用安全需要注意什么？`, '保修与安全'),
       prompt('P020', 'geo', `哪些可信来源会影响 AI 对${industry}的推荐？`, 'GEO 证据来源')
     ];
   }
@@ -100,31 +101,33 @@ export function buildPromptUniverse(input: DiagnosisInput): SamplePrompt[] {
   if (businessType === 'local_service') {
     const city = input.city && input.city !== '全国' ? input.city : '本地';
     return [
-      prompt('P001', 'brand', `${input.businessName}是什么服务？`, '服务定义'),
-      prompt('P002', 'brand', `${input.businessName}适合哪些客户？`, '目标客户'),
-      prompt('P003', 'brand', `${input.businessName}有哪些可核验的资质和评价？`, '信任证据'),
-      prompt('P005', 'category', `${city}${industry}怎么选？`, '本地推荐'),
-      prompt('P006', 'category', `${city}有哪些适合${target}的${industry}？`, '无品牌场景推荐'),
-      prompt('P011', 'feature', `${input.businessName}的服务范围和预约方式是什么？`, '服务边界'),
-      prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}有什么区别？`, '竞品对比'),
-      prompt('P015', 'persona', `${target}选择${industry}最关心什么？`, '决策因素'),
-      prompt('P017', 'risk', `选择${industry}需要注意哪些合同、资质和售后问题？`, '风险说明'),
+      prompt('P001', 'brand', `${input.businessName}有哪些具体门店、服务范围和距离信息？`, '门店与距离'),
+      prompt('P002', 'brand', `${input.businessName}的营业时间、排队和预约方式是什么？`, '时间与预约'),
+      prompt('P003', 'brand', `${input.businessName}有哪些可核验的服务资质和真实评价？`, '信任证据'),
+      prompt('P005', 'category', `${city}${industry}怎么选，附近门店距离和营业时间如何比较？`, '本地推荐'),
+      prompt('P006', 'category', `${city}有哪些适合${target}且支持预约的${industry}？`, '无品牌场景推荐'),
+      prompt('P011', 'feature', `${input.businessName}的菜单或服务范围、价格口径是什么？`, '服务与价格边界'),
+      prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}在距离、价格和预约体验上有什么区别？`, '竞品对比'),
+      prompt('P015', 'persona', `${target}选择${industry}时需要关注停车、过敏和儿童服务吗？`, '到店决策因素'),
+      prompt('P017', 'risk', `到店使用${industry}前，怎样核验排队、营业时间和价格变化？`, '到店风险说明'),
       prompt('P020', 'geo', `本地${industry}怎样建立可被 AI 引用的可信信息？`, 'GEO 证据来源')
     ];
   }
 
-  return [
+  if (businessType === 'software_or_miniprogram') return [
     prompt('P001', 'brand', `${input.businessName}是什么？`, '产品定义'),
-    prompt('P002', 'brand', `${input.businessName}靠谱吗？`, '信任解释'),
-    prompt('P003', 'brand', `${input.businessName}安全吗？`, '隐私与安全'),
+    prompt('P002', 'brand', `${input.businessName}由什么主体提供，适用人群是谁？`, '主体与适用人群'),
+    prompt('P003', 'brand', `${input.businessName}如何处理隐私和数据？`, '隐私与数据'),
     prompt('P005', 'category', `${cityPrefix && cityPrefix !== '全国' ? cityPrefix : ''}${industry}哪个好用？`, '推荐场景提及'),
-    prompt('P006', 'category', `微信里有什么好用的${industry}？`, '微信生态定位'),
-    prompt('P011', 'feature', `${input.businessName}的核心功能是什么？`, '功能提取'),
-    prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}有什么区别？`, '竞品对比'),
+    prompt('P006', 'category', `适合${target}的${industry}有哪些？`, '无品牌人群推荐'),
+    prompt('P011', 'feature', `${input.businessName}的核心功能、输入和输出是什么？`, '功能与输入输出'),
+    prompt('P013', 'competitor', `${input.businessName}和${firstCompetitor}在功能、限制和替代方案上有什么区别？`, '限制与替代方案'),
     prompt('P015', 'persona', `适合${target}的${industry}有哪些？`, '目标用户'),
     prompt('P017', 'risk', `使用${industry}需要注意哪些隐私和数据问题？`, '合规说明'),
     prompt('P020', 'geo', `我如何给自己的${industry}做 GEO 优化？`, '自证案例')
   ];
+
+  return [];
 }
 
 export function buildFinalGeoReport(
@@ -154,7 +157,7 @@ export function buildFinalGeoReport(
   const roadmap = buildRoadmap(input, context);
   const inputAssessment = assessDiagnosisInput(input);
   const sourceConfidence = context.pageAudit.targets.some(isScopeVerifiedTarget)
-    ? context.pageAudit.score >= 80 ? 'high' : 'medium'
+    ? submittedSourceScore(context.pageAudit) >= 80 ? 'high' : 'medium'
     : 'low';
   const samplingCoverage = ratio(context.successfulSamples.length, samples.length);
   const confidence = samplingCoverage < 0.5
@@ -354,7 +357,6 @@ function analyzeAnswer(
   pageAudit: PageAuditResult
 ): ReportAnswerSample {
   const answer = sample.answer ?? '';
-  const mentionedBrand = includesTerm(answer, input.businessName);
   const mentionedCompetitors = competitors.filter((name) => includesTerm(answer, name));
   const credibility = classifyAnswer(input, businessType, sample.prompt.prompt, answer, pageAudit);
   const riskFlags = riskKeywordMap
@@ -367,7 +369,6 @@ function analyzeAnswer(
     category: sample.prompt.category,
     prompt: sample.prompt.prompt,
     answerExcerpt: excerpt(answer, 180),
-    mentionedBrand,
     ...credibility,
     mentionedCompetitors,
     riskFlags: unique(riskFlags),
@@ -448,7 +449,7 @@ function evaluateInfrastructure(input: DiagnosisInput, pageAudit: PageAuditResul
   if (pageAudit.targets.length > 0) {
     return {
       checks: buildPageAuditChecks(input, pageAudit),
-      score: pageAudit.score
+      score: siteInfrastructureScore(pageAudit)
     };
   }
 
@@ -568,7 +569,7 @@ function buildIssues(input: DiagnosisInput, context: AnalysisContext, dimensions
     issues.push({
       id: 'issue_source_fact_conflict',
       title: '提交型号与已核验官方型号冲突',
-      detail: `用户填写型号 ${sourceFactConflict.submitted.join('、')}，已核验官方页面主型号为 ${sourceFactConflict.official.join('、')}。应先修正实体事实，再解释模型认知结果。`,
+      detail: `用户填写型号 ${sourceFactConflict.submittedModels.join('、')}，已核验官方页面主型号为 ${sourceFactConflict.officialModels.join('、')}。应先修正实体事实，再解释模型认知结果。`,
       evidenceLabel: 'verified_external',
       severity: 'high'
     });
@@ -652,7 +653,7 @@ function buildIssues(input: DiagnosisInput, context: AnalysisContext, dimensions
 }
 
 function buildRecommendations(input: DiagnosisInput, context: AnalysisContext): DiagnosisSuggestion[] {
-  const hasLiveSite = context.pageAudit.targets.length > 0 && context.pageAudit.score >= 80;
+  const hasLiveSite = context.pageAudit.targets.length > 0 && siteInfrastructureScore(context.pageAudit) >= 80;
   if (context.businessType === 'physical_product') {
     return [
       {
@@ -750,7 +751,7 @@ function buildRecommendations(input: DiagnosisInput, context: AnalysisContext): 
 }
 
 function buildRoadmap(input: DiagnosisInput, context: AnalysisContext): DiagnosisReport['stages']['roadmap'] {
-  const hasLiveSite = context.pageAudit.targets.length > 0 && context.pageAudit.score >= 80;
+  const hasLiveSite = context.pageAudit.targets.length > 0 && siteInfrastructureScore(context.pageAudit) >= 80;
   if (context.businessType === 'physical_product') {
     return [
       { phase: 'P0', title: '1-2 周：确认实体与官方事实', timeline: '1-2 周', detail: '确认官方型号、产品页、规格、安全标准、售后和正规渠道，先消除型号误读。' },
@@ -875,8 +876,11 @@ function buildHighlights(input: DiagnosisInput, context: AnalysisContext) {
     highlights.unshift(`本次有 ${context.mentionedCount} 个答案出现品牌字符串；这不等同正确实体识别或自然推荐。`);
   }
 
-  if (context.pageAudit.targets.length > 0 && context.pageAudit.score >= 80) {
-    highlights.push(`品牌站已上线并通过公开 URL 审计 ${context.pageAudit.score}/100，可作为后续 GEO 证据底座。`);
+  if (context.pageAudit.targets.length > 0 && submittedSourceScore(context.pageAudit) >= 80) {
+    highlights.push(`提交来源已通过实体与范围核验 ${submittedSourceScore(context.pageAudit)}/100，可作为实体事实依据。`);
+  }
+  if (context.pageAudit.targets.length > 0 && siteInfrastructureScore(context.pageAudit) >= 80) {
+    highlights.push(`站点公开基建完整度 ${siteInfrastructureScore(context.pageAudit)}/100，可作为后续 GEO 证据底座。`);
   } else if ((input.links ?? '').trim()) {
     highlights.push('已提供公开入口线索，可以继续补官方说明、隐私页和内容池。');
   }
@@ -908,8 +912,10 @@ function buildSummary(
     ? `综合得分 ${score}/100（${scoreLevel}）`
     : '因证据或模型覆盖不足，暂不展示总分';
   const recognition = context.correctEntityRecognitionRate === null ? '无法判断' : toPercent(context.correctEntityRecognitionRate);
-  const audit = context.pageAudit.targets.length > 0 ? `${context.pageAudit.score}/100` : '未检测';
-  return `${input.businessName}本次多平台成功采样 ${context.successfulSamples.length} 个回答样本；${scoreCopy}。字符串出现率 ${toPercent(context.mentionRate)}，正确实体识别 ${recognition}，无品牌词自然推荐 ${toPercent(context.naturalRecommendationRate)}，公开页面审计 ${audit}。`;
+  const audit = context.pageAudit.targets.length > 0
+    ? `提交来源 ${submittedSourceScore(context.pageAudit)}/100，站点基建 ${siteInfrastructureScore(context.pageAudit)}/100`
+    : '提交来源与站点基建均未检测';
+  return `${input.businessName}本次多平台成功采样 ${context.successfulSamples.length} 个回答样本；${scoreCopy}。字符串出现率 ${toPercent(context.mentionRate)}，正确实体识别 ${recognition}，无品牌词自然推荐 ${toPercent(context.naturalRecommendationRate)}，${audit}。`;
 }
 
 function buildConfirmedFacts(input: DiagnosisInput, context: AnalysisContext) {
@@ -929,7 +935,7 @@ function buildConfirmedFacts(input: DiagnosisInput, context: AnalysisContext) {
 function buildUnverifiedFacts(input: DiagnosisInput, context: AnalysisContext) {
   const facts: string[] = [`用户提交的业务描述仍需来源核验：${input.description}`];
   const sourceFactConflict = findSubmittedModelConflict(input, context.pageAudit);
-  if (sourceFactConflict) facts.push(`用户填写型号 ${sourceFactConflict.submitted.join('、')} 与已核验官方型号 ${sourceFactConflict.official.join('、')} 冲突。`);
+  if (sourceFactConflict) facts.push(`用户填写型号 ${sourceFactConflict.submittedModels.join('、')} 与已核验官方型号 ${sourceFactConflict.officialModels.join('、')} 冲突。`);
   if (!context.pageAudit.targets.some(isScopeVerifiedTarget)) facts.push('缺少实体与业务范围均通过审计的官方来源，品牌归属或具体型号、城市、门店仍待确认。');
   const partialSource = context.pageAudit.targets.find((target) => target.sourceRelation === 'entity_matched' && target.scopeRelation !== 'matched');
   if (partialSource) facts.push(`已识别相关官方入口，但页面不足以证明当前业务范围：${partialSource.missingFacts.join('、') || '具体型号、城市或门店'}。`);
@@ -939,23 +945,12 @@ function buildUnverifiedFacts(input: DiagnosisInput, context: AnalysisContext) {
   return facts;
 }
 
-function findSubmittedModelConflict(input: DiagnosisInput, pageAudit: PageAuditResult) {
-  const submittedModels = unique((`${input.businessName} ${input.description}`.match(/\bES-[A-Z0-9]+\b/giu) ?? []).map((value) => value.toUpperCase()));
-  const officialModels = unique(pageAudit.targets
-    .filter(isScopeVerifiedTarget)
-    .flatMap((target) => [target.url, target.title ?? '', target.description ?? '', ...target.matchedFacts])
-    .flatMap((value) => value.match(/\bES-[A-Z0-9]+\b/giu) ?? [])
-    .map((value) => value.toUpperCase()));
-  if (submittedModels.length === 0 || officialModels.length === 0) return null;
-  if (submittedModels.some((model) => officialModels.includes(model))) return null;
-  return { submitted: submittedModels, official: officialModels };
+function submittedSourceScore(pageAudit: PageAuditResult) {
+  return pageAudit.submittedSourceScore ?? (pageAudit.targets.some(isScopeVerifiedTarget) ? 100 : 0);
 }
 
-function isScopeVerifiedTarget(target: PageAuditResult['targets'][number]) {
-  return target.status === 'ok'
-    && target.sourceRelation !== 'unrelated'
-    && target.scopeRelation !== 'partial'
-    && target.scopeRelation !== 'mismatched';
+function siteInfrastructureScore(pageAudit: PageAuditResult) {
+  return pageAudit.siteInfrastructureScore ?? pageAudit.score;
 }
 
 function businessTypeName(value: BusinessType) {

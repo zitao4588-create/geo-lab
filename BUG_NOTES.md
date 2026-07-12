@@ -268,3 +268,47 @@ Symptom: P02 used an official ES-LM55 page while the submitted description claim
 Fix: compare submitted model identifiers with scope-verified official primary models and add `issue_source_fact_conflict` plus a direct unverified-fact statement.
 
 Verification: the new regression failed before the fix and now passes. The rebuilt P02 report explicitly states `ES-LV9C` versus `ES-LM55` and retains the provider conflict evidence.
+
+## 2026-07-12: Source Conflict Consumed Quota And Sampling Before Confirmation
+
+Symptom: an input claiming ES-LV9C with an audited ES-LM55 official page could start provider sampling and consume a diagnosis slot before the conflict was shown.
+
+Cause: the POST path consumed quota and launched PageAudit/provider sampling concurrently; the original preflight checked only input completeness and did not audit the URL.
+
+Fix: preflight can now return a source-aware confirmation assessment. The diagnosis POST re-audits the source before quota and passes the verified PageAudit into report generation only after the conflict gate succeeds.
+
+Verification: the controlled integration test returns needs_confirmation/422 with zero provider calls, then accepts a corrected same-IP request with 201 and one controlled provider call.
+
+## 2026-07-12: Full-Name Matching Undercounted Safe Entity Aliases
+
+Symptom: answers using a safe entity shorthand such as “海底捞” could fail to count as mentioning “海底捞西安门店服务”, while generic category terms could still match loose fact fragments.
+
+Cause: brand mention used normalized full-string containment, while no-brand fact matching allowed weak generic terms.
+
+Fix: derive safe aliases by removing city and generic suffixes, reject generic aliases, and require an entity alias or verified official model as a strong identity anchor.
+
+Verification: six labeled cases cover full names, local aliases, unbranded recommendation, generic-only text, wrong primary models, and related-product mentions; all pass.
+
+## 2026-07-12: Official Content Was Ambiguous And PageAudit Used Fridge-Specific Facts
+
+Symptom: the homepage promised a fast “AI exposure risk” check without a stable GEO category or explicit exclusions. Features, FAQ, GEO evidence, and `llms.txt` were missing; sitemap coverage was incomplete; PageAudit requested `/privacy/` although the public file was `/privacy.html` and its discovery dictionary contained fridge-only terms.
+
+Fix: add a single product definition and exclusion statement across public surfaces; add features, FAQ, evidence-boundary, machine-readable, sitemap, canonical, WebApplication, and FAQPage entries; switch PageAudit to the real privacy route and generic business facts.
+
+Verification: the initially failing four-part content contract passes 4/4; the complete suite passes 63/63, PageAudit reports 8/8 ok, and both tested viewports have zero overflow and zero console errors/warnings.
+
+## 2026-07-12: PageAudit Followed Untrusted URLs Without Network Or Body Guards
+
+Symptom: PageAudit used direct `fetch` with automatic redirects and full-body reads. It did not reject private addresses, DNS changes, private redirect targets, wrong MIME, oversized responses or loops, and it recorded no content hash or freshness state.
+
+Fix: add per-hop URL/DNS validation, manual redirects, private/reserved IPv4/IPv6 rejection, timeout and MIME checks, streaming byte limits, controlled dynamic-render injection, and provenance fields. Local integration fixtures require an explicit loopback-only environment allowlist.
+
+Verification: G3 safety cases cover private literals/resolution, IPv4-mapped IPv6, DNS rebinding, private redirect, loop, MIME, size, timeout, static/dynamic paths and scope retention. Full regression passes 73/73.
+
+## 2026-07-12: Health Overstated Readiness And Rate Limits Reset On Restart
+
+Symptom: a configured provider was reported ready without cost-boundary or recent-success evidence; Tencent/Volcengine could sample while billing safety was unknown. Hourly and global counters lived only in process memory.
+
+Fix: split health semantics, add time-bounded cost gates and zero-request fail-close, persist operational aggregates, and replace in-memory counters with an atomic single-instance limiter storing only hashed client identifiers.
+
+Verification: cost-unknown and expired gates make zero provider requests; controlled restart keeps the 429 boundary while same-ID recovery still works; health exposes persisted latency/success aggregates without input text. Full regression passes 78/78.

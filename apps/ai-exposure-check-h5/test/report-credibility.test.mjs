@@ -107,7 +107,8 @@ test('report with no auditable URL withholds score and exports one consistent au
   assert.equal(report.stages.credibility.scoreStatus, 'withheld');
   assert.equal(report.stages.credibility.naturalRecommendationRate, 0);
   const markdown = renderReportMarkdown(report);
-  assert.match(markdown, /公开页面审计：未检测/u);
+  assert.match(markdown, /提交来源可信度：未检测/u);
+  assert.match(markdown, /站点基建完整度：未检测/u);
   assert.doesNotMatch(markdown, /公开页面审计：20\/100/u);
 });
 
@@ -160,6 +161,30 @@ test('Markdown, HTML, and evidence package expose the same credibility values', 
   assert.deepEqual(evidence.report.credibility, report.stages.credibility);
   assert.match(markdown, new RegExp(`字符串出现率：${Math.round(report.stages.credibility.stringMentionRate * 1000) / 10}%`, 'u'));
   assert.match(html, new RegExp(`字符串出现率 ${Math.round(report.stages.credibility.stringMentionRate * 1000) / 10}%`, 'u'));
+});
+
+test('submitted-source trust and site-infrastructure completeness stay separate across report surfaces', () => {
+  const input = physicalInput({ samplePrompts: ['松下大锤子2.0剃须刀是什么？'] });
+  const prompt = buildPromptUniverse(input)[0];
+  const audit = {
+    ...officialAudit(),
+    submittedSourceScore: 100,
+    siteInfrastructureScore: 12,
+    targets: officialAudit().targets.map((target) => ({ ...target, id: 'submitted', submitted: true, sourceRelation: 'entity_matched', scopeRelation: 'matched' }))
+  };
+  const samples = [{ prompt, provider: 'qwen', model: 'controlled', status: 'success', sampledAt: new Date().toISOString(), latencyMs: 1, answer: '松下大锤子2.0是 ES-LM55 五刀头电动剃须刀。' }];
+  const report = buildFinalGeoReport(input, samples, audit, providers);
+  const infrastructure = report.stages.score.dimensions.find((item) => item.code === 'INFRASTRUCTURE');
+  assert.equal(report.stages.credibility.confidence, 'high');
+  assert.equal(infrastructure.score, 12);
+  assert.match(report.summary, /提交来源 100\/100，站点基建 12\/100/u);
+  assert.match(renderReportMarkdown(report), /提交来源可信度：100\/100/u);
+  assert.match(renderReportMarkdown(report), /站点基建完整度：12\/100/u);
+  assert.match(renderReportHtml(report), /提交来源可信度：100\/100/u);
+  assert.match(renderReportHtml(report), /站点基建完整度：12\/100/u);
+  const evidence = buildEvidencePackage(input, report, samples, audit, providers);
+  assert.equal(evidence.pageAudit.submittedSourceScore, 100);
+  assert.equal(evidence.pageAudit.siteInfrastructureScore, 12);
 });
 
 test('external instruction text remains data and never enters generated prompts as a command', () => {
@@ -228,6 +253,36 @@ test('unsupported price, safety, qualification, or effect claims stay unverified
   assert.ok(report.stages.credibility.unverifiedFacts.some((item) => item.includes('百分百除菌')));
   assert.ok(report.stages.credibility.confirmedFacts.every((item) => !item.includes('百分百除菌')));
   assert.equal(report.stages.credibility.scoreStatus, 'withheld');
+});
+
+test('Markdown, HTML, and evidence package expose identical source scope, freshness, canonical, and hash', () => {
+  const input = physicalInput({ links: 'https://example.com/product', samplePrompts: ['松下大锤子剃须刀是什么？'] });
+  const prompt = buildPromptUniverse(input)[0];
+  const audit = officialAudit();
+  Object.assign(audit.targets[0], {
+    url: 'https://example.com/product',
+    canonicalUrl: 'https://example.com/products/es-lm55',
+    scopeRelation: 'partial',
+    freshness: 'possibly_stale',
+    renderMode: 'controlled_dynamic',
+    contentHash: 'a'.repeat(64),
+    matchedEvidence: [{ fact: 'ES-LM55', snippet: '官方主型号 ES-LM55' }]
+  });
+  const samples = [{ prompt, provider: 'deepseek', model: 'controlled', status: 'success', sampledAt: new Date().toISOString(), latencyMs: 1, answer: '松下大锤子剃须刀是 ES-LM55 电动剃须刀。' }];
+  const report = buildFinalGeoReport(input, samples, audit, providers);
+  const markdown = renderReportMarkdown(report);
+  const html = renderReportHtml(report);
+  const evidence = buildEvidencePackage(input, report, samples, audit, providers);
+  for (const output of [markdown, html]) {
+    assert.match(output, /部分匹配/u);
+    assert.match(output, /可能过期/u);
+    assert.match(output, /受控动态渲染/u);
+    assert.match(output, /products\/es-lm55/u);
+    assert.match(output, /aaaaaaaaaaaa/u);
+  }
+  assert.equal(evidence.pageAudit.targets[0].scopeRelation, 'partial');
+  assert.equal(evidence.pageAudit.targets[0].freshness, 'possibly_stale');
+  assert.equal(evidence.pageAudit.targets[0].contentHash, 'a'.repeat(64));
 });
 
 function physicalInput(overrides = {}) {

@@ -1,0 +1,18 @@
+# AI曝光体检
+
+定义：AI曝光体检是一个面向品牌和产品负责人的多模型 GEO 实体认知与公开证据诊断工具。
+排除：它不是医学体检、身体或影像检测、隐私泄露扫描或广告投放曝光统计工具。
+
+输入：产品或品牌名称、一句话介绍、公开入口、行业、城市、目标客户、竞品名称，以及可选联系方式。
+流程：核对公开入口与实体关系；进行已配置模型的真实问答采样；审计公开页面与机器可读入口；按规则汇总证据。
+输出：实体识别、自然推荐、来源可信度、站点基建四项指标，以及采样证据、页面缺口和优化建议。
+边界：结果只反映本次采样和页面审计，不代表全网排名、长期引用率、真实流量或商业结果；失败模型不会生成模拟答案。
+隐私：必要业务资料和问题会发送给已配置模型服务；可选联系方式不会发送给模型。请勿提交密码、支付信息、商业秘密或他人隐私。
+
+官方入口：https://exposure.playgamelab.cn/
+产品说明：https://exposure.playgamelab.cn/ai-exposure-check.html
+功能指标：https://exposure.playgamelab.cn/features/
+常见问题：https://exposure.playgamelab.cn/faq/
+证据边界：https://exposure.playgamelab.cn/geo-case/
+隐私政策：https://exposure.playgamelab.cn/privacy.html
+用户协议：https://exposure.playgamelab.cn/terms.html

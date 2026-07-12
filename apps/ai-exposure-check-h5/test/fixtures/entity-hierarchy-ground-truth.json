@@ -1,0 +1,8 @@
+[
+  { "id": "A01", "brand": "松下", "marketingName": "大锤子2.0", "productOrService": "电动剃须刀", "primaryModel": "ES-LM55", "city": null, "store": null },
+  { "id": "A02", "brand": "海底捞", "marketingName": null, "productOrService": "火锅餐饮门店服务", "primaryModel": null, "city": "西安", "store": "未提供具体门店" },
+  { "id": "A03", "brand": "海底捞", "marketingName": null, "productOrService": "火锅餐饮门店服务", "primaryModel": null, "city": "西安", "store": "未提供具体门店" },
+  { "id": "A04", "brand": "海底捞", "marketingName": null, "productOrService": "火锅餐饮门店服务", "primaryModel": null, "city": "西安", "store": "未提供具体门店" },
+  { "id": "A05", "brand": "松下", "marketingName": "大锤子2.0", "productOrService": "电动剃须刀", "primaryModel": "ES-LM55", "city": null, "store": null },
+  { "id": "A06", "brand": "松下", "marketingName": "大锤子2.0", "productOrService": "电动剃须刀", "primaryModel": "ES-LM55", "city": null, "store": null }
+]

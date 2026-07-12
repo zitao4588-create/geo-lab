@@ -23,6 +23,8 @@ interface SamplingProviderConfig {
   maxTokens: number;
   readyNote: string;
   sampledNote: string;
+  samplingAllowed: boolean;
+  costGuard: 'provider_enforced' | 'manually_confirmed' | 'unknown' | 'disabled';
 }
 
 interface NarrativeJsonResult {
@@ -48,8 +50,10 @@ export function getDeepSeekRuntime() {
   return {
     provider: 'deepseek' as const,
     model: config.model,
-    hasApiKey: samplingConfigs.some((providerConfig) => Boolean(providerConfig.apiKey)),
+    hasApiKey: samplingConfigs.some((providerConfig) => Boolean(providerConfig.apiKey) && providerConfig.samplingAllowed),
+    hasConfiguredKey: samplingConfigs.some((providerConfig) => Boolean(providerConfig.apiKey)),
     configuredProviderCount: samplingConfigs.filter((providerConfig) => Boolean(providerConfig.apiKey)).length,
+    samplingAllowedProviderCount: samplingConfigs.filter((providerConfig) => Boolean(providerConfig.apiKey) && providerConfig.samplingAllowed).length,
     sampleConcurrency: config.sampleConcurrency,
     sampleMaxRetries: config.sampleMaxRetries,
     polishEnabled: config.polishEnabled,
@@ -59,9 +63,9 @@ export function getDeepSeekRuntime() {
 
 export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samples: AiSample[]; providerStatuses: AiProviderStatus[] }> {
   const samplingConfigs = getSamplingProviderConfigs();
-  const configuredProviders = samplingConfigs.filter(isConfiguredProvider);
+  const configuredProviders = samplingConfigs.filter(isSamplingAllowedProvider);
   if (configuredProviders.length === 0) {
-    throw new SamplingUnavailableError('当前服务未配置可用的 AI 采样 key，无法生成最终 GEO 分析报告');
+    throw new SamplingUnavailableError('当前没有通过配置与成本保护门的 AI 采样 provider，无法生成最终 GEO 分析报告');
   }
 
   const providerResults = await Promise.all(configuredProviders.map(async (config) => {
@@ -84,7 +88,7 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
   const providerStatuses: AiProviderStatus[] = [
     ...providerResults.map((result) => result.status),
     ...samplingConfigs
-      .filter((config) => !config.apiKey)
+      .filter((config) => !config.apiKey || !config.samplingAllowed)
       .map((config) => buildRuntimeProviderStatus(config, prompts.length))
   ];
 
@@ -231,7 +235,8 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
         status: 'success',
         sampledAt,
         latencyMs: Date.now() - startedAt,
-        answer
+        answer,
+        fallbackUsed: index > 0
       };
     } catch (error) {
       lastError = error instanceof Error ? sanitizeProviderError(error.message) : 'sampling_failed';
@@ -248,7 +253,9 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
     status: 'failed',
     sampledAt,
     latencyMs: Date.now() - startedAt,
-    error: lastError
+    error: lastError,
+    fallbackUsed: modelCandidates.indexOf(attemptedModel) > 0,
+    failureType: classifyProviderFailure(lastError)
   };
 }
 
@@ -299,6 +306,8 @@ function getConfig(): DeepSeekConfig {
 
 function getSamplingProviderConfigs(): SamplingProviderConfig[] {
   const deepseek = getConfig();
+  const hy3CostConfirmed = manualCostGuardConfirmed('HY3');
+  const doubaoCostConfirmed = manualCostGuardConfirmed('DOUBAO');
   const bailianApiKey = process.env.BAILIAN_API_KEY || process.env.QWEN_API_KEY;
   const bailianBaseUrl =
     process.env.BAILIAN_BASE_URL ||
@@ -316,7 +325,9 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       timeoutMs: 18_000,
       maxTokens: 650,
       readyNote: '阿里云百炼 DeepSeek 免费额度接口已配置，可进行真实采样。',
-      sampledNote: '阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。'
+      sampledNote: '阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。',
+      samplingAllowed: Boolean(deepseek.apiKey),
+      costGuard: deepseek.apiKey ? 'provider_enforced' : 'disabled'
     },
     {
       provider: 'hy3',
@@ -328,7 +339,9 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       timeoutMs: 20_000,
       maxTokens: 500,
       readyNote: '腾讯 TokenHub Hy3 API key 已配置，可进行真实采样。',
-      sampledNote: '腾讯 TokenHub Hy3 API 已完成真实采样。'
+      sampledNote: '腾讯 TokenHub Hy3 API 已完成真实采样。',
+      samplingAllowed: hy3CostConfirmed,
+      costGuard: hy3CostConfirmed ? 'manually_confirmed' : 'unknown'
     },
     {
       provider: 'qwen',
@@ -340,7 +353,9 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       timeoutMs: 20_000,
       maxTokens: 500,
       readyNote: '阿里云百炼 Qwen API key 已配置，可进行真实采样。',
-      sampledNote: '阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。'
+      sampledNote: '阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。',
+      samplingAllowed: Boolean(bailianApiKey),
+      costGuard: bailianApiKey ? 'provider_enforced' : 'disabled'
     },
     {
       provider: 'doubao',
@@ -360,24 +375,35 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       timeoutMs: 20_000,
       maxTokens: 500,
       readyNote: '火山方舟豆包 API key 已配置，可进行真实采样。',
-      sampledNote: '火山方舟豆包 OpenAI-compatible API 已完成真实采样。'
+      sampledNote: '火山方舟豆包 OpenAI-compatible API 已完成真实采样。',
+      samplingAllowed: doubaoCostConfirmed,
+      costGuard: doubaoCostConfirmed ? 'manually_confirmed' : 'unknown'
     }
   ];
 }
 
-function isConfiguredProvider(config: SamplingProviderConfig): config is SamplingProviderConfig & { apiKey: string } {
-  return Boolean(config.apiKey);
+function isSamplingAllowedProvider(config: SamplingProviderConfig): config is SamplingProviderConfig & { apiKey: string } {
+  return Boolean(config.apiKey) && config.samplingAllowed;
 }
 
 function buildRuntimeProviderStatus(config: SamplingProviderConfig, promptCount = 0): AiProviderStatus {
+  const configured = Boolean(config.apiKey);
+  const samplingAllowed = configured && config.samplingAllowed;
   return {
     provider: config.provider,
     model: config.model,
-    status: config.apiKey ? 'ready' : 'unavailable',
+    status: samplingAllowed ? 'ready' : 'unavailable',
     promptCount,
     successCount: 0,
     failureCount: 0,
-    note: config.apiKey ? config.readyNote : `${config.provider} 官方采样接口未配置。`
+    configured,
+    samplingAllowed,
+    costGuard: configured ? config.costGuard : 'disabled',
+    note: !configured
+      ? `${config.provider} 官方采样接口未配置。`
+      : samplingAllowed
+        ? `${config.readyNote} 此状态只表示配置与成本门允许，不代表最近调用成功。`
+        : `${config.provider} 已配置，但免费/计费边界未确认，成本保护已禁止采样。`
   };
 }
 
@@ -402,6 +428,12 @@ function readCsv(value: string | undefined, fallback: string[]) {
     .map((item) => item.trim())
     .filter(Boolean);
   return [...new Set(items)];
+}
+
+function manualCostGuardConfirmed(prefix: 'HY3' | 'DOUBAO') {
+  if (!readBoolean(process.env[`${prefix}_COST_GUARD_CONFIRMED`], false)) return false;
+  const until = Date.parse(process.env[`${prefix}_COST_GUARD_CONFIRMED_UNTIL`] ?? '');
+  return Number.isFinite(until) && until > Date.now();
 }
 
 function getModelCandidates(config: SamplingProviderConfig) {
@@ -457,4 +489,13 @@ export function sanitizeProviderError(value: string) {
     .replace(/Bearer\s+[a-zA-Z0-9._-]+/gu, 'Bearer [redacted]')
     .replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/gu, '[redacted_ip]')
     .slice(0, 180);
+}
+
+function classifyProviderFailure(value: string) {
+  if (/timeout|timed out|abort/iu.test(value)) return 'timeout';
+  if (/quota|free.?tier|allocation|balance|billing|exhaust|resource.?package/iu.test(value)) return 'quota_or_billing';
+  if (/429|rate.?limit/iu.test(value)) return 'rate_limit';
+  if (/401|403|access|auth|permission|allowlist/iu.test(value)) return 'authorization';
+  if (/network|socket|connect|dns|fetch failed/iu.test(value)) return 'network';
+  return 'provider_error';
 }

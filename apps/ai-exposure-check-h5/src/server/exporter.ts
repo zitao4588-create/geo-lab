@@ -3,7 +3,8 @@ import type { AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, PageA
 export function renderReportMarkdown(report: DiagnosisReport) {
   const credibility = report.stages.credibility;
   const scoreLabel = credibility?.scoreStatus === 'withheld' ? '暂不评分（证据不足）' : `${report.score}/100（${report.scoreLevel}）`;
-  const auditLabel = report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.score}/100` : '未检测';
+  const sourceLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'source');
+  const infrastructureLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'infrastructure');
   return `# ${report.brand} GEO 分析成果报告
 
 - 报告 ID：${report.id}
@@ -13,7 +14,8 @@ export function renderReportMarkdown(report: DiagnosisReport) {
 - 字符串出现率：${toPercent(credibility?.stringMentionRate ?? report.stages.aiSearch.mentionRate)}
 - 正确实体识别率：${credibility?.correctEntityRecognitionRate == null ? '无法判断' : toPercent(credibility.correctEntityRecognitionRate)}
 - 无品牌词自然推荐率：${toPercent(credibility?.naturalRecommendationRate ?? 0)}
-- 公开页面审计：${auditLabel}
+- 提交来源可信度：${sourceLabel}
+- 站点基建完整度：${infrastructureLabel}
 
 ## 摘要
 
@@ -56,9 +58,9 @@ ${report.aiMeta.providers.map((item) => `| ${item.provider} | ${item.status} | $
 
 ## 公开页面审计
 
-| 页面 | 状态 | HTTP | URL | 命中事实 | 缺少事实 |
-| --- | --- | ---: | --- | --- | --- |
-${report.stages.infrastructure.pageAudit.targets.map((item) => `| ${item.name} | ${item.status} | ${item.httpStatus ?? '-'} | ${item.url} | ${item.matchedFacts.join('、') || '-'} | ${item.missingFacts.join('、') || '-'} |`).join('\n')}
+| 页面 | 状态 | 范围 | 时效 | 抓取方式 | URL / canonical | 命中事实 | 内容哈希 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+${report.stages.infrastructure.pageAudit.targets.map((item) => `| ${item.name} | ${item.status} | ${scopeLabel(item.scopeRelation)} | ${freshnessLabel(item.freshness)} | ${renderModeLabel(item.renderMode)} | ${item.url}${item.canonicalUrl && item.canonicalUrl !== item.url ? `<br>${item.canonicalUrl}` : ''} | ${item.matchedFacts.join('、') || '-'} | ${item.contentHash?.slice(0, 12) ?? '-'} |`).join('\n')}
 
 ## 主要问题
 
@@ -96,12 +98,13 @@ ${report.evidencePolicy.notes}
 export function renderReportHtml(report: DiagnosisReport) {
   const credibility = report.stages.credibility;
   const scoreWithheld = credibility?.scoreStatus === 'withheld';
-  const auditLabel = report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.score}/100` : '未检测';
+  const sourceLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'source');
+  const infrastructureLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'infrastructure');
   const dimensionRows = report.stages.score.dimensions
     .map((item) => `<tr><td>${escapeHtml(item.name)}</td><td>${Math.round(item.weight * 100)}%</td><td>${item.score}</td><td>${escapeHtml(item.evidenceLabel)}</td><td>${escapeHtml(item.comment)}</td></tr>`)
     .join('');
   const auditRows = report.stages.infrastructure.pageAudit.targets
-    .map((item) => `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.status)}</td><td>${item.httpStatus ?? '-'}</td><td>${escapeHtml(item.url)}</td><td>${escapeHtml(item.matchedFacts.join('、') || '-')}</td><td>${escapeHtml(item.missingFacts.join('、') || '-')}</td></tr>`)
+    .map((item) => `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.status)}</td><td>${escapeHtml(scopeLabel(item.scopeRelation))}</td><td>${escapeHtml(freshnessLabel(item.freshness))}</td><td>${escapeHtml(renderModeLabel(item.renderMode))}</td><td>${escapeHtml(item.url)}${item.canonicalUrl && item.canonicalUrl !== item.url ? `<br><small>canonical: ${escapeHtml(item.canonicalUrl)}</small>` : ''}</td><td>${escapeHtml(item.matchedFacts.join('、') || '-')}</td><td>${escapeHtml(item.contentHash?.slice(0, 12) ?? '-')}</td></tr>`)
     .join('');
   const providerRows = report.aiMeta.providers
     .map((item) => `<tr><td>${escapeHtml(item.provider)}</td><td>${escapeHtml(item.status)}</td><td>${item.successCount}/${item.promptCount}</td><td>${escapeHtml(item.note)}</td></tr>`)
@@ -166,14 +169,15 @@ export function renderReportHtml(report: DiagnosisReport) {
         <span>报告 ID：${escapeHtml(report.id)}</span>
         <span>生成时间：${escapeHtml(report.generatedAt)}</span>
         <span>真实采样：${report.aiMeta.successCount}/${report.aiMeta.promptCount} · 字符串出现率 ${toPercent(credibility?.stringMentionRate ?? report.stages.aiSearch.mentionRate)}</span>
-        <span>公开页面审计：${auditLabel}</span>
+        <span>提交来源可信度：${sourceLabel}</span>
+        <span>站点基建完整度：${infrastructureLabel}</span>
       </div>
     </header>
     <section><h2>核心结论</h2><p>${escapeHtml(report.stages.overview.keyFinding)}</p></section>
     ${credibilityHtml}
     <section><h2>评分拆解</h2><table><thead><tr><th>维度</th><th>权重</th><th>得分</th><th>证据</th><th>依据</th></tr></thead><tbody>${dimensionRows}</tbody></table></section>
     <section><h2>平台采样状态</h2><table><thead><tr><th>平台</th><th>状态</th><th>成功/总数</th><th>说明</th></tr></thead><tbody>${providerRows}</tbody></table></section>
-    <section><h2>公开页面审计</h2><table><thead><tr><th>页面</th><th>状态</th><th>HTTP</th><th>URL</th><th>命中事实</th><th>缺少事实</th></tr></thead><tbody>${auditRows}</tbody></table></section>
+    <section><h2>公开页面审计</h2><table><thead><tr><th>页面</th><th>状态</th><th>范围</th><th>时效</th><th>抓取</th><th>URL / canonical</th><th>命中事实</th><th>哈希</th></tr></thead><tbody>${auditRows}</tbody></table></section>
     <section><h2>主要问题</h2><ul>${report.issues.map((item) => `<li><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.detail)}</p><small>${escapeHtml(item.evidenceLabel)}</small></li>`).join('')}</ul></section>
     <section><h2>AI 采样答案摘录</h2><ul>${answerRows}</ul></section>
     <section><h2>竞品分析</h2><ul>${competitorRows}</ul></section>
@@ -229,11 +233,39 @@ function confidenceLabel(value: 'high' | 'medium' | 'low') {
   return value === 'high' ? '高置信度' : value === 'medium' ? '中等置信度' : '低置信度';
 }
 
+function pageAuditLabel(pageAudit: PageAuditResult, kind: 'source' | 'infrastructure') {
+  if (pageAudit.targets.length === 0) return '未检测';
+  const score = kind === 'source'
+    ? pageAudit.submittedSourceScore ?? (pageAudit.targets.some((target) => target.submitted && target.status === 'ok') ? 100 : 0)
+    : pageAudit.siteInfrastructureScore ?? pageAudit.score;
+  return `${score}/100`;
+}
+
 function recognitionLabel(value: 'supported' | 'uncertain' | 'misrecognized' | 'not_verifiable' | undefined) {
   if (value === 'supported') return '识别有据';
   if (value === 'uncertain') return '不确定';
   if (value === 'misrecognized') return '错误认知';
   return '无法核验';
+}
+
+function scopeLabel(value: PageAuditResult['targets'][number]['scopeRelation']) {
+  if (value === 'matched') return '匹配';
+  if (value === 'partial') return '部分匹配';
+  if (value === 'mismatched') return '不匹配';
+  return '未知';
+}
+
+function freshnessLabel(value: PageAuditResult['targets'][number]['freshness']) {
+  if (value === 'current') return '当前';
+  if (value === 'possibly_stale') return '可能过期';
+  if (value === 'invalid') return '失效';
+  return '未记录';
+}
+
+function renderModeLabel(value: PageAuditResult['targets'][number]['renderMode']) {
+  if (value === 'controlled_dynamic') return '受控动态渲染';
+  if (value === 'static') return '静态抓取';
+  return '未记录';
 }
 
 function escapeHtml(value: string) {

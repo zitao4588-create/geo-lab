@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "targets": ["dist/client", "g4-production-c4-operations"],
+  "scannedFiles": 28,
+  "findings": []
+}

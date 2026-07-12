@@ -1,0 +1,20 @@
+{
+  "goal": "G3",
+  "completedAt": "2026-07-12T20:05:00+08:00",
+  "realProviderCalls": 0,
+  "checks": {
+    "domainPromptCases": { "passed": 3, "failed": 0 },
+    "g3SpecificTests": { "passed": 9, "failed": 0 },
+    "fullTestRun": { "passed": 73, "failed": 0 },
+    "batchMatrix": { "passed": 20, "failed": 0 },
+    "typecheck": "passed",
+    "build": "passed",
+    "gitDiffCheck": "passed",
+    "l01Scope": "partial",
+    "l03Scope": "mismatched",
+    "l04UnsupportedClaims": "unverified",
+    "desktop": { "viewport": "1440x1000", "overflow": 0, "sourceFieldsVisible": 5 },
+    "mobile": { "viewport": "390x844", "overflow": 0, "sourceFieldsVisible": 5 },
+    "browserConsole": { "errors": 0, "warnings": 0 }
+  }
+}
