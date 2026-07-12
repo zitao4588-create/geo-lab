@@ -3,11 +3,11 @@
   "loopId": "ai-exposure-optimization-g1-g4",
   "project": "/Users/qzt/Developer/geo-lab",
   "createdAt": "2026-07-12T19:16:57+08:00",
-  "updatedAt": "2026-07-13T01:08:46+08:00",
-  "status": "in_progress",
+  "updatedAt": "2026-07-13T01:11:54+08:00",
+  "status": "waiting_for_user",
   "activeGoal": "G4",
   "lastCompletedCheckpoint": "g3_completed_c2",
-  "lastNotificationKey": "g4_all_l3_l4_authorized_20260713",
+  "lastNotificationKey": "g4_waiting_for_chrome_extension_enable_20260713",
   "automation": {
     "id": "ai-g1-g4-loop",
     "name": "AI曝光体检 G1-G4 Loop",
@@ -94,10 +94,10 @@
     {
       "id": "G4",
       "title": "生产 C4、额度保护与运行观测",
-      "status": "in_progress",
+      "status": "waiting_for_user",
       "completionLevel": "C2",
       "outputDir": "outputs/h5-mvp/optimization-loop/g4-production-c4-operations",
-      "lastCheckpoint": "authorized_release_precheck_passed",
+      "lastCheckpoint": "branch_committed_and_pushed_000fd1a",
       "verification": [
         "g4_specific_5_of_5_pass",
         "integration_8_of_8_pass",
@@ -118,6 +118,16 @@
       ]
     }
   ],
-  "blocked": null,
-  "nextAction": "Create an isolated branch and commit/push only the G1-G4 scope. Then inspect the three cloud consoles without exposing secrets and choose bounded Tencent/Volcengine guard deadlines before deployment."
+  "blocked": {
+    "category": "login_browser_control",
+    "reason": "Chrome reports the ChatGPT extension installed but disabled, so the logged-in Alibaba Bailian, Tencent TokenHub, and Volcengine Ark consoles cannot be inspected through the authorized browser-control path.",
+    "requiredUserAction": "Enable the ChatGPT Chrome extension in chrome://extensions and reply that it is enabled.",
+    "attempts": [
+      "Browser setup failed because the extension was unavailable.",
+      "One retry after the troubleshooting wait failed with the same extension error.",
+      "Diagnostic inspection found the extension in the Default profile with enabled=false."
+    ],
+    "safetyBoundary": "Deployment and the single production diagnosis POST remain unexecuted until current cost/free-quota evidence is verified."
+  },
+  "nextAction": "After the user enables the ChatGPT Chrome extension, inspect the three logged-in cloud consoles, record only quota/cost-guard facts without secrets, set bounded Tencent/Volcengine guard deadlines, then deploy and run exactly one production diagnosis with same-ID recovery and export verification."
 }
