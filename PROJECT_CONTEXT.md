@@ -292,7 +292,7 @@ Remaining risks:
 - Real visual QA found a P0 consistency bug: the main cover withheld the score while the desktop preview and report summary still exposed the internal compatibility score. The minimal fix now derives summary copy from `scoreStatus`, hides the score in the preview/cover copy, and adds `displayedScore: null` to the evidence package when withheld.
 - Final local verification passed: typecheck, build, `npm test` 40/40, `git diff --check`, and two real-report Playwright checks at 390×844 and 1440×1000 with no overflow or console errors. Provider error persistence now redacts API keys, bearer tokens, and source IPs. The real-run evidence and final conclusions are in `outputs/h5-mvp/batch-instance-testing-20260712/stage-b-report.md` and `stage-b-summary.json`.
 - Current conclusion: credibility protection passes, but the four-provider runtime does not pass (0/5 complete reports). Remaining blockers are the Bailian/TokenHub IP allowlists and PageAudit false negatives for the Panasonic and Haidilao official pages.
-2026-07-12 source recognition hardening (local acceptance complete, deployment pending):
+2026-07-12 source recognition hardening (C3 deployed):
 
 - The controlled local execution IP is now present in the existing Bailian and TokenHub allowlists. Minimal calls for DeepSeek, Qwen, and Hy3 succeeded, and the saved full run records 200/200 four-provider samples with zero fallback. Exact IP values remain outside project files.
 - PageAudit now audits the full submitted URL instead of discarding its path and only probing origin-relative H5-specific routes.
@@ -301,4 +301,7 @@ Remaining risks:
 - A submitted model that conflicts with the verified official primary model is now an explicit high-severity issue and unverified fact. P02 records `ES-LV9C` versus `ES-LM55` instead of hiding the conflict inside provider rows.
 - Deterministic verification passes: typecheck, build, `git diff --check`, and 47/47 tests. Twelve real-page visual checks at 390×844 and 1440×1000 have zero overflow and zero console errors.
 - Phase B reports were rebuilt with fresh PageAudit results and the previously saved 200/200 successful real four-provider samples, so this Goal added zero model calls. P01/P02/S01 are score-available; L01/L03 remain withheld for the expected scope reasons.
-- Evidence: `outputs/h5-mvp/source-recognition-hardening-20260712/`. Deployment, production switch, and online smoke are still pending at this checkpoint.
+- Evidence: `outputs/h5-mvp/source-recognition-hardening-20260712/`.
+- Commit `5c798b3` was pushed on `codex/source-recognition-hardening` to the verified private remote and deployed as release `20260712095412`, replacing `20260711141454` (kept for rollback).
+- Release precheck and public smoke passed: systemd active, current symlink correct, four providers ready, homepage/health/robots/sitemap/static page and existing-report query/evidence/exports all `200`, and bundle secret scan passed.
+- No production diagnosis POST was sent because the Goal excluded production-data changes. This release is C3, not a newly proven C4 user completion.

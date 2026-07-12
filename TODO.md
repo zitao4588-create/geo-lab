@@ -265,5 +265,5 @@
 - [x] Keep L01 scope-partial, L03 scope-mismatched, E02 unrelated, and L04 unsupported claims outside verified scoring evidence.
 - [x] Pass typecheck, build, diff check, 47/47 tests, 12/12 dual-viewport visual checks, and no-call local release precheck.
 - [x] Rebuild Phase B with fresh PageAudit and saved 200/200 successful real provider samples; no new model calls.
-- [ ] Commit and push the isolated Goal branch.
-- [ ] Deploy through the documented release/symlink/systemd flow and complete online smoke.
+- [x] Commit and push the isolated Goal branch to the verified private remote.
+- [x] Deploy release `20260712095412` through the documented release/symlink/systemd flow and complete read-only online smoke.
