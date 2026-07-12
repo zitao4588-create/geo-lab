@@ -274,4 +274,5 @@
 - [x] G2: AI曝光体检 official content and structured evidence (local C2; 63/63 tests, PageAudit 8/8, dual-viewport QA).
 - [x] G3: business-type prompts, PageAudit rendering/provenance/security (local C2; 73/73 tests and dual-viewport QA).
 - [x] G4 local L2: production-candidate reliability, persistent quota protection, latency/observability, release precheck and dual-viewport QA.
-- [ ] G4 production gate: wait for itemized commit/push, deploy, one production POST/write, cost and console authorization; only then attempt C3/C4.
+- [x] G4 production C4: commit/push, release `20260713012534`, one production report, same-ID recovery, query/evidence/exports, operations metrics and dual-viewport report verification passed.
+- [ ] G4 post-closeout: after the short Tencent/Volcengine permission window expires, keep fail-close until a future run receives new explicit cost authorization; do not treat this acceptance as proof that calls were free.

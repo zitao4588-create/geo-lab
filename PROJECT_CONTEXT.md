@@ -343,4 +343,13 @@ Remaining risks:
 - Added executable release precheck and artifact scanner plus a release/rollback/read-only-smoke checklist. The form now states a realistic 1-4 minute external-service-dependent wait.
 - Verification passed: G4 5/5, integration 8/8, full suite 78/78, release precheck 13/13, final artifact scan 28 files, build/typecheck/diff, fallback/failure/restart paths, and dual-viewport UI with no overflow or console errors/warnings.
 - Evidence: `outputs/h5-mvp/optimization-loop/g4-production-c4-operations/`. Real provider calls 0; no commit, push, deploy, production POST/write, key/allowlist/DNS or cloud-account change.
-- G4 remains active at the mandatory user gate. Current delivery level is C2, not C3/C4.
+- This local C2 checkpoint was superseded by the 2026-07-13 production C4 closeout below.
+
+2026-07-13 G4 production C4 closeout:
+
+- The user explicitly waived the three-cloud console quota review and accepted possible paid usage for the single controlled production acceptance. Tencent and Volcengine sampling permission was limited to a short window ending `2026-07-12T20:30:00Z`, not left permanently open.
+- Branch `codex/ai-exposure-optimization-g1-g4` was committed and pushed. Release `20260713012534` replaced `20260712095412`, which remains available for rollback; systemd is active and public health allows all four configured providers.
+- One production report, `diag_mri2hznd_fg6z69`, completed DeepSeek/Hy3/Qwen/Doubao sampling 40/40 with zero failures and zero fallback. A same-ID replay returned 200 and the same report without a second generation.
+- Report/evidence/Markdown/HTML/evidence-package endpoints and the public report UI all passed. All four surfaces show 54/100; public artifacts contain neither the request ID nor the internal source label.
+- Production visual checks at 390×844 and 1440×1000 showed the real report, evidence boundary and model conflicts with no overflow or console errors/warnings.
+- G4 and the total optimization Loop are C4, not C5: the core report/recovery/export flow is usable, but there is no real-user feedback, sustained trend data or business outcome yet. Evidence: `outputs/h5-mvp/optimization-loop/g4-production-c4-operations/production-acceptance.md`.

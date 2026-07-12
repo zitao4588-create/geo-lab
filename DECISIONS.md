@@ -500,3 +500,16 @@ Decision: persist hourly client and global daily quota counters in one atomic JS
 Reason: process-memory limits reset on restart, allowing accidental quota bursts immediately after a deploy or crash.
 
 Boundary: this is only valid for the current single-instance deployment. Multi-instance coordination still requires a separate design and is not implied by this file.
+
+## 2026-07-13: One-Time Cost-Gate Override For G4 Production Acceptance
+
+Decision: honor the user's explicit instruction to skip current cloud-console quota verification and run one production acceptance report, while limiting Tencent and Volcengine sampling permission to a short expiration window.
+
+Reason: browser control could not access the logged-in consoles, and the user chose deployment and production validation despite the unresolved free-versus-paid status.
+
+Boundary:
+
+- This is authorization for one report, not evidence that any provider call was free.
+- Same request ID replay may recover the persisted report but must not create another report.
+- The short cost permission expires automatically; future production sampling requires new evidence or explicit cost authorization.
+- No API Key value, account detail, source IP or billing data is written to project files.

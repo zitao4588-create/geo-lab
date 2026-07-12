@@ -312,3 +312,19 @@ Symptom: a configured provider was reported ready without cost-boundary or recen
 Fix: split health semantics, add time-bounded cost gates and zero-request fail-close, persist operational aggregates, and replace in-memory counters with an atomic single-instance limiter storing only hashed client identifiers.
 
 Verification: cost-unknown and expired gates make zero provider requests; controlled restart keeps the 429 boundary while same-ID recovery still works; health exposes persisted latency/success aggregates without input text. Full regression passes 78/78.
+
+## 2026-07-13: Production Smoke Loop Overwrote zsh Command Search Path
+
+Symptom: the first local public-smoke loop reported `command not found: curl` for every route and sent no requests.
+
+Cause: the loop variable was named `path`, which is a special zsh array tied to `PATH`.
+
+Fix: renamed the variable to `route` and invoked `/usr/bin/curl` explicitly. The corrected smoke returned 200 for all required routes.
+
+## 2026-07-13: Guessed Report Path Loaded The SPA Start Screen
+
+Symptom: `/report/diag_mri2hznd_fg6z69` returned HTTP 200 but showed the start screen instead of the report.
+
+Cause: the server correctly returned the SPA fallback, while the frontend's implemented share contract reads `?report=<id>`.
+
+Fix: production visual acceptance used `/?report=diag_mri2hznd_fg6z69`. Both viewports loaded the real 54-point report with no overflow or console errors/warnings. No product code change was needed.

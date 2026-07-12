@@ -1,12 +1,12 @@
-# G4 阶段性 Closeout
+# G4 Closeout
 
-本地生产候选已达到 C2，尚未 commit/push/deploy，尚未生成生产报告，因此不是 C3/C4。
+G4 已达到 C4，总 Loop 已完成。
 
-继续前必须获得：
+- 隔离分支已 commit 并 push。
+- release `20260713012534` 已部署，上一 release 保留用于回滚。
+- 用户明确豁免三家云后台额度核验并接受可能付费调用；腾讯/火山许可使用短期截止时间，不是永久放开。
+- 唯一生产报告 `diag_mri2hznd_fg6z69` 四模型 40/40 成功。
+- 同 request ID 恢复、持久化索引、查询、证据和三种导出均通过。
+- 双端生产报告无横向溢出和 console error/warning。
 
-1. L3/L4：允许把当前 G1-G4 变更 commit 并 push 到指定分支。
-2. L4：允许按现有 release/symlink/systemd 流程部署 H5 target。
-3. L4 + 成本/生产数据：允许一次生产诊断 POST，只生成一份报告，使用稳定 request ID，验证同 ID 恢复、查询和三种导出。
-4. 人工后台证据：百炼 FreeTierOnly/模型范围/白名单；腾讯权益与费用中心；火山免费推理额度/奖励包与后付费风险，并给腾讯/火山成本门明确的未来截止时间。
-
-未获得任一项时保持 waiting_for_user；不得把 C2 写成最终交付。
+完整证据见 `production-acceptance.md`。尚无真实用户反馈、持续数据或收益证据，因此不写成 C5。

@@ -3,16 +3,16 @@
   "loopId": "ai-exposure-optimization-g1-g4",
   "project": "/Users/qzt/Developer/geo-lab",
   "createdAt": "2026-07-12T19:16:57+08:00",
-  "updatedAt": "2026-07-13T01:11:54+08:00",
-  "status": "waiting_for_user",
-  "activeGoal": "G4",
-  "lastCompletedCheckpoint": "g3_completed_c2",
-  "lastNotificationKey": "g4_waiting_for_chrome_extension_enable_20260713",
+  "updatedAt": "2026-07-13T01:33:45+08:00",
+  "status": "completed",
+  "activeGoal": null,
+  "lastCompletedCheckpoint": "g4_completed_c4",
+  "lastNotificationKey": "g4_completed_c4_20260713",
   "automation": {
     "id": "ai-g1-g4-loop",
     "name": "AI曝光体检 G1-G4 Loop",
     "kind": "heartbeat",
-    "status": "ACTIVE",
+    "status": "DISABLED",
     "interval": "hourly",
     "targetThreadId": "019f521f-74d2-7473-a048-3737fcd721b2"
   },
@@ -26,7 +26,9 @@
     "cloudOrAccountChanges": true,
     "authorizedAt": "2026-07-13T01:08:46+08:00",
     "authorizedByUserMessage": "确认授权",
-    "scope": "new branch commit/push; read-only three-cloud console review and bounded cost-guard configuration; existing H5 deployment; exactly one controlled production diagnosis and report write"
+    "scope": "new branch commit/push; existing H5 deployment; exactly one controlled production diagnosis and report write; user explicitly waived cloud-console quota verification and accepted possible paid usage",
+    "costGateOverrideAt": "2026-07-13T01:24:37+08:00",
+    "costGateOverrideByUserMessage": "不用确认额度了，跳过闸门核验，直接部署和生产验收"
   },
   "goals": [
     {
@@ -94,10 +96,10 @@
     {
       "id": "G4",
       "title": "生产 C4、额度保护与运行观测",
-      "status": "waiting_for_user",
-      "completionLevel": "C2",
+      "status": "completed",
+      "completionLevel": "C4",
       "outputDir": "outputs/h5-mvp/optimization-loop/g4-production-c4-operations",
-      "lastCheckpoint": "branch_committed_and_pushed_000fd1a",
+      "lastCheckpoint": "production_c4_acceptance_passed",
       "verification": [
         "g4_specific_5_of_5_pass",
         "integration_8_of_8_pass",
@@ -114,20 +116,19 @@
         "fallback_fault_injection_pass",
         "dual_viewport_visual_pass",
         "console_errors_and_warnings_0",
-        "real_provider_calls_0"
+        "real_provider_calls_40_of_40_success",
+        "release_20260713012534_deployed",
+        "systemd_active_and_public_smoke_pass",
+        "single_report_diag_mri2hznd_fg6z69",
+        "same_request_id_recovery_pass",
+        "request_index_and_single_submission_pass",
+        "query_evidence_and_three_exports_200",
+        "cross_surface_score_54_consistent",
+        "operations_metrics_and_privacy_pass",
+        "production_visual_390x844_and_1440x1000_pass"
       ]
     }
   ],
-  "blocked": {
-    "category": "login_browser_control",
-    "reason": "Chrome reports the ChatGPT extension installed but disabled, so the logged-in Alibaba Bailian, Tencent TokenHub, and Volcengine Ark consoles cannot be inspected through the authorized browser-control path.",
-    "requiredUserAction": "Enable the ChatGPT Chrome extension in chrome://extensions and reply that it is enabled.",
-    "attempts": [
-      "Browser setup failed because the extension was unavailable.",
-      "One retry after the troubleshooting wait failed with the same extension error.",
-      "Diagnostic inspection found the extension in the Default profile with enabled=false."
-    ],
-    "safetyBoundary": "Deployment and the single production diagnosis POST remain unexecuted until current cost/free-quota evidence is verified."
-  },
-  "nextAction": "After the user enables the ChatGPT Chrome extension, inspect the three logged-in cloud consoles, record only quota/cost-guard facts without secrets, set bounded Tencent/Volcengine guard deadlines, then deploy and run exactly one production diagnosis with same-ID recovery and export verification."
+  "blocked": null,
+  "nextAction": "Loop complete. Leave future production sampling fail-closed after the short Tencent/Volcengine permission window expires; open a new Goal for any C5 monitoring or user-feedback work."
 }
