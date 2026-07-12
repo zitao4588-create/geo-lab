@@ -1,0 +1,729 @@
+{
+  "generatedAt": "2026-07-11T23:42:24.565Z",
+  "execution": "phase_a_deterministic_preflight",
+  "paidModelCalls": 0,
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "results": [
+    {
+      "id": "P01",
+      "title": "实体商品资料和官方型号页完整",
+      "inputSummary": "松下大锤子2.0剃须刀 / 电动剃须刀 / 全国",
+      "businessType": "physical_product",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "physical_product",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "P02",
+      "title": "输入型号与官方来源冲突",
+      "inputSummary": "松下大锤子剃须刀 / 电动剃须刀 / 全国",
+      "businessType": "physical_product",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "model_or_source_conflict"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: conflicting official model is misrecognized"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "physical_product",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "P03",
+      "title": "只有品牌和宽泛品类",
+      "inputSummary": "松下剃须刀 / 男士清洁工具 / 全国",
+      "businessType": "physical_product",
+      "sourceStatus": "missing",
+      "expectedStatus": "needs_confirmation",
+      "actualStatus": "needs_confirmation",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 44,
+        "findingCount": 4,
+        "requiredActionCount": 3,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "needs_confirmation",
+        "score": 44,
+        "businessType": "physical_product",
+        "findings": [
+          "目标客户描述较宽，场景问题可能失真。",
+          "行业口径过宽，系统无法生成自然的品类问题。",
+          "没有可核验的官方入口，正确实体识别只能标为待确认。",
+          "未提供竞品，本次不能判断真实替代关系。"
+        ],
+        "requiredActions": [
+          "补充更具体的使用人群或决策场景。",
+          "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+          "粘贴官网、官方产品页、小程序介绍页或公开账号入口。"
+        ],
+        "officialSourceStatus": "missing",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      }
+    },
+    {
+      "id": "P04",
+      "title": "虚构品牌且无可靠来源",
+      "inputSummary": "月球牌量子胡须雷达 / 产品 / 全国",
+      "businessType": "physical_product",
+      "sourceStatus": "missing",
+      "expectedStatus": "insufficient_evidence",
+      "actualStatus": "insufficient_evidence",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 32,
+        "findingCount": 5,
+        "requiredActionCount": 4,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "insufficient_evidence",
+        "score": 32,
+        "businessType": "physical_product",
+        "findings": [
+          "一句话介绍过短，无法稳定核对产品实体和功能边界。",
+          "目标客户描述较宽，场景问题可能失真。",
+          "行业口径过宽，系统无法生成自然的品类问题。",
+          "没有可核验的官方入口，正确实体识别只能标为待确认。",
+          "未提供竞品，本次不能判断真实替代关系。"
+        ],
+        "requiredActions": [
+          "补充具体产品类型、核心功能或型号。",
+          "补充更具体的使用人群或决策场景。",
+          "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+          "粘贴官网、官方产品页、小程序介绍页或公开账号入口。"
+        ],
+        "officialSourceStatus": "missing",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      }
+    },
+    {
+      "id": "S01",
+      "title": "软件资料和官网完整",
+      "inputSummary": "AI曝光体检 / GEO 诊断软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "S02",
+      "title": "冰箱小雷达复用已保存证据",
+      "inputSummary": "冰箱小雷达 / 家庭食材库存管理小程序 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "S03",
+      "title": "名称通用且存在同名实体",
+      "inputSummary": "小管家 / 团队任务管理软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "ground_truth_missing"
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "S04",
+      "title": "小程序被误认为硬件",
+      "inputSummary": "冰箱小雷达 / 家庭食材库存管理小程序 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "misrecognized"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: software hardware misread is explicit",
+        "visual-qa.json: software-misread"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "L01",
+      "title": "本地服务城市范围和门店入口完整",
+      "inputSummary": "海底捞西安门店服务 / 火锅餐饮门店服务 / 西安",
+      "businessType": "local_service",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "local_service",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "L02",
+      "title": "本地服务缺少城市和半径",
+      "inputSummary": "安心家政 / 本地家庭保洁服务 / 全国",
+      "businessType": "local_service",
+      "sourceStatus": "candidate",
+      "expectedStatus": "needs_confirmation",
+      "actualStatus": "needs_confirmation",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 93,
+        "findingCount": 1,
+        "requiredActionCount": 1,
+        "expectedEvidence": null
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "needs_confirmation",
+        "score": 93,
+        "businessType": "local_service",
+        "findings": [
+          "本地服务缺少可执行的城市、门店或服务半径。"
+        ],
+        "requiredActions": [
+          "补充具体服务城市、门店位置或覆盖半径。"
+        ],
+        "officialSourceStatus": "candidate",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      }
+    },
+    {
+      "id": "L03",
+      "title": "具体门店仅有全国品牌首页",
+      "inputSummary": "海底捞西安门店服务 / 火锅餐饮门店服务 / 西安",
+      "businessType": "local_service",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "source_scope_mismatch"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: unrelated or scope-mismatched source withholds score",
+        "visual-qa.json: local-source-boundary"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "local_service",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "L04",
+      "title": "服务承诺缺少来源证明",
+      "inputSummary": "安心家政 / 本地家庭保洁服务 / 西安",
+      "businessType": "local_service",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "unsupported_claims"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: unsupported claims remain unverified"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "local_service",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "E01",
+      "title": "介绍包含指令注入",
+      "inputSummary": "边界测试工具 / 安全测试软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "instruction_treated_as_data"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: external instruction remains data"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "E02",
+      "title": "URL 与实体无关",
+      "inputSummary": "边界测试工具 / 安全测试软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "unrelated_source"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: unrelated or scope-mismatched source withholds score",
+        "visual-qa.json: local-source-boundary"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "E03",
+      "title": "用户事实与官方来源冲突",
+      "inputSummary": "松下大锤子剃须刀 / 电动剃须刀 / 全国",
+      "businessType": "physical_product",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "fact_conflict"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: conflicting official model is misrecognized"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "physical_product",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "E04",
+      "title": "大量重复广告和无关文本",
+      "inputSummary": "超级神器 / 产品 / 全国",
+      "businessType": "generic_or_unknown",
+      "sourceStatus": "missing",
+      "expectedStatus": "needs_confirmation",
+      "actualStatus": "needs_confirmation",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 65,
+        "findingCount": 4,
+        "requiredActionCount": 3,
+        "expectedEvidence": "low_quality_input"
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "batch-instance-matrix.test.mjs: validation and preflight status"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "needs_confirmation",
+        "score": 65,
+        "businessType": "generic_or_unknown",
+        "findings": [
+          "行业口径过宽，系统无法生成自然的品类问题。",
+          "没有可核验的官方入口，正确实体识别只能标为待确认。",
+          "未提供竞品，本次不能判断真实替代关系。",
+          "无法判断这是实体商品、软件/小程序还是本地服务。"
+        ],
+        "requiredActions": [
+          "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+          "粘贴官网、官方产品页、小程序介绍页或公开账号入口。",
+          "确认业务类型，避免套用错误的检测模板。"
+        ],
+        "officialSourceStatus": "missing",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      }
+    },
+    {
+      "id": "R01",
+      "title": "相同请求重复提交",
+      "inputSummary": "幂等恢复测试工具 / 请求可靠性测试软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "idempotent_recovery"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "diagnosis-idempotency.integration.test.mjs: matching retry returns one persisted report"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "R02",
+      "title": "预检失败后补齐再提交",
+      "inputSummary": "恢复测试 / 工具 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "missing",
+      "expectedStatus": "insufficient_evidence",
+      "actualStatus": "insufficient_evidence",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 32,
+        "findingCount": 5,
+        "requiredActionCount": 4,
+        "expectedEvidence": "no_quota_before_ready"
+      },
+      "localFakeProviderUsed": false,
+      "verificationEvidence": [
+        "diagnosis-idempotency.integration.test.mjs: failed preflight consumes no quota or provider call"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "insufficient_evidence",
+        "score": 32,
+        "businessType": "software_or_miniprogram",
+        "findings": [
+          "一句话介绍过短，无法稳定核对产品实体和功能边界。",
+          "目标客户描述较宽，场景问题可能失真。",
+          "行业口径过宽，系统无法生成自然的品类问题。",
+          "没有可核验的官方入口，正确实体识别只能标为待确认。",
+          "未提供竞品，本次不能判断真实替代关系。"
+        ],
+        "requiredActions": [
+          "补充具体产品类型、核心功能或型号。",
+          "补充更具体的使用人群或决策场景。",
+          "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+          "粘贴官网、官方产品页、小程序介绍页或公开账号入口。"
+        ],
+        "officialSourceStatus": "missing",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      }
+    },
+    {
+      "id": "R03",
+      "title": "部分模型失败",
+      "inputSummary": "覆盖率测试工具 / 模型覆盖率测试软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "partial_provider_failure"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: partial failure lowers confidence",
+        "visual-qa.json: partial-provider-failure"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    },
+    {
+      "id": "R04",
+      "title": "四种报告表面数据一致",
+      "inputSummary": "导出一致性测试工具 / 报告一致性测试软件 / 全国",
+      "businessType": "software_or_miniprogram",
+      "sourceStatus": "candidate",
+      "expectedStatus": "ready",
+      "actualStatus": "ready",
+      "modelCalled": false,
+      "quotaConsumed": false,
+      "totalScoreShown": false,
+      "keyMetrics": {
+        "preflightScore": 98,
+        "findingCount": 0,
+        "requiredActionCount": 0,
+        "expectedEvidence": "cross_surface_consistency"
+      },
+      "localFakeProviderUsed": true,
+      "verificationEvidence": [
+        "report-credibility.test.mjs: Markdown, HTML, evidence package share credibility values"
+      ],
+      "pass": true,
+      "failureReason": null,
+      "assessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "software_or_miniprogram",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      }
+    }
+  ],
+  "stageB": {
+    "status": "executed_partial_provider_coverage",
+    "summaryFile": "stage-b-summary.json",
+    "realReportCount": 5,
+    "reusedReportCount": 1,
+    "completeFourProviderReports": 0,
+    "successCount": 50,
+    "failureCount": 150,
+    "scoreWithheldReports": 5,
+    "conclusion": "5 个真实实例均完成，但本机出口 IP 被百炼和 TokenHub API Key 白名单拒绝，只有火山方舟成功；本轮四模型阶段 B 不通过。"
+  }
+}

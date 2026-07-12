@@ -1,0 +1,43 @@
+{
+  "reportId": "diag_mrh26ke2_kvp5su",
+  "generatedAt": "2026-07-12T00:32:03.772Z",
+  "provider": "multi",
+  "model": "doubao-seed-2-0-lite-260215",
+  "promptCount": 40,
+  "successCount": 10,
+  "files": [
+    {
+      "type": "samples",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/samples.json"
+    },
+    {
+      "type": "providers",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/providers.json"
+    },
+    {
+      "type": "page_audit",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/page-audit.json"
+    },
+    {
+      "type": "source_map",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/source-map.json"
+    },
+    {
+      "type": "markdown",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/source-map.md"
+    },
+    {
+      "type": "markdown",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/exports/report.md"
+    },
+    {
+      "type": "html",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/exports/report.html"
+    },
+    {
+      "type": "evidence_package",
+      "path": "runtime/evidence/diag_mrh26ke2_kvp5su/exports/evidence-package.json"
+    }
+  ],
+  "notes": "samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；联系方式只保存在 submissions.jsonl，不进入公开报告。"
+}

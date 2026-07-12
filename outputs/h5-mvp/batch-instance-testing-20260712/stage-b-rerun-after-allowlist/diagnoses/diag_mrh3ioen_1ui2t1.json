@@ -1,0 +1,1427 @@
+{
+  "input": {
+    "businessName": "海底捞西安门店服务",
+    "description": "提供门店餐饮、排队和预约信息的本地餐饮服务",
+    "links": "https://www.haidilao.com/serve/storeSearch",
+    "industry": "火锅餐饮门店服务",
+    "city": "西安",
+    "targetCustomers": "需要到店用餐和预约的西安顾客",
+    "competitors": "同类产品",
+    "contact": "",
+    "source": "codex_stage_b_20260712",
+    "clientRequestId": "stage_b_20260712_l01_allowlistfix01",
+    "confirmedBusinessType": "local_service"
+  },
+  "report": {
+    "id": "diag_mrh3ioen_1ui2t1",
+    "version": "0.4",
+    "brand": "海底捞西安门店服务",
+    "category": "火锅餐饮门店服务",
+    "generatedAt": "2026-07-12T01:09:28.467Z",
+    "riskLevel": "high",
+    "score": 33,
+    "scoreLevel": "待提升",
+    "summary": "海底捞西安门店服务本次多平台成功采样 40 个回答样本；因证据或模型覆盖不足，暂不展示总分。字符串出现率 0%，正确实体识别 无法判断，无品牌词自然推荐 0%，公开页面审计 41/100。",
+    "aiMeta": {
+      "provider": "multi",
+      "model": "deepseek-v4-pro + hy3 + qwen3.7-plus + doubao-seed-2-0-lite-260215",
+      "status": "sampled",
+      "sampledAt": "2026-07-12T01:09:28.467Z",
+      "promptCount": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "providers": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ]
+    },
+    "evidencePolicy": {
+      "labels": [
+        "raw_source",
+        "verified_external",
+        "sampled_ai_answer",
+        "model_inference",
+        "suggested_supplement"
+      ],
+      "notes": "本报告基于用户提交资料、公开 URL 抓取审计、deepseek、hy3、qwen、doubao API 实时问答采样和透明规则评分生成。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。"
+    },
+    "stages": {
+      "overview": {
+        "oneLine": "提供门店餐饮、排队和预约信息的本地餐饮服务",
+        "city": "西安",
+        "targetCustomers": "需要到店用餐和预约的西安顾客",
+        "keyFinding": "本次虽有 0% 的字符串出现率，但缺少足够的已核验实体事实，暂不能判断模型是否正确认识“海底捞西安门店服务”。",
+        "highlights": [
+          "定位已明确为“火锅餐饮门店服务”，具备形成品牌知识卡的基础。",
+          "目标客户填写为“需要到店用餐和预约的西安顾客”，可转化为 Prompt Universe 和 FAQ。",
+          "已提供公开入口线索，可以继续补官方说明、隐私页和内容池。"
+        ],
+        "risks": [
+          "可信实体识别或自然推荐不足",
+          "模型对产品实体存在冲突或误读",
+          "可查证公开基建不够完整",
+          "竞品在对比场景里更容易被模型调用",
+          "隐私、主体或功能边界需要提前解释"
+        ]
+      },
+      "credibility": {
+        "inputAssessment": {
+          "status": "ready",
+          "score": 98,
+          "businessType": "local_service",
+          "findings": [],
+          "requiredActions": [],
+          "officialSourceStatus": "candidate",
+          "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+        },
+        "businessType": "local_service",
+        "confidence": "low",
+        "scoreStatus": "withheld",
+        "stringMentionRate": 0,
+        "correctEntityRecognitionRate": null,
+        "naturalRecommendationRate": 0,
+        "misrecognitionRate": 0,
+        "providerAgreementRate": 1,
+        "modelConflicts": [
+          "海底捞西安门店服务适合哪些客户？：DeepSeek=无法核验，混元=不确定，千问=无法核验，豆包=无法核验"
+        ],
+        "confirmedFacts": [
+          "已确认业务类型：本地服务",
+          "用户提交目标客户：需要到店用餐和预约的西安顾客"
+        ],
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：提供门店餐饮、排队和预约信息的本地餐饮服务",
+          "缺少已通过审计的官方来源，品牌归属和实体定义仍待确认。",
+          "正确实体识别率无法判断。",
+          "发现 1 组模型结论冲突。"
+        ],
+        "nextActions": [
+          "补可核验的服务与资质页",
+          "统一本地平台事实",
+          "覆盖真实到店决策问题"
+        ]
+      },
+      "score": {
+        "label": "证据不足：暂不展示总分",
+        "dimensions": [
+          {
+            "code": "AI_SEARCH_VISIBILITY",
+            "name": "可信 AI 可见度",
+            "score": 0,
+            "weight": 0.32,
+            "comment": "字符串出现率为 0%，但缺少可核验实体事实，不能认定为正确识别；无品牌词自然推荐率为 0%。",
+            "evidenceLabel": "model_inference"
+          },
+          {
+            "code": "INFRASTRUCTURE",
+            "name": "可查证基建",
+            "score": 41,
+            "weight": 0.22,
+            "comment": "已审计 8 个公开 URL，0 个通过，6 个需补强。",
+            "evidenceLabel": "verified_external"
+          },
+          {
+            "code": "COMPETITOR_PRESSURE",
+            "name": "竞品压制风险",
+            "score": 48,
+            "weight": 0.18,
+            "comment": "已对比 1 个竞品；若竞品在答案中出现多于本品牌，会压低该项。",
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "code": "CONTENT_ALIGNMENT",
+            "name": "语义与场景匹配",
+            "score": 51,
+            "weight": 0.16,
+            "comment": "根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。",
+            "evidenceLabel": "model_inference"
+          },
+          {
+            "code": "TRUST_RISK",
+            "name": "信任与风险解释",
+            "score": 56,
+            "weight": 0.12,
+            "comment": "采样答案出现 4 类信任/风险信号。",
+            "evidenceLabel": "sampled_ai_answer"
+          }
+        ]
+      },
+      "userProfile": {
+        "groups": [
+          {
+            "title": "直接需求用户",
+            "scenario": "需要到店用餐和预约的西安顾客 已经明确在找 火锅餐饮门店服务 或替代方案。",
+            "questions": [
+              "火锅餐饮门店服务哪个好用？",
+              "海底捞西安门店服务适合需要到店用餐和预约的西安顾客吗？",
+              "西安火锅餐饮门店服务怎么选？"
+            ]
+          },
+          {
+            "title": "问题驱动用户",
+            "scenario": "用户不一定知道品牌名，只是在搜索“提供门店餐饮、排队和预约信息的本地餐饮服务”背后的问题。",
+            "questions": [
+              "提供门店餐饮、排队和预约信息的本地餐饮服务怎么解决？",
+              "有没有适合需要到店用餐和预约的西安顾客的工具？",
+              "火锅餐饮门店服务有什么注意事项？"
+            ]
+          },
+          {
+            "title": "对比决策用户",
+            "scenario": "用户在 AI 里问“哪个更好/有什么区别”，模型会自动拉竞品做比较。",
+            "questions": [
+              "海底捞西安门店服务和同类产品有什么区别？",
+              "海底捞西安门店服务靠谱吗？",
+              "隐私安全的火锅餐饮门店服务有哪些？"
+            ]
+          }
+        ],
+        "likelyQuestions": [
+          "海底捞西安门店服务是什么服务？",
+          "海底捞西安门店服务适合哪些客户？",
+          "海底捞西安门店服务有哪些可核验的资质和评价？",
+          "西安火锅餐饮门店服务怎么选？",
+          "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+          "海底捞西安门店服务的服务范围和预约方式是什么？",
+          "海底捞西安门店服务和同类产品有什么区别？",
+          "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？"
+        ]
+      },
+      "promptUniverse": {
+        "prompts": [
+          {
+            "id": "P001",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务是什么服务？",
+            "targetFact": "服务定义"
+          },
+          {
+            "id": "P002",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务适合哪些客户？",
+            "targetFact": "目标客户"
+          },
+          {
+            "id": "P003",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+            "targetFact": "信任证据"
+          },
+          {
+            "id": "P005",
+            "category": "category",
+            "prompt": "西安火锅餐饮门店服务怎么选？",
+            "targetFact": "本地推荐"
+          },
+          {
+            "id": "P006",
+            "category": "category",
+            "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+            "targetFact": "无品牌场景推荐"
+          },
+          {
+            "id": "P011",
+            "category": "feature",
+            "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+            "targetFact": "服务边界"
+          },
+          {
+            "id": "P013",
+            "category": "competitor",
+            "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+            "targetFact": "竞品对比"
+          },
+          {
+            "id": "P015",
+            "category": "persona",
+            "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+            "targetFact": "决策因素"
+          },
+          {
+            "id": "P017",
+            "category": "risk",
+            "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+            "targetFact": "风险说明"
+          },
+          {
+            "id": "P020",
+            "category": "geo",
+            "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+            "targetFact": "GEO 证据来源"
+          }
+        ]
+      },
+      "aiSearch": {
+        "totalQuestions": 40,
+        "mentionedCount": 0,
+        "mentionRate": 0,
+        "topMentionedPrompts": [],
+        "missingPrompts": [
+          "海底捞西安门店服务是什么服务？",
+          "海底捞西安门店服务适合哪些客户？",
+          "海底捞西安门店服务有哪些可核验的资质和评价？",
+          "西安火锅餐饮门店服务怎么选？",
+          "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+          "海底捞西安门店服务的服务范围和预约方式是什么？",
+          "海底捞西安门店服务和同类产品有什么区别？",
+          "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？"
+        ],
+        "answerSamples": [
+          {
+            "promptId": "P006",
+            "provider": "deepseek",
+            "category": "category",
+            "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+            "answerExcerpt": "关于西安适合到店用餐和需要预约的火锅店，我根据已有知识整理了一些信息，但具体营业状态和预约政策可能会有变化，建议你出发前通过大众点评、美团或电话确认一下。 以下是西安比较有代表性的火锅类型和门店： **1. 高端/商务宴请类（通常需要预约）** - **海底捞**：全国连锁，服务好，西安有多家分店。热门时段（周末晚上）经常需要排队，可以通过官方App提前取号...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P011",
+            "provider": "deepseek",
+            "category": "feature",
+            "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+            "answerExcerpt": "关于海底捞西安门店的具体服务范围和预约方式，我目前没有掌握最新的详细信息。不过，根据一般情况，海底捞的服务范围通常包括堂食、外卖配送以及部分门店提供的自提服务。预约方式一般可以通过海底捞官方App、微信小程序或拨打门店电话进行。建议你直接查看海底捞的官方渠道，获取西安地区门店的准确信息。",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P013",
+            "provider": "deepseek",
+            "category": "competitor",
+            "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+            "answerExcerpt": "海底捞在西安的门店，整体上延续了它一贯的“极致服务”风格，但和当地其他火锅品牌相比，区别还是挺明显的。主要体现在这几个方面： **1. 服务体验的“颗粒度”不同** 这是最核心的区别。海底捞的服务是从等位就开始的，比如免费美甲、擦鞋、手部护理、小零食和饮料，这些在西安其他火锅店比较少见，或者没有这么齐全。进店后，服务员对细节的关注度很高，比如主动提供头绳、眼...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P015",
+            "provider": "deepseek",
+            "category": "persona",
+            "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+            "answerExcerpt": "西安顾客在选择需要到店用餐和预约的火锅店时，最关心的通常是以下几个方面： 1. **口味与锅底的正宗与特色** 这是核心。西安人虽然爱吃辣，但口味包容性强。他们关心锅底是重庆牛油、成都清油、老北京铜锅、潮汕牛肉还是本地特色的酸菜铜锅等。锅底是否真材实料、辣而不燥、香而不腻是关键。 2. **食材的新鲜度与特色菜品** * **新鲜度**：毛肚、鸭肠、黄喉等经...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P020",
+            "provider": "deepseek",
+            "category": "geo",
+            "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+            "answerExcerpt": "要让本地火锅门店的服务信息能被 AI 可靠引用，核心是让信息变得**结构化、可验证、权威且易于抓取**。AI 模型（如我）的知识来源于公开数据，尤其是训练数据和实时搜索索引。 以下是具体、可操作的步骤，按优先级排序： ### 第一步：建立“信息根据地”——你的官方网站 这是最权威、最可控的信源，AI 会优先抓取。 - **创建独立页面，而非单一长页面**：为...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P001",
+            "provider": "hy3",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务是什么服务？",
+            "answerExcerpt": "海底捞是知名连锁火锅餐饮品牌，其门店（包括西安的门店）通常以“超预期的服务”著称，常见服务内容有： - 就餐前：免费美甲、擦鞋、等候区提供小吃饮品、棋牌娱乐、宝宝椅和儿童玩具等； - 就餐中：主动递热毛巾、捞浮沫、帮下菜、手机防油袋、头绳、眼镜布，过生日有专人庆祝表演； - 特殊关怀：为独自就餐者放玩具熊陪吃，孕妇、老人、带娃家庭有额外照顾； - 餐后：免费...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P002",
+            "provider": "hy3",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务适合哪些客户？",
+            "answerExcerpt": "海底捞作为大众餐饮品牌，其在西安的门店（和全国其他门店一样）服务面向的对象比较广泛，一般比较适合以下几类客户： 1. **家庭聚餐群体**：门店通常有比较宽松的用餐环境，提供儿童玩具、宝宝椅，部分门店还有亲子活动或儿童餐，适合带孩子或长辈家庭聚会。 2. **朋友、同事社交聚餐**：服务周到、氛围轻松，有免费小吃、美甲、擦鞋等增值服务，适合年轻人闲聊、庆祝生...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "uncertain",
+            "recognitionReason": "答案包含不确定、非官方或无法确认等表述。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P003",
+            "provider": "hy3",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+            "answerExcerpt": "关于海底捞西安门店的服务资质和评价，基于我已有的知识，可以给你以下信息： **可核验资质方面：** - 海底捞作为连锁餐饮企业，其在西安的门店都需具备《营业执照》《食品经营许可证》等基础经营资质，这些通常可在门店现场公示栏查看，也可通过“国家企业信用信息公示系统”或西安市市场监管局相关平台，按门店具体名称/统一社会信用代码查询。 - 从业人员健康证：餐饮服务...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P005",
+            "provider": "hy3",
+            "category": "category",
+            "prompt": "西安火锅餐饮门店服务怎么选？",
+            "answerExcerpt": "选西安的火锅餐饮门店服务，可以从以下几个方面入手： **1. 看服务类型是否匹配需求** - 如果是朋友聚会、图热闹，可以选有“美甲、擦鞋、带娃、表演”等附加服务的门店（这类在西安不少连锁火锅店常见）。 - 如果是商务宴请，优先看包间服务、上菜节奏、隐私性做得好的店。 - 一个人吃，可以看有没有单人锅、吧台位、半份菜选项。 **2. 看本地口味适配** 西安...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "存在隐私和个人信息处理疑问",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P006",
+            "provider": "hy3",
+            "category": "category",
+            "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+            "answerExcerpt": "西安有很多需要到店用餐且通常建议或必须预约的火锅门店，下面按常见类型给你举一些例子（具体要以各店当下规则为准，我不保证每家当前都严格预约制，建议去前电话确认）： **1. 高端/商务型火锅** - **西安威斯汀酒店·中国元素餐厅火锅**：部分套餐需提前预约，环境偏商务，适合宴请。 - **曲江附近的一些私房火锅（如“香荟”类会员制餐吧）**：常要求提前订位...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P011",
+            "provider": "hy3",
+            "category": "feature",
+            "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+            "answerExcerpt": "我是基于通用知识来回答的，关于海底捞西安门店具体的服务范围和预约方式，我没有掌握实时、精确的地区门店信息，所以不太确定细节。 不过根据我对海底捞品牌的普遍了解： - **服务范围**通常包括：火锅堂食、外卖（部分门店）、包间/大桌预订、美甲/擦鞋等免费增值服务（多数门店有，但不同门店可能略有差异）、生日/聚会布置等。 - **预约方式**常见有：海底捞官方A...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P013",
+            "provider": "hy3",
+            "category": "competitor",
+            "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+            "answerExcerpt": "我不太确定你提到的“同类产品”具体指哪些品牌或业态（比如是其他火锅连锁、还是西安本地其他餐饮服务机构），而且关于海底捞西安门店目前具体的服务细节、和某一同类对象的差异化对比，我没有实时或本地专属的门店运营信息，所以没办法准确说明区别。 如果是想了解海底捞整体通用的服务特点（比如免费美甲、等位零食、 Birthday 惊喜服务等），这些是全国门店相对共通的；但...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [
+              "同类产品"
+            ],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释",
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P015",
+            "provider": "hy3",
+            "category": "persona",
+            "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+            "answerExcerpt": "作为普通中文 AI 助手，基于一般常识和餐饮消费习惯，我谈谈西安本地需要到店用餐且会提前预约的火锅顾客，通常比较关心的几个方面： 1. **预约便捷性与到位率** 这类顾客主动预约，往往希望电话或线上渠道好约、不占线；到店后座位（如包间、大桌）能按预约时间准备好，不想久等。 2. **门店位置与停车** 西安老城区（如回民街周边）或商圈（如赛格、大悦城）门店...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P017",
+            "provider": "hy3",
+            "category": "risk",
+            "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+            "answerExcerpt": "选择火锅餐饮门店服务（比如加盟、场地租赁、代运营或整体门店服务外包等）时，通常需要注意以下几类合同、资质和售后问题： ### 一、合同方面 1. **主体资格审核**：确认签约方是否为合法注册的公司，营业执照范围是否包含餐饮管理、食品经营或特许加盟等内容。 2. **服务内容界定**：合同中应明确门店服务包含的具体项目，如门店设计、人员培训、供应链支持、营销...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P020",
+            "provider": "hy3",
+            "category": "geo",
+            "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+            "answerExcerpt": "本地火锅餐饮门店如果想让自家信息能被 AI（比如各类语音助手、智能问答、地图或内容平台的推荐系统）在回答用户问题时准确引用，核心是要把“门店信息”变成**公开、结构化、稳定、可验证**的数据。基于通用经验，可以从以下几方面入手： ### 1. 完善主流公开平台的基础信息 AI 的信息源大量来自公开平台，门店应优先保证这些地方信息准确一致： - **地图类平台...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P003",
+            "provider": "qwen",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+            "answerExcerpt": "海底捞作为大型连锁餐饮企业，其在西安的门店（以及全国其他门店）在合规经营和消费者评价方面通常具备以下可核验的资质和评价指标。你可以通过官方渠道或第三方平台进行查证： ### 一、 可核验的经营资质（合规性） 根据中国《食品安全法》及餐饮服务管理规定，任何正规运营的餐饮门店都必须公示以下核心资质。在海底捞西安各门店内，这些证件通常悬挂在餐厅显眼位置（如入口处或...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "存在隐私和个人信息处理疑问",
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P006",
+            "provider": "qwen",
+            "category": "category",
+            "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+            "answerExcerpt": "西安作为美食之都，火锅文化非常盛行。针对“需要到店用餐”且通常“建议或必须预约”的火锅门店，以下几类品牌和具体门店在西安口碑较好，服务体验也相对成熟： ### 1. 高端/品质型火锅（通常强烈建议预约） 这类火锅店环境较好，服务细致，食材讲究，周末或节假日高峰期往往一位难求，提前预约能确保用餐体验。 * **海底捞火锅** * **特点**：以服务著称，虽然...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P011",
+            "provider": "qwen",
+            "category": "feature",
+            "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+            "answerExcerpt": "海底捞在西安的门店服务标准和预约方式与全国其他主要城市基本保持一致，但具体细节可能会因单店位置（如商圈、社区店）略有不同。以下是通用信息： ### 一、服务范围（特色服务内容） 海底捞以“极致服务”著称，西安门店通常提供以下服务： 1. **等位服务**： - 免费美甲、手部护理、擦鞋服务。 - 提供免费零食、饮料、小游戏（如折纸换菜品）。 - 部分大型门店...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P017",
+            "provider": "qwen",
+            "category": "risk",
+            "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+            "answerExcerpt": "选择火锅餐饮门店的服务（通常指加盟、供应链合作或门店运营外包）是一个复杂的商业决策。为了保障权益并降低风险，你需要从**合同条款**、**资质审核**和**售后/运营支持**三个维度进行严格审查。 以下是具体的注意事项： ### 一、 合同层面（法律与权益保障） 合同是解决纠纷的根本依据，切勿仅凭口头承诺签约。 1. **特许经营备案与“两店一年”** * ...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "存在隐私和个人信息处理疑问"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P020",
+            "provider": "qwen",
+            "category": "geo",
+            "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+            "answerExcerpt": "对于本地火锅餐饮门店来说，要让 AI（如大语言模型、地图导航助手、语音助手等）能够准确引用并推荐你的服务，核心在于**“结构化数据的公开化”**和**“第三方权威背书的数字化”**。 AI 并不直接“品尝”火锅，它依赖的是互联网上已有的、经过验证的文本和数据。以下是建立可信信息的具体步骤： ### 1. 夯实基础：主流地图与本地生活平台的“官方认证” 这是 ...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P003",
+            "provider": "doubao",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+            "answerExcerpt": "关于海底捞西安门店的可核验资质，你可以通过这些公开渠道查询核实： 1. 基础经营资质：所有正规营业的海底捞西安门店，都需要持有营业执照、食品经营许可证、卫生许可证，这些信息可以在国家企业信用信息公示系统、西安市市场监督管理局的官方平台，输入门店对应的主体名称查到公示信息。 2. 门店人员相关：直接接触食品的工作人员需要持有有效的健康证明，按规定店内会公示相关...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P011",
+            "provider": "doubao",
+            "category": "feature",
+            "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+            "answerExcerpt": "西安的海底捞门店大多开在商圈商场内，服务范围是到店就餐服务，部分门店也支持外卖配送，配送范围一般是门店周边3公里左右，不同门店会根据实际位置略有调整，具体可以查询对应的门店信息。 预约方式主要有这几种： 1. 线上预约：可以通过海底捞官方公众号、海底捞APP，打开门店查询入口，定位西安后选择你要去的门店，就可以排队取号或者提前预约就餐位，也可以直接在大众点评...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P015",
+            "provider": "doubao",
+            "category": "persona",
+            "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+            "answerExcerpt": "对于需要到店用餐、有预约需求的西安顾客来说，选火锅门店最关心的点大概有这些： 1. **口味与本地适配性**：西安本地口味偏厚重、嗜辣也爱香，除了经典川渝火锅，很多人也会在意锅底是不是够香够味、有没有适配本地人口味的调整（比如可选的辣度、有没有特色骨汤/番茄这类受众广的锅底，甚至有没有结合本地食材的创意锅），食材新不新鲜、有没有特色涮品（比如本地的鲜切肉、特...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P017",
+            "provider": "doubao",
+            "category": "risk",
+            "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+            "answerExcerpt": "选择火锅餐饮门店时，针对服务相关的合同、资质和售后问题，可以重点关注这些方面： ### 一、资质相关问题 1. **门店基础经营资质**：首先要确认门店是否持有有效的营业执照、食品经营许可证，这是合法经营的基础，许可证的经营项目要包含热食类食品制售，且在有效期内；如果门店有售卖自制饮品、酒类，还需要对应饮品制售的资质以及酒类零售/批发许可，部分地区还需要公共...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "存在隐私和个人信息处理疑问",
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P020",
+            "provider": "doubao",
+            "category": "geo",
+            "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+            "answerExcerpt": "本地火锅门店要建立可被AI引用的可信信息，核心是把信息主动、规范地提交到公开可信的信息平台，并且定期维护更新，主要可以从这几个方向着手： 1. **完善主流地图/生活服务平台的认证信息** 在高德、百度地图、美团、大众点评这些平台完成官方认证（提交营业执照、门店经营资质等材料），完整填写规范信息：包括准确的门店地址、营业时间、联系电话、收费规则、锅底/菜品特...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [
+              "个人主体/品牌背书信任度需要解释"
+            ],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P001",
+            "provider": "deepseek",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务是什么服务？",
+            "answerExcerpt": "海底捞在西安的门店延续了它一贯的高标准服务，主要包括： - **等位服务**：免费小吃、饮料、美甲、擦鞋、桌游等，让等位不枯燥。 - **就餐服务**：热情引导、提供围裙、手机套、发圈、热毛巾，主动帮忙涮菜、剥虾、调配蘸料。 - **个性化关怀**：生日会有唱歌祝福、送小礼物；对老人、小孩有特别照顾。 - **表演与互动**：部分门店有变脸表演、拉面表演，气...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P002",
+            "provider": "deepseek",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务适合哪些客户？",
+            "answerExcerpt": "海底捞在西安的门店服务适合多种类型的客户，主要包括以下几类： 1. **家庭聚餐型客户** 海底捞提供儿童游乐区、婴儿椅、儿童餐具等，服务人员也会帮忙照看孩子，非常适合带小孩的家庭。 2. **朋友聚会型客户** 环境热闹、氛围轻松，加上免费美甲、擦鞋、桌游等附加服务，很适合朋友间长时间聚会聊天。 3. **商务宴请或同事聚餐** 虽然整体风格偏休闲，但包间...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P003",
+            "provider": "deepseek",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+            "answerExcerpt": "关于海底捞西安门店的服务资质和评价，我可以从几个方面帮你梳理一下可核验的信息： **资质方面：** - **营业执照与食品经营许可证**：所有正规餐饮门店都需要在店内显著位置公示，你可以直接到店查看 - **食品安全等级公示**：一般会在店内展示，分为A/B/C等级，这是食药监部门评定的 - **从业人员健康证**：按规定，餐饮从业人员需持有有效健康证上岗 ...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P005",
+            "provider": "deepseek",
+            "category": "category",
+            "prompt": "西安火锅餐饮门店服务怎么选？",
+            "answerExcerpt": "选择西安的火锅店，其实可以从几个很实际的角度来考虑，帮你找到最适合自己的那一家： **1. 看你想吃什么口味** 这是最核心的。西安的火锅市场很丰富： - **川渝麻辣火锅**：这是主流，重油重辣，比如常见的各种重庆老火锅、成都火锅。如果你追求酣畅淋漓的辣，就选这类。 - **本地特色火锅**：比如**陕派火锅**，有些会融合本地食材；或者**酸菜铜锅涮肉*...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P017",
+            "provider": "deepseek",
+            "category": "risk",
+            "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+            "answerExcerpt": "选择火锅餐饮门店服务时，合同、资质和售后是三个非常关键的环节，直接关系到你的经营安全和顾客体验。下面我分点说明需要注意的问题： --- ### 一、合同方面 1. **服务合同条款要明确** - **服务范围**：明确服务内容，比如是否包含前厅服务、后厨协助、清洁、收银等。 - **人员配置**：约定服务人数、工作时间、排班方式，避免临时缺人。 - **费用...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P001",
+            "provider": "qwen",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务是什么服务？",
+            "answerExcerpt": "海底捞西安门店的服务与其在全国其他地区的门店保持一致，核心都是以其标志性的**“极致人性化服务”**和**“顾客至上”**理念著称。 具体来说，你在西安的海底捞门店通常会体验到以下特色服务： 1. **等位期间的服务**： * 提供免费的小吃、饮料（如酸梅汤、柠檬水）。 * 提供美甲、擦鞋、手部护理等服务（视门店具体配置而定）。 * 提供桌游、折纸等娱乐项目...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P002",
+            "provider": "qwen",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务适合哪些客户？",
+            "answerExcerpt": "海底捞以“极致服务”著称，其西安门店的服务风格与全国其他地区的门店基本保持一致。这种服务模式并不局限于某一类特定人群，而是根据不同的客户需求，适合以下几类客户群体： ### 1. 注重用餐体验和被尊重感的客户 * **特点**：喜欢服务员主动添水、换骨碟、提供围裙和发圈等细节服务，享受“被照顾”的感觉。 * **适合原因**：海底捞的服务员通常经过严格培训，...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P005",
+            "provider": "qwen",
+            "category": "category",
+            "prompt": "西安火锅餐饮门店服务怎么选？",
+            "answerExcerpt": "在西安选择火锅餐饮门店的服务，其实和全国其他大城市类似，但结合西安本地的饮食文化和消费习惯，你可以从以下几个维度来考察和选择： ### 1. 基础服务响应速度 * **点餐与上菜效率**：观察服务员是否熟练使用点餐系统，菜品上桌速度是否合理。西安人性格直爽，通常不喜欢拖泥带水，高效的节奏更受欢迎。 * **加汤与换碟频率**：吃火锅时，汤底变少或骨碟满了是高...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P013",
+            "provider": "qwen",
+            "category": "competitor",
+            "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+            "answerExcerpt": "海底捞在西安的门店服务与其核心品牌标准保持高度一致，其最显著的区别在于将“极致服务”作为核心产品体验的一部分，而不仅仅是餐饮附属品。与大多数同类火锅品牌（如呷哺呷哺、小龙坎、巴奴等）相比，主要差异体现在以下几个方面： 1. **主动式、个性化服务** 海底捞服务员被授权提供高度灵活的服务，例如：为独自就餐者放置玩偶陪伴、为过生日顾客唱生日歌并赠送小礼物、免费...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P015",
+            "provider": "qwen",
+            "category": "persona",
+            "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+            "answerExcerpt": "对于西安的顾客来说，选择一家需要**到店用餐**且通常涉及**预约**的火锅门店时，他们的关注点往往结合了当地独特的饮食文化、气候特点以及对服务体验的高要求。 以下是西安顾客最关心的几个核心维度： ### 1. 口味正宗与特色（尤其是“蘸料”和“锅底”） * **油碟/麻酱的自由度**：西安人吃火锅非常讲究蘸料。虽然川渝火锅流行油碟，但西安本地也有浓厚的麻酱...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P001",
+            "provider": "doubao",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务是什么服务？",
+            "answerExcerpt": "海底捞西安的门店和全国绝大多数海底捞门店一样，提供的是标准化的特色火锅餐饮服务，核心内容包括： 1. **基础就餐服务**：提供火锅菜品制作、桌前就餐服务，同时会提供免费的餐前小吃、水果、茶水，很多门店还会给排队等位的顾客提供免费零食、桌游、美甲、擦鞋等免费休憩服务。 2. **人性化特色服务**：就餐过程中会提供头绳、手机防水袋、围裙、眼镜布等便民小物件，...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P002",
+            "provider": "doubao",
+            "category": "brand",
+            "prompt": "海底捞西安门店服务适合哪些客户？",
+            "answerExcerpt": "海底捞西安门店的服务和品牌整体定位一致，适合多种类型的客户群体： 1. **家庭聚餐客户**：不管是日常家庭小聚还是节日家庭聚会，门店的空间相对宽松，还有贴心的儿童座椅、宝宝餐等配套服务，对带孩子的家庭很友好，也能满足多人聚餐的需求。 2. **年轻群体聚会**：学生约会、朋友聚餐都很合适，等位的时候可以享受免费零食、美甲、擦鞋等服务，打发等待时间，就餐过程...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P005",
+            "provider": "doubao",
+            "category": "category",
+            "prompt": "西安火锅餐饮门店服务怎么选？",
+            "answerExcerpt": "选择西安的火锅门店服务，可以参考这几个实用的方向，能帮你挑到体验不错的店： 1. **看真实食客评价**：多翻本地生活平台的追评、带图评价，重点看商家对差评的回应——如果能诚恳处理问题，说明服务意识比较好；要是一味甩锅怼顾客，服务大概率一般。也可以问问西安本地朋友，本地人常去的店，服务不会太踩雷。 2. **看基础服务细节**：好的火锅店一般会主动提供免费的...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P006",
+            "provider": "doubao",
+            "category": "category",
+            "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+            "answerExcerpt": "西安的火锅品类很丰富，有不少口碑不错、支持到店用餐、也需要提前预约的门店，给你分不同风格推荐几家参考： 1. **川味重口火锅** - 大龙燚火锅（西安多家分店，比如钟楼店、曲江店）：主打成都老火锅，辣度够劲，毛肚、嫩牛肉都是招牌，饭点（尤其是周末节假日）排队很厉害，本地顾客一般都会提前打电话或者在大众点评、美团上预约留位。 - 珮姐老火锅（南门店）：重庆网...",
+            "mentionedBrand": false,
+            "brandedPrompt": false,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          },
+          {
+            "promptId": "P013",
+            "provider": "doubao",
+            "category": "competitor",
+            "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+            "answerExcerpt": "不同海底捞西安门店的服务会有细微差异，但整体和国内其他海底捞门店一样，保持了品牌统一的高关注度服务模式，和国内其他同类型川味火锅品牌相比，区别主要在这些方面： 1. **服务细节的主动性更强**：比如会主动给长发顾客递头绳、带包的顾客递套袋、冬季帮存外套，如果是一人就餐，不少门店还会主动摆放玩偶陪伴；就餐过程中添茶、换骨碟的频率比较高，也会主动帮需要的顾客分...",
+            "mentionedBrand": false,
+            "brandedPrompt": true,
+            "naturalRecommendation": false,
+            "entityRecognition": "not_verifiable",
+            "recognitionReason": "答案未提及目标实体。",
+            "mentionedCompetitors": [],
+            "riskFlags": [],
+            "evidenceLabel": "sampled_ai_answer"
+          }
+        ],
+        "providerBreakdown": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "infrastructure": {
+        "score": 41,
+        "checks": [
+          {
+            "name": "公开入口",
+            "status": "warn",
+            "note": "品牌首页仍需补强：HTTP 200；缺少事实：brand、category、entry；建议页面首屏显式出现品牌名和产品定义。",
+            "evidenceLabel": "verified_external"
+          },
+          {
+            "name": "隐私与数据说明",
+            "status": "warn",
+            "note": "隐私政策页可访问性或事实覆盖不足。",
+            "evidenceLabel": "verified_external"
+          },
+          {
+            "name": "FAQ/案例/内容池",
+            "status": "warn",
+            "note": "FAQ 或功能页仍需补充品牌、隐私、功能边界事实。",
+            "evidenceLabel": "verified_external"
+          },
+          {
+            "name": "GEO 自证案例",
+            "status": "warn",
+            "note": "GEO 自证案例页还需要更明确的品牌/AI 可见性说明。",
+            "evidenceLabel": "verified_external"
+          },
+          {
+            "name": "机器可读入口",
+            "status": "missing",
+            "note": "建议补齐 robots.txt、sitemap.xml、llms.txt。",
+            "evidenceLabel": "suggested_supplement"
+          },
+          {
+            "name": "小程序/产品入口",
+            "status": "warn",
+            "note": "提交内容中包含小程序或产品入口线索；正式交付仍建议在品牌页放二维码和访问说明。",
+            "evidenceLabel": "raw_source"
+          }
+        ],
+        "pageAudit": {
+          "baseUrl": "https://www.haidilao.com",
+          "generatedAt": "2026-07-12T01:08:58.456Z",
+          "score": 41,
+          "targets": [
+            {
+              "id": "home",
+              "name": "品牌首页",
+              "url": "https://www.haidilao.com/",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "title": "海底捞",
+              "description": "",
+              "matchedFacts": [],
+              "missingFacts": [
+                "brand",
+                "category",
+                "entry"
+              ],
+              "notes": [
+                "HTTP 200",
+                "缺少事实：brand、category、entry",
+                "建议页面首屏显式出现品牌名和产品定义。"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.456Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "privacy",
+              "name": "隐私政策页",
+              "url": "https://www.haidilao.com/privacy/",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "title": "海底捞",
+              "description": "",
+              "matchedFacts": [],
+              "missingFacts": [
+                "privacy",
+                "data"
+              ],
+              "notes": [
+                "HTTP 200",
+                "缺少事实：privacy、data",
+                "建议页面首屏显式出现品牌名和产品定义。"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.457Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "features",
+              "name": "功能说明页",
+              "url": "https://www.haidilao.com/features/",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "title": "海底捞",
+              "description": "",
+              "matchedFacts": [],
+              "missingFacts": [
+                "feature",
+                "category"
+              ],
+              "notes": [
+                "HTTP 200",
+                "缺少事实：feature、category",
+                "建议页面首屏显式出现品牌名和产品定义。"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.457Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "faq",
+              "name": "FAQ/常见问题",
+              "url": "https://www.haidilao.com/faq/",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "title": "海底捞",
+              "description": "",
+              "matchedFacts": [],
+              "missingFacts": [
+                "faq",
+                "privacy"
+              ],
+              "notes": [
+                "HTTP 200",
+                "缺少事实：faq、privacy",
+                "建议页面首屏显式出现品牌名和产品定义。"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.457Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "geo-case",
+              "name": "GEO 自证案例",
+              "url": "https://www.haidilao.com/geo-case/",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "title": "海底捞",
+              "description": "",
+              "matchedFacts": [],
+              "missingFacts": [
+                "geo",
+                "brand"
+              ],
+              "notes": [
+                "HTTP 200",
+                "缺少事实：geo、brand",
+                "建议页面首屏显式出现品牌名和产品定义。"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.457Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "robots",
+              "name": "robots.txt",
+              "url": "https://www.haidilao.com/robots.txt",
+              "status": "missing",
+              "httpStatus": 405,
+              "contentType": "text/html; charset=utf-8",
+              "matchedFacts": [],
+              "missingFacts": [
+                "sitemap"
+              ],
+              "notes": [
+                "HTTP 405",
+                "缺少事实：sitemap"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.457Z",
+              "evidenceLabel": "suggested_supplement"
+            },
+            {
+              "id": "sitemap",
+              "name": "sitemap.xml",
+              "url": "https://www.haidilao.com/sitemap.xml",
+              "status": "warn",
+              "httpStatus": 200,
+              "contentType": "text/html",
+              "matchedFacts": [
+                "home"
+              ],
+              "missingFacts": [
+                "privacy",
+                "faq"
+              ],
+              "notes": [
+                "HTTP 200",
+                "命中事实：home",
+                "缺少事实：privacy、faq"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.458Z",
+              "evidenceLabel": "verified_external"
+            },
+            {
+              "id": "llms",
+              "name": "llms.txt",
+              "url": "https://www.haidilao.com/llms.txt",
+              "status": "missing",
+              "httpStatus": 405,
+              "contentType": "text/html; charset=utf-8",
+              "matchedFacts": [],
+              "missingFacts": [
+                "brand",
+                "category",
+                "privacy"
+              ],
+              "notes": [
+                "HTTP 405",
+                "缺少事实：brand、category、privacy"
+              ],
+              "fetchedAt": "2026-07-12T01:08:58.458Z",
+              "evidenceLabel": "suggested_supplement"
+            }
+          ],
+          "summary": {
+            "ok": 0,
+            "warn": 6,
+            "missing": 2,
+            "failed": 0,
+            "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+          }
+        }
+      },
+      "competitors": {
+        "names": [
+          "同类产品"
+        ],
+        "mentionStats": [
+          {
+            "name": "同类产品",
+            "mentionedCount": 1,
+            "mentionRate": 0.025,
+            "mentionedPrompts": [
+              "海底捞西安门店服务和同类产品有什么区别？"
+            ],
+            "evidenceSnippets": [
+              "我不太确定你提到的“同类产品”具体指哪些品牌或业态（比如是其他火锅连锁、还是西安本地其他餐饮服务机构），而且关于海底捞西安门店目前具体的服务细节、和某一同类对象的差异化对比，我没有实时或本地专属的门店运营信息，所以没办法准确说明区别。 如果是想了解海底捞整体通用的服务特点（比如免费美甲、等位零食、 Birthday 惊喜服务等），这些是全国门店相对共通的；但..."
+            ],
+            "modelMisreadings": [
+              "功能边界可能被误读为能力不足"
+            ],
+            "suggestedContent": [
+              "补“同类产品 vs 品牌”的对比页，说明功能边界、数据策略和适用人群。",
+              "把对比结论写成表格，覆盖“怎么选/有什么区别/适合谁”问题。",
+              "在 FAQ 里解释模型容易误读的功能点，减少把竞品默认当作替代答案。"
+            ]
+          }
+        ],
+        "pressureLevel": "medium",
+        "note": "本次采样中，同类产品 1 次 被提及；需要用对比页解释差异。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "geoEffect": {
+        "mentionRate": 0,
+        "scenarioCoverage": [
+          {
+            "category": "品牌认知",
+            "total": 12,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "品类推荐",
+            "total": 8,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "功能场景",
+            "total": 4,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "竞品对比",
+            "total": 4,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "人群场景",
+            "total": 4,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "风险信任",
+            "total": 4,
+            "mentioned": 0,
+            "rate": 0
+          },
+          {
+            "category": "GEO 自证",
+            "total": 4,
+            "mentioned": 0,
+            "rate": 0
+          }
+        ],
+        "absorptionNotes": [
+          "模型本次没有稳定提及“海底捞西安门店服务”，当前重点不是改文案，而是先补可查证公开来源。",
+          "GEO 优化不能只堆关键词，需要让页面包含定义、适用人群、功能边界、证据和常见问答。",
+          "本次真实采样平台为 deepseek、hy3、qwen、doubao；未配置平台已登记为 unavailable，不生成模拟答案。"
+        ],
+        "evidenceLabel": "model_inference"
+      },
+      "sentimentRisk": {
+        "riskLevel": "high",
+        "flags": [
+          "个人主体/品牌背书信任度需要解释",
+          "功能边界可能被误读为能力不足",
+          "品牌公开资料不足，AI 倾向回答“不确定/查不到”",
+          "存在隐私和个人信息处理疑问"
+        ],
+        "note": "本次采样出现 4 类风险信号，优先用公开说明页和 FAQ 解释边界。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      "recommendations": [
+        {
+          "id": "suggest_service_page",
+          "title": "补可核验的服务与资质页",
+          "detail": "公开说明海底捞西安门店服务的服务范围、城市、价格口径、资质、预约方式和售后边界。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P0"
+        },
+        {
+          "id": "suggest_local_profiles",
+          "title": "统一本地平台事实",
+          "detail": "核对地图、点评、公众号和官网中的名称、地址、营业时间与联系方式，避免实体冲突。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P0"
+        },
+        {
+          "id": "suggest_service_scenarios",
+          "title": "覆盖真实到店决策问题",
+          "detail": "围绕需要到店用餐和预约的西安顾客的距离、资质、预约、价格和售后问题发布可验证说明。",
+          "evidenceLabel": "model_inference",
+          "priority": "P1"
+        },
+        {
+          "id": "suggest_comparison",
+          "title": "补同城选择标准",
+          "detail": "按相同服务口径比较 同类产品。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P1"
+        },
+        {
+          "id": "suggest_monitoring",
+          "title": "固定本地问题月度复测",
+          "detail": "记录自然推荐、错误地址、服务边界误读和平台差异。",
+          "evidenceLabel": "suggested_supplement",
+          "priority": "P2"
+        }
+      ],
+      "roadmap": [
+        {
+          "phase": "P0",
+          "title": "1-2 周：补最小可查证基建",
+          "timeline": "1-2 周",
+          "detail": "上线品牌介绍页、隐私政策页、FAQ 和产品入口；把标题写成“海底捞西安门店服务｜火锅餐饮门店服务”，先让 AI 有稳定来源可读。"
+        },
+        {
+          "phase": "P1",
+          "title": "1-3 月：补内容池和对比页",
+          "timeline": "1-3 月",
+          "detail": "围绕 需要到店用餐和预约的西安顾客 的真实问题发布场景说明、竞品对比、使用步骤和案例页，并优先选择目标用户真实使用的公开渠道。"
+        },
+        {
+          "phase": "P2",
+          "title": "3-6 月：建立监测和迭代闭环",
+          "timeline": "3-6 月",
+          "detail": "用本次 40 个成功采样问题做基线，记录提及率、风险词、竞品变化和页面更新，避免只看一次性分数。"
+        }
+      ]
+    },
+    "issues": [
+      {
+        "id": "issue_ai_visibility_low",
+        "title": "可信实体识别或自然推荐不足",
+        "detail": "字符串出现率为 0%，正确实体识别为 无法判断，无品牌词自然推荐率为 0%。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "high"
+      },
+      {
+        "id": "issue_entity_conflict",
+        "title": "模型对产品实体存在冲突或误读",
+        "detail": "海底捞西安门店服务适合哪些客户？：DeepSeek=无法核验，混元=不确定，千问=无法核验，豆包=无法核验",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "high"
+      },
+      {
+        "id": "issue_infrastructure_gap",
+        "title": "可查证公开基建不够完整",
+        "detail": "AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。",
+        "evidenceLabel": "model_inference",
+        "severity": "high"
+      },
+      {
+        "id": "issue_competitor_pressure",
+        "title": "竞品在对比场景里更容易被模型调用",
+        "detail": "本次采样中，同类产品 1 次 被提及；需要用对比页解释差异。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      },
+      {
+        "id": "issue_trust_explanation",
+        "title": "隐私、主体或功能边界需要提前解释",
+        "detail": "采样答案出现的风险信号包括：个人主体/品牌背书信任度需要解释；功能边界可能被误读为能力不足；品牌公开资料不足，AI 倾向回答“不确定/查不到”。这些问题需要用公开说明页提前消除误解。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      }
+    ],
+    "exports": {
+      "markdown": "/api/diagnoses/diag_mrh3ioen_1ui2t1/export/markdown",
+      "html": "/api/diagnoses/diag_mrh3ioen_1ui2t1/export/html",
+      "evidencePackage": "/api/diagnoses/diag_mrh3ioen_1ui2t1/export/evidence-package"
+    }
+  },
+  "savedAt": "2026-07-12T01:09:28.467Z"
+}

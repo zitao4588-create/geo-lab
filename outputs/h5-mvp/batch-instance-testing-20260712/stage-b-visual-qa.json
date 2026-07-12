@@ -1,0 +1,40 @@
+{
+  "baseUrl": "http://127.0.0.1:8795",
+  "checks": [
+    {
+      "reportId": "diag_mrh25adf_p7j0ss",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasLowConfidence": true,
+      "hasWithheldScore": true,
+      "hasDoubaoSuccess": true,
+      "hasDeepseekFailure": true,
+      "hasHy3Failure": true,
+      "hasQwenFailure": true,
+      "hasConfirmed": true,
+      "hasUnverified": true
+    },
+    {
+      "reportId": "diag_mrh25adf_p7j0ss",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasLowConfidence": true,
+      "hasWithheldScore": true,
+      "hasDoubaoSuccess": true,
+      "hasDeepseekFailure": true,
+      "hasHy3Failure": true,
+      "hasQwenFailure": true,
+      "hasConfirmed": true,
+      "hasUnverified": true
+    }
+  ],
+  "failureCount": 0
+}

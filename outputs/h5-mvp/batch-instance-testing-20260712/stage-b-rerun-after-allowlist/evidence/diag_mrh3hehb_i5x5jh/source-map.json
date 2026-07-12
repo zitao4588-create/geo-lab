@@ -1,0 +1,43 @@
+{
+  "reportId": "diag_mrh3hehb_i5x5jh",
+  "generatedAt": "2026-07-12T01:08:28.956Z",
+  "provider": "multi",
+  "model": "deepseek-v4-pro + hy3 + qwen3.7-plus + doubao-seed-2-0-lite-260215",
+  "promptCount": 40,
+  "successCount": 40,
+  "files": [
+    {
+      "type": "samples",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/samples.json"
+    },
+    {
+      "type": "providers",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/providers.json"
+    },
+    {
+      "type": "page_audit",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/page-audit.json"
+    },
+    {
+      "type": "source_map",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/source-map.json"
+    },
+    {
+      "type": "markdown",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/source-map.md"
+    },
+    {
+      "type": "markdown",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/exports/report.md"
+    },
+    {
+      "type": "html",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/exports/report.html"
+    },
+    {
+      "type": "evidence_package",
+      "path": "runtime/evidence/diag_mrh3hehb_i5x5jh/exports/evidence-package.json"
+    }
+  ],
+  "notes": "samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；联系方式只保存在 submissions.jsonl，不进入公开报告。"
+}

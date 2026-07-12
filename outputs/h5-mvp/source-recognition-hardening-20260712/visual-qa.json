@@ -1,0 +1,186 @@
+{
+  "baseUrl": "http://127.0.0.1:8796",
+  "checks": [
+    {
+      "name": "p01-official-product",
+      "reportId": "diag_source_p01",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "p01-official-product",
+      "reportId": "diag_source_p01",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "p02-model-conflict",
+      "reportId": "diag_source_p02",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "p02-model-conflict",
+      "reportId": "diag_source_p02",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l01-official-entry-partial",
+      "reportId": "diag_source_l01",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l01-official-entry-partial",
+      "reportId": "diag_source_l01",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l03-national-home-mismatch",
+      "reportId": "diag_source_l03",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l03-national-home-mismatch",
+      "reportId": "diag_source_l03",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "e02-unrelated-source",
+      "reportId": "diag_source_e02",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "e02-unrelated-source",
+      "reportId": "diag_source_e02",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l04-unsupported-claims",
+      "reportId": "diag_source_l04",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    },
+    {
+      "name": "l04-unsupported-claims",
+      "reportId": "diag_source_l04",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "errors": [],
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true
+    }
+  ],
+  "failureCount": 0
+}

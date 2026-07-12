@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-07-12T01:38:36.280Z",
+  "cases": [
+    {
+      "id": "P01",
+      "title": "实体商品资料和官方型号页完整",
+      "inputUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "score": 19,
+      "summary": {
+        "ok": 1,
+        "warn": 1,
+        "missing": 6,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：1 个通过，1 个需补强，6 个不可用。"
+      },
+      "submitted": {
+        "url": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "status": "ok",
+        "httpStatus": 200,
+        "title": "松下【大锤子】剃须刀LM55-松下家电",
+        "canonicalUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "matchedFacts": [
+          "brand",
+          "category",
+          "model",
+          "ES-LM55"
+        ],
+        "missingFacts": [],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面范围与目标实体层级匹配。",
+          "命中事实：brand、category、model、ES-LM55"
+        ]
+      }
+    },
+    {
+      "id": "P02",
+      "title": "输入型号与官方来源冲突",
+      "inputUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "score": 19,
+      "summary": {
+        "ok": 1,
+        "warn": 1,
+        "missing": 6,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：1 个通过，1 个需补强，6 个不可用。"
+      },
+      "submitted": {
+        "url": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "status": "ok",
+        "httpStatus": 200,
+        "title": "松下【大锤子】剃须刀LM55-松下家电",
+        "canonicalUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "matchedFacts": [
+          "brand",
+          "category",
+          "model",
+          "ES-LM55"
+        ],
+        "missingFacts": [],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面范围与目标实体层级匹配。",
+          "命中事实：brand、category、model、ES-LM55"
+        ]
+      }
+    },
+    {
+      "id": "L01",
+      "title": "本地服务城市范围和门店入口完整",
+      "inputUrl": "https://www.haidilao.com/serve/storeSearch",
+      "score": 41,
+      "summary": {
+        "ok": 0,
+        "warn": 6,
+        "missing": 2,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+      },
+      "submitted": {
+        "url": "https://www.haidilao.com/serve/storeSearch",
+        "status": "warn",
+        "httpStatus": 200,
+        "title": "海底捞",
+        "canonicalUrl": "https://www.haidilao.com/serve/storeSearch",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "partial",
+        "matchedFacts": [
+          "brand",
+          "entry"
+        ],
+        "missingFacts": [
+          "西安"
+        ],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面是相关入口，但不足以证明具体型号、城市或门店。",
+          "命中事实：brand、entry",
+          "缺少事实：西安"
+        ]
+      }
+    },
+    {
+      "id": "L03",
+      "title": "具体门店仅有全国品牌首页",
+      "inputUrl": "https://www.haidilao.com/",
+      "score": 41,
+      "summary": {
+        "ok": 0,
+        "warn": 6,
+        "missing": 2,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+      },
+      "submitted": {
+        "url": "https://www.haidilao.com/",
+        "status": "warn",
+        "httpStatus": 200,
+        "title": "海底捞",
+        "canonicalUrl": "https://www.haidilao.com/",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "mismatched",
+        "matchedFacts": [
+          "brand"
+        ],
+        "missingFacts": [
+          "entry",
+          "西安"
+        ],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面层级与目标实体范围不匹配。",
+          "命中事实：brand",
+          "缺少事实：entry、西安"
+        ]
+      }
+    }
+  ]
+}

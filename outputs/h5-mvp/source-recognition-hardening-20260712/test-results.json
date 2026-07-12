@@ -1,0 +1,641 @@
+{
+  "generatedAt": "2026-07-12T01:46:40.978Z",
+  "deterministic": {
+    "typecheck": "passed",
+    "tests": {
+      "passed": 47,
+      "failed": 0
+    },
+    "build": "passed",
+    "diffCheck": "passed",
+    "pageAuditRegression": {
+      "passed": 5,
+      "failed": 0
+    },
+    "visual": {
+      "checks": 12,
+      "failures": 0
+    }
+  },
+  "livePageAudit": [
+    {
+      "id": "P01",
+      "title": "实体商品资料和官方型号页完整",
+      "inputUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "score": 19,
+      "summary": {
+        "ok": 1,
+        "warn": 1,
+        "missing": 6,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：1 个通过，1 个需补强，6 个不可用。"
+      },
+      "submitted": {
+        "url": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "status": "ok",
+        "httpStatus": 200,
+        "title": "松下【大锤子】剃须刀LM55-松下家电",
+        "canonicalUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "matchedFacts": [
+          "brand",
+          "category",
+          "model",
+          "ES-LM55"
+        ],
+        "missingFacts": [],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面范围与目标实体层级匹配。",
+          "命中事实：brand、category、model、ES-LM55"
+        ]
+      }
+    },
+    {
+      "id": "P02",
+      "title": "输入型号与官方来源冲突",
+      "inputUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "score": 19,
+      "summary": {
+        "ok": 1,
+        "warn": 1,
+        "missing": 6,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：1 个通过，1 个需补强，6 个不可用。"
+      },
+      "submitted": {
+        "url": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "status": "ok",
+        "httpStatus": 200,
+        "title": "松下【大锤子】剃须刀LM55-松下家电",
+        "canonicalUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "matchedFacts": [
+          "brand",
+          "category",
+          "model",
+          "ES-LM55"
+        ],
+        "missingFacts": [],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面范围与目标实体层级匹配。",
+          "命中事实：brand、category、model、ES-LM55"
+        ]
+      }
+    },
+    {
+      "id": "L01",
+      "title": "本地服务城市范围和门店入口完整",
+      "inputUrl": "https://www.haidilao.com/serve/storeSearch",
+      "score": 41,
+      "summary": {
+        "ok": 0,
+        "warn": 6,
+        "missing": 2,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+      },
+      "submitted": {
+        "url": "https://www.haidilao.com/serve/storeSearch",
+        "status": "warn",
+        "httpStatus": 200,
+        "title": "海底捞",
+        "canonicalUrl": "https://www.haidilao.com/serve/storeSearch",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "partial",
+        "matchedFacts": [
+          "brand",
+          "entry"
+        ],
+        "missingFacts": [
+          "西安"
+        ],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面是相关入口，但不足以证明具体型号、城市或门店。",
+          "命中事实：brand、entry",
+          "缺少事实：西安"
+        ]
+      }
+    },
+    {
+      "id": "L03",
+      "title": "具体门店仅有全国品牌首页",
+      "inputUrl": "https://www.haidilao.com/",
+      "score": 41,
+      "summary": {
+        "ok": 0,
+        "warn": 6,
+        "missing": 2,
+        "failed": 0,
+        "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+      },
+      "submitted": {
+        "url": "https://www.haidilao.com/",
+        "status": "warn",
+        "httpStatus": 200,
+        "title": "海底捞",
+        "canonicalUrl": "https://www.haidilao.com/",
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "mismatched",
+        "matchedFacts": [
+          "brand"
+        ],
+        "missingFacts": [
+          "entry",
+          "西安"
+        ],
+        "notes": [
+          "HTTP 200",
+          "页面内容与目标实体匹配。",
+          "页面层级与目标实体范围不匹配。",
+          "命中事实：brand",
+          "缺少事实：entry、西安"
+        ]
+      }
+    }
+  ],
+  "stageB": {
+    "generatedAt": "2026-07-12T01:45:16.454Z",
+    "samplingMode": "reuse_saved_real_four_provider_samples_after_page_audit_fix",
+    "sourceRun": "stage-b-rerun-after-allowlist-results.json",
+    "newProviderCalls": 0,
+    "totals": {
+      "realReports": 5,
+      "reusedReports": 1,
+      "providerSamples": 200,
+      "successes": 200,
+      "failures": 0,
+      "fallbackCount": 0
+    },
+    "cases": [
+      {
+        "id": "P01",
+        "title": "实体商品资料和官方型号页完整",
+        "reportId": "diag_mrh4sqae_9qsye9",
+        "sourceReportId": "diag_mrh3gre6_b6x0vx",
+        "providerSamples": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providerStatuses": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAuditScore": 19,
+        "submittedSourceRelation": "entity_matched",
+        "submittedScopeRelation": "matched",
+        "submittedMissingFacts": [],
+        "confidence": "medium",
+        "scoreStatus": "available",
+        "displayedScore": 41,
+        "correctEntityRecognitionRate": 0.35,
+        "misrecognitionRate": 0.45,
+        "modelConflictCount": 8,
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：官方型号 ES-LM55 的五刀头电动剃须刀",
+          "发现 8 组模型结论冲突。"
+        ]
+      },
+      {
+        "id": "P02",
+        "title": "输入型号与官方来源冲突",
+        "reportId": "diag_mrh4sqmh_tb9rmn",
+        "sourceReportId": "diag_mrh3hehb_i5x5jh",
+        "providerSamples": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providerStatuses": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAuditScore": 19,
+        "submittedSourceRelation": "entity_matched",
+        "submittedScopeRelation": "matched",
+        "submittedMissingFacts": [],
+        "confidence": "medium",
+        "scoreStatus": "available",
+        "displayedScore": 43,
+        "correctEntityRecognitionRate": 0.35,
+        "misrecognitionRate": 0.45,
+        "modelConflictCount": 7,
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：用户填写型号 ES-LV9C 的五刀头电动剃须刀",
+          "用户填写型号 ES-LV9C 与已核验官方型号 ES-LM55 冲突。",
+          "发现 7 组模型结论冲突。"
+        ]
+      },
+      {
+        "id": "S01",
+        "title": "软件资料和官网完整",
+        "reportId": "diag_mrh4sqpl_0l0mu2",
+        "sourceReportId": "diag_mrh3i18n_g2ks2j",
+        "providerSamples": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providerStatuses": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAuditScore": 72,
+        "submittedSourceRelation": "entity_matched",
+        "submittedScopeRelation": "matched",
+        "submittedMissingFacts": [],
+        "confidence": "medium",
+        "scoreStatus": "available",
+        "displayedScore": 47,
+        "correctEntityRecognitionRate": 0.05,
+        "misrecognitionRate": 0,
+        "modelConflictCount": 10,
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：帮助品牌用多模型 API 样本检查 AI 实体认知和证据边界的网页工具",
+          "发现 10 组模型结论冲突。"
+        ]
+      },
+      {
+        "id": "L01",
+        "title": "本地服务城市范围和门店入口完整",
+        "reportId": "diag_mrh4sr99_qzvypx",
+        "sourceReportId": "diag_mrh3ioen_1ui2t1",
+        "providerSamples": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providerStatuses": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAuditScore": 41,
+        "submittedSourceRelation": "entity_matched",
+        "submittedScopeRelation": "partial",
+        "submittedMissingFacts": [
+          "西安"
+        ],
+        "confidence": "low",
+        "scoreStatus": "withheld",
+        "displayedScore": null,
+        "correctEntityRecognitionRate": null,
+        "misrecognitionRate": 0,
+        "modelConflictCount": 1,
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：提供门店餐饮、排队和预约信息的本地餐饮服务",
+          "缺少实体与业务范围均通过审计的官方来源，品牌归属或具体型号、城市、门店仍待确认。",
+          "已识别相关官方入口，但页面不足以证明当前业务范围：西安。",
+          "正确实体识别率无法判断。",
+          "发现 1 组模型结论冲突。"
+        ]
+      },
+      {
+        "id": "L03",
+        "title": "具体门店仅有全国品牌首页",
+        "reportId": "diag_mrh4srgr_alqv73",
+        "sourceReportId": "diag_mrh3jbc6_c2faue",
+        "providerSamples": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providerStatuses": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAuditScore": 41,
+        "submittedSourceRelation": "entity_matched",
+        "submittedScopeRelation": "mismatched",
+        "submittedMissingFacts": [
+          "entry",
+          "西安"
+        ],
+        "confidence": "low",
+        "scoreStatus": "withheld",
+        "displayedScore": null,
+        "correctEntityRecognitionRate": null,
+        "misrecognitionRate": 0,
+        "modelConflictCount": 1,
+        "unverifiedFacts": [
+          "用户提交的业务描述仍需来源核验：西安具体门店的餐饮、排队和预约服务",
+          "缺少实体与业务范围均通过审计的官方来源，品牌归属或具体型号、城市、门店仍待确认。",
+          "已识别相关官方入口，但页面不足以证明当前业务范围：entry、西安。",
+          "正确实体识别率无法判断。",
+          "发现 1 组模型结论冲突。"
+        ]
+      },
+      {
+        "id": "S02",
+        "title": "冰箱小雷达复用已保存证据",
+        "execution": "reused_saved_four_provider_evidence",
+        "reportId": "diag_mrfzt02t_me73v1",
+        "promptCount": 0,
+        "sampleCount": 40,
+        "successCount": 40,
+        "failureCount": 0,
+        "fallbackCount": 0,
+        "providers": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-pro",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "hy3",
+            "model": "hy3",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+          },
+          {
+            "provider": "qwen",
+            "model": "qwen3.7-plus",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+          },
+          {
+            "provider": "doubao",
+            "model": "doubao-seed-2-0-lite-260215",
+            "status": "sampled",
+            "promptCount": 10,
+            "successCount": 10,
+            "failureCount": 0,
+            "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+          }
+        ],
+        "pageAudit": {
+          "score": 100,
+          "targetCount": 8,
+          "summary": {
+            "ok": 8,
+            "warn": 0,
+            "missing": 0,
+            "failed": 0,
+            "note": "完成 8 个 URL 审计：8 个通过，0 个需补强，0 个不可用。"
+          }
+        },
+        "note": "按既有约束继续复用已保存四模型证据，本轮新增调用为 0。"
+      }
+    ]
+  },
+  "acceptance": [
+    {
+      "id": "P01",
+      "scenario": "具体官方产品页",
+      "expectedBoundary": "entity_matched + matched",
+      "expectedOutcome": "可评分，官方型号 ES-LM55",
+      "actual": {
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "scoreStatus": "available",
+        "displayedScore": 41
+      },
+      "pass": true
+    },
+    {
+      "id": "P02",
+      "scenario": "用户型号与官方页冲突",
+      "expectedBoundary": "entity_matched + matched",
+      "expectedOutcome": "可评分，并显式展示 ES-LV9C / ES-LM55 冲突",
+      "actual": {
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "matched",
+        "scoreStatus": "available",
+        "displayedScore": 43
+      },
+      "pass": true
+    },
+    {
+      "id": "L01",
+      "scenario": "官方门店搜索入口",
+      "expectedBoundary": "entity_matched + partial",
+      "expectedOutcome": "暂停评分，缺少西安具体门店证明",
+      "actual": {
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "partial",
+        "scoreStatus": "withheld",
+        "displayedScore": null
+      },
+      "pass": true
+    },
+    {
+      "id": "L03",
+      "scenario": "全国品牌首页",
+      "expectedBoundary": "entity_matched + mismatched",
+      "expectedOutcome": "暂停评分，品牌首页不能证明具体门店",
+      "actual": {
+        "sourceRelation": "entity_matched",
+        "scopeRelation": "mismatched",
+        "scoreStatus": "withheld",
+        "displayedScore": null
+      },
+      "pass": true
+    },
+    {
+      "id": "E02",
+      "scenario": "无关 URL",
+      "expectedBoundary": "unrelated + mismatched",
+      "expectedOutcome": "暂停评分，不支持实体识别",
+      "actual": "covered_by_deterministic_regression",
+      "pass": true
+    },
+    {
+      "id": "E03",
+      "scenario": "用户事实与官方来源冲突",
+      "expectedBoundary": "entity_matched + matched",
+      "expectedOutcome": "显式记录型号事实冲突",
+      "actual": "covered_by_deterministic_regression",
+      "pass": true
+    },
+    {
+      "id": "L04",
+      "scenario": "未证明价格/效果/安全承诺",
+      "expectedBoundary": "无有效范围证据",
+      "expectedOutcome": "暂停评分，承诺仅保留在待核验事实",
+      "actual": "covered_by_deterministic_regression",
+      "pass": true
+    }
+  ]
+}

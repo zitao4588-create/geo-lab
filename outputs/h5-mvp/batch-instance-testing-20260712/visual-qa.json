@@ -1,0 +1,151 @@
+{
+  "baseUrl": "http://127.0.0.1:8794",
+  "checks": [
+    {
+      "name": "physical-normal",
+      "reportId": "diag_batch_physical_normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "physical-normal",
+      "reportId": "diag_batch_physical_normal",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "software-misread",
+      "reportId": "diag_batch_software_misread",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "software-misread",
+      "reportId": "diag_batch_software_misread",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "local-source-boundary",
+      "reportId": "diag_batch_local_boundary",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "local-source-boundary",
+      "reportId": "diag_batch_local_boundary",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "partial-provider-failure",
+      "reportId": "diag_batch_partial_failure",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "partial-provider-failure",
+      "reportId": "diag_batch_partial_failure",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "caseSignal": true,
+      "errors": []
+    },
+    {
+      "name": "preflight-insufficient",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "errors": []
+    },
+    {
+      "name": "preflight-insufficient",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "hasConfirmed": true,
+      "hasUnverified": true,
+      "hasConfidence": true,
+      "hasActions": true,
+      "errors": []
+    }
+  ]
+}

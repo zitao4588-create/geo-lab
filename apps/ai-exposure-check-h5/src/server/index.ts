@@ -5,6 +5,7 @@ import { existsSync } from 'node:fs';
 import { ZodError } from 'zod';
 import { diagnosisInputSchema } from './validation.js';
 import { buildFinalGeoReport, buildPromptUniverse } from './rules.js';
+import { assessDiagnosisInput } from './credibility.js';
 import { getDeepSeekRuntime, polishFinalReportWithDeepSeek, sampleAiProviders, SamplingUnavailableError } from './deepseek.js';
 import { auditSubmittedPages } from './pageAudit.js';
 import {
@@ -127,6 +128,15 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
+app.post('/api/diagnoses/preflight', (req, res, next) => {
+  try {
+    const input = diagnosisInputSchema.parse(req.body);
+    res.json({ assessment: assessDiagnosisInput(input) });
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.post('/api/diagnoses', async (req, res, next) => {
   let runningDiagnosis: Promise<DiagnosisReport> | null = null;
   let clientRequestId = '';
@@ -134,6 +144,15 @@ app.post('/api/diagnoses', async (req, res, next) => {
 
   try {
     const input = diagnosisInputSchema.parse(req.body);
+    const assessment = assessDiagnosisInput(input);
+    if (assessment.status !== 'ready') {
+      res.status(422).json({
+        error: 'input_confirmation_required',
+        message: assessment.note,
+        assessment
+      });
+      return;
+    }
     clientRequestId = input.clientRequestId || '';
 
     if (clientRequestId) {

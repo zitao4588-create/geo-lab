@@ -1,0 +1,201 @@
+{
+  "baseUrl": "https://consumer.panasonic.cn",
+  "generatedAt": "2026-07-12T01:45:17.103Z",
+  "score": 19,
+  "targets": [
+    {
+      "id": "submitted",
+      "name": "用户提交入口",
+      "url": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "title": "松下【大锤子】剃须刀LM55-松下家电",
+      "description": "",
+      "canonicalUrl": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+      "matchedFacts": [
+        "brand",
+        "category",
+        "model",
+        "ES-LM55"
+      ],
+      "missingFacts": [],
+      "notes": [
+        "HTTP 200",
+        "页面内容与目标实体匹配。",
+        "页面范围与目标实体层级匹配。",
+        "命中事实：brand、category、model、ES-LM55"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.103Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "entity_matched",
+      "scopeRelation": "matched",
+      "submitted": true
+    },
+    {
+      "id": "privacy",
+      "name": "隐私政策页",
+      "url": "https://consumer.panasonic.cn/privacy/",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "title": "404",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "privacy",
+        "data"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：privacy、data"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.104Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "features",
+      "name": "功能说明页",
+      "url": "https://consumer.panasonic.cn/features/",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "title": "404",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "feature",
+        "category"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：feature、category"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "faq",
+      "name": "FAQ/常见问题",
+      "url": "https://consumer.panasonic.cn/faq/",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "title": "404",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "faq",
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：faq、privacy"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "geo-case",
+      "name": "GEO 自证案例",
+      "url": "https://consumer.panasonic.cn/geo-case/",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "title": "404",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "geo",
+        "brand"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：geo、brand"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "robots",
+      "name": "robots.txt",
+      "url": "https://consumer.panasonic.cn/robots.txt",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "matchedFacts": [],
+      "missingFacts": [
+        "sitemap"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：sitemap"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "sitemap",
+      "name": "sitemap.xml",
+      "url": "https://consumer.panasonic.cn/sitemap.xml",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/xml;charset=utf-8",
+      "matchedFacts": [
+        "home",
+        "privacy"
+      ],
+      "missingFacts": [
+        "faq"
+      ],
+      "notes": [
+        "HTTP 200",
+        "命中事实：home、privacy",
+        "缺少事实：faq"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "llms",
+      "name": "llms.txt",
+      "url": "https://consumer.panasonic.cn/llms.txt",
+      "status": "missing",
+      "httpStatus": 404,
+      "contentType": "text/html; charset=utf-8",
+      "matchedFacts": [],
+      "missingFacts": [
+        "brand",
+        "category",
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 404",
+        "缺少事实：brand、category、privacy"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.105Z",
+      "evidenceLabel": "suggested_supplement",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    }
+  ],
+  "summary": {
+    "ok": 1,
+    "warn": 1,
+    "missing": 6,
+    "failed": 0,
+    "note": "完成 8 个 URL 审计：1 个通过，1 个需补强，6 个不可用。"
+  }
+}

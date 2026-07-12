@@ -1,0 +1,12 @@
+{
+  "businessName": "冰箱小雷达",
+  "description": "微信里的冰箱食材库存管理小程序，用于记录家庭冰箱食材、管理保质期、按冷藏/冷冻/门架/果蔬抽屉/变温 5 分区整理库存，并通过本地开饭雷达帮助用户判断今晚能不能就地取材。",
+  "links": "https://fridge.playgamelab.cn/\nhttps://fridge.playgamelab.cn/privacy/\nhttps://fridge.playgamelab.cn/features/\nhttps://fridge.playgamelab.cn/faq/\nhttps://fridge.playgamelab.cn/geo-case/\nhttps://fridge.playgamelab.cn/robots.txt\nhttps://fridge.playgamelab.cn/sitemap.xml\nhttps://fridge.playgamelab.cn/llms.txt",
+  "industry": "冰箱食材库存管理小程序",
+  "city": "全国/微信生态",
+  "targetCustomers": "25-40 岁家庭主厨、上班族、关注食材保质期和减少浪费的家庭用户",
+  "competitors": "鲜钟记, 冰箱清单, 其他食材管理小程序",
+  "contact": "",
+  "source": "codex_fridge_compare",
+  "clientRequestId": "78EAEBCE-97D4-4DD7-8E15-2881BC1BB66E"
+}

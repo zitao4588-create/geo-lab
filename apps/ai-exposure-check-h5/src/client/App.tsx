@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Toast } from 'tdesign-mobile-react';
-import type { AiProvider, DiagnosisInput, DiagnosisReport, EvidenceLabel, RiskLevel, ScoreDimension } from '../shared/types';
-import { ApiError, createDiagnosis, getDiagnosis } from './api';
+import type { AiProvider, DiagnosisInput, DiagnosisReport, EvidenceLabel, InputAssessment, RiskLevel, ScoreDimension } from '../shared/types';
+import { ApiError, createDiagnosis, getDiagnosis, preflightDiagnosis } from './api';
 
 type Screen = 'start' | 'form' | 'loading' | 'result';
 
@@ -12,6 +12,11 @@ const FORM_DRAFT_KEY = 'aiec_form_draft';
 const PENDING_REQUEST_KEY = 'aiec_pending_request';
 const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
 const industryTags = ['本地餐饮', '小程序工具', '家政服务', '教育培训', '医美健康', 'SaaS软件'];
+const businessTypeOptions = [
+  { value: 'physical_product', label: '实体商品' },
+  { value: 'software_or_miniprogram', label: '软件 / 小程序' },
+  { value: 'local_service', label: '本地服务' }
+] as const;
 const providerLabels: Record<AiProvider, string> = {
   deepseek: 'DeepSeek（百炼）',
   hy3: '腾讯混元',
@@ -139,6 +144,7 @@ export function App() {
   const [loadingSeconds, setLoadingSeconds] = useState(0);
   const [error, setError] = useState('');
   const [errorCode, setErrorCode] = useState('');
+  const [preflight, setPreflight] = useState<InputAssessment | null>(null);
 
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
@@ -199,6 +205,7 @@ export function App() {
 
   const updateForm = (field: keyof DiagnosisInput, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
+    setPreflight(null);
   };
 
   const submit = async () => {
@@ -209,10 +216,17 @@ export function App() {
 
     setError('');
     setErrorCode('');
-    setLoadingStep(0);
-    setScreen('loading');
-
     try {
+      const { assessment } = await preflightDiagnosis(form);
+      setPreflight(assessment);
+      if (assessment.status !== 'ready') {
+        setErrorCode('input_confirmation_required');
+        setError(assessment.note);
+        return;
+      }
+
+      setLoadingStep(0);
+      setScreen('loading');
       const clientRequestId = ensurePendingRequestId(form);
       const result = await createDiagnosis({ ...form, clientRequestId });
       setReport(result.report);
@@ -242,6 +256,7 @@ export function App() {
             error={error}
             errorCode={errorCode}
             canSubmit={canSubmit}
+            preflight={preflight}
             onChange={updateForm}
             onSubmit={submit}
           />
@@ -249,6 +264,7 @@ export function App() {
         {screen === 'loading' && <LoadingScreen step={loadingStep} seconds={loadingSeconds} />}
         {screen === 'result' && report && <ResultScreen report={report} onRestart={() => {
           setReport(null);
+          setPreflight(null);
           setForm(emptyForm);
           try {
             sessionStorage.removeItem(FORM_DRAFT_KEY);
@@ -318,6 +334,7 @@ function FormScreen({
   error,
   errorCode,
   canSubmit,
+  preflight,
   onChange,
   onSubmit
 }: {
@@ -325,6 +342,7 @@ function FormScreen({
   error: string;
   errorCode: string;
   canSubmit: boolean;
+  preflight: InputAssessment | null;
   onChange: (field: keyof DiagnosisInput, value: string) => void;
   onSubmit: () => void;
 }) {
@@ -366,6 +384,20 @@ function FormScreen({
         </Field>
         <Field id="field-description" label="一句话介绍" required>
           <Input value={form.description} placeholder="例如：帮家庭管理冰箱食材、提醒临期食品的小程序" onChange={(value) => onChange('description', String(value))} />
+        </Field>
+        <Field label="业务类型">
+          <div className="industry-tags business-type-tags" aria-label="业务类型">
+            {businessTypeOptions.map((option) => (
+              <button
+                type="button"
+                className={form.confirmedBusinessType === option.value ? 'active' : ''}
+                key={option.value}
+                onClick={() => onChange('confirmedBusinessType', option.value)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </Field>
         <Field id="field-industry" label="所在行业" required>
           <Input value={form.industry} placeholder="例如：小程序工具" onChange={(value) => onChange('industry', String(value))} />
@@ -409,6 +441,20 @@ function FormScreen({
         </div>
       ) : (
         error && <p className="error-text">{error}</p>
+      )}
+
+      {preflight && preflight.status !== 'ready' && (
+        <div className="preflight-card" role="status">
+          <div className="preflight-title">
+            <strong>先补资料，再开始四模型采样</strong>
+            <span>{preflight.score}/100 · {preflight.status === 'insufficient_evidence' ? '证据不足' : '需要确认'}</span>
+          </div>
+          <p>{preflight.note}</p>
+          <ul>
+            {preflight.requiredActions.map((action) => <li key={action}>{action}</li>)}
+          </ul>
+          <small>当前未消耗免费名额，也没有调用模型。</small>
+        </div>
       )}
 
       <Button
@@ -506,11 +552,16 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   const sampledProviders = report.stages.aiSearch.providerBreakdown.filter(
     (provider) => provider.status === 'sampled' || provider.status === 'partial'
   );
-  const unavailableProviders = report.stages.aiSearch.providerBreakdown.filter(
-    (provider) => provider.status !== 'sampled' && provider.status !== 'partial'
+  const failedProviders = report.stages.aiSearch.providerBreakdown.filter(
+    (provider) => provider.status === 'unavailable' && (provider.failureCount > 0 || provider.promptCount > 0)
   );
-  const answerSamples = report.stages.aiSearch.answerSamples.slice(0, 4);
+  const unavailableProviders = report.stages.aiSearch.providerBreakdown.filter(
+    (provider) => provider.status === 'unavailable' && provider.failureCount === 0 && provider.promptCount === 0
+  );
+  const answerSamples = report.stages.aiSearch.answerSamples;
   const auditTargets = report.stages.infrastructure.pageAudit.targets.slice(0, 8);
+  const credibility = report.stages.credibility;
+  const scoreWithheld = credibility?.scoreStatus === 'withheld';
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -573,15 +624,26 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         className={`report-cover ${report.riskLevel}`}
         style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}
       >
-        <span className="cover-kicker">GEO 分析成果得分</span>
-        <div className="cover-ring">
-          <div>
-            <strong>{displayScore}</strong>
-            <small>/ 100</small>
+        <span className="cover-kicker">{scoreWithheld ? '报告可信度状态' : 'GEO 分析成果得分'}</span>
+        {scoreWithheld ? (
+          <div className="withheld-score">
+            <strong>暂不评分</strong>
+            <span>缺少已核验官方来源</span>
           </div>
-        </div>
-        <span className="cover-chip">{report.scoreLevel} · {risk.label}</span>
-        <p className="cover-summary">{report.summary}</p>
+        ) : (
+          <div className="cover-ring">
+            <div>
+              <strong>{displayScore}</strong>
+              <small>/ 100</small>
+            </div>
+          </div>
+        )}
+        <span className="cover-chip">{scoreWithheld ? '低证据 · 需要补充资料' : `${report.scoreLevel} · ${risk.label}`}</span>
+        <p className="cover-summary">
+          {scoreWithheld
+            ? `本次成功采样 ${report.aiMeta.successCount}/${report.aiMeta.promptCount}，但证据或模型覆盖不足，因此暂不评分。`
+            : report.summary}
+        </p>
         <div className="cover-foot">
           <span>四模型 GEO 采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
           <span>{formatDate(report.generatedAt)}</span>
@@ -597,6 +659,28 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
           ))}
         </div>
       </section>
+
+      {credibility && (
+        <ResultBlock title="这份报告能确认什么">
+          <div className={`confidence-banner ${credibility.confidence}`}>
+            <strong>{credibility.confidence === 'high' ? '高置信度' : credibility.confidence === 'medium' ? '中等置信度' : '低置信度'}</strong>
+            <span>{credibility.inputAssessment.note}</span>
+          </div>
+          <div className="truth-columns">
+            <div>
+              <strong>已确认</strong>
+              {credibility.confirmedFacts.map((fact) => <p key={fact}>{fact}</p>)}
+            </div>
+            <div>
+              <strong>仍待核验</strong>
+              {credibility.unverifiedFacts.map((fact) => <p key={fact}>{fact}</p>)}
+            </div>
+          </div>
+          <div className="next-action-list">
+            {credibility.nextActions.map((action, index) => <span key={action}>{index + 1}. {action}</span>)}
+          </div>
+        </ResultBlock>
+      )}
 
       <ResultBlock title="核心结论">
         <p className="block-summary">{report.stages.overview.keyFinding}</p>
@@ -616,14 +700,32 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
       <ResultBlock title="AI 采样结果">
         <div className="metric-grid">
           <Metric label="成功采样" value={`${report.aiMeta.successCount}/${report.aiMeta.promptCount}`} />
-          <Metric label="品牌提及率" value={`${Math.round(report.stages.aiSearch.mentionRate * 1000) / 10}%`} />
-          <Metric label="提及回答数" value={`${report.stages.aiSearch.mentionedCount}`} />
+          <Metric label="字符串出现率" value={`${Math.round((credibility?.stringMentionRate ?? report.stages.aiSearch.mentionRate) * 1000) / 10}%`} />
+          <Metric label="正确实体识别" value={credibility?.correctEntityRecognitionRate == null ? '无法判断' : `${Math.round(credibility.correctEntityRecognitionRate * 1000) / 10}%`} />
+          <Metric label="无品牌词推荐" value={`${Math.round((credibility?.naturalRecommendationRate ?? 0) * 1000) / 10}%`} />
+          <Metric label="错误认知率" value={`${Math.round((credibility?.misrecognitionRate ?? 0) * 1000) / 10}%`} />
+          <Metric label="模型一致度" value={credibility?.providerAgreementRate == null ? '样本不足' : `${Math.round(credibility.providerAgreementRate * 1000) / 10}%`} />
         </div>
+        {credibility && credibility.modelConflicts.length > 0 && (
+          <div className="conflict-card">
+            <strong>模型结论存在冲突</strong>
+            {credibility.modelConflicts.map((conflict) => <p key={conflict}>{conflict}</p>)}
+          </div>
+        )}
         {sampledProviders.length > 0 && (
           <div className="provider-strip">
             {sampledProviders.map((provider) => (
               <span className={provider.status} key={provider.provider}>
                 {providerLabels[provider.provider]} · {provider.successCount}/{provider.promptCount}
+              </span>
+            ))}
+          </div>
+        )}
+        {failedProviders.length > 0 && (
+          <div className="provider-strip">
+            {failedProviders.map((provider) => (
+              <span className="failed" key={provider.provider}>
+                {providerLabels[provider.provider]} · 失败 {provider.successCount}/{provider.promptCount}
               </span>
             ))}
           </div>
@@ -643,10 +745,12 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
                     <EvidenceBadge label={answer.evidenceLabel} />
                   </div>
                   <p>{answer.answerExcerpt}</p>
-                  <small className={answer.mentionedBrand ? 'hit' : 'miss'}>
-                    {answer.mentionedBrand ? '已提及品牌' : '未提及品牌'}
+                  <small className={answer.entityRecognition === 'supported' ? 'hit' : answer.entityRecognition === 'misrecognized' ? 'miss' : ''}>
+                    {answer.entityRecognition === 'supported' ? '识别有据' : answer.entityRecognition === 'uncertain' ? '不确定' : answer.entityRecognition === 'misrecognized' ? '错误认知' : '无法核验'}
+                    {answer.naturalRecommendation ? ' · 无品牌词自然推荐' : answer.brandedPrompt ? ' · 问题已含品牌名' : ''}
                     {answer.mentionedCompetitors.length ? ` · 竞品：${answer.mentionedCompetitors.join('、')}` : ''}
                   </small>
+                  <p className="recognition-reason">{answer.recognitionReason}</p>
                 </article>
               ))}
             </div>
@@ -656,7 +760,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
 
       <ResultBlock title="公开基建">
         <div className="metric-grid">
-          <Metric label="页面审计分" value={`${report.stages.infrastructure.score}`} />
+          <Metric label="页面审计分" value={report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.score}` : '未检测'} />
           <Metric label="通过页面" value={`${report.stages.infrastructure.pageAudit.summary.ok}`} />
           <Metric label="需补强" value={`${report.stages.infrastructure.pageAudit.summary.warn}`} />
         </div>
@@ -868,6 +972,7 @@ function StepHeader({ current }: { current: 1 | 2 | 3 }) {
 }
 
 function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
+  const scoreWithheld = report?.stages.credibility?.scoreStatus === 'withheld';
   return (
     <aside className="desktop-preview" aria-hidden="true">
       <div>
@@ -876,8 +981,10 @@ function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
       </div>
       <div className="preview-panel">
         <span>AI曝光体检</span>
-        <h2>{report ? `${report.score}分 · ${report.scoreLevel}` : '提交业务资料，生成 GEO 分析报告'}</h2>
-        <p>{report?.summary ?? '报告会保留采样证据、评分拆解、竞品风险和下一步执行路线。'}</p>
+        <h2>{report ? (scoreWithheld ? '证据不足 · 暂不评分' : `${report.score}分 · ${report.scoreLevel}`) : '提交业务资料，生成 GEO 分析报告'}</h2>
+        <p>{report
+          ? (scoreWithheld ? '当前证据或模型覆盖不足，报告已降低置信度并暂停展示总分。' : report.summary)
+          : '报告会保留采样证据、评分拆解、竞品风险和下一步执行路线。'}</p>
         <small>exposure.playgamelab.cn · GEO 分析成果报告</small>
       </div>
     </aside>

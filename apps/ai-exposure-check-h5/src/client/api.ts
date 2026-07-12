@@ -1,4 +1,4 @@
-import type { DiagnosisInput, DiagnosisResponse } from '../shared/types';
+import type { DiagnosisInput, DiagnosisPreflightResponse, DiagnosisResponse } from '../shared/types';
 
 export class ApiError extends Error {
   code: string;
@@ -21,12 +21,21 @@ export async function createDiagnosis(input: DiagnosisInput): Promise<DiagnosisR
   return parseResponse(response);
 }
 
-export async function getDiagnosis(id: string): Promise<DiagnosisResponse> {
-  const response = await fetch(`/api/diagnoses/${encodeURIComponent(id)}`);
-  return parseResponse(response);
+export async function preflightDiagnosis(input: DiagnosisInput): Promise<DiagnosisPreflightResponse> {
+  const response = await fetch('/api/diagnoses/preflight', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(input)
+  });
+  return parseResponse<DiagnosisPreflightResponse>(response);
 }
 
-async function parseResponse(response: Response): Promise<DiagnosisResponse> {
+export async function getDiagnosis(id: string): Promise<DiagnosisResponse> {
+  const response = await fetch(`/api/diagnoses/${encodeURIComponent(id)}`);
+  return parseResponse<DiagnosisResponse>(response);
+}
+
+async function parseResponse<T>(response: Response): Promise<T> {
   const data = (await response.json().catch(() => null)) as
     | DiagnosisResponse
     | { error?: string; message?: string }
@@ -36,5 +45,5 @@ async function parseResponse(response: Response): Promise<DiagnosisResponse> {
     const code = (data && 'error' in data && data.error) || 'request_failed';
     throw new ApiError(message, code);
   }
-  return data as DiagnosisResponse;
+  return data as T;
 }

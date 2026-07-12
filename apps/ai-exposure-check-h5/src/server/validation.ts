@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const businessTypeSchema = z.enum(['physical_product', 'software_or_miniprogram', 'local_service', 'generic_or_unknown']);
+
 export const diagnosisInputSchema = z.object({
   businessName: z.string().trim().min(1, '请填写产品/门店名称').max(80),
   description: z.string().trim().min(1, '请填写一句话介绍').max(500),
@@ -17,10 +19,12 @@ export const diagnosisInputSchema = z.object({
     .default('')
     .transform((value) => value.replace(/[\r\n\t]+/gu, ' ')),
   clientRequestId: z
-    .string()
-    .trim()
-    .regex(/^[A-Za-z0-9_-]{12,80}$/u, '请求编号格式不正确')
+    .union([
+      z.literal(''),
+      z.string().trim().regex(/^[A-Za-z0-9_-]{12,80}$/u, '请求编号格式不正确')
+    ])
     .optional()
     .default(''),
-  samplePrompts: z.array(z.string().trim().min(3).max(240)).max(30).optional()
+  samplePrompts: z.array(z.string().trim().min(3).max(240)).max(30).optional(),
+  confirmedBusinessType: businessTypeSchema.optional()
 });

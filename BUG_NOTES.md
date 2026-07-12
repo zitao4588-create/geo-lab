@@ -171,3 +171,100 @@ Cause: the earlier `nohup npm --prefix <release> start` launch stored the npm wr
 Fix: inspected the exact listener PID and command, terminated only the stale precheck process, verified the port was empty, then launched the new release with `env -C <release> node dist/server/server/index.js`. This makes the stored PID the actual Node process.
 
 Verification: the clean precheck PID had working directory `releases/20260711141454`; homepage and health returned `200`, all four providers were ready, and port `8790` was empty after stopping the recorded PID. Production was switched only after this verification.
+
+## 2026-07-12: Report Export Mixed Infrastructure Dimension With Page Audit
+
+Symptom: the external shaver report summary said page audit `0/100`, while Markdown/HTML headers displayed `20/100`.
+
+Cause: exporters rendered `report.stages.infrastructure.score`, which included synthetic no-URL baseline points, instead of the actual `pageAudit.score` and target state.
+
+Fix: no-URL infrastructure now scores `0`; H5, Markdown and HTML show `未检测` when there are no audit targets and use the actual PageAudit score otherwise.
+
+Verification: `report-credibility.test.mjs` asserts the export never shows `20/100` for a no-URL report; three output surfaces share the same credibility structure.
+
+## 2026-07-12: Preflight Rejected Empty Client Request ID
+
+Symptom: the new form preflight returned `validation_error` instead of showing the evidence-insufficient card.
+
+Cause: the draft form sends `clientRequestId: ""`, while the server schema accepted only an omitted value or a 12-80 character ID.
+
+Fix: validation now accepts either an empty string or a valid request ID. Full diagnosis submission still generates and validates its normal stable ID.
+
+Verification: Playwright filled the sparse Panasonic form, displayed the preflight card, confirmed no overflow or console errors, and the integration test proves preflight rejection does not consume quota or call the fake provider.
+
+## 2026-07-12: Local Service Without Concrete Coverage Passed Preflight
+
+Symptom: a local service with city set to `全国` passed preflight as `ready` even though no city, store, or service radius was established.
+
+Cause: preflight awarded city completeness for any non-empty string and did not apply a local-service scope rule.
+
+Fix: local services using an empty city, `全国`, `不限`, or `线上` now return `needs_confirmation` and request a concrete city, store, or service radius.
+
+Verification: `L02` first failed and then passed in `batch-instance-matrix.test.mjs`.
+
+## 2026-07-12: Partial Provider Failure Kept High Confidence And Looked Unconfigured
+
+Symptom: a report with a verified page and one successful plus one failed provider still showed high confidence; the failed provider was grouped into the H5 “未配置” note.
+
+Cause: confidence only used PageAudit quality, and the frontend grouped every non-sampled/non-partial status as unconfigured.
+
+Fix: confidence now incorporates actual sampling coverage. Any partial coverage caps high confidence at medium; below 50% becomes low. The H5 separately renders configured failures with their success/total count.
+
+Verification: `report-credibility.test.mjs` covers confidence downgrade; batch visual QA confirms the partial-failure page shows medium confidence and `豆包 · 失败 0/1` on both viewports.
+
+## 2026-07-12: Unsupported User Claims Appeared Under Confirmed Facts
+
+Symptom: a local-service description containing unproved claims such as `百分百除菌`, `全城最低价`, and `绝对安全` appeared in the report's “已确认” column.
+
+Cause: `buildConfirmedFacts` copied the full user-submitted description. The provenance prefix did not prevent the UI from visually treating those claims as confirmed.
+
+Fix: confirmed facts now contain the deterministic business type, submitted target audience, audited page count, and facts matched by successful PageAudit targets. The user-submitted business description is listed under “仍待核验”.
+
+Verification: the unsupported-claims regression confirms the claims are absent from `confirmedFacts`, present in `unverifiedFacts`, and the score remains withheld without a verified source. All 10 visual checks were regenerated afterward.
+
+## 2026-07-12: Real Phase B Was Blocked By API Key IP Allowlists
+
+Symptom: each of the five real Phase B reports had only 10/40 successful provider samples.
+
+Cause: Bailian DeepSeek and Qwen returned `403 IP access denied by API-Key restrictions`; Tencent Hy3 returned `403 Source IP ... is not in the API Key allowlist`. Volcengine Doubao succeeded 10/10 for every report.
+
+Handling: kept the successful Doubao samples, recorded all three failed providers, lowered confidence, withheld user scores, and did not alter cloud allowlists or production runtime. The first runner continued across later cases because it only stopped on billing/quota signals; the runner now also stops on 403/access/allowlist signals. It was not rerun to avoid duplicate free-quota use.
+
+Verification: `stage-b-summary.json` records 50 successes, 150 failed provider slots, 50 DeepSeek fallback prompts, 0/5 complete four-provider reports, and no billing signals.
+
+## 2026-07-12: Withheld Report Leaked Internal Score In Preview And Summary
+
+Symptom: the real S01 report cover displayed `暂不评分`, but its desktop preview showed `44分 · 待提升` and the report summary/Markdown/HTML repeated `综合得分 44/100`.
+
+Cause: `scoreStatus` controlled the primary score label, while `buildSummary` used only PageAudit availability and `DesktopPreview` always rendered `report.score`.
+
+Fix: build summary copy from the final credibility `scoreStatus`; render withheld-specific copy in the cover and desktop preview; add `displayedScore: null` to the evidence package when the score is withheld.
+
+Verification: the 25%-coverage regression asserts that H5/export summaries contain no precise total score; `npm test` passes 40/40. Real-report Playwright QA passes at 390×844 and 1440×1000 with `暂不评分` on both visible score surfaces, no overflow, and no console errors.
+
+## 2026-07-12: Provider Error Persisted The Source IP
+
+Symptom: TokenHub's 403 allowlist message included the current public source IP in `samples.json`.
+
+Cause: provider error sanitization redacted API keys and bearer tokens but not IPv4 addresses.
+
+Fix: `sanitizeProviderError` now replaces IPv4 values with `[redacted_ip]`; the saved Phase B samples and summaries were sanitized in place and regenerated without making new provider calls.
+
+Verification: the new regression covers API key, bearer token, and source-IP redaction. A repository/output scan finds no retained source IP value in the batch artifacts.
+## 2026-07-12: PageAudit Discarded Submitted Paths And Hid Scope Mismatches
+
+Symptom: P01/P02 submitted the Panasonic ES-LM55 product URL but PageAudit fetched only the site origin; L01 submitted Haidilao's store-search path but PageAudit also fetched the origin. Correct pages were false negatives, while SPA fallback pages appeared as generic warnings.
+
+Cause: `inferBaseUrl` reduced the first submitted URL to protocol plus host, then the audit used a fixed H5-specific path list for every site.
+
+Fix: audit the exact submitted URL as the primary target, extract its canonical primary model, and record `sourceRelation` plus `scopeRelation`. Supplemental discovery paths remain separate infrastructure evidence.
+
+Verification: five new PageAudit regressions failed 0/5 before the fix and pass 5/5 after it. Live checks bind Panasonic ES-LM55, keep Haidilao store search scope-partial, mark the national homepage scope-mismatched, and reject an unrelated weather page. Full regression is 47/47.
+
+## 2026-07-12: Submitted Model Conflict Was Not Explicit In The Report
+
+Symptom: P02 used an official ES-LM55 page while the submitted description claimed ES-LV9C. Provider rows showed misrecognition, but the report did not directly state the user-source fact conflict.
+
+Fix: compare submitted model identifiers with scope-verified official primary models and add `issue_source_fact_conflict` plus a direct unverified-fact statement.
+
+Verification: the new regression failed before the fix and now passes. The rebuilt P02 report explicitly states `ES-LV9C` versus `ES-LM55` and retains the provider conflict evidence.

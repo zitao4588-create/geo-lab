@@ -690,6 +690,98 @@ textarea {
   line-height: 1.5;
 }
 
+.preflight-card {
+  margin: 14px 0;
+  padding: 16px;
+  border: 1px solid rgba(209, 132, 23, 0.35);
+  border-radius: 14px;
+  background: #fff8e8;
+  color: #513812;
+}
+
+.preflight-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.preflight-title span { color: #9a6110; font-size: 12px; white-space: nowrap; }
+.preflight-card p, .preflight-card ul { margin: 10px 0; line-height: 1.55; }
+.preflight-card ul { padding-left: 20px; }
+.preflight-card small { color: #77551e; }
+
+.withheld-score {
+  display: grid;
+  place-items: center;
+  min-height: 152px;
+  text-align: center;
+}
+
+.withheld-score strong { font-size: 34px; letter-spacing: -0.04em; }
+.withheld-score span { margin-top: 8px; color: rgba(255, 255, 255, 0.68); font-size: 13px; }
+
+.confidence-banner {
+  display: grid;
+  gap: 5px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #eef4ff;
+  color: #173b7a;
+}
+
+.confidence-banner.low { background: #fff4dd; color: #6d4709; }
+.confidence-banner.high { background: #e9f8ef; color: #175a35; }
+.confidence-banner span { font-size: 13px; line-height: 1.55; }
+
+.truth-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.truth-columns > div {
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.truth-columns p { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+.next-action-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.next-action-list span {
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: #f0f4ff;
+  color: #203c76;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.conflict-card {
+  margin: 12px 0;
+  padding: 14px;
+  border-left: 3px solid #d65f41;
+  border-radius: 10px;
+  background: #fff2ee;
+  color: #6d2b1c;
+}
+
+.conflict-card p { margin: 8px 0 0; font-size: 12px; line-height: 1.55; }
+.recognition-reason { margin-top: 7px !important; color: var(--muted) !important; font-size: 12px !important; }
+
+@media (max-width: 420px) {
+  .truth-columns { grid-template-columns: 1fr; }
+  .preflight-title { display: grid; }
+}
+
 .form-screen .primary-action {
   margin-top: 24px;
 }

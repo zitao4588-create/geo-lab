@@ -1,0 +1,185 @@
+{
+  "baseUrl": "https://www.haidilao.com",
+  "generatedAt": "2026-07-12T00:31:04.153Z",
+  "score": 41,
+  "targets": [
+    {
+      "id": "home",
+      "name": "品牌首页",
+      "url": "https://www.haidilao.com/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "title": "海底捞",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "brand",
+        "category",
+        "entry"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：brand、category、entry",
+        "建议页面首屏显式出现品牌名和产品定义。"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.153Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "privacy",
+      "name": "隐私政策页",
+      "url": "https://www.haidilao.com/privacy/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "title": "海底捞",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "privacy",
+        "data"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：privacy、data",
+        "建议页面首屏显式出现品牌名和产品定义。"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.153Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "features",
+      "name": "功能说明页",
+      "url": "https://www.haidilao.com/features/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "title": "海底捞",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "feature",
+        "category"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：feature、category",
+        "建议页面首屏显式出现品牌名和产品定义。"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.154Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "faq",
+      "name": "FAQ/常见问题",
+      "url": "https://www.haidilao.com/faq/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "title": "海底捞",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "faq",
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：faq、privacy",
+        "建议页面首屏显式出现品牌名和产品定义。"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.154Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "geo-case",
+      "name": "GEO 自证案例",
+      "url": "https://www.haidilao.com/geo-case/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "title": "海底捞",
+      "description": "",
+      "matchedFacts": [],
+      "missingFacts": [
+        "geo",
+        "brand"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：geo、brand",
+        "建议页面首屏显式出现品牌名和产品定义。"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.155Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "robots",
+      "name": "robots.txt",
+      "url": "https://www.haidilao.com/robots.txt",
+      "status": "missing",
+      "httpStatus": 405,
+      "contentType": "text/html; charset=utf-8",
+      "matchedFacts": [],
+      "missingFacts": [
+        "sitemap"
+      ],
+      "notes": [
+        "HTTP 405",
+        "缺少事实：sitemap"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.155Z",
+      "evidenceLabel": "suggested_supplement"
+    },
+    {
+      "id": "sitemap",
+      "name": "sitemap.xml",
+      "url": "https://www.haidilao.com/sitemap.xml",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "matchedFacts": [
+        "home"
+      ],
+      "missingFacts": [
+        "privacy",
+        "faq"
+      ],
+      "notes": [
+        "HTTP 200",
+        "命中事实：home",
+        "缺少事实：privacy、faq"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.155Z",
+      "evidenceLabel": "verified_external"
+    },
+    {
+      "id": "llms",
+      "name": "llms.txt",
+      "url": "https://www.haidilao.com/llms.txt",
+      "status": "missing",
+      "httpStatus": 405,
+      "contentType": "text/html; charset=utf-8",
+      "matchedFacts": [],
+      "missingFacts": [
+        "brand",
+        "category",
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 405",
+        "缺少事实：brand、category、privacy"
+      ],
+      "fetchedAt": "2026-07-12T00:31:04.155Z",
+      "evidenceLabel": "suggested_supplement"
+    }
+  ],
+  "summary": {
+    "ok": 0,
+    "warn": 6,
+    "missing": 2,
+    "failed": 0,
+    "note": "完成 8 个 URL 审计：0 个通过，6 个需补强，2 个不可用。"
+  }
+}

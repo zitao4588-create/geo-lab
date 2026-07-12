@@ -354,3 +354,82 @@ Boundary:
 - Request IDs stay internal and are excluded from `submissions.jsonl`, public reports, and evidence packages.
 - This remains a local-file, single-instance design; no database, login, queue, payment, Docker, or new UI was introduced.
 - Costly production recovery checks require explicit user approval and should generate exactly one real report, then use same-ID replay and different-ID `429` for the remaining assertions.
+
+## 2026-07-12: Separate Evidence Completeness From AI Entity Recognition
+
+Decision: introduce report schema `0.4` and treat string appearance, correct entity recognition, unbranded natural recommendation, misrecognition, provider agreement, public page audit, and report confidence as separate measurements.
+
+Reason: two real cases proved the old total score was easy to misread. `冰箱小雷达` had complete public infrastructure but no reliable organic entity recognition, while a real Panasonic product received a low score because the user did not submit its existing official page. String echo and form completeness cannot stand in for GEO understanding.
+
+Boundary:
+
+- Branded-question echo never counts as natural recommendation.
+- Correct entity recognition requires a submitted public source that passes PageAudit; otherwise it is N/A.
+- No URL means page audit `未检测`, not a synthetic baseline score.
+- Low-evidence reports withhold the user-facing total score.
+- Candidate-source discovery remains backend-only and is not simulated when no provider is configured.
+
+## 2026-07-12: Route Diagnosis By Business Type
+
+Decision: infer or confirm `physical_product`, `software_or_miniprogram`, `local_service`, or `generic_or_unknown` before building the Prompt Universe and recommendations.
+
+Reason: the generic mini-program-oriented template produced irrelevant privacy, WeChat, AI/photo/payment, and CSDN advice for a physical shaver. Domain routing is required for user trust.
+
+Boundary:
+
+- Unknown types stop at preflight until clarified.
+- Physical-product guidance centers on official model, specifications, safety, channels, consumables, warranty, and comparable SKUs.
+- Software/privacy questions are used only when the submitted facts support that product type.
+- No database, login, payment, queue, or new infrastructure is introduced.
+
+## 2026-07-12: Stop Batch Phase B When Free Cost Cannot Be Proven
+
+Decision: complete all deterministic 20-case testing and local visual evidence, but do not start new real sampling for P01/P02/S01/L01/L03 while Tencent and Volcengine free-only execution cannot be reliably confirmed from runtime state. Reuse the saved S02 evidence only.
+
+Reason: provider configuration and historical free balances do not prove a new call cannot become billable. The batch Goal explicitly makes uncertain cost a stop condition.
+
+Boundary:
+
+- Phase A must keep real model calls and quota consumption at zero.
+- A later Phase B requires fresh proof that every enabled target provider is free or hard-stopped before billing.
+- S02 must not be resampled; use `outputs/h5-mvp/fridge-radar-4model-20260711/`.
+- No new provider, production POST, deployment, commit, or push is part of this batch.
+
+## 2026-07-12: Resume Phase B After Explicit Cost Confirmation, But Treat Allowlist Failure As A Real Result
+
+Decision: after the user explicitly confirmed the Volcengine console boundary and authorized full Phase B, run the five new real instances locally with all four configured providers and reuse S02 without resampling.
+
+Result: Doubao completed 50/50 samples. Bailian DeepSeek/Qwen and Tencent Hy3 rejected the current source IP with 403 allowlist restrictions. These failures are recorded as Phase B evidence, not retried or converted into simulated answers.
+
+Boundary:
+
+- A configured/ready health status does not prove the current execution host is authorized by a provider's API Key allowlist.
+- Permission/allowlist errors are stop signals for future runners, just like billing and quota errors; `run-stage-b.mjs` now enforces this.
+- The batch may be C2 for local implementation and evidence collection while still failing four-provider runtime readiness.
+- Do not change cloud allowlists, production runtime, deployment state, or API keys inside this Goal.
+
+## 2026-07-12: Withheld Score Must Not Leak Through Summary Or Preview Surfaces
+
+Decision: whenever `stages.credibility.scoreStatus` is `withheld`, every user-facing surface must say `暂不评分`/`暂不展示总分` and must not repeat the internal compatibility score.
+
+Reason: real Phase B visual QA showed the report cover withholding the score while the desktop preview and report summary still displayed `44/100`. This is a P0 cross-surface consistency failure even though the underlying compatibility score remains useful internally.
+
+Boundary:
+
+- H5 cover, desktop preview, Markdown, HTML, and evidence-package display semantics all derive from `scoreStatus`.
+- The internal numeric score may remain for schema compatibility, but the evidence package also exposes `displayedScore: null` when withheld.
+- Regression coverage must use a below-50% provider scenario, because 50% partial coverage intentionally produces medium confidence rather than mandatory score withholding.
+## 2026-07-12: Separate Source Identity From Business Scope
+
+Decision: PageAudit must audit the exact user-submitted URL and record source/entity relation separately from product, model, city, or store scope.
+
+Reason: the previous implementation discarded submitted paths. It audited the Panasonic origin instead of the ES-LM55 product page and the Haidilao origin instead of `/serve/storeSearch`. HTTP 200 and same-domain pages also could not explain whether a page proved a specific model or store.
+
+Boundary:
+
+- `entity_matched` does not automatically mean `scope matched`.
+- A store-search entry may be entity-matched but scope-partial when it does not expose the submitted city or store.
+- A national brand homepage is scope-mismatched for a specific local-service claim.
+- Only scope-verified targets can support correct entity-recognition rates or score availability.
+- Submitted facts that conflict with a verified primary model must remain explicit, high-severity evidence conflicts.
+- No search provider, database, login, payment, cloud permission, or production-data change is introduced.

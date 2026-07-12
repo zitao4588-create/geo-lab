@@ -1,0 +1,562 @@
+[
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "AI曝光体检是什么？",
+      "targetFact": "产品定义"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 174,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "AI曝光体检靠谱吗？",
+      "targetFact": "信任解释"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 182,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "AI曝光体检安全吗？",
+      "targetFact": "隐私与安全"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 175,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "GEO 诊断软件哪个好用？",
+      "targetFact": "推荐场景提及"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 167,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "微信里有什么好用的GEO 诊断软件？",
+      "targetFact": "微信生态定位"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 172,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "AI曝光体检的核心功能是什么？",
+      "targetFact": "功能提取"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.897Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "AI曝光体检和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.902Z",
+    "latencyMs": 48,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "适合需要核查 AI 品牌认知的产品和内容负责人的GEO 诊断软件有哪些？",
+      "targetFact": "目标用户"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.904Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "使用GEO 诊断软件需要注意哪些隐私和数据问题？",
+      "targetFact": "合规说明"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.905Z",
+    "latencyMs": 51,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "我如何给自己的GEO 诊断软件做 GEO 优化？",
+      "targetFact": "自证案例"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.912Z",
+    "latencyMs": 54,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "AI曝光体检是什么？",
+      "targetFact": "产品定义"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 89,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "AI曝光体检靠谱吗？",
+      "targetFact": "信任解释"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 104,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "AI曝光体检安全吗？",
+      "targetFact": "隐私与安全"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 98,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "GEO 诊断软件哪个好用？",
+      "targetFact": "推荐场景提及"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 93,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "微信里有什么好用的GEO 诊断软件？",
+      "targetFact": "微信生态定位"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.819Z",
+    "latencyMs": 37,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "AI曝光体检的核心功能是什么？",
+      "targetFact": "功能提取"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.823Z",
+    "latencyMs": 29,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "AI曝光体检和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.828Z",
+    "latencyMs": 37,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "适合需要核查 AI 品牌认知的产品和内容负责人的GEO 诊断软件有哪些？",
+      "targetFact": "目标用户"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.834Z",
+    "latencyMs": 38,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "使用GEO 诊断软件需要注意哪些隐私和数据问题？",
+      "targetFact": "合规说明"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.852Z",
+    "latencyMs": 40,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "我如何给自己的GEO 诊断软件做 GEO 优化？",
+      "targetFact": "自证案例"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.856Z",
+    "latencyMs": 29,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "AI曝光体检是什么？",
+      "targetFact": "产品定义"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 175,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "AI曝光体检靠谱吗？",
+      "targetFact": "信任解释"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 183,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "AI曝光体检安全吗？",
+      "targetFact": "隐私与安全"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 174,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "GEO 诊断软件哪个好用？",
+      "targetFact": "推荐场景提及"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 171,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "微信里有什么好用的GEO 诊断软件？",
+      "targetFact": "微信生态定位"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.901Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "AI曝光体检的核心功能是什么？",
+      "targetFact": "功能提取"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.904Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "AI曝光体检和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.905Z",
+    "latencyMs": 51,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "适合需要核查 AI 品牌认知的产品和内容负责人的GEO 诊断软件有哪些？",
+      "targetFact": "目标用户"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.913Z",
+    "latencyMs": 53,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "使用GEO 诊断软件需要注意哪些隐私和数据问题？",
+      "targetFact": "合规说明"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.950Z",
+    "latencyMs": 47,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "我如何给自己的GEO 诊断软件做 GEO 优化？",
+      "targetFact": "自证案例"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:30:40.953Z",
+    "latencyMs": 48,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "AI曝光体检是什么？",
+      "targetFact": "产品定义"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 5526,
+    "answer": "目前并没有广泛通用的“AI曝光体检”这个官方医学体检项目名称，从字面推测，它大概率是结合AI技术的、针对胸部等部位的影像学曝光类筛查项目——比如利用AI辅助分析胸片、低剂量CT扫描这类需要放射线曝光成像的体检，AI可以帮助医生更快速精准地发现小结节、早期病变等微小异常，提升体检筛查的效率和准确率。\n\n也不排除有些机构会把结合AI技术的、针对皮肤等部位的影像筛查（比如AI分析皮肤皮损状态），用这个名称来称呼，不同机构的定义可能会有区别，如果是在体检机构看到这个项目，建议直接咨询机构确认具体内容。"
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "AI曝光体检靠谱吗？",
+      "targetFact": "信任解释"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 7768,
+    "answer": "你说的“AI曝光体检”，应该是指利用AI技术辅助开展的疾病早筛类体检吧？如果是这类AI辅助体检，目前来看是有一定价值，但不能说完全替代传统体检，谈不上绝对靠谱，要分情况来看：\n\n### 靠谱的地方\nAI辅助体检在一些特定项目上确实有优势：比如肺部CT影像筛查结节、乳腺钼靶筛查病变、眼底影像筛查糖尿病视网膜病变这类，AI可以快速读取大量影像，捕捉到人眼容易忽略的细微异常，既提高医生的诊断效率，也能降低漏诊的概率，在很多正规医院已经投入辅助使用了。\n\n### 需要注意的问题\n现在市场上也有不少噱头性质的“AI体检”，比如声称“拍一张脸就能查出全身病”“一口唾液靠AI分析出所有癌症风险”这类，大多是不靠谱的宣传，没有足够的临床验证，结论也没有参考价值。哪怕是正规的AI辅助体检，目前也只是起到辅助提示作用，最终的诊断还是需要专业医生结合你的症状、病史、其他检查结果来综合判断，不能只靠AI给出的结果直接确诊。\n\n如果是正规医疗机构推出的、结合传统检查的AI辅助早筛，是可以参考的；如果是非医疗机构的所谓“黑科技AI体检”，就要多留个心眼了。"
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "AI曝光体检安全吗？",
+      "targetFact": "隐私与安全"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 7345,
+    "answer": "你说的“AI曝光体检”应该是指借助AI技术开展的、涉及个人影像或身体数据的体检相关服务吧？它的安全性不能一概而论，主要取决于运营机构的合规和防护能力：\n\n1. **数据安全风险**：AI体检通常会收集你的个人影像、身体特征、健康数据这类高度敏感的隐私信息，如果运营机构没有按照《个人信息保护法》等法规要求做数据加密、权限管理，就很容易出现数据泄露、被滥用倒卖的问题，甚至有些不正规的机构还会未经同意就把你的数据拿去训练AI模型，侵害个人权益。\n2. **本身的安全问题**：如果是合规的医疗机构，按照规范用AI辅助体检，本身不会对身体产生额外的健康危害，和普通体检的安全性差别不大；但如果是非正规机构的所谓“AI体检”，还可能存在结果不准确误导诊断，或是借机推销违规产品的问题。\n\n如果要做这类体检，建议选择正规医疗机构，提前确认机构的隐私保护政策，不要随意在不知名的第三方平台做这类收集敏感健康数据的AI体检。"
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "GEO 诊断软件哪个好用？",
+      "targetFact": "推荐场景提及"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:40.730Z",
+    "latencyMs": 8416,
+    "answer": "GEO诊断软件通常指基因表达 omnibus（GEO）数据库相关的分析工具，目前不同需求下口碑不错的工具各有优势：\n1. **R语言的GEOquery包**：这是目前学术分析里最常用的工具，能直接从GEO数据库拉取原始数据、矩阵信息，支持后续个性化的差异分析、富集分析，适合有一定编程基础，需要定制化分析的用户，功能灵活度很高。\n2. **在线工具SangerBox GEO分析模块**：不需要编程，操作门槛很低，输入GEO编号就能自动完成数据下载、差异表达分析、可视化（火山图、热图这类）、富集分析出图，适合生信基础薄弱、做快速预分析的科研用户。\n3. **GCBI平台GEO分析工具**：也是在线一站式分析，除了基础分析，还能做共表达网络、疾病富集这类进阶分析，界面比较友好，对非专业用户比较友好。\n\n如果是需要发文章做严谨的定制分析，带编程基础选GEOquery更合适；如果只是快速探索数据，选在线工具会省心很多。"
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "微信里有什么好用的GEO 诊断软件？",
+      "targetFact": "微信生态定位"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:46.257Z",
+    "latencyMs": 6150,
+    "answer": "微信本身并不提供独立的GEO诊断软件，不过部分做地理相关、网络定位诊断服务的服务商开发了可在微信内运行的小程序，比较常用的有这类：\n1. **GPS测试工具箱**类小程序：可以查看当前设备的GPS/北斗定位信息，包括经纬度、定位精度、连接卫星数量等基础参数，能帮你简单诊断定位是否异常。\n2. **位置诊断工具**类小程序：可以检测当前网络下的定位准确性，也能查询IP归属地，辅助判断定位相关的问题。\n\n需要注意的是，微信内的小程序都是依托手机系统定位能力的，专业级的GEO（地理/定位）诊断还是需要用专业的独立APP，而且这类第三方小程序一般仅做个人普通检测使用，不要在上面输入敏感信息。"
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "AI曝光体检的核心功能是什么？",
+      "targetFact": "功能提取"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:48.075Z",
+    "latencyMs": 4518,
+    "answer": "目前没有广泛通用的“AI曝光体检”这个标准化医疗或健康服务项目，我不确定你说的这个具体是什么哦。\n\n如果是指和AI结合的、侧重病灶检出（“曝光”可能是检出发现异常的误称）的体检类AI应用，这类工具的核心一般是利用AI对医学影像（比如胸片、CT、眼底照等）进行快速分析，辅助医生更快发现疑似病变、提升异常检出的效率，帮助降低漏诊率。如果是其他特定项目，还需要结合具体场景来看。"
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "AI曝光体检和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:48.498Z",
+    "latencyMs": 3584,
+    "answer": "目前我没有查询到“AI曝光体检”这个产品的公开明确信息，不太清楚它具体指的是什么产品，也没办法直接对比它和同类产品的区别。如果是特定机构推出的AI相关体检服务，你可以补充一下它的具体背景和内容，我可以试着帮你分析~"
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "适合需要核查 AI 品牌认知的产品和内容负责人的GEO 诊断软件有哪些？",
+      "targetFact": "目标用户"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:49.146Z",
+    "latencyMs": 11330,
+    "answer": "目前国内并没有专门针对「核查AI品牌认知」的GEO（地理定位/地理画像相关）诊断软件，不过结合这类需求（一般是需要按地域分析不同区域对AI品牌的认知度、受众认知分布），可以结合通用的地理定位调研、用户认知分析类工具来完成对应的诊断工作：\n1. **调研类工具**\n    - 问卷网、金数据：可以自定义添加AI品牌认知相关调研问题，同时支持按答题者的地理位置（IP定位地域）收集、聚合数据，你可以导出不同区域的认知数据做分析，适合做面向C端的品牌认知核查。\n    - 尼尔森、益普索这类专业市场调研机构的服务：如果需要更深度的区域品牌认知诊断，他们可以针对特定地域抽样，完成定制化的AI品牌认知调研分析，也会结合地理维度输出诊断结果。\n2. **舆情+地理位置分析工具**\n    - 新榜、清博大数据：这类舆情工具可以监测全网各平台关于目标AI品牌的讨论，支持按发布用户的IP属地聚合内容和数据，能帮你梳理不同地域用户对该AI品牌的讨论声量、认知倾向，完成地理维度的认知诊断。\n    - 百度指数、微信指数：可以查询AI品牌关键词在不同省份、城市的搜索热度，搜索热度一定程度能反映对应区域用户对这个AI品牌的认知度和关注度，是比较轻量的地理维度认知参考。\n\n如果你的需求里GEO不是指地理维度相关、而是其他特定领域的缩写，目前没有对应匹配的专门产品，这类工具也都是通用工具结合需求自定义完成核查，没有专门定向做AI品牌认知核查的垂直GEO诊断工具。"
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "使用GEO 诊断软件需要注意哪些隐私和数据问题？",
+      "targetFact": "合规说明"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:52.082Z",
+    "latencyMs": 11852,
+    "answer": "GEO诊断软件通常指用于地理空间数据相关分析、或是特定领域（如医疗、汽车检测等）的地理定位类诊断工具，不同场景下的GEO诊断软件，隐私和数据风险侧重不同，通用需要注意的问题大致有这些：\n1. **定位信息过度采集**：这类软件大多需要依赖地理位置数据工作，部分非正规软件可能会超出功能需要，持续采集你的实时位置、移动轨迹，这些数据如果泄露，很容易暴露个人日常行程、常住地址等敏感信息，威胁人身和财产安全。\n2. **额外数据越权获取**：如果是移动端的GEO诊断工具，可能会申请通讯录、存储、相机等和核心功能无关的权限，违规读取你的个人照片、联系人信息、设备识别码等内容，这些数据可能被用于精准营销甚至倒卖。\n3. **数据存储与传输不安全**：如果软件没有对采集的位置、诊断数据做加密传输和存储，第三方很容易在数据传输过程中窃取信息；部分开发者还可能未明确告知数据存储期限，超期留存你的个人数据。\n4. **第三方数据共享不透明**：很多软件会在用户协议中埋下伏笔，将采集到的用户数据共享给广告商、第三方数据分析机构，如果软件没有明确说明数据共享的范围、对象，用户的隐私信息会在不知情的情况下被扩散。\n5. **敏感场景的特殊风险**：如果是用于工业、基建、军事区域测绘类的GEO诊断工具，违规采集关键区域地理信息，不仅会带来用户个人隐私风险，还可能危害国家安全；如果是医疗相关的GEO诊断软件，还会涉及患者病情、身体特征等敏感医疗数据泄露的问题。\n\n使用这类软件时，建议优先选择官方正规渠道发布的产品，提前阅读隐私政策，关闭非必要的权限申请，不使用来源不明的非正版工具。如果是特定领域的GEO诊断软件，还需要遵守对应行业的数据安全规范。"
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "我如何给自己的GEO 诊断软件做 GEO 优化？",
+      "targetFact": "自证案例"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:30:52.407Z",
+    "latencyMs": 11724,
+    "answer": "你这里说的「GEO诊断软件的GEO优化」，大概率是指针对地理位置（地理定位，即Geography，常缩写为GEO）的搜索引擎优化，也就是本地SEO优化，如果你的GEO诊断软件是面向特定区域提供服务、或者需要拓展不同地区的客源，常见优化思路可以参考这些：\n1. **明确本地化服务定位**\n如果你的软件是服务特定地区（比如仅面向国内某省/某城提供上门诊断、本地化解读服务），可以在官网、产品介绍页明确标注服务覆盖的区域，把“[地区] GEO诊断”这类关键词自然融入页面标题、内容描述里，方便搜索引擎识别你对应的服务地域。\n2. **布局地域相关关键词**\n根据你实际服务的地区，拓展带地域前缀的长尾关键词，比如“北京GEO地质诊断”“上海医用GEO数据分析”，把这些关键词合理布置在官网博客、产品案例页中，匹配不同地区用户的搜索习惯。\n3. **完善本地平台信息**\n如果是面向企业/本地客户的服务类软件，可以在百度地图、高德地图标注你的机构信息，也可以在大众点评、行业B2B平台（比如慧聪、企查查这类平台）完善你的地址、服务范围、联系方式，提升本地搜索的曝光概率。\n4. **做本地化内容与案例**\n如果你的软件服务过不同地区的客户，可以发布对应地区的服务案例、行业解决方案，比如“XX省煤矿GEO探测诊断案例分享”，既增强地域相关性，也更容易吸引对应区域的潜在客户。\n5. **适配多区域的运营逻辑**\n如果你要拓展多个不同地区的业务，可以针对不同地区单独做落地页，分别优化对应地区的关键词，不要把所有地区的内容都混在同一个页面里，方便搜索引擎区分匹配。\n\n如果这里的GEO不是我理解的「地理位置优化」，或者你的软件是特定领域的专用工具，可以补充更多信息，我再帮你梳理。"
+  }
+]

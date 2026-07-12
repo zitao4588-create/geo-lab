@@ -1,0 +1,204 @@
+{
+  "baseUrl": "https://exposure.playgamelab.cn",
+  "generatedAt": "2026-07-12T01:45:17.531Z",
+  "score": 72,
+  "targets": [
+    {
+      "id": "submitted",
+      "name": "用户提交入口",
+      "url": "https://exposure.playgamelab.cn/ai-exposure-check.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "AI曝光体检是什么 - GEO 分析报告与冰箱小雷达案例",
+      "description": "AI曝光体检是一个面向品牌和小产品的免费 GEO 初筛工具：基于 DeepSeek、千问、混元、豆包真实问答采样、公开页面轻量审计和证据边界生成 AI 曝光分析报告。",
+      "canonicalUrl": "https://exposure.playgamelab.cn/ai-exposure-check.html",
+      "matchedFacts": [
+        "brand",
+        "category",
+        "entry"
+      ],
+      "missingFacts": [],
+      "notes": [
+        "HTTP 200",
+        "页面内容与目标实体匹配。",
+        "页面范围与目标实体层级匹配。",
+        "命中事实：brand、category、entry"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.531Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "entity_matched",
+      "scopeRelation": "matched",
+      "submitted": true
+    },
+    {
+      "id": "privacy",
+      "name": "隐私政策页",
+      "url": "https://exposure.playgamelab.cn/privacy/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "description": "30 秒填写业务资料，免费在阿里云百炼、腾讯 TokenHub 和火山方舟上调用 DeepSeek、千问、混元、豆包进行真实问答采样，生成可追溯的 GEO 分析报告。",
+      "matchedFacts": [],
+      "missingFacts": [
+        "privacy",
+        "data"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：privacy、data"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.534Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "features",
+      "name": "功能说明页",
+      "url": "https://exposure.playgamelab.cn/features/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "description": "30 秒填写业务资料，免费在阿里云百炼、腾讯 TokenHub 和火山方舟上调用 DeepSeek、千问、混元、豆包进行真实问答采样，生成可追溯的 GEO 分析报告。",
+      "matchedFacts": [],
+      "missingFacts": [
+        "feature",
+        "category"
+      ],
+      "notes": [
+        "HTTP 200",
+        "缺少事实：feature、category"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.535Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "faq",
+      "name": "FAQ/常见问题",
+      "url": "https://exposure.playgamelab.cn/faq/",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "description": "30 秒填写业务资料，免费在阿里云百炼、腾讯 TokenHub 和火山方舟上调用 DeepSeek、千问、混元、豆包进行真实问答采样，生成可追溯的 GEO 分析报告。",
+      "matchedFacts": [
+        "faq"
+      ],
+      "missingFacts": [
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 200",
+        "命中事实：faq",
+        "缺少事实：privacy"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.535Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "geo-case",
+      "name": "GEO 自证案例",
+      "url": "https://exposure.playgamelab.cn/geo-case/",
+      "status": "ok",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "title": "AI曝光体检 · 别让 AI 只推荐竞品",
+      "description": "30 秒填写业务资料，免费在阿里云百炼、腾讯 TokenHub 和火山方舟上调用 DeepSeek、千问、混元、豆包进行真实问答采样，生成可追溯的 GEO 分析报告。",
+      "matchedFacts": [
+        "geo",
+        "brand"
+      ],
+      "missingFacts": [],
+      "notes": [
+        "HTTP 200",
+        "命中事实：geo、brand"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.536Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "entity_matched",
+      "scopeRelation": "matched"
+    },
+    {
+      "id": "robots",
+      "name": "robots.txt",
+      "url": "https://exposure.playgamelab.cn/robots.txt",
+      "status": "ok",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=UTF-8",
+      "matchedFacts": [
+        "sitemap"
+      ],
+      "missingFacts": [],
+      "notes": [
+        "HTTP 200",
+        "命中事实：sitemap"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.536Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "entity_matched",
+      "scopeRelation": "matched"
+    },
+    {
+      "id": "sitemap",
+      "name": "sitemap.xml",
+      "url": "https://exposure.playgamelab.cn/sitemap.xml",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "application/xml",
+      "matchedFacts": [
+        "home",
+        "privacy"
+      ],
+      "missingFacts": [
+        "faq"
+      ],
+      "notes": [
+        "HTTP 200",
+        "命中事实：home、privacy",
+        "缺少事实：faq"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.536Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    },
+    {
+      "id": "llms",
+      "name": "llms.txt",
+      "url": "https://exposure.playgamelab.cn/llms.txt",
+      "status": "warn",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "matchedFacts": [
+        "brand"
+      ],
+      "missingFacts": [
+        "category",
+        "privacy"
+      ],
+      "notes": [
+        "HTTP 200",
+        "命中事实：brand",
+        "缺少事实：category、privacy"
+      ],
+      "fetchedAt": "2026-07-12T01:45:17.536Z",
+      "evidenceLabel": "verified_external",
+      "sourceRelation": "unknown",
+      "scopeRelation": "unknown"
+    }
+  ],
+  "summary": {
+    "ok": 3,
+    "warn": 5,
+    "missing": 0,
+    "failed": 0,
+    "note": "完成 8 个 URL 审计：3 个通过，5 个需补强，0 个不可用。"
+  }
+}

@@ -331,6 +331,35 @@ test('validation and shared failing requests do not create a report or duplicate
   );
 });
 
+test('input preflight blocks sparse ambiguous submissions before quota or model sampling', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-preflight-'));
+  const provider = await startFakeOpenAiServer({ delayMs: 20 });
+  const appServer = await startAppServer({ runtimeDir, providerBaseUrl: provider.baseUrl });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const sparse = await postJson(appServer.url, {
+    businessName: '松下大锤子剃须刀',
+    description: '电动剃须刀',
+    links: '',
+    industry: '男士清洁工具',
+    city: '全国',
+    targetCustomers: '成年男性',
+    competitors: '',
+    clientRequestId: 'req_sparse_preflight_01'
+  });
+  assert.equal(sparse.status, 422);
+  assert.equal(sparse.body.error, 'input_confirmation_required');
+  assert.equal(provider.callCount, 0);
+
+  const ready = await postJson(appServer.url, buildPayload('req_after_preflight_01'));
+  assert.equal(ready.status, 201, 'preflight rejection must not consume the IP quota slot');
+  assert.equal(provider.callCount, 1);
+});
+
 function buildPayload(clientRequestId) {
   return {
     businessName: '请求恢复受控测试',

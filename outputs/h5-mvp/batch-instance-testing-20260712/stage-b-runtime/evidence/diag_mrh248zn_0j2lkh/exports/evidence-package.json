@@ -1,0 +1,960 @@
+{
+  "reportId": "diag_mrh248zn_0j2lkh",
+  "generatedAt": "2026-07-12T00:48:27.452Z",
+  "input": {
+    "businessName": "松下大锤子2.0剃须刀",
+    "description": "官方型号 ES-LM55 的五刀头电动剃须刀",
+    "links": "https://consumer.panasonic.cn/product/beauty-health/mens-shaver-grooming/shaver/ES-LM55.html",
+    "industry": "电动剃须刀",
+    "city": "全国",
+    "targetCustomers": "重视剃净效率和正规售后的成年男性",
+    "competitors": "同类产品"
+  },
+  "report": {
+    "score": 28,
+    "displayedScore": null,
+    "scoreLevel": "待提升",
+    "summary": "松下大锤子2.0剃须刀本次多平台成功采样 10 个回答样本；因证据或模型覆盖不足，暂不展示总分。字符串出现率 0%，正确实体识别 无法判断，无品牌词自然推荐 0%，公开页面审计 14/100。",
+    "credibility": {
+      "inputAssessment": {
+        "status": "ready",
+        "score": 98,
+        "businessType": "physical_product",
+        "findings": [],
+        "requiredActions": [],
+        "officialSourceStatus": "candidate",
+        "note": "资料足以进入完整采样；报告仍会区分已核验事实与模型推断。"
+      },
+      "businessType": "physical_product",
+      "confidence": "low",
+      "scoreStatus": "withheld",
+      "stringMentionRate": 0,
+      "correctEntityRecognitionRate": null,
+      "naturalRecommendationRate": 0,
+      "misrecognitionRate": 0,
+      "providerAgreementRate": null,
+      "modelConflicts": [],
+      "confirmedFacts": [
+        "已确认业务类型：实体商品",
+        "用户提交目标客户：重视剃净效率和正规售后的成年男性"
+      ],
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：官方型号 ES-LM55 的五刀头电动剃须刀",
+        "缺少已通过审计的官方来源，品牌归属和实体定义仍待确认。",
+        "正确实体识别率无法判断。",
+        "30 个模型请求失败，覆盖率不完整。"
+      ],
+      "nextActions": [
+        "先确认官方型号和品牌归属",
+        "建立可引用的规格与选购事实表",
+        "覆盖不带品牌词的真实选购场景"
+      ]
+    },
+    "dimensions": [
+      {
+        "code": "AI_SEARCH_VISIBILITY",
+        "name": "可信 AI 可见度",
+        "score": 0,
+        "weight": 0.32,
+        "comment": "字符串出现率为 0%，但缺少可核验实体事实，不能认定为正确识别；无品牌词自然推荐率为 0%。",
+        "evidenceLabel": "model_inference"
+      },
+      {
+        "code": "INFRASTRUCTURE",
+        "name": "可查证基建",
+        "score": 14,
+        "weight": 0.22,
+        "comment": "已审计 8 个公开 URL，0 个通过，2 个需补强。",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "code": "COMPETITOR_PRESSURE",
+        "name": "竞品压制风险",
+        "score": 48,
+        "weight": 0.18,
+        "comment": "已对比 1 个竞品；若竞品在答案中出现多于本品牌，会压低该项。",
+        "evidenceLabel": "sampled_ai_answer"
+      },
+      {
+        "code": "CONTENT_ALIGNMENT",
+        "name": "语义与场景匹配",
+        "score": 51,
+        "weight": 0.16,
+        "comment": "根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。",
+        "evidenceLabel": "model_inference"
+      },
+      {
+        "code": "TRUST_RISK",
+        "name": "信任与风险解释",
+        "score": 65,
+        "weight": 0.12,
+        "comment": "采样答案出现 3 类信任/风险信号。",
+        "evidenceLabel": "sampled_ai_answer"
+      }
+    ],
+    "issues": [
+      {
+        "id": "issue_ai_visibility_low",
+        "title": "可信实体识别或自然推荐不足",
+        "detail": "字符串出现率为 0%，正确实体识别为 无法判断，无品牌词自然推荐率为 0%。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "high"
+      },
+      {
+        "id": "issue_infrastructure_gap",
+        "title": "可查证公开基建不够完整",
+        "detail": "AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。",
+        "evidenceLabel": "model_inference",
+        "severity": "high"
+      },
+      {
+        "id": "issue_competitor_pressure",
+        "title": "竞品在对比场景里更容易被模型调用",
+        "detail": "本次采样中，同类产品 1 次 被提及；需要用对比页解释差异。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      },
+      {
+        "id": "issue_trust_explanation",
+        "title": "隐私、主体或功能边界需要提前解释",
+        "detail": "采样答案出现的风险信号包括：个人主体/品牌背书信任度需要解释；存在隐私和个人信息处理疑问；功能边界可能被误读为能力不足。这些问题需要用公开说明页提前消除误解。",
+        "evidenceLabel": "sampled_ai_answer",
+        "severity": "medium"
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "suggest_verify_official_entity",
+        "title": "先确认官方型号和品牌归属",
+        "detail": "以已通过审计的官方产品页为 ground truth，逐项核对型号、规格和产品名称；模型猜测不能替代官方资料。",
+        "evidenceLabel": "verified_external",
+        "priority": "P0"
+      },
+      {
+        "id": "suggest_product_facts",
+        "title": "建立可引用的规格与选购事实表",
+        "detail": "整理松下大锤子2.0剃须刀的刀头/核心结构、动力、防水、续航、安全标准、耗材、售后和正规购买渠道，并标注来源与更新时间。",
+        "evidenceLabel": "suggested_supplement",
+        "priority": "P0"
+      },
+      {
+        "id": "suggest_product_scenarios",
+        "title": "覆盖不带品牌词的真实选购场景",
+        "detail": "围绕重视剃净效率和正规售后的成年男性会问的“怎么选、适合谁、规格差异、使用安全、售后耗材”制作问答内容，不只重复品牌名。",
+        "evidenceLabel": "model_inference",
+        "priority": "P1"
+      },
+      {
+        "id": "suggest_comparison",
+        "title": "补真实竞品对比和选择标准",
+        "detail": "按相同规格口径比较 同类产品，避免只写营销结论。",
+        "evidenceLabel": "model_inference",
+        "priority": "P1"
+      },
+      {
+        "id": "suggest_monitoring",
+        "title": "固定问题做月度复测",
+        "detail": "每月复测正确型号识别、无品牌词自然推荐、型号误读和模型分歧；API 样本不等同消费端排名。",
+        "evidenceLabel": "suggested_supplement",
+        "priority": "P2"
+      }
+    ]
+  },
+  "providerStatuses": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "status": "unavailable",
+      "promptCount": 10,
+      "successCount": 0,
+      "failureCount": 10,
+      "note": "deepseek 本次未返回可用采样。"
+    },
+    {
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "unavailable",
+      "promptCount": 10,
+      "successCount": 0,
+      "failureCount": 10,
+      "note": "hy3 本次未返回可用采样。"
+    },
+    {
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "unavailable",
+      "promptCount": 10,
+      "successCount": 0,
+      "failureCount": 10,
+      "note": "qwen 本次未返回可用采样。"
+    },
+    {
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "sampled",
+      "promptCount": 10,
+      "successCount": 10,
+      "failureCount": 0,
+      "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+    }
+  ],
+  "pageAudit": {
+    "baseUrl": "https://consumer.panasonic.cn",
+    "generatedAt": "2026-07-12T00:29:46.263Z",
+    "score": 14,
+    "targets": [
+      {
+        "id": "home",
+        "name": "品牌首页",
+        "url": "https://consumer.panasonic.cn/",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "title": "松下家电-官网",
+        "description": "",
+        "matchedFacts": [
+          "entry"
+        ],
+        "missingFacts": [
+          "brand",
+          "category"
+        ],
+        "notes": [
+          "HTTP 200",
+          "命中事实：entry",
+          "缺少事实：brand、category",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.263Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "privacy",
+        "name": "隐私政策页",
+        "url": "https://consumer.panasonic.cn/privacy/",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "title": "404",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "privacy",
+          "data"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：privacy、data",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.274Z",
+        "evidenceLabel": "suggested_supplement"
+      },
+      {
+        "id": "features",
+        "name": "功能说明页",
+        "url": "https://consumer.panasonic.cn/features/",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "title": "404",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "feature",
+          "category"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：feature、category",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.275Z",
+        "evidenceLabel": "suggested_supplement"
+      },
+      {
+        "id": "faq",
+        "name": "FAQ/常见问题",
+        "url": "https://consumer.panasonic.cn/faq/",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "title": "404",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "faq",
+          "privacy"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：faq、privacy",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.275Z",
+        "evidenceLabel": "suggested_supplement"
+      },
+      {
+        "id": "geo-case",
+        "name": "GEO 自证案例",
+        "url": "https://consumer.panasonic.cn/geo-case/",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "title": "404",
+        "description": "",
+        "matchedFacts": [],
+        "missingFacts": [
+          "geo",
+          "brand"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：geo、brand",
+          "建议页面首屏显式出现品牌名和产品定义。"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.276Z",
+        "evidenceLabel": "suggested_supplement"
+      },
+      {
+        "id": "robots",
+        "name": "robots.txt",
+        "url": "https://consumer.panasonic.cn/robots.txt",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "matchedFacts": [],
+        "missingFacts": [
+          "sitemap"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：sitemap"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.277Z",
+        "evidenceLabel": "suggested_supplement"
+      },
+      {
+        "id": "sitemap",
+        "name": "sitemap.xml",
+        "url": "https://consumer.panasonic.cn/sitemap.xml",
+        "status": "warn",
+        "httpStatus": 200,
+        "contentType": "text/xml;charset=utf-8",
+        "matchedFacts": [
+          "home",
+          "privacy"
+        ],
+        "missingFacts": [
+          "faq"
+        ],
+        "notes": [
+          "HTTP 200",
+          "命中事实：home、privacy",
+          "缺少事实：faq"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.277Z",
+        "evidenceLabel": "verified_external"
+      },
+      {
+        "id": "llms",
+        "name": "llms.txt",
+        "url": "https://consumer.panasonic.cn/llms.txt",
+        "status": "missing",
+        "httpStatus": 404,
+        "contentType": "text/html; charset=utf-8",
+        "matchedFacts": [],
+        "missingFacts": [
+          "brand",
+          "category",
+          "privacy"
+        ],
+        "notes": [
+          "HTTP 404",
+          "缺少事实：brand、category、privacy"
+        ],
+        "fetchedAt": "2026-07-12T00:29:46.277Z",
+        "evidenceLabel": "suggested_supplement"
+      }
+    ],
+    "summary": {
+      "ok": 0,
+      "warn": 2,
+      "missing": 6,
+      "failed": 0,
+      "note": "完成 8 个 URL 审计：0 个通过，2 个需补强，6 个不可用。"
+    }
+  },
+  "samples": [
+    {
+      "prompt": {
+        "id": "P001",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀对应的官方型号和产品定位是什么？",
+        "targetFact": "官方名称与型号"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 255,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P002",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀适合什么胡须和使用场景？",
+        "targetFact": "适用场景"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 253,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P003",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀有哪些可核验的安全标准和正规购买渠道？",
+        "targetFact": "安全与渠道"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 252,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P005",
+        "category": "category",
+        "prompt": "电动剃须刀怎么选，关键规格有哪些？",
+        "targetFact": "品类选择标准"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 250,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P006",
+        "category": "category",
+        "prompt": "适合重视剃净效率和正规售后的成年男性的电动剃须刀有哪些？",
+        "targetFact": "无品牌人群推荐"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 254,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P011",
+        "category": "feature",
+        "prompt": "松下大锤子2.0剃须刀的刀头、动力、防水和续航规格是什么？",
+        "targetFact": "核心规格"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.513Z",
+      "latencyMs": 49,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P013",
+        "category": "competitor",
+        "prompt": "松下大锤子2.0剃须刀和同类产品有什么区别？",
+        "targetFact": "竞品对比"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.515Z",
+      "latencyMs": 49,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P015",
+        "category": "persona",
+        "prompt": "重视剃净效率和正规售后的成年男性选择电动剃须刀时最容易踩什么坑？",
+        "targetFact": "决策风险"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.516Z",
+      "latencyMs": 50,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P017",
+        "category": "risk",
+        "prompt": "电动剃须刀的售后、耗材和使用安全需要注意什么？",
+        "targetFact": "售后与安全"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.517Z",
+      "latencyMs": 52,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P020",
+        "category": "geo",
+        "prompt": "哪些可信来源会影响 AI 对电动剃须刀的推荐？",
+        "targetFact": "GEO 证据来源"
+      },
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.518Z",
+      "latencyMs": 49,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P001",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀对应的官方型号和产品定位是什么？",
+        "targetFact": "官方名称与型号"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 116,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P002",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀适合什么胡须和使用场景？",
+        "targetFact": "适用场景"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 117,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P003",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀有哪些可核验的安全标准和正规购买渠道？",
+        "targetFact": "安全与渠道"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 114,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P005",
+        "category": "category",
+        "prompt": "电动剃须刀怎么选，关键规格有哪些？",
+        "targetFact": "品类选择标准"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 118,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P006",
+        "category": "category",
+        "prompt": "适合重视剃净效率和正规售后的成年男性的电动剃须刀有哪些？",
+        "targetFact": "无品牌人群推荐"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.377Z",
+      "latencyMs": 33,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P011",
+        "category": "feature",
+        "prompt": "松下大锤子2.0剃须刀的刀头、动力、防水和续航规格是什么？",
+        "targetFact": "核心规格"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.379Z",
+      "latencyMs": 37,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P013",
+        "category": "competitor",
+        "prompt": "松下大锤子2.0剃须刀和同类产品有什么区别？",
+        "targetFact": "竞品对比"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.380Z",
+      "latencyMs": 38,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P015",
+        "category": "persona",
+        "prompt": "重视剃净效率和正规售后的成年男性选择电动剃须刀时最容易踩什么坑？",
+        "targetFact": "决策风险"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.381Z",
+      "latencyMs": 36,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P017",
+        "category": "risk",
+        "prompt": "电动剃须刀的售后、耗材和使用安全需要注意什么？",
+        "targetFact": "售后与安全"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.410Z",
+      "latencyMs": 37,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P020",
+        "category": "geo",
+        "prompt": "哪些可信来源会影响 AI 对电动剃须刀的推荐？",
+        "targetFact": "GEO 证据来源"
+      },
+      "provider": "hy3",
+      "model": "hy3",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.416Z",
+      "latencyMs": 30,
+      "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+    },
+    {
+      "prompt": {
+        "id": "P001",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀对应的官方型号和产品定位是什么？",
+        "targetFact": "官方名称与型号"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 195,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P002",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀适合什么胡须和使用场景？",
+        "targetFact": "适用场景"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 203,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P003",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀有哪些可核验的安全标准和正规购买渠道？",
+        "targetFact": "安全与渠道"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 196,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P005",
+        "category": "category",
+        "prompt": "电动剃须刀怎么选，关键规格有哪些？",
+        "targetFact": "品类选择标准"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 202,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P006",
+        "category": "category",
+        "prompt": "适合重视剃净效率和正规售后的成年男性的电动剃须刀有哪些？",
+        "targetFact": "无品牌人群推荐"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.458Z",
+      "latencyMs": 47,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P011",
+        "category": "feature",
+        "prompt": "松下大锤子2.0剃须刀的刀头、动力、防水和续航规格是什么？",
+        "targetFact": "核心规格"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.459Z",
+      "latencyMs": 49,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P013",
+        "category": "competitor",
+        "prompt": "松下大锤子2.0剃须刀和同类产品有什么区别？",
+        "targetFact": "竞品对比"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.465Z",
+      "latencyMs": 49,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P015",
+        "category": "persona",
+        "prompt": "重视剃净效率和正规售后的成年男性选择电动剃须刀时最容易踩什么坑？",
+        "targetFact": "决策风险"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.466Z",
+      "latencyMs": 54,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P017",
+        "category": "risk",
+        "prompt": "电动剃须刀的售后、耗材和使用安全需要注意什么？",
+        "targetFact": "售后与安全"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.505Z",
+      "latencyMs": 51,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P020",
+        "category": "geo",
+        "prompt": "哪些可信来源会影响 AI 对电动剃须刀的推荐？",
+        "targetFact": "GEO 证据来源"
+      },
+      "provider": "qwen",
+      "model": "qwen3.7-plus",
+      "status": "failed",
+      "sampledAt": "2026-07-12T00:29:46.508Z",
+      "latencyMs": 48,
+      "error": "403 IP access denied by API-Key restrictions."
+    },
+    {
+      "prompt": {
+        "id": "P001",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀对应的官方型号和产品定位是什么？",
+        "targetFact": "官方名称与型号"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 5685,
+      "answer": "松下俗称“大锤子2.0”的剃须刀对应的官方型号是**LV5C**，它是松下往复式剃须刀里定位中高端的主力机型，面向追求高效剃须、偏好大机身握持感，对剃须净爽度有一定要求的普通消费者，相比上代“大锤子”产品升级了刀头性能和剃须体验，价格也比较亲民，是万元级万元不对，是千元左右档位里热门的往复式剃须选择。\n\n补充一下，松下还有一款“大锤子Pro”对应型号LV9C，定位比LV5C更高端，是旗舰级的往复剃须刀。"
+    },
+    {
+      "prompt": {
+        "id": "P002",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀适合什么胡须和使用场景？",
+        "targetFact": "适用场景"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 7510,
+      "answer": "松下大锤子2.0是往复式电动剃须刀，它的整体马达动力较强、刀头排列结构贴合硬须的切割需求，更适合**胡须偏粗硬、胡须密度高，或者短胡茬比较顽固的人群**，偏软胡须使用也没问题，但它的特性对粗硬胡须的适配度会更好。\n\n它的使用场景也比较灵活：\n1. 日常晨起的快速剃须：它握持顺手、剃须效率高，几秒到几分钟就能完成清洁，适合赶时间的日常出行前使用；\n2. 出差短途外出：它体积不算特别笨重，支持全身水洗，很多版本还支持干湿双剃，既可以干剃快速出门，也能配合剃须泡沫湿剃，在酒店洗浴的时候也能使用，清洁打理也很方便，冲一冲就能清理刀头胡渣；\n3. 如果你是需要每天剃须的男士，它的动力和耐用性也能支撑日常高频使用的需求。"
+    },
+    {
+      "prompt": {
+        "id": "P003",
+        "category": "brand",
+        "prompt": "松下大锤子2.0剃须刀有哪些可核验的安全标准和正规购买渠道？",
+        "targetFact": "安全与渠道"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 10538,
+      "answer": "松下这款剃须刀属于个人护理电器，在中国正规销售的产品，需要符合中国的强制性安全标准，可核验的安全相关标准主要有这些：\n1. **国家强制性安全标准**：必须通过中国强制性3C认证，这是电器进入中国市场的硬性要求，你可以在产品机身或包装上找到3C认证标识，还可以通过「国家市场监督管理总局」官网的3C认证查询系统，输入产品型号核对认证信息，确认是否合规。\n2. **通用安全规范**：产品还需要符合家用和类似用途电器安全的通用国标GB 4706.1，以及针对剃须刀这类毛发护理器具的专项安全国标GB 4706.9，正规产品的说明书或检测文件中都会标注符合这两项标准。\n\n关于正规购买渠道，主要有这些可以确保是正品：\n1. **官方线上渠道**：松下官方在天猫、京东、抖音等主流电商平台开设的「松下官方旗舰店」，松下官方自有官网/商城都属于正规渠道；\n2. **正规线下渠道**：松下品牌授权的线下实体店、大型家电卖场（比如苏宁、国美这类全国性连锁卖场）、大型综合商场的松下电器专柜；\n3. **授权第三方线上渠道**：主流电商平台上获得松下官方授权的家电专卖店，也属于正规可信赖的渠道。\n\n如果你是在非授权渠道购买，建议收到产品后先核对3C认证信息，再检查包装、机身编码是否和官方信息一致，避免买到仿品不合格产品。"
+    },
+    {
+      "prompt": {
+        "id": "P005",
+        "category": "category",
+        "prompt": "电动剃须刀怎么选，关键规格有哪些？",
+        "targetFact": "品类选择标准"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:46.263Z",
+      "latencyMs": 13269,
+      "answer": "选电动剃须刀可以结合自身胡须特点、使用习惯来看，核心要关注这几个关键规格和点：\n1. **刀头类型与数量**\n   现在主要分旋转式和往复式两种：\n   - 旋转式刀头对皮肤刺激更小，更适合胡须偏软、密度不高，或者皮肤敏感的人，常规3刀头的适配性最好，能更好贴合面部轮廓；刀头数量越多，通常覆盖面积越大，剃须效率越高。\n   - 往复式刀头切割力更强，更适合胡须粗硬、浓密，或者短胡茬比较多的人，一般1-4刀头都有，刀头行程越长，越容易贴合下巴、脖子这类凹凸部位。\n2. **刀头材质**\n   优先选不锈钢材质的，硬度高、不易生锈，耐用性和剃须锋利度都更好；部分高端款会用陶瓷刀头，特点是更锋利、发热少，对皮肤刺激更小，但硬度比不锈钢低，磕碰容易碎。\n3. **防水等级**\n   如果需要湿剃（搭配剃须泡沫）或者日常直接用水冲清洁，一定要选支持全身水洗的款式，至少要达到IPX7级别的防水，日常使用会方便很多；仅刀头水洗的款式清洁会麻烦一点，价格通常更低。\n4. **续航与充电**\n   续航主要看使用频率，一般续航30-60分钟就能满足大部分人1-2个月的每周使用需求；另外可以留意快充功能，比如应急充电5分钟就能完成一次剃须，实用性很强；现在主流都是Type-C充电口，比专用接口更方便。\n5. **附加功能**\n   比如鬓角修剪器（适合需要修鬓角、发际线的人）、智能防夹须（低电量时也能避免刀头转速下降卡胡须）、旅行锁（避免放在包里误开机），这些可以根据自己的需求选。\n\n最后结合预算选就行：入门款满足基础剃须需求，中高端款会在刀头锋利度、贴合度、舒适度上有明显提升。"
+    },
+    {
+      "prompt": {
+        "id": "P006",
+        "category": "category",
+        "prompt": "适合重视剃净效率和正规售后的成年男性的电动剃须刀有哪些？",
+        "targetFact": "无品牌人群推荐"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:51.948Z",
+      "latencyMs": 9967,
+      "answer": "如果重视剃净效率和正规售后，可以优先选择行业内布局多年、线下渠道和官方售后体系比较完善的主流品牌，这类品牌产品成熟，售后网点多，维修保修都更方便：\n1. **飞利浦**：旗下多刀头的往复式、旋转式剃须刀都有覆盖，旋转式产品对大胡子的适配性不错，剃净稳定性好，全国从一二线城市到下沉市场都有完善的售后网点，保修政策清晰，线下也能直接检测处理问题。\n2. **飞科**：作为国内大众品牌，它的产品剃净效率符合日常需求，售价亲民，官方线上线下售后布局很全，国内保修、配件更换都很方便，适合追求高性价比同时看重售后的人群。\n3. **博朗**：往复式剃须刀动力强劲，对付粗硬浓密胡须剃净效率很高，作为国际品牌官方售后体系正规，保修服务规范，适合胡子偏硬、追求快剃净的人群。\n4. **松下**：它的往复式剃须刀刀头工艺出色，剃净干净，官方售后有保障，在国内多数城市都能找到官方售后点，产品整体性能稳定，适配不同胡须条件的需求。\n\n这些品牌都有覆盖不同价位段的选项，你可以根据自己的预算和胡须类型（偏硬浓密选往复式，软胡须日常用选旋转式都可以），选择对应定位的产品即可。"
+    },
+    {
+      "prompt": {
+        "id": "P011",
+        "category": "feature",
+        "prompt": "松下大锤子2.0剃须刀的刀头、动力、防水和续航规格是什么？",
+        "targetFact": "核心规格"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:53.773Z",
+      "latencyMs": 6379,
+      "answer": "松下大锤子2.0（一般指松下LV5C剃须刀）的官方规格参数如下：\n1. **刀头**：采用5刀头设计，包含内刃+外刃的多刃组合，搭配浮动刀头结构，可以更好贴合面部轮廓，适配不同部位的剃须需求。\n2. **动力**：搭载松下磁悬浮马达，官方转速约为14000转/分钟，动力输出比较充沛，应对硬胡须也不容易出现卡顿拉扯。\n3. **防水**：支持全身防水，达到IPX7级防水标准，可以直接在水龙头下冲洗清洁，也支持湿剃。\n4. **续航**：官方标称满电后，按照每天剃须1分钟计算，可以使用约4周左右，快充支持1小时充满，还有5分钟快速闪充可以满足1次剃须的需求。"
+    },
+    {
+      "prompt": {
+        "id": "P013",
+        "category": "competitor",
+        "prompt": "松下大锤子2.0剃须刀和同类产品有什么区别？",
+        "targetFact": "竞品对比"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:56.801Z",
+      "latencyMs": 10182,
+      "answer": "你说的这款“松下大锤子2.0”应该是松下的松下L5剃须刀，它和同价位同类往复式剃须刀相比，主要区别大概有这些：\n1. **外观握持设计**：它方正偏厚重的机身，被用户叫做“大锤子”，这种造型握持感比较扎实，和很多偏小巧圆润的往复式剃须刀造型区别比较明显，机身的防滑设计也做的比较突出，湿剃的时候不容易滑手。\n2. **刀头配置**：它采用的是五刀头的配置，同价位很多同类往复式产品多是三刀头或者四刀头，多刀头对须根比较粗硬、胡须浓密的用户来说，一次过刀就能剃干净更多区域，效率会更高一些。\n3. **性能调校**：它的整体马达动力调校偏强劲，推力比较足，针对亚洲男士偏粗硬的胡须适配性更好，不容易出现夹须的情况，这和一些动力偏温和的产品区别比较明显。\n4. **防水实用性**：它支持全机水洗，还可以干湿双剃，如果喜欢配合剃须泡沫湿剃，使用起来比较方便，不少同档位产品也都支持这个配置，但它的密封做的比较好，淋浴的时候使用也没问题。\n\n总的来说它更适合胡须浓密、偏粗硬，看重剃须效率的用户，和偏向主打温和剃须、便携小巧的同类产品定位差异比较明显。"
+    },
+    {
+      "prompt": {
+        "id": "P015",
+        "category": "persona",
+        "prompt": "重视剃净效率和正规售后的成年男性选择电动剃须刀时最容易踩什么坑？",
+        "targetFact": "决策风险"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:29:59.532Z",
+      "latencyMs": 10924,
+      "answer": "重视剃净效率和正规售后的成年男性选电动剃须刀，比较容易踩这些坑：\n1. **盲目追求高参数，忽略实际适配性**：很多商家会宣传“转速越高剃净越好”“刀头越多越干净”，但实际上高转速如果刀头贴合度差，反而容易卡须、留胡茬；多余刀头对脸小/胡须稀疏的人来说完全用不上，只是拉高了价格，实际剃净效果并没有提升，还会因为刀头设计不合理增加拉扯皮肤的概率。\n2. **轻信“官方授权”，买到非正规渠道水货/翻新机**：很多人会认准品牌，却在非品牌官网、非官方授权的第三方小店，靠着更低的价格下单，这些产品很多是水货、翻新机，不仅刀头可能是仿冒的，本身剃净度就差，还没办法享受国内官方的全国联保，真出了质量问题售后找不到人，店铺关门就只能自认倒霉。\n3. **只看宣传不区分刀头类型适配性**：比如硬胡须、短须很多适合往复式，但有人盲目跟风买了多刀头旋转式，就会出现剃不干净、反复刮还拉扯须的情况；反过来敏感肌用了动力过强的往复式，又容易刮红，最后既达不到想要的剃净效率，还体验很差。\n4. **忽略售后规则的细节**：有些店铺声称“有售后”，但实际上只保主机不保刀头——刀头本身就是剃须刀的消耗件，很多品牌官方售后是可以一定期限内更换刀头的，但第三方店的售后只承诺修主机，刀头磨损了想要更换还要自己花高价找渠道，反而后续成本很高。"
+    },
+    {
+      "prompt": {
+        "id": "P017",
+        "category": "risk",
+        "prompt": "电动剃须刀的售后、耗材和使用安全需要注意什么？",
+        "targetFact": "售后与安全"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:30:00.152Z",
+      "latencyMs": 15531,
+      "answer": "选择和使用电动剃须刀时，在售后、耗材、使用安全这几个方面，可以参考这些注意事项：\n\n### 一、售后方面\n1. 优先选择正规渠道购买，保留好购买凭证（发票、电子订单等），方便后续享受保修服务；购买前确认品牌官方的保修政策，比如整机保修年限、核心部件（比如刀头马达）是否有单独延保。\n2. 如果产品出现故障，不要自行拆解维修，尤其是带锂电池的型号，私自改装拆解可能失去保修，还容易引发安全问题，尽量联系品牌官方售后点处理。\n3. 一些小众品牌可能线下售后点很少，购买前可以先确认本地是否有售后网点，方便后续处理问题。\n\n### 二、耗材方面\n1. 电动剃须刀的核心耗材是刀头和刀网，一般建议1-2年更换一次，如果使用频率很高、感觉到剃须不顺畅、拉扯皮肤，就需要提前更换；尽量选择品牌原装耗材，非原装的刀头尺寸、精度不匹配，不仅剃须体验差，还可能损伤马达，甚至有刀头崩裂的风险。\n2. 日常要做好耗材清洁：每次使用后及时清理刀头处的胡须残渣，支持水洗的型号可以用流水冲洗，不支持水洗的用配套小刷子清理，定期可以给刀头少量涂抹专用润滑油，减少刀头磨损，延长使用寿命。\n3. 不要使用已经开裂、变形的刀头/刀网，这类受损耗材不仅剃须容易刮伤皮肤，还可能在运转中断裂飞出。\n\n### 三、使用安全方面\n1. 皮肤有伤口、炎症、痤疮的时候，尽量不要使用剃须刀，避免划伤加重感染；如果是湿剃，要注意皮肤状态，敏感肌尽量调低档位，减少刺激。\n2. 充电安全是重点：使用原装充电器充电，不要用不匹配功率的杂牌充电器；充电时避免覆盖剃须刀，不要放在高温潮湿的地方（比如 close 浴室密闭柜子里）充电，充满后及时拔掉电源，不要长时间过度充电；如果剃须刀外壳开裂、电池鼓包，就不要再继续使用，及时更换，更不要随意丢弃鼓包锂电池，要按有害垃圾分类处理。\n3. 洗澡时使用要确认产品明确支持“全身水洗、水下使用”，不是所有可水洗型号都适合在"
+    },
+    {
+      "prompt": {
+        "id": "P020",
+        "category": "geo",
+        "prompt": "哪些可信来源会影响 AI 对电动剃须刀的推荐？",
+        "targetFact": "GEO 证据来源"
+      },
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215",
+      "status": "success",
+      "sampledAt": "2026-07-12T00:30:01.915Z",
+      "latencyMs": 8334,
+      "answer": "AI对电动剃须刀的推荐结果，主要受这些可信来源的信息影响：\n1. **权威第三方测评机构/平台**：比如消费者报道、国内的家电测评类专业机构、海外的Consumer Reports（消费者报告）这类独立测评组织，它们会通过统一标准实测不同产品的剃须效果、续航、耐用度、舒适度等指标，数据是AI推荐的重要参考。\n2. **正规消费类媒体与专业KOL的实测内容**：像专注家电、数码领域的正规媒体，以及垂直领域口碑好、长期输出客观测评内容的博主，他们的实际使用体验、测评结论，也会被AI作为参考信息。\n3. **品牌官方公开的合规信息**：包括品牌官方公示的产品参数、技术参数、质检合格报告等合规内容，这些基础信息也是AI整理推荐的依据。\n4. **主流电商平台的真实用户评价**：大平台经过筛选排除刷评后的海量真实用户反馈，比如长期使用后的体验、故障概率等内容，AI也会汇总这类数据作为推荐参考。\n5. **专业行业榜单/认证**：比如一些家电行业协会评选的可信榜单、第三方质量认证结果，这类信息也会提升对应产品被推荐的权重。"
+    }
+  ],
+  "evidencePolicy": {
+    "labels": [
+      "raw_source",
+      "verified_external",
+      "sampled_ai_answer",
+      "model_inference",
+      "suggested_supplement"
+    ],
+    "notes": "本报告基于用户提交资料、公开 URL 抓取审计、doubao API 实时问答采样和透明规则评分生成。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。"
+  }
+}

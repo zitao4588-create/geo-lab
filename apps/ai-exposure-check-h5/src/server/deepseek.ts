@@ -234,7 +234,7 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
         answer
       };
     } catch (error) {
-      lastError = error instanceof Error ? safeError(error.message) : 'sampling_failed';
+      lastError = error instanceof Error ? sanitizeProviderError(error.message) : 'sampling_failed';
       const nextModel = modelCandidates[index + 1];
       if (!nextModel || !shouldFallbackProviderModel(config.provider, error)) break;
       preferredProviderModels.set(config.provider, nextModel);
@@ -451,9 +451,10 @@ function safeText(value: unknown, fallback: string, maxLength: number) {
   return trimmed.length > maxLength ? `${trimmed.slice(0, maxLength)}...` : trimmed;
 }
 
-function safeError(value: string) {
+export function sanitizeProviderError(value: string) {
   return value
     .replace(/sk-[a-zA-Z0-9_-]+/gu, '[redacted_key]')
     .replace(/Bearer\s+[a-zA-Z0-9._-]+/gu, 'Bearer [redacted]')
+    .replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/gu, '[redacted_ip]')
     .slice(0, 180);
 }

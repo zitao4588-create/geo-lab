@@ -1,0 +1,38 @@
+[
+  {
+    "provider": "deepseek",
+    "model": "deepseek-v4-pro",
+    "status": "unavailable",
+    "promptCount": 10,
+    "successCount": 0,
+    "failureCount": 10,
+    "note": "deepseek 本次未返回可用采样。"
+  },
+  {
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "unavailable",
+    "promptCount": 10,
+    "successCount": 0,
+    "failureCount": 10,
+    "note": "hy3 本次未返回可用采样。"
+  },
+  {
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "unavailable",
+    "promptCount": 10,
+    "successCount": 0,
+    "failureCount": 10,
+    "note": "qwen 本次未返回可用采样。"
+  },
+  {
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "sampled",
+    "promptCount": 10,
+    "successCount": 10,
+    "failureCount": 0,
+    "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+  }
+]

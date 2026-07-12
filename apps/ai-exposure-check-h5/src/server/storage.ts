@@ -150,7 +150,8 @@ export function buildDiagnosisRequestFingerprint(input: DiagnosisInput) {
     competitors: (input.competitors || '').trim(),
     contact: (input.contact || '').trim(),
     source: (input.source || '').trim(),
-    samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim())
+    samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim()),
+    confirmedBusinessType: input.confirmedBusinessType ?? ''
   };
 
   return createHash('sha256').update(JSON.stringify(normalizedInput)).digest('hex');

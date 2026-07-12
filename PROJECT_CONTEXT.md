@@ -261,3 +261,44 @@ Remaining risks:
 - Newly added robots/sitemap/static page lower the crawling barrier, but they do not guarantee immediate WeChat search inclusion or ranking. Actual discovery still depends on external crawlers, content distribution, links, and WeChat ecosystem signals.
 - The latest four-provider one-question diagnosis took about `10.6s`; the previous three-provider 20-prompt diagnosis took about `48.6s`. The current default 10-question-per-provider path has not yet been measured end to end and will be bounded by the slowest provider plus page audit.
 - Idempotency is durable for the current single-instance, shared-runtime deployment. Rate-limit counters remain process-memory only and reset on restart; request-index JSON is not a multi-instance coordination system.
+
+2026-07-12 report credibility hardening (local C2, not deployed):
+
+- Added a deterministic input preflight before quota consumption and model sampling. Sparse/ambiguous input returns `422 input_confirmation_required`; the H5 shows the missing evidence and does not enter the loading screen.
+- Report schema `0.4` adds business type, confidence, score visibility, string mention, correct entity recognition, unbranded natural recommendation, misrecognition, provider agreement, model conflicts, confirmed facts, unverified facts, and next actions. Version `0.3` remains readable.
+- Prompt Universe and recommendations now route between physical products, software/mini-programs, local services, and unknown inputs. Physical products no longer receive mini-program privacy/photo/payment templates.
+- Missing URLs now show page audit as `未检测` with infrastructure score `0`; user-facing total score is withheld when there is no verified public source. Markdown, HTML, H5, and evidence package share the same credibility data.
+- Fixed fixtures prove the intended contrast: `冰箱小雷达` keeps page audit `100/100` but now reports correct entity recognition `0%` and natural recommendation `0%`; the Panasonic fixture catches ES-LV9C vs official ES-LM55 conflicts; a fictitious brand is blocked before sampling.
+- Local verification: typecheck/build pass, tests `13/13`, mobile/desktop/preflight browser QA with no overflow or console errors. Evidence: `outputs/h5-mvp/report-credibility-hardening-20260712/`.
+- No production POST, deployment, commit, push, paid search provider, or cross-project fridge-site edit was performed.
+
+2026-07-12 multi-type batch instance testing (local C2, not deployed):
+
+- Added one table-driven 20-case matrix covering physical products, software/mini-programs, local services, adversarial inputs, and system regression.
+- Phase A ran validation/preflight only: 20/20 passed after fixes, with zero real model calls and zero quota consumption.
+- Fixed two P1 issues with regression tests: local services using `全国/不限/线上` now require a concrete city/store/radius; partial provider failure now lowers report confidence.
+- Fixed one P0 evidence-boundary issue: unsupported user claims are no longer shown under “已确认”; user descriptions remain pending verification until PageAudit evidence supports them.
+- Fixed the H5 provider strip so a configured provider failure is shown as failure coverage rather than “未配置”.
+- Verified Markdown, HTML, evidence package, and the report object use the same credibility values.
+- Completed 10 real local-page visual checks: five required states at 390×844 and 1440×1000, without horizontal overflow or console errors/warnings.
+- Phase B was not run because current runtime configuration cannot reliably prove Tencent and Volcengine calls will remain free; this follows the Goal cost stop condition.
+- Evidence is under `outputs/h5-mvp/batch-instance-testing-20260712/`. No commit, push, deployment, production POST, or production runtime change was made.
+
+2026-07-12 batch Phase B real-run closeout (local C2, not deployed):
+
+- The user explicitly confirmed the Volcengine free boundary and authorized the full Phase B run. P01, P02, S01, L01, and L03 generated five new isolated local reports; S02 reused the saved 2026-07-11 four-provider evidence without a new call.
+- The five real reports covered 50 unique questions and 200 provider/prompt slots. Volcengine Doubao succeeded 50/50. Bailian DeepSeek, Bailian Qwen, and Tencent Hy3 each failed 0/50 because the current source IP is outside their API Key allowlists. DeepSeek additionally attempted the configured Flash fallback for all 50 prompts and received the same 403 restriction.
+- All five new reports correctly dropped to low confidence and withheld the user-facing total score. No simulated provider results, billing signal, balance error, or paid-provider addition occurred.
+- Real visual QA found a P0 consistency bug: the main cover withheld the score while the desktop preview and report summary still exposed the internal compatibility score. The minimal fix now derives summary copy from `scoreStatus`, hides the score in the preview/cover copy, and adds `displayedScore: null` to the evidence package when withheld.
+- Final local verification passed: typecheck, build, `npm test` 40/40, `git diff --check`, and two real-report Playwright checks at 390×844 and 1440×1000 with no overflow or console errors. Provider error persistence now redacts API keys, bearer tokens, and source IPs. The real-run evidence and final conclusions are in `outputs/h5-mvp/batch-instance-testing-20260712/stage-b-report.md` and `stage-b-summary.json`.
+- Current conclusion: credibility protection passes, but the four-provider runtime does not pass (0/5 complete reports). Remaining blockers are the Bailian/TokenHub IP allowlists and PageAudit false negatives for the Panasonic and Haidilao official pages.
+2026-07-12 source recognition hardening (local acceptance complete, deployment pending):
+
+- The controlled local execution IP is now present in the existing Bailian and TokenHub allowlists. Minimal calls for DeepSeek, Qwen, and Hy3 succeeded, and the saved full run records 200/200 four-provider samples with zero fallback. Exact IP values remain outside project files.
+- PageAudit now audits the full submitted URL instead of discarding its path and only probing origin-relative H5-specific routes.
+- Submitted pages record separate `sourceRelation` and `scopeRelation` values, so an entity-matched store-search entry can remain scope-partial while a national brand homepage is scope-mismatched for a specific store.
+- Live official-page checks: Panasonic P01/P02 are `entity_matched + matched + ok` and bind primary model `ES-LM55`; Haidilao L01 is `entity_matched + partial` because the no-JavaScript page does not prove Xi'an; L03 is `entity_matched + mismatched`.
+- A submitted model that conflicts with the verified official primary model is now an explicit high-severity issue and unverified fact. P02 records `ES-LV9C` versus `ES-LM55` instead of hiding the conflict inside provider rows.
+- Deterministic verification passes: typecheck, build, `git diff --check`, and 47/47 tests. Twelve real-page visual checks at 390×844 and 1440×1000 have zero overflow and zero console errors.
+- Phase B reports were rebuilt with fresh PageAudit results and the previously saved 200/200 successful real four-provider samples, so this Goal added zero model calls. P01/P02/S01 are score-available; L01/L03 remain withheld for the expected scope reasons.
+- Evidence: `outputs/h5-mvp/source-recognition-hardening-20260712/`. Deployment, production switch, and online smoke are still pending at this checkpoint.

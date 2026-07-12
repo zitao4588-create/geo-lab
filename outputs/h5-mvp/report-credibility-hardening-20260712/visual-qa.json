@@ -1,0 +1,49 @@
+{
+  "baseUrl": "http://127.0.0.1:8794",
+  "checks": [
+    {
+      "name": "preflight-mobile-390",
+      "overflow": false,
+      "cardText": "先补资料，再开始四模型采样\n32/100 · 证据不足\n\n资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。\n\n补充具体产品类型、核心功能或型号。\n补充更具体的使用人群或决策场景。\n把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。\n粘贴官网、官方产品页、小程序介绍页或公开账号入口。\n当前未消耗免费名额，也没有调用模型。",
+      "assessment": {
+        "assessment": {
+          "status": "insufficient_evidence",
+          "score": 32,
+          "businessType": "physical_product",
+          "findings": [
+            "一句话介绍过短，无法稳定核对产品实体和功能边界。",
+            "目标客户描述较宽，场景问题可能失真。",
+            "行业口径过宽，系统无法生成自然的品类问题。",
+            "没有可核验的官方入口，正确实体识别只能标为待确认。",
+            "未提供竞品，本次不能判断真实替代关系。"
+          ],
+          "requiredActions": [
+            "补充具体产品类型、核心功能或型号。",
+            "补充更具体的使用人群或决策场景。",
+            "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+            "粘贴官网、官方产品页、小程序介绍页或公开账号入口。"
+          ],
+          "officialSourceStatus": "missing",
+          "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+        }
+      },
+      "errors": []
+    },
+    {
+      "name": "fridge-390",
+      "overflow": false,
+      "hasCredibility": true,
+      "hasMetrics": true,
+      "hasConflict": true,
+      "errors": []
+    },
+    {
+      "name": "panasonic-1440",
+      "overflow": false,
+      "hasCredibility": true,
+      "hasMetrics": true,
+      "hasConflict": true,
+      "errors": []
+    }
+  ]
+}

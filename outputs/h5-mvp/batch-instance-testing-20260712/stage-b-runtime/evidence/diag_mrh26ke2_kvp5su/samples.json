@@ -1,0 +1,562 @@
+[
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务是什么服务？",
+      "targetFact": "服务定义"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 169,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务适合哪些客户？",
+      "targetFact": "目标客户"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 178,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+      "targetFact": "信任证据"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 184,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "西安火锅餐饮门店服务怎么选？",
+      "targetFact": "本地推荐"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 167,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+      "targetFact": "无品牌场景推荐"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 172,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+      "targetFact": "服务边界"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.426Z",
+    "latencyMs": 53,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.428Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+      "targetFact": "决策因素"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.431Z",
+    "latencyMs": 49,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+      "targetFact": "风险说明"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.437Z",
+    "latencyMs": 53,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+      "targetFact": "GEO 证据来源"
+    },
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.443Z",
+    "latencyMs": 55,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务是什么服务？",
+      "targetFact": "服务定义"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 100,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务适合哪些客户？",
+      "targetFact": "目标客户"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 93,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+      "targetFact": "信任证据"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 101,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "西安火锅餐饮门店服务怎么选？",
+      "targetFact": "本地推荐"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 99,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+      "targetFact": "无品牌场景推荐"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.352Z",
+    "latencyMs": 39,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+      "targetFact": "服务边界"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.358Z",
+    "latencyMs": 44,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.359Z",
+    "latencyMs": 44,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+      "targetFact": "决策因素"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.360Z",
+    "latencyMs": 43,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+      "targetFact": "风险说明"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.391Z",
+    "latencyMs": 28,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+      "targetFact": "GEO 证据来源"
+    },
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.402Z",
+    "latencyMs": 30,
+    "error": "403 Source IP [redacted_ip] is not in the API Key allowlist. Please check whether the IP is within the allowlist range on the API Key management page in the console. See: https://c"
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务是什么服务？",
+      "targetFact": "服务定义"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 185,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务适合哪些客户？",
+      "targetFact": "目标客户"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 166,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+      "targetFact": "信任证据"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 178,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "西安火锅餐饮门店服务怎么选？",
+      "targetFact": "本地推荐"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 168,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+      "targetFact": "无品牌场景推荐"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.425Z",
+    "latencyMs": 47,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+      "targetFact": "服务边界"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.427Z",
+    "latencyMs": 48,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.437Z",
+    "latencyMs": 53,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+      "targetFact": "决策因素"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.444Z",
+    "latencyMs": 52,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+      "targetFact": "风险说明"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.472Z",
+    "latencyMs": 47,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+      "targetFact": "GEO 证据来源"
+    },
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "failed",
+    "sampledAt": "2026-07-12T00:31:34.475Z",
+    "latencyMs": 50,
+    "error": "403 IP access denied by API-Key restrictions."
+  },
+  {
+    "prompt": {
+      "id": "P001",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务是什么服务？",
+      "targetFact": "服务定义"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 8398,
+    "answer": "海底捞西安门店的服务和国内大多数海底捞门店的标准服务体系基本一致，核心是品牌统一的特色服务，同时也会适配本地顾客的需求做一些小调整，主要包含这些内容：\n1. 基础用餐服务：从进店等位开始，就会提供免费的零食、水果、饮品，很多门店还有美甲、擦鞋等位休闲服务，入座后会主动帮你调锅底、递围兜、扎头发，提供手机防水袋、眼镜布这些小物品，用餐过程中会及时添茶、换骨碟。\n2. 个性化的细节服务：比如给带孩子的顾客提供宝宝椅、儿童餐，给过生日的顾客送长寿面、简单的生日布置祝福，如果有特殊饮食需求，也可以沟通调整锅底、菜品的口味搭配。\n3. 此外西安门店也会根据本地顾客的饮食偏好，上线适配的特色产品，比如部分门店会推出贴合西北口味的相关菜品搭配，服务上也会更贴合本地顾客的用餐习惯。\n\n不同商圈的门店因为规模、客流情况不一样，具体能提供的服务细节会略有差别。"
+  },
+  {
+    "prompt": {
+      "id": "P002",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务适合哪些客户？",
+      "targetFact": "目标客户"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 8606,
+    "answer": "海底捞西安门店的服务其实覆盖了非常多元的客群，比较适配的主要有这些类型：\n1. **朋友聚会、家庭聚餐群体**：不管是年轻人结伴聚餐，还是带老人孩子的家庭出游、家庭聚餐，宽敞的座位、可调节的锅具以及贴心的辅助服务（比如帮看孩子、提供儿童餐）都很适配，热闹的氛围也适合聚会聊天。\n2. **游客群体**：西安作为旅游城市，很多来游玩的游客都偏好体验知名度高、口味标准化、服务省心的餐饮，很多门店靠近景区或者商圈，位置方便，对游客来说很友好。\n3. **有特殊需求的顾客**：比如带婴幼儿的家长可以要到婴儿床、宝宝餐具；过生日的顾客可以免费获得简单的布置和祝福服务；对口味有特殊调整要求（比如加麻加辣、调整食材分量）也基本都能满足。\n4. **单人用餐的顾客**：很多门店会提供“陪吃玩偶”，单人来吃也不会觉得尴尬，小锅选项也适合单人点餐。\n\n整体来说，它的服务包容性很强，基本上各类食客都能找到适配的服务内容。"
+  },
+  {
+    "prompt": {
+      "id": "P003",
+      "category": "brand",
+      "prompt": "海底捞西安门店服务有哪些可核验的资质和评价？",
+      "targetFact": "信任证据"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 7565,
+    "answer": "关于海底捞西安门店的可核验资质，你可以通过以下公开渠道查询到合规性相关信息：\n1. 营业执照：所有正规门店的营业执照都可以在国家企业信用信息公示系统查询核验，确认其经营主体合法性、经营范围合规性。\n2. 食品经营相关资质：作为餐饮门店，海底捞西安所有门店都需要取得食品经营许可证，该资质可以在当地市场监督管理局的官方平台查询，西安市市场监管局也会定期公示餐饮单位的食品安全量化分级评级结果，海底捞西安多数门店的评级都处于较高等级。\n\n从大众点评、美团、本地餐饮评价平台的公开用户评价来看，海底捞西安门店的评价普遍有这些特点：\n- 正面评价大多集中在服务响应及时、细节服务到位，比如免费小食、帮存包、特殊人群协助等，锅底口味的标准化认可度也比较高；\n- 负面评价多集中在客流高峰时排队时间较长、部分门店菜品定价偏高，偶尔会有个别食材新鲜度或服务细节不到位的反馈。\n\n如果要查询具体某一家门店的最新资质和真实评价，直接通过西安市场监管部门官网或者主流点评平台的对应门店页面，就可以获得更准确的实时信息。"
+  },
+  {
+    "prompt": {
+      "id": "P005",
+      "category": "category",
+      "prompt": "西安火锅餐饮门店服务怎么选？",
+      "targetFact": "本地推荐"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:34.259Z",
+    "latencyMs": 9756,
+    "answer": "选择西安火锅门店的服务，可以从几个常见维度来判断，你可以根据自己的需求参考：\n1. **看实时口碑评价**\n打开本地生活或者点评平台，重点看近期评价里提到服务的内容：比如会不会主动帮下菜、捞沫，换骨碟是否及时，排队的时候有没有免费茶水、零食甚至美甲擦鞋这类便民服务，有没有针对老人、小孩的特殊照顾（比如提供宝宝椅、温粥），也可以问问本地身边爱吃火锅的朋友，他们的实际体验比硬广更靠谱。\n\n2. **看门店的服务细节**\n到店之后可以观察几个小细节：门口接待是否主动引路，入座后会不会主动倒水温茶，调料台、公共区域是不是干净，加汤、呼应用户需求是不是响应及时，如果需要帮煮火锅的锅品，服务员会不会主动介绍涮煮时间，这些小细节比宣传的“五星级服务”更实在。\n\n3. **根据自己的需求选**\n如果你喜欢安静自在，不用强迫选过度热情的店，选响应及时、不打扰的门店就好；如果是多人聚餐、带老人小孩出行，可以优先选配套服务全的连锁品牌，稳定性更高；如果想吃小众社区火锅店，不用强求服务有多完善，只要干净热情、不怠慢客人就适合。\n\n另外如果在意性价比，也可以提前看清楚有没有额外的服务费，避免到店后有预期落差。"
+  },
+  {
+    "prompt": {
+      "id": "P006",
+      "category": "category",
+      "prompt": "西安有哪些适合需要到店用餐和预约的西安顾客的火锅餐饮门店服务？",
+      "targetFact": "无品牌场景推荐"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:41.824Z",
+    "latencyMs": 10729,
+    "answer": "西安的火锅品类很丰富，从本地风味到全国连锁都有不少口碑不错、支持提前预约到店用餐的门店，给你推荐几个不同类型的代表性选择：\n1. **川味麻辣火锅类**\n    - 成都锅瘾：本地开了很多年的老牌川味火锅，牛油锅底味道浓郁，食材新鲜，大部分分店都支持电话或者大众点评预约，饭点建议提前半天约。\n    - 海底捞火锅（多家分店，比如小寨、熙地港店）：服务比较周全，支持线上提前多天预约，还可以提前备注需求，适合多人聚餐。\n2. **本地特色铜锅涮肉类**\n    - 东来顺（西安分店）：传统铜锅涮羊肉，肉质好，口味偏清爽，适合偏爱北方涮肉口味的顾客，支持提前预约。\n    - 老北京铜锅涮肉（比如回民街附近的不少门店）：很多本地本地人常去，羊肉品质扎实，炭锅风味足，建议饭点提前预约避免等位。\n3. **特色风味火锅类**\n    - 徳荘火锅（西安多分店）：重口味川式火锅，网红款菜品比较多，商圈里的门店都支持线上预约。\n    - 长安卤滩羊火锅：本地特色卤羊火锅，适合喜欢鲜羊肉风味的食客，门店多在市区，支持提前电话预约。\n    - 太二酸菜鱼火锅（其实主打酸菜鱼火锅，很多商圈有店）：口味偏清爽酸爽，人气比较高，高峰必须提前预约。\n\n如果是去热门商圈（小寨、钟楼、熙地港、大雁塔附近）的门店，周末和饭点一定要提前1-2天在大众点评、美团或者商家私域渠道预约，避免排队太久。"
+  },
+  {
+    "prompt": {
+      "id": "P011",
+      "category": "feature",
+      "prompt": "海底捞西安门店服务的服务范围和预约方式是什么？",
+      "targetFact": "服务边界"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:42.657Z",
+    "latencyMs": 5500,
+    "answer": "海底捞在西安的门店都提供火锅到店用餐服务，部分门店还支持外卖配送，部分商圈门店也可以承接小型聚会、团体用餐的布置需求。\n\n不同门店的具体服务范围会略有差异，预约的常用方式有这几种：\n1. 打开“海底捞”官方微信公众号/海底捞手机APP，定位到西安后，可以选择具体门店，在线排队取号或者提前预约用餐时间；\n2. 你可以直接搜索想要前往的具体门店的公开联系电话，打电话到门店直接预约；\n3. 大部分主流外卖平台，也可以预约海底捞西安门店的火锅外卖。\n\n如果是想去特定门店，建议出发前通过官方平台确认这家店的具体服务和当前可预约的时段哦。"
+  },
+  {
+    "prompt": {
+      "id": "P013",
+      "category": "competitor",
+      "prompt": "海底捞西安门店服务和同类产品有什么区别？",
+      "targetFact": "竞品对比"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:42.865Z",
+    "latencyMs": 6840,
+    "answer": "海底捞西安门店的服务和其他同类火锅品牌相比，比较突出的区别是服务更偏主动细节化：\n比如等位时会免费提供零食、水果、棋牌娱乐，还有美甲、擦鞋这类增值服务；入座后服务员会主动帮客人包手机套、扎头发，带孩子的顾客还会主动提供儿童餐椅、小玩具，席间加汤、换骨盘都比较勤快。\n\n不过和海底捞其他城市的门店相比，西安部分门店也会结合本地做了一点调整，比如会更留意顾客对辣度的本地习惯调整建议。\n\n产品本身其实海底捞的标准化程度比较高，和其他城市差异不大，和同类品牌比，核心区别还是在服务的主动性和增值服务的丰富度上，当然也有不少消费者觉得其他西安本地火锅品牌的口味更贴合本地习惯，服务风格更偏自在不打扰，这也是比较明显的差异。"
+  },
+  {
+    "prompt": {
+      "id": "P015",
+      "category": "persona",
+      "prompt": "需要到店用餐和预约的西安顾客选择火锅餐饮门店服务最关心什么？",
+      "targetFact": "决策因素"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:44.015Z",
+    "latencyMs": 9312,
+    "answer": "对于需要到店用餐、可能需要预约的西安顾客来说，选择火锅店通常最关心这些点：\n1. **预约/等位体验**：西安热门商圈、饭点的火锅店经常排队，大家会很关心能不能方便线上预约、留位时间是否灵活，能不能实时看排队进度，避免到店空等太久。\n2. **锅底口味与本地适配**：西安本地能吃辣的顾客不少，既有人追求川渝火锅的地道麻辣，也有不少家庭、口味清淡的顾客关心有没有适口的骨汤、番茄锅底，还有不少本地人会在意有没有结合本地口味的创新锅，比如铜锅涮肉这类符合西北饮食习惯的选择。\n3. **食材新鲜度与分量**：不管是涮肉还是蔬菜、配菜，新鲜度是核心，西安顾客也很看重性价比，会不会出现“精致摆盘缺分量”的情况，也是大家关心的点，尤其是牛羊肉这类主打食材，品质好不好很关键。\n。\n4. **门店环境与私密性**：如果是朋友聚会、家庭聚餐，会关心座位挤不挤、有没有隔间，店内通风好不好——吃火锅最怕浑身沾味，通风差的店很多人会避开。\n5. **位置与停车**：大多会选家附近或者商圈里交通方便的店，开车出行的顾客很在意门店有没有免费停车位，停车方不方便。\n6. **价格与优惠**：学生、上班族聚餐都看重性价比，会不会有套餐优惠、会员折扣，有没有隐形消费，也是比较关心的点。\n7. **服务响应速度**：高峰期加汤、添料、换盘能不能及时响应，预约会不会轻易被取消，这些细节也会影响选择。"
+  },
+  {
+    "prompt": {
+      "id": "P017",
+      "category": "risk",
+      "prompt": "选择火锅餐饮门店服务需要注意哪些合同、资质和售后问题？",
+      "targetFact": "风险说明"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:48.157Z",
+    "latencyMs": 13949,
+    "answer": "选择火锅餐饮门店的合作或门店自身服务合规相关，需要注意的合同、资质、售后问题可以分这几类梳理：\n\n### 一、合同相关注意事项\n如果是加盟合作开设门店，重点关注这几点：\n1. **授权条款**：明确品牌商标、经营模式的使用范围、期限，以及是否允许转授权，还要写清楚到期后续约的条件和费用，避免后期品牌方随意收回授权。\n2. **费用条款**：把加盟费、保证金、管理费、原料采购费等所有费用的金额、缴纳时间、退还条件写清楚——比如保证金需要明确，在无违约的情况下，闭店后多久全额退还，避免品牌方恶意克扣。\n3. **供货条款**：如果是加盟模式，很多要求统一采购原料，要明确原料的定价规则、品质标准、配送时效，以及是否允许在符合品牌标准的情况下自主采购部分辅料，防止品牌方故意抬高供货价格牟利。\n4. **退出与解约条款**：明确哪些情况属于双方违约，解约的条件是什么，解约后门店多久需要拆除品牌标识，尾款、保证金怎么结算，避免解约后陷入长期纠纷。\n如果是门店租赁的合同，还要明确房屋产权是否清晰、能不能做餐饮，以及物业费、水电费承担，拆迁/征收的补偿分配问题。\n\n如果是消费者去门店消费，大额储值的话也要注意口头承诺要落实，比如储值优惠、有效期、退卡规则，避免商家跑路或者霸王条款限制退卡。\n\n### 二、资质相关问题\n不管是门店经营还是消费者选择门店，核心要看这些资质是否齐全有效：\n1. **基础经营资质**：必须有营业执照、食品经营许可证，这两个是合法经营的基础，许可证的经营项目要包含热食类食品制售，且在有效期内。如果门店售卖现榨饮品、酒水，也要对应符合许可范围。\n2. **人员健康资质**：所有直接接触食品的店员都必须持有有效健康证，这是食品安全的基本要求。\n3. **加盟品牌的授权资质**：如果是加盟门店，品牌方要拥有商标所有权，不能是抢注或者未注册的模糊授权，要查看品牌方的商标注册证书，确认授权在有效期内。如果涉及使用特许经营，品牌方还需要满足“两"
+  },
+  {
+    "prompt": {
+      "id": "P020",
+      "category": "geo",
+      "prompt": "本地火锅餐饮门店服务怎样建立可被 AI 引用的可信信息？",
+      "targetFact": "GEO 证据来源"
+    },
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "success",
+    "sampledAt": "2026-07-12T00:31:49.705Z",
+    "latencyMs": 14065,
+    "answer": "对于本地火锅餐饮门店来说，想要建立能被AI引用的可信信息，可以从这几个方向入手，都是比较落地易操作的方法：\n1. **完成权威公开平台的合规信息认证**\n优先在大众点评、美团、百度地图、高德地图、抖音本地生活这些主流平台完成门店官方认证：填写完整的统一社会信用代码、真实经营地址、营业时间、联系电话，上传门店的营业执照、卫生许可证（食品经营许可证）的清晰公示图，同时同步准确的火锅品类（比如川渝牛油火锅、潮汕牛肉火锅、番茄牛腩火锅等）、人均消费、付费方式、是否支持包间/预订/外卖/停车/宠物友好这些核心服务信息，这些平台的官方认证信息本身就是AI抓取可信信息的核心来源。\n\n2. **搭建自己的官方信息出口**\n如果有条件，可以做一个极简的官方门店小程序或者官方公众号，在里面公示清楚所有经营资质、真实的菜单、价格、门店规则、近期营业变动，同时把这个官方账号的信息绑定到各个地图、点评平台的门店主页里；如果暂时不做独立账号，也可以在门店的认证抖音、小红书账号，固定发布带官方定位的门店信息笔记，保持信息更新及时（比如春节放假、装修调整都及时发内容说明）。\n\n3. **主动提交规范信息给信息聚合平台**\n可以通过百度的「商家中心」、高德的「商户认领」、腾讯位置服务的商户标注入口，主动认领自己的门店，按要求提交合规信息审核；如果希望被大模型引用，也可以通过百度文心一言、字节豆包等大模型的「站点收录/信息提交」入口，提交自己门店已经认证的公开官方信息，帮助AI更快获取准确内容。\n\n4. **保持信息的一致性和及时更新**\n所有平台上的门店名称、地址、电话、营业时间要保持统一，不要一个平台叫“XX老火锅”，另一个改叫“XX重庆老火锅总店”，不一致的信息AI会判定为不可信；如果换了电话、调整了营业时间、换了地址，要第一时间在所有公开平台同步更新，长期保持准确的信息，也会提升AI对信息的信任度。\n\n5. **合规透明的经营积累可信背书**\n主动在门店公开区域公示资质证件，同时"
+  }
+]

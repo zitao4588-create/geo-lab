@@ -1,0 +1,335 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "冰箱小雷达 GEO 复测对比",
+    "description": "用 2026-07-11 四模型真实采样对比最初报告，审视冰箱小雷达 GEO 进展与报告产品质量。",
+    "generatedAt": "2026-07-11T06:40:37Z",
+    "sources": [
+      {
+        "id": "initial_report",
+        "label": "最初冰箱小雷达 GEO 诊断 JSON",
+        "path": "sources/local-artifacts/fridge-radar/冰箱小雷达冰箱食材库存管理小程序-diag-report.json"
+      },
+      {
+        "id": "h5_prelaunch",
+        "label": "H5 初版真实采样报告",
+        "path": "outputs/h5-mvp/fridge-radar-final/api-response.json"
+      },
+      {
+        "id": "h5_postlaunch",
+        "label": "品牌站上线后单模型报告",
+        "path": "outputs/h5-mvp/fridge-radar-post-launch/online-api-response.json"
+      },
+      {
+        "id": "current_report",
+        "label": "2026-07-11 四模型报告",
+        "path": "outputs/h5-mvp/fridge-radar-4model-20260711/api-response.json"
+      },
+      {
+        "id": "current_evidence",
+        "label": "2026-07-11 四模型原始样本证据包",
+        "path": "outputs/h5-mvp/fridge-radar-4model-20260711/evidence-package.pretty.json"
+      },
+      {
+        "id": "comparison_data",
+        "label": "本次对比数据与人工审计结果",
+        "path": "outputs/h5-mvp/fridge-radar-4model-20260711/comparison-data.json"
+      },
+      {
+        "id": "comparison_queries",
+        "label": "对比数据 DuckDB 查询",
+        "path": "outputs/h5-mvp/fridge-radar-4model-20260711/comparison-queries.sql"
+      },
+      {
+        "id": "audit_notes",
+        "label": "报告口径、评分规则与图表说明",
+        "path": "outputs/h5-mvp/fridge-radar-4model-20260711/source-notes.md"
+      },
+      {
+        "id": "mention_rule",
+        "label": "当前品牌字符串提及判定规则",
+        "path": "apps/ai-exposure-check-h5/src/server/rules.ts"
+      }
+    ],
+    "charts": [
+      {
+        "id": "score_evolution_chart",
+        "title": "四期报告得分",
+        "subtitle": "41、61、68、71；评分与采样口径发生变化，只能看方向，不能当同口径增长率",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "四期报告显示的分数如何变化？",
+        "rationale": "四个离散检查点适合用从零开始的柱状图，同时保留方法与可比性字段供核查。",
+        "comparisonContext": {
+          "baseline": "最初保存报告",
+          "denominator": "各版本自身的 100 分评分模型",
+          "grain": "报告检查点",
+          "normalization": "未跨版本重算",
+          "semanticFamily": "报告得分",
+          "unit": "分"
+        },
+        "type": "bar",
+        "dataset": "score_evolution",
+        "sourceId": "comparison_queries",
+        "encodings": {
+          "x": { "field": "checkpoint", "type": "nominal", "label": "报告节点" },
+          "y": { "field": "score", "type": "quantitative", "label": "报告得分", "unit": "分" },
+          "tooltip": [
+            { "field": "date", "type": "text", "label": "日期" },
+            { "field": "method", "type": "text", "label": "方法" },
+            { "field": "mentionRate", "type": "quantitative", "format": "percent", "label": "报告提及率" },
+            { "field": "infrastructureScore", "type": "quantitative", "label": "基建得分" },
+            { "field": "comparability", "type": "text", "label": "可比性" }
+          ]
+        },
+        "valueFormat": "number",
+        "unit": "分",
+        "layout": "full",
+        "palette": { "kind": "sequential", "name": "blue" },
+        "settings": { "showValues": true, "sort": "none", "categoryLabelPolicy": "wrap" },
+        "surface": { "surface": "card", "viewMode": "both" }
+      },
+      {
+        "id": "scenario_coverage_chart",
+        "title": "当前场景字符串提及率",
+        "subtitle": "40 个成功样本；带品牌名的问题为 100%，不带品牌名的发现类问题为 0%",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "当前 50% 提及率来自哪些问题场景？",
+        "rationale": "七个离散场景标签较长，横向条形比较能清楚展示 100% 与 0% 的断层。",
+        "comparisonContext": {
+          "baseline": "当前四模型同一问题集",
+          "denominator": "每类成功回答样本",
+          "grain": "问题场景",
+          "normalization": "mentioned / total",
+          "semanticFamily": "字符串提及率",
+          "unit": "%"
+        },
+        "type": "horizontalBar",
+        "dataset": "scenario_coverage",
+        "sourceId": "comparison_queries",
+        "encodings": {
+          "x": { "field": "category", "type": "nominal", "label": "问题场景" },
+          "y": { "field": "rate", "type": "quantitative", "format": "percent", "label": "字符串提及率" },
+          "tooltip": [
+            { "field": "total", "type": "quantitative", "label": "成功样本" },
+            { "field": "mentioned", "type": "quantitative", "label": "字符串提及" },
+            { "field": "prompting", "type": "text", "label": "问题是否含品牌名" }
+          ]
+        },
+        "valueFormat": "percent",
+        "layout": "full",
+        "palette": { "kind": "sequential", "name": "blue" },
+        "settings": { "showValues": true, "sort": "none", "orientation": "horizontal", "categoryLabelPolicy": "wrap" },
+        "surface": { "surface": "card", "viewMode": "both" }
+      },
+      {
+        "id": "report_quality_chart",
+        "title": "报告质量审计",
+        "subtitle": "产品方专家审计，0–5 分；当前版的最大进步是证据可信度",
+        "showDescription": true,
+        "intent": "comparison",
+        "question": "最初报告与当前报告在专业性和可读性上有什么差异？",
+        "rationale": "五个同尺度质量维度适合用分组柱状图对照，强调差距而不制造汇总总分。",
+        "comparisonContext": {
+          "baseline": "最初保存报告",
+          "denominator": "0–5 专家审计量表",
+          "grain": "报告质量维度",
+          "normalization": "按 rubric 逐项评估",
+          "semanticFamily": "报告质量",
+          "unit": "分"
+        },
+        "type": "bar",
+        "dataset": "report_quality",
+        "sourceId": "comparison_queries",
+        "encodings": {
+          "x": { "field": "dimension", "type": "nominal", "label": "质量维度" },
+          "y": { "fields": ["earliest", "current"], "type": "quantitative", "label": "审计评分", "unit": "分" },
+          "tooltip": [
+            { "field": "definition", "type": "text", "label": "定义" }
+          ]
+        },
+        "valueFormat": "number",
+        "unit": "分",
+        "layout": "full",
+        "palette": { "kind": "categorical", "name": "neutral-blue" },
+        "settings": { "showValues": true, "sort": "none", "groupMode": "grouped", "categoryLabelPolicy": "wrap" },
+        "surface": { "surface": "card", "viewMode": "both" }
+      }
+    ],
+    "tables": [
+      {
+        "id": "provider_outcomes_table",
+        "title": "四模型识别结果",
+        "subtitle": "每个平台 10 个成功样本；正确实体识别和无提示品牌提及均为 0",
+        "showDescription": true,
+        "dataset": "provider_outcomes",
+        "defaultSort": { "field": "provider", "direction": "asc" },
+        "density": "spacious",
+        "sourceId": "comparison_queries",
+        "layout": "full",
+        "columns": [
+          { "field": "provider", "label": "平台", "type": "text" },
+          { "field": "successes", "label": "成功样本", "format": "number" },
+          { "field": "brandStringMentions", "label": "品牌字符串", "format": "number" },
+          { "field": "correctEntityRecognition", "label": "正确识别", "format": "number" },
+          { "field": "unpromptedBrandMentions", "label": "无提示提及", "format": "number" },
+          { "field": "primaryError", "label": "主要误读", "type": "text" }
+        ]
+      },
+      {
+        "id": "actions_table",
+        "title": "优先行动清单",
+        "subtitle": "按当前证据缺口排序；验收条件用于下一轮同口径复测",
+        "showDescription": true,
+        "dataset": "actions",
+        "defaultSort": { "field": "priority", "direction": "asc" },
+        "density": "spacious",
+        "sourceId": "comparison_queries",
+        "layout": "full",
+        "columns": [
+          { "field": "priority", "label": "优先级", "type": "text" },
+          { "field": "track", "label": "方向", "type": "text" },
+          { "field": "action", "label": "行动", "type": "text" },
+          { "field": "evidence", "label": "证据", "type": "text" },
+          { "field": "acceptance", "label": "验收", "type": "text" }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# 冰箱小雷达 GEO 复测对比"
+      },
+      {
+        "id": "executive_summary",
+        "type": "markdown",
+        "sourceId": "comparison_data",
+        "body": "## Executive Summary\n\n- **技术底座已经补齐，推荐可见度尚未打开。** 当前报告为 71/100，四模型 40/40 成功，8 个公开页面审计 100/100；但不带品牌名的品类、人群、风险和 GEO 问题中，自然提及仍为 0/20。\n- **报告显示的 50% 不是 50% 的真实推荐率。** 20 次字符串提及全部来自带品牌名的问题；人工核读这 20 个回答，没有一个正确识别“冰箱小雷达”为目标微信小程序。\n- **报告产品已从“漂亮但虚拟”进化为“有证据链的真实诊断”。** 四模型真实采样、URL 审计、证据标签与导出包显著提升了专业可信度，但封面指标、样本展示和评分解释仍会让客户高估结果。\n- **下一阶段应先修测量，再扩传播。** 把正确实体识别、无提示推荐和误读率设为主指标，同时围绕统一实体定义、场景页、竞品页与隐私/在架证据做内容建设。"
+      },
+      {
+        "id": "score_finding",
+        "type": "markdown",
+        "sourceId": "comparison_data",
+        "body": "## 分数从 41 到 71，但不能解释为 GEO 效果提升 30 分\n\n最初报告把虚拟的 8 平台提及、虚拟媒体和推断竞品数据纳入 41 分；当前 71 分来自四模型真实 API 样本和公开 URL 审计。中间的 61→68 主要来自品牌站上线后，基建项由 65 升至 100。**可以确认的是工具证据质量和网站可查证性提升了；不能确认的是 AI 推荐效果按同一口径增长了 30 分。**"
+      },
+      {
+        "id": "score_chart_block",
+        "type": "chart",
+        "chartId": "score_evolution_chart",
+        "layout": "full"
+      },
+      {
+        "id": "visibility_finding",
+        "type": "markdown",
+        "sourceId": "comparison_data",
+        "body": "## 品牌名被复述了，但四个模型都没有正确认识产品\n\n当前算法只检查答案是否包含“冰箱小雷达”。这使带品牌名的品牌、功能和竞品问题全部记为提及，而真正用于发现品牌的无品牌问题全部为零。更严重的是，四个平台均把产品猜成智能冰箱、雷达传感器或硬件功能；豆包还出现美菱归属误读。**当前真实结论不是“已有 50% 可见度”，而是“实体定义尚未进入模型认知，且存在高置信度误读”。**"
+      },
+      {
+        "id": "scenario_chart_block",
+        "type": "chart",
+        "chartId": "scenario_coverage_chart",
+        "layout": "full"
+      },
+      {
+        "id": "provider_table_block",
+        "type": "table",
+        "tableId": "provider_outcomes_table",
+        "layout": "full"
+      },
+      {
+        "id": "report_quality_finding",
+        "type": "markdown",
+        "sourceId": "comparison_data",
+        "body": "## 报告专业性大幅提高，可信指标仍是短板\n\n**进步最大的是证据可信度。** 最初报告虽然把虚拟项标出来，却仍用它们计算平台提及率、竞品表现和行业基准；当前报告保存真实样本、页面审计、证据标签与导出包，已经具备商业报告的审计骨架。\n\n**可读性和方法透明度只小幅提升。** 当前版结构清楚、移动端视觉成熟，但导出报告只展示 8 条答案且偏向 DeepSeek/Hy3，没有覆盖 Qwen/豆包；竞品相关问题按模型重复列出；超长目标人群直接进入标题；`deepseek / hy3 / qwen / doubao` 等技术代码没有翻译成客户语言。最关键的是，封面把字符串提及率放在核心位置，却没有展示正确识别率、无提示推荐率和误读率。"
+      },
+      {
+        "id": "report_quality_chart_block",
+        "type": "chart",
+        "chartId": "report_quality_chart",
+        "layout": "full"
+      },
+      {
+        "id": "recommendations",
+        "type": "markdown",
+        "sourceId": "comparison_data",
+        "body": "## 下一步：先让模型认对，再追求模型推荐\n\n1. **统一实体定义。** 在首页、FAQ、llms.txt、公众号和公开资料中固定“微信小程序、5 分区、临期提醒、本地开饭雷达、不是硬件雷达”的同一套事实。\n2. **补无品牌场景内容。** 重点覆盖“冰箱库存怎么管理”“临期怎么提醒”“适合上班族的食材工具”等当前 0% 场景，而不是继续堆品牌词。\n3. **把模型误读直接变成内容题。** 对硬件雷达、美菱归属、AI 菜谱、拍照识别、隐私和是否在架逐条做可引用 FAQ。\n4. **重做报告首要指标。** 字符串提及只能作为诊断信号，主指标改为正确实体识别率、无提示推荐率、引用/来源准确率和误读率。\n5. **分开三类测量。** 模型记忆、带搜索/引用的实时检索、网站可抓取性应分别展示，不能合成一个“GEO 已完成”的总分。"
+      },
+      {
+        "id": "actions_table_block",
+        "type": "table",
+        "tableId": "actions_table",
+        "layout": "full"
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## Further Questions\n\n- 四个平台是否能开启官方联网检索、搜索增强或引用返回？如果不能，它们只能作为模型记忆基准。\n- “鲜钟记、冰箱清单”是否都是用户确认的真实竞品？在制作对比页前应逐一核验实体，避免继续放大模型幻觉。\n- 下一次复测是否要冻结 10 个问题、模型版本、温度、评分版本和人工判定规则？只有冻结后，月度变化才可解释。\n- 对业务最重要的是品牌被提及、被正确解释，还是被推荐并给出可访问入口？应先确定一个主成功指标。"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "sourceId": "audit_notes",
+        "body": "## Caveats and Assumptions\n\n- 本次只有一个时间点、四个平台、每个平台 10 个问题；它是诊断样本，不是统计上稳定的市场份额。\n- 当前四个接口是标准模型 API，没有启用实时网页搜索或引用工具；不能用本次结果证明消费端 App 的搜索排名。\n- 41、61、68、71 来自不同评分版本、问题数和模型组合，图表只用于展示产品演进节点。\n- 0/20 正确实体识别来自人工核读，判定标准是回答能否明确识别目标微信小程序及其核心事实，而不是是否复述品牌字符串。\n- 报告质量的 0–5 评分是本次专家审计，用于定位改进方向，不是用户研究或转化数据。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-11T06:40:37Z",
+    "status": "ready",
+    "datasets": {
+      "score_evolution": [
+        { "checkpoint": "最初报告", "date": "2026-06", "score": 41, "method": "虚拟八平台数据 + 四维 AIVO 评分", "mentionRate": 0.092, "infrastructureScore": 20, "comparability": "不可与后续分数直接同比" },
+        { "checkpoint": "H5 初版", "date": "2026-06-30", "score": 61, "method": "DeepSeek 20 题真实采样 + 计划基建推断", "mentionRate": 0.4, "infrastructureScore": 65, "comparability": "与后续 H5 同系列但基建口径不同" },
+        { "checkpoint": "品牌站上线后", "date": "2026-06-30", "score": 68, "method": "DeepSeek 20 题真实采样 + 8 URL 审计", "mentionRate": 0.4, "infrastructureScore": 100, "comparability": "可作为旧单模型基线" },
+        { "checkpoint": "当前四模型", "date": "2026-07-11", "score": 71, "method": "四模型各 10 题真实 API 采样 + 8 URL 审计", "mentionRate": 0.5, "infrastructureScore": 100, "comparability": "问题数和模型数均已变化" }
+      ],
+      "scenario_coverage": [
+        { "category": "品牌认知", "total": 12, "mentioned": 12, "rate": 1, "prompting": "品牌名写入问题" },
+        { "category": "品类推荐", "total": 8, "mentioned": 0, "rate": 0, "prompting": "不含品牌名" },
+        { "category": "功能场景", "total": 4, "mentioned": 4, "rate": 1, "prompting": "品牌名写入问题" },
+        { "category": "竞品对比", "total": 4, "mentioned": 4, "rate": 1, "prompting": "品牌名写入问题" },
+        { "category": "人群场景", "total": 4, "mentioned": 0, "rate": 0, "prompting": "不含品牌名" },
+        { "category": "风险信任", "total": 4, "mentioned": 0, "rate": 0, "prompting": "不含品牌名" },
+        { "category": "GEO 自证", "total": 4, "mentioned": 0, "rate": 0, "prompting": "不含品牌名" }
+      ],
+      "provider_outcomes": [
+        { "provider": "百炼 DeepSeek", "sampled": 10, "successes": 10, "brandStringMentions": 5, "correctEntityRecognition": 0, "unpromptedBrandMentions": 0, "averageLatencyMs": 6851, "maximumLatencyMs": 12411, "primaryError": "不确定或猜成智能冰箱/硬件功能" },
+        { "provider": "腾讯 Hy3", "sampled": 10, "successes": 10, "brandStringMentions": 5, "correctEntityRecognition": 0, "unpromptedBrandMentions": 0, "averageLatencyMs": 3914, "maximumLatencyMs": 7510, "primaryError": "不确定或猜成雷达配件" },
+        { "provider": "百炼 Qwen", "sampled": 10, "successes": 10, "brandStringMentions": 5, "correctEntityRecognition": 0, "unpromptedBrandMentions": 0, "averageLatencyMs": 8869, "maximumLatencyMs": 10107, "primaryError": "较自信地解释为毫米波雷达硬件" },
+        { "provider": "火山豆包", "sampled": 10, "successes": 10, "brandStringMentions": 5, "correctEntityRecognition": 0, "unpromptedBrandMentions": 0, "averageLatencyMs": 7839, "maximumLatencyMs": 14834, "primaryError": "误判为冰箱雷达技术，并出现美菱归属误读" }
+      ],
+      "report_quality": [
+        { "dimension": "证据可信度", "earliest": 1.5, "current": 4.2, "definition": "是否由真实、可追溯、可核查证据支持" },
+        { "dimension": "方法透明度", "earliest": 2.0, "current": 3.5, "definition": "范围、分母、模型、评分和限制是否清楚" },
+        { "dimension": "专业完整性", "earliest": 4.0, "current": 4.2, "definition": "诊断、证据、优先级、导出和审计链是否完整" },
+        { "dimension": "可读性", "earliest": 3.6, "current": 3.8, "definition": "是否易扫读、少重复、标签友好" },
+        { "dimension": "行动性", "earliest": 3.5, "current": 4.0, "definition": "建议是否对应证据缺口并可验证" }
+      ],
+      "actions": [
+        { "priority": "P0", "track": "冰箱小雷达 GEO", "action": "建立统一实体定义页并跨首页、FAQ、llms.txt、公众号保持一致", "evidence": "四模型对 20 个带品牌问题均未正确识别产品", "acceptance": "四模型至少 3/4 能回答“微信小程序、5 分区、临期提醒、本地开饭雷达”" },
+        { "priority": "P0", "track": "冰箱小雷达 GEO", "action": "围绕不带品牌名的品类、人群和问题场景制作可引用页面", "evidence": "无提示自然推荐 0/20", "acceptance": "固定无品牌问题中出现至少 1 个可核验自然提及" },
+        { "priority": "P0", "track": "报告产品", "action": "把提及率拆成字符串提及、正确实体识别、无提示推荐、误读率", "evidence": "当前 50% 全部来自带品牌问题的字符串复述", "acceptance": "封面不再用单一提及率代表 GEO 可见度" },
+        { "priority": "P1", "track": "冰箱小雷达 GEO", "action": "补鲜钟记/冰箱清单对比页与隐私、主体、在架状态证据", "evidence": "模型无法比较产品，且出现硬件/归属误读", "acceptance": "对比问题能给出至少两项正确差异且不编造归属" },
+        { "priority": "P1", "track": "报告产品", "action": "展示 4×10 结果矩阵并均衡选取四个平台的代表证据", "evidence": "当前导出只展示 8 条摘录，未覆盖 Qwen 和豆包", "acceptance": "每个平台至少展示一个正确/未知/误读代表样本" },
+        { "priority": "P1", "track": "报告产品", "action": "将实时网页检索/引用结果与无搜索 API 基准分开计分", "evidence": "标准 Chat API 不读取本次实时网页，无法验证发布后的短期变化", "acceptance": "报告明确区分模型记忆、实时检索和网站可抓取性" },
+        { "priority": "P2", "track": "共同监测", "action": "锁定问题集、模型版本和评分版本，按月复测", "evidence": "41、61、68、71 使用不同问题数和评分口径", "acceptance": "后续报告能提供同口径环比和变化归因" }
+      ]
+    }
+  },
+  "sources": [
+    { "id": "initial_report", "label": "最初冰箱小雷达 GEO 诊断 JSON", "path": "sources/local-artifacts/fridge-radar/冰箱小雷达冰箱食材库存管理小程序-diag-report.json" },
+    { "id": "h5_prelaunch", "label": "H5 初版真实采样报告", "path": "outputs/h5-mvp/fridge-radar-final/api-response.json" },
+    { "id": "h5_postlaunch", "label": "品牌站上线后单模型报告", "path": "outputs/h5-mvp/fridge-radar-post-launch/online-api-response.json" },
+    { "id": "current_report", "label": "2026-07-11 四模型报告", "path": "outputs/h5-mvp/fridge-radar-4model-20260711/api-response.json" },
+    { "id": "current_evidence", "label": "2026-07-11 四模型原始样本证据包", "path": "outputs/h5-mvp/fridge-radar-4model-20260711/evidence-package.pretty.json" },
+    { "id": "comparison_data", "label": "本次对比数据与人工审计结果", "path": "outputs/h5-mvp/fridge-radar-4model-20260711/comparison-data.json" },
+    { "id": "comparison_queries", "label": "对比数据 DuckDB 查询", "path": "outputs/h5-mvp/fridge-radar-4model-20260711/comparison-queries.sql" },
+    { "id": "audit_notes", "label": "报告口径、评分规则与图表说明", "path": "outputs/h5-mvp/fridge-radar-4model-20260711/source-notes.md" },
+    { "id": "mention_rule", "label": "当前品牌字符串提及判定规则", "path": "apps/ai-exposure-check-h5/src/server/rules.ts" }
+  ]
+}

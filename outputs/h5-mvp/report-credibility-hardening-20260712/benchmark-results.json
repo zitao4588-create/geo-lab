@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-07-11T16:45:04.620Z",
+  "paidCalls": 0,
+  "cases": {
+    "panasonic": {
+      "reportId": "diag_credibility_panasonic",
+      "scoreStatus": "available",
+      "confidence": "high",
+      "infrastructureAudit": 100,
+      "stringMentionRate": 0.35,
+      "correctEntityRecognitionRate": 0.4,
+      "naturalRecommendationRate": 0,
+      "misrecognitionRate": 0.4,
+      "providerAgreementRate": 0.5,
+      "modelConflictCount": 7
+    },
+    "fridgeRadar": {
+      "reportId": "diag_credibility_fridge",
+      "scoreStatus": "available",
+      "confidence": "high",
+      "infrastructureAudit": 100,
+      "stringMentionRate": 0.5,
+      "correctEntityRecognitionRate": 0,
+      "naturalRecommendationRate": 0,
+      "misrecognitionRate": 0.75,
+      "providerAgreementRate": 0.75,
+      "modelConflictCount": 6
+    },
+    "fictitious": {
+      "preflight": {
+        "status": "insufficient_evidence",
+        "score": 32,
+        "businessType": "physical_product",
+        "findings": [
+          "一句话介绍过短，无法稳定核对产品实体和功能边界。",
+          "目标客户描述较宽，场景问题可能失真。",
+          "行业口径过宽，系统无法生成自然的品类问题。",
+          "没有可核验的官方入口，正确实体识别只能标为待确认。",
+          "未提供竞品，本次不能判断真实替代关系。"
+        ],
+        "requiredActions": [
+          "补充具体产品类型、核心功能或型号。",
+          "补充更具体的使用人群或决策场景。",
+          "把行业细化到具体品类，例如“电动剃须刀”而不是“清洁工具”。",
+          "粘贴官网、官方产品页、小程序介绍页或公开账号入口。"
+        ],
+        "officialSourceStatus": "missing",
+        "note": "资料不足时不会消耗完整多模型采样，也不会生成伪精确总分。"
+      },
+      "fullSamplingBlocked": true
+    }
+  }
+}

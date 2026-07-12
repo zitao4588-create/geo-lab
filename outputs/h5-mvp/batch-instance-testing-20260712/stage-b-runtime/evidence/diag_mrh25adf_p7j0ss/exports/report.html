@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI曝光体检 GEO 分析成果报告</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #151b24; background: #f5f7fa; }
+    main { max-width: 920px; margin: 0 auto; padding: 42px 24px 72px; }
+    header, section { background: #fff; border: 1px solid #e4e9f0; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+    h1 { margin: 0 0 12px; font-size: 30px; }
+    h2 { margin: 0 0 14px; font-size: 20px; }
+    p, li { line-height: 1.7; }
+    .score { display: inline-flex; align-items: baseline; gap: 8px; color: #f26b21; font-size: 44px; font-weight: 800; }
+    .meta { color: #637083; display: grid; gap: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    td, th { border-top: 1px solid #e8edf4; padding: 10px 8px; text-align: left; vertical-align: top; }
+    ul { padding-left: 20px; }
+    small { color: #7b8491; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: 14px 0; }
+    .metrics span { padding: 10px; border-radius: 8px; background: #f1f5fb; font-size: 13px; }
+    @media print { body { background: #fff; } main { padding: 0; } header, section { break-inside: avoid; border-color: #d6dde8; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>AI曝光体检 GEO 分析成果报告</h1>
+      <div class="score">暂不评分<small> · 证据不足</small></div>
+      <p>AI曝光体检本次多平台成功采样 10 个回答样本；因证据或模型覆盖不足，暂不展示总分。字符串出现率 50%，正确实体识别 0%，无品牌词自然推荐 0%，公开页面审计 66/100。</p>
+      <div class="meta">
+        <span>报告 ID：diag_mrh25adf_p7j0ss</span>
+        <span>生成时间：2026-07-12T00:31:04.135Z</span>
+        <span>真实采样：10/40 · 字符串出现率 50%</span>
+        <span>公开页面审计：66/100</span>
+      </div>
+    </header>
+    <section><h2>核心结论</h2><p>模型可以在部分带品牌问题中识别“AI曝光体检”，但无品牌词自然推荐仍为 0%。</p></section>
+
+    <section><h2>报告可信度</h2>
+      <p><strong>低置信度</strong> · 资料足以进入完整采样；报告仍会区分已核验事实与模型推断。</p>
+      <div class="metrics">
+        <span>字符串出现率 50%</span>
+        <span>正确实体识别 0%</span>
+        <span>无品牌词自然推荐 0%</span>
+        <span>错误认知 0%</span>
+        <span>模型一致度 无法判断</span>
+      </div>
+      <h3>已确认</h3><ul><li>已确认业务类型：软件/小程序</li><li>用户提交目标客户：需要核查 AI 品牌认知的产品和内容负责人</li><li>已核验 2 个公开页面。</li><li>官方页面命中事实：geo、brand、sitemap。</li></ul>
+      <h3>仍待核验</h3><ul><li>用户提交的业务描述仍需来源核验：帮助品牌用多模型 API 样本检查 AI 实体认知和证据边界的网页工具</li><li>30 个模型请求失败，覆盖率不完整。</li></ul>
+      <h3>模型冲突</h3><ul><li>本次未发现可确认的模型冲突</li></ul>
+    </section>
+    <section><h2>评分拆解</h2><table><thead><tr><th>维度</th><th>权重</th><th>得分</th><th>证据</th><th>依据</th></tr></thead><tbody><tr><td>可信 AI 可见度</td><td>32%</td><td>0</td><td>sampled_ai_answer</td><td>正确实体识别率 0%；无品牌词自然推荐率 0%。</td></tr><tr><td>可查证基建</td><td>22%</td><td>66</td><td>verified_external</td><td>已审计 8 个公开 URL，2 个通过，6 个需补强。</td></tr><tr><td>竞品压制风险</td><td>18%</td><td>78</td><td>sampled_ai_answer</td><td>已对比 1 个竞品；若竞品在答案中出现多于本品牌，会压低该项。</td></tr><tr><td>语义与场景匹配</td><td>16%</td><td>56</td><td>model_inference</td><td>根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。</td></tr><tr><td>信任与风险解释</td><td>12%</td><td>56</td><td>sampled_ai_answer</td><td>采样答案出现 4 类信任/风险信号。</td></tr></tbody></table></section>
+    <section><h2>平台采样状态</h2><table><thead><tr><th>平台</th><th>状态</th><th>成功/总数</th><th>说明</th></tr></thead><tbody><tr><td>deepseek</td><td>unavailable</td><td>0/10</td><td>deepseek 本次未返回可用采样。</td></tr><tr><td>hy3</td><td>unavailable</td><td>0/10</td><td>hy3 本次未返回可用采样。</td></tr><tr><td>qwen</td><td>unavailable</td><td>0/10</td><td>qwen 本次未返回可用采样。</td></tr><tr><td>doubao</td><td>sampled</td><td>10/10</td><td>火山方舟豆包 OpenAI-compatible API 已完成真实采样。</td></tr></tbody></table></section>
+    <section><h2>公开页面审计</h2><table><thead><tr><th>页面</th><th>状态</th><th>HTTP</th><th>URL</th><th>命中事实</th><th>缺少事实</th></tr></thead><tbody><tr><td>品牌首页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/</td><td>brand</td><td>category、entry</td></tr><tr><td>隐私政策页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/privacy/</td><td>-</td><td>privacy、data</td></tr><tr><td>功能说明页</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/features/</td><td>-</td><td>feature、category</td></tr><tr><td>FAQ/常见问题</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/faq/</td><td>faq</td><td>privacy</td></tr><tr><td>GEO 自证案例</td><td>ok</td><td>200</td><td>https://exposure.playgamelab.cn/geo-case/</td><td>geo、brand</td><td>-</td></tr><tr><td>robots.txt</td><td>ok</td><td>200</td><td>https://exposure.playgamelab.cn/robots.txt</td><td>sitemap</td><td>-</td></tr><tr><td>sitemap.xml</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/sitemap.xml</td><td>home、privacy</td><td>faq</td></tr><tr><td>llms.txt</td><td>warn</td><td>200</td><td>https://exposure.playgamelab.cn/llms.txt</td><td>brand</td><td>category、privacy</td></tr></tbody></table></section>
+    <section><h2>主要问题</h2><ul><li><strong>可信实体识别或自然推荐不足</strong><p>字符串出现率为 50%，正确实体识别为 0%，无品牌词自然推荐率为 0%。</p><small>sampled_ai_answer</small></li><li><strong>可查证公开基建不够完整</strong><p>AI 需要稳定可访问的品牌页、隐私页、FAQ/案例和产品入口来理解并引用你；目前仍有关键入口缺口。</p><small>model_inference</small></li><li><strong>隐私、主体或功能边界需要提前解释</strong><p>采样答案出现的风险信号包括：个人主体/品牌背书信任度需要解释；功能边界可能被误读为能力不足；存在隐私和个人信息处理疑问。这些问题需要用公开说明页提前消除误解。</p><small>sampled_ai_answer</small></li></ul></section>
+    <section><h2>AI 采样答案摘录</h2><ul><li><strong>doubao / AI曝光体检是什么？</strong><p>目前并没有广泛通用的“AI曝光体检”这个官方医学体检项目名称，从字面推测，它大概率是结合AI技术的、针对胸部等部位的影像学曝光类筛查项目——比如利用AI辅助分析胸片、低剂量CT扫描这类需要放射线曝光成像的体检，AI可以帮助医生更快速精准地发现小结节、早期病变等微小异常，提升体检筛查的效率和准确率。 也不排除有些机构会把结合AI技术的、针对皮肤等部位的影像筛查...</p><small>无法核验 · 问题已含品牌名 · 答案提到品牌，但与已核验实体事实的匹配不足。</small></li><li><strong>doubao / AI曝光体检靠谱吗？</strong><p>你说的“AI曝光体检”，应该是指利用AI技术辅助开展的疾病早筛类体检吧？如果是这类AI辅助体检，目前来看是有一定价值，但不能说完全替代传统体检，谈不上绝对靠谱，要分情况来看： ### 靠谱的地方 AI辅助体检在一些特定项目上确实有优势：比如肺部CT影像筛查结节、乳腺钼靶筛查病变、眼底影像筛查糖尿病视网膜病变这类，AI可以快速读取大量影像，捕捉到人眼容易忽略的...</p><small>无法核验 · 问题已含品牌名 · 答案提到品牌，但与已核验实体事实的匹配不足。</small></li><li><strong>doubao / AI曝光体检安全吗？</strong><p>你说的“AI曝光体检”应该是指借助AI技术开展的、涉及个人影像或身体数据的体检相关服务吧？它的安全性不能一概而论，主要取决于运营机构的合规和防护能力： 1. **数据安全风险**：AI体检通常会收集你的个人影像、身体特征、健康数据这类高度敏感的隐私信息，如果运营机构没有按照《个人信息保护法》等法规要求做数据加密、权限管理，就很容易出现数据泄露、被滥用倒卖的问...</p><small>无法核验 · 问题已含品牌名 · 答案提到品牌，但与已核验实体事实的匹配不足。</small></li><li><strong>doubao / AI曝光体检的核心功能是什么？</strong><p>目前没有广泛通用的“AI曝光体检”这个标准化医疗或健康服务项目，我不确定你说的这个具体是什么哦。 如果是指和AI结合的、侧重病灶检出（“曝光”可能是检出发现异常的误称）的体检类AI应用，这类工具的核心一般是利用AI对医学影像（比如胸片、CT、眼底照等）进行快速分析，辅助医生更快发现疑似病变、提升异常检出的效率，帮助降低漏诊率。如果是其他特定项目，还需要结合具...</p><small>不确定 · 问题已含品牌名 · 答案包含不确定、非官方或无法确认等表述。</small></li><li><strong>doubao / AI曝光体检和同类产品有什么区别？</strong><p>目前我没有查询到“AI曝光体检”这个产品的公开明确信息，不太清楚它具体指的是什么产品，也没办法直接对比它和同类产品的区别。如果是特定机构推出的AI相关体检服务，你可以补充一下它的具体背景和内容，我可以试着帮你分析~</p><small>不确定 · 问题已含品牌名 · 答案包含不确定、非官方或无法确认等表述。</small></li><li><strong>doubao / 适合需要核查 AI 品牌认知的产品和内容负责人的GEO 诊断软件有哪些？</strong><p>目前国内并没有专门针对「核查AI品牌认知」的GEO（地理定位/地理画像相关）诊断软件，不过结合这类需求（一般是需要按地域分析不同区域对AI品牌的认知度、受众认知分布），可以结合通用的地理定位调研、用户认知分析类工具来完成对应的诊断工作： 1. **调研类工具** - 问卷网、金数据：可以自定义添加AI品牌认知相关调研问题，同时支持按答题者的地理位置（IP定位...</p><small>无法核验 · 无品牌词未推荐 · 答案未提及目标实体。</small></li><li><strong>doubao / 使用GEO 诊断软件需要注意哪些隐私和数据问题？</strong><p>GEO诊断软件通常指用于地理空间数据相关分析、或是特定领域（如医疗、汽车检测等）的地理定位类诊断工具，不同场景下的GEO诊断软件，隐私和数据风险侧重不同，通用需要注意的问题大致有这些： 1. **定位信息过度采集**：这类软件大多需要依赖地理位置数据工作，部分非正规软件可能会超出功能需要，持续采集你的实时位置、移动轨迹，这些数据如果泄露，很容易暴露个人日常行...</p><small>无法核验 · 无品牌词未推荐 · 答案未提及目标实体。</small></li><li><strong>doubao / GEO 诊断软件哪个好用？</strong><p>GEO诊断软件通常指基因表达 omnibus（GEO）数据库相关的分析工具，目前不同需求下口碑不错的工具各有优势： 1. **R语言的GEOquery包**：这是目前学术分析里最常用的工具，能直接从GEO数据库拉取原始数据、矩阵信息，支持后续个性化的差异分析、富集分析，适合有一定编程基础，需要定制化分析的用户，功能灵活度很高。 2. **在线工具Sanger...</p><small>无法核验 · 无品牌词未推荐 · 答案未提及目标实体。</small></li><li><strong>doubao / 微信里有什么好用的GEO 诊断软件？</strong><p>微信本身并不提供独立的GEO诊断软件，不过部分做地理相关、网络定位诊断服务的服务商开发了可在微信内运行的小程序，比较常用的有这类： 1. **GPS测试工具箱**类小程序：可以查看当前设备的GPS/北斗定位信息，包括经纬度、定位精度、连接卫星数量等基础参数，能帮你简单诊断定位是否异常。 2. **位置诊断工具**类小程序：可以检测当前网络下的定位准确性，也能...</p><small>无法核验 · 无品牌词未推荐 · 答案未提及目标实体。</small></li><li><strong>doubao / 我如何给自己的GEO 诊断软件做 GEO 优化？</strong><p>你这里说的「GEO诊断软件的GEO优化」，大概率是指针对地理位置（地理定位，即Geography，常缩写为GEO）的搜索引擎优化，也就是本地SEO优化，如果你的GEO诊断软件是面向特定区域提供服务、或者需要拓展不同地区的客源，常见优化思路可以参考这些： 1. **明确本地化服务定位** 如果你的软件是服务特定地区（比如仅面向国内某省/某城提供上门诊断、本地化...</p><small>无法核验 · 无品牌词未推荐 · 答案未提及目标实体。</small></li></ul></section>
+    <section><h2>竞品分析</h2><ul><li><strong>同类产品 · 1 次 · 10%</strong><p>补“同类产品 vs 品牌”的对比页，说明功能边界、数据策略和适用人群。；把对比结论写成表格，覆盖“怎么选/有什么区别/适合谁”问题。；在 FAQ 里解释模型容易误读的功能点，减少把竞品默认当作替代答案。</p><small>AI曝光体检和同类产品有什么区别？</small></li></ul></section>
+    <section><h2>优先优化项</h2><ul><li><strong>P0 搭建最小可查证品牌介绍页</strong><p>用一个稳定页面讲清“AI曝光体检 是什么、适合谁、解决什么问题、怎么使用”，并放小程序/产品入口、更新时间和联系方式。</p><small>suggested_supplement</small></li><li><strong>P0 补公开隐私政策和 FAQ</strong><p>把实际的数据收集、保存位置、登录要求和第三方服务边界写清楚；未使用的能力不要套模板补写。</p><small>suggested_supplement</small></li><li><strong>P1 围绕核心场景做内容池</strong><p>优先写 3-5 篇“GEO 诊断软件怎么选”“AI曝光体检和竞品区别”“典型用户怎么用”的短内容，方便 AI 抽取。</p><small>model_inference</small></li><li><strong>P1 补竞品对比和选择标准</strong><p>把 同类产品 的差异写成表格，避免模型只按更常见品牌推荐。</p><small>model_inference</small></li><li><strong>P2 固定 Prompt Universe 做月度复测</strong><p>保留本次 10 个问题作为基线，每月用相同问题复测 DeepSeek、千问、混元和豆包；分别记录 API 来源、模型版本与消费端差异。</p><small>suggested_supplement</small></li></ul></section>
+    <section><h2>证据边界</h2><p>本报告基于用户提交资料、公开 URL 抓取审计、doubao API 实时问答采样和透明规则评分生成。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。</p></section>
+  </main>
+</body>
+</html>

@@ -225,3 +225,45 @@
 - Add report rendering template.
 - Add real AI-search sampling adapters.
 - Add evidence folder format.
+# 2026-07-12 报告可信度加固
+
+- [x] 采样前输入质量预检，不消耗限额或模型调用。
+- [x] 拆分字符串出现、正确实体识别、无品牌词推荐、错误认知和模型一致度。
+- [x] 无公开 URL 时统一显示“未检测”并暂停总分。
+- [x] 按实体商品、软件/小程序、本地服务生成不同 Prompt Universe 和建议。
+- [x] H5 / Markdown / HTML / evidence package 可信度字段一致。
+- [x] 松下、冰箱小雷达、虚构品牌三类 fixture 回归。
+- [x] 移动端、桌面端和预检状态视觉 QA。
+- [ ] 经用户单独授权后再 commit、push、部署，并在部署前做一次无付费模型的 release precheck。
+- [ ] 如需自动候选官方来源发现，先单独决定 backend-only search provider、额度、隐私和 candidate-to-verified 审核规则。
+- [ ] 冰箱小雷达线上内容按 `outputs/h5-mvp/report-credibility-hardening-20260712/fridge-radar-next-content-actions.md` 在权威仓库另开 Goal 实施。
+
+# 2026-07-12 多类型实例批量测试
+
+- [x] 20 个实体商品、软件/小程序、本地服务、异常输入和系统回归用例完成表驱动阶段 A。
+- [x] 阶段 A 20/20 通过，真实模型调用和额度消耗均为 0。
+- [x] 修复本地服务缺少具体地域仍进入 ready 的 P1，并增加回归测试。
+- [x] 修复部分 provider 失败仍显示高置信度的 P1，并增加回归测试。
+- [x] 修复失败 provider 被 H5 误写成“未配置”的 P1。
+- [x] 修复用户自述的价格、效果、安全或资质承诺被列入“已确认”的 P0。
+- [x] 五种关键状态完成移动端和桌面端共 10 项视觉验证。
+- [x] 阶段 B 因无法可靠确认 Tencent/Volcengine 调用必然免费而按成本门禁停止并记录待运行清单。
+- [ ] 若未来能证明所有目标 provider 仍处于免费且有用尽即停，再单独授权执行阶段 B；不得重采样 S02。
+## 2026-07-12 Batch Phase B follow-up
+
+- [x] Align the controlled local execution IP with the existing Bailian and TokenHub API Key allowlists; minimal calls and the later full saved run prove all four providers are reachable.
+- [x] Fix PageAudit false negatives for the official Panasonic ES-LM55 page and Haidilao store/search entry; captured-response fixtures were added before changing scoring behavior.
+- [x] Re-run the blocked PageAudit checkpoint and rebuild reports from the saved 200/200 successful provider samples without repeating model calls.
+- [x] Execute all six Phase B instances within the authorized free boundary: five new reports plus S02 saved-evidence reuse.
+- [x] Fix withheld-score leakage in the H5 cover summary, desktop preview, Markdown/HTML summary, and evidence package display field.
+- [x] Verify the real partial-provider report at 390×844 and 1440×1000 with zero overflow and zero console errors.
+## 2026-07-12 Source Recognition Hardening
+
+- [x] Audit the exact submitted URL instead of discarding its path.
+- [x] Separate entity relation from product/location scope relation.
+- [x] Make P02/E03 submitted-model versus official-model conflict explicit.
+- [x] Keep L01 scope-partial, L03 scope-mismatched, E02 unrelated, and L04 unsupported claims outside verified scoring evidence.
+- [x] Pass typecheck, build, diff check, 47/47 tests, 12/12 dual-viewport visual checks, and no-call local release precheck.
+- [x] Rebuild Phase B with fresh PageAudit and saved 200/200 successful real provider samples; no new model calls.
+- [ ] Commit and push the isolated Goal branch.
+- [ ] Deploy through the documented release/symlink/systemd flow and complete online smoke.

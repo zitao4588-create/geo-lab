@@ -1,0 +1,399 @@
+{
+  "generatedAt": "2026-07-12T01:45:16.454Z",
+  "samplingMode": "reuse_saved_real_four_provider_samples_after_page_audit_fix",
+  "sourceRun": "stage-b-rerun-after-allowlist-results.json",
+  "newProviderCalls": 0,
+  "totals": {
+    "realReports": 5,
+    "reusedReports": 1,
+    "providerSamples": 200,
+    "successes": 200,
+    "failures": 0,
+    "fallbackCount": 0
+  },
+  "cases": [
+    {
+      "id": "P01",
+      "title": "实体商品资料和官方型号页完整",
+      "reportId": "diag_mrh4sqae_9qsye9",
+      "sourceReportId": "diag_mrh3gre6_b6x0vx",
+      "providerSamples": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providerStatuses": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAuditScore": 19,
+      "submittedSourceRelation": "entity_matched",
+      "submittedScopeRelation": "matched",
+      "submittedMissingFacts": [],
+      "confidence": "medium",
+      "scoreStatus": "available",
+      "displayedScore": 41,
+      "correctEntityRecognitionRate": 0.35,
+      "misrecognitionRate": 0.45,
+      "modelConflictCount": 8,
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：官方型号 ES-LM55 的五刀头电动剃须刀",
+        "发现 8 组模型结论冲突。"
+      ]
+    },
+    {
+      "id": "P02",
+      "title": "输入型号与官方来源冲突",
+      "reportId": "diag_mrh4sqmh_tb9rmn",
+      "sourceReportId": "diag_mrh3hehb_i5x5jh",
+      "providerSamples": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providerStatuses": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAuditScore": 19,
+      "submittedSourceRelation": "entity_matched",
+      "submittedScopeRelation": "matched",
+      "submittedMissingFacts": [],
+      "confidence": "medium",
+      "scoreStatus": "available",
+      "displayedScore": 43,
+      "correctEntityRecognitionRate": 0.35,
+      "misrecognitionRate": 0.45,
+      "modelConflictCount": 7,
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：用户填写型号 ES-LV9C 的五刀头电动剃须刀",
+        "用户填写型号 ES-LV9C 与已核验官方型号 ES-LM55 冲突。",
+        "发现 7 组模型结论冲突。"
+      ]
+    },
+    {
+      "id": "S01",
+      "title": "软件资料和官网完整",
+      "reportId": "diag_mrh4sqpl_0l0mu2",
+      "sourceReportId": "diag_mrh3i18n_g2ks2j",
+      "providerSamples": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providerStatuses": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAuditScore": 72,
+      "submittedSourceRelation": "entity_matched",
+      "submittedScopeRelation": "matched",
+      "submittedMissingFacts": [],
+      "confidence": "medium",
+      "scoreStatus": "available",
+      "displayedScore": 47,
+      "correctEntityRecognitionRate": 0.05,
+      "misrecognitionRate": 0,
+      "modelConflictCount": 10,
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：帮助品牌用多模型 API 样本检查 AI 实体认知和证据边界的网页工具",
+        "发现 10 组模型结论冲突。"
+      ]
+    },
+    {
+      "id": "L01",
+      "title": "本地服务城市范围和门店入口完整",
+      "reportId": "diag_mrh4sr99_qzvypx",
+      "sourceReportId": "diag_mrh3ioen_1ui2t1",
+      "providerSamples": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providerStatuses": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAuditScore": 41,
+      "submittedSourceRelation": "entity_matched",
+      "submittedScopeRelation": "partial",
+      "submittedMissingFacts": [
+        "西安"
+      ],
+      "confidence": "low",
+      "scoreStatus": "withheld",
+      "displayedScore": null,
+      "correctEntityRecognitionRate": null,
+      "misrecognitionRate": 0,
+      "modelConflictCount": 1,
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：提供门店餐饮、排队和预约信息的本地餐饮服务",
+        "缺少实体与业务范围均通过审计的官方来源，品牌归属或具体型号、城市、门店仍待确认。",
+        "已识别相关官方入口，但页面不足以证明当前业务范围：西安。",
+        "正确实体识别率无法判断。",
+        "发现 1 组模型结论冲突。"
+      ]
+    },
+    {
+      "id": "L03",
+      "title": "具体门店仅有全国品牌首页",
+      "reportId": "diag_mrh4srgr_alqv73",
+      "sourceReportId": "diag_mrh3jbc6_c2faue",
+      "providerSamples": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providerStatuses": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAuditScore": 41,
+      "submittedSourceRelation": "entity_matched",
+      "submittedScopeRelation": "mismatched",
+      "submittedMissingFacts": [
+        "entry",
+        "西安"
+      ],
+      "confidence": "low",
+      "scoreStatus": "withheld",
+      "displayedScore": null,
+      "correctEntityRecognitionRate": null,
+      "misrecognitionRate": 0,
+      "modelConflictCount": 1,
+      "unverifiedFacts": [
+        "用户提交的业务描述仍需来源核验：西安具体门店的餐饮、排队和预约服务",
+        "缺少实体与业务范围均通过审计的官方来源，品牌归属或具体型号、城市、门店仍待确认。",
+        "已识别相关官方入口，但页面不足以证明当前业务范围：entry、西安。",
+        "正确实体识别率无法判断。",
+        "发现 1 组模型结论冲突。"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "冰箱小雷达复用已保存证据",
+      "execution": "reused_saved_four_provider_evidence",
+      "reportId": "diag_mrfzt02t_me73v1",
+      "promptCount": 0,
+      "sampleCount": 40,
+      "successCount": 40,
+      "failureCount": 0,
+      "fallbackCount": 0,
+      "providers": [
+        {
+          "provider": "deepseek",
+          "model": "deepseek-v4-pro",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "hy3",
+          "model": "hy3",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+        },
+        {
+          "provider": "qwen",
+          "model": "qwen3.7-plus",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+        },
+        {
+          "provider": "doubao",
+          "model": "doubao-seed-2-0-lite-260215",
+          "status": "sampled",
+          "promptCount": 10,
+          "successCount": 10,
+          "failureCount": 0,
+          "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+        }
+      ],
+      "pageAudit": {
+        "score": 100,
+        "targetCount": 8,
+        "summary": {
+          "ok": 8,
+          "warn": 0,
+          "missing": 0,
+          "failed": 0,
+          "note": "完成 8 个 URL 审计：8 个通过，0 个需补强，0 个不可用。"
+        }
+      },
+      "note": "按既有约束继续复用已保存四模型证据，本轮新增调用为 0。"
+    }
+  ]
+}

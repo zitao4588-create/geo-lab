@@ -13,6 +13,24 @@ export type AiSamplingStatus = 'ready' | 'sampled' | 'partial' | 'unavailable';
 
 export type GeoScoreLevel = '优秀' | '良好' | '一般' | '待提升';
 
+export type BusinessType = 'physical_product' | 'software_or_miniprogram' | 'local_service' | 'generic_or_unknown';
+
+export type InputReadiness = 'ready' | 'needs_confirmation' | 'insufficient_evidence';
+
+export type ReportConfidence = 'high' | 'medium' | 'low';
+
+export type EntityRecognition = 'supported' | 'uncertain' | 'misrecognized' | 'not_verifiable';
+
+export interface InputAssessment {
+  status: InputReadiness;
+  score: number;
+  businessType: BusinessType;
+  findings: string[];
+  requiredActions: string[];
+  officialSourceStatus: 'verified' | 'candidate' | 'missing';
+  note: string;
+}
+
 export interface DiagnosisInput {
   businessName: string;
   description: string;
@@ -25,6 +43,7 @@ export interface DiagnosisInput {
   source?: string;
   clientRequestId?: string;
   samplePrompts?: string[];
+  confirmedBusinessType?: BusinessType;
 }
 
 export interface DiagnosisIssue {
@@ -85,6 +104,10 @@ export interface PageAuditTarget {
   notes: string[];
   fetchedAt: string;
   evidenceLabel: EvidenceLabel;
+  sourceRelation?: 'entity_matched' | 'unrelated' | 'unknown';
+  scopeRelation?: 'matched' | 'partial' | 'mismatched' | 'unknown';
+  submitted?: boolean;
+  canonicalUrl?: string;
 }
 
 export interface PageAuditResult {
@@ -108,6 +131,10 @@ export interface ReportAnswerSample {
   prompt: string;
   answerExcerpt: string;
   mentionedBrand: boolean;
+  brandedPrompt: boolean;
+  naturalRecommendation: boolean;
+  entityRecognition: EntityRecognition;
+  recognitionReason: string;
   mentionedCompetitors: string[];
   riskFlags: string[];
   evidenceLabel: 'sampled_ai_answer';
@@ -134,7 +161,7 @@ export interface ScoreDimension {
 
 export interface DiagnosisReport {
   id: string;
-  version: '0.3';
+  version: '0.3' | '0.4';
   brand: string;
   category: string;
   generatedAt: string;
@@ -164,6 +191,21 @@ export interface DiagnosisReport {
       keyFinding: string;
       highlights: string[];
       risks: string[];
+    };
+    credibility?: {
+      inputAssessment: InputAssessment;
+      businessType: BusinessType;
+      confidence: ReportConfidence;
+      scoreStatus: 'available' | 'withheld';
+      stringMentionRate: number;
+      correctEntityRecognitionRate: number | null;
+      naturalRecommendationRate: number;
+      misrecognitionRate: number;
+      providerAgreementRate: number | null;
+      modelConflicts: string[];
+      confirmedFacts: string[];
+      unverifiedFacts: string[];
+      nextActions: string[];
     };
     score: {
       label: string;
@@ -245,6 +287,10 @@ export interface DiagnosisEvidenceIndex {
 
 export interface DiagnosisResponse {
   report: DiagnosisReport;
+}
+
+export interface DiagnosisPreflightResponse {
+  assessment: InputAssessment;
 }
 
 export interface DiagnosisEvidenceResponse {
