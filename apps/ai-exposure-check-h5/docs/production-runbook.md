@@ -45,13 +45,10 @@ DEEPSEEK_MODEL=deepseek-v4-pro
 DEEPSEEK_FALLBACK_MODELS=deepseek-v4-flash
 DEEPSEEK_SAMPLE_CONCURRENCY=5
 DEEPSEEK_SAMPLE_MAX_RETRIES=1
-DEEPSEEK_POLISH_ENABLED=false
 HY3_ENABLED=true
 HY3_BASE_URL=https://tokenhub.tencentmaas.com/v1
 HY3_MODEL=hy3
 HY3_API_KEY=
-HY3_COST_GUARD_CONFIRMED=false
-HY3_COST_GUARD_CONFIRMED_UNTIL=
 HY3_SAMPLE_CONCURRENCY=4
 HY3_SAMPLE_MAX_RETRIES=1
 QWEN_ENABLED=true
@@ -63,26 +60,27 @@ DOUBAO_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
 DOUBAO_MODEL=doubao-seed-2-0-lite-260215
 DOUBAO_FALLBACK_MODELS=doubao-seed-2-0-mini-260215,doubao-seed-2-1-turbo-260628,doubao-seed-1-8-251228,doubao-seed-2-1-pro-260628
 DOUBAO_API_KEY=
-DOUBAO_COST_GUARD_CONFIRMED=false
-DOUBAO_COST_GUARD_CONFIRMED_UNTIL=
 DOUBAO_SAMPLE_CONCURRENCY=4
 DOUBAO_SAMPLE_MAX_RETRIES=1
+WECHAT_JSSDK_APP_ID=
+WECHAT_JSSDK_APP_SECRET=
+WECHAT_JSSDK_ALLOWED_ORIGIN=https://exposure.playgamelab.cn
 ```
 
-DeepSeek 生产默认并发 5，混元、千问和豆包默认并发 4；四个模型外层并行。默认问题集为每个模型 10 条，合计 40 次调用。各模型最多重试 1 次，避免异常请求放大等待。`DEEPSEEK_POLISH_ENABLED=false` 会跳过不影响评分和证据的二次文案润色，缩短报告关键路径。
+DeepSeek 生产默认并发 5，混元、千问和豆包默认并发 4；当前已启用且已配置 key 的模型在外层并行。默认问题集为每个参与模型 10 条。各模型最多重试 1 次，避免异常请求放大等待；报告叙述只由确定性规则生成，不再存在二次模型润色链路。health 不能仅凭 key 存在证明 key 当前有效；是否真实成功以 `lastRealSuccessAt` 和最近运行摘要为准。
 
 免费额度运行规则：
 
 - DeepSeek 和千问共用 `BAILIAN_API_KEY` / `BAILIAN_BASE_URL`；不再读取或调用 DeepSeek 官方 API key。
 - 新版 `sk-ws-` Key 使用百炼 API Key 页面显示的业务空间专属 OpenAI compatible 地址。生产 Key 的自定义模型范围只勾选 `qwen3.7-plus`、`deepseek-v4-pro` 与 `deepseek-v4-flash`，并保留服务器 IP 白名单。
-- `DEEPSEEK_ENABLED`、`QWEN_ENABLED`、`HY3_ENABLED`、`DOUBAO_ENABLED` 可独立停用。后台确认免费额度耗尽、过期或可能进入后付费时，先关闭对应开关再重启服务。
+- `DEEPSEEK_ENABLED`、`QWEN_ENABLED`、`HY3_ENABLED`、`DOUBAO_ENABLED` 可独立停用。Hy3、Doubao 不再读取人工成本确认或截止时间变量；用户已接受真实调用可能产生的模型费用。发现异常费用、额度、授权或质量问题时，先关闭对应开关再重启服务。
 - DeepSeek 默认顺序为 `deepseek-v4-pro -> deepseek-v4-flash -> 本次采样失败`。仅额度、免费层、余额、限流、授权或模型不可用等明确错误触发 Flash；超时、服务端 `5xx` 和空答案不触发跨模型重放。
 - 2026-07-11 百炼控制台最近一次确认 `deepseek-v4-pro` 剩余 `999,865 / 1,000,000`、`deepseek-v4-flash` 剩余 `976,585 / 1,000,000`、`qwen3.7-plus` 剩余 `977,270 / 1,000,000`，均在 `2026-10-10` 到期并已开启“免费额度用完即停”；额度用完会返回 `403 AllocationQuota.FreeTierOnly`，不会进入百炼后付费。
 - 同日从 IP 白名单内生产服务器发起的 `deepseek-v4-pro` 最小请求返回 HTTP `200`，耗时约 `1.43s`。白名单外本地请求返回 `403` 是预期安全行为，不应通过扩大白名单规避。
 - 腾讯 TokenHub 当日用量页显示 `hy3` 已消耗约 `13.64K` tokens，但该页面没有给出可由 H5 读取的免费余额或“用完即停”信号。腾讯后台免费权益和费用中心仍需人工巡检。
 - 现有每 IP 每小时 1 份、全局每天 30 份的产品限流继续作为免费额度保护上限，但不能替代云平台账单与余额检查。状态持久化在 `runtime/rate-limits.json`，客户端标识只保存加盐 SHA-256，不保存原始 IP；单实例重启后继续生效。
 
-腾讯与火山成本门默认 fail-close：只有后台人工确认当前免费/奖励额度和后付费风险后，才同时设置 `*_COST_GUARD_CONFIRMED=true` 与未来截止时间 `*_COST_GUARD_CONFIRMED_UNTIL=<ISO 8601>`。任一缺失或截止时间过期时，即使 API key 已配置，health 也会显示 `configured=true`、`samplingAllowed=false`、`costGuard=unknown`，该 provider 不参与采样。建议截止时间不超过下一次日常巡检时点。
+`/api/health` 分开显示 `configured`、`enabled`、`samplingAllowed` 和最近成功状态：key 存在表示 configured；独立开关表示 enabled；两者同时满足才允许采样。Hy3、Doubao 的 `costGuard=user_authorized` 只记录本轮用户已接受真实调用费用，不参与采样资格判断。
 
 豆包免费额度运行规则：
 
@@ -101,7 +99,9 @@ VITE_CONSULT_WECHAT_ID=
 
 如果没有配置具体微信号，结果页咨询弹层仍会展示二维码，但复制按钮只复制添加说明。
 
-不要把真实 `BAILIAN_API_KEY`、`HY3_API_KEY`、`DOUBAO_API_KEY`、腾讯云 `SecretId`、`SecretKey`、服务器 IP 或 SSH 私钥写入仓库、文档、日志、前端 bundle 或输出报告。
+微信公众号 JS-SDK 只有在账号条件满足后才启用：账号需具备分享接口权限，公众号后台需把 `exposure.playgamelab.cn` 配为 JS 接口安全域名，并在服务器 mode 600 的 `.env` 中配置 `WECHAT_JSSDK_APP_ID` 和 `WECHAT_JSSDK_APP_SECRET`。服务端只向前端返回签名参数，不返回 access token、jsapi ticket 或 AppSecret；缓存写入共享 runtime 的 `wechat-jssdk-cache.json`，权限为 mode 600。未配置、签名失败或客户端权限不足时，H5 自动保留复制链接和微信右上角分享引导，不阻断诊断与报告查看。
+
+不要把真实 `BAILIAN_API_KEY`、`HY3_API_KEY`、`DOUBAO_API_KEY`、`WECHAT_JSSDK_APP_SECRET`、微信 access token/jsapi ticket、腾讯云 `SecretId`、`SecretKey`、服务器 IP 或 SSH 私钥写入仓库、文档、日志、前端 bundle 或输出报告。
 
 ## systemd 建议
 

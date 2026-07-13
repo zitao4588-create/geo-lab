@@ -21,6 +21,7 @@ import {
   inferBusinessType
 } from './credibility.js';
 import { findSubmittedModelConflict, isScopeVerifiedTarget } from './entityIdentity.js';
+import { normalizeCompactText } from './domain.js';
 
 interface AnalysisContext {
   competitors: string[];
@@ -1070,13 +1071,9 @@ function splitCompetitors(value = '') {
 }
 
 function includesTerm(value: string, term: string) {
-  const normalizedValue = normalizeText(value);
-  const normalizedTerm = normalizeText(term);
+  const normalizedValue = normalizeCompactText(value);
+  const normalizedTerm = normalizeCompactText(term);
   return normalizedTerm.length > 0 && normalizedValue.includes(normalizedTerm);
-}
-
-function normalizeText(value: string) {
-  return value.toLowerCase().replace(/\s+/gu, '');
 }
 
 function hasPrivacySignal(value: string) {

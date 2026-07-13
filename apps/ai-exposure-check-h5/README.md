@@ -28,7 +28,6 @@ DEEPSEEK_MODEL=deepseek-v4-pro
 DEEPSEEK_FALLBACK_MODELS=deepseek-v4-flash
 DEEPSEEK_SAMPLE_CONCURRENCY=5
 DEEPSEEK_SAMPLE_MAX_RETRIES=1
-DEEPSEEK_POLISH_ENABLED=false
 HY3_ENABLED=true
 HY3_API_KEY=...
 HY3_BASE_URL=https://tokenhub.tencentmaas.com/v1
@@ -47,24 +46,30 @@ DOUBAO_FALLBACK_MODELS=doubao-seed-2-0-mini-260215,doubao-seed-2-1-turbo-260628,
 DOUBAO_SAMPLE_CONCURRENCY=4
 DOUBAO_SAMPLE_MAX_RETRIES=1
 VITE_CONSULT_WECHAT_ID=
+WECHAT_JSSDK_APP_ID=
+WECHAT_JSSDK_APP_SECRET=
+WECHAT_JSSDK_ALLOWED_ORIGIN=https://exposure.playgamelab.cn
 ```
 
 百炼、TokenHub、方舟至少配置一个 API Key 才能生成报告；全部未配置时，后端返回 `503 sampling_unavailable`，不再用规则模板冒充最终报告。`BAILIAN_API_KEY` 同时供 DeepSeek 和千问使用，原 DeepSeek 官方 API key 不再参与采样。
 新版 `sk-ws-` 百炼 Key 应使用 API Key 页面显示的业务空间专属 OpenAI compatible 地址，并在自定义权限中勾选 `qwen3.7-plus`、`deepseek-v4-pro` 和 `deepseek-v4-flash`。生产 Key 继续使用服务器 IP 白名单，不要为本地调试放宽为全网可访问。
-每个启用模型默认执行同一组 10 条核心采样，四个模型外层并行，模型内部按各自 `*_SAMPLE_CONCURRENCY` 限流，合计 40 次调用；页面审计也与采样并行执行。
+每个启用且已配置 key 的模型默认执行同一组 10 条核心采样，参与模型在外层并行，模型内部按各自 `*_SAMPLE_CONCURRENCY` 限流；四个模型都参与时合计 40 次调用。服务端先完成一次权威页面审计，核验通过后才消耗名额并进入模型采样。
 采样请求默认最多重试 1 次，可通过各 provider 的 `*_SAMPLE_MAX_RETRIES` 在 0-2 之间调整，避免 SDK 默认 2 次重试放大异常等待。
-`DEEPSEEK_POLISH_ENABLED` 默认关闭，避免在评分和证据已经生成后再等待一次只改建议文案的模型请求；设为 `true` 可恢复该可选润色。
-`DEEPSEEK_ENABLED`、`QWEN_ENABLED`、`HY3_ENABLED`、`DOUBAO_ENABLED` 可单独停用模型。免费额度耗尽时应优先关闭对应开关，不应切入付费模型。
+报告叙述只由确定性规则生成，不存在评分完成后的二次模型润色请求。
+`DEEPSEEK_ENABLED`、`QWEN_ENABLED`、`HY3_ENABLED`、`DOUBAO_ENABLED` 可单独停用模型。出现异常费用、额度、授权或质量信号时，应关闭对应开关并重启服务。
 DeepSeek 默认按 `deepseek-v4-pro -> deepseek-v4-flash -> 本次采样失败` 运行。只有额度、免费层、余额、限流、授权或模型不可用等明确错误会切到 Flash；超时、服务端 `5xx` 和空答案不会触发跨模型重放。
 2026-07-11 百炼控制台最近一次确认：`deepseek-v4-pro` 剩余 `999,865 / 1,000,000`、`deepseek-v4-flash` 剩余 `976,585 / 1,000,000`、`qwen3.7-plus` 剩余 `977,270 / 1,000,000`，三者均在 `2026-10-10` 到期且已开启“免费额度用完即停”。额度是时点数据，后台状态才是权威值。
 同日从 IP 白名单内的生产服务器完成一次 `deepseek-v4-pro` 最小真实请求，返回 HTTP `200`、耗时约 `1.43s`；这只验证 API 链路，不代表完整 40 次采样报告的端到端耗时。
 豆包会在当前模型返回未开通、额度/余额不足或限流等明确错误时，按 `DOUBAO_FALLBACK_MODELS` 顺序切换，并在当前服务进程内优先复用成功模型。免费资源包用尽后可能自动转按量后付费，Chat API 不提供可靠的“免费额度剩余”信号；必须以火山方舟开通管理页为准，接近耗尽时主动调整 `DOUBAO_MODEL`。
 2026-07-11 经用户明确同意，五个豆包模型族及其预置推理接入点已加入协作奖励计划。奖励资源包通常次日约 11:00 发放、有效期 30 天；资源包实际抵扣优先级由火山引擎计费系统决定，应用代码不能保证“奖励额度先于初始额度”扣减。
 没有 `VITE_CONSULT_WECHAT_ID` 时，结果页仍展示二维码，复制按钮只复制添加说明。
+微信公众号 JS-SDK 仅在账号具备分享接口权限、域名已加入 JS 接口安全域名且服务器配置 AppID/AppSecret 后启用；凭证缺失或签名失败时自动保留复制链接和微信右上角分享引导。
 
 ## API
 
 - `POST /api/diagnoses`：生成最终 GEO 分析报告。
+- `GET /api/health`：读取 provider 配置、启用、采样资格和最近成功状态。
+- `GET /api/wechat/jssdk-config?url=...`：为允许域名生成微信分享签名；不返回 AppSecret、access token 或 ticket。
 - `GET /api/diagnoses/:id`：按报告 ID 查询。
 - `GET /api/diagnoses/:id/evidence`：读取证据索引。
 - `GET /api/diagnoses/:id/export/markdown`：导出 Markdown 报告。
@@ -79,7 +84,7 @@ DeepSeek 默认按 `deepseek-v4-pro -> deepseek-v4-flash -> 本次采样失败` 
 
 上一轮 2026-07-05 release `20260705175108` 完成 UI 全面焕新：深色首页叙事 + AI 对话演示、报告封面得分卡、表单分组和咨询弹层修复，合规文案保持不变。
 
-上一轮 2026-07-03 release `20260703201836` 上线了 optional contact、微信二维码咨询弹层、严格限流、合规文案和首屏转化优化。
+上一轮 2026-07-03 release `20260703201836` 曾上线可选联系方式字段、微信二维码咨询弹层、严格限流、合规文案和首屏转化优化；可选联系方式字段已在当前版本移除。
 
 上一轮 2026-06-30 release `202606300728` 已完成上线后 URL 审计、报告导出和 `冰箱小雷达` before/after 复测。
 

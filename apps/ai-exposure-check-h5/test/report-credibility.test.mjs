@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { assessDiagnosisInput, classifyAnswer, inferBusinessType } from '../dist/server/server/credibility.js';
-import { sanitizeProviderError } from '../dist/server/server/deepseek.js';
+import { sanitizeProviderError } from '../dist/server/server/providers/sampling.js';
 import { buildFinalGeoReport, buildPromptUniverse } from '../dist/server/server/rules.js';
 import { buildEvidencePackage, renderReportHtml, renderReportMarkdown } from '../dist/server/server/exporter.js';
 

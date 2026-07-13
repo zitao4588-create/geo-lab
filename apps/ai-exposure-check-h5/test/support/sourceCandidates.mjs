@@ -1,21 +1,10 @@
-import type { DiagnosisInput } from '../shared/types.js';
-
-export interface SourceCandidate {
-  url: string;
-  entityName: string;
-  discoveryMethod: 'user_submitted';
-  reviewStatus: 'pending_review' | 'approved' | 'rejected';
-  verified: false;
-  note: string;
-}
-
 /**
  * Creates a local review queue from URLs already supplied by the user.
- * This function performs no discovery request and never promotes a URL to verified.
+ * This helper performs no discovery request and never promotes a URL to verified.
  */
-export function buildSourceCandidates(input: DiagnosisInput): SourceCandidate[] {
+export function buildSourceCandidates(input) {
   const urls = input.links?.match(/https?:\/\/[^\s，,；;]+/giu) ?? [];
-  return [...new Set(urls.map(normalizeCandidateUrl).filter((value): value is string => Boolean(value)))].map((url) => ({
+  return [...new Set(urls.map(normalizeCandidateUrl).filter(Boolean))].map((url) => ({
     url,
     entityName: input.businessName,
     discoveryMethod: 'user_submitted',
@@ -25,7 +14,7 @@ export function buildSourceCandidates(input: DiagnosisInput): SourceCandidate[] 
   }));
 }
 
-function normalizeCandidateUrl(value: string) {
+function normalizeCandidateUrl(value) {
   try {
     const url = new URL(value.replace(/[。.!?）)]+$/gu, ''));
     if (url.protocol !== 'http:' && url.protocol !== 'https:') return undefined;

@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { buildPromptUniverse } from '../dist/server/server/rules.js';
 import { auditSubmittedPages, validateAuditUrl } from '../dist/server/server/pageAudit.js';
-import { buildSourceCandidates } from '../dist/server/server/sourceCandidates.js';
+import { buildSourceCandidates } from './support/sourceCandidates.mjs';
 
 const promptCases = [
   {

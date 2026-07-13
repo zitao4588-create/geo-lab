@@ -92,7 +92,7 @@ test('lost response and retries recover one persisted report without consuming a
   assert.doesNotMatch(rateLimitState, /127\.0\.0\.1|::ffff/u);
 });
 
-test('default 10 prompt diagnosis uses five concurrent samples and skips optional polish', async (context) => {
+test('default 10 prompt diagnosis uses five concurrent samples without a second narrative model call', async (context) => {
   const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-sampling-speed-'));
   const provider = await startFakeOpenAiServer({ delayMs: 200 });
   const appServer = await startAppServer({ runtimeDir, providerBaseUrl: provider.baseUrl });
@@ -106,7 +106,6 @@ test('default 10 prompt diagnosis uses five concurrent samples and skips optiona
   const health = await healthResponse.json();
   assert.equal(health.sampleConcurrency, 5);
   assert.equal(health.sampleMaxRetries, 1);
-  assert.equal(health.polishEnabled, false);
 
   const payload = buildPayload('req_controlled_speed_01');
   delete payload.samplePrompts;
@@ -121,7 +120,7 @@ test('default 10 prompt diagnosis uses five concurrent samples and skips optiona
     result.body.report.stages.promptUniverse.prompts.map((prompt) => prompt.id),
     ['P001', 'P002', 'P003', 'P005', 'P006', 'P011', 'P013', 'P015', 'P017', 'P020']
   );
-  assert.equal(provider.callCount, 10, 'default path should not add a report-polish model call');
+  assert.equal(provider.callCount, 10, 'default path must not add a second narrative model call');
   assert.equal(provider.peakConcurrency, 5);
   assert.ok(durationMs < 1_500, `controlled 10-prompt run took ${durationMs}ms`);
   const observedHealth = await (await fetch(`${appServer.url}/api/health`)).json();
@@ -147,8 +146,6 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
     providerBaseUrl: provider.baseUrl,
     appEnv: {
       HY3_ENABLED: 'true',
-      HY3_COST_GUARD_CONFIRMED: 'true',
-      HY3_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       HY3_API_KEY: 'controlled-hy3-key',
       HY3_BASE_URL: provider.baseUrl,
       HY3_MODEL: 'controlled-hy3',
@@ -159,8 +156,6 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
       QWEN_SAMPLE_CONCURRENCY: '4',
       QWEN_SAMPLE_MAX_RETRIES: '0',
       DOUBAO_ENABLED: 'true',
-      DOUBAO_COST_GUARD_CONFIRMED: 'true',
-      DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       DOUBAO_API_KEY: 'controlled-doubao-key',
       DOUBAO_BASE_URL: provider.baseUrl,
       DOUBAO_MODEL: 'controlled-doubao',
@@ -277,8 +272,6 @@ test('Doubao falls back to the next configured model after a quota failure', asy
     appEnv: {
       DEEPSEEK_ENABLED: 'false',
       DOUBAO_ENABLED: 'true',
-      DOUBAO_COST_GUARD_CONFIRMED: 'true',
-      DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
       DOUBAO_API_KEY: 'controlled-doubao-key',
       DOUBAO_BASE_URL: provider.baseUrl,
       DOUBAO_MODEL: 'controlled-doubao-primary',
@@ -414,15 +407,11 @@ test('verified source conflict is rejected before quota and provider sampling', 
     samplePrompts: ['松下大锤子2.0剃须刀对应什么型号？']
   };
 
-  const preflight = await postJsonAt(appServer.url, '/api/diagnoses/preflight', base);
-  assert.equal(preflight.status, 200);
-  assert.equal(preflight.body.assessment.status, 'needs_confirmation');
-  assert.equal(provider.callCount, 0);
-
   const rejected = await postJson(appServer.url, { ...base, clientRequestId: 'req_source_conflict_01' });
   assert.equal(rejected.status, 422);
   assert.equal(rejected.body.error, 'input_confirmation_required');
   assert.equal(provider.callCount, 0, 'source conflict must stop before provider sampling');
+  assert.equal(provider.pageCallCount, 1, 'one diagnosis POST must run PageAudit exactly once');
 
   const corrected = await postJson(appServer.url, {
     ...base,
@@ -431,6 +420,7 @@ test('verified source conflict is rejected before quota and provider sampling', 
   });
   assert.equal(corrected.status, 201, 'rejected conflict must not consume the IP quota slot');
   assert.equal(provider.callCount, 1);
+  assert.equal(provider.pageCallCount, 2, 'each diagnosis POST must run one authoritative PageAudit');
 });
 
 function buildPayload(clientRequestId) {
@@ -442,7 +432,6 @@ function buildPayload(clientRequestId) {
     city: '西安',
     targetCustomers: '需要验证提交可靠性的测试人员',
     competitors: '',
-    contact: '',
     source: 'codex_local_acceptance',
     clientRequestId,
     samplePrompts: ['请求恢复受控测试是什么？']
@@ -468,7 +457,6 @@ async function startAppServer({ runtimeDir, providerBaseUrl, appEnv = {} }) {
       DEEPSEEK_MODEL: 'controlled-model',
       DEEPSEEK_SAMPLE_CONCURRENCY: '5',
       DEEPSEEK_SAMPLE_MAX_RETRIES: '1',
-      DEEPSEEK_POLISH_ENABLED: 'false',
       HY3_ENABLED: 'false',
       HY3_API_KEY: '',
       QWEN_ENABLED: 'false',

@@ -1,4 +1,7 @@
 import type { DiagnosisInput, PageAuditResult } from '../shared/types.js';
+import { normalizeIdentity } from './domain.js';
+
+export { normalizeIdentity } from './domain.js';
 
 const genericAliases = new Set([
   '官网', '首页', '产品', '服务', '工具', '软件', '应用', '平台', '小程序', '门店', '门店服务', '本地服务',
@@ -83,10 +86,6 @@ export function isScopeVerifiedTarget(target: PageAuditResult['targets'][number]
     && target.sourceRelation !== 'unrelated'
     && target.scopeRelation !== 'partial'
     && target.scopeRelation !== 'mismatched';
-}
-
-export function normalizeIdentity(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9\p{Script=Han}]+/gu, '');
 }
 
 function removeAll(value: string, term: string) {

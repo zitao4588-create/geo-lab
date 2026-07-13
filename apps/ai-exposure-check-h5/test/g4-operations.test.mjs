@@ -3,44 +3,50 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { getDeepSeekRuntime, sampleAiProviders } from '../dist/server/server/deepseek.js';
+import { getSamplingRuntime, sampleAiProviders } from '../dist/server/server/providers/sampling.js';
 import { summarizeOperation } from '../dist/server/server/operations.js';
 import { PersistentRateLimiter } from '../dist/server/server/rateLimiter.js';
 import { scanPaths } from '../scripts/scan-release-artifacts.mjs';
 
-test('provider health separates configured credentials, sampling permission, cost boundary, and real success', () => {
+test('provider health separates configured credentials, enabled switches, sampling permission, and real success', () => {
   withEnv({
-    HY3_ENABLED: 'true', HY3_API_KEY: 'controlled-key', HY3_COST_GUARD_CONFIRMED: 'false',
-    DOUBAO_ENABLED: 'true', DOUBAO_API_KEY: 'controlled-key', DOUBAO_COST_GUARD_CONFIRMED: 'true', DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2099-01-01T00:00:00Z',
-    DEEPSEEK_ENABLED: 'false', QWEN_ENABLED: 'false'
+    HY3_ENABLED: 'true', HY3_API_KEY: 'controlled-key',
+    DOUBAO_ENABLED: 'false', DOUBAO_API_KEY: 'controlled-key',
+    BAILIAN_API_KEY: 'controlled-key', DEEPSEEK_ENABLED: 'false', QWEN_ENABLED: 'false'
   }, () => {
-    const runtime = getDeepSeekRuntime();
+    const runtime = getSamplingRuntime();
     const hy3 = runtime.providers.find((item) => item.provider === 'hy3');
     const doubao = runtime.providers.find((item) => item.provider === 'doubao');
     assert.equal(hy3.configured, true);
-    assert.equal(hy3.samplingAllowed, false);
-    assert.equal(hy3.costGuard, 'unknown');
-    assert.equal(hy3.status, 'unavailable');
+    assert.equal(hy3.enabled, true);
+    assert.equal(hy3.samplingAllowed, true);
+    assert.equal(hy3.costGuard, 'user_authorized');
+    assert.equal(hy3.status, 'ready');
     assert.equal(doubao.configured, true);
-    assert.equal(doubao.samplingAllowed, true);
-    assert.equal(doubao.costGuard, 'manually_confirmed');
-    assert.equal(doubao.status, 'ready');
-    assert.equal(runtime.configuredProviderCount, 2);
+    assert.equal(doubao.enabled, false);
+    assert.equal(doubao.samplingAllowed, false);
+    assert.equal(doubao.costGuard, 'user_authorized');
+    assert.equal(doubao.status, 'unavailable');
+    const qwen = runtime.providers.find((item) => item.provider === 'qwen');
+    assert.equal(qwen.configured, true);
+    assert.equal(qwen.enabled, false);
+    assert.equal(qwen.samplingAllowed, false);
+    assert.equal(runtime.configuredProviderCount, 4);
     assert.equal(runtime.samplingAllowedProviderCount, 1);
   });
 });
 
-test('unknown cost guards fail closed before any provider request', async () => {
+test('disabled provider switches stop requests even when keys are configured', async () => {
   let fetchCalls = 0;
   await withEnvAsync({
     BAILIAN_API_KEY: '', DEEPSEEK_ENABLED: 'false', QWEN_ENABLED: 'false',
-    HY3_ENABLED: 'true', HY3_API_KEY: 'controlled-key', HY3_COST_GUARD_CONFIRMED: 'false',
-    DOUBAO_ENABLED: 'true', DOUBAO_API_KEY: 'controlled-key', DOUBAO_COST_GUARD_CONFIRMED: 'true', DOUBAO_COST_GUARD_CONFIRMED_UNTIL: '2020-01-01T00:00:00Z'
+    HY3_ENABLED: 'false', HY3_API_KEY: 'controlled-key',
+    DOUBAO_ENABLED: 'false', DOUBAO_API_KEY: 'controlled-key'
   }, async () => {
     const originalFetch = globalThis.fetch;
     globalThis.fetch = async () => { fetchCalls += 1; throw new Error('must_not_fetch'); };
     try {
-      await assert.rejects(() => sampleAiProviders([{ id: 'P001', category: 'brand', prompt: 'fixture', targetFact: 'fixture' }]), /配置与成本保护门/u);
+      await assert.rejects(() => sampleAiProviders([{ id: 'P001', category: 'brand', prompt: 'fixture', targetFact: 'fixture' }]), /已启用且已配置 API key/u);
     } finally {
       globalThis.fetch = originalFetch;
     }

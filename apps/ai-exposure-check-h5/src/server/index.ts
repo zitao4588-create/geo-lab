@@ -6,10 +6,11 @@ import { ZodError } from 'zod';
 import { diagnosisInputSchema } from './validation.js';
 import { buildFinalGeoReport, buildPromptUniverse } from './rules.js';
 import { assessDiagnosisInput, assessDiagnosisSource } from './credibility.js';
-import { getDeepSeekRuntime, polishFinalReportWithDeepSeek, sampleAiProviders, SamplingUnavailableError } from './deepseek.js';
+import { getSamplingRuntime, sampleAiProviders, SamplingUnavailableError } from './providers/sampling.js';
 import { auditSubmittedPages } from './pageAudit.js';
 import { readLatestOperation, recordOperation, summarizeOperation } from './operations.js';
 import { PersistentRateLimiter } from './rateLimiter.js';
+import { buildWechatJssdkConfig, getWechatJssdkRuntime, WechatJssdkError } from './wechatJssdk.js';
 import {
   buildDiagnosisRequestFingerprint,
   readDiagnosis,
@@ -79,7 +80,7 @@ function readPositiveInteger(value: string | undefined, fallback: number) {
 
 app.get('/api/health', async (_req, res, next) => {
   try {
-  const runtime = getDeepSeekRuntime();
+  const runtime = getSamplingRuntime();
   const latestOperation = await readLatestOperation(runtimeDir);
   const providers = runtime.providers.map((provider) => {
     const latest = latestOperation?.providers.find((item) => item.provider === provider.provider);
@@ -104,7 +105,7 @@ app.get('/api/health', async (_req, res, next) => {
     samplingAllowedProviderCount: runtime.samplingAllowedProviderCount,
     sampleConcurrency: runtime.sampleConcurrency,
     sampleMaxRetries: runtime.sampleMaxRetries,
-    polishEnabled: runtime.polishEnabled,
+    wechatJssdk: getWechatJssdkRuntime(),
     providers,
     latestOperation: latestOperation ? {
       recordedAt: latestOperation.recordedAt,
@@ -118,16 +119,11 @@ app.get('/api/health', async (_req, res, next) => {
   }
 });
 
-app.post('/api/diagnoses/preflight', async (req, res, next) => {
+app.get('/api/wechat/jssdk-config', async (req, res, next) => {
   try {
-    const input = diagnosisInputSchema.parse(req.body);
-    const initialAssessment = assessDiagnosisInput(input);
-    if (initialAssessment.status !== 'ready' || !/https?:\/\//u.test(input.links ?? '')) {
-      res.json({ assessment: initialAssessment });
-      return;
-    }
-    const pageAudit = await auditSubmittedPages(input);
-    res.json({ assessment: assessDiagnosisSource(input, pageAudit), pageAudit });
+    const rawUrl = typeof req.query.url === 'string' ? req.query.url : '';
+    const config = await buildWechatJssdkConfig(rawUrl);
+    res.json(config);
   } catch (error) {
     next(error);
   }
@@ -232,8 +228,7 @@ async function generateDiagnosis(input: DiagnosisInput, pageAudit: Awaited<Retur
     throw new SamplingUnavailableError('本次所有 AI 平台采样均失败，无法生成最终 GEO 分析报告');
   }
 
-  const baseReport = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
-  const report = await polishFinalReportWithDeepSeek(input, baseReport);
+  const report = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
   await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
   const totalDurationMs = Date.now() - startedAt;
   const operation = summarizeOperation({
@@ -339,6 +334,14 @@ app.use((error: unknown, _req: express.Request, res: express.Response, _next: ex
     res.status(503).json({
       error: 'sampling_unavailable',
       message: error.message
+    });
+    return;
+  }
+
+  if (error instanceof WechatJssdkError) {
+    res.status(error.status).json({
+      error: error.message,
+      message: error.status === 503 ? '微信公众号 JS-SDK 尚未配置，已保留普通分享方式。' : '微信分享配置暂不可用，请使用普通分享方式。'
     });
     return;
   }

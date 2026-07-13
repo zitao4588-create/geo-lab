@@ -39,7 +39,6 @@ export interface DiagnosisInput {
   city: string;
   targetCustomers: string;
   competitors?: string;
-  contact?: string;
   source?: string;
   clientRequestId?: string;
   samplePrompts?: string[];
@@ -78,8 +77,9 @@ export interface AiProviderStatus {
   failureCount: number;
   note: string;
   configured?: boolean;
+  enabled?: boolean;
   samplingAllowed?: boolean;
-  costGuard?: 'provider_enforced' | 'manually_confirmed' | 'unknown' | 'disabled';
+  costGuard?: 'provider_enforced' | 'user_authorized' | 'disabled';
   successRate?: number;
   fallbackCount?: number;
   p50LatencyMs?: number | null;
@@ -310,8 +310,14 @@ export interface DiagnosisResponse {
   report: DiagnosisReport;
 }
 
-export interface DiagnosisPreflightResponse {
-  assessment: InputAssessment;
+export interface HealthResponse {
+  ok: boolean;
+  samplingReady: boolean;
+  configurationReady: boolean;
+  configuredProviderCount: number;
+  samplingAllowedProviderCount: number;
+  providers: AiProviderStatus[];
+  wechatJssdk?: { configured: boolean };
 }
 
 export interface DiagnosisEvidenceResponse {

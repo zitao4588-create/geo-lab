@@ -44,7 +44,6 @@ const server = spawn(process.execPath, ['dist/server/server/index.js'], {
     RUNTIME_DIR: runtimeDir,
     DIAGNOSES_IP_HOURLY_LIMIT: '10',
     DIAGNOSES_GLOBAL_DAILY_LIMIT: '10',
-    DEEPSEEK_POLISH_ENABLED: 'false',
     DEEPSEEK_SAMPLE_MAX_RETRIES: '1',
     HY3_SAMPLE_MAX_RETRIES: '1',
     QWEN_SAMPLE_MAX_RETRIES: '1',
@@ -70,11 +69,6 @@ try {
 
     const clientRequestId = `stage_b_20260712_${id.toLowerCase()}_${requestSuffix}`;
     const input = { ...item.input, clientRequestId, source: 'codex_stage_b_20260712' };
-    const preflight = await postJson('/api/diagnoses/preflight', input, index);
-    if (preflight.status !== 200 || preflight.body.assessment?.status !== 'ready') {
-      throw new Error(`stage_b_preflight_failed:${id}:${preflight.status}:${preflight.body.assessment?.status || 'unknown'}`);
-    }
-
     const startedAt = Date.now();
     const response = await postJson('/api/diagnoses', input, index);
     const durationMs = Date.now() - startedAt;

@@ -3,6 +3,7 @@ import { lookup } from 'node:dns/promises';
 import { isIP } from 'node:net';
 import type { BusinessType, DiagnosisInput, PageAuditResult, PageAuditTarget } from '../shared/types.js';
 import { extractModelIdentifiers, includesEntityAlias } from './entityIdentity.js';
+import { inferBusinessType, normalizeCompactText, normalizeIdentity } from './domain.js';
 
 type ResolveHostname = (hostname: string) => Promise<string[]>;
 
@@ -100,7 +101,7 @@ async function auditSubmittedUrl(url: string, input: DiagnosisInput, options: Pa
   try {
     const resource = await fetchAuditResource(url, 'html', options);
     const html = resource.text;
-    const visibleText = normalizeText(htmlToText(html));
+    const visibleText = normalizeCompactText(htmlToText(html));
     const title = extractTitle(html);
     const description = extractMetaDescription(html);
     const canonicalUrl = extractCanonical(html, url);
@@ -173,7 +174,7 @@ async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Recor
   try {
     const resource = await fetchAuditResource(url, spec.kind, options);
     const text = resource.text;
-    const visibleText = normalizeText(spec.kind === 'html' ? htmlToText(text) : text);
+    const visibleText = normalizeCompactText(spec.kind === 'html' ? htmlToText(text) : text);
     const title = spec.kind === 'html' ? extractTitle(text) : undefined;
     const description = spec.kind === 'html' ? extractMetaDescription(text) : undefined;
     const matchedFacts = findMatchedFacts(visibleText, spec.requiredFacts, facts);
@@ -234,15 +235,6 @@ function extractSubmittedUrls(links: string) {
   }))];
 }
 
-function inferBusinessType(input: DiagnosisInput): BusinessType {
-  if (input.confirmedBusinessType) return input.confirmedBusinessType;
-  const combined = `${input.businessName} ${input.description} ${input.industry}`;
-  if (/门店|餐厅|酒店|诊所|工作室|本地服务|到店|商家/u.test(combined)) return 'local_service';
-  if (/小程序|软件|应用|App|平台|SaaS|网站|数字工具|管理工具/u.test(combined)) return 'software_or_miniprogram';
-  if (/剃须刀|商品|产品|设备|电器|刀头|马达|硬件/u.test(combined)) return 'physical_product';
-  return 'generic_or_unknown';
-}
-
 function determineSourceRelation(
   input: DiagnosisInput,
   title: string | undefined,
@@ -274,7 +266,7 @@ function determineScopeRelation(
   const isRoot = parsed.pathname === '/' || parsed.pathname === '';
 
   if (businessType === 'local_service') {
-    const city = normalizeText(input.city);
+    const city = normalizeCompactText(input.city);
     const hasCity = city.length > 0 && visibleText.includes(city);
     const hasLocalEntry = /store|shop|location|门店|餐厅|预约|排队/iu.test(`${parsed.pathname} ${visibleText}`);
     if (hasCity && hasLocalEntry) return 'matched';
@@ -304,16 +296,16 @@ function buildSubmittedFacts(
 
   if (businessType === 'physical_product') {
     requiredFacts.push('category', 'model');
-    if (visibleText.includes(normalizeText(input.industry)) || /剃须刀|刀头|马达|电器|商品/u.test(visibleText)) matchedFacts.push('category');
+    if (visibleText.includes(normalizeCompactText(input.industry)) || /剃须刀|刀头|马达|电器|商品/u.test(visibleText)) matchedFacts.push('category');
     const models = extractPrimaryModels(`${url} ${title ?? ''} ${description ?? ''}`);
     if (models.length > 0) matchedFacts.push('model', ...models);
   } else if (businessType === 'local_service') {
     requiredFacts.push('entry', input.city);
     if (/store|shop|location|门店|餐厅|预约|排队/iu.test(`${new URL(url).pathname} ${visibleText}`)) matchedFacts.push('entry');
-    if (normalizeText(input.city) && visibleText.includes(normalizeText(input.city))) matchedFacts.push(input.city);
+    if (normalizeCompactText(input.city) && visibleText.includes(normalizeCompactText(input.city))) matchedFacts.push(input.city);
   } else {
     requiredFacts.push('category', 'entry');
-    if (visibleText.includes(normalizeText(input.industry)) || /软件|小程序|应用|平台|网站|GEO/iu.test(visibleText)) matchedFacts.push('category');
+    if (visibleText.includes(normalizeCompactText(input.industry)) || /软件|小程序|应用|平台|网站|GEO/iu.test(visibleText)) matchedFacts.push('category');
     if (new URL(url).pathname !== '/' || /使用|入口|功能|产品/u.test(visibleText)) matchedFacts.push('entry');
   }
 
@@ -363,7 +355,7 @@ function buildFactDictionary(input: DiagnosisInput): Record<string, string[]> {
 }
 
 function findMatchedFacts(text: string, requiredFacts: string[], facts: Record<string, string[]>) {
-  return requiredFacts.filter((fact) => (facts[fact] ?? [fact]).some((keyword) => text.includes(normalizeText(keyword))));
+  return requiredFacts.filter((fact) => (facts[fact] ?? [fact]).some((keyword) => text.includes(normalizeCompactText(keyword))));
 }
 
 function buildMatchedEvidence(text: string, matchedFacts: string[], input: DiagnosisInput) {
@@ -383,9 +375,9 @@ function buildDictionaryEvidence(text: string, matchedFacts: string[], facts: Re
 }
 
 function findSnippet(text: string, keywords: string[]) {
-  const normalized = normalizeText(text);
+  const normalized = normalizeCompactText(text);
   for (const keyword of keywords) {
-    const needle = normalizeText(keyword);
+    const needle = normalizeCompactText(keyword);
     if (!needle) continue;
     const index = normalized.indexOf(needle);
     if (index >= 0) return normalized.slice(Math.max(0, index - 32), Math.min(normalized.length, index + needle.length + 64));
@@ -570,7 +562,7 @@ function isSupportedContentType(contentType: string, kind: AuditSpec['kind']) {
 }
 
 function looksLikeJavaScriptShell(html: string) {
-  const visible = normalizeText(htmlToText(html));
+  const visible = normalizeCompactText(htmlToText(html));
   return visible.length < 80 && /<script\b|id=["'](?:app|root)["']/iu.test(html);
 }
 
@@ -633,14 +625,6 @@ function decodeHtml(value: string) {
     .replace(/&gt;/gu, '>')
     .replace(/&quot;/gu, '"')
     .replace(/&#39;/gu, "'");
-}
-
-function normalizeText(value: string) {
-  return value.toLowerCase().replace(/\s+/gu, '');
-}
-
-function normalizeIdentity(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9\p{Script=Han}]+/gu, '');
 }
 
 function safeError(value: string) {

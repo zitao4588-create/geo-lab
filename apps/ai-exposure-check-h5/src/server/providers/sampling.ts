@@ -1,5 +1,5 @@
 import OpenAI, { type ClientOptions } from 'openai';
-import type { AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, SamplePrompt } from '../shared/types.js';
+import type { AiProviderStatus, AiSample, SamplePrompt } from '../../shared/types.js';
 
 interface DeepSeekConfig {
   apiKey?: string;
@@ -8,7 +8,6 @@ interface DeepSeekConfig {
   fallbackModels: string[];
   sampleConcurrency: number;
   sampleMaxRetries: number;
-  polishEnabled: boolean;
 }
 
 interface SamplingProviderConfig {
@@ -23,14 +22,9 @@ interface SamplingProviderConfig {
   maxTokens: number;
   readyNote: string;
   sampledNote: string;
+  enabled: boolean;
   samplingAllowed: boolean;
-  costGuard: 'provider_enforced' | 'manually_confirmed' | 'unknown' | 'disabled';
-}
-
-interface NarrativeJsonResult {
-  summary?: string;
-  recommendations?: Array<{ title?: string; detail?: string }>;
-  roadmap?: Array<{ title?: string; detail?: string }>;
+  costGuard: 'provider_enforced' | 'user_authorized' | 'disabled';
 }
 
 const preferredProviderModels = new Map<SamplingProviderConfig['provider'], string>();
@@ -42,7 +36,7 @@ export class SamplingUnavailableError extends Error {
   }
 }
 
-export function getDeepSeekRuntime() {
+export function getSamplingRuntime() {
   const config = getConfig();
   const samplingConfigs = getSamplingProviderConfigs();
   const samplingProviders = samplingConfigs.map((providerConfig) => buildRuntimeProviderStatus(providerConfig));
@@ -56,7 +50,6 @@ export function getDeepSeekRuntime() {
     samplingAllowedProviderCount: samplingConfigs.filter((providerConfig) => Boolean(providerConfig.apiKey) && providerConfig.samplingAllowed).length,
     sampleConcurrency: config.sampleConcurrency,
     sampleMaxRetries: config.sampleMaxRetries,
-    polishEnabled: config.polishEnabled,
     providers: samplingProviders
   };
 }
@@ -65,7 +58,7 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
   const samplingConfigs = getSamplingProviderConfigs();
   const configuredProviders = samplingConfigs.filter(isSamplingAllowedProvider);
   if (configuredProviders.length === 0) {
-    throw new SamplingUnavailableError('当前没有通过配置与成本保护门的 AI 采样 provider，无法生成最终 GEO 分析报告');
+    throw new SamplingUnavailableError('当前没有已启用且已配置 API key 的 AI 采样 provider，无法生成最终 GEO 分析报告');
   }
 
   const providerResults = await Promise.all(configuredProviders.map(async (config) => {
@@ -108,80 +101,6 @@ async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: 
 
   const boundedPrompts = prompts.slice(0, 24);
   return runWithConcurrency(boundedPrompts, config.sampleConcurrency, (prompt) => sampleOne(client, config, prompt));
-}
-
-export async function polishFinalReportWithDeepSeek(input: DiagnosisInput, report: DiagnosisReport): Promise<DiagnosisReport> {
-  const config = getConfig();
-  if (!config.apiKey || !config.polishEnabled) return report;
-
-  try {
-    const client = new OpenAI({
-      apiKey: config.apiKey,
-      baseURL: config.baseUrl,
-      timeout: 12_000,
-      maxRetries: 0
-    });
-
-    const completion = await client.chat.completions.create({
-      model: config.model,
-      temperature: 0.2,
-      max_tokens: 900,
-      enable_thinking: false,
-      messages: [
-        {
-          role: 'system',
-          content:
-            '你是保守的中文 GEO 诊断报告编辑。只能基于提供的真实采样统计与规则分析润色摘要和行动建议，不得新增采样结果、排名承诺、媒体背书、客户案例、百分比或引用。必须输出 JSON。'
-        },
-        {
-          role: 'user',
-          content: JSON.stringify({
-            task: 'polish_final_geo_report_copy',
-            constraints: [
-              '面向小程序/本地工具创业者，语言直接',
-              '保留证据边界，不要承诺排名提升',
-              'summary 不超过 180 个中文字符',
-              'recommendations 和 roadmap 只改标题/描述，不改变优先级和阶段'
-            ],
-            input: {
-              businessName: input.businessName,
-              description: input.description,
-              industry: input.industry,
-              city: input.city,
-              targetCustomers: input.targetCustomers,
-              competitors: input.competitors
-            },
-            reportFacts: {
-              score: report.score,
-              scoreLevel: report.scoreLevel,
-              promptCount: report.aiMeta.promptCount,
-              successCount: report.aiMeta.successCount,
-              mentionRate: report.stages.aiSearch.mentionRate,
-              mentionedCount: report.stages.aiSearch.mentionedCount,
-              riskFlags: report.stages.sentimentRisk.flags,
-              dimensionScores: report.stages.score.dimensions.map((item) => ({
-                name: item.name,
-                score: item.score,
-                comment: item.comment
-              })),
-              recommendations: report.stages.recommendations,
-              roadmap: report.stages.roadmap
-            },
-            expectedJsonShape: {
-              recommendations: [{ title: 'string', detail: 'string' }],
-              roadmap: [{ title: 'string', detail: 'string' }]
-            }
-          })
-        }
-      ]
-    } as never);
-
-    const content = completion.choices[0]?.message?.content;
-    if (!content) return report;
-    return mergeNarrative(report, JSON.parse(content) as NarrativeJsonResult);
-  } catch {
-    return report;
-  }
 }
 
 async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt: SamplePrompt): Promise<AiSample> {
@@ -259,39 +178,10 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
   };
 }
 
-function mergeNarrative(report: DiagnosisReport, ai: NarrativeJsonResult): DiagnosisReport {
-  const recommendations = report.stages.recommendations.map((item, index) => {
-    const rewrite = ai.recommendations?.[index];
-    return {
-      ...item,
-      title: safeText(rewrite?.title, item.title, 42),
-      detail: safeText(rewrite?.detail, item.detail, 160)
-    };
-  });
-
-  const roadmap = report.stages.roadmap.map((item, index) => {
-    const rewrite = ai.roadmap?.[index];
-    return {
-      ...item,
-      title: safeText(rewrite?.title, item.title, 36),
-      detail: safeText(rewrite?.detail, item.detail, 180)
-    };
-  });
-
-  return {
-    ...report,
-    stages: {
-      ...report.stages,
-      recommendations,
-      roadmap
-    }
-  };
-}
-
 function getConfig(): DeepSeekConfig {
   const bailianApiKey = process.env.BAILIAN_API_KEY || process.env.QWEN_API_KEY;
   return {
-    apiKey: readBoolean(process.env.DEEPSEEK_ENABLED, true) ? bailianApiKey : undefined,
+    apiKey: bailianApiKey,
     baseUrl:
       process.env.BAILIAN_BASE_URL ||
       process.env.QWEN_BASE_URL ||
@@ -299,15 +189,12 @@ function getConfig(): DeepSeekConfig {
     model: process.env.DEEPSEEK_MODEL || 'deepseek-v4-pro',
     fallbackModels: readCsv(process.env.DEEPSEEK_FALLBACK_MODELS, ['deepseek-v4-flash']),
     sampleConcurrency: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_CONCURRENCY, 5, 1, 10),
-    sampleMaxRetries: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_MAX_RETRIES, 1, 0, 2),
-    polishEnabled: readBoolean(process.env.DEEPSEEK_POLISH_ENABLED, false)
+    sampleMaxRetries: readBoundedInteger(process.env.DEEPSEEK_SAMPLE_MAX_RETRIES, 1, 0, 2)
   };
 }
 
 function getSamplingProviderConfigs(): SamplingProviderConfig[] {
   const deepseek = getConfig();
-  const hy3CostConfirmed = manualCostGuardConfirmed('HY3');
-  const doubaoCostConfirmed = manualCostGuardConfirmed('DOUBAO');
   const bailianApiKey = process.env.BAILIAN_API_KEY || process.env.QWEN_API_KEY;
   const bailianBaseUrl =
     process.env.BAILIAN_BASE_URL ||
@@ -326,12 +213,13 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       maxTokens: 650,
       readyNote: '阿里云百炼 DeepSeek 免费额度接口已配置，可进行真实采样。',
       sampledNote: '阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。',
-      samplingAllowed: Boolean(deepseek.apiKey),
+      enabled: readBoolean(process.env.DEEPSEEK_ENABLED, true),
+      samplingAllowed: readBoolean(process.env.DEEPSEEK_ENABLED, true) && Boolean(deepseek.apiKey),
       costGuard: deepseek.apiKey ? 'provider_enforced' : 'disabled'
     },
     {
       provider: 'hy3',
-      apiKey: readBoolean(process.env.HY3_ENABLED, true) ? process.env.HY3_API_KEY : undefined,
+      apiKey: process.env.HY3_API_KEY,
       baseUrl: process.env.HY3_BASE_URL || 'https://tokenhub.tencentmaas.com/v1',
       model: process.env.HY3_MODEL || 'hy3',
       sampleConcurrency: readBoundedInteger(process.env.HY3_SAMPLE_CONCURRENCY, 4, 1, 8),
@@ -340,12 +228,13 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       maxTokens: 500,
       readyNote: '腾讯 TokenHub Hy3 API key 已配置，可进行真实采样。',
       sampledNote: '腾讯 TokenHub Hy3 API 已完成真实采样。',
-      samplingAllowed: hy3CostConfirmed,
-      costGuard: hy3CostConfirmed ? 'manually_confirmed' : 'unknown'
+      enabled: readBoolean(process.env.HY3_ENABLED, true),
+      samplingAllowed: readBoolean(process.env.HY3_ENABLED, true) && Boolean(process.env.HY3_API_KEY),
+      costGuard: process.env.HY3_API_KEY ? 'user_authorized' : 'disabled'
     },
     {
       provider: 'qwen',
-      apiKey: readBoolean(process.env.QWEN_ENABLED, true) ? bailianApiKey : undefined,
+      apiKey: bailianApiKey,
       baseUrl: bailianBaseUrl,
       model: process.env.QWEN_MODEL || 'qwen3.7-plus',
       sampleConcurrency: readBoundedInteger(process.env.QWEN_SAMPLE_CONCURRENCY, 4, 1, 8),
@@ -354,14 +243,13 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       maxTokens: 500,
       readyNote: '阿里云百炼 Qwen API key 已配置，可进行真实采样。',
       sampledNote: '阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。',
-      samplingAllowed: Boolean(bailianApiKey),
+      enabled: readBoolean(process.env.QWEN_ENABLED, true),
+      samplingAllowed: readBoolean(process.env.QWEN_ENABLED, true) && Boolean(bailianApiKey),
       costGuard: bailianApiKey ? 'provider_enforced' : 'disabled'
     },
     {
       provider: 'doubao',
-      apiKey: readBoolean(process.env.DOUBAO_ENABLED, true)
-        ? process.env.DOUBAO_API_KEY || process.env.ARK_API_KEY
-        : undefined,
+      apiKey: process.env.DOUBAO_API_KEY || process.env.ARK_API_KEY,
       baseUrl: process.env.DOUBAO_BASE_URL || 'https://ark.cn-beijing.volces.com/api/v3',
       model: process.env.DOUBAO_MODEL || 'doubao-seed-2-0-lite-260215',
       fallbackModels: readCsv(process.env.DOUBAO_FALLBACK_MODELS, [
@@ -376,8 +264,9 @@ function getSamplingProviderConfigs(): SamplingProviderConfig[] {
       maxTokens: 500,
       readyNote: '火山方舟豆包 API key 已配置，可进行真实采样。',
       sampledNote: '火山方舟豆包 OpenAI-compatible API 已完成真实采样。',
-      samplingAllowed: doubaoCostConfirmed,
-      costGuard: doubaoCostConfirmed ? 'manually_confirmed' : 'unknown'
+      enabled: readBoolean(process.env.DOUBAO_ENABLED, true),
+      samplingAllowed: readBoolean(process.env.DOUBAO_ENABLED, true) && Boolean(process.env.DOUBAO_API_KEY || process.env.ARK_API_KEY),
+      costGuard: process.env.DOUBAO_API_KEY || process.env.ARK_API_KEY ? 'user_authorized' : 'disabled'
     }
   ];
 }
@@ -397,13 +286,16 @@ function buildRuntimeProviderStatus(config: SamplingProviderConfig, promptCount 
     successCount: 0,
     failureCount: 0,
     configured,
+    enabled: config.enabled,
     samplingAllowed,
     costGuard: configured ? config.costGuard : 'disabled',
     note: !configured
       ? `${config.provider} 官方采样接口未配置。`
+      : !config.enabled
+        ? `${config.provider} 已配置，但 provider 开关已关闭。`
       : samplingAllowed
-        ? `${config.readyNote} 此状态只表示配置与成本门允许，不代表最近调用成功。`
-        : `${config.provider} 已配置，但免费/计费边界未确认，成本保护已禁止采样。`
+        ? `${config.readyNote} 此状态只表示开关已启用且 key 已配置，不代表 key 当前有效或最近调用成功。`
+        : `${config.provider} 已配置，但当前不能参与采样。`
   };
 }
 
@@ -428,12 +320,6 @@ function readCsv(value: string | undefined, fallback: string[]) {
     .map((item) => item.trim())
     .filter(Boolean);
   return [...new Set(items)];
-}
-
-function manualCostGuardConfirmed(prefix: 'HY3' | 'DOUBAO') {
-  if (!readBoolean(process.env[`${prefix}_COST_GUARD_CONFIRMED`], false)) return false;
-  const until = Date.parse(process.env[`${prefix}_COST_GUARD_CONFIRMED_UNTIL`] ?? '');
-  return Number.isFinite(until) && until > Date.now();
 }
 
 function getModelCandidates(config: SamplingProviderConfig) {
@@ -474,13 +360,6 @@ async function runWithConcurrency<TInput, TOutput>(
 
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, next));
   return results;
-}
-
-function safeText(value: unknown, fallback: string, maxLength: number) {
-  if (typeof value !== 'string') return fallback;
-  const trimmed = value.trim();
-  if (!trimmed) return fallback;
-  return trimmed.length > maxLength ? `${trimmed.slice(0, maxLength)}...` : trimmed;
 }
 
 export function sanitizeProviderError(value: string) {

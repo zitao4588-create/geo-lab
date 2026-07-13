@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { sanitizeProviderError } from '../dist/server/server/deepseek.js';
+import { sanitizeProviderError } from '../dist/server/server/providers/sampling.js';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(appRoot, '../..');

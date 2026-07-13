@@ -92,7 +92,6 @@ export async function saveDiagnosis(
       businessName: input.businessName,
       industry: input.industry,
       city: input.city,
-      contact: input.contact ?? '',
       source: input.source ?? '',
       riskLevel: report.riskLevel,
       score: report.score,
@@ -150,7 +149,6 @@ export function buildDiagnosisRequestFingerprint(input: DiagnosisInput) {
     city: input.city.trim(),
     targetCustomers: input.targetCustomers.trim(),
     competitors: (input.competitors || '').trim(),
-    contact: (input.contact || '').trim(),
     source: (input.source || '').trim(),
     samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim()),
     confirmedBusinessType: input.confirmedBusinessType ?? ''
@@ -200,7 +198,7 @@ function buildEvidenceIndex(report: DiagnosisReport, samples: AiSample[], genera
       { type: 'html', path: `runtime/evidence/${report.id}/exports/report.html` },
       { type: 'evidence_package', path: `runtime/evidence/${report.id}/exports/evidence-package.json` }
     ],
-    notes: 'samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；联系方式只保存在 submissions.jsonl，不进入公开报告。'
+    notes: 'samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；运营来源只保存在 submissions.jsonl，不进入公开报告。'
   };
 }
 

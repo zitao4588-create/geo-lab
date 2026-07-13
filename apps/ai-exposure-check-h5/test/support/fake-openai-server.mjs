@@ -5,10 +5,12 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failMo
   let callCount = 0;
   let activeCount = 0;
   let peakConcurrency = 0;
+  let pageCallCount = 0;
   const requests = [];
 
   const server = http.createServer(async (request, response) => {
     if (request.method === 'GET' && Object.hasOwn(pages, request.url)) {
+      pageCallCount += 1;
       response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       response.end(pages[request.url]);
       return;
@@ -92,6 +94,9 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failMo
     },
     get peakConcurrency() {
       return peakConcurrency;
+    },
+    get pageCallCount() {
+      return pageCallCount;
     },
     requests,
     close: () => new Promise((resolve, reject) => {

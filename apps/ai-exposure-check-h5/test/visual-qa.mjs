@@ -16,7 +16,7 @@ try {
     await checkReport('fridge', 'diag_credibility_fridge', { width: 390, height: 844 });
     await checkReport('panasonic', 'diag_credibility_panasonic', { width: 1440, height: 1000 });
   }
-  if (visualCase === 'all' || visualCase === 'preflight') await checkPreflight();
+  if (visualCase === 'all' || visualCase === 'preflight') await checkValidationFeedback();
 } finally {
   await browser.close();
 }
@@ -42,7 +42,7 @@ async function checkReport(name, reportId, viewport) {
   await page.close();
 }
 
-async function checkPreflight() {
+async function checkValidationFeedback() {
   const page = await browser.newPage({ viewportSize: { width: 390, height: 844 } });
   page.setDefaultTimeout(5_000);
   const errors = captureErrors(page);
@@ -58,7 +58,7 @@ async function checkPreflight() {
   await page.waitForSelector('.preflight-card');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
   const cardText = await page.locator('.preflight-card').innerText();
-  const response = await page.request.post(`${baseUrl}/api/diagnoses/preflight`, {
+  const response = await page.request.post(`${baseUrl}/api/diagnoses`, {
     data: {
       businessName: '松下大锤子剃须刀',
       description: '电动剃须刀',
@@ -70,11 +70,11 @@ async function checkPreflight() {
       confirmedBusinessType: 'physical_product'
     }
   });
-  const assessment = await response.json();
+  const validationResponse = await response.json();
   await page.locator('.preflight-card').scrollIntoViewIfNeeded();
   await page.locator('.preflight-card').screenshot({ path: path.join(screenshotDir, 'preflight-card.png') });
   await page.screenshot({ path: path.join(screenshotDir, 'preflight-mobile-390x844.png'), fullPage: true });
-  checks.push({ name: 'preflight-mobile-390', overflow, cardText, assessment, errors });
+  checks.push({ name: 'preflight-mobile-390', overflow, cardText, validationResponse, errors });
   await page.close();
 }
 

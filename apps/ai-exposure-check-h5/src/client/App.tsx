@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Toast } from 'tdesign-mobile-react';
 import type { AiProvider, DiagnosisInput, DiagnosisReport, EvidenceLabel, InputAssessment, RiskLevel, ScoreDimension } from '../shared/types';
-import { ApiError, createDiagnosis, getDiagnosis, preflightDiagnosis } from './api';
+import { ApiError, createDiagnosis, getDiagnosis, getHealth } from './api';
+import { configureWechatShare } from './wechat';
 
 type Screen = 'start' | 'form' | 'loading' | 'result';
+interface AppHistoryState { screen: Screen; reportId?: string }
 
 const DEFAULT_CONSULT_WECHAT_TEXT = '请扫码添加微信';
 const CONSULT_WECHAT_ID = import.meta.env.VITE_CONSULT_WECHAT_ID?.trim() || DEFAULT_CONSULT_WECHAT_TEXT;
 const CONSULT_QR_PATH = '/wechat-qr.jpg';
+const SHARE_IMAGE_PATH = new URL('../../../../marketing/posters/poster-square.png', import.meta.url).href;
 const FORM_DRAFT_KEY = 'aiec_form_draft';
 const PENDING_REQUEST_KEY = 'aiec_pending_request';
 const SOURCE_QUERY_KEYS = ['from', 'utm_source'] as const;
@@ -36,7 +39,6 @@ const emptyForm: DiagnosisInput = {
   city: '',
   targetCustomers: '',
   competitors: '',
-  contact: '',
   source: ''
 };
 
@@ -122,7 +124,6 @@ function buildFormSignature(input: DiagnosisInput) {
     city: input.city.trim(),
     targetCustomers: input.targetCustomers.trim(),
     competitors: (input.competitors || '').trim(),
-    contact: (input.contact || '').trim(),
     source: (input.source || '').trim(),
     samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim())
   });
@@ -130,6 +131,33 @@ function buildFormSignature(input: DiagnosisInput) {
 
 function prefersReducedMotion() {
   return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+async function copyText(value: string) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+  } catch {
+    /* 继续尝试兼容复制 */
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = value;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+  try {
+    return document.execCommand('copy');
+  } catch {
+    return false;
+  } finally {
+    textarea.remove();
+  }
 }
 
 export function App() {
@@ -145,21 +173,84 @@ export function App() {
   const [error, setError] = useState('');
   const [errorCode, setErrorCode] = useState('');
   const [preflight, setPreflight] = useState<InputAssessment | null>(null);
+  const [samplingProviderCount, setSamplingProviderCount] = useState<number | null>(null);
+  const [wechatJssdkConfigured, setWechatJssdkConfigured] = useState(false);
+  const requestInFlightRef = useRef(false);
 
   useEffect(() => {
-    const search = new URLSearchParams(window.location.search);
-    const id = search.get('report');
-    if (!id) return;
-    setScreen('loading');
-    getDiagnosis(id)
-      .then(({ report: loadedReport }) => {
-        setReport(loadedReport);
-        setScreen('result');
+    getHealth()
+      .then((health) => {
+        setSamplingProviderCount(health.samplingAllowedProviderCount);
+        setWechatJssdkConfigured(Boolean(health.wechatJssdk?.configured));
       })
       .catch(() => {
-        setScreen('start');
-        Toast('没有找到这份 GEO 报告');
+        setSamplingProviderCount(null);
+        setWechatJssdkConfigured(false);
       });
+  }, []);
+
+  useEffect(() => {
+    if (!wechatJssdkConfigured) return;
+    const reportProviderCount = report?.stages.aiSearch.providerBreakdown.filter(
+      (provider) => provider.status === 'sampled' || provider.status === 'partial'
+    ).length ?? 0;
+    const link = window.location.href.split('#')[0] || window.location.href;
+    void configureWechatShare({
+      title: report ? `${report.brand} · AI曝光体检报告` : 'AI曝光体检 · 看清 AI 如何理解你的业务',
+      desc: report
+        ? `${reportProviderCount} 个模型真实采样；查看本次 GEO 证据、边界和行动建议。`
+        : '基于当前可用模型真实 API 采样和公开页面核验，生成可追溯的 GEO 初步报告。',
+      link,
+      imgUrl: new URL(SHARE_IMAGE_PATH, window.location.origin).href
+    });
+  }, [screen, report, wechatJssdkConfigured]);
+
+  useEffect(() => {
+    const loadFromUrl = () => {
+      const id = new URLSearchParams(window.location.search).get('report');
+      if (!id) {
+        const state = window.history.state as AppHistoryState | null;
+        const nextScreen = state?.screen === 'form' || state?.screen === 'loading' ? state.screen : 'start';
+        window.history.replaceState({ screen: nextScreen } satisfies AppHistoryState, '', window.location.href);
+        setScreen(nextScreen);
+        return;
+      }
+
+      window.history.replaceState({ screen: 'result', reportId: id } satisfies AppHistoryState, '', window.location.href);
+      setScreen('loading');
+      getDiagnosis(id)
+        .then(({ report: loadedReport }) => {
+          setReport(loadedReport);
+          setScreen('result');
+        })
+        .catch(() => {
+          const url = new URL(window.location.href);
+          url.searchParams.delete('report');
+          window.history.replaceState({ screen: 'start' } satisfies AppHistoryState, '', `${url.pathname}${url.search}`);
+          setScreen('start');
+          Toast('没有找到这份 GEO 报告');
+        });
+    };
+
+    const handlePopState = (event: PopStateEvent) => {
+      const state = event.state as AppHistoryState | null;
+      const id = new URLSearchParams(window.location.search).get('report');
+      if (state?.screen === 'result' && id) {
+        setScreen('loading');
+        getDiagnosis(id)
+          .then(({ report: loadedReport }) => {
+            setReport(loadedReport);
+            setScreen('result');
+          })
+          .catch(() => setScreen('start'));
+        return;
+      }
+      setScreen(state?.screen === 'form' || state?.screen === 'loading' ? state.screen : 'start');
+    };
+
+    loadFromUrl();
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   useEffect(() => {
@@ -208,6 +299,35 @@ export function App() {
     setPreflight(null);
   };
 
+  const finishDiagnosis = async (input: DiagnosisInput, clientRequestId: string) => {
+    if (requestInFlightRef.current) return;
+    requestInFlightRef.current = true;
+    try {
+      const result = await createDiagnosis({ ...input, clientRequestId });
+      setReport(result.report);
+      try {
+        sessionStorage.removeItem(FORM_DRAFT_KEY);
+      } catch {
+        /* ignore */
+      }
+      clearPendingRequestId();
+      window.history.replaceState(
+        { screen: 'result', reportId: result.report.id } satisfies AppHistoryState,
+        '',
+        `?report=${result.report.id}`
+      );
+      setScreen('result');
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : '生成失败，请稍后再试');
+      setErrorCode(submitError instanceof ApiError ? submitError.code : '');
+      setPreflight(submitError instanceof ApiError ? submitError.assessment ?? null : null);
+      if ((window.history.state as AppHistoryState | null)?.screen === 'loading') window.history.back();
+      setScreen('form');
+    } finally {
+      requestInFlightRef.current = false;
+    }
+  };
+
   const submit = async () => {
     if (!canSubmit) {
       Toast('请先补齐必填信息');
@@ -216,40 +336,67 @@ export function App() {
 
     setError('');
     setErrorCode('');
-    try {
-      const { assessment } = await preflightDiagnosis(form);
-      setPreflight(assessment);
-      if (assessment.status !== 'ready') {
-        setErrorCode('input_confirmation_required');
-        setError(assessment.note);
-        return;
-      }
+    setLoadingStep(0);
+    const clientRequestId = ensurePendingRequestId(form);
+    window.history.pushState({ screen: 'loading' } satisfies AppHistoryState, '', window.location.href);
+    setScreen('loading');
+    await finishDiagnosis(form, clientRequestId);
+  };
 
-      setLoadingStep(0);
-      setScreen('loading');
-      const clientRequestId = ensurePendingRequestId(form);
-      const result = await createDiagnosis({ ...form, clientRequestId });
-      setReport(result.report);
-      try {
-        sessionStorage.removeItem(FORM_DRAFT_KEY);
-      } catch {
-        /* ignore */
-      }
-      clearPendingRequestId();
-      window.history.replaceState(null, '', `?report=${result.report.id}`);
-      setScreen('result');
-    } catch (submitError) {
-      setError(submitError instanceof Error ? submitError.message : '生成失败，请稍后再试');
-      setErrorCode(submitError instanceof ApiError ? submitError.code : '');
-      setScreen('form');
+  useEffect(() => {
+    const resumePending = () => {
+      if (screen !== 'loading' || requestInFlightRef.current) return;
+      const pending = readPendingRequest();
+      if (!pending) return;
+      const draft = readDraft();
+      if (pending.signature !== buildFormSignature(draft)) return;
+      void finishDiagnosis(draft, pending.id);
+    };
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) resumePending();
+    };
+    const handlePageHide = () => {
+      window.history.replaceState(
+        { screen, reportId: report?.id } satisfies AppHistoryState,
+        '',
+        window.location.href
+      );
+      requestInFlightRef.current = false;
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') resumePending();
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('pagehide', handlePageHide);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('pagehide', handlePageHide);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, [screen, form, report]);
+
+  const openForm = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('report');
+    window.history.pushState({ screen: 'form' } satisfies AppHistoryState, '', `${url.pathname}${url.search}`);
+    setScreen('form');
+  };
+
+  const goBack = () => {
+    const state = window.history.state as AppHistoryState | null;
+    if (state?.screen && screen !== 'start') {
+      window.history.back();
+      return;
     }
+    setScreen(screen === 'result' ? 'form' : 'start');
   };
 
   return (
     <main className="app-shell">
       <div className={`phone-frame is-${screen}`}>
-        <Header screen={screen} onBack={() => setScreen(screen === 'result' ? 'form' : 'start')} />
-        {screen === 'start' && <StartScreen onStart={() => setScreen('form')} />}
+        <Header screen={screen} onBack={goBack} />
+        {screen === 'start' && <StartScreen samplingProviderCount={samplingProviderCount} onStart={openForm} />}
         {screen === 'form' && (
           <FormScreen
             form={form}
@@ -257,11 +404,12 @@ export function App() {
             errorCode={errorCode}
             canSubmit={canSubmit}
             preflight={preflight}
+            samplingProviderCount={samplingProviderCount}
             onChange={updateForm}
             onSubmit={submit}
           />
         )}
-        {screen === 'loading' && <LoadingScreen step={loadingStep} seconds={loadingSeconds} />}
+        {screen === 'loading' && <LoadingScreen step={loadingStep} seconds={loadingSeconds} samplingProviderCount={samplingProviderCount} />}
         {screen === 'result' && report && <ResultScreen report={report} onRestart={() => {
           setReport(null);
           setPreflight(null);
@@ -272,7 +420,7 @@ export function App() {
             /* ignore */
           }
           clearPendingRequestId();
-          window.history.replaceState(null, '', window.location.pathname);
+          window.history.replaceState({ screen: 'start' } satisfies AppHistoryState, '', window.location.pathname);
           setScreen('start');
         }} />}
       </div>
@@ -294,7 +442,7 @@ function Header({ screen, onBack }: { screen: Screen; onBack: () => void }) {
   );
 }
 
-function StartScreen({ onStart }: { onStart: () => void }) {
+function StartScreen({ samplingProviderCount, onStart }: { samplingProviderCount: number | null; onStart: () => void }) {
   return (
     <section className="screen start-screen">
       <div className="hero-copy">
@@ -317,7 +465,7 @@ function StartScreen({ onStart }: { onStart: () => void }) {
         </div>
       </div>
 
-      <p className="trust-line">三家云平台 · 4 个模型真实采样 · 证据可追溯</p>
+      <p className="trust-line">{samplingProviderCount == null ? '实时读取可用模型' : `${samplingProviderCount} 个模型可参与真实采样`} · 证据可追溯</p>
 
       <Button block size="large" theme="primary" className="primary-action" onClick={onStart}>
         免费测一次
@@ -335,6 +483,7 @@ function FormScreen({
   errorCode,
   canSubmit,
   preflight,
+  samplingProviderCount,
   onChange,
   onSubmit
 }: {
@@ -343,6 +492,7 @@ function FormScreen({
   errorCode: string;
   canSubmit: boolean;
   preflight: InputAssessment | null;
+  samplingProviderCount: number | null;
   onChange: (field: keyof DiagnosisInput, value: string) => void;
   onSubmit: () => void;
 }) {
@@ -374,7 +524,7 @@ function FormScreen({
       <StepHeader current={1} />
       <div className="section-title">
         <h2>填写业务资料</h2>
-        <p>免费版会并行调用 DeepSeek、千问、混元、豆包，生成最终 GEO 报告</p>
+        <p>{samplingProviderCount == null ? '系统会读取当前可用模型并进行真实采样' : `当前有 ${samplingProviderCount} 个模型可参与真实采样`}，最终报告只展示本次真实返回结果</p>
       </div>
 
       <div className="form-stack">
@@ -446,7 +596,7 @@ function FormScreen({
       {preflight && preflight.status !== 'ready' && (
         <div className="preflight-card" role="status">
           <div className="preflight-title">
-            <strong>先补资料，再开始四模型采样</strong>
+            <strong>先补资料，再开始真实模型采样</strong>
             <span>{preflight.score}/100 · {preflight.status === 'insufficient_evidence' ? '证据不足' : '需要确认'}</span>
           </div>
           <p>{preflight.note}</p>
@@ -495,8 +645,8 @@ function Field({
   );
 }
 
-function LoadingScreen({ step, seconds }: { step: number; seconds: number }) {
-  const tasks = ['生成采样问题', '并行采样四个模型', '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
+function LoadingScreen({ step, seconds, samplingProviderCount }: { step: number; seconds: number; samplingProviderCount: number | null }) {
+  const tasks = ['生成采样问题', `并行采样${samplingProviderCount == null ? '当前可用模型' : `${samplingProviderCount} 个可用模型`}`, '计算 GEO 成果得分', '整理证据边界', '生成行动路线'];
   const tips = [
     '本报告使用各 API 本次返回答案作为采样证据，不把它包装成消费端搜索或全网确定排名。',
     'GEO 小知识：AI 更容易引用有明确定义、适用人群和边界说明的页面。',
@@ -543,6 +693,7 @@ function LoadingScreen({ step, seconds }: { step: number; seconds: number }) {
 
 function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestart: () => void }) {
   const [consultOpen, setConsultOpen] = useState(false);
+  const [copyFallbackText, setCopyFallbackText] = useState('');
   const [showBar, setShowBar] = useState(false);
   const [displayScore, setDisplayScore] = useState(() => (prefersReducedMotion() ? report.score : 0));
   const coverRef = useRef<HTMLDivElement | null>(null);
@@ -598,16 +749,29 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   }, []);
 
   const copyReportLink = async () => {
-    if (!navigator.clipboard) {
-      Toast('当前浏览器不支持一键复制，请手动复制地址栏链接');
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(window.location.href);
+    if (await copyText(window.location.href)) {
       Toast('已复制报告链接');
-    } catch {
-      Toast('复制失败，请手动复制地址栏链接');
+    } else {
+      setCopyFallbackText(window.location.href);
     }
+  };
+
+  const shareReport = async () => {
+    const shareData = {
+      title: `${report.brand} · AI曝光体检报告`,
+      text: `${sampledProviders.length} 个模型真实采样，查看本次 GEO 证据与建议。`,
+      url: window.location.href
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+      }
+    }
+    await copyReportLink();
+    Toast('可点击微信右上角分享，或发送已复制的报告链接');
   };
 
   return (
@@ -645,7 +809,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
             : report.summary}
         </p>
         <div className="cover-foot">
-          <span>四模型 GEO 采样 {report.aiMeta.successCount}/{report.aiMeta.promptCount}</span>
+          <span>{sampledProviders.length} 个模型真实采样 · {report.aiMeta.successCount}/{report.aiMeta.promptCount} 次成功</span>
           <span>{formatDate(report.generatedAt)}</span>
         </div>
       </div>
@@ -847,12 +1011,17 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
 
       {report.exports && (
         <ResultBlock title="报告导出">
-          <p className="export-notice">可先查看报告；如需 PDF 或人工解读，请扫码联系后确认交付范围。</p>
-          <div className="export-grid">
-            <a href={report.exports.html} target="_blank" rel="noreferrer">HTML报告</a>
-            <a href={report.exports.markdown} target="_blank" rel="noreferrer">Markdown</a>
-            <a href={report.exports.evidencePackage} target="_blank" rel="noreferrer">证据包</a>
+          <p className="export-notice">微信用户可直接分享报告链接，或打开完整 HTML 报告。</p>
+          <div className="export-grid export-grid-main">
+            <button type="button" onClick={shareReport}>分享报告</button>
+            <a href={report.exports.html} target="_blank" rel="noreferrer">HTML 报告</a>
           </div>
+          <Collapse summary="查看技术证据">
+            <div className="export-grid export-grid-technical">
+              <a href={report.exports.markdown} target="_blank" rel="noreferrer">Markdown</a>
+              <a href={report.exports.evidencePackage} target="_blank" rel="noreferrer">JSON 证据包</a>
+            </div>
+          </Collapse>
         </ResultBlock>
       )}
 
@@ -873,6 +1042,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
       </div>
 
       {consultOpen && <ConsultModal onClose={() => setConsultOpen(false)} />}
+      {copyFallbackText && <SelectableTextModal value={copyFallbackText} onClose={() => setCopyFallbackText('')} />}
     </section>
   );
 }
@@ -892,18 +1062,13 @@ function Collapse({ summary, children }: { summary: string; children: React.Reac
 
 function ConsultModal({ onClose }: { onClose: () => void }) {
   const hasWechatId = CONSULT_WECHAT_ID !== DEFAULT_CONSULT_WECHAT_TEXT;
+  const [copyFallbackText, setCopyFallbackText] = useState('');
 
   const copyWechat = async () => {
-    if (!navigator.clipboard) {
-      Toast('当前浏览器不支持一键复制，请长按二维码添加');
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(CONSULT_WECHAT_ID);
+    if (await copyText(CONSULT_WECHAT_ID)) {
       Toast(hasWechatId ? '已复制微信号' : '已复制添加说明');
-    } catch {
-      Toast('复制失败，请长按二维码添加');
+    } else {
+      setCopyFallbackText(CONSULT_WECHAT_ID);
     }
   };
 
@@ -912,8 +1077,8 @@ function ConsultModal({ onClose }: { onClose: () => void }) {
       <button className="consult-backdrop" type="button" aria-label="关闭咨询弹层" onClick={onClose} />
       <div className="consult-panel">
         <button className="consult-close" type="button" aria-label="关闭" onClick={onClose}>×</button>
-        <h3>扫码添加微信</h3>
-        <p>发送报告 ID，可预约人工完整体检和页面优化建议。</p>
+        <h3>长按识别二维码</h3>
+        <p>微信内可长按识别二维码；也可以复制微信号，再返回微信添加。发送报告 ID 可预约人工解读。</p>
         <img src={CONSULT_QR_PATH} alt="微信咨询二维码" />
         <div className="consult-code">
           <span>微信号</span>
@@ -922,6 +1087,21 @@ function ConsultModal({ onClose }: { onClose: () => void }) {
         <Button block theme="primary" className="cta-button" onClick={copyWechat}>
           {hasWechatId ? '复制微信号' : '复制添加说明'}
         </Button>
+        {copyFallbackText && <SelectableTextModal value={copyFallbackText} onClose={() => setCopyFallbackText('')} />}
+      </div>
+    </div>
+  );
+}
+
+function SelectableTextModal({ value, onClose }: { value: string; onClose: () => void }) {
+  return (
+    <div className="consult-modal selectable-modal" role="dialog" aria-modal="true" aria-label="手动复制">
+      <button className="consult-backdrop" type="button" aria-label="关闭手动复制" onClick={onClose} />
+      <div className="consult-panel">
+        <button className="consult-close" type="button" aria-label="关闭" onClick={onClose}>×</button>
+        <h3>长按选择并复制</h3>
+        <p>当前微信版本未开放自动复制，请长按下面文字后选择“复制”。</p>
+        <textarea readOnly value={value} onFocus={(event) => event.currentTarget.select()} aria-label="可复制文本" />
       </div>
     </div>
   );
