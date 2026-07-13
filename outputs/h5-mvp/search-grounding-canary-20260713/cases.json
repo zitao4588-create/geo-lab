@@ -1,0 +1,125 @@
+[
+  {
+    "id": "F1",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "flomo 浮墨笔记",
+    "expected_terms": ["flomo", "浮墨"],
+    "expected_official_domains": ["flomoapp.com"]
+  },
+  {
+    "id": "F2",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "official_source",
+    "query": "flomo 浮墨笔记 官网 官方",
+    "expected_terms": ["flomo", "浮墨"],
+    "expected_official_domains": ["flomoapp.com"]
+  },
+  {
+    "id": "F3",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "unbranded_category",
+    "query": "卡片笔记 碎片想法 持续回顾 知识管理工具",
+    "expected_terms": ["flomo", "浮墨"],
+    "expected_official_domains": []
+  },
+  {
+    "id": "D1",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "追觅 Dreame X50 Ultra",
+    "expected_terms": ["Dreame X50 Ultra", "追觅 X50 Ultra"],
+    "expected_official_domains": ["global.dreametech.com"]
+  },
+  {
+    "id": "D2",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "official_source",
+    "query": "追觅 Dreame X50 Ultra 官网 官方 产品页",
+    "expected_terms": ["Dreame X50 Ultra", "追觅 X50 Ultra"],
+    "expected_official_domains": ["global.dreametech.com"]
+  },
+  {
+    "id": "D3",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "unbranded_category",
+    "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+    "expected_terms": ["Dreame X50 Ultra", "追觅 X50 Ultra"],
+    "expected_official_domains": []
+  },
+  {
+    "id": "A1",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "exact_entity",
+    "query": "支付宝",
+    "expected_terms": ["支付宝", "Alipay"],
+    "expected_official_domains": ["alipay.cn"]
+  },
+  {
+    "id": "A2",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "official_source",
+    "query": "支付宝 官网 官方",
+    "expected_terms": ["支付宝", "Alipay"],
+    "expected_official_domains": ["alipay.cn"]
+  },
+  {
+    "id": "A3",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "unbranded_category",
+    "query": "移动支付 转账 生活缴费 平台",
+    "expected_terms": ["支付宝", "Alipay"],
+    "expected_official_domains": []
+  },
+  {
+    "id": "N1",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "exact_entity",
+    "query": "栖栈清单",
+    "expected_terms": [],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  {
+    "id": "N2",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "official_source",
+    "query": "栖栈清单 官网 官方 应用",
+    "expected_terms": [],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  {
+    "id": "N3",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "competitor_context",
+    "query": "栖栈清单 PackPoint 旅行打包清单应用",
+    "expected_terms": ["PackPoint"],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  }
+]

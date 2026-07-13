@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://flomoapp.com/",
+    "accessible": true,
+    "verification_method": "independent_web_open",
+    "verified_at": "2026-07-13T22:37:00+08:00",
+    "note": "页面可打开，内容明确为 flomo 浮墨笔记官网。"
+  },
+  {
+    "url": "https://global.dreametech.com/products/x50-ultra",
+    "accessible": true,
+    "verification_method": "independent_web_open",
+    "verified_at": "2026-07-13T22:37:00+08:00",
+    "note": "页面可打开，内容明确为 Dreame X50 Ultra 官方产品页。"
+  },
+  {
+    "url": "https://www.alipay.com/",
+    "accessible": true,
+    "verification_method": "independent_web_open",
+    "verified_at": "2026-07-13T22:37:00+08:00",
+    "note": "页面可打开，标题为支付宝。"
+  },
+  {
+    "url": "https://open.alipay.com/portal/forum",
+    "accessible": true,
+    "verification_method": "independent_web_open",
+    "verified_at": "2026-07-13T22:37:00+08:00",
+    "note": "页面可打开，标题为开放平台。"
+  }
+]

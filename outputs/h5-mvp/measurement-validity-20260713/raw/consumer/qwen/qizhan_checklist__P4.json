@@ -1,0 +1,44 @@
+{
+  "platform": "qwen_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "Qwen3.7-千问（默认模式）",
+  "captured_at": "2026-07-13T11:11:23.485Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P4",
+  "prompt": "关于栖栈清单，你能确认哪些官方或可信公开来源？请给出来源名称和可访问链接，并区分已核验事实与推断。找不到就明确说找不到，不要编造链接。",
+  "answer": "经过多轮搜索，我需要如实告诉你：\n我没有找到任何关于\"栖栈清单\"的官方或可信公开来源。\n具体来说：\n搜索\"栖栈清单\"后，唯一出现的结果是携程上一个名为\"文渊楼·栖栈\"的丽江民宿，与\"清单\"概念无关。\n在 GitHub、Gitee、知乎等平台上也没有找到以\"栖栈清单\"命名的项目、文档或讨论。\n没有任何技术博客、官方文档或权威媒体提及过\"栖栈清单\"这一概念。\n可能的情况\n名称有误或存在变体：你可能记错了名称，或者它使用了不同的写法（比如\"栖栈\"可能是某个项目/工具的内部代号）。\n非公开资源：它可能是某个私有项目、内部文档、小范围社群中的概念，没有公开索引。\n非常新的概念：如果它刚刚出现，可能尚未被搜索引擎收录。\n建议\n如果你能提供更多上下文——比如你是在哪里看到\"栖栈清单\"这个说法的、它大致属于哪个领域（技术、管理、旅行等），我可以帮你进一步定向搜索。否则，基于目前的公开信息，我无法确认它的来源，也不会编造链接。",
+  "searched_web": true,
+  "search_trace": "已完成分析",
+  "links": [
+    {
+      "href": "https://hotels.corporatetravel.ctrip.com/hotels/115581448.html",
+      "text": "文渊楼·栖栈预订价格,联系电话位置地址【携程酒店】"
+    },
+    {
+      "href": "https://hotels.corporatetravel.ctrip.com/hotels/115581448.html",
+      "text": "文渊楼·栖栈预订价格,联系电话位置地址【携程酒店】"
+    },
+    {
+      "href": "https://copycat.gitee.com/",
+      "text": "CopyCat - Gitee 代码克隆检测工具"
+    },
+    {
+      "href": "https://code.itcent.cn/docs/git.html",
+      "text": "Git 备忘清单 & git cheatsheet & 速查表"
+    },
+    {
+      "href": "https://36kr.com/p/3876746138415108",
+      "text": "Karpathy又封神，掀翻RAG，把你的笔记变成第二大脑-36氪"
+    },
+    {
+      "href": "https://learn.microsoft.com/zh-cn/training/modules/create-custom-github-actions/publish-custom-github-action",
+      "text": "发布自定义 GitHub 操作 - Training | Microsoft Learn"
+    },
+    {
+      "href": "https://blog.csdn.net/weixin_44700876/article/details/162764937",
+      "text": "AI 每次都要重新“认识“项目？给它一份会自己长大的知识库-CSDN博客"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/qwen/qizhan_checklist__P4.png"
+}

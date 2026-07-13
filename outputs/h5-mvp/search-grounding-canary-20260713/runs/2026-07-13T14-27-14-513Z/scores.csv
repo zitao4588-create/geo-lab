@@ -1,0 +1,13 @@
+provider,case_id,entity,role,query_type,status,latency_ms,result_count,exact_entity_hit,official_domain_hit,official_domain_position,negative_entity_invented,citations_accessible,raw_evidence_path,error
+jina,F1,flomo 浮墨笔记,target,exact_entity,success,8028,5,yes,yes,1,not_applicable,manual_review_required,raw/jina/F1.json,
+jina,F2,flomo 浮墨笔记,target,official_source,success,2371,5,yes,yes,1,not_applicable,manual_review_required,raw/jina/F2.json,
+jina,F3,flomo 浮墨笔记,target,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,manual_review_required,raw/jina/F3.json,The operation was aborted due to timeout
+jina,D1,追觅 Dreame X50 Ultra,target,exact_entity,failed,12002,0,no,no,,not_applicable,manual_review_required,raw/jina/D1.json,The operation was aborted due to timeout
+jina,D2,追觅 Dreame X50 Ultra,target,official_source,failed,12002,0,no,no,,not_applicable,manual_review_required,raw/jina/D2.json,The operation was aborted due to timeout
+jina,D3,追觅 Dreame X50 Ultra,target,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,manual_review_required,raw/jina/D3.json,The operation was aborted due to timeout
+jina,A1,支付宝,positive_control,exact_entity,success,5607,5,yes,no,,not_applicable,manual_review_required,raw/jina/A1.json,
+jina,A2,支付宝,positive_control,official_source,success,9854,5,yes,no,,not_applicable,manual_review_required,raw/jina/A2.json,
+jina,A3,支付宝,positive_control,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,manual_review_required,raw/jina/A3.json,The operation was aborted due to timeout
+jina,N1,栖栈清单,negative_control,exact_entity,failed,12001,0,not_applicable,not_applicable,,manual_review_required,manual_review_required,raw/jina/N1.json,The operation was aborted due to timeout
+jina,N2,栖栈清单,negative_control,official_source,failed,12002,0,not_applicable,not_applicable,,manual_review_required,manual_review_required,raw/jina/N2.json,The operation was aborted due to timeout
+jina,N3,栖栈清单,negative_control,competitor_context,failed,12001,0,no,not_applicable,,manual_review_required,manual_review_required,raw/jina/N3.json,The operation was aborted due to timeout

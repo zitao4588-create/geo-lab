@@ -8,6 +8,7 @@ import type {
   DiagnosisSuggestion,
   EvidenceLabel,
   PageAuditResult,
+  PublicWebGrounding,
   ReportAnswerSample,
   RiskLevel,
   SamplePrompt,
@@ -135,7 +136,8 @@ export function buildFinalGeoReport(
   input: DiagnosisInput,
   samples: AiSample[],
   pageAudit: PageAuditResult,
-  providerStatuses: AiProviderStatus[]
+  providerStatuses: AiProviderStatus[],
+  publicWeb?: PublicWebGrounding
 ): DiagnosisReport {
   const id = `diag_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
   const context = analyzeSamples(input, samples, pageAudit, providerStatuses);
@@ -149,7 +151,7 @@ export function buildFinalGeoReport(
     throw new Error('no_successful_samples');
   }
 
-  const dimensions = buildScoreDimensions(input, context);
+  const dimensions = buildScoreDimensions(input, context, publicWeb);
   const score = clampScore(Math.round(dimensions.reduce((total, item) => total + item.score * item.weight, 0)));
   const scoreLevel = toScoreLevel(score);
   const riskLevel = toRiskLevel(score);
@@ -166,7 +168,8 @@ export function buildFinalGeoReport(
     : samplingCoverage < 1 && sourceConfidence === 'high'
       ? 'medium'
       : sourceConfidence;
-  const scoreStatus = confidence === 'low' ? 'withheld' : 'available';
+  const preliminaryScoreReady = samplingCoverage >= 0.5 && publicWeb?.discovery.status === 'available';
+  const scoreStatus = confidence === 'low' && !preliminaryScoreReady ? 'withheld' : 'available';
   const topMentionedPrompts = unique(context.analyzedAnswers
     .filter((item) => item.mentionedBrand)
     .map((item) => item.prompt))
@@ -199,7 +202,7 @@ export function buildFinalGeoReport(
     evidencePolicy: {
       labels: ['raw_source', 'verified_external', 'sampled_ai_answer', 'model_inference', 'suggested_supplement'],
       notes:
-        `本报告基于用户提交资料、公开 URL 抓取审计、${sampledProviderNames || '已配置模型'} API 实时问答采样和透明规则评分生成。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。采样答案代表本次模型响应，不等于全网搜索排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。`
+        `本报告基于用户提交资料、公开 URL 抓取审计、${sampledProviderNames || '已配置模型'} API 实时问答采样和透明规则评分生成。联网搜索只用于“公开证据可发现度”维度，候选页面不自动成为已核验事实。各平台回答按成功样本等权汇总；API 响应不等于对应消费端产品的搜索结果。初步诊断分不等于消费端曝光或稳定排名，也不承诺后续 AI 推荐提升；未配置的平台不会生成模拟结果。`
     },
     stages: {
       overview: {
@@ -232,7 +235,7 @@ export function buildFinalGeoReport(
       },
       score: {
         label: scoreStatus === 'available'
-          ? `GEO 分析成果得分：${score}/100（${scoreLevel}）`
+          ? `初步诊断分：${score}/100（${scoreLevel}）`
           : '证据不足：暂不展示总分',
         dimensions
       },
@@ -255,6 +258,7 @@ export function buildFinalGeoReport(
         checks: context.infrastructureChecks,
         pageAudit: context.pageAudit
       },
+      ...(publicWeb ? { publicWeb } : {}),
       competitors: {
         names: context.competitors,
         mentionStats: buildCompetitorMentionStats(context),
@@ -377,7 +381,7 @@ function analyzeAnswer(
   };
 }
 
-function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): ScoreDimension[] {
+function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext, publicWeb?: PublicWebGrounding): ScoreDimension[] {
   const competitorMentionTotal = context.competitorStats.reduce((total, item) => total + item.mentionedCount, 0);
   const competitorScore =
     context.competitors.length === 0
@@ -395,22 +399,33 @@ function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): 
       coveredCategories * 4)
   );
 
+  const weights = publicWeb
+    ? { visibility: 0.30, publicEvidence: 0.15, infrastructure: 0.20, competitor: 0.15, content: 0.12, trust: 0.08 }
+    : { visibility: 0.32, publicEvidence: 0, infrastructure: 0.22, competitor: 0.18, content: 0.16, trust: 0.12 };
   return [
     {
       code: 'AI_SEARCH_VISIBILITY',
       name: '可信 AI 可见度',
       score: trustworthyVisibility,
-      weight: 0.32,
+      weight: weights.visibility,
       comment: context.correctEntityRecognitionRate === null
         ? `字符串出现率为 ${toPercent(context.mentionRate)}，但缺少可核验实体事实，不能认定为正确识别；无品牌词自然推荐率为 ${toPercent(context.naturalRecommendationRate)}。`
         : `正确实体识别率 ${toPercent(context.correctEntityRecognitionRate)}；无品牌词自然推荐率 ${toPercent(context.naturalRecommendationRate)}。`,
       evidenceLabel: context.correctEntityRecognitionRate === null ? 'model_inference' : 'sampled_ai_answer'
     },
+    ...(publicWeb ? [{
+      code: 'PUBLIC_EVIDENCE_DISCOVERY',
+      name: '公开证据可发现度',
+      score: publicWeb.discovery.score,
+      weight: weights.publicEvidence,
+      comment: `${publicWeb.discovery.successfulProviderCount}/${publicWeb.discovery.attemptedProviderCount} 个搜索来源成功，发现 ${publicWeb.discovery.brandMatchedCandidateCount} 条品牌相关候选、${publicWeb.discovery.officialCandidateCount} 条提交官网候选；候选尚未逐条核验。`,
+      evidenceLabel: 'suggested_supplement' as const
+    }] : []),
     {
       code: 'INFRASTRUCTURE',
       name: '可查证基建',
       score: context.infrastructureScore,
-      weight: 0.22,
+      weight: weights.infrastructure,
       comment: context.pageAudit.targets.length > 0
         ? `已审计 ${context.pageAudit.targets.length} 个公开 URL，${context.pageAudit.summary.ok} 个通过，${context.pageAudit.summary.warn} 个需补强。`
         : '未提交可审计 URL，本维度按 0 计并在报告中显示“未检测”。',
@@ -420,7 +435,7 @@ function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): 
       code: 'COMPETITOR_PRESSURE',
       name: '竞品压制风险',
       score: competitorScore,
-      weight: 0.18,
+      weight: weights.competitor,
       comment:
         context.competitors.length > 0
           ? `已对比 ${context.competitors.length} 个竞品；若竞品在答案中出现多于本品牌，会压低该项。`
@@ -431,7 +446,7 @@ function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): 
       code: 'CONTENT_ALIGNMENT',
       name: '语义与场景匹配',
       score: contentScore,
-      weight: 0.16,
+      weight: weights.content,
       comment: '根据一句话定位、目标客户、采样问题覆盖的品牌/品类/功能/人群场景综合判断。',
       evidenceLabel: 'model_inference'
     },
@@ -439,7 +454,7 @@ function buildScoreDimensions(input: DiagnosisInput, context: AnalysisContext): 
       code: 'TRUST_RISK',
       name: '信任与风险解释',
       score: clampScore(100 - trustPenalty),
-      weight: 0.12,
+      weight: weights.trust,
       comment: context.riskFlags.length > 0 ? `采样答案出现 ${context.riskFlags.length} 类信任/风险信号。` : '本次采样没有明显负面信号，但仍需要持续监测。',
       evidenceLabel: context.riskFlags.length > 0 ? 'sampled_ai_answer' : 'model_inference'
     }
@@ -910,7 +925,7 @@ function buildSummary(
   context: AnalysisContext
 ) {
   const scoreCopy = scoreStatus === 'available'
-    ? `综合得分 ${score}/100（${scoreLevel}）`
+    ? `初步诊断分 ${score}/100（${scoreLevel}）`
     : '因证据或模型覆盖不足，暂不展示总分';
   const recognition = context.correctEntityRecognitionRate === null ? '无法判断' : toPercent(context.correctEntityRecognitionRate);
   const audit = context.pageAudit.targets.length > 0

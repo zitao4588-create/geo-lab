@@ -1,0 +1,129 @@
+entity,entity_role,prompt_id,channel,platform,model_or_mode,searched_web,entity_recognition,spontaneous_mention,mention_position,factual_accuracy,major_hallucination,citations_present,citations_valid,official_source_present,raw_evidence_path,evaluator_note
+flomo 浮墨笔记,target,P1,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/deepseek/flomo__P1.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P1,api,腾讯元宝,hy3,false,partial,not_applicable,,correct,no,no,no,no,raw/api/hy3/flomo__P1.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P1,api,通义,qwen3.7-plus,false,correct,not_applicable,,correct,no,no,no,no,raw/api/qwen/flomo__P1.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P1,api,豆包,doubao-seed-2-0-lite-260215,false,correct,not_applicable,,correct,no,no,no,no,raw/api/doubao/flomo__P1.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P2,api,DeepSeek,deepseek-v4-pro,false,unknown,no,,unverifiable,no,no,no,no,raw/api/deepseek/flomo__P2.md,自然推荐中未提及被测实体。
+flomo 浮墨笔记,target,P2,api,腾讯元宝,hy3,false,unknown,yes,3,unverifiable,no,no,no,no,raw/api/hy3/flomo__P2.md,自然推荐中提及被测实体。
+flomo 浮墨笔记,target,P2,api,通义,qwen3.7-plus,false,unknown,no,,unverifiable,no,no,no,no,raw/api/qwen/flomo__P2.md,自然推荐中未提及被测实体。
+flomo 浮墨笔记,target,P2,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,no,,unverifiable,no,no,no,no,raw/api/doubao/flomo__P2.md,自然推荐中未提及被测实体。
+flomo 浮墨笔记,target,P3,api,DeepSeek,deepseek-v4-pro,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/deepseek/flomo__P3.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P3,api,腾讯元宝,hy3,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/hy3/flomo__P3.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P3,api,通义,qwen3.7-plus,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/qwen/flomo__P3.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P3,api,豆包,doubao-seed-2-0-lite-260215,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/doubao/flomo__P3.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,api,DeepSeek,deepseek-v4-pro,false,partial,not_applicable,,correct,no,yes,no,yes,raw/api/deepseek/flomo__P4.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,api,腾讯元宝,hy3,false,correct,not_applicable,,mixed,no,yes,yes,yes,raw/api/hy3/flomo__P4.md,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,api,通义,qwen3.7-plus,false,correct,not_applicable,,wrong,yes,yes,no,yes,raw/api/qwen/flomo__P4.md,把未实时核验内容标为已核验，并给出错误或不支持主张的官方/App Store 链接。
+flomo 浮墨笔记,target,P4,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/doubao/flomo__P4.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,unverifiable,no,no,no,no,raw/api/deepseek/dreame_x50_ultra__P1.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,api,腾讯元宝,hy3,false,unknown,not_applicable,,unverifiable,no,no,no,no,raw/api/hy3/dreame_x50_ultra__P1.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,api,通义,qwen3.7-plus,false,unknown,not_applicable,,unverifiable,no,no,no,no,raw/api/qwen/dreame_x50_ultra__P1.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,unverifiable,no,no,no,no,raw/api/doubao/dreame_x50_ultra__P1.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P2,api,DeepSeek,deepseek-v4-pro,false,unknown,no,,unverifiable,no,no,no,no,raw/api/deepseek/dreame_x50_ultra__P2.md,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P2,api,腾讯元宝,hy3,false,unknown,no,,unverifiable,no,no,no,no,raw/api/hy3/dreame_x50_ultra__P2.md,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P2,api,通义,qwen3.7-plus,false,unknown,no,,unverifiable,no,no,no,no,raw/api/qwen/dreame_x50_ultra__P2.md,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P2,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,unverifiable,no,no,no,no,raw/api/doubao/dreame_x50_ultra__P2.md,API failure: Request timed out.
+追觅 Dreame X50 Ultra,target,P3,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/deepseek/dreame_x50_ultra__P3.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P3,api,腾讯元宝,hy3,false,partial,not_applicable,,mixed,no,no,no,no,raw/api/hy3/dreame_x50_ultra__P3.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P3,api,通义,qwen3.7-plus,false,wrong,not_applicable,,wrong,yes,no,no,no,raw/api/qwen/dreame_x50_ultra__P3.md,与官方事实相反：断言 X50 Ultra / X8 PRO OMNI 不存在或未发布。
+追觅 Dreame X50 Ultra,target,P3,api,豆包,doubao-seed-2-0-lite-260215,false,wrong,not_applicable,,wrong,yes,no,no,no,raw/api/doubao/dreame_x50_ultra__P3.md,严重编造或混淆多项核心规格，不能作为产品比较依据。
+追觅 Dreame X50 Ultra,target,P4,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,mixed,no,yes,no,no,raw/api/deepseek/dreame_x50_ultra__P4.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P4,api,腾讯元宝,hy3,false,partial,not_applicable,,mixed,no,yes,yes,yes,raw/api/hy3/dreame_x50_ultra__P4.md,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P4,api,通义,qwen3.7-plus,false,wrong,not_applicable,,wrong,yes,yes,no,yes,raw/api/qwen/dreame_x50_ultra__P4.md,与官方事实相反：断言 X50 Ultra / X8 PRO OMNI 不存在或未发布。
+追觅 Dreame X50 Ultra,target,P4,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/doubao/dreame_x50_ultra__P4.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,api,DeepSeek,deepseek-v4-pro,false,correct,not_applicable,,correct,no,no,no,no,raw/api/deepseek/alipay__P1.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,api,腾讯元宝,hy3,false,correct,not_applicable,,correct,no,no,no,no,raw/api/hy3/alipay__P1.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,api,通义,qwen3.7-plus,false,correct,not_applicable,,correct,no,no,no,no,raw/api/qwen/alipay__P1.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,api,豆包,doubao-seed-2-0-lite-260215,false,correct,not_applicable,,correct,no,no,no,no,raw/api/doubao/alipay__P1.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P2,api,DeepSeek,deepseek-v4-pro,false,unknown,yes,1,unverifiable,no,no,no,no,raw/api/deepseek/alipay__P2.md,自然推荐中提及被测实体。
+支付宝,positive_control,P2,api,腾讯元宝,hy3,false,unknown,yes,2,unverifiable,no,no,no,no,raw/api/hy3/alipay__P2.md,自然推荐中提及被测实体。
+支付宝,positive_control,P2,api,通义,qwen3.7-plus,false,unknown,yes,1,unverifiable,no,no,no,no,raw/api/qwen/alipay__P2.md,自然推荐中提及被测实体。
+支付宝,positive_control,P2,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,yes,2,unverifiable,no,no,no,no,raw/api/doubao/alipay__P2.md,自然推荐中提及被测实体。
+支付宝,positive_control,P3,api,DeepSeek,deepseek-v4-pro,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/deepseek/alipay__P3.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P3,api,腾讯元宝,hy3,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/hy3/alipay__P3.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P3,api,通义,qwen3.7-plus,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/qwen/alipay__P3.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P3,api,豆包,doubao-seed-2-0-lite-260215,false,correct,not_applicable,,mixed,no,no,no,no,raw/api/doubao/alipay__P3.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,api,DeepSeek,deepseek-v4-pro,false,correct,not_applicable,,correct,no,yes,no,yes,raw/api/deepseek/alipay__P4.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,api,腾讯元宝,hy3,false,correct,not_applicable,,correct,no,yes,yes,yes,raw/api/hy3/alipay__P4.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,api,通义,qwen3.7-plus,false,correct,not_applicable,,mixed,no,yes,yes,yes,raw/api/qwen/alipay__P4.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,api,豆包,doubao-seed-2-0-lite-260215,false,correct,not_applicable,,correct,no,yes,yes,yes,raw/api/doubao/alipay__P4.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/deepseek/qizhan_checklist__P1.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,api,腾讯元宝,hy3,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/hy3/qizhan_checklist__P1.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,api,通义,qwen3.7-plus,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/qwen/qizhan_checklist__P1.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/doubao/qizhan_checklist__P1.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P2,api,DeepSeek,deepseek-v4-pro,false,unknown,no,,unverifiable,no,no,no,no,raw/api/deepseek/qizhan_checklist__P2.md,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P2,api,腾讯元宝,hy3,false,unknown,no,,unverifiable,no,no,no,no,raw/api/hy3/qizhan_checklist__P2.md,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P2,api,通义,qwen3.7-plus,false,unknown,no,,unverifiable,no,no,no,no,raw/api/qwen/qizhan_checklist__P2.md,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P2,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,no,,unverifiable,no,no,no,no,raw/api/doubao/qizhan_checklist__P2.md,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P3,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/deepseek/qizhan_checklist__P3.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P3,api,腾讯元宝,hy3,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/hy3/qizhan_checklist__P3.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P3,api,通义,qwen3.7-plus,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/qwen/qizhan_checklist__P3.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P3,api,豆包,doubao-seed-2-0-lite-260215,false,wrong,not_applicable,,wrong,yes,no,no,no,raw/api/doubao/qizhan_checklist__P3.md,严重编造：把不存在实体写成国内行李清单工具，并虚构受众、下载渠道和榜单依据。
+栖栈清单,negative_control,P4,api,DeepSeek,deepseek-v4-pro,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/deepseek/qizhan_checklist__P4.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,api,腾讯元宝,hy3,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/hy3/qizhan_checklist__P4.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,api,通义,qwen3.7-plus,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/qwen/qizhan_checklist__P4.md,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,api,豆包,doubao-seed-2-0-lite-260215,false,unknown,not_applicable,,correct,no,no,no,no,raw/api/doubao/qizhan_checklist__P4.md,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,correct,no,yes,no,no,raw/consumer/deepseek/alipay__P1.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P2,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,unknown,yes,,unverifiable,no,yes,no,no,raw/consumer/deepseek/alipay__P2.json,自然推荐中提及被测实体。
+支付宝,positive_control,P3,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/deepseek/alipay__P3.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/deepseek/alipay__P4.json,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/deepseek/dreame_x50_ultra__P1.json,联网后正确识别并比较 X50 Ultra；与离线 DeepSeek API 的不认识方向冲突。
+追觅 Dreame X50 Ultra,target,P2,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,unknown,no,,unverifiable,no,yes,no,no,raw/consumer/deepseek/dreame_x50_ultra__P2.json,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P3,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/deepseek/dreame_x50_ultra__P3.json,联网后正确识别并比较 X50 Ultra；与离线 DeepSeek API 的不认识方向冲突。
+追觅 Dreame X50 Ultra,target,P4,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,yes,no,raw/consumer/deepseek/dreame_x50_ultra__P4.json,提供第三方来源，但称未找到官网产品页；实际存在品牌官方产品页。
+flomo 浮墨笔记,target,P1,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,correct,no,yes,no,no,raw/consumer/deepseek/flomo__P1.json,联网后正确识别 flomo；与 DeepSeek API 明确无法确认的方向冲突。
+flomo 浮墨笔记,target,P2,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,unknown,no,,unverifiable,no,yes,no,no,raw/consumer/deepseek/flomo__P2.json,自然推荐中未提及被测实体。
+flomo 浮墨笔记,target,P3,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/deepseek/flomo__P3.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/deepseek/flomo__P4.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,false,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/deepseek/qizhan_checklist__P1.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P2,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,unknown,no,,unverifiable,no,yes,no,no,raw/consumer/deepseek/qizhan_checklist__P2.json,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P3,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,true,unknown,not_applicable,,correct,no,yes,no,no,raw/consumer/deepseek/qizhan_checklist__P3.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,consumer,DeepSeek,DeepSeek 快速模式（默认；未手动开启智能搜索）,false,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/deepseek/qizhan_checklist__P4.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,consumer,通义,Qwen3.7-千问（默认模式）,true,correct,not_applicable,,correct,no,yes,no,no,raw/consumer/qwen/alipay__P1.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P2,consumer,通义,Qwen3.7-千问（默认模式）,true,unknown,yes,,unverifiable,no,yes,no,no,raw/consumer/qwen/alipay__P2.json,自然推荐中提及被测实体。
+支付宝,positive_control,P3,consumer,通义,Qwen3.7-千问（默认模式）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/qwen/alipay__P3.json,生成卡住，停止后只保留到内部生成过程，未取得最终回答。
+支付宝,positive_control,P4,consumer,通义,Qwen3.7-千问（默认模式）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/qwen/alipay__P4.json,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,consumer,通义,Qwen3.7-千问 default,false,correct,not_applicable,,correct,no,no,no,no,raw/consumer/qwen/dreame_x50_ultra__P1.json,未显示搜索，但正确识别 X50 Ultra 及 ProLeap 越障等核心特征；与 Qwen API 的“不确认/可能不存在”方向冲突。
+追觅 Dreame X50 Ultra,target,P2,consumer,通义,Qwen3.7-千问（默认模式）,false,unknown,no,,unverifiable,no,no,no,no,raw/consumer/qwen/dreame_x50_ultra__P2.json,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P3,consumer,通义,Qwen3.7-千问（默认模式）,false,correct,not_applicable,,mixed,no,no,no,no,raw/consumer/qwen/dreame_x50_ultra__P3.json,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P4,consumer,通义,Qwen3.7-千问（默认模式）,true,correct,not_applicable,,mixed,no,yes,yes,no,raw/consumer/qwen/dreame_x50_ultra__P4.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P1,consumer,通义,Qwen3.7-千问 default,true,correct,not_applicable,,mixed,yes,yes,no,no,raw/consumer/qwen/flomo__P1.json,自动搜索但把运营公司“上海仙蒂”错写为“上海鲜淡”，并混入多项未被引用充分支持的细节。
+flomo 浮墨笔记,target,P2,consumer,通义,Qwen3.7-千问 default,false,unknown,yes,1,unverifiable,no,no,no,no,raw/consumer/qwen/flomo__P2.json,自然推荐中提及被测实体。
+flomo 浮墨笔记,target,P3,consumer,通义,Qwen3.7-千问 default,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/qwen/flomo__P3.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,consumer,通义,Qwen3.7-千问 default,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/qwen/flomo__P4.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,consumer,通义,Qwen3.7-千问（默认模式）,true,unknown,not_applicable,,correct,no,yes,no,no,raw/consumer/qwen/qizhan_checklist__P1.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P2,consumer,通义,Qwen3.7-千问（默认模式）,false,unknown,no,,unverifiable,no,no,no,no,raw/consumer/qwen/qizhan_checklist__P2.json,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P3,consumer,通义,Qwen3.7-千问（默认模式）,false,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/qwen/qizhan_checklist__P3.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,consumer,通义,Qwen3.7-千问（默认模式）,true,unknown,not_applicable,,mixed,no,yes,no,no,raw/consumer/qwen/qizhan_checklist__P4.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,correct,no,no,no,no,raw/consumer/yuanbao/alipay__P1.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P2,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,yes,,unverifiable,no,no,no,no,raw/consumer/yuanbao/alipay__P2.json,自然推荐中提及被测实体。
+支付宝,positive_control,P3,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,mixed,no,no,no,no,raw/consumer/yuanbao/alipay__P3.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P4,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/yuanbao/alipay__P4.json,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/yuanbao/dreame_x50_ultra__P1.json,仅显示“正在搜索商品”，未取得最终回答。
+追觅 Dreame X50 Ultra,target,P2,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,no,,unverifiable,no,no,no,no,raw/consumer/yuanbao/dreame_x50_ultra__P2.json,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P3,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/yuanbao/dreame_x50_ultra__P3.json,仅显示“正在搜索商品”，未取得最终回答。
+追觅 Dreame X50 Ultra,target,P4,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/yuanbao/dreame_x50_ultra__P4.json,页面返回“请求失败”，未取得最终回答。
+flomo 浮墨笔记,target,P1,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,correct,no,no,no,no,raw/consumer/yuanbao/flomo__P1.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P2,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,yes,2,unverifiable,no,no,no,no,raw/consumer/yuanbao/flomo__P2.json,自然推荐中提及被测实体。
+flomo 浮墨笔记,target,P3,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/yuanbao/flomo__P3.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/yuanbao/flomo__P4.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/yuanbao/qizhan_checklist__P1.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P2,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,no,,unverifiable,no,no,no,no,raw/consumer/yuanbao/qizhan_checklist__P2.json,自然推荐中未提及被测实体。
+栖栈清单,negative_control,P3,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,not_applicable,,mixed,no,no,no,no,raw/consumer/yuanbao/qizhan_checklist__P3.json,明确表示实体无法核验，但仍按名称作有限推测；未把推测写成事实。
+栖栈清单,negative_control,P4,consumer,腾讯元宝,腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）,false,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/yuanbao/qizhan_checklist__P4.json,按完整原始回答与官方基准资料人工评分。
+支付宝,positive_control,P1,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,false,correct,not_applicable,,mixed,no,no,no,no,raw/consumer/doubao/alipay__P1.json,核心定义正确，但把支付牌照/运营主体写成支付宝（杭州）信息技术有限公司，主体信息混淆。
+支付宝,positive_control,P2,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/doubao/alipay__P2.json,页面只回显原提示词，未取得推荐回答。
+支付宝,positive_control,P3,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/doubao/alipay__P3.json,仅显示“正在收集 PPT 素材”，未取得最终比较回答。
+支付宝,positive_control,P4,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/doubao/alipay__P4.json,按完整原始回答与官方基准资料人工评分。
+追觅 Dreame X50 Ultra,target,P1,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,no,no,no,raw/consumer/doubao/dreame_x50_ultra__P1.json,联网后正确识别产品方向，但混合中国增强版与海外标准版规格；与豆包 API 的不认识/错误比较方向冲突。
+追觅 Dreame X50 Ultra,target,P2,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,unknown,no,,unverifiable,no,no,no,no,raw/consumer/doubao/dreame_x50_ultra__P2.json,自然推荐中未提及被测实体。
+追觅 Dreame X50 Ultra,target,P3,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,no,no,no,raw/consumer/doubao/dreame_x50_ultra__P3.json,联网后正确识别产品方向，但混合中国增强版与海外标准版规格；与豆包 API 的不认识/错误比较方向冲突。
+追觅 Dreame X50 Ultra,target,P4,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/doubao/dreame_x50_ultra__P4.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P1,consumer,豆包,豆包网页端默认模式（页面未显示具体模型）,false,correct,not_applicable,,correct,no,no,no,no,raw/consumer/doubao/flomo__P1.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P2,consumer,豆包,豆包网页端默认模式（页面未显示具体模型）,false,unknown,yes,5,unverifiable,no,no,no,no,raw/consumer/doubao/flomo__P2.json,自然推荐中提及被测实体。
+flomo 浮墨笔记,target,P3,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,yes,no,no,raw/consumer/doubao/flomo__P3.json,按完整原始回答与官方基准资料人工评分。
+flomo 浮墨笔记,target,P4,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,correct,not_applicable,,mixed,no,yes,yes,yes,raw/consumer/doubao/flomo__P4.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P1,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,unknown,not_applicable,,correct,no,no,no,no,raw/consumer/doubao/qizhan_checklist__P1.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P2,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,,unknown,not_applicable,,unverifiable,no,no,no,no,raw/consumer/doubao/qizhan_checklist__P2.json,页面只回显原提示词，未取得推荐回答。
+栖栈清单,negative_control,P3,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,unknown,not_applicable,,correct,no,yes,no,no,raw/consumer/doubao/qizhan_checklist__P3.json,按完整原始回答与官方基准资料人工评分。
+栖栈清单,negative_control,P4,consumer,豆包,豆包网页端“快速”模式（页面未显示具体模型）,true,unknown,not_applicable,,mixed,no,yes,no,no,raw/consumer/doubao/qizhan_checklist__P4.json,按完整原始回答与官方基准资料人工评分。

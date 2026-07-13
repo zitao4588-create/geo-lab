@@ -1,0 +1,101 @@
+{
+  "case": {
+    "id": "A2",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "official_source",
+    "query": "支付宝 官网 官方",
+    "expected_terms": [
+      "支付宝",
+      "Alipay"
+    ],
+    "expected_official_domains": [
+      "alipay.cn"
+    ]
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "支付宝 官网 官方",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:33.529Z",
+    "latencyMs": 869,
+    "results": [
+      {
+        "title": "登录- 支付宝",
+        "url": "https://open.alipay.com/portal/forum",
+        "snippet": "欢迎登录支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还款等",
+        "score": 0.5809471
+      },
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com",
+        "snippet": "![Image 1](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png). 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https%3A%2F%2Fwww.alipay.com%2F). [我是服务商](https://www.alipay.com/)[我是开发者](https://www.alipay.com/)[我是商家用户 我是支付宝商家 我是口碑商家](https://www.alipay.com/)[我是机构用户](https://www.alipay.com/)[我是个人用户](https://www.alipay.com/). * [蚂蚁集团](https://www.antgroup.com/). * [服务商平台](https://p.alipay.com/portal/home.htm). * [支付宝](https://www.alipay.com/). * [余额宝](https://yebprod.alipay.com/yeb/index.htm). * [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA). * [芝麻信用](https://www.zmxy.com.cn/#/home). * [蚂蚁微贷](https://loan.mybank.cn/). * [网商银行](https://www.mybank.cn/index.htm). * [开放平台](https://open.alipay.com/platform/home.htm?from=zhuzhanfooter20160818). * [诚征英才](https://talent.antgroup.com/). * [联系我们](https://ab.alipay.com/i/lianxi.htm). [经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[网站备案：沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925). [](https://u.alipay.cn/_3DaM4ZtHA7KhH17nybWnkg)[](https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ALIPAY.COM&zh_cn)[](javascript:;)[](https://u.alipay.cn/_4T6qR…",
+        "score": 0.5183761
+      },
+      {
+        "title": "支付宝开放平台",
+        "url": "https://open.alipay.com",
+        "snippet": "支付宝开放平台基于支付宝的海量用户，将强大的支付、营销、数据能力，通过接口等形式开放给第三方合作伙伴，帮助第三方合作伙伴创建更具竞争力的应用.",
+        "score": 0.48425868
+      },
+      {
+        "title": "注册",
+        "url": "https://www.alipay.com/user/reg_select.htm",
+        "snippet": "欢迎免费注册支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还",
+        "score": 0.39936703
+      },
+      {
+        "title": "支付宝- Google Play 上的应用",
+        "url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+        "snippet": "Alipay (Hangzhou) Technology Co. Ltd. ## 关于此应用. 蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。. 目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。. ## 数据安全. 安全始于了解开发者如何收集和分享数据。数据隐私保护和安全措施可能会因您的使用情况、所在地区和用户年龄而异。此类信息由开发者提供，可能会随时间更新。. ## 评分和评价. 一个支付宝，个人信息就根本没有了，各种跳转app、小程序，每一个都后台读取设备信息。国产软件都这样，这就是落后的原因，根本就不会让人感觉能放心使用，以点观面其他只会更严重. 真的是拉垮完了，评价完了，哦，现在余额宝提现都不给直接提了。又是输入密码，又是扫脸，又是上下左右眨眼张嘴，又是要接那该死的，机器人电话去给他输入个验证。 神经。 本来只想提一部分的，现在全提完了，后面基金我也找个时间全提了。神经吧。同一个身份实名的支付宝余额宝跟银行卡提现出来跟我说有操作风险，让我接到电话里说我有异常支付，支付个毛线啊，对你们是支付，对我自己是提现啊。 ———————————————————— 我忍你很久了，到底会不会做app啊？每次指纹支付都无法正确识别，都要让我手动输入密码。蚂蚁的水平行不行啊？会不会做啊？三星这问题是一天两天了吗？国内别的app都可以啊，就你们不行。我真服了，拿着工资一天到晚干啥呢？研究怎么给用户塞广告，怎么给用户莫名其妙的改ui布局吗？？？. 1.广告太多，弹窗太多； 2.获取手机权限太多 3.在某些界面上隐藏默认开其它业务或服务的按钮，稍不注意就开通了。. ## 新变化. ## 应用支持. 中国 浙江省杭州市 西湖区西溪路543-569号(单号连续)1幢2号楼5层518室 邮政编码: 310023.",
+        "score": 0.38408068
+      }
+    ],
+    "rawResponse": {
+      "query": "支付宝 官网 官方",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://open.alipay.com/portal/forum",
+          "title": "登录- 支付宝",
+          "content": "欢迎登录支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还款等",
+          "score": 0.5809471,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.alipay.com",
+          "title": "支付宝",
+          "content": "![Image 1](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png). 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https%3A%2F%2Fwww.alipay.com%2F). [我是服务商](https://www.alipay.com/)[我是开发者](https://www.alipay.com/)[我是商家用户 我是支付宝商家 我是口碑商家](https://www.alipay.com/)[我是机构用户](https://www.alipay.com/)[我是个人用户](https://www.alipay.com/). *   [蚂蚁集团](https://www.antgroup.com/). *   [服务商平台](https://p.alipay.com/portal/home.htm). *   [支付宝](https://www.alipay.com/). *   [余额宝](https://yebprod.alipay.com/yeb/index.htm). *   [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA). *   [芝麻信用](https://www.zmxy.com.cn/#/home). *   [蚂蚁微贷](https://loan.mybank.cn/). *   [网商银行](https://www.mybank.cn/index.htm). *   [开放平台](https://open.alipay.com/platform/home.htm?from=zhuzhanfooter20160818). *   [诚征英才](https://talent.antgroup.com/). *   [联系我们](https://ab.alipay.com/i/lianxi.htm). [经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[网站备案：沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925). [](https://u.alipay.cn/_3DaM4ZtHA7KhH17nybWnkg)[](https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ALIPAY.COM&zh_cn)[](javascript:;)[](https://u.alipay.cn/_4T6qRyeBqawobPKyjjH9AQ)[](https://fun.alipay.com/certificate/index.htm).",
+          "score": 0.5183761,
+          "raw_content": null
+        },
+        {
+          "url": "https://open.alipay.com",
+          "title": "支付宝开放平台",
+          "content": "支付宝开放平台基于支付宝的海量用户，将强大的支付、营销、数据能力，通过接口等形式开放给第三方合作伙伴，帮助第三方合作伙伴创建更具竞争力的应用.",
+          "score": 0.48425868,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.alipay.com/user/reg_select.htm",
+          "title": "注册",
+          "content": "欢迎免费注册支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还",
+          "score": 0.39936703,
+          "raw_content": null
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+          "title": "支付宝- Google Play 上的应用",
+          "content": "Alipay (Hangzhou) Technology Co. Ltd. ## 关于此应用. 蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。. 目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。. ## 数据安全. 安全始于了解开发者如何收集和分享数据。数据隐私保护和安全措施可能会因您的使用情况、所在地区和用户年龄而异。此类信息由开发者提供，可能会随时间更新。. ## 评分和评价. 一个支付宝，个人信息就根本没有了，各种跳转app、小程序，每一个都后台读取设备信息。国产软件都这样，这就是落后的原因，根本就不会让人感觉能放心使用，以点观面其他只会更严重. 真的是拉垮完了，评价完了，哦，现在余额宝提现都不给直接提了。又是输入密码，又是扫脸，又是上下左右眨眼张嘴，又是要接那该死的，机器人电话去给他输入个验证。 神经。 本来只想提一部分的，现在全提完了，后面基金我也找个时间全提了。神经吧。同一个身份实名的支付宝余额宝跟银行卡提现出来跟我说有操作风险，让我接到电话里说我有异常支付，支付个毛线啊，对你们是支付，对我自己是提现啊。 ———————————————————— 我忍你很久了，到底会不会做app啊？每次指纹支付都无法正确识别，都要让我手动输入密码。蚂蚁的水平行不行啊？会不会做啊？三星这问题是一天两天了吗？国内别的app都可以啊，就你们不行。我真服了，拿着工资一天到晚干啥呢？研究怎么给用户塞广告，怎么给用户莫名其妙的改ui布局吗？？？. 1.广告太多，弹窗太多； 2.获取手机权限太多 3.在某些界面上隐藏默认开其它业务或服务的按钮，稍不注意就开通了。. ## 新变化. ## 应用支持. 中国 浙江省杭州市 西湖区西溪路543-569号(单号连续)1幢2号楼5层518室 邮政编码: 310023.",
+          "score": 0.38408068,
+          "raw_content": null
+        }
+      ],
+      "response_time": 0.57,
+      "request_id": "25dabd60-7c88-4f2a-8336-eed78129e05d"
+    }
+  }
+}

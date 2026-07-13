@@ -1,0 +1,13 @@
+{
+  "platform": "doubao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "豆包网页端默认模式（页面未显示具体模型）",
+  "captured_at": "2026-07-13T07:26:10.153Z",
+  "entity": "flomo 浮墨笔记",
+  "entity_role": "target",
+  "prompt_id": "P1",
+  "prompt": "flomo 浮墨笔记是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "flomo 浮墨笔记是一款轻量级碎片化笔记、卡片笔记工具，主打随时记录想法、短句灵感，支持标签整理、双链关联，可多端同步使用。",
+  "links": [],
+  "searched_web": false
+}

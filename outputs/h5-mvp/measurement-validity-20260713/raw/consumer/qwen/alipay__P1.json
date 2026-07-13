@@ -1,0 +1,40 @@
+{
+  "platform": "qwen_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "Qwen3.7-千问（默认模式）",
+  "captured_at": "2026-07-13T11:05:45.091Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P1",
+  "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "支付宝（Alipay）是由阿里巴巴集团于2004年创办的第三方支付平台，最初于2003年10月在淘宝网上线担保交易服务，后于2004年12月正式成立。\n目前，它是蚂蚁集团旗下的核心支付业务，主要提供以下服务：\n支付功能：在线支付、移动支付、扫码支付、\"碰一下\"NFC支付等\n金融功能：转账、信用卡还款、余额宝（货币基金）、花呗（赊购服务）、借呗（信贷服务）等\n生活服务：水电煤缴费、手机充值、出行、政务等超过1000种生活服务\n其他关键事实：\n2011年获得央行颁发的国内第一张《支付业务许可证》（支付牌照）\n截至2025年，服务超过8000万商家及10亿消费者\n2025年，公司主体更名为\"支付宝支付科技有限公司\"，品牌名称不变",
+  "searched_web": true,
+  "search_trace": "已完成分析",
+  "links": [
+    {
+      "href": "https://wiki.mbalib.com/wiki/%E6%94%AF%E4%BB%98%E5%AE%9D",
+      "text": "支付宝 - MBA智库百科"
+    },
+    {
+      "href": "https://bkso.baidu.com/item/%E6%89%8B%E6%9C%BA%E6%94%AF%E4%BB%98%E5%AE%9D/5096671?fromModule=lemma_inlink",
+      "text": "手机支付宝_百度百科"
+    },
+    {
+      "href": "https://bkso.baidu.com/item/%E6%94%AF%E4%BB%98%E5%AE%9D/496859?fromModule=lemma_starMap&lemmaFrom=lemma_starMap&lemmaIdFrom=55889181&starNodeId=2d016776b6b7bcb9e8267e45",
+      "text": "支付宝（淘宝网推出的第三方支付平台）_百度百科"
+    },
+    {
+      "href": "http://www.antgroup.com/",
+      "text": "蚂蚁集团官网"
+    },
+    {
+      "href": "https://www.antgroup.com/?spm=a2793.11769217.0.0.79c13e5f7Dqx3d",
+      "text": "蚂蚁集团官网"
+    },
+    {
+      "href": "https://36kr.com/p/3473506810075528",
+      "text": "支付宝时隔17年再更名，“支付科技”写入公司名称，“碰一下”用户破2亿-36氪"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/qwen/alipay__P1.png"
+}

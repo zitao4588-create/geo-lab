@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-07-07T06:49:40.311Z",
+  "cli": "/private/tmp/geo-lab-anysearch-verify-20260707/anysearch-skill-2.1.0/scripts/anysearch_cli.js",
+  "auth": "anonymous",
+  "results": [
+    {
+      "id": "self-h5",
+      "label": "AI曝光体检自有 H5",
+      "query": "AI曝光体检 exposure.playgamelab.cn GEO",
+      "search": {
+        "ok": true,
+        "elapsedMs": 2858,
+        "reportedMs": 2287,
+        "resultCount": 5,
+        "topUrls": [
+          "https://www.aipogeo.cn/AI%E8%83%BD%E8%A7%81%E5%BA%A6%E6%A3%80%E6%B5%8B.html",
+          "https://dn-solutions.com/cn/solution/solutionDetail.do?soluSeq=",
+          "https://developer.volcengine.com/articles/7657771015758839844",
+          "https://www.playlab.ai/project/cme6fxyhl08zdnl0u4l321e4a",
+          "https://www.youfind.hk/cn/aipo-geo-audit"
+        ],
+        "expectedUrlHit": false,
+        "expectedTermHits": [
+          "GEO"
+        ],
+        "stderr": "",
+        "error": null
+      },
+      "extract": {
+        "url": "https://exposure.playgamelab.cn/",
+        "ok": true,
+        "elapsedMs": 1996,
+        "hasUsefulBody": false,
+        "chars": 77,
+        "stderr": "",
+        "error": null
+      },
+      "assessment": "weak_for_target_discovery"
+    },
+    {
+      "id": "fridge-case",
+      "label": "冰箱小雷达案例站",
+      "query": "冰箱小雷达 fridge.playgamelab.cn 冰箱食材库存管理小程序",
+      "search": {
+        "ok": true,
+        "elapsedMs": 1955,
+        "reportedMs": 1411,
+        "resultCount": 5,
+        "topUrls": [
+          "https://github.com/stonehard0208/IceBox-A-Wechat-mini-program-based-on-CloudBase",
+          "https://apps.apple.com/us/app/%E9%A3%9F%E5%85%89%E5%86%B0%E7%AE%B1-%E5%B8%AE%E5%8A%A9%E9%A3%9F%E6%9D%90%E6%94%B6%E7%BA%B3%E4%B8%B4%E6%9C%9F%E7%AE%A1%E7%90%86%E7%9A%84%E5%86%B0%E7%AE%B1%E7%AE%A1%E5%AE%B6/id6742053950",
+          "https://www.reddit.com/r/Cooking/comments/1hq5yqu/inventory_app_for_managing_pantry_fridge/?tl=zh-hans",
+          "https://www.iceiceice.work/work/firdge-app/",
+          "https://shili365.com/"
+        ],
+        "expectedUrlHit": false,
+        "expectedTermHits": [],
+        "stderr": "",
+        "error": null
+      },
+      "extract": {
+        "url": "https://fridge.playgamelab.cn/",
+        "ok": true,
+        "elapsedMs": 2261,
+        "hasUsefulBody": true,
+        "chars": 693,
+        "stderr": "",
+        "error": null
+      },
+      "assessment": "search_miss_extract_ok"
+    },
+    {
+      "id": "geo-market",
+      "label": "GEO 竞品/市场发现",
+      "query": "GEO 品牌体检 工具 多平台 DeepSeek Kimi ChatGPT",
+      "search": {
+        "ok": true,
+        "elapsedMs": 2943,
+        "reportedMs": 2412,
+        "resultCount": 5,
+        "topUrls": [
+          "https://www.aipogeo.cn/AI%E8%83%BD%E8%A7%81%E5%BA%A6%E6%A3%80%E6%B5%8B.html",
+          "https://adg.csdn.net/6a46043310ee7a33f285a875.html",
+          "https://zhuanlan.zhihu.com/p/2049856851165156059",
+          "https://deepgeo.mobi/",
+          "https://www.ourchinastory.com/zh/14034/DeepSeek-Kimi-%E8%B1%86%E5%8C%85-%E5%93%AA%E5%80%8B%E6%9B%B4%E5%BC%B7%EF%BC%9F%E7%9B%A4%E9%BB%9E3%E5%A4%A7%E5%9C%8B%E7%94%A2AI%E8%81%8A%E5%A4%A9%E5%B7%A5%E5%85%B7"
+        ],
+        "expectedUrlHit": null,
+        "expectedTermHits": [
+          "GEO",
+          "品牌",
+          "DeepSeek",
+          "Kimi",
+          "ChatGPT"
+        ],
+        "stderr": "",
+        "error": null
+      },
+      "extract": {
+        "url": "https://www.aipogeo.cn/AI%E8%83%BD%E8%A7%81%E5%BA%A6%E6%A3%80%E6%B5%8B.html",
+        "ok": true,
+        "elapsedMs": 2156,
+        "hasUsefulBody": true,
+        "chars": 6049,
+        "stderr": "",
+        "error": null
+      },
+      "assessment": "useful_for_discovery"
+    }
+  ],
+  "conclusion": "do_not_integrate_h5_production_yet"
+}

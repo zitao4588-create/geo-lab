@@ -1,0 +1,15 @@
+{
+  "platform": "yuanbao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）",
+  "captured_at": "2026-07-13T11:15:11.021Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P1",
+  "prompt": "追觅 Dreame X50 Ultra是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "正在搜索商品",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/yuanbao/dreame_x50_ultra__P1.png"
+}

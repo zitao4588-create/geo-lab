@@ -1,0 +1,100 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T10:57:12.201Z",
+  "entity": "flomo 浮墨笔记",
+  "entity_role": "target",
+  "prompt_id": "P1",
+  "prompt": "flomo 浮墨笔记是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "根据现有信息，flomo浮墨笔记是一款轻量级的卡片笔记工具，由上海仙蒂网络科技有限公司开发-\n1\n-\n10\n。它的核心定位是帮助用户无压力地记录碎片化想法和灵感-\n2\n-\n9\n-\n10\n。\n\n关于它的一些关键确认信息如下：\n\n核心理念：产品口号是“持续不断记录，意义自然浮现”-\n3\n-\n5\n，强调通过轻量的记录积累，让知识的价值自然显现。\n\n设计特点：操作界面极简，记录方式类似发微博或聊天，旨在降低记录的心理负担-\n1\n-\n7\n-\n9\n。它明确表示不擅长做文档撰写、网页全文收藏、待办提醒和思维导图等“大而全”的功能-\n1\n-\n5\n。\n\n主要功能：\n\n使用多级标签系统进行内容组织，而非传统文件夹-\n1\n-\n7\n。\n\n支持全平台（手机、网页、电脑）和微信服务号输入-\n1\n-\n9\n。\n\n提供AI相关功能，如“相关笔记”（智能发现笔记间联系）、“AI洞察”（分析笔记主题模式）和“找一找”（用自然语言提问挖掘历史笔记）-\n2\n-\n5\n-\n6\n。\n\n通过每日回顾（推送、桌面小组件）和热力图帮助用户回顾和追踪记录习惯-\n1\n-\n7\n。",
+  "searched_web": true,
+  "search_trace": "已阅读 12 个网页",
+  "links": [
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://sj.qq.com/appdetail/com.flomo.app?fromcase=70053&g_f=1185403",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://hub.baai.ac.cn/view/49837",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://help.flomoapp.com/guan-yu-wo-men/about-us/flomo-origin.html",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://sj.qq.com/appdetail/com.flomo.app?fromcase=70053&g_f=1185403",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://help.flomoapp.com/about-us/annual-letter-2024.html",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://apps.apple.com/sg/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai%E8%AF%AD%E9%9F%B3%E5%A4%87%E5%BF%98-%E5%8D%A1%E7%89%87%E4%BE%BF%E7%AD%BE-%E6%97%A5%E8%AE%B0%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%B4%9E%E5%AF%9F/id1552314395?l=zh-Hans-CN&platform=mac",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://help.flomoapp.com/community/user-story/records-ideas.html",
+      "text": "-\n7"
+    },
+    {
+      "href": "https://help.flomoapp.com/guan-yu-wo-men/about-us/flomo-origin.html",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://apps.apple.com/sg/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai%E8%AF%AD%E9%9F%B3%E5%A4%87%E5%BF%98-%E5%8D%A1%E7%89%87%E4%BE%BF%E7%AD%BE-%E6%97%A5%E8%AE%B0%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%B4%9E%E5%AF%9F/id1552314395?l=zh-Hans-CN&platform=mac",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://help.flomoapp.com/community/user-story/records-ideas.html",
+      "text": "-\n7"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://help.flomoapp.com/guan-yu-wo-men/about-us/flomo-origin.html",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://hub.baai.ac.cn/view/49837",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://apps.apple.com/sg/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai%E8%AF%AD%E9%9F%B3%E5%A4%87%E5%BF%98-%E5%8D%A1%E7%89%87%E4%BE%BF%E7%AD%BE-%E6%97%A5%E8%AE%B0%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%B4%9E%E5%AF%9F/id1552314395?l=zh-Hans-CN&platform=mac",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://cloud.tencent.com.cn/developer/article/2680265?policyId=1004",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/flomo%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0-ai-%E5%8A%A0%E6%8C%81%E7%9A%84%E4%BE%BF%E7%AD%BE%E5%A4%87%E5%BF%98/id1665341561?mt=12",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://help.flomoapp.com/community/user-story/records-ideas.html",
+      "text": "-\n7"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/flomo__P1.png"
+}

@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-07-13T15:53:02.369Z",
+  "score": 0,
+  "submittedSourceScore": 0,
+  "siteInfrastructureScore": 0,
+  "targets": [],
+  "summary": {
+    "ok": 0,
+    "warn": 0,
+    "missing": 8,
+    "failed": 0,
+    "note": "未提交可审计的公开网址。"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "prompt": {
+    "id": "alipay__P1",
+    "category": "brand",
+    "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+    "targetFact": "支付宝"
+  },
+  "provider": "deepseek",
+  "model": "deepseek-v4-pro",
+  "status": "success",
+  "sampledAt": "2026-07-13T07:15:06.107Z",
+  "latencyMs": 1952,
+  "answer": "支付宝是一个由蚂蚁集团运营的第三方支付平台，主要提供在线支付、转账、生活缴费等金融服务。",
+  "fallbackUsed": false,
+  "entity": "支付宝",
+  "entityRole": "positive_control",
+  "promptId": "P1"
+}

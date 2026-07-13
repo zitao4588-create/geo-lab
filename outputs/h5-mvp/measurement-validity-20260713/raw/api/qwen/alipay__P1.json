@@ -1,0 +1,18 @@
+{
+  "prompt": {
+    "id": "alipay__P1",
+    "category": "brand",
+    "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+    "targetFact": "支付宝"
+  },
+  "provider": "qwen",
+  "model": "qwen3.7-plus",
+  "status": "success",
+  "sampledAt": "2026-07-13T07:15:06.107Z",
+  "latencyMs": 1760,
+  "answer": "支付宝是蚂蚁集团旗下的第三方支付平台，提供数字支付、生活服务及金融服务等功能。",
+  "fallbackUsed": false,
+  "entity": "支付宝",
+  "entityRole": "positive_control",
+  "promptId": "P1"
+}

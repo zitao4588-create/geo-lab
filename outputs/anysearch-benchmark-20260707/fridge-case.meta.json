@@ -1,0 +1,32 @@
+{
+  "id": "fridge-case",
+  "label": "冰箱小雷达案例站",
+  "query": "冰箱小雷达 fridge.playgamelab.cn 冰箱食材库存管理小程序",
+  "search": {
+    "ok": true,
+    "elapsedMs": 1955,
+    "reportedMs": 1411,
+    "resultCount": 5,
+    "topUrls": [
+      "https://github.com/stonehard0208/IceBox-A-Wechat-mini-program-based-on-CloudBase",
+      "https://apps.apple.com/us/app/%E9%A3%9F%E5%85%89%E5%86%B0%E7%AE%B1-%E5%B8%AE%E5%8A%A9%E9%A3%9F%E6%9D%90%E6%94%B6%E7%BA%B3%E4%B8%B4%E6%9C%9F%E7%AE%A1%E7%90%86%E7%9A%84%E5%86%B0%E7%AE%B1%E7%AE%A1%E5%AE%B6/id6742053950",
+      "https://www.reddit.com/r/Cooking/comments/1hq5yqu/inventory_app_for_managing_pantry_fridge/?tl=zh-hans",
+      "https://www.iceiceice.work/work/firdge-app/",
+      "https://shili365.com/"
+    ],
+    "expectedUrlHit": false,
+    "expectedTermHits": [],
+    "stderr": "",
+    "error": null
+  },
+  "extract": {
+    "url": "https://fridge.playgamelab.cn/",
+    "ok": true,
+    "elapsedMs": 2261,
+    "hasUsefulBody": true,
+    "chars": 693,
+    "stderr": "",
+    "error": null
+  },
+  "assessment": "search_miss_extract_ok"
+}

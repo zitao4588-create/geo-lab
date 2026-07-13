@@ -1,0 +1,26 @@
+{
+  "case": {
+    "id": "D1",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "追觅 Dreame X50 Ultra",
+    "expected_terms": [
+      "Dreame X50 Ultra",
+      "追觅 X50 Ultra"
+    ],
+    "expected_official_domains": [
+      "global.dreametech.com"
+    ]
+  },
+  "response": {
+    "provider": "jina",
+    "query": "追觅 Dreame X50 Ultra",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:27:36.926Z",
+    "latencyMs": 12002,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

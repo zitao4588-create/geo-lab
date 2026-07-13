@@ -7,6 +7,14 @@ export interface OperationSummary {
   recordedAt: string;
   pageAuditDurationMs: number;
   samplingDurationMs: number;
+  publicWebStatus?: 'success' | 'partial' | 'skipped' | 'failed' | 'disabled';
+  publicWebDurationMs?: number;
+  publicWebProviders?: Array<{
+    provider: 'anysearch' | 'tavily' | 'jina' | 'volcengine';
+    status: 'success' | 'skipped' | 'failed';
+    latencyMs: number;
+    resultCount: number;
+  }>;
   totalDurationMs: number;
   providers: Array<{
     provider: AiProvider;
@@ -29,6 +37,9 @@ export function summarizeOperation(input: {
   samples: AiSample[];
   pageAuditDurationMs: number;
   samplingDurationMs: number;
+  publicWebStatus?: OperationSummary['publicWebStatus'];
+  publicWebDurationMs?: number;
+  publicWebProviders?: OperationSummary['publicWebProviders'];
   totalDurationMs: number;
   recordedAt?: string;
 }): OperationSummary {
@@ -62,6 +73,9 @@ export function summarizeOperation(input: {
     recordedAt: input.recordedAt ?? new Date().toISOString(),
     pageAuditDurationMs: input.pageAuditDurationMs,
     samplingDurationMs: input.samplingDurationMs,
+    publicWebStatus: input.publicWebStatus,
+    publicWebDurationMs: input.publicWebDurationMs,
+    publicWebProviders: input.publicWebProviders,
     totalDurationMs: input.totalDurationMs,
     providers
   };

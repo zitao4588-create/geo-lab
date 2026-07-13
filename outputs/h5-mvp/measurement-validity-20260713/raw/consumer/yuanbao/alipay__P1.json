@@ -1,0 +1,15 @@
+{
+  "platform": "yuanbao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）",
+  "captured_at": "2026-07-13T11:16:14.070Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P1",
+  "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "支付宝（Alipay）是蚂蚁集团旗下的第三方支付平台，于2004年成立，由支付宝（中国）网络技术有限公司等主体运营。\n它主要为用户提供以下经确认的服务：\n∙\n支付与资金转移：受用户委托提供代为收付款、转账、线上及线下扫码支付等非金融机构支付服务。\n∙\n多元场景平台：已发展为融合生活服务（如水电气缴费）、政务服务、理财、保险、公益等场景的开放性平台。\n∙\n跨境与国际服务：提供跨境支付、退税等服务，覆盖多个国家和地区。\n要不要我帮你进一步了解支付宝的基础注册与使用流程？\n源\n支付宝账号如何注销？\n支付宝如何收款？\n支付宝的跨境支付服务具体支持哪些货币和地区？\n下载元宝电脑版，体验高效 AI 助手",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/yuanbao/alipay__P1.png"
+}

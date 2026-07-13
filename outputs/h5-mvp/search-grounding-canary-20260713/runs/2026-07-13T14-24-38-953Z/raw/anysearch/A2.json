@@ -1,0 +1,94 @@
+{
+  "case": {
+    "id": "A2",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "official_source",
+    "query": "支付宝 官网 官方",
+    "expected_terms": [
+      "支付宝",
+      "Alipay"
+    ],
+    "expected_official_domains": [
+      "alipay.cn"
+    ]
+  },
+  "response": {
+    "provider": "anysearch",
+    "query": "支付宝 官网 官方",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:24:55.382Z",
+    "latencyMs": 1706,
+    "results": [
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/",
+        "snippet": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925"
+      },
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/index.htm",
+        "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......"
+      },
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/x/personal",
+        "snippet": "支付宝 客户服务  财富中心  安全保障  安全保障  商家中心  转账付款 转到支付宝账户，瞬间到账 | 转到银行卡，2小时到账  扫描二维码或条码付款 自动识别不安全链接，安心付款  出示付款码付款 付款码每次不同，保障付款安全  通过声波收付款 没有网络也能收款付款  国际运输 如淘宝购物般简单，无需办理转运  品牌正品 海外商家直发，100%正品保证  人民币付款 无需外币兑换费，无需双币种信用卡  赚的更多 定期稳定收益，让你赚更多  安全保障 权威金融机构负责风险管理  买的方便..."
+      },
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/?src=alipay.com",
+        "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......"
+      },
+      {
+        "title": "注册",
+        "url": "https://www.alipay.com/user/reg_select.htm",
+        "snippet": "注册 - 支付宝 - y 1 创建账户 - y 2 设置身份信息 - y 3 设置支付方式 - y  成功 - 个人账户 - 企业账户 注册 国籍/地区 中国大陆 手机号 86 短信校验码 获取验证码 校验码短信已发送到你的手机上，有效时间为10分钟，请及时查收。 发送短信失败。 正在提交信息 使用邮箱注册 非中国大陆手机号 请通过支付宝APP进行注册 更安全、更便捷、享受服务 去支付宝APP注册 更安全·更快捷·享服务 仍在电脑上用手机号/邮箱注册，点击切换 onlineServer"
+      }
+    ],
+    "rawResponse": {
+      "code": 0,
+      "message": "success",
+      "request_id": "f3ef549f-07d8-41e5-9e04-9c8acb567dac",
+      "data": {
+        "results": [
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/",
+            "snippet": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925",
+            "content": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925"
+          },
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/index.htm",
+            "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......",
+            "content": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www.antgroup.com/) * | * [服务商平台](https://p.alipay.com/portal/home.htm) * | * [支付宝](https://www.alipay.com) * | * [余额宝](https://yebprod.alipay.com/yeb/index.htm) * | * [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA) * | * [芝麻信用](https://www.zmxy.com.cn/#/home) * | * [蚂蚁微贷](https://loan.mybank.cn/) * | * [网商银行](https://www.mybank.cn/index.htm) * | * [开放平台](https://open.alipay.com/platform/home.htm?from=zhuzhanfooter20160818) * | * [诚征英才](https://talent.antgroup.com) * | * [联系我们](https://ab.alipay.com/i/lianxi.htm) * | [经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[网站备案：沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925) [](https://u.alipay.cn/_3DaM4ZtHA7KhH17nybWnkg)[](https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ALIPAY.COM&zh_cn)[](javascript:;)[](https://u.alipay.cn/_4T6qRyeBqawobPKyjjH9AQ)[](https://fun.alipay.com/certificate/index.htm) [](https://z.alipay.com)"
+          },
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/x/personal",
+            "snippet": "支付宝 客户服务  财富中心  安全保障  安全保障  商家中心  转账付款 转到支付宝账户，瞬间到账 | 转到银行卡，2小时到账  扫描二维码或条码付款 自动识别不安全链接，安心付款  出示付款码付款 付款码每次不同，保障付款安全  通过声波收付款 没有网络也能收款付款  国际运输 如淘宝购物般简单，无需办理转运  品牌正品 海外商家直发，100%正品保证  人民币付款 无需外币兑换费，无需双币种信用卡  赚的更多 定期稳定收益，让你赚更多  安全保障 权威金融机构负责风险管理  买的方便...",
+            "content": "支付宝 客户服务  财富中心  安全保障  安全保障  商家中心  转账付款 转到支付宝账户，瞬间到账 | 转到银行卡，2小时到账  扫描二维码或条码付款 自动识别不安全链接，安心付款  出示付款码付款 付款码每次不同，保障付款安全  通过声波收付款 没有网络也能收款付款  国际运输 如淘宝购物般简单，无需办理转运  品牌正品 海外商家直发，100%正品保证  人民币付款 无需外币兑换费，无需双币种信用卡  赚的更多 定期稳定收益，让你赚更多  安全保障 权威金融机构负责风险管理  买的方便 一键购买，坐享收益  挂号 余号查询，足不出户就能挂号  智能导诊 叫号与导航，按时到达科室不迷路  付医药费 手机支付，各类医药费边走边付  查看报告 消息通知，随时查看就诊报告  付款，是件容易的事 付款方式| 134 家金融机构  会员保障，安心付款  海外商品、想购就购  玩转支付宝 服务与支持 服务时间 (8:00 - 24:00) 中国内地服务热线 (95188转1) 中国港澳台及海外服务热线 (+86 57195188) 花呗 借呗 (95188转2) 网商业务含网商贷 (95188转3) 投诉与建议 服务电话 (95188) 我们将在一个工作日内响应处理 支付宝公益 帮助听力智障儿童，献爱心 关于支付宝 官方微博 |去关注 > 下载支付宝APP"
+          },
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/?src=alipay.com",
+            "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......",
+            "content": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www.antgroup.com/) * | * [服务商平台](https://p.alipay.com/portal/home.htm) * | * [支付宝](https://www.alipay.com) * | * [余额宝](https://yebprod.alipay.com/yeb/index.htm) * | * [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA) * | * [芝麻信用](https://www.zmxy.com.cn/#/home) * | * [蚂蚁微贷](https://loan.mybank.cn/) * | * [网商银行](https://www.mybank.cn/index.htm) * | * [开放平台](https://open.alipay.com/platform/home.htm?from=zhuzhanfooter20160818) * | * [诚征英才](https://talent.antgroup.com) * | * [联系我们](https://ab.alipay.com/i/lianxi.htm) * | [经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[网站备案：沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925) [](https://u.alipay.cn/_3DaM4ZtHA7KhH17nybWnkg)[](https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ALIPAY.COM&zh_cn)[](javascript:;)[](https://u.alipay.cn/_4T6qRyeBqawobPKyjjH9AQ)[](https://fun.alipay.com/certificate/index.htm) [](https://z.alipay.com)"
+          },
+          {
+            "title": "注册",
+            "url": "https://www.alipay.com/user/reg_select.htm",
+            "snippet": "注册 - 支付宝 - y 1 创建账户 - y 2 设置身份信息 - y 3 设置支付方式 - y  成功 - 个人账户 - 企业账户 注册 国籍/地区 中国大陆 手机号 86 短信校验码 获取验证码 校验码短信已发送到你的手机上，有效时间为10分钟，请及时查收。 发送短信失败。 正在提交信息 使用邮箱注册 非中国大陆手机号 请通过支付宝APP进行注册 更安全、更便捷、享受服务 去支付宝APP注册 更安全·更快捷·享服务 仍在电脑上用手机号/邮箱注册，点击切换 onlineServer",
+            "content": "注册 - 支付宝 - y 1 创建账户 - y 2 设置身份信息 - y 3 设置支付方式 - y  成功 - 个人账户 - 企业账户 注册 国籍/地区 中国大陆 手机号 86 短信校验码 获取验证码 校验码短信已发送到你的手机上，有效时间为10分钟，请及时查收。 发送短信失败。 正在提交信息 使用邮箱注册 非中国大陆手机号 请通过支付宝APP进行注册 更安全、更便捷、享受服务 去支付宝APP注册 更安全·更快捷·享服务 仍在电脑上用手机号/邮箱注册，点击切换 onlineServer"
+          }
+        ],
+        "metadata": {
+          "total_results": 5,
+          "search_time_ms": 1404
+        }
+      }
+    }
+  }
+}

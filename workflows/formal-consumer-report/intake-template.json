@@ -1,0 +1,17 @@
+{
+  "entity_name": "",
+  "business_type": "",
+  "category": "",
+  "core_problem": "",
+  "target_users": "",
+  "competitor": "",
+  "official_url": "",
+  "region": "CN",
+  "language": "zh-CN",
+  "customer_questions": [],
+  "positive_control": "",
+  "negative_control": "",
+  "consumer_platforms": ["deepseek", "qwen", "yuanbao", "doubao"],
+  "max_consumer_interactions": 40,
+  "notes": ""
+}

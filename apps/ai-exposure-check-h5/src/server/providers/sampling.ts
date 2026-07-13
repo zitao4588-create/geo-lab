@@ -27,6 +27,10 @@ interface SamplingProviderConfig {
   costGuard: 'provider_enforced' | 'user_authorized' | 'disabled';
 }
 
+export interface SamplingOptions {
+  deadlineAt?: number;
+}
+
 const preferredProviderModels = new Map<SamplingProviderConfig['provider'], string>();
 
 export class SamplingUnavailableError extends Error {
@@ -54,7 +58,10 @@ export function getSamplingRuntime() {
   };
 }
 
-export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samples: AiSample[]; providerStatuses: AiProviderStatus[] }> {
+export async function sampleAiProviders(
+  prompts: SamplePrompt[],
+  options: SamplingOptions = {}
+): Promise<{ samples: AiSample[]; providerStatuses: AiProviderStatus[] }> {
   const samplingConfigs = getSamplingProviderConfigs();
   const configuredProviders = samplingConfigs.filter(isSamplingAllowedProvider);
   if (configuredProviders.length === 0) {
@@ -62,7 +69,7 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
   }
 
   const providerResults = await Promise.all(configuredProviders.map(async (config) => {
-    const samples = await sampleProviderAnswers(config, prompts);
+    const samples = await sampleProviderAnswers(config, prompts, options);
     const successCount = samples.filter((sample) => sample.status === 'success').length;
     const failureCount = samples.filter((sample) => sample.status === 'failed').length;
     const status: AiProviderStatus = {
@@ -88,7 +95,11 @@ export async function sampleAiProviders(prompts: SamplePrompt[]): Promise<{ samp
   return { samples, providerStatuses };
 }
 
-async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: string }, prompts: SamplePrompt[]): Promise<AiSample[]> {
+async function sampleProviderAnswers(
+  config: SamplingProviderConfig & { apiKey: string },
+  prompts: SamplePrompt[],
+  options: SamplingOptions
+): Promise<AiSample[]> {
   const client = new OpenAI({
     apiKey: config.apiKey,
     baseURL: config.baseUrl,
@@ -100,10 +111,15 @@ async function sampleProviderAnswers(config: SamplingProviderConfig & { apiKey: 
   });
 
   const boundedPrompts = prompts.slice(0, 24);
-  return runWithConcurrency(boundedPrompts, config.sampleConcurrency, (prompt) => sampleOne(client, config, prompt));
+  return runWithConcurrency(boundedPrompts, config.sampleConcurrency, (prompt) => sampleOne(client, config, prompt, options));
 }
 
-async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt: SamplePrompt): Promise<AiSample> {
+async function sampleOne(
+  client: OpenAI,
+  config: SamplingProviderConfig,
+  prompt: SamplePrompt,
+  options: SamplingOptions
+): Promise<AiSample> {
   const startedAt = Date.now();
   const sampledAt = new Date().toISOString();
   const modelCandidates = getModelCandidates(config);
@@ -111,9 +127,14 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
   let lastError = 'sampling_failed';
 
   for (let index = 0; index < modelCandidates.length; index += 1) {
+    const remainingMs = options.deadlineAt === undefined ? config.timeoutMs : options.deadlineAt - Date.now();
+    if (remainingMs <= 0) {
+      lastError = 'diagnosis_deadline_exceeded';
+      break;
+    }
     attemptedModel = modelCandidates[index] || config.model;
     try {
-      const completion = await client.chat.completions.create({
+      const body = {
         model: attemptedModel,
         max_tokens: config.maxTokens,
         ...(config.provider === 'deepseek' ? { temperature: 0.2 } : {}),
@@ -131,7 +152,13 @@ async function sampleOne(client: OpenAI, config: SamplingProviderConfig, prompt:
             content: prompt.prompt
           }
         ]
-      } as never);
+      } as never;
+      const requestOptions = options.deadlineAt === undefined
+        ? undefined
+        : { signal: AbortSignal.timeout(Math.max(1, Math.min(config.timeoutMs, remainingMs))) };
+      const completion = requestOptions
+        ? await client.chat.completions.create(body, requestOptions)
+        : await client.chat.completions.create(body);
 
       const answer = completion.choices[0]?.message?.content?.trim();
       if (!answer) {

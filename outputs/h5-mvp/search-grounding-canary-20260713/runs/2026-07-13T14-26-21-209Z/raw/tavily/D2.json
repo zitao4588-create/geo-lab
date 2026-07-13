@@ -1,0 +1,70 @@
+{
+  "case": {
+    "id": "D2",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "official_source",
+    "query": "追觅 Dreame X50 Ultra 官网 官方 产品页",
+    "expected_terms": [
+      "Dreame X50 Ultra",
+      "追觅 X50 Ultra"
+    ],
+    "expected_official_domains": [
+      "global.dreametech.com"
+    ]
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "追觅 Dreame X50 Ultra 官网 官方 产品页",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:27.775Z",
+    "latencyMs": 2115,
+    "results": [],
+    "rawResponse": {
+      "query": "追觅 Dreame X50 Ultra 官网 官方 产品页",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "/goto?url=CAESVgHuR6pNtD2wkHEukKhpr5XDRayX0IysY84qqcVR1vdJ-2fBJcxm-N4MfMN_yBLkEhIMs56qOGR9iPDgjpM4MbSV9UbjlAMzsZwzEMoe8qZxKbd29nDL",
+          "title": "追覓Dreame",
+          "content": "Dreame X50 Ultra ・ 為台灣追覓官方網站,產品與官網資訊. LINE:@twdm ・ 客服電話| 02-27952860 contact@dreametech.com.tw",
+          "score": 0.8593928,
+          "raw_content": null
+        },
+        {
+          "url": "/goto?url=CAESXAHuR6pN1mY0Xp2ALk4ueiHDme6zzXSw_9hbvIKM_prrAUPP01ArudRLc2iBAAaCmSq5ZP7dI61SZ3N7qvGgjtCjXbqacrFnrvnh-P74hDapVp4daTAwJmZP8W1s",
+          "title": "追觅商城-商品",
+          "content": "X50 Ultra 增强版扫拖洗一体自清洁扫地机器人. ¥0. ¥12999.00. 专属管家. 需要协助购买？ 咨询追觅专享客服. 图片. 产品介绍. 3D. ​. 【限】限时咨询客服有好礼.Read more",
+          "score": 0.7216064,
+          "raw_content": null
+        },
+        {
+          "url": "/goto?url=CAESwgEB7keqTWjNrb5nVmfBACnQhLOJyCcDymUMPayNbC_dvZyIW1gH-sdwBML-BBtijEtZaeHsoem507IG9YybYFqlIUOsphXJBrvtzJaZh_79CJ6rXqGVudD72hwhgvtmaIg-DyirF5IoJJUxwVCUHCKb86y030vq-6jw_Uyza-KDZI70IV1ejwmx8ElI-9MRjq9Zpy6oxTfbiHUOnHaWYHm3dzEvFPosXJbr8bnXj277itzck7mUKi5Wf1CGLzLAIlUZnQ%3D%3D",
+          "title": "Dreame 追覓五重升降AI 全能頂配掃地機｜AI寵物識別X50 Ultra",
+          "content": "Dreame 追覓五重升降AI 全能頂配掃地機｜AI寵物識別X50 Ultra · 1.行業首創的ProLeap™系統，提供20,000Pa超強吸力，實現卓越清潔效果。 · 2.TripleUp技術和VersaLift™導航，輕鬆 ...Read more",
+          "score": 0.65966886,
+          "raw_content": null
+        },
+        {
+          "url": "/goto?url=CAESZgHuR6pNq4t81ZRProsRTWQI5m-qXz1pocvppqsnkrt28U0mUvZPTS8blxuqeUwZX9qPsWk8pxKvStiV1oilofTyY8eOBmjT049iOMEZSajBeaRJvCEM95ae7hmGMJSP25B06x8Vzg%3D%3D",
+          "title": "追覓dreame X50 Ultra｜使用指南",
+          "content": "... X50 Ultra 五重升降全能旗艦機皇等問題，都可以參考線上說明使用指南與示範影片，有任何問題也歡迎使用官方line:@dreamtw 詢問，我們會儘快協助您。",
+          "score": 0.65412235,
+          "raw_content": null
+        },
+        {
+          "url": "/goto?url=CAESkwEB7keqTan9f76lSXW-bP01PwzuWTODGwaInuixJ-865k2sW9mdd6SMloyaC1tYXVrvFtZBUIeDHSS2Tarz6c5wWuajmqvByDmB6c7179d9HXPI04lN4ynySXuu8VvVgTtklMwApxU80ZwVRj8HC9_H2RayZAeSIvyCYo1rqv3H-Q2m0KwKYxnfTwhSwNTKC36szUI%3D",
+          "title": "【美国直邮】DREAME追觅X50 Ultra 扫地机AI全能旗舰机皇 ...",
+          "content": "【美国直邮】DREAME追觅X50 Ultra 扫地机AI全能旗舰机皇白色1台. $1699.99. 亚米礼卡专享价. 使用礼卡支付即可获得礼卡专享价. 规则说明. 礼卡专享价是部分商品拥有的 ...Read more",
+          "score": 0.64047897,
+          "raw_content": null
+        }
+      ],
+      "response_time": 1.55,
+      "request_id": "971a29b8-13d5-444f-9b16-9cf9c83bc9d7"
+    }
+  }
+}

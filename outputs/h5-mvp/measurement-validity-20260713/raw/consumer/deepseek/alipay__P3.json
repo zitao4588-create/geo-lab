@@ -1,0 +1,120 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:01:41.004Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P3",
+  "prompt": "请比较支付宝和微信支付在核心功能、适用人群、主要限制和可信依据上的差异。无法核验的内容请明确标注不确定，不要根据名称猜测。",
+  "answer": "支付宝和微信支付在核心功能侧重、使用人群画像和产品逻辑上存在显著差异。支付宝更像一个功能强大的“金融工具”，而微信支付则是一个高频的“社交支付插件”。\n\n以下表格整理了它们的主要区别，其中标注“不确定”的内容因公开资料有限，暂无法核验：\n\n对比维度\t支付宝\t微信支付\n核心功能\t综合数字生活服务平台。集支付、理财、生活缴费、社保查询、政务服务等为一体，功能全面、金融属性强-\n2\n。近期推出AI助手“阿宝”，尝试用对话交互简化服务流程-\n1\n-\n5\n。\t社交生态下的便捷支付工具。以红包、转账等社交互动为基础，提供简洁快速的支付体验，线上线下小额高频支付渗透率高-\n2\n-\n6\n。近期推出“AI专属卡”，作为隔离主账户的“办事钱包”-\n1\n-\n5\n。\n适用人群\t对理财、缴费、生活服务有综合性需求，或习惯使用淘宝等阿里系电商平台的用户-\n2\n。\t几乎所有微信用户，尤其是在下沉市场和日常小额消费场景中普及率极高-\n2\n-\n6\n。\n主要限制\t支付额度依银行和场景而定，例如有银行将支付宝消费场景快捷支付限额提升至单笔20万元，但转账等场景限额仍为单笔5万元-\n3\n-\n8\n。具体限额因银行和账户状态而异。不确定是否有统一的实名或交易规则限制。\t常用快捷支付限额通常为单笔5万元、单日10万元-\n3\n-\n8\n。具体限额同样因银行而异。不确定是否有针对不同类型账户的特定限制。\n可信依据\t受中国人民银行《非银行支付机构监督管理条例》等法规严格监管-\n4\n。作为持牌金融基础设施，风险管理体系成熟-\n1\n，并承诺“你敢付，我敢赔”-\n1\n。\t同样受中国人民银行严格监管-\n4\n。因与社交账号绑定，相关的诈骗安全案例相对较多-\n2\n，但平台也通过多种机制保障用户资金安全-\n1\n。\n\n关于市场份额的数据差异：不同机构的统计口径不同。例如，有报告显示2024年支付宝交易金额市场份额为45.7%，微信支付为41.8%-\n2\n-\n6\n；而另有数据显示2025年第一季度微信支付市场份额达59.7%，支付宝降至36.2%-\n2\n-\n6\n。请留意这些数据可能因统计时间、方法和范围的不同而存在差异。\n\n两家平台的路径差异，根本上源于其基因不同：支付宝脱胎于金融场景，需要靠不断深化服务和创新来稳固地位；而微信支付生长于社交生态，依托海量用户和极高打开率，只需提供便捷的支付能力即可-\n1\n-\n2\n。\n\n你主要是想了解日常小额消费场景的差异，还是更关心它们在大额转账、理财等方面的能力区别？可以告诉我你的具体需求，我再帮你做针对性分析。",
+  "searched_web": true,
+  "search_trace": "已阅读 8 个网页",
+  "links": [
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://finance.jrj.com.cn/2026/06/22084857535292.shtml",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://m.sohu.com/a/913803416_250147/?pvid=000115_3w_a",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://finance.jrj.com.cn/2026/06/22084857535292.shtml",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://m.sohu.com/a/913803416_250147/?pvid=000115_3w_a",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.chnfund.com/article/ARb6710f3a-b2bf-5737-5b23-3a162d001b39",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.dutenews.com/n/article/8502979?r=1",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.chnfund.com/article/ARb6710f3a-b2bf-5737-5b23-3a162d001b39",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.dutenews.com/n/article/8502979?r=1",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://jrj.wuhan.gov.cn/ztzl_57/xyrd/yxy/202407/t20240730_2435365.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://jrj.wuhan.gov.cn/ztzl_57/xyrd/yxy/202407/t20240730_2435365.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://m.sohu.com/a/913803416_250147/?pvid=000115_3w_a",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://m.sohu.com/a/913803416_250147/?pvid=000115_3w_a",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202606173774910910.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.lanjinger.com/d/1752370496934042846",
+      "text": "-\n2"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/alipay__P3.png"
+}

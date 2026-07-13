@@ -1,0 +1,38 @@
+[
+  {
+    "provider": "deepseek",
+    "model": "deepseek-v4-pro",
+    "status": "partial",
+    "promptCount": 10,
+    "successCount": 9,
+    "failureCount": 1,
+    "note": "阿里云百炼 DeepSeek OpenAI-compatible API 已完成真实采样。"
+  },
+  {
+    "provider": "hy3",
+    "model": "hy3",
+    "status": "sampled",
+    "promptCount": 10,
+    "successCount": 10,
+    "failureCount": 0,
+    "note": "腾讯 TokenHub Hy3 API 已完成真实采样。"
+  },
+  {
+    "provider": "qwen",
+    "model": "qwen3.7-plus",
+    "status": "sampled",
+    "promptCount": 10,
+    "successCount": 10,
+    "failureCount": 0,
+    "note": "阿里云百炼 Qwen OpenAI-compatible API 已完成真实采样。"
+  },
+  {
+    "provider": "doubao",
+    "model": "doubao-seed-2-0-lite-260215",
+    "status": "partial",
+    "promptCount": 10,
+    "successCount": 8,
+    "failureCount": 2,
+    "note": "火山方舟豆包 OpenAI-compatible API 已完成真实采样。"
+  }
+]

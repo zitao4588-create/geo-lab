@@ -145,6 +145,51 @@ export interface PageAuditResult {
   };
 }
 
+export interface PublicWebCandidate {
+  title: string;
+  url: string;
+  snippet: string;
+  providers?: Array<'anysearch' | 'tavily' | 'jina' | 'volcengine'>;
+  brandMatched?: boolean;
+  officialCandidate?: boolean;
+}
+
+export interface PublicWebProviderResult {
+  provider: 'anysearch' | 'tavily' | 'jina' | 'volcengine';
+  status: 'success' | 'skipped' | 'failed';
+  latencyMs: number;
+  resultCount: number;
+  usage?: Record<string, number>;
+  error?: string;
+}
+
+export interface PublicWebDiscoveryScore {
+  score: number;
+  status: 'available' | 'partial' | 'unavailable';
+  attemptedProviderCount: number;
+  successfulProviderCount: number;
+  candidateCount: number;
+  brandMatchedCandidateCount: number;
+  officialCandidateCount: number;
+  corroboratedDomainCount: number;
+  note: string;
+}
+
+export interface PublicWebGrounding {
+  provider: 'multi' | 'anysearch' | 'tavily' | 'jina' | 'volcengine';
+  providers: PublicWebProviderResult[];
+  status: 'success' | 'partial' | 'skipped' | 'failed';
+  query: string;
+  searchedAt: string;
+  latencyMs: number;
+  results: PublicWebCandidate[];
+  discovery: PublicWebDiscoveryScore;
+  usage?: Record<string, number>;
+  error?: string;
+  note: string;
+  evidenceLabel: 'suggested_supplement';
+}
+
 export interface ReportAnswerSample {
   promptId: string;
   provider: AiProvider;
@@ -254,6 +299,7 @@ export interface DiagnosisReport {
       checks: Array<{ name: string; status: 'ok' | 'warn' | 'missing'; note: string; evidenceLabel: EvidenceLabel }>;
       pageAudit: PageAuditResult;
     };
+    publicWeb?: PublicWebGrounding;
     competitors: {
       names: string[];
       mentionStats: CompetitorMentionStat[];
@@ -296,6 +342,7 @@ export interface DiagnosisEvidenceIndex {
       | 'samples'
       | 'providers'
       | 'page_audit'
+      | 'public_web_search'
       | 'source_map'
       | 'markdown'
       | 'html'

@@ -1,0 +1,13 @@
+provider,case_id,entity,role,query_type,status,latency_ms,result_count,exact_entity_hit,official_domain_hit,official_domain_position,negative_entity_invented,citations_accessible,raw_evidence_path,error
+anysearch,F1,flomo 浮墨笔记,target,exact_entity,success,3091,5,yes,yes,1,not_applicable,manual_review_required,raw/anysearch/F1.json,
+anysearch,F2,flomo 浮墨笔记,target,official_source,success,2332,5,yes,yes,1,not_applicable,manual_review_required,raw/anysearch/F2.json,
+anysearch,F3,flomo 浮墨笔记,target,unbranded_category,success,2783,5,yes,not_applicable,1,not_applicable,manual_review_required,raw/anysearch/F3.json,
+anysearch,D1,追觅 Dreame X50 Ultra,target,exact_entity,success,2168,5,yes,no,,not_applicable,manual_review_required,raw/anysearch/D1.json,
+anysearch,D2,追觅 Dreame X50 Ultra,target,official_source,success,1996,5,yes,yes,3,not_applicable,manual_review_required,raw/anysearch/D2.json,
+anysearch,D3,追觅 Dreame X50 Ultra,target,unbranded_category,success,1657,5,no,not_applicable,1,not_applicable,manual_review_required,raw/anysearch/D3.json,
+anysearch,A1,支付宝,positive_control,exact_entity,success,2387,5,yes,no,,not_applicable,manual_review_required,raw/anysearch/A1.json,
+anysearch,A2,支付宝,positive_control,official_source,success,1706,5,yes,no,,not_applicable,manual_review_required,raw/anysearch/A2.json,
+anysearch,A3,支付宝,positive_control,unbranded_category,success,2663,5,yes,not_applicable,1,not_applicable,manual_review_required,raw/anysearch/A3.json,
+anysearch,N1,栖栈清单,negative_control,exact_entity,success,7038,5,not_applicable,not_applicable,1,manual_review_required,manual_review_required,raw/anysearch/N1.json,
+anysearch,N2,栖栈清单,negative_control,official_source,success,2430,5,not_applicable,not_applicable,1,manual_review_required,manual_review_required,raw/anysearch/N2.json,
+anysearch,N3,栖栈清单,negative_control,competitor_context,success,2041,5,yes,not_applicable,1,manual_review_required,manual_review_required,raw/anysearch/N3.json,

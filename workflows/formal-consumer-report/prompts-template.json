@@ -1,0 +1,43 @@
+[
+  {
+    "prompt_id": "P1",
+    "purpose": "brand_recognition",
+    "text": "{品牌}是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。"
+  },
+  {
+    "prompt_id": "P2",
+    "purpose": "unbranded_recommendation",
+    "text": "我正在寻找能帮助{目标用户}解决{核心问题}的{品类}。请列出你会优先考虑的 3—5 个具体产品或服务，并分别说明理由。不要反问。",
+    "guardrail": "不得出现目标品牌名"
+  },
+  {
+    "prompt_id": "P3",
+    "purpose": "comparison",
+    "text": "请比较{品牌}和{竞品}在核心功能、适用人群、主要限制和可信依据上的差异。无法核验的内容请明确标注不确定，不要根据名称猜测。"
+  },
+  {
+    "prompt_id": "P4",
+    "purpose": "trusted_sources",
+    "text": "关于{品牌}，你能确认哪些官方或可信公开来源？请给出来源名称和可访问链接，并区分已核验事实与推断。找不到就明确说找不到，不要编造链接。"
+  },
+  {
+    "prompt_id": "P5",
+    "purpose": "use_case_fit",
+    "text": "{品牌}最适合哪些具体使用场景？哪些用户可能不适合？请区分可确认事实与推断。"
+  },
+  {
+    "prompt_id": "P6",
+    "purpose": "limitations_and_risk",
+    "text": "使用{品牌}前最需要确认的限制、风险或售后问题是什么？无法核验的内容请明确标注不确定。"
+  },
+  {
+    "prompt_id": "P7",
+    "purpose": "price_and_access",
+    "text": "{品牌}目前有哪些可以确认的价格、购买或使用入口？请给出来源；找不到就明确说找不到。"
+  },
+  {
+    "prompt_id": "P8",
+    "purpose": "key_claim_verification",
+    "text": "请核验这项说法是否有可信依据：{客户最关心的主张}。请给出支持、部分支持或不支持的判断和来源。"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "prompt": {
+    "id": "qizhan_checklist__P1",
+    "category": "brand",
+    "prompt": "栖栈清单是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+    "targetFact": "栖栈清单"
+  },
+  "provider": "doubao",
+  "model": "doubao-seed-2-0-lite-260215",
+  "status": "success",
+  "sampledAt": "2026-07-13T07:15:53.744Z",
+  "latencyMs": 1268,
+  "answer": "不知道",
+  "fallbackUsed": false,
+  "entity": "栖栈清单",
+  "entityRole": "negative_control",
+  "promptId": "P1"
+}

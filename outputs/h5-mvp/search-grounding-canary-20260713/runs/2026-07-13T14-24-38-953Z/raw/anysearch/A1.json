@@ -1,0 +1,94 @@
+{
+  "case": {
+    "id": "A1",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "exact_entity",
+    "query": "支付宝",
+    "expected_terms": [
+      "支付宝",
+      "Alipay"
+    ],
+    "expected_official_domains": [
+      "alipay.cn"
+    ]
+  },
+  "response": {
+    "provider": "anysearch",
+    "query": "支付宝",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:24:52.993Z",
+    "latencyMs": 2387,
+    "results": [
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/",
+        "snippet": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925"
+      },
+      {
+        "title": "手机支付宝-支付宝 知托付！",
+        "url": "https://mobile.alipay.com/index.htm;",
+        "snippet": "手机支付宝-支付宝 知托付！ English div\" data-cycle-timeout=4000 data-cycle-speed=800 最新版本：10.5.8 (2023-08-03) 功能特性 更新历史 ### 10.5.8版本说明 (2023-08-03) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.6版本说明 (2023-07-27) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.0版本说明 (2023-07-12) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.9..."
+      },
+      {
+        "title": "支付宝- Google Play 上的应用",
+        "url": "https://play.google.com/store/apps/details?hl=zh&id=com.eg.android.AlipayGphone",
+        "snippet": "Alipay - Apps on Google Play # Alipay Alipay (Hangzhou) Technology Co. Ltd 2.5 82.3K reviews 10M+ Downloads Teen Install Share Add to wishlist Alipay is a leading open platform for payments and digital services in China.Users with a Chinese ID and bank account can use Alipay to make payme..."
+      },
+      {
+        "title": "支付宝-你的AI生活伙伴 - App Store",
+        "url": "https://apps.apple.com/cn/app/%E6%94%AF%E4%BB%98%E5%AE%9D-%E4%BD%A0%E7%9A%84ai%E7%94%9F%E6%B4%BB%E4%BC%99%E4%BC%B4/id333206289",
+        "snippet": "‎支付宝-你的AI生活伙伴 App - App Store # 支付宝-你的AI生活伙伴 生活 免费 · App 内购买 分享 iPhone、iPad、Apple Watch 蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。 目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。 更多 ## 活动 ## 评分及评论 评分及评论 4.1 满分 5 分 114万 个评分 ##..."
+      },
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/index.htm",
+        "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......"
+      }
+    ],
+    "rawResponse": {
+      "code": 0,
+      "message": "success",
+      "request_id": "a5a9c95b-ae9e-4f70-9b94-c204d4a6f80e",
+      "data": {
+        "results": [
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/",
+            "snippet": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925",
+            "content": "支付宝 我已有支付宝账户快速登录 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 - 蚂蚁集团 - | - 服务商平台 - | - 支付宝 - | - 余额宝 - | - 蚂蚁商家中心 - | - 芝麻信用 - | - 蚂蚁微贷 - | - 网商银行 - | - 开放平台 - | - 诚征英才 - | - 联系我们 - | 经营许可证编号：合字B2-20190046网站备案：沪公网安备31011502400925"
+          },
+          {
+            "title": "手机支付宝-支付宝 知托付！",
+            "url": "https://mobile.alipay.com/index.htm;",
+            "snippet": "手机支付宝-支付宝 知托付！ English div\" data-cycle-timeout=4000 data-cycle-speed=800 最新版本：10.5.8 (2023-08-03) 功能特性 更新历史 ### 10.5.8版本说明 (2023-08-03) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.6版本说明 (2023-07-27) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.0版本说明 (2023-07-12) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.9...",
+            "content": "手机支付宝-支付宝 知托付！ English div\" data-cycle-timeout=4000 data-cycle-speed=800 最新版本：10.5.8 (2023-08-03) 功能特性 更新历史 ### 10.5.8版本说明 (2023-08-03) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.6版本说明 (2023-07-27) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.5.0版本说明 (2023-07-12) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.96版本说明 (2023-06-29) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.90版本说明 (2023-06-14) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.86版本说明 (2023-06-02) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.80版本说明 (2023-05-17) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.76版本说明 (2023-04-24) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.70版本说明 (2023-04-07) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.66版本说明 (2023-03-23) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.60版本说明 (2023-03-10) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.50版本说明 (2023-02-08) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.36版本说明 (2022-12-30) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.30版本说明 (2022-12-15) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.20版本说明 (2022-11-29) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.10版本说明 (2022-10-31) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.3.0版本说明 (2022-09-19) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.96版本说明 (2022-08-31) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.90版本说明 (2022-08-16) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.86版本说明 (2022-08-04) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.76版本说明 (2022-07-04) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.71版本说明 (2022-06-17) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.65版本说明 (2022-05-27) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.64版本说明 (2022-05-27) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.63版本说明 (2022-05-19) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.62版本说明 (2022-05-06) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.60版本说明 (2022-04-18) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.59版本说明 (2022-04-01) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.53版本说明 (2022-01-07) 支付宝最新版来啦！本次更新： 1.集五福，福相伴。五福，马上到！ 2.解决部分已知问题，优化多项细节，体验更流畅。 ### 10.2.50版本说明 (2021-12-20) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.36版本说明 (2021-10-20) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.33版本说明 (2021-9-17) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.30版本说明 (2021-8-30) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.28版本说明 (2021-7-23) 支付宝最新版来啦！本次更新： 长辈模式：字大图标大 使用更简单。 ### 10.2.26版本说明 (2021-6-18) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.23版本说明 (2021-5-17) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.20版本说明 (2021-4-23) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.18版本说明 (2021-3-26) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 ### 10.2.15版本说明 (2021-2-28) 支付宝最新版来啦！本次更新： “出行”服务升级，可以查询、购买机票。 ### 10.2.13版本说明 (2021-1-23) 支付宝最新版来啦！本次更新： 集五福，过福年！2021新春享更多玩法！ ### 10.2.12版本说明 (2021-1-11) 支付宝最新版来啦！本次更新： 1. 集五福，过福年！升级至最新版，2021年新春享更多玩法。敬请期待！ 2. iOS用户可在支付宝搜苹果，登录“Apple专区”生活号，领取果粉专属福利，每周都有专享红包。 ### 10.2.10版本说明 (2020-12-15) 支付宝最新版来啦！本次更新： \"iOS14小组件”：新增可以添加到手机桌面的小组件「支付宝」「蚂蚁森林」「蚂蚁庄园」「行情看板」，仅iOS14及以上的系统版本可用。添加方法：在桌面长按空白处→点击左上角+号→列表中找到支付宝→添加喜欢的小组件 ### 10.2.6版本说明 (2020-10-17) 支付宝最新版来啦！本次更新： 首页“扫一扫——识物”：对准物体拍照识别，快速获取商品、植物、动物、汽车的相关信息。 ### 10.2.3版本说明 (2020-09-22) 支付宝最新版来啦！本次更新： 1. 首页“付钱”“收钱”合并，使用更方便。 2. 首页新增“出行”，搭公交、乘地铁、坐火车、骑单车、网约车，出行更便捷。 3. 花呗金升级，做任务赚花呗金，抵扣花呗还款额，会花能省，持家小能手就是你。 ### 10.2.0版本说明 (2020-08-21) 支付宝最新版来啦！本次更新： 1. 首页“付钱”“收钱”合并，使用更方便。 2. 首页新增“出行”，搭公交、乘地铁、坐火车、骑单车、网约车，出行更便捷。 3. 花呗金升级，做任务赚花呗金，抵扣花呗还款额，会花能省，持家小能手就是你。 ### 10.1.99版本说明 (2020-07-24) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。 ### 10.1.98版本说明 (2020-06-28) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。 ### 10.1.95版本说明 (2020-05-26) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。 ### 10.1.92版本说明 (2020-04-22) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。 ### 10.1.90版本说明 (2020-03-26) 支付宝最新版来啦！本次更新： 多项细节优化，体验更流畅。 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「"
+          },
+          {
+            "title": "支付宝- Google Play 上的应用",
+            "url": "https://play.google.com/store/apps/details?hl=zh&id=com.eg.android.AlipayGphone",
+            "snippet": "Alipay - Apps on Google Play # Alipay Alipay (Hangzhou) Technology Co. Ltd 2.5 82.3K reviews 10M+ Downloads Teen Install Share Add to wishlist Alipay is a leading open platform for payments and digital services in China.Users with a Chinese ID and bank account can use Alipay to make payme...",
+            "content": "Alipay - Apps on Google Play # Alipay Alipay (Hangzhou) Technology Co. Ltd 2.5 82.3K reviews 10M+ Downloads Teen Install Share Add to wishlist Alipay is a leading open platform for payments and digital services in China.Users with a Chinese ID and bank account can use Alipay to make payments online and in person at various merchants outside of China as they travel for leisure, business, or study. Foreign visitors to China can connect their credit card to take advantage of Alipay’s widespread acceptance by tens of millions of merchants across the country. Alipay is not designed or intended for use by foreign users in their home country or anywhere outside of China. Updated on Jan 12, 2026 Safety starts with understanding how developers collect and share your data. Data privacy and security practices may vary based on your use, region, and age. The developer provided this information and may update it over time. No data shared with third parties Learn more about how developers declare sharing This app may collect these data types Location, Personal info and 5 others Data is encrypted in transit You can request that data be deleted 2.5 81.2K reviews Worked well for payments in Shanghai. Does not work at all for money transfers (must have a credit card issued in China). Hit and miss if you use Didi through the Alipay app as it will sometimes pop up questions in Chinese, which I am not able to read. Would be very useful to have an all-English app for non-residents. Update Oct. 2025: there's much more English in the app now, greatly increasing usability for foreigners. But it won't allow me to add a second credit card. 85 people found this review helpful Don't bother. It's going to force you to input lots of personal information including your photograph, photo of your passport, your bank account information, a credit card number, etc. and then it's going to tell you something went wrong, or you will be automatically rejected. If you try again a few times, your account is going to be suspended. This pertains to adding a bank card and also trying to apply for tour card. 1,259 people found this review helpful To verify and authenticate your Alipay account has become so difficult. I've been trying to do this for over 4 months now. In fact, everything about Alipay is difficult and tedious. How will someone do face verification and the system still wants chip verification that won't even work. And not every user uses an NFC compatible device!! If you don't want international users to use your app, just say so. Stop making things difficult for us. Let me not even start with the unnecessary restrictions😒 48 people found this review helpful See all reviews Update to the new version to get better user experience. Flag as inappropriate Website Support emailsuchang.sc@antfin.com Privacy Policy About the developer 支付宝（杭州）数字服务技术有限公司 yanjin.xx@antgroup.com 中国 浙江省杭州市 西湖区西溪路543-569号(单号连续)1幢2号楼5层518室 邮政编码: 310023 +86 139 1144 5019 TokenPocket: Crypto & BitcoinTP Global Ltd4.2 DingTalkDingTalk (Singapore) Private Limited.3.0 NOL WorldNol Universe Co., Ltd.4.5 VooV MeetingTencent Mobility Limited3.2 Carousell: Sell and BuyCarousell4.1 HSBC HK Mobile BankingThe Hongkong and Shanghai Banking Corporation Ltd4.7 Flag as inappropriate"
+          },
+          {
+            "title": "支付宝-你的AI生活伙伴 - App Store",
+            "url": "https://apps.apple.com/cn/app/%E6%94%AF%E4%BB%98%E5%AE%9D-%E4%BD%A0%E7%9A%84ai%E7%94%9F%E6%B4%BB%E4%BC%99%E4%BC%B4/id333206289",
+            "snippet": "‎支付宝-你的AI生活伙伴 App - App Store # 支付宝-你的AI生活伙伴 生活 免费 · App 内购买 分享 iPhone、iPad、Apple Watch 蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。 目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。 更多 ## 活动 ## 评分及评论 评分及评论 4.1 满分 5 分 114万 个评分 ##...",
+            "content": "‎支付宝-你的AI生活伙伴 App - App Store # 支付宝-你的AI生活伙伴 生活 免费 · App 内购买 分享 iPhone、iPad、Apple Watch 蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。 目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。 更多 ## 活动 ## 评分及评论 评分及评论 4.1 满分 5 分 114万 个评分 ## 新功能 支付宝最新版来啦，你的AI生活伙伴-蚂蚁阿宝正式上线，上支付宝搜「蚂蚁阿宝」即可体验，快来更新吧！ 更多 版本 12.12.1 6月29日 ## App 隐私 开发者“Alipay (Hangzhou) Technology Co., Ltd.”已表明该 App 的隐私规范可能包括下述数据处理方式。更多相关信息，请参阅开发者隐私政策。 ### 用于追踪你的数据 以下数据可能会用于在其他公司的 App 和网站中追踪你： ### 与你关联的数据 开发者可能会收集以下数据，且数据与你的身份关联： - - 标识符 - - 健康与健身 - 位置 - 联系信息 - 联系人 - 用户内容 - 搜索历史记录 - 浏览历史记录 - 标识符 - 使用数据 - 诊断 隐私规范可能因你使用的功能或你的年龄等因素而异。进一步了解 ## 辅助功能 开发者尚未表明此 App 支持哪些辅助功能。进一步了解 ## 信息 大小 - 496 MB 类别 - 生活 兼容性 设备需装有 iOS 13.0 或更高版本。 - iPhone设备需装有 iOS 13.0 或更高版本。 - iPad设备需装有 iPadOS 13.0 或更高版本。 - iPod touch设备需装有 iOS 13.0 或更高版本。 - Apple Watch设备需装有 watchOS 6.0 或更高版本。 位置 - 此App即使未打开时也可能会使用你的位置信息，可能会影响电池续航能力。 语言 简体中文和另外2种 - 简体中文、繁体中文、英语 年龄分级 4+ 4+ 了解更多 - 此 App 的年龄分级为 4+，并设有内容访问限制。部分内容可能有更高的年龄分级，但开发者将通过 App 内控件管理访问。 - App 内控件年龄验证家长控制包含广告信息和聊天用户生成内容 App内购买 是 75个支付豆 ¥10.00 70个支付豆 ¥10.00 15元主题皮肤套装 ¥15.00 15个支付豆 ¥2.00 375个支付豆 ¥50.00 225个支付豆 ¥30.00 150个支付豆 ¥20.00 1元的数字藏品 ¥1.00 735个支付豆 ¥98.00 14个支付豆 ¥2.00 进一步了解 提供者 - 名称或姓名Alipay Hangzhou Technology Co., Ltd. 版权 - © Ant Group. All rights reserved. 开发者网站 隐私政策 ## 支持 ### Siri 通过Siri来使用此App，帮你处理各项事务。 ### 钱包 集中管理所有凭证最简便的方式。 ## 更多来自\"Alipay (Hangzhou) Technology Co., Ltd.\"的 App 更多来自\"Alipay (Hangzhou) Technology Co., Ltd.\"的 App ## 你可能还喜欢 你可能还喜欢"
+          },
+          {
+            "title": "支付宝",
+            "url": "https://www.alipay.com/index.htm",
+            "snippet": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www......",
+            "content": "支付宝 我是服务商我是开发者我是商家用户我是支付宝商家我是口碑商家我是机构用户我是个人用户 支付宝 ![](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png) 我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https://www.alipay.com/) **我是服务商~~~~**我是开发者~~~~**我是商家用户我是支付宝商家我是口碑商家~~~~**我是机构用户~~~~**我是个人用户~~~~ * [蚂蚁集团](https://www.antgroup.com/) * | * [服务商平台](https://p.alipay.com/portal/home.htm) * | * [支付宝](https://www.alipay.com) * | * [余额宝](https://yebprod.alipay.com/yeb/index.htm) * | * [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA) * | * [芝麻信用](https://www.zmxy.com.cn/#/home) * | * [蚂蚁微贷](https://loan.mybank.cn/) * | * [网商银行](https://www.mybank.cn/index.htm) * | * [开放平台](https://open.alipay.com/platform/home.htm?from=zhuzhanfooter20160818) * | * [诚征英才](https://talent.antgroup.com) * | * [联系我们](https://ab.alipay.com/i/lianxi.htm) * | [经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[网站备案：沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925) [](https://u.alipay.cn/_3DaM4ZtHA7KhH17nybWnkg)[](https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ALIPAY.COM&zh_cn)[](javascript:;)[](https://u.alipay.cn/_4T6qRyeBqawobPKyjjH9AQ)[](https://fun.alipay.com/certificate/index.htm) [](https://z.alipay.com)"
+          }
+        ],
+        "metadata": {
+          "total_results": 5,
+          "search_time_ms": 1627
+        }
+      }
+    }
+  }
+}

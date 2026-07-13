@@ -1,0 +1,2 @@
+provider,case_id,entity,role,query_type,status,latency_ms,result_count,exact_entity_hit,official_domain_hit,official_domain_position,negative_entity_invented,citations_accessible,raw_evidence_path,error
+volcengine,F1,flomo 浮墨笔记,target,exact_entity,failed,8854,0,no,no,,not_applicable,manual_review_required,raw/volcengine/F1.json,HTTP 404: Your account has not activated web search. You may activate it at https://console.volcengine.com/common-buy/CC_content_plugin Request id: 02178395301659847c8075984f4c09bb3b0ca9abced541eafe82f

@@ -7,6 +7,7 @@ import { diagnosisInputSchema } from './validation.js';
 import { buildFinalGeoReport, buildPromptUniverse } from './rules.js';
 import { assessDiagnosisInput, assessDiagnosisSource } from './credibility.js';
 import { getSamplingRuntime, sampleAiProviders, SamplingUnavailableError } from './providers/sampling.js';
+import { collectPublicWebGrounding, getPublicWebGroundingRuntime, toPublicWebGrounding } from './publicWebGrounding.js';
 import { auditSubmittedPages } from './pageAudit.js';
 import { readLatestOperation, recordOperation, summarizeOperation } from './operations.js';
 import { PersistentRateLimiter } from './rateLimiter.js';
@@ -29,6 +30,13 @@ const port = Number(process.env.PORT || 8787);
 const clientDist = path.resolve(process.cwd(), 'dist/client');
 const hourlyIpLimit = readPositiveInteger(process.env.DIAGNOSES_IP_HOURLY_LIMIT, 1);
 const globalDailyLimit = readPositiveInteger(process.env.DIAGNOSES_GLOBAL_DAILY_LIMIT, 30);
+const diagnosisSlaMs = readBoundedInteger(process.env.DIAGNOSIS_SLA_MS, 30_000, 500, 30_000);
+const reportReserveMs = readBoundedInteger(
+  process.env.DIAGNOSIS_REPORT_RESERVE_MS,
+  2_500,
+  100,
+  Math.max(100, diagnosisSlaMs - 100)
+);
 const runtimeDir = path.resolve(process.cwd(), process.env.RUNTIME_DIR || 'runtime');
 const rateLimiter = new PersistentRateLimiter({ runtimeDir, hourlyIpLimit, globalDailyLimit });
 
@@ -78,6 +86,12 @@ function readPositiveInteger(value: string | undefined, fallback: number) {
   return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : fallback;
 }
 
+function readBoundedInteger(value: string | undefined, fallback: number, minimum: number, maximum: number) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(maximum, Math.max(minimum, Math.floor(parsed)));
+}
+
 app.get('/api/health', async (_req, res, next) => {
   try {
   const runtime = getSamplingRuntime();
@@ -105,12 +119,18 @@ app.get('/api/health', async (_req, res, next) => {
     samplingAllowedProviderCount: runtime.samplingAllowedProviderCount,
     sampleConcurrency: runtime.sampleConcurrency,
     sampleMaxRetries: runtime.sampleMaxRetries,
+    diagnosisSlaMs,
+    reportReserveMs,
+    publicWebGrounding: getPublicWebGroundingRuntime(),
     wechatJssdk: getWechatJssdkRuntime(),
     providers,
     latestOperation: latestOperation ? {
       recordedAt: latestOperation.recordedAt,
       pageAuditDurationMs: latestOperation.pageAuditDurationMs,
       samplingDurationMs: latestOperation.samplingDurationMs,
+      publicWebStatus: latestOperation.publicWebStatus,
+      publicWebDurationMs: latestOperation.publicWebDurationMs,
+      publicWebProviders: latestOperation.publicWebProviders,
       totalDurationMs: latestOperation.totalDurationMs
     } : null
   });
@@ -130,6 +150,8 @@ app.get('/api/wechat/jssdk-config', async (req, res, next) => {
 });
 
 app.post('/api/diagnoses', async (req, res, next) => {
+  const requestStartedAt = Date.now();
+  const externalDeadlineAt = requestStartedAt + diagnosisSlaMs - reportReserveMs;
   let runningDiagnosis: Promise<DiagnosisReport> | null = null;
   let clientRequestId = '';
   let requestFingerprint = '';
@@ -172,7 +194,9 @@ app.post('/api/diagnoses', async (req, res, next) => {
     }
 
     const pageAuditStartedAt = Date.now();
-    const pageAudit = await auditSubmittedPages(input);
+    const pageAudit = await auditSubmittedPages(input, {
+      timeoutMs: Math.max(1_000, Math.min(8_000, externalDeadlineAt - Date.now()))
+    });
     const pageAuditDurationMs = Date.now() - pageAuditStartedAt;
     const sourceAssessment = assessDiagnosisSource(input, pageAudit);
     if (sourceAssessment.status !== 'ready') {
@@ -187,7 +211,7 @@ app.post('/api/diagnoses', async (req, res, next) => {
 
     if (!await consumeDiagnosisQuota(req, res)) return;
 
-    runningDiagnosis = generateDiagnosis(input, pageAudit, pageAuditDurationMs);
+    runningDiagnosis = generateDiagnosis(input, pageAudit, pageAuditDurationMs, requestStartedAt, externalDeadlineAt);
     if (clientRequestId) {
       inFlightDiagnoses.set(clientRequestId, {
         requestFingerprint,
@@ -213,29 +237,44 @@ function sendIdempotencyConflict(res: express.Response) {
   });
 }
 
-async function generateDiagnosis(input: DiagnosisInput, pageAudit: Awaited<ReturnType<typeof auditSubmittedPages>>, pageAuditDurationMs: number) {
-  const startedAt = Date.now();
+async function generateDiagnosis(
+  input: DiagnosisInput,
+  pageAudit: Awaited<ReturnType<typeof auditSubmittedPages>>,
+  pageAuditDurationMs: number,
+  requestStartedAt: number,
+  externalDeadlineAt: number
+) {
   const prompts = buildPromptUniverse(input);
   const samplingStartedAt = Date.now();
-  const sampling = await sampleAiProviders(prompts).then((result) => ({
-    ...result,
-    durationMs: Date.now() - samplingStartedAt
-  }));
+  const groundingRuntime = getPublicWebGroundingRuntime();
+  const [sampling, publicWebResponses] = await Promise.all([
+    sampleAiProviders(prompts, { deadlineAt: externalDeadlineAt }).then((result) => ({
+      ...result,
+      durationMs: Date.now() - samplingStartedAt
+    })),
+    groundingRuntime.enabled
+      ? collectPublicWebGrounding(input, { deadlineAt: externalDeadlineAt, captureRawResponse: true })
+      : Promise.resolve(undefined)
+  ]);
   const { samples, providerStatuses } = sampling;
+  const publicWeb = publicWebResponses ? toPublicWebGrounding(input, publicWebResponses) : undefined;
   const successfulSamples = samples.filter((sample) => sample.status === 'success');
 
   if (successfulSamples.length === 0) {
     throw new SamplingUnavailableError('本次所有 AI 平台采样均失败，无法生成最终 GEO 分析报告');
   }
 
-  const report = buildFinalGeoReport(input, samples, pageAudit, providerStatuses);
-  await saveDiagnosis(input, report, samples, pageAudit, providerStatuses);
-  const totalDurationMs = Date.now() - startedAt;
+  const report = buildFinalGeoReport(input, samples, pageAudit, providerStatuses, publicWeb);
+  await saveDiagnosis(input, report, samples, pageAudit, providerStatuses, publicWebResponses);
+  const totalDurationMs = Date.now() - requestStartedAt;
   const operation = summarizeOperation({
     reportId: report.id,
     samples,
     pageAuditDurationMs,
     samplingDurationMs: sampling.durationMs,
+    publicWebStatus: publicWeb?.status ?? 'disabled',
+    publicWebDurationMs: publicWeb?.latencyMs ?? 0,
+    publicWebProviders: publicWeb?.providers,
     totalDurationMs
   });
   await recordOperation(operation, runtimeDir);
@@ -248,6 +287,9 @@ async function generateDiagnosis(input: DiagnosisInput, pageAudit: Awaited<Retur
     samplingDurationMs: sampling.durationMs,
     pageAuditDurationMs,
     totalDurationMs,
+    publicWebStatus: publicWeb?.status ?? 'disabled',
+    publicWebDurationMs: publicWeb?.latencyMs ?? 0,
+    publicWebProviders: publicWeb?.providers,
     providers: operation.providers
   }));
   return report;

@@ -1,0 +1,56 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:01:00.456Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P1",
+  "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "支付宝是蚂蚁集团旗下的一个平台，于2004年成立-\n1\n-\n6\n。\n\n它最初是为了解决阿里巴巴集团旗下淘宝网在线交易中的信任问题而推出，后于2004年12月8日独立运营-\n6\n-\n10\n。目前，它已从一个支付工具发展成一个提供支付、生活服务、政务服务、理财、保险等多种服务的综合性平台-\n1\n-\n6\n。支付宝服务超过10亿用户和8000万商家-\n5\n。\n\n其支付牌照的主体公司“支付宝（中国）网络技术有限公司”已于2025年9月更名为“支付宝支付科技有限公司”-\n2\n-\n4\n-\n7\n。\n\n关于其更详细的技术架构、商业策略等，我暂不了解。",
+  "searched_web": true,
+  "search_trace": "已阅读 10 个网页",
+  "links": [
+    {
+      "href": "https://about.alipay.com/",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://zh.wikipedia.org/wiki/%E6%94%AF%E4%BB%98%E5%AE%9D?oldformat=true",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://zh.wikipedia.org/wiki/%E6%94%AF%E4%BB%98%E5%AE%9D?oldformat=true",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://m.zhitongcaijing.com/article/share.html?content_id=348053",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://about.alipay.com/",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://zh.wikipedia.org/wiki/%E6%94%AF%E4%BB%98%E5%AE%9D?oldformat=true",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/%E6%94%AF%E4%BB%98%E5%AE%9D-%E4%BE%BF%E6%8D%B7%E7%94%9F%E6%B4%BB-%E4%B8%80%E7%82%B9%E5%B0%B1%E5%A5%BD/id333206289?l=zh-Hans-CN",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://finance.sina.com.cn/jjxw/2025-09-19/doc-infqyxsu5158334.shtml",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://finance.eastmoney.com/a/202509193518798825.html",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://wapbaike.baidu.com/item/%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/66776404?fromtitle=%E6%94%AF%E4%BB%98%E5%AE%9D%EF%BC%88%E4%B8%AD%E5%9B%BD%EF%BC%89%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&fromid=5735110",
+      "text": "-\n7"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/alipay__P1.png"
+}

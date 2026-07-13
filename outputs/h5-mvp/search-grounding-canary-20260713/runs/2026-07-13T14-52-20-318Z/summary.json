@@ -1,0 +1,30 @@
+{
+  "runId": "2026-07-13T14-52-20-318Z",
+  "generatedAt": "2026-07-13T14:52:32.326Z",
+  "providers": [
+    "volcengine"
+  ],
+  "caseCount": 1,
+  "plannedSearchRequestCount": 1,
+  "searchRequestCount": 1,
+  "stoppedProviders": [],
+  "rows": [
+    {
+      "provider": "volcengine",
+      "case_id": "F1",
+      "entity": "flomo 浮墨笔记",
+      "role": "target",
+      "query_type": "exact_entity",
+      "status": "failed",
+      "latency_ms": 12005,
+      "result_count": 0,
+      "exact_entity_hit": "no",
+      "official_domain_hit": "no",
+      "official_domain_position": "",
+      "negative_entity_invented": "not_applicable",
+      "citations_accessible": "manual_review_required",
+      "raw_evidence_path": "raw/volcengine/F1.json",
+      "error": "The operation was aborted due to timeout"
+    }
+  ]
+}

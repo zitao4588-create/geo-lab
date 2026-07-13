@@ -1,0 +1,204 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:00:49.961Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P4",
+  "prompt": "关于追觅 Dreame X50 Ultra，你能确认哪些官方或可信公开来源？请给出来源名称和可访问链接，并区分已核验事实与推断。找不到就明确说找不到，不要编造链接。",
+  "answer": "关于追觅 Dreame X50 Ultra，我整理了以下来自科技媒体、电商平台和专业测评的信息。需要说明的是，目前未能找到追觅官方的正式产品发布稿或官网产品页（相关信息可能未在本次检索结果中收录），以下内容均来自第三方公开来源。\n\n已核验事实（基于多方可信来源交叉验证）\n\n以下信息在多个来源中均有提及，相互印证，可信度较高：\n\n核心越障技术：产品搭载名为 ProLeap 的仿生机械足系统，通过两个电动摇臂帮助机身跨越最高 6厘米 的高度差，主要用于应对家庭中的门槛、滑轨等障碍物-\n1\n-\n5\n-\n8\n。\n\n机身高度调节：具备自升降全景激光雷达。雷达升起时用于高效扫描建图；降下时机身高度可降至 89毫米（约3.5英寸），以便进入低矮家具底部清洁-\n1\n-\n3\n-\n4\n。\n\n吸力参数：最大吸力为 20000Pa-\n1\n-\n2\n-\n3\n。\n\n发布与发售信息：于 2025年1月 的 CES 展会发布，2025年2月14日 正式发售，首发定价为 1699.99美元-\n1\n-\n8\n。\n\n基站功能：配备多功能基站，集尘盒容量 3.2升，净水箱 4.5升，污水箱 4升，可使用热水清洗拖布并热风烘干-\n1\n-\n4\n-\n8\n。部分来源提及清洗水温为80°C-\n1\n-\n8\n，但也有来源称是45°C-\n2\n，此项细节存在分歧。\n\n行业认可：产品入选了美国《时代周刊》2025年“年度最佳发明”榜单，是该榜单中唯一的扫地机器人产品-\n5\n-\n12\n。\n\n基于测评和报道的推断（存在主观评估成分）\n\n以下内容来自产品测评或个人体验，属于分析性结论，供参考：\n\n清洁能力评价：多家专业测评机构对其吸力和日常清洁效果给予好评，认为其清扫和拖地能力强劲-\n3\n-\n10\n。但对于墙边、角落的清洁效果，不同测评结论不一。有测评认为其仿生机械臂贴边清洁效果好-\n5\n-\n9\n，但也有详细评测指出它在边缘和家具周围的清洁表现是短板，容易遗漏垃圾-\n10\n。\n\n避障与导航：3D结构光与AI视觉的避障方案受到肯定，特别是对细小物体的识别能力-\n2\n-\n3\n。不过，实测中也出现过未能识别部分线缆的情况-\n10\n。另有测评指出其清扫路径规划有时不够高效，导致清洁时间偏长-\n10\n。\n\n宠物家庭适配：专门的宠物模式和防缠绕滚刷设计被认为对养宠家庭友好，能有效处理宠物毛发-\n2\n-\n3\n。\n\n信息来源汇总\n来源名称\t类型\t可访问链接\t主要信息点\n爱范儿\t科技媒体\thttps://www.ifanr.com/1611379\tProLeap系统、升降雷达、吸力、基站参数、发售信息-\n1\n\nHomes and Gardens\t专业测评\thttps://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review\t详细使用体验、吸力、越障高度、机身尺寸-\n3\n\nGizmodo\t专业测评\thttps://gizmodo.com/dreame-x50-ultra-review-2000608106\t详细优缺点测评、吸力、越障能力、边缘清洁问题-\n10\n\nPrice.com.hk\t电商平台\thttps://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439\t产品规格参数（吸力、尺寸、水箱容量）-\n4\n\n成都商报 / 读特\t新闻媒体\thttps://static.cdsb.com/... / https://www.dutenews.com/n/article/10165018\t入选《时代》周刊年度发明榜单-\n5\n-\n12\n\n抖音百科\t百科类\thttps://www.baike.com/wikiid/7579846623346556974\t汇总性产品介绍（ProLeap系统、吸力、发售信息）-\n8\n\n什么值得买\t用户社区\thttps://post.smzdm.com/p/anvk88kp/\t与竞品的参数、避障、养宠适配对比-\n2\n\n你也可以告诉我你更关注哪个方面（比如越障的实际表现、或是与同类产品的对比），我可以帮你做更聚焦的分析。",
+  "searched_web": true,
+  "search_trace": "已阅读 12 个网页",
+  "links": [
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439&tr_so=w&tr_ref=relatedlist&tr_pp=1&tr_pn=1&tr_ct=1&tr_h=113323877267c2e15b86e4c6_27301141&tr_rq=10&tr_t=N&tr_wg=6&tr_h=196726790267c6f7d888eb45_71215742&tr_ref=relatedlist&tr_pp=4",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439&tr_so=w&tr_ref=relatedlist&tr_pp=1&tr_pn=1&tr_ct=1&tr_h=113323877267c2e15b86e4c6_27301141&tr_rq=10&tr_t=N&tr_wg=6&tr_h=196726790267c6f7d888eb45_71215742&tr_ref=relatedlist&tr_pp=4",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.dutenews.com/n/article/10165018?r=1",
+      "text": "-\n12"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106?utm_source=gizmodo.com&utm_medium=link&utm_campaign=share",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://post.smzdm.com/p/a702kvql/",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106?utm_source=gizmodo.com&utm_medium=link&utm_campaign=share",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106?utm_source=gizmodo.com&utm_medium=link&utm_campaign=share",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106?utm_source=gizmodo.com&utm_medium=link&utm_campaign=share",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379",
+      "text": "https://www.ifanr.com/1611379"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=rss&utm_medium=rss&utm_campaign=turnstiletours.com",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review"
+    },
+    {
+      "href": "https://www.homesandgardens.com/solved/dreame-x50-ultra-robot-vacuum-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106",
+      "text": "https://gizmodo.com/dreame-x50-ultra-review-2000608106"
+    },
+    {
+      "href": "https://gizmodo.com/dreame-x50-ultra-review-2000608106?utm_source=gizmodo.com&utm_medium=link&utm_campaign=share",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://price.com.hk/",
+      "text": "Price.com.hk"
+    },
+    {
+      "href": "https://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439",
+      "text": "https://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439"
+    },
+    {
+      "href": "https://www.price.com.hk/ec-product-detail.php?list_id=1795&ecpid=2182439&tr_so=w&tr_ref=relatedlist&tr_pp=1&tr_pn=1&tr_ct=1&tr_h=113323877267c2e15b86e4c6_27301141&tr_rq=10&tr_t=N&tr_wg=6&tr_h=196726790267c6f7d888eb45_71215742&tr_ref=relatedlist&tr_pp=4",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "https://static.cdsb.com/..."
+    },
+    {
+      "href": "https://www.dutenews.com/n/article/10165018",
+      "text": "https://www.dutenews.com/n/article/10165018"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.dutenews.com/n/article/10165018?r=1",
+      "text": "-\n12"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "https://www.baike.com/wikiid/7579846623346556974"
+    },
+    {
+      "href": "https://www.baike.com/wikiid/7579846623346556974",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "https://post.smzdm.com/p/anvk88kp/"
+    },
+    {
+      "href": "https://post.smzdm.com/p/anvk88kp/",
+      "text": "-\n2"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/dreame_x50_ultra__P4.png"
+}

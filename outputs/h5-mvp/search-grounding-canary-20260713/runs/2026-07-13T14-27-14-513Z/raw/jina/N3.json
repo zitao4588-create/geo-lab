@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "N3",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "competitor_context",
+    "query": "栖栈清单 PackPoint 旅行打包清单应用",
+    "expected_terms": [
+      "PackPoint"
+    ],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  "response": {
+    "provider": "jina",
+    "query": "栖栈清单 PackPoint 旅行打包清单应用",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:29:04.409Z",
+    "latencyMs": 12001,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

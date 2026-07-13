@@ -1,0 +1,15 @@
+{
+  "platform": "yuanbao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）",
+  "captured_at": "2026-07-13T11:17:49.396Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P1",
+  "prompt": "栖栈清单是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "不知道。在公开的通用知识库中，无法确认“栖栈清单”这一术语的标准定义或确切含义。\n源\n“栖栈清单”是某个特定领域的术语吗？\n栖栈清单是否与某个特定的应用或服务相关联？\n能否提供一些类似'栖栈清单'的常见术语或概念？\n下载元宝电脑版，体验高效 AI 助手",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/yuanbao/qizhan_checklist__P1.png"
+}

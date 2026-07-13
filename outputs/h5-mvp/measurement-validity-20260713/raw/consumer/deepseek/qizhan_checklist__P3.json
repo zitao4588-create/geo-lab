@@ -1,0 +1,120 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:02:51.174Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P3",
+  "prompt": "请比较栖栈清单和PackPoint在核心功能、适用人群、主要限制和可信依据上的差异。无法核验的内容请明确标注不确定，不要根据名称猜测。",
+  "answer": "根据公开信息，目前未能找到名为“栖栈清单”的旅行打包应用。因此，无法将它与 PackPoint 进行直接比较。以下信息主要基于 PackPoint 的已知情况，关于“栖栈清单”的部分因无法核验而暂时空缺。\n\nPackPoint 的已知信息\n\n核心功能\n\nPackPoint 是一款智能行李清单应用。其核心功能是让你输入目的地、旅行日期、旅行类型（商务/休闲）及计划活动后，它会结合当地天气预报，自动生成一份个性化的打包清单-\n1\n-\n3\n-\n5\n。清单会考虑天气、活动、是否可重复穿衣及有无洗衣设备等因素-\n1\n-\n3\n。付费版（$2.99/年）可解锁与行程管理应用 TripIt 的整合、自定义活动及与 Evernote 同步等功能-\n3\n-\n5\n-\n6\n。\n\n适用人群\n\n这款应用适合希望简化打包流程、有基本打包需求的个人旅行者-\n3\n。尤其对旅行打包经验不足的人，或经常进行商务、休闲旅行并需要快速生成清单的用户比较有用-\n3\n-\n5\n。曾被《华盛顿邮报》、BBC、CNN 等多家媒体报道并获过奖-\n2\n-\n6\n-\n8\n。\n\n主要限制\n\n主要为个人旅行设计，难以用于创建多人或家庭打包清单-\n3\n。\n\n在灵活性上存在明显不足：创建行程后无法修改日期；生成的清单中无法删除不需要的默认物品，只能添加；活动种类有限-\n3\n-\n10\n。\n\n应用稳定性被用户诟病，有报告称存在崩溃和丢失列表的情况。数据无法删除，且免费版功能较基础-\n1\n-\n3\n-\n10\n。\n\n更新不活跃，被用户反映问题长期未修复-\n10\n。\n\n可信依据\n\n功能描述参考了多个科技和旅游媒体的评测-\n3\n-\n5\n-\n14\n。\n\n用户评价和批评意见来自 Google Play 和 App Store 的用户反馈-\n1\n-\n10\n，这反映了真实用户的使用体验。",
+  "searched_web": true,
+  "search_trace": "已阅读 14 个网页",
+  "links": [
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://static.thrillist.com/travel/nation/travel-app-packing-lists-trip-planning",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://static.thrillist.com/travel/nation/travel-app-packing-lists-trip-planning",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.bluestacks.com/campaign/com.adam.PackPoint/tw",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://static.thrillist.com/travel/nation/travel-app-packing-lists-trip-planning",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.similarweb.com/app/google/com.YRH.PackPoint/vs/com.kaimallie.ibucket/",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.bluestacks.com/campaign/com.adam.PackPoint/tw",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://apps.appfollow.io/ios/packpoint-xing-li-da-bao-qing-dan-lu-you-de-hao-ban-lu/896337401?country=tw",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/packpoint-travel-packing-list/id896337401?see-all=reviews&platform=iphone",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/packpoint-travel-packing-list/id896337401?see-all=reviews&platform=iphone",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/packpoint-travel-packing-list/id896337401?see-all=reviews&platform=iphone",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://www.pilotplans.com/blog/packpoint-review",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://static.thrillist.com/travel/nation/travel-app-packing-lists-trip-planning",
+      "text": "-\n5"
+    },
+    {
+      "href": "https://www.afar.com/magazine/best-travel-apps-to-download-before-your-next-trip?p=10",
+      "text": "-\n14"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/packpoint-travel-packing-list/id896337401?see-all=reviews&platform=iphone",
+      "text": "-\n10"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/qizhan_checklist__P3.png"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "self-h5",
+  "label": "AI曝光体检自有 H5",
+  "query": "AI曝光体检 exposure.playgamelab.cn GEO",
+  "search": {
+    "ok": true,
+    "elapsedMs": 2858,
+    "reportedMs": 2287,
+    "resultCount": 5,
+    "topUrls": [
+      "https://www.aipogeo.cn/AI%E8%83%BD%E8%A7%81%E5%BA%A6%E6%A3%80%E6%B5%8B.html",
+      "https://dn-solutions.com/cn/solution/solutionDetail.do?soluSeq=",
+      "https://developer.volcengine.com/articles/7657771015758839844",
+      "https://www.playlab.ai/project/cme6fxyhl08zdnl0u4l321e4a",
+      "https://www.youfind.hk/cn/aipo-geo-audit"
+    ],
+    "expectedUrlHit": false,
+    "expectedTermHits": [
+      "GEO"
+    ],
+    "stderr": "",
+    "error": null
+  },
+  "extract": {
+    "url": "https://exposure.playgamelab.cn/",
+    "ok": true,
+    "elapsedMs": 1996,
+    "hasUsefulBody": false,
+    "chars": 77,
+    "stderr": "",
+    "error": null
+  },
+  "assessment": "weak_for_target_discovery"
+}

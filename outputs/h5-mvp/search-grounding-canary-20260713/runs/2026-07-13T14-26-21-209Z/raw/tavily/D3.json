@@ -1,0 +1,99 @@
+{
+  "case": {
+    "id": "D3",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "unbranded_category",
+    "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+    "expected_terms": [
+      "Dreame X50 Ultra",
+      "追觅 X50 Ultra"
+    ],
+    "expected_official_domains": []
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:29.892Z",
+    "latencyMs": 2315,
+    "results": [
+      {
+        "title": "【2026 最新版】10款寵物家庭專用掃地機器人/吸塵器/洗地機推薦評比一次看",
+        "url": "https://www.pettofund.com.tw/blog/posts/pet-home-vacuum-robot-recommendations-2025",
+        "snippet": "item.variation.media.alt_translations : item.product.cover_media.alt_translations) | translateModel }} {{ (item.variation.media. : item.product.cover_media.alt_translations) | translateModel. {{ 'product.bundled\\_products.label' | translate }}. {{ 'product.bundle\\_group\\_products.label' | translate }}. {{ 'product.addon\\_products.label' | translate }}. {{item.product.title\\_translations|translateModel}}. * {{ getSelectedItemDetail(selectedChildProduct, item).childProductName }} x {{ selectedChildProduct.quantity || 1 }}. {{item.quantity}}x NT$0 {{ item.unit\\_point }} 點. {{addonItem.product.cover_media.alt_translations | translateModel}}. {{addonItem.product.title\\_translations|translateModel}}. Home / 部落格列表 / 【2026 最新版】10 款為寵物家庭設計的掃地機器人/吸塵器/洗地機推薦評比一次看. # 【2026 最新版】10 款為寵物家庭設計的掃地機器人/吸塵器/洗地機推薦評比一次看. 本篇文章，幫你整理出 2025 年最新、經實測與網友高評價推薦的10 款寵物家庭專用吸塵器與掃地機器人清單，針對不同家庭需求（貓砂、掉毛、多寵物、地毯）都能找到對應解法！. | 毛孩毛量多 | 強吸力主機＋防纏繞滾刷設計＋大容量集塵盒（掃地機器人＆吸塵器共有特點） |. | 小坪數空間／開放式格局 | 靜音設計＋窄體靈活移動＋不佔空間收納便利性高（掃地機器人＆吸塵器共有特點） |. ## 三、2025 年最新 10 款寵物家庭專用掃地機器人、吸塵器、濕拖機推薦清單. Narwal 雲鯨 Freo Z Ultra 真雙目 AI 掃拖機器人**. 🔸 **機身高度**：10.3 cm。中等高度，能進入部分家具底部，但對較低的沙發可能有限制。. * 零纏繞 2.0 系統：專為解決毛髮卡刷問題而設計，能輕鬆應對大量掉毛。. * APP 支援：可遠端操控、設定禁區、多樓層地圖記憶…",
+        "score": 0.66308063
+      },
+      {
+        "title": "之前照顧狗狗的後期比較累我們幾乎都沒有時間好好休息現在 ...",
+        "url": "https://www.instagram.com/reel/DQeDJRLgQ0L",
+        "snippet": "Xiaomi 掃拖機器人6 Max 旗艦清潔實力✨ 行業首創全域覆蓋清潔✨ 6cm 超強越障能力✨ 可識別超過327 種物品與髒汙✨ 35,000Pa 超大吸力✨ 洗拖布、烘乾、自清潔",
+        "score": 0.60805947
+      },
+      {
+        "title": "解读米家洁净密码",
+        "url": "https://m.weibo.cn/detail/5317713832447883",
+        "snippet": "解读米家洁净密码｜米家扫拖机器人6 Max ✓ 强劲吸力一步到位、宠物家庭毛发无忧✓ 滚筒活水超净洗地、AI识别全景避障✓ 三重机械臂贴边扫拖，基站全自动解放双手⏰ 直播",
+        "score": 0.60805947
+      },
+      {
+        "title": "扫地机器人- 宠物避障、边角清洁谁更强？",
+        "url": "https://post.smzdm.com/p/a0365l00",
+        "snippet": "石头P20 Max采用底盘升降3.0技术，实测机身最薄处仅7.95cm，配合AI轮足系统可连续翻越两级门槛，最高越障达8.8cm。 ... 追觅扫地机器人X40Pro自动上下水版扫拖洗拖一体双机械臂",
+        "score": 0.5521781
+      },
+      {
+        "title": "2026 年全自动扫拖机器人终极选购指南 - Joybuy",
+        "url": "https://m.joybuy.co.uk/blog/self-emptying-robot-vacuum-mop-guide/RwaHWcst",
+        "snippet": "自集尘基站支持长达60 天的免手动清洁体验。 5000Pa 的强劲吸力。 滚刷采用毛发防缠绕技术，有效防止堵塞。 iPath 激光导航技术，支持多楼层地图与自定义清洁区域。",
+        "score": 0.5158888
+      }
+    ],
+    "rawResponse": {
+      "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://www.pettofund.com.tw/blog/posts/pet-home-vacuum-robot-recommendations-2025",
+          "title": "【2026 最新版】10款寵物家庭專用掃地機器人/吸塵器/洗地機推薦評比一次看",
+          "content": "item.variation.media.alt_translations : item.product.cover_media.alt_translations) | translateModel }} {{ (item.variation.media. : item.product.cover_media.alt_translations) | translateModel. {{ 'product.bundled\\_products.label' | translate }}. {{ 'product.bundle\\_group\\_products.label' | translate }}. {{ 'product.addon\\_products.label' | translate }}. {{item.product.title\\_translations|translateModel}}. * {{ getSelectedItemDetail(selectedChildProduct, item).childProductName }} x {{ selectedChildProduct.quantity || 1 }}. {{item.quantity}}x NT$0  {{ item.unit\\_point }} 點. {{addonItem.product.cover_media.alt_translations | translateModel}}. {{addonItem.product.title\\_translations|translateModel}}. Home / 部落格列表 / 【2026 最新版】10 款為寵物家庭設計的掃地機器人/吸塵器/洗地機推薦評比一次看. # 【2026 最新版】10 款為寵物家庭設計的掃地機器人/吸塵器/洗地機推薦評比一次看. 本篇文章，幫你整理出 2025 年最新、經實測與網友高評價推薦的10 款寵物家庭專用吸塵器與掃地機器人清單，針對不同家庭需求（貓砂、掉毛、多寵物、地毯）都能找到對應解法！. | 毛孩毛量多 | 強吸力主機＋防纏繞滾刷設計＋大容量集塵盒（掃地機器人＆吸塵器共有特點） |. | 小坪數空間／開放式格局 | 靜音設計＋窄體靈活移動＋不佔空間收納便利性高（掃地機器人＆吸塵器共有特點） |. ## 三、2025 年最新 10 款寵物家庭專用掃地機器人、吸塵器、濕拖機推薦清單. Narwal 雲鯨 Freo Z Ultra 真雙目 AI 掃拖機器人**. 🔸 **機身高度**：10.3 cm。中等高度，能進入部分家具底部，但對較低的沙發可能有限制。. * 零纏繞 2.0 系統：專為解決毛髮卡刷問題而設計，能輕鬆應對大量掉毛。. * APP 支援：可遠端操控、設定禁區、多樓層地圖記憶，並提供清潔通知。. ### **2.** **Roborock 石頭科技 Qrevo EdgeT 白升仕(智慧升降LDS/三重零纏繞/****75度熱水洗/45度烘乾****)**. * APP 支援：可遠端操控、儲存多樓層地圖，並提供詳細的清潔通知與歷史紀錄。. 🔸**機身高度**：7.98**cm**。為五款中最輕薄機種。. Dreame 追覓 L40s Pro Ultra 雙仿生零纏越障掃拖機**. 🔸 機身高度：9.7 cm。穿梭家具底部尚稱靈活。. 5. ECOVACS 科沃斯 T50 PRO OMNI 超薄全覆蓋全能旗艦掃拖機器人. 🔸低噪靜音運轉：最低音量約 **45 dB**，具備「安靜模式」和「寵物模式」，讓毛孩更安心。. 進入物聯網時代，吸塵器開始整合感測器與智慧演算法。例如**戴森**部分型號配備**綠光探頭**，可讓細小灰塵無所遁形；而**追覓（Dreame）**、**小米**等品牌則推出**自動調節吸力**功能，可根據地面灰塵量即時調整功率，兼顧清潔效果與節能。這階段的產品不再只是工具，更是具備判斷力的「清潔助手」。. * 重量：2.2 公斤，單手操作輕鬆無負擔，適合日常快速清潔。. * 重量：約 2.7 公斤，手持感穩重，適合長時間使用。. 我們建議選擇吸力強且有「真正割毛＋防纏毛設計」的吸塵器，如 Dyson V12 SV46 或 Dreame Z10S Station。Roborock 石頭科技 F25 ACE 的割毛髮技術亦表現優異。. 若預算足夠，建議選擇具備能跨越障礙高度的機種，如具備「跨越輪」「地毯增壓模式」與「熱水洗地」功能的 Dreame L40s Pro Ultra，能一機解決多種清潔需求。. 目前市面上的主流品牌，如 Dyson、Roborock、Dreame、LG 和 Narwal 等，皆針對寵物毛髮設計了專屬的防纏主刷或割毛系統。我們都幫你選好了. 👉🏻 **【2025最新】10款貓尿除味/寵物除臭用品-消臭力/持久比較** **🔥**.",
+          "score": 0.66308063,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.instagram.com/reel/DQeDJRLgQ0L",
+          "title": "之前照顧狗狗的後期比較累我們幾乎都沒有時間好好休息現在 ...",
+          "content": "Xiaomi 掃拖機器人6 Max 旗艦清潔實力✨ 行業首創全域覆蓋清潔✨ 6cm 超強越障能力✨ 可識別超過327 種物品與髒汙✨ 35,000Pa 超大吸力✨ 洗拖布、烘乾、自清潔",
+          "score": 0.60805947,
+          "raw_content": null
+        },
+        {
+          "url": "https://m.weibo.cn/detail/5317713832447883",
+          "title": "解读米家洁净密码",
+          "content": "解读米家洁净密码｜米家扫拖机器人6 Max ✓ 强劲吸力一步到位、宠物家庭毛发无忧✓ 滚筒活水超净洗地、AI识别全景避障✓ 三重机械臂贴边扫拖，基站全自动解放双手⏰ 直播",
+          "score": 0.60805947,
+          "raw_content": null
+        },
+        {
+          "url": "https://post.smzdm.com/p/a0365l00",
+          "title": "扫地机器人- 宠物避障、边角清洁谁更强？",
+          "content": "石头P20 Max采用底盘升降3.0技术，实测机身最薄处仅7.95cm，配合AI轮足系统可连续翻越两级门槛，最高越障达8.8cm。 ... 追觅扫地机器人X40Pro自动上下水版扫拖洗拖一体双机械臂",
+          "score": 0.5521781,
+          "raw_content": null
+        },
+        {
+          "url": "https://m.joybuy.co.uk/blog/self-emptying-robot-vacuum-mop-guide/RwaHWcst",
+          "title": "2026 年全自动扫拖机器人终极选购指南 - Joybuy",
+          "content": "自集尘基站支持长达60 天的免手动清洁体验。 5000Pa 的强劲吸力。 滚刷采用毛发防缠绕技术，有效防止堵塞。 iPath 激光导航技术，支持多楼层地图与自定义清洁区域。",
+          "score": 0.5158888,
+          "raw_content": null
+        }
+      ],
+      "response_time": 1.99,
+      "request_id": "8d4bc005-8508-4a79-be90-5fd14ee36653"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "case": {
+    "id": "N2",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "official_source",
+    "query": "栖栈清单 官网 官方 应用",
+    "expected_terms": [],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "栖栈清单 官网 官方 应用",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:37.114Z",
+    "latencyMs": 1089,
+    "results": [
+      {
+        "title": "程序员需掌握的常用技术栈和工具清单",
+        "url": "https://zhuanlan.zhihu.com/p/405001512",
+        "snippet": "Aug 30, 2021 — 开发一个普通管理系统, 、数据库和工具。 这些框架最大的特点就是官网上提供了各种组件的使用方法,后端人员只要套到JSP页面中,进行数据渲染即可。",
+        "score": 0.21978134
+      },
+      {
+        "title": "关注清单 - App Store",
+        "url": "https://apps.apple.com/cn/app/%E5%85%B3%E6%B3%A8%E6%B8%85%E5%8D%95/id6761153745",
+        "snippet": "你可以浏览不同地区的应用，跟踪更新，并将喜欢的应用收藏在一起。 主要功能： • 探索全球应用通过名称、开发者或App Store ID 搜索应用。 • 实时更新跟踪应用发布与更新动态 ...Read more",
+        "score": 0.18965648
+      },
+      {
+        "title": "Lark 开发平台",
+        "url": "https://open.larksuite.com/app?lang=zh-CN",
+        "snippet": "No information is available for this page.",
+        "score": 0.14046617
+      },
+      {
+        "title": "经典发布场景如何使用技术栈-金融分布式架构(SOFAStack)-阿里云帮助中心",
+        "url": "https://help.aliyun.com/zh/document_detail/133155.html",
+        "snippet": "按照官网文档 创建工程 创建的 SOFABoot 工程，通过 编译运行，在本地被打包为 {XXX}-executable.jar 文件，并存放于工程根目录的 target 目录中。这个 fat JAR 文件，在 SOFAStack 平台上，就是一个应用。在云端，应用需要和其运行的环境进行关联，才能实现预期功能。应用和技术栈的关联方式，请参见 关联技术栈与应用服务。. * **j180**：指 JDK 版本 1.8.0（技术栈中更具体的是 1.8.0\\_131，不是 ajdk，也不支持协程）。. * **t2114**： 指 tengine 版本 2.1.14。. 开发框架 SOFABoot 3.x 下，推荐的技术栈版本为 1.0.7。. 默认提供的 `sofaboot-1.0.7` 技术栈包的文件结构如下：. sofaboot_buildpack_1.0.7-j180t2114 // 默认没有 conf 文件夹 ├── lifecycle // 生命周期代码 │├── ac_setup │├── ac_init_env │├── ac_deploy │├── ac_check_service │└── ac_shutdown └── resources // 技术栈和生命周期代码的依赖 ├── centos6.5// 该技术栈在 CentOS 6.5 操作系统上的依赖 │├── cronolog-1.7.0-0.x86_64.rpm │├── jdk-1.8.0_131-normal-1.x86_64.rpm │├── nginx-gray-module-0.0.2.rpm │└── tengine-2.0.0-12298.el6u0.x86_64.rpm ├── centos7.2// 该技术栈在 CentOS 7.2 操作系统上的依赖 │├── cronolog-1.7.0.tgz │├── jdk-1.8.0_131-normal-1.x86_64.rpm │├── nginx-gray-module-0.0.2.rpm │└── tengine-proxy-2.1.14.rpm ├── check_service.sh ├── deploy.sh ├── nginx.sh ├── stopApp.sh ├── util.py └── util.sh. * 使用 `java -jar {XXXXX-executable.jar}` 命令启动 JAR 文件。`{XXXXX-executable.jar}` 为工程编译运行后生成的 fat JAR 文件。JAR 文件在 ECS 服务器上的路径为：. * 支持在代码中设置 `java_opts` 作为 JVM 的启动参数。详见 JVM 参数配置。. * 根据当前 ECS 所在的工作空间名，即 `/etc/me…",
+        "score": 0.13517526
+      },
+      {
+        "title": "Tasks.org: to-do list & tasks - Google Play 應用程式",
+        "url": "https://play.google.com/store/apps/details?id=org.tasks&hl=zh_TW",
+        "snippet": "# Tasks.org: to-do list & tasks. ## 關於這個應用程式. 使用 Tasks.org 提升您的工作效率：待辦事項清單和任務管理. 還在尋找完美的「任務」應用程式嗎？別再猶豫了！ Tasks.org 是一款開源、注重隱私的待辦事項清單和任務管理解決方案，旨在簡化您的生活。強大的功能、無縫同步和完全可自訂的體驗，讓您輕鬆掌控日程。. • 輕鬆應付複雜項目：使用嵌套式、可折疊的子任務（層級不限）來組織您的任務。將大型專案分解成易於管理的步驟，並掌控每個細節。. • 無縫同步：可與 Tasks.org Cloud、Google Tasks、DAVx⁵、Microsoft To Do、CalDAV、EteSync 和 DecSync CC 同步，或完全離線工作。無論身在何處，您的任務都觸手可及。. • 直覺的拖放功能：使用簡單的拖放排序功能對任務進行優先排序，相容於 Nextcloud Tasks 和 Apple Reminders。. • Tasks.org 雲端：與親朋好友共享列表，並使用專屬郵箱地址將電子郵件即時轉換為任務。. Tasks.org 尊重您的隱私。享受無廣告體驗，我們不會追蹤您的位置。您的資料由您掌控。. • 自動備份：透過自動備份到內部儲存、Google 雲端硬碟和 Android 備份服務，確保您的資料安全。. • Wear OS 支援：使用我們的 Wear OS 應用程式隨時隨地管理任務，該應用程式支援錶盤複雜功能，只需抬起手腕即可查看任務。. • 信箱：play-support@tasks.org. 立即下載 Tasks.org，體驗開源任務管理的強大功能！掌控您的待辦事項清單，有效率管理任務，重獲工作效率。. ## 資料安全性. 想確保安全，就從瞭解開發人員如何收集與分享資料開始！根據你的使用情形、所在地區及年齡，資料的隱私權和安全性措施可能會有所不同。這項資訊由開發人員提供，可能會隨時間更新。. ## 評分和評論. 一味繁瑣，除了沒給Google刁難外，並不見有什麼好，祇是Google的官方應用做得太不知所謂，才侷着裝了這混雜零亂的東西❗. Could you contact support@tasks.org and give me some more details about the trouble you had? 刪除不直覺 很陽春 只能選少少的圖標跟顏色 其他要付費 不是現代的設計. Since Tasks is open source it can be installed from the F-Droid repository with all features unlocked for free. If you would like to follow up with me please…",
+        "score": 0.12516183
+      }
+    ],
+    "rawResponse": {
+      "query": "栖栈清单 官网 官方 应用",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://zhuanlan.zhihu.com/p/405001512",
+          "title": "程序员需掌握的常用技术栈和工具清单",
+          "content": "Aug 30, 2021 — 开发一个普通管理系统, 、数据库和工具。 这些框架最大的特点就是官网上提供了各种组件的使用方法,后端人员只要套到JSP页面中,进行数据渲染即可。",
+          "score": 0.21978134,
+          "raw_content": null
+        },
+        {
+          "url": "https://apps.apple.com/cn/app/%E5%85%B3%E6%B3%A8%E6%B8%85%E5%8D%95/id6761153745",
+          "title": "关注清单 - App Store",
+          "content": "你可以浏览不同地区的应用，跟踪更新，并将喜欢的应用收藏在一起。 主要功能： • 探索全球应用通过名称、开发者或App Store ID 搜索应用。 • 实时更新跟踪应用发布与更新动态 ...Read more",
+          "score": 0.18965648,
+          "raw_content": null
+        },
+        {
+          "url": "https://open.larksuite.com/app?lang=zh-CN",
+          "title": "Lark 开发平台",
+          "content": "No information is available for this page.",
+          "score": 0.14046617,
+          "raw_content": null
+        },
+        {
+          "url": "https://help.aliyun.com/zh/document_detail/133155.html",
+          "title": "经典发布场景如何使用技术栈-金融分布式架构(SOFAStack)-阿里云帮助中心",
+          "content": "按照官网文档 创建工程 创建的 SOFABoot 工程，通过 编译运行，在本地被打包为 {XXX}-executable.jar 文件，并存放于工程根目录的 target 目录中。这个 fat JAR 文件，在 SOFAStack 平台上，就是一个应用。在云端，应用需要和其运行的环境进行关联，才能实现预期功能。应用和技术栈的关联方式，请参见 关联技术栈与应用服务。. * **j180**：指 JDK 版本 1.8.0（技术栈中更具体的是 1.8.0\\_131，不是 ajdk，也不支持协程）。. * **t2114**： 指 tengine 版本 2.1.14。. 开发框架 SOFABoot 3.x 下，推荐的技术栈版本为 1.0.7。. 默认提供的 `sofaboot-1.0.7` 技术栈包的文件结构如下：. sofaboot_buildpack_1.0.7-j180t2114 // 默认没有 conf 文件夹 ├── lifecycle // 生命周期代码 │├── ac_setup │├── ac_init_env │├── ac_deploy │├── ac_check_service │└── ac_shutdown └── resources // 技术栈和生命周期代码的依赖 ├── centos6.5// 该技术栈在 CentOS 6.5 操作系统上的依赖 │├── cronolog-1.7.0-0.x86_64.rpm │├── jdk-1.8.0_131-normal-1.x86_64.rpm │├── nginx-gray-module-0.0.2.rpm │└── tengine-2.0.0-12298.el6u0.x86_64.rpm ├── centos7.2// 该技术栈在 CentOS 7.2 操作系统上的依赖 │├── cronolog-1.7.0.tgz │├── jdk-1.8.0_131-normal-1.x86_64.rpm │├── nginx-gray-module-0.0.2.rpm │└── tengine-proxy-2.1.14.rpm ├── check_service.sh ├── deploy.sh ├── nginx.sh ├── stopApp.sh ├── util.py └── util.sh. * 使用 `java -jar {XXXXX-executable.jar}` 命令启动 JAR 文件。`{XXXXX-executable.jar}` 为工程编译运行后生成的 fat JAR 文件。JAR 文件在 ECS 服务器上的路径为：. * 支持在代码中设置 `java_opts` 作为 JVM 的启动参数。详见 JVM 参数配置。. * 根据当前 ECS 所在的工作空间名，即 `/etc/metafile` 文件中的 `workspace_name` 和 `tenant_name`，指定启动参数。详见 技术栈配置方案。. 我们约定把所有环境相关的配置，放在应用代码中可部署模块的 `resources` 目录下。其中，可部署模块指的是使用 `spring-boot-maven-plugin` 打包出 `fat JAR` 的模块，例如 SOFABoot Web 工程中的 Web 模块。. 2. 执行命令 `java -jar -Dspring.profiles.active={profile} xxxxx-executable.jar`。其中的参数说明如下：. 配置文件都在可部署模块下。可部署模块指使用 spring-boot-maven-plugin 打包的模块，例如 SOFABoot Web 工程中的 Web 模块。日志的配置文件路径为： `resources/logback-spring.xml`。.",
+          "score": 0.13517526,
+          "raw_content": null
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=org.tasks&hl=zh_TW",
+          "title": "Tasks.org: to-do list & tasks - Google Play 應用程式",
+          "content": "# Tasks.org: to-do list & tasks. ## 關於這個應用程式. 使用 Tasks.org 提升您的工作效率：待辦事項清單和任務管理. 還在尋找完美的「任務」應用程式嗎？別再猶豫了！ Tasks.org 是一款開源、注重隱私的待辦事項清單和任務管理解決方案，旨在簡化您的生活。強大的功能、無縫同步和完全可自訂的體驗，讓您輕鬆掌控日程。. • 輕鬆應付複雜項目：使用嵌套式、可折疊的子任務（層級不限）來組織您的任務。將大型專案分解成易於管理的步驟，並掌控每個細節。. • 無縫同步：可與 Tasks.org Cloud、Google Tasks、DAVx⁵、Microsoft To Do、CalDAV、EteSync 和 DecSync CC 同步，或完全離線工作。無論身在何處，您的任務都觸手可及。. • 直覺的拖放功能：使用簡單的拖放排序功能對任務進行優先排序，相容於 Nextcloud Tasks 和 Apple Reminders。. • Tasks.org 雲端：與親朋好友共享列表，並使用專屬郵箱地址將電子郵件即時轉換為任務。. Tasks.org 尊重您的隱私。享受無廣告體驗，我們不會追蹤您的位置。您的資料由您掌控。. • 自動備份：透過自動備份到內部儲存、Google 雲端硬碟和 Android 備份服務，確保您的資料安全。. • Wear OS 支援：使用我們的 Wear OS 應用程式隨時隨地管理任務，該應用程式支援錶盤複雜功能，只需抬起手腕即可查看任務。. • 信箱：play-support@tasks.org. 立即下載 Tasks.org，體驗開源任務管理的強大功能！掌控您的待辦事項清單，有效率管理任務，重獲工作效率。. ## 資料安全性. 想確保安全，就從瞭解開發人員如何收集與分享資料開始！根據你的使用情形、所在地區及年齡，資料的隱私權和安全性措施可能會有所不同。這項資訊由開發人員提供，可能會隨時間更新。. ## 評分和評論. 一味繁瑣，除了沒給Google刁難外，並不見有什麼好，祇是Google的官方應用做得太不知所謂，才侷着裝了這混雜零亂的東西❗. Could you contact support@tasks.org and give me some more details about the trouble you had? 刪除不直覺 很陽春 只能選少少的圖標跟顏色 其他要付費 不是現代的設計. Since Tasks is open source it can be installed from the F-Droid repository with all features unlocked for free. If you would like to follow up with me please contact support@tasks.org. ## 新功能. \\* Sync improvements and bug fixes. \\* Google Tasks: advance recurring task when completed remotely. \\* Fix flattening subtasks when moving between lists. ## 應用程式支援. 102 E Maple St Lombard, IL 60148-2612 United States. ## 同類型應用程式. To-Do List & Planner: Taskito.",
+          "score": 0.12516183,
+          "raw_content": null
+        }
+      ],
+      "response_time": 0.77,
+      "request_id": "6fc2fec7-e5cd-4e7f-b4da-1d1492a31b08"
+    }
+  }
+}

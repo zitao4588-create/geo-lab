@@ -1,0 +1,26 @@
+{
+  "case": {
+    "id": "F1",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "flomo 浮墨笔记",
+    "expected_terms": [
+      "flomo",
+      "浮墨"
+    ],
+    "expected_official_domains": [
+      "flomoapp.com"
+    ]
+  },
+  "response": {
+    "provider": "volcengine",
+    "query": "flomo 浮墨笔记",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:52:20.319Z",
+    "latencyMs": 12005,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

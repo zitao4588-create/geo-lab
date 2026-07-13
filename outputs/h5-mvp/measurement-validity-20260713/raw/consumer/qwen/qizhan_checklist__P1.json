@@ -1,0 +1,24 @@
+{
+  "platform": "qwen_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "Qwen3.7-千问（默认模式）",
+  "captured_at": "2026-07-13T11:10:12.332Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P1",
+  "prompt": "栖栈清单是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "抱歉，我无法确认\"栖栈清单\"具体是什么。搜索结果中没有找到与该术语相关的明确定义或解释，我不想根据字面意思进行猜测，以免给你提供不准确的信息。\n如果你能提供更多上下文（比如你是在哪里看到这个词的、属于哪个领域），我可以帮你进一步查找。",
+  "searched_web": true,
+  "search_trace": "已完成分析",
+  "links": [
+    {
+      "href": "https://hotels.corporatetravel.ctrip.com/hotels/115581448.html",
+      "text": "文渊楼·栖栈预订价格,联系电话位置地址【携程酒店】"
+    },
+    {
+      "href": "https://learn.microsoft.com/zh-cn/gaming/playfab/economy-monetization/economy-v2/inventory/stacks?source=recommendations",
+      "text": "清单堆栈 - PlayFab | Microsoft Learn"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/qwen/qizhan_checklist__P1.png"
+}

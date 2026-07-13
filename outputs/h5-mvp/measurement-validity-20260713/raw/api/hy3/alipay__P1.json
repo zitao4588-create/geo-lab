@@ -1,0 +1,18 @@
+{
+  "prompt": {
+    "id": "alipay__P1",
+    "category": "brand",
+    "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+    "targetFact": "支付宝"
+  },
+  "provider": "hy3",
+  "model": "hy3",
+  "status": "success",
+  "sampledAt": "2026-07-13T07:15:06.107Z",
+  "latencyMs": 1695,
+  "answer": "支付宝是中国的一家第三方支付平台，由蚂蚁集团（原蚂蚁金服）运营，用户可以通过它进行线上线下的支付、转账、缴费等金融相关业务。",
+  "fallbackUsed": false,
+  "entity": "支付宝",
+  "entityRole": "positive_control",
+  "promptId": "P1"
+}

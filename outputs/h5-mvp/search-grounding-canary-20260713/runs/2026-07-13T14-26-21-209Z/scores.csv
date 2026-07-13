@@ -1,0 +1,13 @@
+provider,case_id,entity,role,query_type,status,latency_ms,result_count,exact_entity_hit,official_domain_hit,official_domain_position,negative_entity_invented,citations_accessible,raw_evidence_path,error
+tavily,F1,flomo 浮墨笔记,target,exact_entity,success,2671,5,yes,no,,not_applicable,manual_review_required,raw/tavily/F1.json,
+tavily,F2,flomo 浮墨笔记,target,official_source,success,1262,5,yes,yes,5,not_applicable,manual_review_required,raw/tavily/F2.json,
+tavily,F3,flomo 浮墨笔记,target,unbranded_category,success,1193,5,no,not_applicable,,not_applicable,manual_review_required,raw/tavily/F3.json,
+tavily,D1,追觅 Dreame X50 Ultra,target,exact_entity,success,1430,5,yes,no,,not_applicable,manual_review_required,raw/tavily/D1.json,
+tavily,D2,追觅 Dreame X50 Ultra,target,official_source,success,2115,0,no,no,,not_applicable,manual_review_required,raw/tavily/D2.json,
+tavily,D3,追觅 Dreame X50 Ultra,target,unbranded_category,success,2315,5,no,not_applicable,,not_applicable,manual_review_required,raw/tavily/D3.json,
+tavily,A1,支付宝,positive_control,exact_entity,success,1318,5,yes,no,,not_applicable,manual_review_required,raw/tavily/A1.json,
+tavily,A2,支付宝,positive_control,official_source,success,869,5,yes,no,,not_applicable,manual_review_required,raw/tavily/A2.json,
+tavily,A3,支付宝,positive_control,unbranded_category,success,1680,5,yes,not_applicable,,not_applicable,manual_review_required,raw/tavily/A3.json,
+tavily,N1,栖栈清单,negative_control,exact_entity,success,1032,5,not_applicable,not_applicable,,manual_review_required,manual_review_required,raw/tavily/N1.json,
+tavily,N2,栖栈清单,negative_control,official_source,success,1089,5,not_applicable,not_applicable,,manual_review_required,manual_review_required,raw/tavily/N2.json,
+tavily,N3,栖栈清单,negative_control,competitor_context,success,2695,5,yes,not_applicable,,manual_review_required,manual_review_required,raw/tavily/N3.json,

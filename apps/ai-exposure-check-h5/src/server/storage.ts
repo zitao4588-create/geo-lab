@@ -3,6 +3,7 @@ import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { AiProviderStatus, AiSample, DiagnosisEvidenceIndex, DiagnosisInput, DiagnosisReport, PageAuditResult } from '../shared/types.js';
 import { buildEvidencePackage, renderReportHtml, renderReportMarkdown } from './exporter.js';
+import type { WebSearchResponse } from './providers/webSearch.js';
 
 interface StoredDiagnosis {
   report: DiagnosisReport;
@@ -33,7 +34,8 @@ export async function saveDiagnosis(
   report: DiagnosisReport,
   samples: AiSample[],
   pageAudit: PageAuditResult,
-  providerStatuses: AiProviderStatus[]
+  providerStatuses: AiProviderStatus[],
+  publicWebResponses?: WebSearchResponse[]
 ) {
   await mkdir(diagnosisDir, { recursive: true });
   await mkdir(path.join(evidenceDir, report.id), { recursive: true });
@@ -54,19 +56,26 @@ export async function saveDiagnosis(
       evidencePackage: `/api/diagnoses/${report.id}/export/evidence-package`
     }
   };
-  const evidenceIndex = buildEvidenceIndex(reportWithExports, samples, savedAt);
+  const evidenceIndex = buildEvidenceIndex(reportWithExports, samples, savedAt, Boolean(publicWebResponses?.length));
 
   await writeFile(path.join(diagnosisDir, `${report.id}.json`), `${JSON.stringify({ ...stored, report: reportWithExports }, null, 2)}\n`, 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'samples.json'), `${JSON.stringify(samples, null, 2)}\n`, 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'providers.json'), `${JSON.stringify(providerStatuses, null, 2)}\n`, 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'page-audit.json'), `${JSON.stringify(pageAudit, null, 2)}\n`, 'utf8');
+  if (publicWebResponses?.length) {
+    await writeFile(
+      path.join(evidenceDir, report.id, 'public-web-search.json'),
+      `${JSON.stringify({ responses: publicWebResponses }, null, 2)}\n`,
+      'utf8'
+    );
+  }
   await writeFile(path.join(evidenceDir, report.id, 'source-map.json'), `${JSON.stringify(evidenceIndex, null, 2)}\n`, 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'source-map.md'), buildEvidenceMarkdown(reportWithExports, samples, evidenceIndex), 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'exports', 'report.md'), renderReportMarkdown(reportWithExports), 'utf8');
   await writeFile(path.join(evidenceDir, report.id, 'exports', 'report.html'), renderReportHtml(reportWithExports), 'utf8');
   await writeFile(
     path.join(evidenceDir, report.id, 'exports', 'evidence-package.json'),
-    `${JSON.stringify(buildEvidencePackage(input, reportWithExports, samples, pageAudit, providerStatuses), null, 2)}\n`,
+    `${JSON.stringify(buildEvidencePackage(input, reportWithExports, samples, pageAudit, providerStatuses, publicWebResponses), null, 2)}\n`,
     'utf8'
   );
 
@@ -180,7 +189,7 @@ export async function readExportFile(id: string, format: 'markdown' | 'html' | '
   }
 }
 
-function buildEvidenceIndex(report: DiagnosisReport, samples: AiSample[], generatedAt: string): DiagnosisEvidenceIndex {
+function buildEvidenceIndex(report: DiagnosisReport, samples: AiSample[], generatedAt: string, hasPublicWeb: boolean): DiagnosisEvidenceIndex {
   return {
     reportId: report.id,
     generatedAt,
@@ -192,13 +201,14 @@ function buildEvidenceIndex(report: DiagnosisReport, samples: AiSample[], genera
       { type: 'samples', path: `runtime/evidence/${report.id}/samples.json` },
       { type: 'providers', path: `runtime/evidence/${report.id}/providers.json` },
       { type: 'page_audit', path: `runtime/evidence/${report.id}/page-audit.json` },
+      ...(hasPublicWeb ? [{ type: 'public_web_search' as const, path: `runtime/evidence/${report.id}/public-web-search.json` }] : []),
       { type: 'source_map', path: `runtime/evidence/${report.id}/source-map.json` },
       { type: 'markdown', path: `runtime/evidence/${report.id}/source-map.md` },
       { type: 'markdown', path: `runtime/evidence/${report.id}/exports/report.md` },
       { type: 'html', path: `runtime/evidence/${report.id}/exports/report.html` },
       { type: 'evidence_package', path: `runtime/evidence/${report.id}/exports/evidence-package.json` }
     ],
-    notes: 'samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；运营来源只保存在 submissions.jsonl，不进入公开报告。'
+    notes: 'samples.json 按平台保存本次真实 AI 采样 prompt、回答、时间和失败原因；providers.json 保存多平台适配状态；page-audit.json 保存公开 URL 审计结果；public-web-search.json 只保存候选来源发现，不视为已核验事实；运营来源只保存在 submissions.jsonl，不进入公开报告。'
   };
 }
 
@@ -218,6 +228,7 @@ function buildEvidenceMarkdown(report: DiagnosisReport, samples: AiSample[], evi
 - 采样模型：${evidenceIndex.model}
 - 成功采样：${evidenceIndex.successCount}/${evidenceIndex.promptCount}
 - 证据边界：本文件只记录本次各平台 API 返回结果，不代表对应消费端产品、全网排名或长期稳定结果。
+${report.stages.publicWeb ? `- 联网候选来源：${report.stages.publicWeb.providers.map((item) => item.provider).join(' + ')} / ${report.stages.publicWeb.status} / ${report.stages.publicWeb.results.length} 条；只参与公开证据可发现度，不参与事实核验。` : ''}
 
 | 平台 | ID | 分类 | Prompt | 状态 | 回答摘录 |
 | --- | --- | --- | --- | --- | --- |

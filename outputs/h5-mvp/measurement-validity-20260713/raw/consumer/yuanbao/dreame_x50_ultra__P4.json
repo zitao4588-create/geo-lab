@@ -1,0 +1,15 @@
+{
+  "platform": "yuanbao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）",
+  "captured_at": "2026-07-13T11:15:59.723Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P4",
+  "prompt": "关于追觅 Dreame X50 Ultra，你能确认哪些官方或可信公开来源？请给出来源名称和可访问链接，并区分已核验事实与推断。找不到就明确说找不到，不要编造链接。",
+  "answer": "请求失败",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/yuanbao/dreame_x50_ultra__P4.png"
+}

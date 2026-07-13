@@ -1,0 +1,50 @@
+[
+  {
+    "id": "flomo",
+    "entity_name": "flomo 浮墨笔记",
+    "entity_role": "target",
+    "business_type": "软件服务",
+    "category": "卡片笔记与个人知识管理工具",
+    "core_problem": "随时记录碎片想法，并通过持续回顾形成可复用知识",
+    "target_user": "知识工作者、内容创作者和学生",
+    "competitor": "Notion",
+    "official_url": "https://flomoapp.com/",
+    "selection_reason": "公开资料明确但并非全民品牌，用于测试中等知名度软件产品的认知和自然推荐一致性。"
+  },
+  {
+    "id": "dreame_x50_ultra",
+    "entity_name": "追觅 Dreame X50 Ultra",
+    "entity_role": "target",
+    "business_type": "消费硬件",
+    "category": "旗舰扫拖机器人",
+    "core_problem": "自动完成多房间地面吸尘、拖地、避障和基站自清洁",
+    "target_user": "有宠物、门槛或多房间清洁需求的家庭",
+    "competitor": "科沃斯 X8 PRO OMNI",
+    "official_url": "https://global.dreametech.com/products/x50-ultra",
+    "selection_reason": "官方产品资料充足、竞争场景明确，用于测试具体消费硬件型号在模型记忆与消费端搜索中的差异。"
+  },
+  {
+    "id": "alipay",
+    "entity_name": "支付宝",
+    "entity_role": "positive_control",
+    "business_type": "互联网平台",
+    "category": "移动支付与生活服务平台",
+    "core_problem": "便捷完成移动支付、转账和生活服务办理",
+    "target_user": "需要在线上线下完成日常付款、转账和生活缴费的消费者",
+    "competitor": "微信支付",
+    "official_url": "https://www.alipay.cn/",
+    "selection_reason": "公开资料充分且广泛使用，消费端模型理应稳定识别，并可能在无品牌移动支付推荐中自然提及。"
+  },
+  {
+    "id": "qizhan_checklist",
+    "entity_name": "栖栈清单",
+    "entity_role": "negative_control",
+    "business_type": "虚构软件服务",
+    "category": "旅行行李与行程清单应用",
+    "core_problem": "生成并核对行李、证件和行程清单，减少旅行遗漏",
+    "target_user": "经常出差或自由行、容易遗漏行李和行程事项的旅行者",
+    "competitor": "PackPoint",
+    "official_url": null,
+    "selection_reason": "名称自然但经精确公开检索未发现同名实体，用于检测模型是否编造公司、产品功能、价格、用户量或官网。"
+  }
+]

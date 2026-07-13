@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "D3",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "unbranded_category",
+    "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+    "expected_terms": [
+      "Dreame X50 Ultra",
+      "追觅 X50 Ultra"
+    ],
+    "expected_official_domains": []
+  },
+  "response": {
+    "provider": "jina",
+    "query": "有宠物 多门槛 多房间 旗舰扫拖机器人 越障 基站自清洁",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:28:00.933Z",
+    "latencyMs": 12001,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

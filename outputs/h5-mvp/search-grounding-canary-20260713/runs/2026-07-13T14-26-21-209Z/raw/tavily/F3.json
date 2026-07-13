@@ -1,0 +1,99 @@
+{
+  "case": {
+    "id": "F3",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "unbranded_category",
+    "query": "卡片笔记 碎片想法 持续回顾 知识管理工具",
+    "expected_terms": [
+      "flomo",
+      "浮墨"
+    ],
+    "expected_official_domains": []
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "卡片笔记 碎片想法 持续回顾 知识管理工具",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:25.148Z",
+    "latencyMs": 1193,
+    "results": [
+      {
+        "title": "卡片- 維基百科，自由的百科全書",
+        "url": "https://zh.wikipedia.org/wiki/%E5%8D%A1%E7%89%87",
+        "snippet": "卡片是較小，但是厚度如紙一般，通常質地比普通紙硬的，由紙板或者硬卡紙刨製出來的長方形片，亦有塑膠（英語：plastic card）製得者。Read more",
+        "score": 0.07769257
+      },
+      {
+        "title": "免費卡片製作模板| Adobe Express",
+        "url": "https://www.adobe.com/tw/express/templates/card",
+        "snippet": "# 可編輯的免費卡片製作模板。. (Yes/No) Dependent on Tool Bar. (Yes/No) Only used for templates/ pages. Dependent on a search marquee to exist on the page. (number of templates to load each pagination. (*Yes/No*)- *only for vertical*. (true, false, all) true or false will limit to premium only or free only. (true, false, all) true or false will limit to animated only or static only. This row should only exist if a blank template is needed at the beginning of the templates. ## 使用 Adobe Express 的卡片製作模板實現您的構想。. 無論您需要個人或商業用途的卡片，Adobe Express 都有合適的卡片模板。為生日、婚禮、週年紀念和其他特殊場合設計精美卡片，並附上溫馨訊息。輕鬆製作符合您品牌形象並傳達專業精神的新式卡片。由於卡片的每個元素都可以在 Adobe Express 上編輯，因此可創作出無數種深具意義且有影響力的卡片。選擇能搭配個人風格、主題或內容類型的卡片模板做為您創作的靈感來源。. 無論您腦海中有什麼想法，Adobe Express 的免費卡片模板和無數種方便使用的拖放式編輯功能都能幫您把想法具體實現。您可編輯X模板中的每項元素，或依照顏色、內容形式和美感等需求搜尋專案，節省製作的時間。為卡片模板加入品牌資產、配色、圖示和影像，讓設計更具原創性。完成後可立即複製卡片模板設計並調整大小，在不同類型的資產之間建立一致性並運用在更廣泛的場合中。沒有經驗也能完成。.",
+        "score": 0.05906367
+      },
+      {
+        "title": "設計獨一無二的專屬卡片",
+        "url": "https://www.canva.com/zh_tw/create/cards",
+        "snippet": "# 利用 Canva 免費的設計工具快速打造個人卡片. 使用 Canva 簡單的免費卡片設計工具，製作絕佳卡片，向朋友與家人表達關心！. ## 獨一無二的精美卡片. 沒有卡片可以比得上由您親自製作的卡片。忘記那些購自商店的千篇一律的卡片。使用我們適用於各種場合的範本—無論是生日賀卡、週年紀念卡，還是示愛卡片—您都可以為摯愛製作完美自訂卡片，而且還省時省錢。. 我們的卡片範本圖庫有謝卡、節日卡、聖誕卡及情人節卡等版面設計，由專業設計師精心打造，以便您隨心挑選。. ## 如何製作卡片. ### 在 Canva 開啟頁面. 開啟 Canva，然後使用電子郵件、Google 或 Facebook 個人檔案登入或註冊新帳號。搜尋「卡片」著手設計。. ### 選擇範本. 從 Canva 專業設計卡片範本中挑選。我們備有適合各種場合的設計，以及不同的主題、顏色和風格。接著，只要添加自己的個人風格進行自訂即可。. ### 量身打造自己的卡片. 送出一張可表達真心實意的卡片。只需點幾下，就可以改成自己想要傳達的訊息、嘗試不同的顏色和字型，甚至還可以上傳自己的照片。. ### 使用多種元素調整設計. ### 訂購印刷品. 透過 Canva Print 訂購高品質的精美卡片印刷品，並享有免費送貨。或者，可將設計儲存為 PDF、JPG 或 PNG 檔案。請記住，你可以隨時編輯設計。. ## 認識魔法工作室™：Canva AI 完整的強大功能. 魔法工作室™為你和你的團隊結合了最好的 AI 工具，設計起來更輕鬆快速，也更能揮灑創意。. 清單開頭：認識魔法工作室™：Canva AI 完整的強大功能. 跳至「認識魔法工作室™：Canva AI 完整的強大功能」清單結尾. ## 為超快捷設計而設的卡片範本. 從我們專業設計的上百種卡片範本圖庫中挑選。使用拖放設計工具，讓你輕鬆簡單自訂美觀卡片。你可以變更顏色、文字、訊息及圖像等內容。. 從 Canva 圖庫中挑選圖像，此圖庫包括超過 200 萬張精美照片、圖示和插圖可供選擇。你也可以上傳自己的圖像，增添個人風格。. ## 用個人化訊息表達心意. 利用我們的多元化範本，你只需簡易操作，即可獲得精美設計的卡片。在卡片中加入你的個人訊息，散發個性光彩。手作風格卡片是展現你的體貼細心的好方法，在卡片上加上個人訊息，讓人永誌難忘。只需按一下卡片範本中的預留位置文字，並寫下你的訊息。. ## 共慶新里程碑. 在製作卡片後，為何不邀請親朋好友和同事即時留下一條個人訊息、插圖或照片呢。只需新增他們的電子郵件地址，你們就可以一起在幾分鐘內製作一張感人至深的卡片了。. ## 專業印刷，迅速交付. 有些事情實際接觸後感覺會更棒。就和你的設計一樣出色，如果你能碰到他們，握住他們，感覺他們會更好。. Canva Print 是我們專業的印刷服務。我們確保印出來的卡片…",
+        "score": 0.050466277
+      },
+      {
+        "title": "发现 110 条 卡片設計 和 diy 与手工艺品 点子 | 插畫、剪纸、插圖 以及更多",
+        "url": "https://www.pinterest.com/a3782606sweet/%E5%8D%A1%E7%89%87%E8%A8%AD%E8%A8%88",
+        "snippet": "four birthday cards are shown with markers and pencils on the table next to them. This may contain: a hand holding a folded card with roses on it and a candle in the middle. an image of a paper cut out of a boat in the ocean with waves and clouds. an open box with some food in it and instructions on how to cut the cake. a person holding up a card with a bow on it. there is a card with a house and stars on it. a green and gold wedding card on top of an envelope with greenery around it. some paper cut flowers on a white background. paper cut out with clouds, stars and the moon in the night sky for your project. a card with the words happy birthday written in rainbow colors on it, sitting on top of a wooden table. the wedding stationery is laid out on top of each other with flowers in them.",
+        "score": 0.043063056
+      },
+      {
+        "title": "卡片｜各式節慶主題任選，5 分鐘客製化完成",
+        "url": "https://www.tintint.com/product/info/greeting-folded-card",
+        "snippet": "客製化卡片，傳遞最溫暖的祝福！涵蓋生日、聖誕、新年、情人節等各式主題。一張照片、一段悄悄話，5 分鐘完成設計，輕鬆送禮！",
+        "score": 0.031789716
+      }
+    ],
+    "rawResponse": {
+      "query": "卡片笔记 碎片想法 持续回顾 知识管理工具",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/%E5%8D%A1%E7%89%87",
+          "title": "卡片- 維基百科，自由的百科全書",
+          "content": "卡片是較小，但是厚度如紙一般，通常質地比普通紙硬的，由紙板或者硬卡紙刨製出來的長方形片，亦有塑膠（英語：plastic card）製得者。Read more",
+          "score": 0.07769257,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.adobe.com/tw/express/templates/card",
+          "title": "免費卡片製作模板| Adobe Express",
+          "content": "# 可編輯的免費卡片製作模板。. (Yes/No) Dependent on Tool Bar. (Yes/No) Only used for templates/ pages. Dependent on a search marquee to exist on the page. (number of templates to load each pagination. (*Yes/No*)- *only for vertical*. (true, false, all) true or false will limit to premium only or free only. (true, false, all) true or false will limit to animated only or static only. This row should only exist if a blank template is needed at the beginning of the templates. ## 使用 Adobe Express 的卡片製作模板實現您的構想。. 無論您需要個人或商業用途的卡片，Adobe Express 都有合適的卡片模板。為生日、婚禮、週年紀念和其他特殊場合設計精美卡片，並附上溫馨訊息。輕鬆製作符合您品牌形象並傳達專業精神的新式卡片。由於卡片的每個元素都可以在 Adobe Express 上編輯，因此可創作出無數種深具意義且有影響力的卡片。選擇能搭配個人風格、主題或內容類型的卡片模板做為您創作的靈感來源。. 無論您腦海中有什麼想法，Adobe Express 的免費卡片模板和無數種方便使用的拖放式編輯功能都能幫您把想法具體實現。您可編輯X模板中的每項元素，或依照顏色、內容形式和美感等需求搜尋專案，節省製作的時間。為卡片模板加入品牌資產、配色、圖示和影像，讓設計更具原創性。完成後可立即複製卡片模板設計並調整大小，在不同類型的資產之間建立一致性並運用在更廣泛的場合中。沒有經驗也能完成。.",
+          "score": 0.05906367,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.canva.com/zh_tw/create/cards",
+          "title": "設計獨一無二的專屬卡片",
+          "content": "# 利用 Canva 免費的設計工具快速打造個人卡片. 使用 Canva 簡單的免費卡片設計工具，製作絕佳卡片，向朋友與家人表達關心！. ## 獨一無二的精美卡片. 沒有卡片可以比得上由您親自製作的卡片。忘記那些購自商店的千篇一律的卡片。使用我們適用於各種場合的範本—無論是生日賀卡、週年紀念卡，還是示愛卡片—您都可以為摯愛製作完美自訂卡片，而且還省時省錢。. 我們的卡片範本圖庫有謝卡、節日卡、聖誕卡及情人節卡等版面設計，由專業設計師精心打造，以便您隨心挑選。. ## 如何製作卡片. ### 在 Canva 開啟頁面. 開啟 Canva，然後使用電子郵件、Google 或 Facebook 個人檔案登入或註冊新帳號。搜尋「卡片」著手設計。. ### 選擇範本. 從 Canva 專業設計卡片範本中挑選。我們備有適合各種場合的設計，以及不同的主題、顏色和風格。接著，只要添加自己的個人風格進行自訂即可。. ### 量身打造自己的卡片. 送出一張可表達真心實意的卡片。只需點幾下，就可以改成自己想要傳達的訊息、嘗試不同的顏色和字型，甚至還可以上傳自己的照片。. ### 使用多種元素調整設計. ### 訂購印刷品. 透過 Canva Print 訂購高品質的精美卡片印刷品，並享有免費送貨。或者，可將設計儲存為 PDF、JPG 或 PNG 檔案。請記住，你可以隨時編輯設計。. ## 認識魔法工作室™：Canva AI 完整的強大功能. 魔法工作室™為你和你的團隊結合了最好的 AI 工具，設計起來更輕鬆快速，也更能揮灑創意。. 清單開頭：認識魔法工作室™：Canva AI 完整的強大功能. 跳至「認識魔法工作室™：Canva AI 完整的強大功能」清單結尾. ## 為超快捷設計而設的卡片範本. 從我們專業設計的上百種卡片範本圖庫中挑選。使用拖放設計工具，讓你輕鬆簡單自訂美觀卡片。你可以變更顏色、文字、訊息及圖像等內容。. 從 Canva 圖庫中挑選圖像，此圖庫包括超過 200 萬張精美照片、圖示和插圖可供選擇。你也可以上傳自己的圖像，增添個人風格。. ## 用個人化訊息表達心意. 利用我們的多元化範本，你只需簡易操作，即可獲得精美設計的卡片。在卡片中加入你的個人訊息，散發個性光彩。手作風格卡片是展現你的體貼細心的好方法，在卡片上加上個人訊息，讓人永誌難忘。只需按一下卡片範本中的預留位置文字，並寫下你的訊息。. ## 共慶新里程碑. 在製作卡片後，為何不邀請親朋好友和同事即時留下一條個人訊息、插圖或照片呢。只需新增他們的電子郵件地址，你們就可以一起在幾分鐘內製作一張感人至深的卡片了。. ## 專業印刷，迅速交付. 有些事情實際接觸後感覺會更棒。就和你的設計一樣出色，如果你能碰到他們，握住他們，感覺他們會更好。. Canva Print 是我們專業的印刷服務。我們確保印出來的卡片與螢幕上顯示的一樣美觀。印出來的卡片能當作絕佳的紀念品。選擇標準或優質卡紙，及霧面、亮面或環保紙面。我們可以在 3 至 5 日內，將成品送到府上—你也可以選擇我們的快遞選項享受超快速運送服務。. ## 常見問答集. 只要調整設定，大多數的印表機都可以印製卡紙。設計完卡片後，先印製測試頁。然後改變設定以印在你要使用的高級紙張上，並按下「列印」。若要印雙面，請將印表機設成雙面列印。. 卡片上的內容會視情況而定。如果你要將卡片寄送給親朋好友，你可以添加個人照片或使用更大膽的配色。如果你要推廣一項服務或活動，則最好加上標誌和聯絡方式，展現專業性。. ## 更多卡片設計. 賀卡邀請卡感謝卡電子卡片派對邀請Engagement invitationsID 卡Rehearsal dinner invitations耶誕卡電子郵件邀請卡Housewarming invitations慶生邀請畢業派對邀請圖示貼圖照片水平校正工具明信片Twitch 標誌暈影.",
+          "score": 0.050466277,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.pinterest.com/a3782606sweet/%E5%8D%A1%E7%89%87%E8%A8%AD%E8%A8%88",
+          "title": "发现 110 条 卡片設計 和 diy 与手工艺品 点子 | 插畫、剪纸、插圖 以及更多",
+          "content": "four birthday cards are shown with markers and pencils on the table next to them. This may contain: a hand holding a folded card with roses on it and a candle in the middle. an image of a paper cut out of a boat in the ocean with waves and clouds. an open box with some food in it and instructions on how to cut the cake. a person holding up a card with a bow on it. there is a card with a house and stars on it. a green and gold wedding card on top of an envelope with greenery around it. some paper cut flowers on a white background. paper cut out with clouds, stars and the moon in the night sky for your project. a card with the words happy birthday written in rainbow colors on it, sitting on top of a wooden table. the wedding stationery is laid out on top of each other with flowers in them.",
+          "score": 0.043063056,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.tintint.com/product/info/greeting-folded-card",
+          "title": "卡片｜各式節慶主題任選，5 分鐘客製化完成",
+          "content": "客製化卡片，傳遞最溫暖的祝福！涵蓋生日、聖誕、新年、情人節等各式主題。一張照片、一段悄悄話，5 分鐘完成設計，輕鬆送禮！",
+          "score": 0.031789716,
+          "raw_content": null
+        }
+      ],
+      "response_time": 0.87,
+      "request_id": "806e6250-2066-49f3-9628-ee31153d9843"
+    }
+  }
+}

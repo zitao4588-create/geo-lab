@@ -1,0 +1,15 @@
+{
+  "platform": "doubao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "豆包网页端“快速”模式（页面未显示具体模型）",
+  "captured_at": "2026-07-13T11:26:10.558Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P1",
+  "prompt": "支付宝是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "支付宝是蚂蚁集团旗下推出的第三方支付平台，可确认的核心信息如下：\n基础支付功能：支持线上线下扫码付款、转账、信用卡还款、水电燃气等生活缴费；\n金融相关服务：内嵌余额、余额宝、基金、保险、信贷等合规持牌金融相关业务入口；\n身份与便民服务：提供实名认证、电子证件、出行购票、外卖、医疗挂号等民生服务；\n经营主体：运营主体为支付宝（杭州）信息技术有限公司，受央行监管，具备支付业务相关牌照；\n生态体系：打通淘宝、天猫等阿里系电商交易支付，同时对接海量线下商户、合作外部平台。\n如何使用支付宝进行转账？\n支付宝的安全保障机制是怎样的？\n介绍一下支付宝的发展历程",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/doubao/alipay__P1.png"
+}

@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "A3",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "unbranded_category",
+    "query": "移动支付 转账 生活缴费 平台",
+    "expected_terms": [
+      "支付宝",
+      "Alipay"
+    ],
+    "expected_official_domains": []
+  },
+  "response": {
+    "provider": "jina",
+    "query": "移动支付 转账 生活缴费 平台",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:28:28.399Z",
+    "latencyMs": 12001,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

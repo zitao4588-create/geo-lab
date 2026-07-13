@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "N1",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "exact_entity",
+    "query": "栖栈清单",
+    "expected_terms": [],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  "response": {
+    "provider": "jina",
+    "query": "栖栈清单",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:28:40.402Z",
+    "latencyMs": 12001,
+    "results": [],
+    "error": "The operation was aborted due to timeout"
+  }
+}

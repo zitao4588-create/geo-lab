@@ -30,6 +30,13 @@ const providerLabels: Record<AiProvider, string> = {
   tongyi: '通义',
   wenxin: '文心'
 };
+const searchProviderLabels = {
+  multi: '多来源联网搜索',
+  anysearch: 'AnySearch',
+  tavily: 'Tavily',
+  jina: 'Jina Search',
+  volcengine: '火山方舟联网搜索'
+} as const;
 
 const emptyForm: DiagnosisInput = {
   businessName: '',
@@ -711,6 +718,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   );
   const answerSamples = report.stages.aiSearch.answerSamples;
   const auditTargets = report.stages.infrastructure.pageAudit.targets.slice(0, 8);
+  const publicWeb = report.stages.publicWeb;
   const credibility = report.stages.credibility;
   const scoreWithheld = credibility?.scoreStatus === 'withheld';
 
@@ -777,7 +785,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   return (
     <section className="screen result-screen">
       <StepHeader current={3} />
-      <h2 className="result-heading">GEO 分析成果报告</h2>
+      <h2 className="result-heading">AI 可见度初步诊断报告</h2>
       <div className="report-meta">
         <span>编号 {report.id}</span>
         <button type="button" className="copy-link" onClick={copyReportLink}>复制报告链接</button>
@@ -788,7 +796,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         className={`report-cover ${report.riskLevel}`}
         style={{ '--score-deg': `${scoreDeg}deg` } as React.CSSProperties}
       >
-        <span className="cover-kicker">{scoreWithheld ? '报告可信度状态' : 'GEO 分析成果得分'}</span>
+        <span className="cover-kicker">{scoreWithheld ? '报告可信度状态' : '初步诊断分'}</span>
         {scoreWithheld ? (
           <div className="withheld-score">
             <strong>暂不评分</strong>
@@ -812,6 +820,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
           <span>{sampledProviders.length} 个模型真实采样 · {report.aiMeta.successCount}/{report.aiMeta.promptCount} 次成功</span>
           <span>{formatDate(report.generatedAt)}</span>
         </div>
+        {!scoreWithheld && <p className="muted-line">综合 API 采样、公开候选证据和已提交资料，不代表消费端实时搜索或稳定排名。</p>}
       </div>
 
       <section className="evidence-card">
@@ -922,6 +931,46 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         )}
       </ResultBlock>
 
+      {publicWeb && (
+        <ResultBlock title="联网候选公开来源">
+          <div className={`confidence-banner ${publicWeb.status === 'success' || publicWeb.status === 'partial' ? 'medium' : 'low'}`}>
+            <strong>{searchProviderLabels[publicWeb.provider]} · {publicWeb.status === 'success' ? '全部返回' : publicWeb.status === 'partial' ? '部分返回' : publicWeb.status === 'failed' ? '本次超时或失败' : '未启用'}</strong>
+            <span>{publicWeb.latencyMs} ms · {publicWeb.results.length} 条候选来源</span>
+          </div>
+          <p className="muted-line">{publicWeb.note}</p>
+          <div className="metric-grid">
+            <Metric label="公开证据可发现度" value={`${publicWeb.discovery.score}/100`} />
+            <Metric label="搜索成功" value={`${publicWeb.discovery.successfulProviderCount}/${publicWeb.discovery.attemptedProviderCount}`} />
+            <Metric label="品牌相关候选" value={`${publicWeb.discovery.brandMatchedCandidateCount}`} />
+            <Metric label="提交官网候选" value={`${publicWeb.discovery.officialCandidateCount}`} />
+          </div>
+          <div className="provider-strip">
+            {publicWeb.providers.map((provider) => (
+              <span className={provider.status === 'success' ? 'sampled' : 'failed'} key={provider.provider}>
+                {searchProviderLabels[provider.provider]} · {provider.status === 'success' ? `${provider.resultCount} 条` : provider.status === 'failed' ? '失败' : '未启用'}
+              </span>
+            ))}
+          </div>
+          {publicWeb.results.length > 0 && (
+            <Collapse summary={`查看 ${publicWeb.results.length} 条候选来源`}>
+              <div className="answer-list">
+                {publicWeb.results.map((item) => (
+                  <article className="answer-card" key={item.url}>
+                    <div>
+                      <strong>{item.title}</strong>
+                      <EvidenceBadge label={publicWeb.evidenceLabel} />
+                    </div>
+                    <p>{item.snippet}</p>
+                    {item.providers?.length ? <small>发现来源：{item.providers.map((provider) => searchProviderLabels[provider]).join('、')}</small> : null}
+                    <a href={item.url} target="_blank" rel="noreferrer">查看来源</a>
+                  </article>
+                ))}
+              </div>
+            </Collapse>
+          )}
+        </ResultBlock>
+      )}
+
       <ResultBlock title="公开基建">
         <div className="metric-grid">
           <Metric label="提交来源可信度" value={report.stages.infrastructure.pageAudit.targets.length > 0 ? `${report.stages.infrastructure.pageAudit.submittedSourceScore ?? report.stages.infrastructure.pageAudit.score}` : '未检测'} />
@@ -1026,10 +1075,10 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
       )}
 
       <div className="cta-card" ref={ctaRef}>
-        <h3>需要把报告落成内容和页面？</h3>
-        <p>下一步可以人工核验多平台答案、补品牌页 / FAQ / 隐私页，并建立月度复测。</p>
+        <h3>想知道消费端实际怎么回答？</h3>
+        <p>完整报告会逐一采集 DeepSeek、通义、腾讯元宝和豆包消费端回答，保留搜索过程、引用与截图，再由人工核验结论。</p>
         <Button block theme="primary" className="cta-button" onClick={() => setConsultOpen(true)}>
-          添加微信 · 预约完整体检
+          添加微信 · 获取完整报告
         </Button>
       </div>
 
@@ -1037,7 +1086,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
       <ComplianceLinks />
 
       <div className={`consult-bar ${showBar ? 'show' : ''}`} aria-hidden={!showBar}>
-        <span>需要人工解读这份报告？</span>
+        <span>获取四消费端实测完整报告</span>
         <button type="button" tabIndex={showBar ? 0 : -1} onClick={() => setConsultOpen(true)}>添加微信</button>
       </div>
 
@@ -1165,15 +1214,15 @@ function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
     <aside className="desktop-preview" aria-hidden="true">
       <div>
         <strong>让 AI 主动提到你的品牌</strong>
-        <p>基于真实问答采样的 GEO 分析报告：评分拆解、竞品对比、证据留档、行动路线。</p>
+        <p>基于多模型 API 与公开候选证据的初步诊断：评分拆解、竞品对比、证据留档、行动路线。</p>
       </div>
       <div className="preview-panel">
         <span>AI曝光体检</span>
-        <h2>{report ? (scoreWithheld ? '证据不足 · 暂不评分' : `${report.score}分 · ${report.scoreLevel}`) : '提交业务资料，生成 GEO 分析报告'}</h2>
+        <h2>{report ? (scoreWithheld ? '证据不足 · 暂不评分' : `${report.score}分 · ${report.scoreLevel}`) : '提交业务资料，生成初步诊断'}</h2>
         <p>{report
           ? (scoreWithheld ? '当前证据或模型覆盖不足，报告已降低置信度并暂停展示总分。' : report.summary)
-          : '报告会保留采样证据、评分拆解、竞品风险和下一步执行路线。'}</p>
-        <small>exposure.playgamelab.cn · GEO 分析成果报告</small>
+          : '报告会保留 API 采样、公开候选来源、评分拆解和下一步执行路线。'}</p>
+        <small>exposure.playgamelab.cn · AI 可见度初步诊断</small>
       </div>
     </aside>
   );

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "global": {
+    "count": 1,
+    "resetAt": 1783987200000
+  },
+  "ips": {
+    "03d101bfc59ab26eb3e8fa710138431243e13c655eaf3099ab0f4611c80f57fa": {
+      "count": 1,
+      "resetAt": 1783961582370
+    }
+  }
+}

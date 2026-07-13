@@ -208,6 +208,130 @@ test('DeepSeek, Hy3, Qwen, and Doubao sample in parallel with provider-specific 
   context.diagnostic(`controlled four-provider wall time: ${durationMs}ms`);
 });
 
+test('Volcengine and AnySearch run beside four-provider sampling, merge candidates, and persist raw evidence', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-parallel-grounding-'));
+  const provider = await startFakeOpenAiServer({ delayMs: 350, webSearchDelayMs: 350 });
+  const appServer = await startAppServer({
+    runtimeDir,
+    providerBaseUrl: provider.baseUrl,
+    appEnv: {
+      DIAGNOSIS_SLA_MS: '3000',
+      DIAGNOSIS_REPORT_RESERVE_MS: '500',
+      HY3_ENABLED: 'true',
+      HY3_API_KEY: 'controlled-hy3-key',
+      HY3_BASE_URL: provider.baseUrl,
+      HY3_MODEL: 'controlled-hy3',
+      HY3_SAMPLE_CONCURRENCY: '4',
+      HY3_SAMPLE_MAX_RETRIES: '0',
+      QWEN_ENABLED: 'true',
+      QWEN_MODEL: 'controlled-qwen',
+      QWEN_SAMPLE_CONCURRENCY: '4',
+      QWEN_SAMPLE_MAX_RETRIES: '0',
+      DOUBAO_ENABLED: 'true',
+      DOUBAO_API_KEY: 'controlled-doubao-key',
+      DOUBAO_BASE_URL: provider.baseUrl,
+      DOUBAO_MODEL: 'controlled-doubao',
+      DOUBAO_SAMPLE_CONCURRENCY: '4',
+      DOUBAO_SAMPLE_MAX_RETRIES: '0',
+      PUBLIC_WEB_GROUNDING_ENABLED: 'true',
+      PUBLIC_WEB_GROUNDING_PROVIDERS: 'volcengine,anysearch',
+      VOLCENGINE_SEARCH_ENABLED: 'true',
+      VOLCENGINE_WEB_SEARCH_API_KEY: 'controlled-search-key',
+      VOLCENGINE_WEB_SEARCH_MODEL: 'controlled-search-model',
+      VOLCENGINE_RESPONSES_URL: `${provider.origin}/api/v3/responses`,
+      ANYSEARCH_SEARCH_ENABLED: 'true',
+      ANYSEARCH_ALLOW_ANONYMOUS: 'true',
+      ANYSEARCH_BASE_URL: provider.origin
+    }
+  });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const payload = {
+    ...buildPayload('req_parallel_grounding_01'),
+    samplePrompts: Array.from({ length: 5 }, (_, index) => `第 ${index + 1} 条并行联网采样问题是什么？`)
+  };
+  const startedAt = Date.now();
+  const result = await postJson(appServer.url, payload);
+  const durationMs = Date.now() - startedAt;
+
+  assert.equal(result.status, 201);
+  assert.equal(provider.callCount, 20);
+  assert.equal(provider.searchCallCount, 2);
+  assert.ok(provider.peakConcurrency >= 19, `expected two searches beside 17 model calls, got ${provider.peakConcurrency}`);
+  assert.ok(durationMs < 1_500, `parallel grounding run took ${durationMs}ms`);
+  assert.equal(result.body.report.stages.publicWeb.status, 'success');
+  assert.equal(result.body.report.stages.publicWeb.provider, 'multi');
+  assert.deepEqual(result.body.report.stages.publicWeb.providers.map((item) => item.provider), ['volcengine', 'anysearch']);
+  assert.equal(result.body.report.stages.publicWeb.results.length, 1, 'same candidate URL must be deduplicated');
+  assert.equal(result.body.report.stages.publicWeb.results[0].url, 'https://example.com/official');
+  assert.deepEqual(result.body.report.stages.publicWeb.results[0].providers, ['volcengine', 'anysearch']);
+  assert.equal(result.body.report.stages.publicWeb.discovery.score, 75, 'no submitted official URL leaves the 25-point official signal unscored');
+  assert.equal(result.body.report.stages.publicWeb.discovery.status, 'available');
+  assert.equal(result.body.report.stages.score.dimensions.find((item) => item.code === 'PUBLIC_EVIDENCE_DISCOVERY').score, 75);
+  assert.match(result.body.report.stages.score.label, /初步诊断分/u);
+  assert.equal(result.body.report.stages.publicWeb.evidenceLabel, 'suggested_supplement');
+
+  const publicWebEvidence = JSON.parse(await readFile(
+    path.join(runtimeDir, 'evidence', result.body.report.id, 'public-web-search.json'),
+    'utf8'
+  ));
+  assert.equal(publicWebEvidence.responses.length, 2);
+  assert.ok(publicWebEvidence.responses.every((item) => item.rawResponse), 'raw provider responses must stay in the evidence package');
+  const evidenceIndex = JSON.parse(await readFile(
+    path.join(runtimeDir, 'evidence', result.body.report.id, 'source-map.json'),
+    'utf8'
+  ));
+  assert.ok(evidenceIndex.files.some((item) => item.type === 'public_web_search'));
+  const evidencePackage = JSON.parse(await readFile(
+    path.join(runtimeDir, 'evidence', result.body.report.id, 'exports', 'evidence-package.json'),
+    'utf8'
+  ));
+  assert.equal(evidencePackage.publicWebResponses.length, 2);
+});
+
+test('slow public web grounding degrades visibly before the shared diagnosis deadline', async (context) => {
+  const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-grounding-deadline-'));
+  const provider = await startFakeOpenAiServer({ delayMs: 100, webSearchDelayMs: 2_000 });
+  const appServer = await startAppServer({
+    runtimeDir,
+    providerBaseUrl: provider.baseUrl,
+    appEnv: {
+      DIAGNOSIS_SLA_MS: '1600',
+      DIAGNOSIS_REPORT_RESERVE_MS: '250',
+      PUBLIC_WEB_GROUNDING_ENABLED: 'true',
+      PUBLIC_WEB_GROUNDING_PROVIDER: 'volcengine',
+      VOLCENGINE_SEARCH_ENABLED: 'true',
+      VOLCENGINE_WEB_SEARCH_API_KEY: 'controlled-search-key',
+      VOLCENGINE_WEB_SEARCH_MODEL: 'controlled-search-model',
+      VOLCENGINE_RESPONSES_URL: `${provider.origin}/api/v3/responses`
+    }
+  });
+
+  context.after(async () => {
+    await stopProcess(appServer.process);
+    await provider.close();
+  });
+
+  const payload = buildPayload('req_grounding_deadline_01');
+  const startedAt = Date.now();
+  const result = await postJson(appServer.url, payload);
+  const durationMs = Date.now() - startedAt;
+
+  assert.equal(result.status, 201);
+  assert.ok(durationMs < 1_600, `deadline-degraded report took ${durationMs}ms`);
+  assert.equal(result.body.report.aiMeta.successCount, 1);
+  assert.equal(result.body.report.stages.publicWeb.status, 'failed');
+  assert.equal(result.body.report.stages.publicWeb.results.length, 0);
+  assert.match(result.body.report.stages.publicWeb.note, /降级生成/u);
+  const health = await (await fetch(`${appServer.url}/api/health`)).json();
+  assert.equal(health.latestOperation.publicWebStatus, 'failed');
+  assert.ok(health.latestOperation.totalDurationMs < 1_600);
+});
+
 test('Bailian DeepSeek falls back from v4-pro to v4-flash after free quota exhaustion', async (context) => {
   const runtimeDir = await mkdtemp(path.join(os.tmpdir(), 'aiec-deepseek-fallback-'));
   const provider = await startFakeOpenAiServer({

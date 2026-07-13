@@ -1,0 +1,15 @@
+{
+  "platform": "yuanbao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "腾讯元宝网页端默认“元宝”模式（未手动开启深度思考或工具）",
+  "captured_at": "2026-07-13T11:15:51.487Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P3",
+  "prompt": "请比较追觅 Dreame X50 Ultra和科沃斯 X8 PRO OMNI在核心功能、适用人群、主要限制和可信依据上的差异。无法核验的内容请明确标注不确定，不要根据名称猜测。",
+  "answer": "正在搜索商品",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/yuanbao/dreame_x50_ultra__P3.png"
+}

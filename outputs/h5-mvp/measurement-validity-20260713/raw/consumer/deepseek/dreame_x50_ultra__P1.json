@@ -1,0 +1,68 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T10:59:24.179Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P1",
+  "prompt": "追觅 Dreame X50 Ultra是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "追觅 Dreame X50 Ultra 是一款集扫地与拖地功能于一体的高端智能家用机器人-\n2\n-\n6\n。\n\n根据目前可确认的信息，它的主要特点包括：\n\n主要功能：能够自动完成地面清扫和拖地工作-\n2\n-\n6\n。\n\n核心创新技术：\n\n仿生机械足越障：拥有一个名为“ProLeap”的系统，可以帮助机器人越过最高6厘米的障碍物，如门槛或滑轨-\n2\n-\n6\n-\n8\n。\n\n可升降激光雷达：其顶部的激光雷达传感器可以升降。升起时进行建图，降下时机身高度可降至89毫米，方便进入低矮家具底部进行清洁-\n2\n-\n6\n-\n10\n。\n\n关键性能参数：最大吸力可达20,000Pa-\n1\n-\n2\n-\n6\n。\n\n其余未在搜索结果中明确说明的信息，我无法确认。",
+  "searched_web": true,
+  "search_trace": "已阅读 10 个网页",
+  "links": [
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=zaker&utm_medium=specialpage&utm_campaign=biz",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.dreametech.com/products/x50-ultra-robot-vacuum?irclickid=SFD3-IT9ixycUQAX6XUb9XDyUkpRqnTR4SX%3A0E0&irgwc=1&afsrc=1&UTM_source=affiliate&UTM_medium=impact&Partner=Skimbit%20Ltd.&Partner_ID=10078",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=zaker&utm_medium=specialpage&utm_campaign=biz",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.dreametech.com/products/x50-ultra-robot-vacuum?irclickid=SFD3-IT9ixycUQAX6XUb9XDyUkpRqnTR4SX%3A0E0&irgwc=1&afsrc=1&UTM_source=affiliate&UTM_medium=impact&Partner=Skimbit%20Ltd.&Partner_ID=10078",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=zaker&utm_medium=specialpage&utm_campaign=biz",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.dreametech.com/products/x50-ultra-robot-vacuum?irclickid=SFD3-IT9ixycUQAX6XUb9XDyUkpRqnTR4SX%3A0E0&irgwc=1&afsrc=1&UTM_source=affiliate&UTM_medium=impact&Partner=Skimbit%20Ltd.&Partner_ID=10078",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://www.geekpark.net/news/345099",
+      "text": "-\n8"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=zaker&utm_medium=specialpage&utm_campaign=biz",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.dreametech.com/products/x50-ultra-robot-vacuum?irclickid=SFD3-IT9ixycUQAX6XUb9XDyUkpRqnTR4SX%3A0E0&irgwc=1&afsrc=1&UTM_source=affiliate&UTM_medium=impact&Partner=Skimbit%20Ltd.&Partner_ID=10078",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://static.cdsb.com/micropub/HxhArticles/202510/10/57ee2a2b5f089f9b2d94a47cb2e1a9db.html",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://www.yohohongkong.com/zh-cn/product/177995-%E8%BF%BD%E8%A7%85-Dreame-X50-Ultra-%E4%BA%94%E9%87%8D%E5%8D%87%E9%99%8D-AI-%E5%85%A8%E8%83%BD%E9%A1%B6%E9%85%8D%E6%89%AB%E5%9C%B0%E6%9C%BA-%E9%BB%91%E8%89%B2-%E9%A6%99%E6%B8%AF%E8%A1%8C%E8%B4%A7",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://www.ifanr.com/1611379?utm_source=zaker&utm_medium=specialpage&utm_campaign=biz",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.dreametech.com/products/x50-ultra-robot-vacuum?irclickid=SFD3-IT9ixycUQAX6XUb9XDyUkpRqnTR4SX%3A0E0&irgwc=1&afsrc=1&UTM_source=affiliate&UTM_medium=impact&Partner=Skimbit%20Ltd.&Partner_ID=10078",
+      "text": "-\n6"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/dreame_x50_ultra__P1.png"
+}

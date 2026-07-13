@@ -1,0 +1,196 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T10:59:46.861Z",
+  "entity": "追觅 Dreame X50 Ultra",
+  "entity_role": "target",
+  "prompt_id": "P2",
+  "prompt": "我正在寻找能帮助有宠物、门槛或多房间清洁需求的家庭解决自动完成多房间地面吸尘、拖地、避障和基站自清洁的旗舰扫拖机器人。请列出你会优先考虑的 3—5 个具体产品或服务，并分别说明理由。不要反问。",
+  "answer": "基于你对多房间清洁、宠物毛发处理、复杂地形越障、拖地及基站自清洁的全能需求，以下是为你筛选的5款2026年旗舰级扫拖机器人，它们能很好地覆盖你提到的所有痛点。\n\n石头 P20 Max：这款产品被多份评测和行业报告评价为全能顶配标杆，尤其适合你家中有宠物、地毯和复杂地形的需求-\n2\n-\n4\n-\n7\n。它的核心优势是极致的越障与通过性，搭载底盘升降3.0技术，可实现最高8.8cm的双层越障，能轻松翻越高门槛和滑轨，同时机身仅7.95cm，可深入低矮空间-\n2\n-\n3\n-\n4\n。对于养宠家庭，其35000Pa超大吸力配合100%毛发0缠绕技术，能有效解决毛发缠绕滚刷的难题-\n2\n-\n3\n-\n4\n。拖地方面，60℃热水配合12N下压力可瓦解重油污-\n2\n-\n4\n，基站支持100℃高温洗布、热风烘干和自动集尘，实现了全链路自清洁-\n3\n-\n4\n-\n10\n。\n\n石头 G30S Pro：如果你家中有大量低矮家具，对边角清洁和极端通过性有极致要求，这款是理想选择-\n2\n-\n4\n-\n11\n。它同样具备8.8cm双层越障能力，且机身可进入7.95cm的超低矮空间-\n2\n-\n4\n-\n9\n。其动态双机械臂设计（边刷+拖布）可实现拖布沿墙贴地距离小于1mm，100%覆盖边角-\n2\n-\n4\n-\n9\n。清洁系统同样拥有35000Pa吸力和DuoDivide 0缠系统，基站支持100℃热水洗布和全链路烘干抑菌，彻底解放双手-\n4\n-\n6\n-\n9\n。\n\n石头 P20 Ultra 活水版：如果对拖地洁净度有近乎苛刻的要求，特别是希望避免拖布二次污染，这款“活水洗”专家值得优先考虑-\n2\n-\n4\n。它采用全域增压活水洗技术，拖地时通过“匀湿-刮污-瞬吸”步骤实时刮洗滚筒并回收污水，确保拖布始终干净-\n2\n-\n4\n。配合270mm超宽滚筒和15N强下压力，对湿垃圾和顽固污渍清除率高-\n2\n-\n4\n。其AI自升降滚筒罩可在地毯场景自动抬升，实现干湿分离-\n2\n-\n4\n。基站支持75℃高温洗布和63℃热风烘干，具备全链路抗菌设计-\n2\n-\n4\n。\n\n科沃斯 X12 PRO：作为科沃斯2026年全新旗舰，它在解决毛发缠绕和重污清洁上有独特技术-\n1\n。其灵缠4.0防缠技术可实现边刷、滚刷和整机的毛发0缠绕-\n1\n。针对厨房等重污区，首创的灵渍喷溶黑科技会先喷洒清洁液溶解污渍再清洁，配合恒压活水洗地技术，提升洗净效果-\n1\n。基站自清洁设计在机身维护上更简易，污水箱内置且滚筒电机可弯折拆卸，支持热风烘干-\n1\n。AIVI 3D 4.0算法配合灵跃自适应四驱越障系统，能精准避障并轻松越障-\n1\n。\n\n大疆 ROMO 2系列（P2/A2）：对于追求极致科技体验和感知能力的用户，大疆这款新品提供了差异化选择-\n12\n。它融合了源自无人机技术的AI全维感知系统，结合面阵激光雷达、双目视觉及ToF传感器，实现了毫米级地面障碍感知，甚至能识别并避让透明障碍物-\n12\n。清洁能力上，具备36000Pa聚能吸力、8.5cm双层越障以及摆动角度达123°的机械臂以提升边角覆盖-\n12\n。基站同样支持高温清洗和十重抑菌除臭，旨在实现长效免维护-\n12\n。",
+  "searched_web": true,
+  "search_trace": "已阅读 12 个网页",
+  "links": [
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0424/654585.shtml?mobile",
+      "text": "-\n7"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.ithome.com/0/923/141.htm",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://www.ithome.com/0/923/141.htm",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://www.ithome.com/0/923/141.htm",
+      "text": "-\n3"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0609/655518.shtml",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0616/655769.shtml",
+      "text": "-\n11"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://digi.ithome.com/archiver/0/914/714.htm",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://digi.ithome.com/archiver/0/914/714.htm",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "http://m.mydrivers.com/newsview/1099340_1.html",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://digi.ithome.com/archiver/0/914/714.htm",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://news.zol.com.cn/1199/11999829.html",
+      "text": "-\n2"
+    },
+    {
+      "href": "https://sh.cheaa.com/2026/0623/655945.shtml",
+      "text": "-\n4"
+    },
+    {
+      "href": "https://jd.zol.com.cn/1213/12131219.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://jd.zol.com.cn/1213/12131219.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://jd.zol.com.cn/1213/12131219.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://jd.zol.com.cn/1213/12131219.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://jd.zol.com.cn/1213/12131219.html",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://news.pconline.com.cn/2147/21479011.html",
+      "text": "-\n12"
+    },
+    {
+      "href": "https://news.pconline.com.cn/2147/21479011.html",
+      "text": "-\n12"
+    },
+    {
+      "href": "https://news.pconline.com.cn/2147/21479011.html",
+      "text": "-\n12"
+    },
+    {
+      "href": "https://news.pconline.com.cn/2147/21479011.html",
+      "text": "-\n12"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/dreame_x50_ultra__P2.png"
+}

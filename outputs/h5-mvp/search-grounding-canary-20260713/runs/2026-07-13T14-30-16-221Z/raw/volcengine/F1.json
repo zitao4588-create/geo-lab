@@ -1,0 +1,26 @@
+{
+  "case": {
+    "id": "F1",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "flomo 浮墨笔记",
+    "expected_terms": [
+      "flomo",
+      "浮墨"
+    ],
+    "expected_official_domains": [
+      "flomoapp.com"
+    ]
+  },
+  "response": {
+    "provider": "volcengine",
+    "query": "flomo 浮墨笔记",
+    "status": "failed",
+    "searchedAt": "2026-07-13T14:30:16.222Z",
+    "latencyMs": 8854,
+    "results": [],
+    "error": "HTTP 404: Your account has not activated web search. You may activate it at https://console.volcengine.com/common-buy/CC_content_plugin Request id: 02178395301659847c8075984f4c09bb3b0ca9abced541eafe82f"
+  }
+}

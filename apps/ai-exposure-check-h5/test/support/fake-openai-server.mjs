@@ -1,18 +1,85 @@
 import http from 'node:http';
 import { pathToFileURL } from 'node:url';
 
-export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failModels = {}, pages = {}, port = 0 } = {}) {
+export async function startFakeOpenAiServer({
+  delayMs = 80,
+  webSearchDelayMs = delayMs,
+  fail = false,
+  webSearchFail = false,
+  failModels = {},
+  pages = {},
+  port = 0
+} = {}) {
   let callCount = 0;
   let activeCount = 0;
   let peakConcurrency = 0;
   let pageCallCount = 0;
+  let searchCallCount = 0;
   const requests = [];
+  const searchRequests = [];
 
   const server = http.createServer(async (request, response) => {
     if (request.method === 'GET' && Object.hasOwn(pages, request.url)) {
       pageCallCount += 1;
       response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       response.end(pages[request.url]);
+      return;
+    }
+
+    if (request.method === 'POST' && ['/api/v3/responses', '/v1/search'].includes(request.url)) {
+      let rawBody = '';
+      for await (const chunk of request) rawBody += chunk;
+      const body = JSON.parse(rawBody);
+      searchCallCount += 1;
+      activeCount += 1;
+      peakConcurrency = Math.max(peakConcurrency, activeCount);
+      searchRequests.push(body);
+      try {
+        await delay(webSearchDelayMs);
+        if (webSearchFail) {
+          response.writeHead(500, { 'Content-Type': 'application/json' });
+          response.end(JSON.stringify({ error: { message: 'controlled_web_search_failure' } }));
+          return;
+        }
+        const query = body.query || body.input || '受控测试品牌';
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        if (request.url === '/v1/search') {
+          response.end(JSON.stringify({
+            results: [{
+              title: `${query} 官方页面`,
+              url: 'https://example.com/official',
+              description: '这是本地受控 AnySearch 候选来源。',
+              score: 0.95
+            }]
+          }));
+          return;
+        }
+        response.end(JSON.stringify({
+          id: `resp-controlled-${searchCallCount}`,
+          object: 'response',
+          model: body.model || 'controlled-search-model',
+          output: [{
+            type: 'message',
+            content: [{
+              type: 'output_text',
+              text: '这是本地受控联网候选来源，仅用于验证并行编排。',
+              annotations: [{
+                type: 'url_citation',
+                title: `${query} 官方页面`,
+                url: 'https://example.com/official'
+              }]
+            }]
+          }],
+          usage: {
+            input_tokens: 2,
+            output_tokens: 2,
+            total_tokens: 4,
+            tool_usage: { web_search: 1 }
+          }
+        }));
+      } finally {
+        activeCount -= 1;
+      }
       return;
     }
 
@@ -98,7 +165,11 @@ export async function startFakeOpenAiServer({ delayMs = 80, fail = false, failMo
     get pageCallCount() {
       return pageCallCount;
     },
+    get searchCallCount() {
+      return searchCallCount;
+    },
     requests,
+    searchRequests,
     close: () => new Promise((resolve, reject) => {
       server.close((error) => error ? reject(error) : resolve());
     })

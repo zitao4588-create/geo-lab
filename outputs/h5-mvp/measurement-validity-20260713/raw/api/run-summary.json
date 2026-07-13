@@ -1,0 +1,30 @@
+{
+  "startedFromIsolatedRunner": true,
+  "completedAt": "2026-07-13T07:16:33.780Z",
+  "expectedProviders": 4,
+  "expectedPrompts": 16,
+  "expectedSuccessfulAnswers": 64,
+  "observedSamples": 64,
+  "successCount": 63,
+  "failureCount": 1,
+  "stoppedReason": null,
+  "providers": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro"
+    },
+    {
+      "provider": "hy3",
+      "model": "hy3"
+    },
+    {
+      "provider": "qwen",
+      "model": "qwen3.7-plus"
+    },
+    {
+      "provider": "doubao",
+      "model": "doubao-seed-2-0-lite-260215"
+    }
+  ],
+  "searchedWeb": false
+}

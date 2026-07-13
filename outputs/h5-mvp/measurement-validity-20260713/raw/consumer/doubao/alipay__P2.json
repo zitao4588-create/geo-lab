@@ -1,0 +1,15 @@
+{
+  "platform": "doubao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "豆包网页端“快速”模式（页面未显示具体模型）",
+  "captured_at": "2026-07-13T11:26:22.507Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P2",
+  "prompt": "我正在寻找能帮助需要在线上线下完成日常付款、转账和生活缴费的消费者解决便捷完成移动支付、转账和生活服务办理的移动支付与生活服务平台。请列出你会优先考虑的 3—5 个具体产品或服务，并分别说明理由。不要反问。",
+  "answer": "我正在寻找能帮助需要在线上线下完成日常付款、转账和生活缴费的消费者解决便捷完成移动支付、转账和生活服务办理的移动支付与生活服务平台。请列出你会优先考虑的 3—5 个具体产品或服务，并分别说明理由。不要反问。",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/doubao/alipay__P2.png"
+}

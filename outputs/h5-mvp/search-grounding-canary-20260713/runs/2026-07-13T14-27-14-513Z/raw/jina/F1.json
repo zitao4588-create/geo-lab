@@ -1,0 +1,1263 @@
+{
+  "case": {
+    "id": "F1",
+    "entity_id": "flomo",
+    "entity": "flomo 浮墨笔记",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "flomo 浮墨笔记",
+    "expected_terms": [
+      "flomo",
+      "浮墨"
+    ],
+    "expected_official_domains": [
+      "flomoapp.com"
+    ]
+  },
+  "response": {
+    "provider": "jina",
+    "query": "flomo 浮墨笔记",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:27:14.513Z",
+    "latencyMs": 8028,
+    "results": [
+      {
+        "title": "flomo · 浮墨笔记",
+        "url": "https://flomoapp.com/",
+        "snippet": "像发微博一样记笔记，记录你想法的川流。全平台覆盖，还支持微信服务号输入。"
+      },
+      {
+        "title": "flomo浮墨笔记 - Download and install on Windows | Microsoft Store",
+        "url": "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=en-US&gl=US",
+        "snippet": "《笔记的方法》《卡片笔记写作法》官方推荐笔记应用 flomo 浮墨卡片笔记，百万终身学习者的选择。 帮你从一张卡片开始，积累自己的知识资产。 作为普通人，flomo 究竟能帮你做到什么？ - 帮你随时积累各种生活和工作中的知识，输出不再困难。 - 有效提高学习质量，阅读质量，帮你记忆的更加牢固。 - 帮你有效提高考试分数，适合考研，自考等各种考试。 - 终生免费多平台同步，让你在任何设备上都可随时记录和检索。 flomo 是如何帮你做到上面这几点的呢？ 【记录更多】 - 像发微博一样，快速记录想法和灵感 - 极简设计，仅支持最基本的文格式，拒绝排版布局的困扰 - 支持在微信内通过服务号记录，无需打开 App 【云端同步】 - 覆盖 App、Web、PC 等平台，没网也能用 - 不限同时登录客户端数量，随时随地查看 - 终身免费云端同步，不限流量 【回忆更好】 - 通过桌面小部件，微信推送，系统推送闪卡等方式，让过去的记录再次发挥价值。 - 让过往记录发挥新价值，增强记忆降低遗忘。 【轻松整理】 - 不必担心内容散乱，独特的多级标签系统，让整理知识更轻松 - 高级搜索可以根据笔记属性、时间、分类快速搜索 【量化记录】 - 通过可视化热力图，量化记录习惯。 - 每月汇总记录统计，让成就一目了然 【插件丰富】 - 支持导入微信读书、得到、有知有行、多看、Kindle 等多种产品 【改变思维】 - flomo 帮助中心中，整理了大量关于做笔记的思维方式资料，助你认知升级。 【生成知识卡片】 - 把笔记生成为知识卡片，分享至微博、微信和好友 flomo 的适用场景： - 随手记录：记想法、做笔记、贴便签、列清单待办、做备忘、写大纲、摘录知识点、康奈尔笔记、灵感笔记、记忆卡片 - 个人知识库：记录想法、记录知识、记播客金句、记今日得到、写wiki、写大纲、摘录电子书与听书笔记、做课程笔记、同步动态与聊天记录 - 个人日记本：记录情绪、心情、一个念头、生活清单、记账单、习惯养成打卡 - 个人金句卡：将思维金句导出为精美的图片分享 flomo 不擅长做什么： 我们深知做好一件小事就已经很不容易，所以不会试图在功能层面 All in one。 下面是我们不擅长的领域，推荐诸位选择更好地产品。 【不擅长做 文档撰写或 markdown 编辑工具】 【不擅长做 网页全文收藏收藏】 【不擅长做 TODO 提醒】 【不擅长做 思维导图/脑图】 【flomo 也格外注意隐私和安全】 · 所有内容仅用户自己可见 · 所有的数据传输均有加密 · 无商业广告计划 · 不贩卖用户个人数据 · 数据库实时备份 流水不争先，争的是滔滔不绝 ———————————— 【订阅 flomo PRO 解锁全部功能】 解锁 PRO 会员后，即可解锁 · 找一找：重现发现你的笔记 · 相关笔记：扩展深度，启发…"
+      },
+      {
+        "title": "[福利] flomo 浮墨笔记的背后，藏着什么样的理念 - 少数派",
+        "url": "https://sspai.com/post/64009",
+        "snippet": "我们不仅关心你的过去，还关心你的未来。"
+      },
+      {
+        "title": "安全验证 - 知乎",
+        "url": "https://zhuanlan.zhihu.com/p/610605101",
+        "snippet": "知乎，中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。知乎凭借认真、专业、友善的社区氛围、独特的产品机制以及结构化和易获得的优质内容，聚集了中文互联网科技、商业、影视、时尚、文化等领域最具创造力的人群，已成为综合性、全品类、在诸多领域具有关键影响力的知识分享社区和创作者聚集的原创内容平台，建立起了以社区驱动的内容变现商业模式。"
+      },
+      {
+        "title": "flomo浮墨笔记 - Windowsలో ఉచిత డౌన్‌లోడ్ చేసి ఇన్‌స్టాల్ చేయండి | Microsoft Store",
+        "url": "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=te-IN&gl=CN",
+        "snippet": "flomo 是应对碎片时代而诞生的新型笔记工具，秉承《卡片笔记写作法》中的理念，把信息碎片变成知识卡片，助你大脑开挂，认知升级。 flomo 卡片笔记有如下特点： 【聊天式输入】像发微博一样，无压力记录想法； 【多级标签】通过层级标签快速对内容进行归类； 【每日回顾】通过桌面小组件，让过往记录发挥新价值； 【AI 加持】智能探索笔记间隐藏的联系，用提问的方式挖掘过往笔记； 【量化记录】通过可视化热力图，量化记录习惯； 【API 输入】支持微信读书、得到、有知有行、多看、Kindle 等多种产品笔记导入； 【flomo101】大量关于做笔记的思维方式资料，助你认知升级。 但记得，重要的不是记录，而是更好地思考。 ———————————— 【flomo 也格外注意隐私和安全】 · 所有内容仅用户自己可见 · 所有的数据传输均有加密 · 无商业广告计划 · 不贩卖用户个人数据 · 数据库实时异地双备份 ———————————— 商务合作请联系：bd@flomoapp.com"
+      }
+    ],
+    "rawResponse": {
+      "code": 200,
+      "status": 200,
+      "data": [
+        {
+          "title": "flomo · 浮墨笔记",
+          "url": "https://flomoapp.com/",
+          "description": "像发微博一样记笔记，记录你想法的川流。全平台覆盖，还支持微信服务号输入。",
+          "content": "### 持续不断记录，意义自然浮现\n\n### 持续不断记录\n\n意义自然浮现\n\nflomo 浮墨笔记，不仅能帮你快速记录，还能帮你更好回顾\n\n快速记录想法，及时回顾笔记。\n\n 从一张卡片开始，打造你的知识川流。\n\n![Image 1](https://resource.flomoapp.com/home/202203/product.png!webp)\n\n### 更快记录\n\n无需格式、无需排版、无需分类，通过微信、APP、网页、插件等方式 \n\n 随时随地记录你的想法，就像微信聊天一样简单\n\n💡\n\n在哪有灵感\n\n就在哪里记\n\n极简输入，全平台支持，甚至能在微信内输入\n\n[了解详情![Image 2](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/basic/app.html)\n\n![Image 3](http://resource.flomoapp.com/home/20230109/faster/zh/1.png!webp)\n\n🥳\n\n怎样更顺手\n\n那就怎样记\n\n文字、拍照、扫描……\n\n[了解详情![Image 4](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/basic/quick-input.html)\n\n![Image 5](http://resource.flomoapp.com/home/20230109/faster/zh/2.png!webp)\n\n### 更好回顾\n\n通过标签与搜索，让你回顾过往记录时井井有条 \n\n 通过桌面小部件、推送、微信提醒等多种方式，让你的过往记录发挥更大价值\n\n🎉\n\n每次解锁手机\n\n都是一次回顾\n\n多种回顾方式，让过往记录发挥更大价值\n\n[了解详情![Image 6](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/advance/lucky.html)\n\n![Image 7: 每日回顾](http://resource.flomoapp.com/home/20230109/review/zh/1.png!webp)\n\n🪄\n\n连点成线\n\n启发新视角\n\n相关笔记，帮你探索笔记间隐藏的联系\n\n[了解详情![Image 8](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/basic/xgbj.html)\n\n![Image 9: 相关笔记](http://resource.flomoapp.com/home/20230109/review/zh/4.png!webp)\n\n🗂️\n\n用标签与搜索\n\n回顾不成难题\n\n通过标签与搜索，找到过往记录很容易\n\n[了解详情![Image 10](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/basic/tag.html)\n\n![Image 11: 每日回顾-标签搜索](http://resource.flomoapp.com/home/20230109/review/zh/2.png!webp)\n\n📊\n\n多维度统计\n\n让习惯自然养成\n\n多达八个维度统计分析，让你更了解自己\n\n[了解详情![Image 12](https://flomoapp.com/images/arrow.png)](https://help.flomoapp.com/advance/notes-graph.html)\n\n![Image 13](http://resource.flomoapp.com/home/20230109/review/zh/3.png!webp)\n\n### 全平台同步，随时记录\n\n### 全平台同步\n\n从手机到桌面端，flomo 现已覆盖主流平台，不止如此，多设备永久免费同步\n\n![Image 14](https://resource.flomoapp.com/home/202203/sync.png!webp)![Image 15](https://resource.flomoapp.com/home/202203/sync_m.png!webp)\n\n### 利用 API 打造个人工作流\n\n### 打造个人工作流\n\n使用 API 可以方便导入微信读书、得到读书、即刻动态等。\n\n 目前已和数十款产品进行联动，更多产品陆续对接中\n\n![Image 16](https://resource.flomoapp.com/home/202203/api.png!webp)![Image 17](https://resource.flomoapp.com/home/202203/api_m.png!webp)\n\n### 我们不擅长\n\nflomo 只专注于记录与整理想法，拒绝 All in one\n\n![Image 18](https://resource.flomoapp.com/home/202203/otherapp.png!webp)![Image 19](http://resource.flomoapp.com/home/20230109/otherapp-m.png!webp)\n\n### 不贩卖个人隐私数据\n\n### 不贩卖隐私数据\n\n保护用户隐私永远是最重要的事情。我们不会通过贩卖隐私数据获得利润。\n\n 因此，你的订阅将支持我们做得更好。\n\n### 打造知识川流，从此刻开始\n\n### 打造知识川流\n\n从此刻开始\n\n在这里，我们只关注能否帮你记录更多想法，打造知识川流。\n\n flomo = flow + memo\n\n[免费注册](https://v.flomoapp.com/register/)",
+          "metadata": {
+            "viewport": "width=device-width, initial-scale=1",
+            "keywords": "flomo,浮墨,flomo笔记,flomo便签,flomoapp,flowmemo,微信输入,微信提醒,私人微博,饭否,",
+            "description": "像发微博一样记笔记，记录你想法的川流。全平台覆盖，还支持微信服务号输入。"
+          },
+          "external": {
+            "apple-touch-icon-precomposed": {
+              "https://flomoapp.com/images/logo.png": {}
+            },
+            "icon": {
+              "https://flomoapp.com/images/logo-192x192.png": {
+                "sizes": "192x192"
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 1360
+          }
+        },
+        {
+          "title": "flomo浮墨笔记 - Download and install on Windows | Microsoft Store",
+          "url": "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=en-US&gl=US",
+          "description": "《笔记的方法》《卡片笔记写作法》官方推荐笔记应用\n\nflomo 浮墨卡片笔记，百万终身学习者的选择。\n帮你从一张卡片开始，积累自己的知识资产。\n\n作为普通人，flomo 究竟能帮你做到什么？\n- 帮你随时积累各种生活和工作中的知识，输出不再困难。\n- 有效提高学习质量，阅读质量，帮你记忆的更加牢固。\n- 帮你有效提高考试分数，适合考研，自考等各种考试。\n- 终生免费多平台同步，让你在任何设备上都可随时记录和检索。\n\nflomo 是如何帮你做到上面这几点的呢？\n\n【记录更多】\n- 像发微博一样，快速记录想法和灵感\n- 极简设计，仅支持最基本的文格式，拒绝排版布局的困扰\n- 支持在微信内通过服务号记录，无需打开 App\n\n【云端同步】\n- 覆盖 App、Web、PC 等平台，没网也能用\n- 不限同时登录客户端数量，随时随地查看\n- 终身免费云端同步，不限流量\n\n【回忆更好】\n- 通过桌面小部件，微信推送，系统推送闪卡等方式，让过去的记录再次发挥价值。\n- 让过往记录发挥新价值，增强记忆降低遗忘。\n\n【轻松整理】\n- 不必担心内容散乱，独特的多级标签系统，让整理知识更轻松\n- 高级搜索可以根据笔记属性、时间、分类快速搜索\n\n【量化记录】\n- 通过可视化热力图，量化记录习惯。\n- 每月汇总记录统计，让成就一目了然\n\n【插件丰富】\n- 支持导入微信读书、得到、有知有行、多看、Kindle 等多种产品\n\n【改变思维】\n- flomo 帮助中心中，整理了大量关于做笔记的思维方式资料，助你认知升级。\n\n【生成知识卡片】\n- 把笔记生成为知识卡片，分享至微博、微信和好友\n\nflomo 的适用场景：\n- 随手记录：记想法、做笔记、贴便签、列清单待办、做备忘、写大纲、摘录知识点、康奈尔笔记、灵感笔记、记忆卡片\n- 个人知识库：记录想法、记录知识、记播客金句、记今日得到、写wiki、写大纲、摘录电子书与听书笔记、做课程笔记、同步动态与聊天记录\n- 个人日记本：记录情绪、心情、一个念头、生活清单、记账单、习惯养成打卡\n- 个人金句卡：将思维金句导出为精美的图片分享\n\nflomo 不擅长做什么：\n我们深知做好一件小事就已经很不容易，所以不会试图在功能层面 All in one。\n\n下面是我们不擅长的领域，推荐诸位选择更好地产品。\n【不擅长做 文档撰写或 markdown 编辑工具】\n【不擅长做 网页全文收藏收藏】\n【不擅长做 TODO 提醒】\n【不擅长做 思维导图/脑图】\n\n\n【flomo 也格外注意隐私和安全】\n· 所有内容仅用户自己可见\n· 所有的数据传输均有加密\n· 无商业广告计划\n· 不贩卖用户个人数据\n· 数据库实时备份 \n\n流水不争先，争的是滔滔不绝\n\n————————————\n\n【订阅 flomo PRO 解锁全部功能】\n\n解锁 PRO 会员后，即可解锁\n· 找一找：重现发现你的笔记\n· 相关笔记：扩展深度，启发新视角\n· 每日回顾：让过往记录重新焕发价值\n· 20G 图片空间：可以存储无压缩照片\n· 反向链接：帮你找到隐藏的联系\n· 标签图标：让多级标签清晰可见\n· 密码锁：保护你的隐私\n· 记录 API：连接更多第三方工具\n· 统计图表：发现自己独特的记录行为\n\n————————————\n\n【连续包年（包月）会员服务协议】https://flomoapp.com/iap_policy/\n【用户及隐私协议】https://help.flomoapp.com/privacy\n\n————————————\n\n我们很乐意解答你的问题或听取你的建议，点击设置 - 反馈就能与我们直接对话了。\n\n商务合作请联系：bd@flomoapp.com",
+          "content": "  This page requires JavaScript.",
+          "publishedTime": "Thu, 02 Jul 2026 02:43:16 GMT",
+          "warning": "This page contains iframe that are currently hidden, consider enabling iframe processing.\nThis page contains shadow DOM that are currently hidden, consider enabling shadow DOM processing.",
+          "metadata": {
+            "lang": "en-US",
+            "application-version": "2026.7.2.182",
+            "application-commit": "95c651f59c88f7513a762dff492648392a0660c6",
+            "application-build-id": "151254075",
+            "application-build-time": "2026-07-02T02:43:17.6723891Z",
+            "description": "《笔记的方法》《卡片笔记写作法》官方推荐笔记应用\n\nflomo 浮墨卡片笔记，百万终身学习者的选择。\n帮你从一张卡片开始，积累自己的知识资产。\n\n作为普通人，flomo 究竟能帮你做到什么？\n- 帮你随时积累各种生活和工作中的知识，输出不再困难。\n- 有效提高学习质量，阅读质量，帮你记忆的更加牢固。\n- 帮你有效提高考试分数，适合考研，自考等各种考试。\n- 终生免费多平台同步，让你在任何设备上都可随时记录和检索。\n\nflomo 是如何帮你做到上面这几点的呢？\n\n【记录更多】\n- 像发微博一样，快速记录想法和灵感\n- 极简设计，仅支持最基本的文格式，拒绝排版布局的困扰\n- 支持在微信内通过服务号记录，无需打开 App\n\n【云端同步】\n- 覆盖 App、Web、PC 等平台，没网也能用\n- 不限同时登录客户端数量，随时随地查看\n- 终身免费云端同步，不限流量\n\n【回忆更好】\n- 通过桌面小部件，微信推送，系统推送闪卡等方式，让过去的记录再次发挥价值。\n- 让过往记录发挥新价值，增强记忆降低遗忘。\n\n【轻松整理】\n- 不必担心内容散乱，独特的多级标签系统，让整理知识更轻松\n- 高级搜索可以根据笔记属性、时间、分类快速搜索\n\n【量化记录】\n- 通过可视化热力图，量化记录习惯。\n- 每月汇总记录统计，让成就一目了然\n\n【插件丰富】\n- 支持导入微信读书、得到、有知有行、多看、Kindle 等多种产品\n\n【改变思维】\n- flomo 帮助中心中，整理了大量关于做笔记的思维方式资料，助你认知升级。\n\n【生成知识卡片】\n- 把笔记生成为知识卡片，分享至微博、微信和好友\n\nflomo 的适用场景：\n- 随手记录：记想法、做笔记、贴便签、列清单待办、做备忘、写大纲、摘录知识点、康奈尔笔记、灵感笔记、记忆卡片\n- 个人知识库：记录想法、记录知识、记播客金句、记今日得到、写wiki、写大纲、摘录电子书与听书笔记、做课程笔记、同步动态与聊天记录\n- 个人日记本：记录情绪、心情、一个念头、生活清单、记账单、习惯养成打卡\n- 个人金句卡：将思维金句导出为精美的图片分享\n\nflomo 不擅长做什么：\n我们深知做好一件小事就已经很不容易，所以不会试图在功能层面 All in one。\n\n下面是我们不擅长的领域，推荐诸位选择更好地产品。\n【不擅长做 文档撰写或 markdown 编辑工具】\n【不擅长做 网页全文收藏收藏】\n【不擅长做 TODO 提醒】\n【不擅长做 思维导图/脑图】\n\n\n【flomo 也格外注意隐私和安全】\n· 所有内容仅用户自己可见\n· 所有的数据传输均有加密\n· 无商业广告计划\n· 不贩卖用户个人数据\n· 数据库实时备份 \n\n流水不争先，争的是滔滔不绝\n\n————————————\n\n【订阅 flomo PRO 解锁全部功能】\n\n解锁 PRO 会员后，即可解锁\n· 找一找：重现发现你的笔记\n· 相关笔记：扩展深度，启发新视角\n· 每日回顾：让过往记录重新焕发价值\n· 20G 图片空间：可以存储无压缩照片\n· 反向链接：帮你找到隐藏的联系\n· 标签图标：让多级标签清晰可见\n· 密码锁：保护你的隐私\n· 记录 API：连接更多第三方工具\n· 统计图表：发现自己独特的记录行为\n\n————————————\n\n【连续包年（包月）会员服务协议】https://flomoapp.com/iap_policy/\n【用户及隐私协议】https://help.flomoapp.com/privacy\n\n————————————\n\n我们很乐意解答你的问题或听取你的建议，点击设置 - 反馈就能与我们直接对话了。\n\n商务合作请联系：bd@flomoapp.com",
+            "og:site_name": "Microsoft Store - Download apps, games & more for your Windows PC",
+            "og:type": "website",
+            "og:title": "flomo浮墨笔记 - Download and install on Windows | Microsoft Store",
+            "og:description": "《笔记的方法》《卡片笔记写作法》官方推荐笔记应用\n\nflomo 浮墨卡片笔记，百万终身学习者的选择。\n帮你从一张卡片开始，积累自己的知识资产。\n\n作为普通人，flomo 究竟能帮你做到什么？\n- 帮你随时积累各种生活和工作中的知识，输出不再困难。\n- 有效提高学习质量，阅读质量，帮你记忆的更加牢固。\n- 帮你有效提高考试分数，适合考研，自考等各种考试。\n- 终生免费多平台同步，让你在任何设备上都可随时记录和检索。\n\nflomo 是如何帮你做到上面这几点的呢？\n\n【记录更多】\n- 像发微博一样，快速记录想法和灵感\n- 极简设计，仅支持最基本的文格式，拒绝排版布局的困扰\n- 支持在微信内通过服务号记录，无需打开 App\n\n【云端同步】\n- 覆盖 App、Web、PC 等平台，没网也能用\n- 不限同时登录客户端数量，随时随地查看\n- 终身免费云端同步，不限流量\n\n【回忆更好】\n- 通过桌面小部件，微信推送，系统推送闪卡等方式，让过去的记录再次发挥价值。\n- 让过往记录发挥新价值，增强记忆降低遗忘。\n\n【轻松整理】\n- 不必担心内容散乱，独特的多级标签系统，让整理知识更轻松\n- 高级搜索可以根据笔记属性、时间、分类快速搜索\n\n【量化记录】\n- 通过可视化热力图，量化记录习惯。\n- 每月汇总记录统计，让成就一目了然\n\n【插件丰富】\n- 支持导入微信读书、得到、有知有行、多看、Kindle 等多种产品\n\n【改变思维】\n- flomo 帮助中心中，整理了大量关于做笔记的思维方式资料，助你认知升级。\n\n【生成知识卡片】\n- 把笔记生成为知识卡片，分享至微博、微信和好友\n\nflomo 的适用场景：\n- 随手记录：记想法、做笔记、贴便签、列清单待办、做备忘、写大纲、摘录知识点、康奈尔笔记、灵感笔记、记忆卡片\n- 个人知识库：记录想法、记录知识、记播客金句、记今日得到、写wiki、写大纲、摘录电子书与听书笔记、做课程笔记、同步动态与聊天记录\n- 个人日记本：记录情绪、心情、一个念头、生活清单、记账单、习惯养成打卡\n- 个人金句卡：将思维金句导出为精美的图片分享\n\nflomo 不擅长做什么：\n我们深知做好一件小事就已经很不容易，所以不会试图在功能层面 All in one。\n\n下面是我们不擅长的领域，推荐诸位选择更好地产品。\n【不擅长做 文档撰写或 markdown 编辑工具】\n【不擅长做 网页全文收藏收藏】\n【不擅长做 TODO 提醒】\n【不擅长做 思维导图/脑图】\n\n\n【flomo 也格外注意隐私和安全】\n· 所有内容仅用户自己可见\n· 所有的数据传输均有加密\n· 无商业广告计划\n· 不贩卖用户个人数据\n· 数据库实时备份 \n\n流水不争先，争的是滔滔不绝\n\n————————————\n\n【订阅 flomo PRO 解锁全部功能】\n\n解锁 PRO 会员后，即可解锁\n· 找一找：重现发现你的笔记\n· 相关笔记：扩展深度，启发新视角\n· 每日回顾：让过往记录重新焕发价值\n· 20G 图片空间：可以存储无压缩照片\n· 反向链接：帮你找到隐藏的联系\n· 标签图标：让多级标签清晰可见\n· 密码锁：保护你的隐私\n· 记录 API：连接更多第三方工具\n· 统计图表：发现自己独特的记录行为\n\n————————————\n\n【连续包年（包月）会员服务协议】https://flomoapp.com/iap_policy/\n【用户及隐私协议】https://help.flomoapp.com/privacy\n\n————————————\n\n我们很乐意解答你的问题或听取你的建议，点击设置 - 反馈就能与我们直接对话了。\n\n商务合作请联系：bd@flomoapp.com",
+            "og:image": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source",
+            "og:image:width": "1080",
+            "og:image:height": "1080",
+            "og:locale": "en-US",
+            "twitter:card": "summary",
+            "twitter:site": "@MicrosoftStore",
+            "twitter:title": "flomo浮墨笔记 - Download and install on Windows | Microsoft Store",
+            "twitter:description": "《笔记的方法》《卡片笔记写作法》官方推荐笔记应用\n\nflomo 浮墨卡片笔记，百万终身学习者的选择。\n帮你从一张卡片开始，积累自己的知识资产。\n\n作为普通人，flomo 究竟能帮你做到什么？\n- 帮你随时积累各种生活和工作中的知识，输出不再困难。\n- 有效提高学习质量，阅读质量，帮你记忆的更加牢固。\n- 帮你有效提高考试分数，适合考研，自考等各种考试。\n- 终生免费多平台同步，让你在任何设备上都可随时记录和检索。\n\nflomo 是如何帮你做到上面这几点的呢？\n\n【记录更多】\n- 像发微博一样，快速记录想法和灵感\n- 极简设计，仅支持最基本的文格式，拒绝排版布局的困扰\n- 支持在微信内通过服务号记录，无需打开 App\n\n【云端同步】\n- 覆盖 App、Web、PC 等平台，没网也能用\n- 不限同时登录客户端数量，随时随地查看\n- 终身免费云端同步，不限流量\n\n【回忆更好】\n- 通过桌面小部件，微信推送，系统推送闪卡等方式，让过去的记录再次发挥价值。\n- 让过往记录发挥新价值，增强记忆降低遗忘。\n\n【轻松整理】\n- 不必担心内容散乱，独特的多级标签系统，让整理知识更轻松\n- 高级搜索可以根据笔记属性、时间、分类快速搜索\n\n【量化记录】\n- 通过可视化热力图，量化记录习惯。\n- 每月汇总记录统计，让成就一目了然\n\n【插件丰富】\n- 支持导入微信读书、得到、有知有行、多看、Kindle 等多种产品\n\n【改变思维】\n- flomo 帮助中心中，整理了大量关于做笔记的思维方式资料，助你认知升级。\n\n【生成知识卡片】\n- 把笔记生成为知识卡片，分享至微博、微信和好友\n\nflomo 的适用场景：\n- 随手记录：记想法、做笔记、贴便签、列清单待办、做备忘、写大纲、摘录知识点、康奈尔笔记、灵感笔记、记忆卡片\n- 个人知识库：记录想法、记录知识、记播客金句、记今日得到、写wiki、写大纲、摘录电子书与听书笔记、做课程笔记、同步动态与聊天记录\n- 个人日记本：记录情绪、心情、一个念头、生活清单、记账单、习惯养成打卡\n- 个人金句卡：将思维金句导出为精美的图片分享\n\nflomo 不擅长做什么：\n我们深知做好一件小事就已经很不容易，所以不会试图在功能层面 All in one。\n\n下面是我们不擅长的领域，推荐诸位选择更好地产品。\n【不擅长做 文档撰写或 markdown 编辑工具】\n【不擅长做 网页全文收藏收藏】\n【不擅长做 TODO 提醒】\n【不擅长做 思维导图/脑图】\n\n\n【flomo 也格外注意隐私和安全】\n· 所有内容仅用户自己可见\n· 所有的数据传输均有加密\n· 无商业广告计划\n· 不贩卖用户个人数据\n· 数据库实时备份 \n\n流水不争先，争的是滔滔不绝\n\n————————————\n\n【订阅 flomo PRO 解锁全部功能】\n\n解锁 PRO 会员后，即可解锁\n· 找一找：重现发现你的笔记\n· 相关笔记：扩展深度，启发新视角\n· 每日回顾：让过往记录重新焕发价值\n· 20G 图片空间：可以存储无压缩照片\n· 反向链接：帮你找到隐藏的联系\n· 标签图标：让多级标签清晰可见\n· 密码锁：保护你的隐私\n· 记录 API：连接更多第三方工具\n· 统计图表：发现自己独特的记录行为\n\n————————————\n\n【连续包年（包月）会员服务协议】https://flomoapp.com/iap_policy/\n【用户及隐私协议】https://help.flomoapp.com/privacy\n\n————————————\n\n我们很乐意解答你的问题或听取你的建议，点击设置 - 反馈就能与我们直接对话了。\n\n商务合作请联系：bd@flomoapp.com",
+            "twitter:image": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source",
+            "viewport": "viewport-fit=cover, width=device-width, initial-scale=1.0",
+            "msvalidate.01": [
+              "278E7916AAA9095109F255AE133C94FE",
+              "BC05ABC0129603BD41E881A2EA1F81B5"
+            ],
+            "google-site-verification": [
+              "t1VwBk_bYG_uw8KqYaF_sbdcPsheMNxFQt1UKoFxM78",
+              "64T9nhDH4yUBpQhififtc0GP65kxKnncJSyqCBHANrc"
+            ],
+            "theme-color": [
+              "#181818",
+              "#f3f3f3"
+            ],
+            "mobile-web-app-capable": "yes",
+            "apple-mobile-web-app-title": "Microsoft Apps",
+            "apple-mobile-web-app-status-bar-style": "black",
+            "360-site-verification": "1863db6c6af3612ad759758c4483950e",
+            "baidu-site-verification": "codeva-7XwzFsIV37",
+            "appstore:developer_url": "https://flomoapp.com/",
+            "appstore:store_id": "xp9cwb5jssrvlz"
+          },
+          "external": {
+            "preload": {
+              "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=253": {
+                "as": "image",
+                "imagesrcset": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=253 1x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=307 1.125x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=380 1.375x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=464 1.625x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=576 1.875x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTHQOIx35tndqHweZsiiyIB7Ft3.42Qn4dxDb5TY1GoIcibFDVC.5OutxySFq6p2cY-&format=source&h=720 2.5x",
+                "fetchpriority": "high"
+              },
+              "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=210": {
+                "as": "image",
+                "imagesrcset": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=210 1x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=253 1.125x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=307 1.375x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=380 1.625x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=464 1.875x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBbv5aqzM3r6QJjDvl7ULTrTcB4jyY8OG.E2tlQTunsM.LxEOFXNKcdwXctOmTrWynvcIvTdeTCIAxoqB54nPrcc-&format=source&h=576 2.5x",
+                "fetchpriority": "high"
+              }
+            },
+            "preconnect": {
+              "https://images-eds-ssl.xboxlive.com/": {},
+              "https://store-images.s-microsoft.com/": {},
+              "https://sparkcdneus2.azureedge.net/": {},
+              "https://store-images.microsoft.com/": {},
+              "https://musicart.xboxlive.com/": {},
+              "https://login.microsoftonline.com/": {
+                "crossorigin": "anonymous"
+              }
+            },
+            "manifest": {
+              "https://apps.microsoft.com/manifest.webmanifest": {}
+            },
+            "canonical": {
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=en-US&gl=US": {}
+            },
+            "alternate": {
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz": {
+                "hreflang": "x-default"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=af-ZA&gl=ZA": {
+                "hreflang": "af-ZA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=am-ET&gl=ET": {
+                "hreflang": "am-ET"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ar-SA&gl=SA": {
+                "hreflang": "ar-SA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=as-IN&gl=IN": {
+                "hreflang": "as-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=az-Latn-AZ&gl=AZ": {
+                "hreflang": "az-Latn-AZ"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=bg-BG&gl=BG": {
+                "hreflang": "bg-BG"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=bn-IN&gl=IN": {
+                "hreflang": "bn-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=bs-Latn-BA&gl=BA": {
+                "hreflang": "bs-Latn-BA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ca-ES&gl=ES": {
+                "hreflang": "ca-ES"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=cs-CZ&gl=CZ": {
+                "hreflang": "cs-CZ"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=cy-GB&gl=GB": {
+                "hreflang": "cy-GB"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=da-DK&gl=DK": {
+                "hreflang": "da-DK"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=de-DE&gl=DE": {
+                "hreflang": "de-DE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=el-GR&gl=GR": {
+                "hreflang": "el-GR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=en-GB&gl=GB": {
+                "hreflang": "en-GB"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=en-US&gl=US": {
+                "hreflang": "en-US"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=es-ES&gl=ES": {
+                "hreflang": "es-ES"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=es-MX&gl=MX": {
+                "hreflang": "es-MX"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=et-EE&gl=EE": {
+                "hreflang": "et-EE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=eu-ES&gl=ES": {
+                "hreflang": "eu-ES"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=fa-IR&gl=IR": {
+                "hreflang": "fa-IR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=fi-FI&gl=FI": {
+                "hreflang": "fi-FI"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=tl-PH&gl=PH": {
+                "hreflang": "tl-PH"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=fr-CA&gl=CA": {
+                "hreflang": "fr-CA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=fr-FR&gl=FR": {
+                "hreflang": "fr-FR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ga-IE&gl=IE": {
+                "hreflang": "ga-IE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=gd-GB&gl=GB": {
+                "hreflang": "gd-GB"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=gl-ES&gl=ES": {
+                "hreflang": "gl-ES"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=gu-IN&gl=IN": {
+                "hreflang": "gu-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=he-IL&gl=IL": {
+                "hreflang": "he-IL"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=hi-IN&gl=IN": {
+                "hreflang": "hi-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=hr-HR&gl=HR": {
+                "hreflang": "hr-HR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=hu-HU&gl=HU": {
+                "hreflang": "hu-HU"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=id-ID&gl=ID": {
+                "hreflang": "id-ID"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=is-IS&gl=IS": {
+                "hreflang": "is-IS"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=it-IT&gl=IT": {
+                "hreflang": "it-IT"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ja-JP&gl=JP": {
+                "hreflang": "ja-JP"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ka-GE&gl=GE": {
+                "hreflang": "ka-GE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=kk-KZ&gl=KZ": {
+                "hreflang": "kk-KZ"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=km-KH&gl=KH": {
+                "hreflang": "km-KH"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=kn-IN&gl=IN": {
+                "hreflang": "kn-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ko-KR&gl=KR": {
+                "hreflang": "ko-KR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=lb-LU&gl=LU": {
+                "hreflang": "lb-LU"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=lo-LA&gl=LA": {
+                "hreflang": "lo-LA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=lt-LT&gl=LT": {
+                "hreflang": "lt-LT"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=lv-LV&gl=LV": {
+                "hreflang": "lv-LV"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=mi-NZ&gl=NZ": {
+                "hreflang": "mi-NZ"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=mk-MK&gl=MK": {
+                "hreflang": "mk-MK"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ml-IN&gl=IN": {
+                "hreflang": "ml-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=mr-IN&gl=IN": {
+                "hreflang": "mr-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ms-MY&gl=MY": {
+                "hreflang": "ms-MY"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=mt-MT&gl=MT": {
+                "hreflang": "mt-MT"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=nb-NO&gl=NO": {
+                "hreflang": "nb-NO"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ne-NP&gl=NP": {
+                "hreflang": "ne-NP"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=nl-NL&gl=NL": {
+                "hreflang": "nl-NL"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=nn-NO&gl=NO": {
+                "hreflang": "nn-NO"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=or-IN&gl=IN": {
+                "hreflang": "or-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=pa-IN&gl=IN": {
+                "hreflang": "pa-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=pl-PL&gl=PL": {
+                "hreflang": "pl-PL"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=pt-BR&gl=BR": {
+                "hreflang": "pt-BR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=pt-PT&gl=PT": {
+                "hreflang": "pt-PT"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=qu-PE&gl=PE": {
+                "hreflang": "qu-PE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ro-RO&gl=RO": {
+                "hreflang": "ro-RO"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ru-RU&gl=RU": {
+                "hreflang": "ru-RU"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sk-SK&gl=SK": {
+                "hreflang": "sk-SK"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sl-SI&gl=SI": {
+                "hreflang": "sl-SI"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sq-AL&gl=AL": {
+                "hreflang": "sq-AL"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sr-Cyrl-BA&gl=BA": {
+                "hreflang": "sr-Cyrl-BA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sr-Cyrl-RS&gl=RS": {
+                "hreflang": "sr-Cyrl-RS"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sr-Latn-RS&gl=RS": {
+                "hreflang": "sr-Latn-RS"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=sv-SE&gl=SE": {
+                "hreflang": "sv-SE"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ta-IN&gl=IN": {
+                "hreflang": "ta-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=te-IN&gl=IN": {
+                "hreflang": "te-IN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=th-TH&gl=TH": {
+                "hreflang": "th-TH"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=tr-TR&gl=TR": {
+                "hreflang": "tr-TR"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=tt-RU&gl=RU": {
+                "hreflang": "tt-RU"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ug-CN&gl=CN": {
+                "hreflang": "ug-CN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=uk-UA&gl=UA": {
+                "hreflang": "uk-UA"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=ur-PK&gl=PK": {
+                "hreflang": "ur-PK"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=vi-VN&gl=VN": {
+                "hreflang": "vi-VN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=zh-CN&gl=CN": {
+                "hreflang": "zh-CN"
+              },
+              "https://apps.microsoft.com/detail/xp9cwb5jssrvlz?hl=zh-TW&gl=TW": {
+                "hreflang": "zh-TW"
+              }
+            },
+            "modulepreload": {
+              "https://apps.microsoft.com/assets/js/modulepreload-polyfill-B5Qt9EMX.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/msal-BRioc17f.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/if-defined-BTAJ27q4.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/shared.styles-Cb6lTewy.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/console-logger-DWG09BUn.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/custom-events-BELgdS3w.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/telemetry-service-B4s3wJly.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/locale-strings-DRiwPp61.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/constants-CuaYMB18.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/experiment-service-DSvW-JKZ.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/app-router-BRs96awh.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.JCXLDPQF-BPaq6_U-.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-details-ARmSs_bH.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/index-DrkKdmNx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/repeat-3ECOnYyR.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.3LWOA5DF-BhUq05dA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.GJLC4SWQ-D3ZtuVQ4.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/screenshot-viewer-Ddx23_e8.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/telemetry-helper-ClZvnkPy.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/style-map-DHTqJSvI.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/psi-service-C-AM0xQE.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.ZGGPD2XJ-DVQy-5Ah.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/css-function-DysrRO93.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/image-helper-R8TTf4Na.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/psi-button-D5xYR-ac.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.KPLQLAWP-DgGhgsOO.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.VESXC477-hX3H_dVc.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/acquisition-gating-Dq5szXjR.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.EZCUSG7Q-Bt0C0NBK.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.IKV4VH3T-DXvTlmlx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.ZH2AND3P-Ciw1LqDx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/scroll-button-Dl-B5Q47.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/mature-content-restriction-hLcw8fPV.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-sticky-header-DTwPkwWn.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/spacing.styles-CVzm3bru.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-event-types-C0eoPMsL.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.5JY5FUCG-K_vWVW1E.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/video-player-DFcafmAd.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/live-DfOQP6Ts.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.UDWRA64J-BHszJGiJ.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.HVTXQL7M-B-joA4vg.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/component-telemetry-ids-Bk2yUnLc.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-event-badge-BNOw9fRv.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/story-popup-controller-CitTY9oZ.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/story-popup-DEfkKZWi.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/custom-scrollbar-DIU_3Inf.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/paged-list-zIwcpqmA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/base-page-YrKTiI5_.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/header-wpfGSAfx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/nav-bar-CXAArWRu.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.DQT3C4BS-UmiKJblA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/auto-complete-app-search-BNpcSP_t.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.XA43ZQPC-DzafV6UA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.3XI76F3K-CDB_2wVs.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/floating-action-button.styles-DuRJRawk.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/store-global-state-Bl9T4dAU.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/app-footer-BwgYC0FC.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/language-selector-dialog-B1qQ3ttp.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/system-requirements-cRq46G4P.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/additional-info-BPy8uXyg.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/esrb-control-CoH3AS1U.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-recommendation-IyaafCV3.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/collection-types-DhQdgN7q.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-collection-DuFDJNqN.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/collection-helper-BGNaB8br.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/ms-windows-store-nav-dzynvkqB.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/flip-animation-helper-B8-KJU1z.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/infinite-scroller-Di8b654o.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/products-keyboard-nav-uvYkCS_i.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/auth-control-DG2nHspP.js": {
+                "as": "script",
+                "crossorigin": ""
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 6
+          }
+        },
+        {
+          "title": "[福利] flomo 浮墨笔记的背后，藏着什么样的理念 - 少数派",
+          "url": "https://sspai.com/post/64009",
+          "description": "我们不仅关心你的过去，还关心你的未来。",
+          "date": "Dec 10, 2020",
+          "content": "[](https://sspai.com/)\n\n[共创](https://sspai.com/create)\n\n[PRIME](https://sspai.com/prime)\n\n[Matrix](https://sspai.com/matrix)\n\n[栏目](https://sspai.com/series)\n\nPi Store\n\n 无需申请，自由写作 \n\n任何用户都可使用写作功能。成功发布 3 篇符合基本规则的内容，可成为正式作者。[了解更多](https://manual.sspai.com/guide/init/)\n\n共创 PRIME Matrix 栏目 Pi Store\n\n![Image 14: Tron计划](https://cdnfile.sspai.com/2020/05/29/c7d11f7ada96a747936a4f74d2ec07f0.png)Tron计划 2020年12月11日 10 分钟阅读\n\n# [福利] flomo 浮墨笔记的背后，藏着什么样的理念\n\n主作者\n\n[![Image 15: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!72x72r/gravity/center/crop/72x72/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 16](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n flomo 的原神之一，产品沉思录の主理人，送你一个礼物：https://sourl.cn/CbfDW5 \n\n[少楠Plidezus [![Image 17](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者 flomo 的原神之一，产品沉思录の主理人，送你一个礼物：https://sourl.cn/CbfDW5](https://sspai.com/u/plidezus/updates)\n\n联合作者\n\n[![Image 18: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!72x72r/gravity/center/crop/72x72/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 19](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n flomo 的原神之一，产品沉思录の主理人，送你一个礼物：https://sourl.cn/CbfDW5 \n\n[少楠Plidezus [![Image 20](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者 flomo 的原神之一，产品沉思录の主理人，送你一个礼物：https://sourl.cn/CbfDW5](https://sspai.com/u/plidezus/updates) flomo 的原神之一，产品沉思录の主理人，送你一个礼物：https://sourl.cn/CbfDW5 \n\n10 分钟阅读\n\n 微信扫码分享 \n\n以图片分享[分享到微博](https://service.weibo.com/share/share.php?url=https%3A%2F%2Fsspai.com%2Fpost%2F64009?ref=weibo&title=%E3%80%90%5B%E7%A6%8F%E5%88%A9%5D%20flomo%20%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0%E7%9A%84%E8%83%8C%E5%90%8E%EF%BC%8C%E8%97%8F%E7%9D%80%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%90%86%E5%BF%B5%E3%80%91%E6%88%91%E4%BB%AC%E4%B8%8D%E4%BB%85%E5%85%B3%E5%BF%83%E4%BD%A0%E7%9A%84%E8%BF%87%E5%8E%BB%EF%BC%8C%E8%BF%98%E5%85%B3%E5%BF%83%E4%BD%A0%E7%9A%84%E6%9C%AA%E6%9D%A5%E3%80%82%EF%BC%88%E6%9D%A5%E8%87%AA%20%40%E5%B0%91%E6%95%B0%E6%B4%BEsspai%EF%BC%89%E5%85%A8%E6%96%87%EF%BC%9A&pic=https%3A%2F%2Frssfile.sspai.com%2Farticle%2F57a0c21c-48ce-3c37-2f23-18fe6615271f.png%3FimageMogr2%2Fauto-orient%2Fignore-error%2F1&appkey=3196502474#)\n\n 点击下方按钮可复制链接 \n\n分享 收藏 举报\n\n![Image 21: [福利] flomo 浮墨笔记的背后，藏着什么样的理念](https://cdnfile.sspai.com/article/57a0c21c-48ce-3c37-2f23-18fe6615271f.png?imageMogr2/auto-orient/thumbnail/!1374x/gravity/center/crop/1374x/format/webp/ignore-error/1)\n\n一分钟有多少念头？在一次骑车的时候，15 分钟内我大概捕捉到了 20 多个想法。但过了一天，这些有趣的想法都消失不见了；每天，我都会阅读大概十几篇文章，将其中有价值的收藏，但一星期过后，似乎什么都想不起来了；兴冲冲地开了公众号，参加培训营，希望能提高写作能力，但是面对空白的文档，还是一筹莫展。\n\n别担心，有这种困惑的不是你一个人。\n\n## flomo 是什么\n\n[flomo](https://sspai.com/link?target=https%3A%2F%2Fflomoapp.com%2F) 是我和好友 lightory 两个人一起创造的一款「思维工具」，主要目的是帮助你「记录想法的川流」。目前是一个支持 PWA 的网页应用，可以跨平台多端使用，也可以绑定微信服务号输入。同时 App 也在开发中。\n\n![Image 22](https://cdnfile.sspai.com/2020/12/11/article/59fced4758d9a19c6607229893b7b31e?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1)\n用接地气的话翻译一下就是，flomo 是一个只给自己看的微博，或者说是一个加强版的文件传输助手。像是一个对话框一样，脑海中蹦出什么想法，只需要丢进去就可以了。\n\n![Image 23](https://cdnfile.sspai.com/2020/12/11/b6d91c26969d668ad56142fade6a3713.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\n​其实稍微留心下身边的人就会发现，多数人没有记录想法的习惯。不是因为他们懒惰，而是今日的工具和方法，都进入了一个误区。或者在聚焦如何设计更好的「写作体验」，或者设计更丰富的「建立知识之间的联结」。\n\n而大多数笔记产品都忘了，能成为作家的人少之又少，而需要思考的人却越来越多。相比如何组织知识和写出文章，我们更缺乏的是更多的记录，以及更多有效的思考。\n\n## flomo 的起源\n\n我是 Notion 的忠实用户，很惊叹于 Notion 背后的故事。他们的初心和愿景，让我作为一个古典产品经理感到汗颜。所以在他们的愿景的驱使下，不但经营了一个基于 Notion 比较庞大的共享数据库「[产品沉思录](https://sspai.com/link?target=https%3A%2F%2Findex.pmthinking.com%2Fa601a12335044f349a22caf57f274c27)」，也给 Notion 带来了超过 200 位用户的新增。\n\n但在日常推荐 Notion 给好友的过程中，我总有一种很强烈的挫败感 —— 这个工具到底该怎么用？比印象笔记好在哪里？block 是什么？database 又是什么？无论是之前写的《[P.A.R.A 方法](https://sspai.com/post/61459)》也好，还是《[何谓渐进式笔记](https://sspai.com/link?target=https%3A%2F%2Findex.pmthinking.com%2FProgressive-Summarization-faf06977850b46a6a7de1623ebf699f2)》也罢，大家都会觉得很有道理，但是第二天却依旧重复昨日的习惯。\n\n![Image 24](https://cdnfile.sspai.com/2020/12/11/beea725b837bf460ad9812827cd88d26.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\n​**麦克卢汉说：我们塑造了工具，尔后工具也在塑造我们**\n\n作为一个十年产品汪的直觉，我开始静下心观察身边的同事，究竟是什么工具塑造了他们今日的行为？通过观察其实让我还挺意外的 —— 除了产品经理和开发，可能会尝试一下下 Notion，更多的还是印象笔记或 sublime 等本地工具；而运营客服部门的同学，用有道云笔记的比印象笔记稍微多一点。更多的人会直接用电脑的备忘录和记事本，更让我意外的是，居然很多人会开个小号发给自己，以及发给文件传输助手。\n\n**但几乎没有人不用数字化记录工具。**\n\n进一步调查他们如何使用这些工具，发现一个有趣的现象：大多数人在用这些工具的时候都很少分类，而且极少有完整的文档，标题基本上就是日期或者随手写了个什么。极少数人有整理归档的需求，每次问个东西要么是搜索，要么按照时间轴向前追溯。只有公司要求的文档格式，才稍微会有一些撰写。\n\n![Image 25](https://cdnfile.sspai.com/2020/12/11/3acee6a0ac876afffb6466643efbc6fa.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\n通过这些观察，我们渐渐得出一些观点：\n\n*   随着移动互联网普及，知识工作者越来越多，势必需要一个数字化工具来长期管理信息和知识。\n*   大多数思维工具都聚焦在如何撰写文档，整理知识。但却忽略了，大多数人的问题都不在整理，也不在于如何写文档，而在于许多想法都没记下来，是输入量不够。\n*   随着每个人在公司的平均周期越来越短，每个人势必不能只依赖于公司的知识管理工具，而需要一个面向个人的工具伴随自己终生。\n\n但到这里为止我们也没有轻易出手，而是在思考。什么样的工具形态能让大多数人输入无压力，记录更频繁。\n\nslack（或者说文件传输助手）的形态进入了我们的视野，毕竟聊天应该是最没有压力的一种输入方式了。我们进行了两周的实验，只用 slack 的频道和 Thread 来记录想法和收集信息，发现虽然整理起来没有那么方便（后续还是在 notion 输出的文章），但明显记下来的东西变多了。\n\n![Image 26](https://cdnfile.sspai.com/2020/12/11/4c4230529f9099574bb164a05a0e3bd9.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\n## flomo 的理念\n\n有了对用户需求的定性和定量调查，但还不够。因为对于思维工具来说，重要的不仅仅是做出来一堆功能，而是去思考产品背后的理念和哲学是什么。其实 flomo 的理念也并非原创，而是站在前人的肩膀上，结合今日现状进行新的抽象和归纳。在这里着重介绍两位对我们产品设计有巨大影响的前辈。\n\n**尼克拉斯 · 卢曼**\n\n关于尼克拉斯 · 卢曼的卡片盒记事法在少数派已经有很多文章了，在这里就不多赘述。研究卢曼对我来说不仅是学习一种新的笔记方法，而是去学习他对问题的思考方式，对一些惯性的观念进行了重新的审视。\n\n![Image 27](https://cdnfile.sspai.com/2020/12/11/article/f3802fef7cb793f9c295f87fa09373c9?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1)\n​**写作不是思考的结果，而是思考发生的媒介。** 写作可以很好地提高思维能力，因为它迫使你从更深的层次去阅读。就像学游泳一样，你必须通过实践来学习，而不仅仅是通过在纸面上的学习。\n\n**没有人会从零开始一件事情。** 关于创造力最坑爹神话之一就是它从无到有发生的。 空白的页面、白色的画布、空荡荡的舞台 —— 我们最浪漫、最普遍的艺术主题似乎在暗示，「从零开始」是创造力的本质。但正确的方法是，在你选择你要写的东西之前，你必须下功夫研究并积累。\n\n**收藏往往没有作用。** 多数时候我们都会陷入「收藏者谬误」，感觉收藏就是学习到，但实际上「知晓某事」并不是「知道某事」。收藏更像是把信息搬运（而非加工），途中没有增加任何知识。\n\n**为什么分类不重要。** 我们的大脑不会按照分类来工作，至少一开始不会。当知识增长时，我们所知道的事物网络就会有机地生长（而非搭建了某种结构，更像是植物。而非建筑物）信息被个人主观的理解，贴上标签建立连接，成为知识。每个人的体系都不一样，所以一定是个性化的，不断生长的。传统的分类无法满足这种生长的状态。\n\n**Andy Matuschak**\n\n用全栈工程师定义 Andy Matuschak 似乎已经不够，他曾经在 Apple 参与 iOS 系统的建造，尔后在可汗学院领导研发工作，他经常游走于学术界和硅谷之间。\n\n![Image 28](https://cdnfile.sspai.com/2020/12/11/29863ff95b05357537d45e3213f02616.jpeg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\nEvergreenNote 是 Andy 的工作笔记 —— 类似卢曼的卡片盒笔记法，每个 EvergreenNote 像是一张卡片，但是以一种很独特的方式呈现出来的。但重要的不是 Andy 工作笔记的形式，而是他提出的问题和笔记建议：\n\n**知识工作者如何刻意练习？** 运动员和音乐家比知识工作者更严格地追求基本技能的精湛技艺。但是知识工作者对磨炼基本功并不认真，阅读随意，笔记随便，无法随着时间推移来积累，而且往往是临时性的实践。知识工作很少涉及刻意实践，典型的工作环境很少有刻意训练的环境，就像是玩游戏来锻炼身体一样。EvergreenNote 可以当作知识工作的基本单位，即每天记录了多少单位的笔记。\n\n「更好地记笔记」没有抓住要点；重要的是「更好地思考」。绝大多数的写作都集中在一些所谓「生活整理」式的框架上，专注于回答这样的问题: 「我应该如何组织我的笔记 ? 」「我应该用什么样的日记 ? 」……这些问题集中在错误的事情上。**我们的目标不是做笔记，而是有效地思考。**\n\n洞察力的飞跃取决于在这些主题上积累了大量的先前思考。有时候，这种积累完全发生在我们的潜意识中，但这有助于我们设计我们的外部认知系统，使我们的日常思考能够积累\n\n为何要把读到的写下来？积累标签、保存 pdf 文件和制作书签看起来像是一种进步，但是我们系统地高估了它的价值。理解需要努力的投入。你不太可能从一个文件夹中得到太多的理解。我们收集素材是因为它很容易，也因为它消除了我们再也找不到我们要找的东西的焦虑。但实际上，我们往往只是把事情弄得更糟，把重要的材料埋在数以吨计的次要物质中，我们只是「不想失去」这种观念与知识工作应该积累的观念形成对比。\n\n除此之外，阳志平老师、奥野宣之的《如何有效阅读一本书》、以及 fonter 的《[Notion 的支撑者](https://mp.weixin.qq.com/s/MbWAx_pVa42Y1q8qieRmGA)》都对我们设计产品有莫大的启发。\n\n## 从理念到设计\n\n基于上述调查和前辈们的观点，我们把所有的精力都聚焦于记录想法，而非整理文档。所以我们把整个产品分为两个大阶段 —— 也许需要若干年才能完成。\n\n*   降低输入摩擦，提高输入动机\n*   建立回顾体系，协助整理归纳\n\n目前我们只是达到了第一阶段，所以就针对这部分的思考进一步展开分析。\n\n**降低用户的输入摩擦**\n\n让用户能尽量多的无压力的记录下来自己的想法。但不鼓励收藏和导入，因为这样本质上还是知识的搬运工。\n\n*   入口前置：微信是大家使用最频繁的工具，而在输入框输入是摩擦最小的场景，所以我们开发了服务号输入。后续提供输入 API 之后，会支持更多 IM 的 BOT\n*   无压输入：flomo 的输入框更像是微博，并且仅支持一点点 Markdown 语法，不支持图文混排。尽量消除排版的可能。\n*   flomo weekly：通过每周的周刊，推荐相关的使用心得和笔记理念给 flomo 用户，降低大家使用 flomo 的门槛，学到更多使用情境。\n\n![Image 29](https://cdnfile.sspai.com/2020/12/11/article/ac25c4d7d19b34baffe1370a964d68bf?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1)\n**提高用户的输入动机**\n\n量化用户的输入反馈，让用户能感知到自己记录后带来的价值。但不会做分享或签到激励，扭曲用户的动机。\n\n*   参考 Github / 豆瓣的贡献墙设计，帮用户即时看到自己积累的 MEMO 数量，获得记录的成就感\n*   建立每日回顾体系，通过服务号根据条件下发历史记录的内容，提高用户对过往记录的感知\n*   建立随机漫步体系，根据用户记录的内容帮他挖掘 MEMO 背后的关系，提高他对自己的洞察，提高进一步记录的动机。\n\n![Image 30](https://cdnfile.sspai.com/2020/12/11/article/4c5064f09ad7ec9ea84a33f557728d2f?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1)![Image 31](https://cdnfile.sspai.com/2020/12/11/b643a294ab8a6999af271a87036d350b.jpeg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1/format/webp)\n所以许多用户反馈我们不支持 Markdown 语法，不能修改字体和颜色，不能一键收藏的原因，便在上面的思考里面了。\n\n## flomo 的未来\n\n前几天在 flomo weekly 上，我写到 flomo 的愿景：我们敬佩 Notion 背后的初心，但我们不打算拷贝 Notion 的功能做成 All in one；我们也赞叹 RoamResearch 信息架构之精妙，但我们也不打算借鉴 Roam 的双向链接；我们感慨石墨背后编辑器的耗费的精力，但我们不打算成为另一个文档编辑器；当资本和创业者都在关注企业协同的时候，我们选择关注个体。\n\n**我们只是朴素的关注着你，未来一年，未来三年，未来五年的你。**\n\n当你需要复盘和回顾自己的时候，希望能在 flomo 里面找到过去的自己。 而不是把他们丢在公司的 wiki 或者企业 IM 的聊天记录里。\n\n我们不仅关心你的过去，还关心你的未来。\n\n想象一下，当我们拥有了成百上千的 MEMO，根据你的需要摊开在一张空白的桌面上，根据你的需要自动排列和组合，然后围绕一个主题合并成一篇文章，归档输出。这样你就再也不用担心思维的枯竭，而许多丢失的创造力，也能因此寻回。\n\n我们在路上了，欢迎加入我们，同路人。\n\n## 彩蛋\n\n专门给大家准备了一个特殊的福利，通过 [我的邀请链接](https://sspai.com/link?target=https%3A%2F%2Fflomoapp.com%2Fregister2%2F%3FMQ) 注册，可以获得**28 天的 PRO 会员体验**，来试试建立自己的想法川流吧！\n\n你是否使用 flomo，想在 flomo 中记录自己的哪些想法？欢迎在评论区进行分享~\n\n> 下载少数派[客户端](https://sspai.com/page/client)、关注[少数派公众号](https://sspai.com/s/J71e)，找到数字时代更好的生活方式 🎊\n\n> 特惠、好用的硬件产品，尽在[少数派sspai官方店铺](https://shop549593764.taobao.com/?spm=a230r.7195193.1997079397.2.2ddc7e0bPqKQHc)🛒\n\n[热门文章](https://sspai.com/tag/%E7%83%AD%E9%97%A8%E6%96%87%E7%AB%A0)[App+1](https://sspai.com/tag/App+1)\n\n 本文责编： [@会飞的三羊店长](https://sspai.com/u/sanyoung)\n\n © 本文著作权归作者所有，并授权少数派独家使用，未经少数派许可，不得转载使用。 \n\n* * *\n\n[![Image 32: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/chqrfnso/updates)\n\n[![Image 33: 矿山](https://cdnfile.sspai.com/2023/03/19/518df9e3f5f900b3836b66273fb2fc9b.JPG?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/24wvayiw/updates)\n\n[![Image 34: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/sjwy0r76/updates)\n\n[![Image 35: 君剑](https://cdnfile.sspai.com/2025/02/15/976b35aa6ec1ee9c0794c3a45699ff15.jpg?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/bl5g8nlw/updates)\n\n[![Image 36: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/aotxjabf/updates)\n\n[![Image 37: JimLee2048](https://cdnfile.sspai.com/2023/07/01/avatar/52c301b57aa9a1c92d002799ec73c7de.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/d9m6kz7b/updates)\n\n[![Image 38: 聆风Raymond](https://cdnfile.sspai.com/2023/01/13/avatar/088a31917d6a560cb2116b8a853983ff.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/lingfeng_raymond/updates)\n\n[![Image 39: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/n7xh3grw/updates)\n\n[![Image 40: ViviGoodenough](https://cdnfile.sspai.com/2022/07/20/4f08da4fa7d99eec5bae7a1cd5d5ff83.jpg?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/4b7xrpql/updates)\n\n[![Image 41: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/rzv20w1h/updates)\n\n[![Image 42: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/8xtl8uue/updates)\n\n[![Image 43: 周念真2HouXuA17](https://cdnfile.sspai.com/2022/04/17/2d70a22fb0f47d69f1f3b53350444c93.jpeg?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/yt7o4pwz/updates)\n\n[![Image 44: 山鬼](https://cdnfile.sspai.com/ui/otter_avatar_placeholder.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/vollvi02/updates)\n\n[![Image 45: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/za4npmsm/updates)\n\n[![Image 46: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/sioggpt0/updates)\n\n[![Image 47: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/r1xs3o1h/updates)\n\n[![Image 48: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/w4qp3nmr/updates)\n\n[![Image 49: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/zcbhoxr2/updates)\n\n[![Image 50: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/6l3euup0/updates)\n\n[![Image 51: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/srihol/updates)\n\n[![Image 52: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/uilvcd50/updates)\n\n[![Image 53: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/ovg0w8xe/updates)\n\n[![Image 54: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/erlk63bs/updates)\n\n[![Image 55: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/v142uecd/updates)\n\n[![Image 56: 宇智波丶白若](https://cdnfile.sspai.com/2022/04/03/avatar/c754ed281dfa0d03cd94c0e56bbc5be9.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/5jd1yqo0/updates)\n\n[![Image 57: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/ixs46q6d/updates)\n\n[![Image 58: RiversAtDawn17](https://cdnfile.sspai.com/2022/12/13/avatar/230075c194516b91b3616dc0a2d02353.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/4hqvw24z/updates)\n\n[![Image 59: 芹菜](https://cdnfile.sspai.com/2022/05/15/624b8ad5893c0af1014600ff0ebea75f.jpg?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/d8w9aj64/updates)\n\n[![Image 60: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/ro4fzo1t/updates)\n\n[![Image 61: Logix_o](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!64x64r/gravity/center/crop/64x64/format/webp/ignore-error/1)](https://sspai.com/u/Logix_o/updates)\n\n218位派友已充电\n\n文章目录\n\n目录 6\n\n*   flomo 是什么 \n*   flomo 的起源 \n*   flomo 的理念 \n*   从理念到设计 \n*   flomo 的未来 \n*   彩蛋 \n\n[广告 ![Image 62: 麦金獭手机钢化膜 ](https://cdnfile.sspai.com/2026/4/20/article/58ebfc3b-9842-4396-582f-9064dd396775.png?imageMogr2/auto-orient/thumbnail/!796x190r/gravity/center/crop/796x190/format/webp/ignore-error/1)](https://sspai.com/a/n66bWn)\n\n 讨论 65 \n\n默认\n\n*   默认\n*   热门\n\n 精选 \n\n[![Image 63: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/6nzbq5ph/updates)\n\n[![Image 64](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/6nzbq5ph)关注\n\nJimMa\n\n[JimMa [![Image 65](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/6nzbq5ph)关注 JimMa](https://sspai.com/u/6nzbq5ph/updates)2020/12/11 07:58\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\nflomo的疑问有一，为什么要添加「标签」的功能。 在playground中有提到希望打造成能持续翻阅的笔记本，而标签服务的是检索的功能，这在纸质笔记时代是相对难以实现的。 而标签对于用户而言很多时候与「随时随地输入」的初衷是相悖的，当我需要去思索该把这个想法归纳到某一个标签内的时候，在某些程度会打断输入。 把Flomo定义为「内容沉淀的文字式闪念胶囊」，是刚试用第一次输入后的想法，（当然这种没深入体验就来bb很违背PM之心，但就忍不住~），在试用的28天内会仔细体验。\n\n收起 收起\n\n[![Image 66: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 67](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 68](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 09:20\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n其实可以不加，后续随机漫步会来改进，帮你找到线索~\n\n收起 收起\n\n[![Image 69: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/zwithz/updates)\n\n[![Image 70](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/zwithz)关注\n\nzwithz\n\n[zwithz [![Image 71](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/zwithz)关注 zwithz](https://sspai.com/u/zwithz/updates)2020/12/11 10:36\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n标签可以先不急着加，我目前是依靠每日复盘，再慢慢加标签，避免一开始加的标签不合适或太多以至于后期整理标签时想锤爆自己\n\n收起 收起\n\n[![Image 72: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/zwithz/updates)\n\n[![Image 73](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/zwithz)关注\n\nzwithz\n\n[zwithz [![Image 74](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/zwithz)关注 zwithz](https://sspai.com/u/zwithz/updates)[少楠Plidezus [![Image 75](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 10:37\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n少楠老师的 tags 比俺的 memo 数还多🌚\n\n收起 收起\n\n[![Image 76: 路中南](https://cdnfile.sspai.com/2023/03/03/6de39d263b7eca9bde300c2d339e77f8.JPG?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/LuZhNan/updates)\n\n[![Image 77](https://cdnfile.sspai.com/2023/03/03/6de39d263b7eca9bde300c2d339e77f8.JPG?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/LuZhNan)关注\n\n路中南\n\n少数派成员\n\n[路中南 [![Image 78](https://cdnfile.sspai.com/2023/03/03/6de39d263b7eca9bde300c2d339e77f8.JPG?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/LuZhNan)关注 路中南 少数派成员](https://sspai.com/u/LuZhNan/updates)2020/12/11 11:25\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n标签其实是我最爱的功能，不过我一般都是写完后加个标签，或者回看的时候手动加上一个。 没有标签，一大团随想有什么用？标签可以让我看到自己在某个角度思考的变化。不考虑回溯的话我就不加了，那才是真的变成了某种单机版本社交网络。\n\n收起 收起\n\n[![Image 79: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/5uul9nde/updates)\n\n[![Image 80](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/5uul9nde)关注\n\n少数派_964037\n\n[少数派_964037 [![Image 81](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/5uul9nde)关注 少数派_964037](https://sspai.com/u/5uul9nde/updates)[少楠Plidezus [![Image 82](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 11:47\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n我把 flomo 的标签当作 slack 的 group， reddit 的subreddit 来用的。把 flomo 当作和未来自己交流的一个group 和 关于某个话题讨论的subreddit。\n\n收起 收起\n\n[![Image 83: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 84](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 85](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)[路中南 [![Image 86](https://cdnfile.sspai.com/2023/03/03/6de39d263b7eca9bde300c2d339e77f8.JPG?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/LuZhNan)关注 路中南 少数派成员](https://sspai.com/u/LuZhNan/updates)2020/12/12 13:29\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n到时候随机漫步能帮你挖掘标签哈哈\n\n收起 收起\n\n[![Image 87: 粉饺](https://cdnfile.sspai.com/2022/08/28/avatar/8933a9f94b9087f006c2b833b88163e4.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/r5o7w8uf/updates)\n\n[![Image 88](https://cdnfile.sspai.com/2022/08/28/avatar/8933a9f94b9087f006c2b833b88163e4.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/r5o7w8uf)关注\n\n粉饺\n\n[粉饺 [![Image 89](https://cdnfile.sspai.com/2022/08/28/avatar/8933a9f94b9087f006c2b833b88163e4.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/r5o7w8uf)关注 粉饺](https://sspai.com/u/r5o7w8uf/updates)[少楠Plidezus [![Image 90](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/14 08:04\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n期待，现在漫步的算法还需要改进\n\n收起 收起\n\n[![Image 91: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 92](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 93](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)[粉饺 [![Image 94](https://cdnfile.sspai.com/2022/08/28/avatar/8933a9f94b9087f006c2b833b88163e4.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/r5o7w8uf)关注 粉饺](https://sspai.com/u/r5o7w8uf/updates)2020/12/14 11:33\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n目前完成度，10%吧\n\n收起 收起\n\n[![Image 95: 乐谦](https://cdnfile.sspai.com/ui/otter_avatar_placeholder.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/leqian/updates)\n\n[![Image 96](https://cdnfile.sspai.com/ui/otter_avatar_placeholder.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/leqian)关注\n\n乐谦\n\n[乐谦 [![Image 97](https://cdnfile.sspai.com/ui/otter_avatar_placeholder.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/leqian)关注 乐谦](https://sspai.com/u/leqian/updates)[少楠Plidezus [![Image 98](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/15 04:00\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n期待少楠新作，你碰到我的软肋了，但能不能解决还要共同努力。\n\n收起 收起\n\n 精选 \n\n[![Image 99: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/xp374lnm/updates)\n\n[![Image 100](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/xp374lnm)关注\n\nWindlee\n\n[Windlee [![Image 101](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/xp374lnm)关注 Windlee](https://sspai.com/u/xp374lnm/updates)2020/12/11 08:02\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n现在的大部分笔记都做的大而全，all in one，但对于我来说，反而增加了我记录的难度：我这篇文字是什么类别的，应该整理到哪里？我写的是日记还是感想，我应该记录到日记应用里还是知识库里？等等这让我这个选择困难患者十分的纠结。 所以之前RoamResearch的DailyNote是我最喜欢的功能，能让我随心所欲的记录和回顾。但RR的访问和价格毕竟是一个阻碍，使用起来不够方便。 flomo让我感觉十分的舒服，它的定位十分精准而明确：快速记录想法，并帮助回顾。 这个定位让我非常方便的把flomo接入到我的生活中：有用的想法和信息在我积累到一定程度后，可以将它提取出来形成更深度的内容；而没用信息也可以沉积在里面，不给我造成任何心理负担。 我很喜欢flomo的设计理念，希望少楠可以把它做的更好，让更多的人用上。\n\n收起 收起\n\n[![Image 102: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 103](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 104](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 09:20\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n感谢反馈，我们会坚持的~ 也希望你和我们同路\n\n收起 收起\n\n 精选 \n\n[![Image 105: ShelockLau](https://cdnfile.sspai.com/2022/04/14/89966cd86bb5345db6548f2ed8dc3124.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/oo325fps/updates)\n\n[![Image 106](https://cdnfile.sspai.com/2022/04/14/89966cd86bb5345db6548f2ed8dc3124.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/oo325fps)关注\n\nShelockLau\n\n[ShelockLau [![Image 107](https://cdnfile.sspai.com/2022/04/14/89966cd86bb5345db6548f2ed8dc3124.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/oo325fps)关注 ShelockLau](https://sspai.com/u/oo325fps/updates)2020/12/11 07:20\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n这种自己写「微博」给自己看的方式，无疑是当下略显浮躁、臃肿的社会情绪下的一股清流。 很多时候我们的思绪是需要自己反复回顾与琢磨的，All in one的思想让我们把太多精力聚焦在如何聚合信息和处理信息上，而协作方式让我们把他人的情绪带入自己的生活。 当你打开flomo的时候，你面对的是一块属于自己拼贴的墙，还有一点一点的过去。我甚至不太敢用它记录太多太杂的内容，因为这片，只属于我自己。\n\n收起 收起\n\n[![Image 108: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 109](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 110](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 09:21\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n自己才敢吐露真实的想法给自己，一旦要考虑分享了，动机就都变了。「诚实」是个很难的事情，尤其是对自己\n\n收起 收起\n\n 精选 \n\n[![Image 111: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/0pvcline/updates)\n\n[![Image 112](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/0pvcline)关注\n\nPsycamore2\n\n[Psycamore2 [![Image 113](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/0pvcline)关注 Psycamore2](https://sspai.com/u/0pvcline/updates)2020/12/11 07:30\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n笔记工具爱好者，前几天朋友推荐我Flomo，最近使用频率挺高的。以前有了什么想记录的东西，会用印象笔记的桌面便签，后来又用了 Ob 的每日一页，发现会存在几个问题，第一如果要分开记东西，自己需要新建页面，特别繁琐；第二东西放在一起，又显得很乱；第三记完东西后很难做到定期回看，就没什么作用了 。Flomo 完美解决了我这几个问题，最近稍微有些 idea或者感受就会直接用 Flomo 记录下来，以前这些想法都流失掉了。\n\n收起 收起\n\n[![Image 114: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 115](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 116](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2020/12/11 09:21\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n嘿嘿，功不唐捐~ 加油用~\n\n收起 收起\n\n[![Image 117: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/ng94mvle/updates)\n\n[![Image 118](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/ng94mvle)关注\n\n233糖\n\n[233糖 [![Image 119](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/ng94mvle)关注 233糖](https://sspai.com/u/ng94mvle/updates)2021/07/25 17:38\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n三分钟前刚注册完，然后看到文末的会员注册链接...\n\n收起 收起\n\n[![Image 120: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 121](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 122](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2021/07/26 01:09\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n哈哈哈哈，没事儿，还可以用激活码 OTEw\n\n收起 收起\n\n[![Image 123: HansonZ](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ/updates)\n\n[![Image 124](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ)关注\n\nHansonZ\n\n少数派作者\n\n[HansonZ [![Image 125](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ)关注 HansonZ 少数派作者](https://sspai.com/u/HansonZ/updates)2021/06/12 09:49\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n最近刚用这个软件，我本身也是个写故事的，用这种方式收集灵感特别好用——由点到线，由线到面，由面到体。 以前觉得all in one的软件省事，现在觉得各司其职的软件才是最好的，少了干扰项，做事更轻松。 支持Flomo\n\n收起 收起\n\n[![Image 126: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 127](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 128](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2021/06/13 23:27\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n期待你的大作~\n\n收起 收起\n\n[![Image 129: HansonZ](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ/updates)\n\n[![Image 130](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ)关注\n\nHansonZ\n\n少数派作者\n\n[HansonZ [![Image 131](https://cdnfile.sspai.com/2023/07/31/avatar/869e1f76e0a59fb7116c01b89668f433.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/HansonZ)关注 HansonZ 少数派作者](https://sspai.com/u/HansonZ/updates)[少楠Plidezus [![Image 132](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2021/06/19 15:16\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n感谢少楠大大，之前听了你们的电台，非常喜欢的app以及卡片笔记法，祝越办越好！\n\n收起 收起\n\n[![Image 133: xT星听](https://cdnfile.sspai.com/2022/04/12/avatar/6a6017e0a10f5f7cccdbecccaa0cc7d4.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/galaxyr/updates)\n\n[![Image 134](https://cdnfile.sspai.com/2022/04/12/avatar/6a6017e0a10f5f7cccdbecccaa0cc7d4.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/galaxyr)关注\n\nxT星听\n\n少数派作者\n\n[xT星听 [![Image 135](https://cdnfile.sspai.com/2022/04/12/avatar/6a6017e0a10f5f7cccdbecccaa0cc7d4.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/galaxyr)关注 xT星听 少数派作者](https://sspai.com/u/galaxyr/updates)2021/05/17 08:36\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n这四天在尝试使用Flomo。 它最大贡献是，随意性的思绪捕捉。 但是我没感觉到很大的使用必要性。可能确实是需要长期的积累才能体会出来。 但是这种将我们思绪放在网络后台的平台服务。最怕的就是服务的长期稳定性。\n\n收起 收起\n\n[![Image 136: 少楠Plidezus](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/plidezus/updates)\n\n[![Image 137](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注\n\n少楠Plidezus\n\n少数派作者\n\n[少楠Plidezus [![Image 138](https://cdnfile.sspai.com/2022/04/11/b4a67b4e7b18a571825e755cb32e1db8.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/plidezus)关注 少楠Plidezus 少数派作者](https://sspai.com/u/plidezus/updates)2021/05/17 13:52\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n1. 如果三两天就能见到效果，那么我们就应该收一个很贵的费用了哈哈。具体成果可以看这个：[https://sspai.com/post/66474](https://sspai.com/post/66474) 2. 这次创业为了活得久，我们暂时放弃了融资，用自己的资金撑三年没问题。往后的事情我们不敢乱说，但活得久是最重要的目标。 3. 如果不放心，还能随时导出。 以上，并不是为了说服你用，只是表达下我们对这些问题背后的思考。\n\n收起 收起\n\n[![Image 139: tobemaster](https://cdnfile.sspai.com/2023/10/17/fe7f30f995b5cc1643d9d208a7165f4c.jpeg?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/tobemaster/updates)\n\n[![Image 140](https://cdnfile.sspai.com/2023/10/17/fe7f30f995b5cc1643d9d208a7165f4c.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/tobemaster)关注\n\ntobemaster\n\n新手上路\n\n[tobemaster [![Image 141](https://cdnfile.sspai.com/2023/10/17/fe7f30f995b5cc1643d9d208a7165f4c.jpeg?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/tobemaster)关注 tobemaster 新手上路](https://sspai.com/u/tobemaster/updates)2021/03/25 02:02\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n好像，我也一直在寻找这样的产品。我是一个非常典型的收藏者，收藏对于我来说，基本上已经变成了一个下意识的动作。收藏一下，和进入头脑的距离，很可能是永远。谢谢你们的产品。\n\n收起 收起\n\n[![Image 142: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/y7p3o7ka/updates)\n\n[![Image 143](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/y7p3o7ka)关注\n\n请叫我和尚\n\n[请叫我和尚 [![Image 144](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/y7p3o7ka)关注 请叫我和尚](https://sspai.com/u/y7p3o7ka/updates)2021/03/17 02:38\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n真是一款不错优秀的软件，目前暂时是用语雀的小记功能和滴答清单来完成自己每日的随手一记。\n\n收起 收起\n\n[![Image 145: 少数派_1024558](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!48x48r/gravity/center/crop/48x48/format/webp/ignore-error/1)](https://sspai.com/u/f4jj7u6w/updates)\n\n[![Image 146](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/f4jj7u6w)关注\n\n少数派_1024558\n\n[少数派_1024558 [![Image 147](https://cdn-static.sspai.com/ui/otter_avatar_placeholder_240511.png?imageMogr2/auto-orient/thumbnail/!100x100r/gravity/center/crop/100x100/format/webp/ignore-error/1)](https://sspai.com/u/f4jj7u6w)关注 少数派_1024558](https://sspai.com/u/f4jj7u6w/updates)2021/02/27 15:18\n\n该评论已被隐藏[](https://sspai.com/page/community-rules)\n\n其实我在找一款可以代替苹果备忘录的软件，自带备忘录感觉已经很好用了，只是有几个不足一直没改动，不能跨win平台，网页版打开慢，同步不及时，附件有时候加载不出，不支持上传附件，客户端倒没啥不足\n\n收起 收起\n\n更多\n\n加载中...\n\n已加载全部\n\n说点什么...\n\n218 125\n\n 微信扫码分享 \n\n以图片分享[分享到微博](https://service.weibo.com/share/share.php?url=https%3A%2F%2Fsspai.com%2Fpost%2F64009?ref=weibo&title=%E3%80%90%5B%E7%A6%8F%E5%88%A9%5D%20flomo%20%E6%B5%AE%E5%A2%A8%E7%AC%94%E8%AE%B0%E7%9A%84%E8%83%8C%E5%90%8E%EF%BC%8C%E8%97%8F%E7%9D%80%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%90%86%E5%BF%B5%E3%80%91%E6%88%91%E4%BB%AC%E4%B8%8D%E4%BB%85%E5%85%B3%E5%BF%83%E4%BD%A0%E7%9A%84%E8%BF%87%E5%8E%BB%EF%BC%8C%E8%BF%98%E5%85%B3%E5%BF%83%E4%BD%A0%E7%9A%84%E6%9C%AA%E6%9D%A5%E3%80%82%EF%BC%88%E6%9D%A5%E8%87%AA%20%40%E5%B0%91%E6%95%B0%E6%B4%BEsspai%EF%BC%89%E5%85%A8%E6%96%87%EF%BC%9A&pic=https%3A%2F%2Frssfile.sspai.com%2Farticle%2F57a0c21c-48ce-3c37-2f23-18fe6615271f.png%3FimageMogr2%2Fauto-orient%2Fignore-error%2F1&appkey=3196502474#)\n\n 点击下方按钮可复制链接 \n\n关联阅读\n\n[背单词更要背释义，FenyiDic 让你记住「熟悉的陌生人」 [![Image 148: Bern3rsH](https://cdnfile.sspai.com/2022/11/10/26661f96bb6d5903717bd8545a5e1299.JPG?imageMogr2/auto-orient/thumbnail/!32x32r/gravity/center/crop/32x32/format/webp/ignore-error/1)](https://sspai.com/u/53c75dge) [Bern3rsH](https://sspai.com/u/53c75dge) 06/30 ![Image 149: 背单词更要背释义，FenyiDic 让你记住「熟悉的陌生人」](https://cdnfile.sspai.com/2026/06/28/aa9e6b1038bc965c1963d5fb9b85e283.png?imageMogr2/auto-orient/thumbnail/!228x172r/gravity/center/crop/228x172/format/webp/ignore-error/1)](https://sspai.com/post/111632)[Level Read：让英语学习从「读得懂」开始，每天都进步一点点 [![Image 150: Meterscao](https://cdnfile.sspai.com/2023/12/07/avatar/63e079327e9410c960cbd409a33bcfc2?imageMogr2/auto-orient/quality/90/ignore-error/1)](https://sspai.com/u/7k8cild9) [Meterscao](https://sspai.com/u/7k8cild9) 06/12 ![Image 151: Matrix精选](https://cdn-static.sspai.com/ui/tags/matrix.png)Matrix精选 ![Image 152: Level Read：让英语学习从「读得懂」开始，每天都进步一点点](https://cdnfile.sspai.com/2026/05/28/53ee08e46750f301c36fd3997787a2c9.png?imageMogr2/auto-orient/thumbnail/!228x172r/gravity/center/crop/228x172/format/webp/ignore-error/1)](https://sspai.com/post/110329)[Await：五分钟，把点子变成 iPhone 小组件 [![Image 153: maundytime](https://cdnfile.sspai.com/2026/05/28/dd9d3dba318a5a9bfceefa1f58fb9cea.JPG?imageMogr2/auto-orient/thumbnail/!32x32r/gravity/center/crop/32x32/format/webp/ignore-error/1)](https://sspai.com/u/me5csd8x) [maundytime](https://sspai.com/u/me5csd8x) 05/29 ![Image 154: Matrix精选](https://cdn-static.sspai.com/ui/tags/matrix.png)Matrix精选 ![Image 155: Await：五分钟，把点子变成 iPhone 小组件](https://cdnfile.sspai.com/26/05/2026/article/c4d7426d-2b3a-9e57-b9e2-bdf7318d1cf3.jpeg?imageMogr2/auto-orient/thumbnail/!228x172r/gravity/center/crop/228x172/format/webp/ignore-error/1)](https://sspai.com/post/110106)[capcap：一键搞定截图、标注与图床，免费、开源的 macOS 截图工具 [![Image 156: SkyRiN](https://cdnfile.sspai.com/2022/05/06/avatar/24a3fbb17ed5fa72b769aa9cefaffc06.png?imageMogr2/auto-orient/thumbnail/!32x32r/gravity/center/crop/32x32/format/webp/ignore-error/1)](https://sspai.com/u/skyrin) [SkyRiN](https://sspai.com/u/skyrin) 05/14 ![Image 157: capcap：一键搞定截图、标注与图床，免费、开源的 macOS 截图工具](https://cdnfile.sspai.com/2026/05/14/528d447c6b90f837e1a352bf8c4c30ce.png?imageMogr2/auto-orient/thumbnail/!228x172r/gravity/center/crop/228x172/format/webp/ignore-error/1)](https://sspai.com/post/109741)\n\n 讨论 \n\n我来说一句\n\n 讨论 \n\n我来说一句\n\nnull 条回复\n\n发布\n\n发表评论\n\n发布\n\n![Image 158](https://cdn-static.sspai.com/ui/logo/logo_sspai_icon.png)\n\nApp 内打开\n\n 请绑定手机号码 \n\n 取消 \n\n 前往绑定 \n\n[](https://sspai.com/)\n\n[](https://weibo.com/sspaime?is_hot=1)[关注公众号 sspaime ![Image 159](https://cdn-static.sspai.com/ui/gzh_qrcode_home.png)](https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4Mjg3MDAyMQ==&subscene=0#wechat_redirect)[](https://www.xiaohongshu.com/user/profile/63f5d65d000000001001d8d4)[](https://sspai.com/feed)\n\n[下载 App](https://sspai.com/page/client)[联系我们](mailto:contact@sspai.com)[商务合作](https://sspai.com/page/bussiness)[关于我们](https://sspai.com/page/about-us)[用户协议](https://sspai.com/page/agreement)\n\n© 2013-2026 深圳市烧麦网络科技有限公司 - 少数派[粤ICP备09128966号-4](https://beian.miit.gov.cn/) | [粤B2-20211534](https://dxzhgl.miit.gov.cn/)\n\n 确定\n\n*   联系客服\n*   [发送邮件](mailto:contact@sspai.com)\n*   [商务合作](https://sspai.com/page/bussiness)\n*   [少数派 App](https://sspai.com/page/client)\n\n请用微信手机端扫码咨询客服\n\n![Image 160](https://cdn-static.sspai.com/ui/qrcode_service.png)",
+          "publishedTime": "2020-12-11T06:43:15.000Z",
+          "metadata": {
+            "lang": "zh-CN",
+            "viewport": "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover",
+            "theme-color": "#ffffff",
+            "fragment": "!",
+            "og:type": "website",
+            "og:site_name": "少数派 - 高品质数字消费指南",
+            "twitter:card": "summary_large_image",
+            "description": "我们不仅关心你的过去，还关心你的未来。",
+            "keywords": "热门文章,App+1",
+            "og:title": "[福利] flomo 浮墨笔记的背后，藏着什么样的理念 - 少数派",
+            "og:description": "我们不仅关心你的过去，还关心你的未来。",
+            "og:image": "https://rssfile.sspai.com/article/57a0c21c-48ce-3c37-2f23-18fe6615271f.png?imageMogr2/auto-orient/format/webp/ignore-error/1",
+            "og:url": "/post/64009",
+            "twitter:site": "@sspai_com",
+            "twitter:title": "[福利] flomo 浮墨笔记的背后，藏着什么样的理念 - 少数派",
+            "twitter:description": "我们不仅关心你的过去，还关心你的未来。",
+            "twitter:image": "https://rssfile.sspai.com/article/57a0c21c-48ce-3c37-2f23-18fe6615271f.png?imageMogr2/auto-orient/format/webp/ignore-error/1",
+            "twitter:image:alt": "[福利] flomo 浮墨笔记的背后，藏着什么样的理念 - 少数派",
+            "apple-itunes-app": "app-id=1191720421, app-argument=\"sspai://sspai.com/post/64009"
+          },
+          "external": {
+            "icon": {
+              "https://cdn-static.sspai.com/favicon/sspai.ico": {
+                "type": "image/x-icon"
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 24069
+          }
+        },
+        {
+          "title": "安全验证 - 知乎",
+          "url": "https://zhuanlan.zhihu.com/p/610605101",
+          "description": "知乎，中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。知乎凭借认真、专业、友善的社区氛围、独特的产品机制以及结构化和易获得的优质内容，聚集了中文互联网科技、商业、影视、时尚、文化等领域最具创造力的人群，已成为综合性、全品类、在诸多领域具有关键影响力的知识分享社区和创作者聚集的原创内容平台，建立起了以社区驱动的内容变现商业模式。",
+          "date": "Mar 2, 2023",
+          "content": "![Image 1](https://zhuanlan.zhihu.com/p/610605101)\n\n请您登录后查看更多专业优质内容。",
+          "warning": "This page maybe requiring CAPTCHA, please make sure you are authorized to access this page.",
+          "metadata": {
+            "lang": "zh",
+            "viewport": "width=device-width,initial-scale=1,maximum-scale=1",
+            "renderer": "webkit",
+            "force-rendering": "webkit",
+            "google-site-verification": "\"FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg\"",
+            "description": "知乎，中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。知乎凭借认真、专业、友善的社区氛围、独特的产品机制以及结构化和易获得的优质内容，聚集了中文互联网科技、商业、影视、时尚、文化等领域最具创造力的人群，已成为综合性、全品类、在诸多领域具有关键影响力的知识分享社区和创作者聚集的原创内容平台，建立起了以社区驱动的内容变现商业模式。",
+            "robots": "noindex"
+          },
+          "external": {
+            "apple-touch-icon": {
+              "https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.81060cab.png": {
+                "data-rh": "true",
+                "sizes": "152x152"
+              },
+              "https://static.zhihu.com/heifetz/assets/apple-touch-icon-120.d5793cac.png": {
+                "data-rh": "true",
+                "sizes": "120x120"
+              },
+              "https://static.zhihu.com/heifetz/assets/apple-touch-icon-76.7abf3393.png": {
+                "data-rh": "true",
+                "sizes": "76x76"
+              },
+              "https://static.zhihu.com/heifetz/assets/apple-touch-icon-60.362a8eac.png": {
+                "data-rh": "true",
+                "sizes": "60x60"
+              }
+            },
+            "icon": {
+              "https://static.zhihu.com/heifetz/favicon.ico": {
+                "crossorigin": "",
+                "type": "image/x-icon"
+              }
+            },
+            "search": {
+              "https://static.zhihu.com/heifetz/search.xml": {
+                "crossorigin": "",
+                "type": "application/opensearchdescription+xml",
+                "title": "知乎"
+              }
+            },
+            "dns-prefetch": {
+              "https://static.zhimg.com/": {},
+              "https://pica.zhimg.com/": {},
+              "https://picx.zhimg.com/": {},
+              "https://pic1.zhimg.com/": {},
+              "https://pic2.zhimg.com/": {},
+              "https://pic3.zhimg.com/": {},
+              "https://pic4.zhimg.com/": {},
+              "https://static.zhihu.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 35
+          }
+        },
+        {
+          "title": "flomo浮墨笔记 - Windowsలో ఉచిత డౌన్‌లోడ్ చేసి ఇన్‌స్టాల్ చేయండి | Microsoft Store",
+          "url": "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=te-IN&gl=CN",
+          "description": "flomo 是应对碎片时代而诞生的新型笔记工具，秉承《卡片笔记写作法》中的理念，把信息碎片变成知识卡片，助你大脑开挂，认知升级。\n\nflomo 卡片笔记有如下特点：\n\n【聊天式输入】像发微博一样，无压力记录想法；\n【多级标签】通过层级标签快速对内容进行归类；\n【每日回顾】通过桌面小组件，让过往记录发挥新价值；\n【AI 加持】智能探索笔记间隐藏的联系，用提问的方式挖掘过往笔记；\n【量化记录】通过可视化热力图，量化记录习惯；\n【API 输入】支持微信读书、得到、有知有行、多看、Kindle 等多种产品笔记导入；\n【flomo101】大量关于做笔记的思维方式资料，助你认知升级。\n\n但记得，重要的不是记录，而是更好地思考。\n\n————————————\n\n【flomo 也格外注意隐私和安全】\n · 所有内容仅用户自己可见\n · 所有的数据传输均有加密\n · 无商业广告计划\n · 不贩卖用户个人数据\n · 数据库实时异地双备份\n\n————————————\n\n商务合作请联系：bd@flomoapp.com",
+          "content": "  This page requires JavaScript.",
+          "publishedTime": "Thu, 02 Jul 2026 02:43:16 GMT",
+          "warning": "This page contains iframe that are currently hidden, consider enabling iframe processing.\nThis page contains shadow DOM that are currently hidden, consider enabling shadow DOM processing.",
+          "metadata": {
+            "lang": "te-IN",
+            "application-version": "2026.7.2.182",
+            "application-commit": "95c651f59c88f7513a762dff492648392a0660c6",
+            "application-build-id": "151254075",
+            "application-build-time": "2026-07-02T02:43:17.6723891Z",
+            "description": "flomo 是应对碎片时代而诞生的新型笔记工具，秉承《卡片笔记写作法》中的理念，把信息碎片变成知识卡片，助你大脑开挂，认知升级。\n\nflomo 卡片笔记有如下特点：\n\n【聊天式输入】像发微博一样，无压力记录想法；\n【多级标签】通过层级标签快速对内容进行归类；\n【每日回顾】通过桌面小组件，让过往记录发挥新价值；\n【AI 加持】智能探索笔记间隐藏的联系，用提问的方式挖掘过往笔记；\n【量化记录】通过可视化热力图，量化记录习惯；\n【API 输入】支持微信读书、得到、有知有行、多看、Kindle 等多种产品笔记导入；\n【flomo101】大量关于做笔记的思维方式资料，助你认知升级。\n\n但记得，重要的不是记录，而是更好地思考。\n\n————————————\n\n【flomo 也格外注意隐私和安全】\n · 所有内容仅用户自己可见\n · 所有的数据传输均有加密\n · 无商业广告计划\n · 不贩卖用户个人数据\n · 数据库实时异地双备份\n\n————————————\n\n商务合作请联系：bd@flomoapp.com",
+            "og:site_name": "Microsoft స్టోర్ - మీ Windows PC కొరకు అప్లికేషన్ లు, గేమ్ లు మరియు మరెన్నో డౌన్ లోడ్ చేయండి",
+            "og:type": "website",
+            "og:title": "flomo浮墨笔记 - Windowsలో ఉచిత డౌన్‌లోడ్ చేసి ఇన్‌స్టాల్ చేయండి | Microsoft Store",
+            "og:description": "flomo 是应对碎片时代而诞生的新型笔记工具，秉承《卡片笔记写作法》中的理念，把信息碎片变成知识卡片，助你大脑开挂，认知升级。\n\nflomo 卡片笔记有如下特点：\n\n【聊天式输入】像发微博一样，无压力记录想法；\n【多级标签】通过层级标签快速对内容进行归类；\n【每日回顾】通过桌面小组件，让过往记录发挥新价值；\n【AI 加持】智能探索笔记间隐藏的联系，用提问的方式挖掘过往笔记；\n【量化记录】通过可视化热力图，量化记录习惯；\n【API 输入】支持微信读书、得到、有知有行、多看、Kindle 等多种产品笔记导入；\n【flomo101】大量关于做笔记的思维方式资料，助你认知升级。\n\n但记得，重要的不是记录，而是更好地思考。\n\n————————————\n\n【flomo 也格外注意隐私和安全】\n · 所有内容仅用户自己可见\n · 所有的数据传输均有加密\n · 无商业广告计划\n · 不贩卖用户个人数据\n · 数据库实时异地双备份\n\n————————————\n\n商务合作请联系：bd@flomoapp.com",
+            "og:image": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp",
+            "og:image:width": "256",
+            "og:image:height": "256",
+            "og:locale": "te-IN",
+            "twitter:card": "summary",
+            "twitter:site": "@MicrosoftStore",
+            "twitter:title": "flomo浮墨笔记 - Windowsలో ఉచిత డౌన్‌లోడ్ చేసి ఇన్‌స్టాల్ చేయండి | Microsoft Store",
+            "twitter:description": "flomo 是应对碎片时代而诞生的新型笔记工具，秉承《卡片笔记写作法》中的理念，把信息碎片变成知识卡片，助你大脑开挂，认知升级。\n\nflomo 卡片笔记有如下特点：\n\n【聊天式输入】像发微博一样，无压力记录想法；\n【多级标签】通过层级标签快速对内容进行归类；\n【每日回顾】通过桌面小组件，让过往记录发挥新价值；\n【AI 加持】智能探索笔记间隐藏的联系，用提问的方式挖掘过往笔记；\n【量化记录】通过可视化热力图，量化记录习惯；\n【API 输入】支持微信读书、得到、有知有行、多看、Kindle 等多种产品笔记导入；\n【flomo101】大量关于做笔记的思维方式资料，助你认知升级。\n\n但记得，重要的不是记录，而是更好地思考。\n\n————————————\n\n【flomo 也格外注意隐私和安全】\n · 所有内容仅用户自己可见\n · 所有的数据传输均有加密\n · 无商业广告计划\n · 不贩卖用户个人数据\n · 数据库实时异地双备份\n\n————————————\n\n商务合作请联系：bd@flomoapp.com",
+            "twitter:image": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp",
+            "viewport": "viewport-fit=cover, width=device-width, initial-scale=1.0",
+            "msvalidate.01": [
+              "278E7916AAA9095109F255AE133C94FE",
+              "BC05ABC0129603BD41E881A2EA1F81B5"
+            ],
+            "google-site-verification": [
+              "t1VwBk_bYG_uw8KqYaF_sbdcPsheMNxFQt1UKoFxM78",
+              "64T9nhDH4yUBpQhififtc0GP65kxKnncJSyqCBHANrc"
+            ],
+            "theme-color": [
+              "#181818",
+              "#f3f3f3"
+            ],
+            "mobile-web-app-capable": "yes",
+            "apple-mobile-web-app-title": "Microsoft Apps",
+            "apple-mobile-web-app-status-bar-style": "black",
+            "360-site-verification": "1863db6c6af3612ad759758c4483950e",
+            "baidu-site-verification": "codeva-7XwzFsIV37",
+            "appstore:developer_url": "https://apps.microsoft.com/detail/xp9cctzgghbn3m",
+            "appstore:store_id": "xp9cctzgghbn3m"
+          },
+          "external": {
+            "preload": {
+              "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=253": {
+                "as": "image",
+                "imagesrcset": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=253 1x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=307 1.125x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=380 1.375x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=464 1.625x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=576 1.875x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRArSxHldNPn.1DIhWG6X42JmDxZC00.Sm4p.tNfRfZFO5zttzI1068KFkGyIYAHdnlY-&format=webp&h=720 2.5x",
+                "fetchpriority": "high"
+              },
+              "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=210": {
+                "as": "image",
+                "imagesrcset": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=210 1x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=253 1.125x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=307 1.375x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=380 1.625x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=464 1.875x, https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxi3.TfON35YdawGSWWYSRAq2JSvxjVHGBVvQCnS83ZDEQvy_rcnrV_5GFuGeTt5oKoEvjBFNPtYh_4.MxFMegP8-&format=webp&h=576 2.5x",
+                "fetchpriority": "high"
+              }
+            },
+            "preconnect": {
+              "https://images-eds-ssl.xboxlive.com/": {},
+              "https://store-images.s-microsoft.com/": {},
+              "https://sparkcdneus2.azureedge.net/": {},
+              "https://store-images.microsoft.com/": {},
+              "https://musicart.xboxlive.com/": {},
+              "https://login.microsoftonline.com/": {
+                "crossorigin": "anonymous"
+              }
+            },
+            "manifest": {
+              "https://apps.microsoft.com/manifest.webmanifest": {}
+            },
+            "canonical": {
+              "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=te-IN&gl=CN": {}
+            },
+            "alternate": {
+              "https://apps.microsoft.com/detail/xp9cctzgghbn3m": {
+                "hreflang": "x-default"
+              },
+              "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=zh-CN&gl=CN": {
+                "hreflang": "zh-CN"
+              },
+              "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=zh-TW&gl=CN": {
+                "hreflang": "zh-TW"
+              },
+              "https://apps.microsoft.com/detail/xp9cctzgghbn3m?hl=en-US&gl=CN": {
+                "hreflang": "en-US"
+              }
+            },
+            "modulepreload": {
+              "https://apps.microsoft.com/assets/js/modulepreload-polyfill-B5Qt9EMX.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/msal-BRioc17f.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/if-defined-BTAJ27q4.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/shared.styles-Cb6lTewy.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/console-logger-DWG09BUn.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/custom-events-BELgdS3w.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/telemetry-service-B4s3wJly.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/locale-strings-DRiwPp61.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/constants-CuaYMB18.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/experiment-service-DSvW-JKZ.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/app-router-BRs96awh.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.JCXLDPQF-BPaq6_U-.js": {
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-details-ARmSs_bH.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/index-DrkKdmNx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/repeat-3ECOnYyR.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.3LWOA5DF-BhUq05dA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.GJLC4SWQ-D3ZtuVQ4.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/screenshot-viewer-Ddx23_e8.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/telemetry-helper-ClZvnkPy.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/style-map-DHTqJSvI.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/psi-service-C-AM0xQE.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.ZGGPD2XJ-DVQy-5Ah.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/css-function-DysrRO93.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/image-helper-R8TTf4Na.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/psi-button-D5xYR-ac.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.KPLQLAWP-DgGhgsOO.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.VESXC477-hX3H_dVc.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/acquisition-gating-Dq5szXjR.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.EZCUSG7Q-Bt0C0NBK.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.IKV4VH3T-DXvTlmlx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.ZH2AND3P-Ciw1LqDx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/scroll-button-Dl-B5Q47.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/mature-content-restriction-hLcw8fPV.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-sticky-header-DTwPkwWn.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/spacing.styles-CVzm3bru.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-event-types-C0eoPMsL.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.5JY5FUCG-K_vWVW1E.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/video-player-DFcafmAd.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/live-DfOQP6Ts.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.UDWRA64J-BHszJGiJ.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.HVTXQL7M-B-joA4vg.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/component-telemetry-ids-Bk2yUnLc.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-event-badge-BNOw9fRv.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/story-popup-controller-CitTY9oZ.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/story-popup-DEfkKZWi.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/custom-scrollbar-DIU_3Inf.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/paged-list-zIwcpqmA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/base-page-YrKTiI5_.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/header-wpfGSAfx.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/nav-bar-CXAArWRu.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.DQT3C4BS-UmiKJblA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/auto-complete-app-search-BNpcSP_t.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.XA43ZQPC-DzafV6UA.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/chunk.3XI76F3K-CDB_2wVs.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/floating-action-button.styles-DuRJRawk.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/store-global-state-Bl9T4dAU.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/app-footer-BwgYC0FC.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/language-selector-dialog-B1qQ3ttp.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/system-requirements-cRq46G4P.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/additional-info-BPy8uXyg.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-recommendation-IyaafCV3.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/collection-types-DhQdgN7q.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/product-collection-DuFDJNqN.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/collection-helper-BGNaB8br.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/ms-windows-store-nav-dzynvkqB.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/flip-animation-helper-B8-KJU1z.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/esrb-control-CoH3AS1U.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/infinite-scroller-Di8b654o.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/products-keyboard-nav-uvYkCS_i.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/info-panel-pdp-BITDyLt7.js": {
+                "as": "script",
+                "crossorigin": ""
+              },
+              "https://apps.microsoft.com/assets/js/auth-control-DG2nHspP.js": {
+                "as": "script",
+                "crossorigin": ""
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 6
+          }
+        },
+        {
+          "title": "flomo | 帮助中心 - 腾讯云HiFlow场景连接器",
+          "url": "https://hiflow.tencent.com/docs/applications/flomo/",
+          "description": "通过HiFlow场景连接器，无需编程，可以在各种不同的场景下去自动快速创建一个memo笔记。比如：把一个twiiter笔记自动存入到flomo。",
+          "content": "[跳到主要内容](https://hiflow.tencent.com/docs/applications/flomo/#)\n\n[![Image 3: Logo](https://cfe-1258344699.file.myqcloud.com/ssp/portal//_next/static/images/logo-black.30893f78.svg)](https://hiflow.tencent.com/)[HiFlow是什么](https://hiflow.tencent.com/)[模板中心](https://hiflow.tencent.com/template/list)[应用中心](https://hiflow.tencent.com/apps/list)[新手专区](https://hiflow.tencent.com/about/guide)\n\n*   ![Image 4](https://cfe-1258344699.file.myqcloud.com/ssp-assets/docs/home/search.png) \n*   [帮助首页](https://hiflow.tencent.com/docs/)\n*   [关于腾讯云HiFlow场景连接器](https://hiflow.tencent.com/docs/about/)\n*   [使用与管理腾讯云HiFlow场景连接器](https://hiflow.tencent.com/docs/set-console/)\n*   [应用的账户授权与配置](https://hiflow.tencent.com/docs/applications/) \n    *   [企业微信群机器人](https://hiflow.tencent.com/docs/applications/wwx-robot/)\n    *   [企业微信自建应用](https://hiflow.tencent.com/docs/applications/wwx-app/)\n    *   [企业微信第三方应用](https://hiflow.tencent.com/docs/applications/qiyeweixinthird/)\n    *   [企业微信第三方应用收费说明](https://hiflow.tencent.com/docs/applications/qiwei-agent-app-shoufeishuoming/)\n    *   [企业微信微盘](https://hiflow.tencent.com/docs/applications/qywechat-microdisk/)\n    *   [钉钉自建应用](https://hiflow.tencent.com/docs/applications/dd-app/)\n    *   [飞书自建应用](https://hiflow.tencent.com/docs/applications/feishu-app/)\n    *   [飞书多维表格](https://hiflow.tencent.com/docs/applications/feishuduoweibiaoge/)\n    *   [飞书会议](https://hiflow.tencent.com/docs/applications/feishu-meeting/)\n    *   [腾讯文档](https://hiflow.tencent.com/docs/applications/qq-wd/)\n    *   [腾讯问卷](https://hiflow.tencent.com/docs/applications/qq-wj/)\n    *   [Codesign](https://hiflow.tencent.com/docs/applications/codesign/)\n    *   [问卷网](https://hiflow.tencent.com/docs/applications/wenjuanwang/)\n    *   [腾讯广告](https://hiflow.tencent.com/docs/applications/qq-ads/)\n    *   [腾讯会议](https://hiflow.tencent.com/docs/applications/tencentmeeting/)\n    *   [腾讯云短信](https://hiflow.tencent.com/docs/applications/tencentSMS/)\n    *   [腾讯云邮件](https://hiflow.tencent.com/docs/applications/tencentcloud-ses/)\n    *   [QQ邮箱](https://hiflow.tencent.com/docs/applications/qq-mail/)\n    *   [腾讯企业邮](https://hiflow.tencent.com/docs/applications/tencent-exmail/)\n    *   [163邮箱](https://hiflow.tencent.com/docs/applications/163mail/)\n    *   [SMTP发送邮件](https://hiflow.tencent.com/docs/applications/smtp-mail/)\n    *   [IMAP接收邮件](https://hiflow.tencent.com/docs/applications/imap-mail/)\n    *   [腾讯云呼叫中心](https://hiflow.tencent.com/docs/applications/tencentCloudCallCenter/)\n    *   [微信公众平台](https://hiflow.tencent.com/docs/applications/wx_platform/)\n    *   [TAPD](https://hiflow.tencent.com/docs/applications/tapd/)\n    *   [CODING](https://hiflow.tencent.com/docs/applications/coding/)\n    *   [维格表](https://hiflow.tencent.com/docs/applications/vika/)\n    *   [金数据](https://hiflow.tencent.com/docs/applications/jinshuju/)\n    *   [flomo](https://hiflow.tencent.com/docs/applications/flomo/)\n    *   [滴答清单](https://hiflow.tencent.com/docs/applications/dida365/)\n    *   [TickTick国际](https://hiflow.tencent.com/docs/applications/ticktick/)\n    *   [彩云天气](https://hiflow.tencent.com/docs/applications/caiyun/)\n    *   [墨迹天气](https://hiflow.tencent.com/docs/applications/moji/)\n    *   [微盟](https://hiflow.tencent.com/docs/applications/wmy/)\n    *   [销售易 CRM](https://hiflow.tencent.com/docs/applications/xiaoshouyi/)\n    *   [销售易 CRM(私有化版](https://hiflow.tencent.com/docs/applications/xiaoshouyi-private/)\n    *   [纷享销客 CRM](https://hiflow.tencent.com/docs/applications/fxiaoke/)\n    *   [灵当 CRM](https://hiflow.tencent.com/docs/applications/lingdang/)\n    *   [尘锋 SCRM](https://hiflow.tencent.com/docs/applications/dustess-scrm/)\n    *   [EC SCRM](https://hiflow.tencent.com/docs/applications/ec-scrm/)\n    *   [定时触发-内置组件](https://hiflow.tencent.com/docs/applications/timing-trigger/)\n    *   [时间转换-内置组件](https://hiflow.tencent.com/docs/applications/time-format/)\n    *   [Webhook-内置组件](https://hiflow.tencent.com/docs/applications/webhook/)\n    *   [Code-内置组件](https://hiflow.tencent.com/docs/applications/code/)\n    *   [人工审批-内置组件](https://hiflow.tencent.com/docs/applications/people-task/)\n    *   [执行条件](https://hiflow.tencent.com/docs/applications/conditional/)\n    *   [循环执行](https://hiflow.tencent.com/docs/applications/loop/)\n    *   [执行终止](https://hiflow.tencent.com/docs/applications/end/)\n    *   [执行延迟](https://hiflow.tencent.com/docs/applications/delay/)\n    *   [子流程](https://hiflow.tencent.com/docs/applications/subflow/)\n    *   [HiFlow浏览器插件](https://hiflow.tencent.com/docs/applications/hiflowextension/)\n    *   [问卷星](https://hiflow.tencent.com/docs/applications/wenjuanxing/)\n    *   [云雀客服](https://hiflow.tencent.com/docs/applications/yunque360/)\n    *   [语雀](https://hiflow.tencent.com/docs/applications/yuque/)\n    *   [点评微生活](https://hiflow.tencent.com/docs/applications/dianpingweishenghuo/)\n    *   [金蝶云星辰](https://hiflow.tencent.com/docs/applications/kingdee-small-ebc/)\n    *   [金蝶账无忧](https://hiflow.tencent.com/docs/applications/kingdee-zwy/)\n    *   [畅捷通T+Cloud](https://hiflow.tencent.com/docs/applications/chanjet-tcloud/)\n    *   [畅捷通易代账](https://hiflow.tencent.com/docs/applications/chanjet-ydz/)\n    *   [NPSMeter](https://hiflow.tencent.com/docs/applications/npsmeter/)\n    *   [微伴助手](https://hiflow.tencent.com/docs/applications/weibanzhushou/)\n    *   [卫瓴·企微助手](https://hiflow.tencent.com/docs/applications/weiling/)\n    *   [AI 增值税发票识别](https://hiflow.tencent.com/docs/applications/tencent-invoice-ocr/)\n    *   [AI 增值税发票（卷票）识别](https://hiflow.tencent.com/docs/applications/ocr-roll-invoice/)\n    *   [AI 出租车票识别](https://hiflow.tencent.com/docs/applications/ocr-taxi-invoice/)\n    *   [AI 汽车票识别](https://hiflow.tencent.com/docs/applications/ocr-bus-invoice/)\n    *   [AI 火车票识别](https://hiflow.tencent.com/docs/applications/ocr-train-invoice/)\n    *   [AI 过路过桥费发票识别](https://hiflow.tencent.com/docs/applications/ocr-highway-invoice/)\n    *   [AI 身份证识别](https://hiflow.tencent.com/docs/applications/tencent-idcard-ocr/)\n    *   [AI 名片识别](https://hiflow.tencent.com/docs/applications/ocr-business-card/)\n    *   [AI 银行卡识别](https://hiflow.tencent.com/docs/applications/ocr-bank-card/)\n    *   [AI 营业执照识别](https://hiflow.tencent.com/docs/applications/yingocr-business-card/)\n    *   [AI 智能卡证分类](https://hiflow.tencent.com/docs/applications/ocr-card-identify/)\n    *   [AI 试题识别](https://hiflow.tencent.com/docs/applications/ocr-examination/)\n    *   [AI 表格图片解析](https://hiflow.tencent.com/docs/applications/ocr-table-identify/)\n    *   [AI 图片转Excel](https://hiflow.tencent.com/docs/applications/ocr-table-to-excel/)\n    *   [AI 情感分析](https://hiflow.tencent.com/docs/applications/nlp-emotion-identify/)\n    *   [文本处理](https://hiflow.tencent.com/docs/applications/wenbenchuli/)\n    *   [腾讯地图](https://hiflow.tencent.com/docs/applications/qq-map/)\n    *   [高德地图](https://hiflow.tencent.com/docs/applications/amap-ditu/)\n    *   [百度地图](https://hiflow.tencent.com/docs/applications/baidu-map/)\n    *   [快递管家](https://hiflow.tencent.com/docs/applications/kuaidiguanjia/)\n    *   [微信小商店](https://hiflow.tencent.com/docs/applications/wx-shop/)\n    *   [微信公众号](https://hiflow.tencent.com/docs/applications/weixingongzhonghao/)\n    *   [兔小巢](https://hiflow.tencent.com/docs/applications/tuxiaochao/)\n    *   [腾讯企点第三方应用](https://hiflow.tencent.com/docs/applications/tengxunqidian/)\n    *   [哗啦啦](https://hiflow.tencent.com/docs/applications/hualala/)\n    *   [企业微信审批](https://hiflow.tencent.com/docs/applications/wwx-approve/)\n    *   [日事清](https://hiflow.tencent.com/docs/applications/rishiqing/)\n    *   [轻流](https://hiflow.tencent.com/docs/applications/qingflow/)\n    *   [ShowMeBug](https://hiflow.tencent.com/docs/applications/showmebug/)\n    *   [考试星](https://hiflow.tencent.com/docs/applications/kaoshixing/)\n    *   [Teambition](https://hiflow.tencent.com/docs/applications/teambition/)\n    *   [聚合数据](https://hiflow.tencent.com/docs/applications/juhe-api/)\n    *   [5118](https://hiflow.tencent.com/docs/applications/5118/)\n    *   [腾讯云HiFlow小程序触发器](https://hiflow.tencent.com/docs/applications/hiflow_miniApps/)\n    *   [TinyPNG](https://hiflow.tencent.com/docs/applications/tinypng/)\n    *   [TOF消息服务](https://hiflow.tencent.com/docs/applications/tof/)\n    *   [MySQL数据库](https://hiflow.tencent.com/docs/applications/MySQL/)\n\n*   [模板方案教程](https://hiflow.tencent.com/docs/templates/) \n    *   [金山表单结果如何自动通知企业微信](https://hiflow.tencent.com/docs/templates/wpsform-qiyeweixin/)\n    *   [设备巡检二维码应用方案](https://hiflow.tencent.com/docs/templates/shebeixunjian/)\n    *   [草料二维码提交数据自动通知企业微信](https://hiflow.tencent.com/docs/templates/caoliao-qywx/)\n    *   [CoDesign设计稿有变化时自动通知至企业微信](https://hiflow.tencent.com/docs/templates/CoDesign-qiwei/)\n    *   [电子签文档自动归档至腾讯文档](https://hiflow.tencent.com/docs/templates/dianziqian2/)\n    *   [电子签签署状态发送变化时自动发送企微通知](https://hiflow.tencent.com/docs/templates/dianziqian1/)\n    *   [vika维格表跨表同步数据](https://hiflow.tencent.com/docs/templates/vika-vika/)\n    *   [群机器人定时发送天气预报、空气质量](https://hiflow.tencent.com/docs/templates/tianqiyubao/)\n    *   [自动识别健康码、行程码后信息更新腾讯文档](https://hiflow.tencent.com/docs/templates/healthcode/)\n    *   [vika维格表内容更新时自动同步至企微](https://hiflow.tencent.com/docs/templates/vika-qiwei2/)\n    *   [自动汇总兔小巢用户历史反馈](https://hiflow.tencent.com/docs/templates/tuxiaocao-vika/)\n    *   [兔小巢用户反馈信息实时通知](https://hiflow.tencent.com/docs/templates/tuxiaocao-jiqiren/)\n    *   [自动批量发送腾讯云邮件](https://hiflow.tencent.com/docs/templates/mail-vika/)\n    *   [企微审批状态同步vika维格表](https://hiflow.tencent.com/docs/templates/shenpi-vika/)\n    *   [vika维格表新内容更新时自动发送企微群机器人消息](https://hiflow.tencent.com/docs/templates/vika-qiwei/)\n    *   [腾讯问卷提交时企微群内通知并整合归档](https://hiflow.tencent.com/docs/templates/wj-qiwei-vika/)\n    *   [定时查询腾讯广告数据同步到vika维格表](https://hiflow.tencent.com/docs/templates/txads-vika/)\n    *   [身份证识别自动更新至维格表](https://hiflow.tencent.com/docs/templates/IDcard/)\n    *   [AI智能识别内容并自动更新信息](https://hiflow.tencent.com/docs/templates/fapiao/)\n    *   [每天定时收集日报](https://hiflow.tencent.com/docs/templates/ribao/)\n    *   [企微机器人自动发送生日祝福](https://hiflow.tencent.com/docs/templates/dingshi-jiqiren/)\n    *   [如何利用企微机器人发送表格内的内容](https://hiflow.tencent.com/docs/templates/zhixinglunxun/)\n    *   [企业微信群机器人定时发送值班提醒-基础版](https://hiflow.tencent.com/docs/templates/zhibantixing/)\n    *   [如何利用企微机器人发送客服排版提醒](https://hiflow.tencent.com/docs/templates/jiqiren-yanchi/)\n    *   [企微自动发起审核](https://hiflow.tencent.com/docs/templates/temp1/)\n    *   [NPSMeter新用户反馈-企业微信消息通知](https://hiflow.tencent.com/docs/templates/NPS-qiwei/)\n    *   [文档有变更自动发送消息通知](https://hiflow.tencent.com/docs/templates/wendang-qiwei2/)\n    *   [每天定时发送腾讯云短信](https://hiflow.tencent.com/docs/templates/temp2/)\n    *   [微信公众号每日自动发送图文数据](https://hiflow.tencent.com/docs/templates/temp3/)\n    *   [维格表数据同步到金数据](https://hiflow.tencent.com/docs/templates/vika-jinshuju/)\n    *   [腾讯文档更新时企微应用通知](https://hiflow.tencent.com/docs/templates/wendang-qiwei/)\n    *   [腾讯问卷数据自动录入腾讯文档并发送企业微信群消息](https://hiflow.tencent.com/docs/templates/wenjuan-wendang/)\n    *   [新问卷提交时企微群内通知](https://hiflow.tencent.com/docs/templates/wenjuan-qiwei/)\n    *   [新问卷满足执行条件时发企微群消息并归档](https://hiflow.tencent.com/docs/templates/wenjuan-qiwei2/)\n    *   [新问卷提交时企微应用通知并整合归档](https://hiflow.tencent.com/docs/templates/wenjuan-qiwei3/)\n    *   [微信小商店订单实时同步至腾讯文档](https://hiflow.tencent.com/docs/templates/weixinxiaoshandian-wendang/)\n    *   [金数据表单提交实时同步至腾讯文档新增记录](https://hiflow.tencent.com/docs/templates/jinshuju-wendang2/)\n    *   [金数据表单提交同步触发使用163邮箱发送邮件](https://hiflow.tencent.com/docs/templates/jinshuju-163mail/)\n    *   [金数据收集到线索时自动上报至腾讯广告](https://hiflow.tencent.com/docs/templates/jinshuju-AD/)\n    *   [金数据表单提交时企微应用通知并整合归档](https://hiflow.tencent.com/docs/templates/jinshuju-qiwei-vika/)\n    *   [金数据成功提交问卷后同步发送企微消息并自动录入腾讯文档](https://hiflow.tencent.com/docs/templates/jinshuju-wenjuan/)\n    *   [金数据表单提交时同步在纷享销客新增线索](https://hiflow.tencent.com/docs/templates/jinshuju-fxiaoke/)\n    *   [卫瓴SCRM新增企业时同步在纷享销客中新增客户记录](https://hiflow.tencent.com/docs/templates/willing-fxiaoke/)\n    *   [163邮箱收到邮件后自动将附件内容导入腾讯文档](https://hiflow.tencent.com/docs/templates/163mail-wendang/)\n\n*   [腾讯云HiFlow场景连接器许可及服务协议](https://hiflow.tencent.com/docs/service-agreement/)\n*   [团队管理](https://hiflow.tencent.com/docs/team/)\n*   [方案版本](https://hiflow.tencent.com/docs/flow-version/)\n*   [开发者平台](https://hiflow.tencent.com/docs/developer/) \n    *   [腾讯云Hiflow场景连接器开放平台服务协议](https://hiflow.tencent.com/docs/developer/developerServiceAgreement/)\n\n*   [系统配置](https://hiflow.tencent.com/docs/flow_setting/) \n    *   [IP白名单](https://hiflow.tencent.com/docs/flow_setting/ip_whitelists/)\n    *   [浏览器支持列表](https://hiflow.tencent.com/docs/flow_setting/browser/)\n    *   [如何读取/写入明细行？](https://hiflow.tencent.com/docs/flow_setting/fieldsgroup/)\n    *   [如何订阅系统邮件通知？](https://hiflow.tencent.com/docs/flow_setting/sys_notice/)\n    *   [如何使用本地代理？](https://hiflow.tencent.com/docs/flow_setting/agent/)\n    *   [如何切换选择和自定义？](https://hiflow.tencent.com/docs/flow_setting/switch/)\n\n*   [常见问题](https://hiflow.tencent.com/docs/faq/) \n    *   [流程执行任务如何统计？](https://hiflow.tencent.com/docs/faq/howTaskCount/)\n    *   [如何使用兑换码兑换版本权益？](https://hiflow.tencent.com/docs/faq/howToCode/)\n    *   [如何在不同空间之间迁移流程？](https://hiflow.tencent.com/docs/faq/howToTransferFlow/)\n    *   [部分连接器和组件版本限制说明](https://hiflow.tencent.com/docs/faq/appsrestrictions/)\n    *   [消耗付费应用任务数的应用有哪些？](https://hiflow.tencent.com/docs/faq/payneedtask/)\n    *   [腾讯云HiFlow常见问题故障排查](https://hiflow.tencent.com/docs/faq/QA/)\n    *   [时间戳如何转换日期时间格式？](https://hiflow.tencent.com/docs/faq/time/)\n    *   [为什么我的自动化流程不执行？](https://hiflow.tencent.com/docs/faq/buzhixing/)\n    *   [企业微信机器人账号和消息如何对应](https://hiflow.tencent.com/docs/faq/robotaccount/)\n    *   [为什么我的流程修改了，还是执行旧的内容？](https://hiflow.tencent.com/docs/faq/flowerror1/)\n\n*   [联系我们](https://hiflow.tencent.com/docs/contact-us/)\n\n*   [](https://hiflow.tencent.com/docs/)\n*   [应用的账户授权与配置](https://hiflow.tencent.com/docs/applications/)\n*   flomo\n\n本页总览\n\n# flomo\n\n## 应用介绍[​](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D \"标题的直接链接\")\n\nflomo 浮墨笔记是新一代「卡片笔记」，专注在碎片化时代，促进你的记录，帮你积累更多知识资产。像聊天一样就能记录笔记,支持标签、每日回顾等功能。\n\n官网地址：[https://flomoapp.com/](https://flomoapp.com/)\n\n## 应用场景介绍[​](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D \"标题的直接链接\")\n\n通过HiFlow场景连接器，无需编程，可以在各种不同的场景下去自动快速创建一个memo笔记。比如：把一个twiiter笔记自动存入到flomo。\n\n## 应用支持的触发条件和执行操作[​](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E6%94%AF%E6%8C%81%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%92%8C%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C \"标题的直接链接\")\n\n### 执行操作[​](https://hiflow.tencent.com/docs/applications/flomo/#%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C \"标题的直接链接\")\n\n1.   创建MEMO：在flomo中创建一条MEMO\n\n## 配置账号和参数[​](https://hiflow.tencent.com/docs/applications/flomo/#%E9%85%8D%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%8F%82%E6%95%B0 \"标题的直接链接\")\n\n### 账号准备[​](https://hiflow.tencent.com/docs/applications/flomo/#%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87 \"标题的直接链接\")\n\n1.   注册flomo，[点击注册](https://flomoapp.com/)\n2.   开通会员\n\n### 添加账号[​](https://hiflow.tencent.com/docs/applications/flomo/#%E6%B7%BB%E5%8A%A0%E8%B4%A6%E5%8F%B7 \"标题的直接链接\")\n\n1.   点击添加账户，账户名称可以任意输入，建议输入flomo昵称\n2.   专属记录API：请在flomo设置-API及第三方工具复制，再粘贴到此处 ![Image 5: img](https://cfe-1258344699.cos.ap-beijing.myqcloud.com/ssp-assets/docs/applications/flomo/img1.png)\n\n### 创建MEMO配置说明[​](https://hiflow.tencent.com/docs/applications/flomo/#%E5%88%9B%E5%BB%BAmemo%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E \"标题的直接链接\")\n\n1.   MEMO内容：输入MEMO内容，或者使用前置节点的数据作为内容 ![Image 6: img](https://cfe-1258344699.cos.ap-beijing.myqcloud.com/ssp-assets/docs/applications/flomo/img2.png)\n\n## 应用相关案例和模板[​](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E7%9B%B8%E5%85%B3%E6%A1%88%E4%BE%8B%E5%92%8C%E6%A8%A1%E6%9D%BF \"标题的直接链接\")\n\n1.   Notion-flomo： 当 Notion 创建了一条新的Database Item时，同步创建一条 flomo MEMO。\n\n[上一页 金数据](https://hiflow.tencent.com/docs/applications/jinshuju/)[下一页 滴答清单](https://hiflow.tencent.com/docs/applications/dida365/)\n\n*   [应用介绍](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D)\n*   [应用场景介绍](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D)\n*   [应用支持的触发条件和执行操作](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E6%94%AF%E6%8C%81%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%92%8C%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C)\n    *   [执行操作](https://hiflow.tencent.com/docs/applications/flomo/#%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C)\n\n*   [配置账号和参数](https://hiflow.tencent.com/docs/applications/flomo/#%E9%85%8D%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%8F%82%E6%95%B0)\n    *   [账号准备](https://hiflow.tencent.com/docs/applications/flomo/#%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87)\n    *   [添加账号](https://hiflow.tencent.com/docs/applications/flomo/#%E6%B7%BB%E5%8A%A0%E8%B4%A6%E5%8F%B7)\n    *   [创建MEMO配置说明](https://hiflow.tencent.com/docs/applications/flomo/#%E5%88%9B%E5%BB%BAmemo%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E)\n\n*   [应用相关案例和模板](https://hiflow.tencent.com/docs/applications/flomo/#%E5%BA%94%E7%94%A8%E7%9B%B8%E5%85%B3%E6%A1%88%E4%BE%8B%E5%92%8C%E6%A8%A1%E6%9D%BF)",
+          "publishedTime": "Mon, 10 Feb 2025 09:42:22 GMT",
+          "metadata": {
+            "lang": "zh-cn",
+            "viewport": "width=device-width,initial-scale=1",
+            "generator": "Docusaurus v2.0.0-beta.20",
+            "twitter:card": "summary_large_image",
+            "og:url": "https://hiflow.tencent.com/docs/applications/flomo/",
+            "docusaurus_locale": "zh-cn",
+            "docsearch:language": "zh-cn",
+            "docusaurus_version": "current",
+            "docusaurus_tag": "docs-default-current",
+            "docsearch:version": "current",
+            "docsearch:docusaurus_tag": "docs-default-current",
+            "og:title": "flomo | 帮助中心 - 腾讯云HiFlow场景连接器",
+            "description": "通过HiFlow场景连接器，无需编程，可以在各种不同的场景下去自动快速创建一个memo笔记。比如：把一个twiiter笔记自动存入到flomo。",
+            "og:description": "通过HiFlow场景连接器，无需编程，可以在各种不同的场景下去自动快速创建一个memo笔记。比如：把一个twiiter笔记自动存入到flomo。",
+            "keywords": "Hiflow,flomo,自动"
+          },
+          "external": {
+            "icon": {
+              "https://fe-1304214004.file.myqcloud.com/images/favicon.png": {
+                "data-rh": "true"
+              }
+            },
+            "canonical": {
+              "https://hiflow.tencent.com/docs/applications/flomo/": {
+                "data-rh": "true"
+              }
+            },
+            "alternate": {
+              "https://hiflow.tencent.com/docs/applications/flomo/": {
+                "data-rh": "true",
+                "hreflang": "x-default"
+              }
+            },
+            "preload": {
+              "https://hiflow.tencent.com/docs/assets/js/runtime~main.a4f1c790.js": {
+                "as": "script"
+              },
+              "https://hiflow.tencent.com/docs/assets/js/main.d638c6c2.js": {
+                "as": "script"
+              }
+            },
+            "prefetch": {
+              "https://hiflow.tencent.com/docs/assets/js/1be78505.6c5aa0bc.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/8d29df1d.aaf347fa.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/935f2afb.ca04bc69.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/17896441.05430dd7.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/59b1a96c.1d4950eb.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/f1fd49d5.f7190741.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/efcbf8f8.ce16fa35.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/ce8341f8.ce7526ef.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/39535935.c1071381.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/ff536ee0.1be3ce85.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/4c75fc35.6b86e50d.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/c598ef36.1dfa93d7.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/49960aec.95591294.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/cd6be741.e46673fd.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/b225ae9f.2b5cc724.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/3cc55dcd.deb47e1d.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/3c7991cb.ed9f2eaf.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/c7159027.b8b5fc08.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/e315a03a.11eccc8f.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/6a514705.ce4e7294.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/fda4f6c4.40dc9466.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/2e879173.4b688789.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/7a381486.b3b1fd69.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/7c3e2f54.fcb2b84b.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/e263fadf.4246e066.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/a6de6ade.281a491b.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/7cd7985e.3f3267a7.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/b1e00edd.74e4759a.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/737354dd.7229fd41.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/409fb846.9348d13d.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/f984862c.57ff6e2a.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/dc463878.a9727905.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/67b6b3a2.13b5da7f.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/6e539833.ca8115ea.js": {},
+              "https://hiflow.tencent.com/docs/assets/js/35f442f1.f13a6197.js": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 7050
+          }
+        }
+      ],
+      "meta": {
+        "usage": {
+          "tokens": 32526
+        }
+      }
+    }
+  }
+}

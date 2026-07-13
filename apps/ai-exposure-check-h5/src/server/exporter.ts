@@ -1,15 +1,16 @@
 import type { AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, PageAuditResult } from '../shared/types.js';
+import type { WebSearchResponse } from './providers/webSearch.js';
 
 export function renderReportMarkdown(report: DiagnosisReport) {
   const credibility = report.stages.credibility;
   const scoreLabel = credibility?.scoreStatus === 'withheld' ? '暂不评分（证据不足）' : `${report.score}/100（${report.scoreLevel}）`;
   const sourceLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'source');
   const infrastructureLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'infrastructure');
-  return `# ${report.brand} GEO 分析成果报告
+  return `# ${report.brand} AI 可见度初步诊断报告
 
 - 报告 ID：${report.id}
 - 生成时间：${report.generatedAt}
-- 总分：${scoreLabel}
+- 初步诊断分：${scoreLabel}
 - 真实采样：${report.aiMeta.successCount}/${report.aiMeta.promptCount}
 - 字符串出现率：${toPercent(credibility?.stringMentionRate ?? report.stages.aiSearch.mentionRate)}
 - 正确实体识别率：${credibility?.correctEntityRecognitionRate == null ? '无法判断' : toPercent(credibility.correctEntityRecognitionRate)}
@@ -62,6 +63,12 @@ ${report.aiMeta.providers.map((item) => `| ${item.provider} | ${item.status} | $
 | --- | --- | --- | --- | --- | --- | --- | --- |
 ${report.stages.infrastructure.pageAudit.targets.map((item) => `| ${item.name} | ${item.status} | ${scopeLabel(item.scopeRelation)} | ${freshnessLabel(item.freshness)} | ${renderModeLabel(item.renderMode)} | ${item.url}${item.canonicalUrl && item.canonicalUrl !== item.url ? `<br>${item.canonicalUrl}` : ''} | ${item.matchedFacts.join('、') || '-'} | ${item.contentHash?.slice(0, 12) ?? '-'} |`).join('\n')}
 
+## 联网候选公开来源
+
+${report.stages.publicWeb
+  ? `- Providers：${report.stages.publicWeb.providers.map((item) => `${item.provider}:${item.status}`).join('；')}\n- 聚合状态：${report.stages.publicWeb.status}\n- 耗时：${report.stages.publicWeb.latencyMs} ms\n- 公开证据可发现度：${report.stages.publicWeb.discovery.score}/100\n- 边界：${report.stages.publicWeb.note}\n\n| 标题 | URL | 发现来源 | 摘要 |\n| --- | --- | --- | --- |\n${report.stages.publicWeb.results.map((item) => `| ${markdownCell(item.title)} | ${markdownCell(item.url)} | ${markdownCell((item.providers ?? []).join('、'))} | ${markdownCell(item.snippet)} |`).join('\n')}`
+  : '本次未启用联网候选来源。'}
+
 ## 主要问题
 
 ${report.issues.map((issue, index) => `${index + 1}. **${issue.title}**：${issue.detail}（${issue.evidenceLabel}）`).join('\n')}
@@ -112,6 +119,12 @@ export function renderReportHtml(report: DiagnosisReport) {
   const answerRows = report.stages.aiSearch.answerSamples
     .map((item) => `<li><strong>${escapeHtml(item.provider)} / ${escapeHtml(item.prompt)}</strong><p>${escapeHtml(item.answerExcerpt)}</p><small>${escapeHtml(recognitionLabel(item.entityRecognition))} · ${item.brandedPrompt ? '问题已含品牌名' : item.naturalRecommendation ? '无品牌词自然推荐' : '无品牌词未推荐'} · ${escapeHtml(item.recognitionReason ?? '旧版报告未计算')}</small></li>`)
     .join('');
+  const publicWebRows = report.stages.publicWeb?.results
+    .map((item) => `<li><strong>${escapeHtml(item.title)}</strong><p><a href="${escapeHtml(item.url)}">${escapeHtml(item.url)}</a></p><small>${escapeHtml(item.snippet)}</small></li>`)
+    .join('') ?? '';
+  const publicWebHtml = report.stages.publicWeb
+    ? `<section><h2>联网候选公开来源</h2><p><strong>${escapeHtml(report.stages.publicWeb.providers.map((item) => `${item.provider}:${item.status}`).join('；'))}</strong> · ${report.stages.publicWeb.latencyMs} ms · 公开证据可发现度 ${report.stages.publicWeb.discovery.score}/100</p><p>${escapeHtml(report.stages.publicWeb.note)}</p><ul>${publicWebRows || '<li>本次没有可展示的候选来源。</li>'}</ul></section>`
+    : '';
   const credibilityHtml = credibility ? `
     <section><h2>报告可信度</h2>
       <p><strong>${confidenceLabel(credibility.confidence)}</strong> · ${escapeHtml(credibility.inputAssessment.note)}</p>
@@ -140,7 +153,7 @@ export function renderReportHtml(report: DiagnosisReport) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(report.brand)} GEO 分析成果报告</title>
+  <title>${escapeHtml(report.brand)} AI 可见度初步诊断报告</title>
   <style>
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #151b24; background: #f5f7fa; }
     main { max-width: 920px; margin: 0 auto; padding: 42px 24px 72px; }
@@ -162,7 +175,7 @@ export function renderReportHtml(report: DiagnosisReport) {
 <body>
   <main>
     <header>
-      <h1>${escapeHtml(report.brand)} GEO 分析成果报告</h1>
+      <h1>${escapeHtml(report.brand)} AI 可见度初步诊断报告</h1>
       <div class="score">${scoreWithheld ? '暂不评分' : report.score}<small>${scoreWithheld ? ' · 证据不足' : `/100 · ${escapeHtml(report.scoreLevel)}`}</small></div>
       <p>${escapeHtml(report.summary)}</p>
       <div class="meta">
@@ -178,6 +191,7 @@ export function renderReportHtml(report: DiagnosisReport) {
     <section><h2>评分拆解</h2><table><thead><tr><th>维度</th><th>权重</th><th>得分</th><th>证据</th><th>依据</th></tr></thead><tbody>${dimensionRows}</tbody></table></section>
     <section><h2>平台采样状态</h2><table><thead><tr><th>平台</th><th>状态</th><th>成功/总数</th><th>说明</th></tr></thead><tbody>${providerRows}</tbody></table></section>
     <section><h2>公开页面审计</h2><table><thead><tr><th>页面</th><th>状态</th><th>范围</th><th>时效</th><th>抓取</th><th>URL / canonical</th><th>命中事实</th><th>哈希</th></tr></thead><tbody>${auditRows}</tbody></table></section>
+    ${publicWebHtml}
     <section><h2>主要问题</h2><ul>${report.issues.map((item) => `<li><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.detail)}</p><small>${escapeHtml(item.evidenceLabel)}</small></li>`).join('')}</ul></section>
     <section><h2>AI 采样答案摘录</h2><ul>${answerRows}</ul></section>
     <section><h2>竞品分析</h2><ul>${competitorRows}</ul></section>
@@ -194,7 +208,8 @@ export function buildEvidencePackage(
   report: DiagnosisReport,
   samples: AiSample[],
   pageAudit: PageAuditResult,
-  providerStatuses: AiProviderStatus[]
+  providerStatuses: AiProviderStatus[],
+  publicWebResponses?: WebSearchResponse[]
 ) {
   return {
     reportId: report.id,
@@ -220,9 +235,14 @@ export function buildEvidencePackage(
     },
     providerStatuses,
     pageAudit,
+    ...(publicWebResponses?.length ? { publicWebResponses } : {}),
     samples,
     evidencePolicy: report.evidencePolicy
   };
+}
+
+function markdownCell(value: string) {
+  return value.replace(/\|/gu, '\\|').replace(/\s+/gu, ' ').trim();
 }
 
 function toPercent(value: number) {

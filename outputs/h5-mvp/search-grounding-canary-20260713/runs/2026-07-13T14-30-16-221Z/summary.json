@@ -1,0 +1,36 @@
+{
+  "runId": "2026-07-13T14-30-16-221Z",
+  "generatedAt": "2026-07-13T14:30:25.076Z",
+  "providers": [
+    "volcengine"
+  ],
+  "caseCount": 12,
+  "plannedSearchRequestCount": 12,
+  "searchRequestCount": 1,
+  "stoppedProviders": [
+    {
+      "provider": "volcengine",
+      "case_id": "F1",
+      "reason": "HTTP 404: Your account has not activated web search. You may activate it at https://console.volcengine.com/common-buy/CC_content_plugin Request id: 02178395301659847c8075984f4c09bb3b0ca9abced541eafe82f"
+    }
+  ],
+  "rows": [
+    {
+      "provider": "volcengine",
+      "case_id": "F1",
+      "entity": "flomo 浮墨笔记",
+      "role": "target",
+      "query_type": "exact_entity",
+      "status": "failed",
+      "latency_ms": 8854,
+      "result_count": 0,
+      "exact_entity_hit": "no",
+      "official_domain_hit": "no",
+      "official_domain_position": "",
+      "negative_entity_invented": "not_applicable",
+      "citations_accessible": "manual_review_required",
+      "raw_evidence_path": "raw/volcengine/F1.json",
+      "error": "HTTP 404: Your account has not activated web search. You may activate it at https://console.volcengine.com/common-buy/CC_content_plugin Request id: 02178395301659847c8075984f4c09bb3b0ca9abced541eafe82f"
+    }
+  ]
+}

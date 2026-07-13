@@ -1,0 +1,30 @@
+{
+  "runId": "2026-07-13T14-57-00-409Z",
+  "generatedAt": "2026-07-13T14:57:22.085Z",
+  "providers": [
+    "volcengine"
+  ],
+  "caseCount": 1,
+  "plannedSearchRequestCount": 1,
+  "searchRequestCount": 1,
+  "stoppedProviders": [],
+  "rows": [
+    {
+      "provider": "volcengine",
+      "case_id": "F1",
+      "entity": "flomo 浮墨笔记",
+      "role": "target",
+      "query_type": "exact_entity",
+      "status": "success",
+      "latency_ms": 21674,
+      "result_count": 4,
+      "exact_entity_hit": "yes",
+      "official_domain_hit": "yes",
+      "official_domain_position": 3,
+      "negative_entity_invented": "not_applicable",
+      "citations_accessible": "manual_review_required",
+      "raw_evidence_path": "raw/volcengine/F1.json",
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:02:12.105Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P1",
+  "prompt": "栖栈清单是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "关于“栖栈清单”，目前无法确认其具体指代。搜索结果中未发现关于该名词的明确定义、官方解释或相关产品信息。\n\n可能性质不明：它可能是一个特定领域的术语、某款软件功能、某种内部清单，或是特定社群或机构的专用名称，但目前缺乏公开的权威资料佐证。\n\n非公开信息风险：也可能是未公开的、小众的或地方性的信息，因此不在公开可查的范围内。\n\n由于缺乏足够且可靠的参考资料，无法给出确切的定义或功能描述。",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/qizhan_checklist__P1.png"
+}

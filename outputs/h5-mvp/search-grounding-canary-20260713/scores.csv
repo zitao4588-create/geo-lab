@@ -1,0 +1,38 @@
+provider,case_id,entity,role,query_type,status,latency_ms,result_count,exact_entity_hit,official_domain_hit,official_domain_position,negative_entity_invented,url_checked,url_accessible,raw_evidence_path,evaluator_note
+anysearch,F1,flomo 浮墨笔记,target,exact_entity,success,3091,5,yes,yes,1,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/F1.json,
+anysearch,F2,flomo 浮墨笔记,target,official_source,success,2332,5,yes,yes,1,not_applicable,yes,yes,runs/2026-07-13T14-24-38-953Z/raw/anysearch/F2.json,
+anysearch,F3,flomo 浮墨笔记,target,unbranded_category,success,2783,5,yes,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/F3.json,
+anysearch,D1,追觅 Dreame X50 Ultra,target,exact_entity,success,2168,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/D1.json,
+anysearch,D2,追觅 Dreame X50 Ultra,target,official_source,success,1996,5,yes,yes,3,not_applicable,yes,yes,runs/2026-07-13T14-24-38-953Z/raw/anysearch/D2.json,
+anysearch,D3,追觅 Dreame X50 Ultra,target,unbranded_category,success,1657,5,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/D3.json,
+anysearch,A1,支付宝,positive_control,exact_entity,success,2387,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/A1.json,
+anysearch,A2,支付宝,positive_control,official_source,success,1706,5,yes,yes,1,not_applicable,yes,yes,runs/2026-07-13T14-24-38-953Z/raw/anysearch/A2.json,
+anysearch,A3,支付宝,positive_control,unbranded_category,success,2663,5,yes,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/A3.json,
+anysearch,N1,栖栈清单,negative_control,exact_entity,success,7038,5,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/N1.json,
+anysearch,N2,栖栈清单,negative_control,official_source,success,2430,5,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/N2.json,
+anysearch,N3,栖栈清单,negative_control,competitor_context,success,2041,5,yes,not_applicable,,no,no,not_checked,runs/2026-07-13T14-24-38-953Z/raw/anysearch/N3.json,
+tavily,F1,flomo 浮墨笔记,target,exact_entity,success,2671,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/F1.json,
+tavily,F2,flomo 浮墨笔记,target,official_source,success,1262,5,yes,yes,5,not_applicable,yes,yes,runs/2026-07-13T14-26-21-209Z/raw/tavily/F2.json,
+tavily,F3,flomo 浮墨笔记,target,unbranded_category,success,1193,5,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/F3.json,
+tavily,D1,追觅 Dreame X50 Ultra,target,exact_entity,success,1430,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/D1.json,
+tavily,D2,追觅 Dreame X50 Ultra,target,official_source,success,2115,0,no,no,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/D2.json,
+tavily,D3,追觅 Dreame X50 Ultra,target,unbranded_category,success,2315,5,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/D3.json,
+tavily,A1,支付宝,positive_control,exact_entity,success,1318,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/A1.json,
+tavily,A2,支付宝,positive_control,official_source,success,869,5,yes,yes,1,not_applicable,yes,yes,runs/2026-07-13T14-26-21-209Z/raw/tavily/A2.json,
+tavily,A3,支付宝,positive_control,unbranded_category,success,1680,5,yes,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/A3.json,
+tavily,N1,栖栈清单,negative_control,exact_entity,success,1032,5,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/N1.json,
+tavily,N2,栖栈清单,negative_control,official_source,success,1089,5,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/N2.json,
+tavily,N3,栖栈清单,negative_control,competitor_context,success,2695,5,yes,not_applicable,,no,no,not_checked,runs/2026-07-13T14-26-21-209Z/raw/tavily/N3.json,
+jina,F1,flomo 浮墨笔记,target,exact_entity,success,8028,5,yes,yes,1,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/F1.json,
+jina,F2,flomo 浮墨笔记,target,official_source,success,2371,5,yes,yes,1,not_applicable,yes,yes,runs/2026-07-13T14-27-14-513Z/raw/jina/F2.json,
+jina,F3,flomo 浮墨笔记,target,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/F3.json,The operation was aborted due to timeout
+jina,D1,追觅 Dreame X50 Ultra,target,exact_entity,failed,12002,0,no,no,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/D1.json,The operation was aborted due to timeout
+jina,D2,追觅 Dreame X50 Ultra,target,official_source,failed,12002,0,no,no,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/D2.json,The operation was aborted due to timeout
+jina,D3,追觅 Dreame X50 Ultra,target,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/D3.json,The operation was aborted due to timeout
+jina,A1,支付宝,positive_control,exact_entity,success,5607,5,yes,no,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/A1.json,
+jina,A2,支付宝,positive_control,official_source,success,9854,5,yes,yes,1,not_applicable,yes,yes,runs/2026-07-13T14-27-14-513Z/raw/jina/A2.json,
+jina,A3,支付宝,positive_control,unbranded_category,failed,12001,0,no,not_applicable,,not_applicable,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/A3.json,The operation was aborted due to timeout
+jina,N1,栖栈清单,negative_control,exact_entity,failed,12001,0,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/N1.json,The operation was aborted due to timeout
+jina,N2,栖栈清单,negative_control,official_source,failed,12002,0,not_applicable,not_applicable,,no,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/N2.json,The operation was aborted due to timeout
+jina,N3,栖栈清单,negative_control,competitor_context,failed,12001,0,no,not_applicable,,no,no,not_checked,runs/2026-07-13T14-27-14-513Z/raw/jina/N3.json,The operation was aborted due to timeout
+volcengine,F1,flomo 浮墨笔记,target,exact_entity,success,21674,4,yes,yes,3,not_applicable,no,not_checked,runs/2026-07-13T14-57-00-409Z/raw/volcengine/F1.json,

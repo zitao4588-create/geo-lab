@@ -1,0 +1,18 @@
+{
+  "prompt": {
+    "id": "flomo__P4",
+    "category": "brand",
+    "prompt": "关于flomo 浮墨笔记，你能确认哪些官方或可信公开来源？请给出来源名称和可访问链接，并区分已核验事实与推断。找不到就明确说找不到，不要编造链接。",
+    "targetFact": "flomo 浮墨笔记"
+  },
+  "provider": "qwen",
+  "model": "qwen3.7-plus",
+  "status": "success",
+  "sampledAt": "2026-07-13T07:14:02.259Z",
+  "latencyMs": 10353,
+  "answer": "关于 flomo（浮墨笔记），以下是基于公开、可信来源的已核验事实与相关推断。\n\n### 一、 已核验事实（Verified Facts）\n\n以下信息均来自 flomo 官方渠道或主流应用商店/技术平台，可直接访问验证。\n\n#### 1. 官方网站\n*   **来源名称**：flomo 官网\n*   **可访问链接**：[https://flomo.app](https://flomo.app)\n*   **核验内容**：\n    *   产品介绍：定位为“卡片笔记”工具，强调“无压力记录”、“回顾”和“连接”。\n    *   核心团队：由少楠（Shao Nan）和 plidevus 创立。\n    *   定价策略：提供免费版和付费会员制（Pro）。\n    *   平台支持：明确列出支持 Web、iOS、Android、macOS、Windows 以及微信服务号输入。\n\n#### 2. 官方微信公众号（主要发布渠道）\n*   **来源名称**：微信公众号“flomo浮墨笔记”\n*   **可访问方式**：在微信中搜索公众号名称“flomo浮墨笔记”\n*   **核验内容**：\n    *   这是 flomo 团队最活跃的内容发布渠道，包含产品更新日志、设计理念文章（如《为什么我们不做同步盘》）、用户案例等。\n    *   可通过历史文章验证其发展时间线（如 2021 年初正式上线）。\n\n#### 3. 应用商店页面（官方分发渠道）\n*   **来源名称**：Apple App Store / 华为应用市场 / 小米应用商店等\n*   **可访问链接示例（iOS）**：[https://apps.apple.com/cn/app/flomo/id1547896063](https://apps.apple.com/cn/app/flomo/id1547896063)\n*   **核验内容**：\n    *   开发者信息：显示为 “Lessmore” 或关联公司主体（通常为杭州浮墨科技有限公司或类似实体，具体以商店页面为准）。\n    *   用户评价与版本更新记录：可验证其持续维护状态和功能迭代历史。\n\n#### 4. GitHub 开源项目（部分组件）\n*   **来源名称**：GitHub -",
+  "fallbackUsed": false,
+  "entity": "flomo 浮墨笔记",
+  "entityRole": "target",
+  "promptId": "P4"
+}

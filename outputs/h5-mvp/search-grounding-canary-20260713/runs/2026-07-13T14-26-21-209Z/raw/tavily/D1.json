@@ -1,0 +1,101 @@
+{
+  "case": {
+    "id": "D1",
+    "entity_id": "dreame_x50_ultra",
+    "entity": "追觅 Dreame X50 Ultra",
+    "role": "target",
+    "query_type": "exact_entity",
+    "query": "追觅 Dreame X50 Ultra",
+    "expected_terms": [
+      "Dreame X50 Ultra",
+      "追觅 X50 Ultra"
+    ],
+    "expected_official_domains": [
+      "global.dreametech.com"
+    ]
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "追觅 Dreame X50 Ultra",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:26.342Z",
+    "latencyMs": 1430,
+    "results": [
+      {
+        "title": "追覓 DREAME X50 Ultra 五重升降 AI 全能頂配掃地機",
+        "url": "https://www.dreametech.com.hk/products/dreame-x50-ultra-robot-vacuum",
+        "snippet": "追覓 DREAME X50 Ultra 五重升降 AI 全能頂配掃地機. 定價 HK$6,499.00. : HK$6,499.00/每項. ###### 觀看影片. 9.00am - 6.00pm (星期一至五). ## 產品 Product. ### 您之前看過. ## 讓我們保持聯絡. ## 您的購物車. ## Recommendations. ## 小計. There are no products in comparison list. Please select at least 2 products to compare. We were looking for a new air fryer, gave the DREAME one a chance, and have to say it transformed the way we cook. The glass containers and the device's ease of use make it a daily cooking tool in our household. 自從用咗pro leap後 屋企除咗乾淨咗 仲可以多咗時間陪寵物 一舉兩得！. 追覓 DREAME Aqua10 Roller 滾筒式活水掃地機. 追覓 DREAME Glory Uni 高速護髮風筒 - 送護髮順滑風嘴.",
+        "score": 0.8201387
+      },
+      {
+        "title": "追觅商城-商品",
+        "url": "https://mall.dreame.tech/product/768",
+        "snippet": "X50 Ultra 增强版扫拖洗一体自清洁扫地机器人. ¥0. ¥12999.00. 专属管家. 需要协助购买？ 咨询追觅专享客服. 图片. 产品介绍. 3D. ​. 【限】限时咨询客服有好礼.",
+        "score": 0.81133276
+      },
+      {
+        "title": "Dreame 追覓 X50 Ultra 五重升降 AI 全能頂配掃地機 | Fortress 豐澤",
+        "url": "https://www.fortress.com.hk/zh-hk/product/x50-ultra-%E4%BA%94%E9%87%8D%E5%8D%87%E9%99%8D-ai-%E5%85%A8%E8%83%BD%E9%A0%82%E9%85%8D%E6%8E%83%E5%9C%B0%E6%A9%9F/p/BP_13582345?variant=13582345",
+        "snippet": "【夏日折慶大開催】獨家 + 創抵價產品低至 34 折！門市網店同步搶購，30 日包退換 ‧ 極速送貨，了解更多 >下載App店舖位置. ### 你好, 需要幫忙嗎? #### 豐澤產品專員. #### 豐澤客服團隊. Image 5: 185_ftr_sitelogo_zt.pngImage 6: 185_ftr_sitelogo_zt.png. MSI Claw 8 EX AI+ 電競手提遊戲機. iPhone 17/ 17 Pro / Air 系列. Image 9: Samsung-Orig-Wordmark-BLACK-RGB. Image 12: 1.mi-LOGO-. _Image 14: icon\\_express_ 滿$500免標準運費 | 最快2小時內送貨或自取 | 700+個自提點. Image 21: FTRHK-13582345-TOP-zoom. Image 27: FTRHK-13582345-FRONT-thumbnail. Image 33Image 34Image 35Image 36Image 37. * Image 41: icon-ai-comment 評論. Video 1Image 42Image 43Image 44Image 45Image 46. 20,000Pa 自研強勁低噪風機，獨家潛望式升降雷達，0纏繞氣旋雙滾刷模組，\"AI視覺+3D 結構光+夜視補光燈 APP 顯示識別200+項障礙物，\"✅ 最高80°熱水洗拖布 四檔溫度調節 重污拖布，自動洗 2 遍\". 這款產品清潔力極佳，能徹底拖淨地板與角落。它讓顧客擺脫日常清潔，省時省力，數週無需頻繁干預。AI導航避障精準，自清潔、自集塵、自烘乾等功能高效實用。用戶讚賞其運作安靜、智能越障，遙控與預約清潔功能也十分便利，整體設計美觀且易於使用。. The AI navigation avoids obstacles like shoes and cords perfectly. The mopping function actually works well, and the self-cleaning, self-emptying, and self-drying features mean I truly don't have to do anything for weeks. It's the most complete robot vacuum I've ever owned. * Image 88: O2O2024-3awards-GOLD. * Image 91: 20-caring-company-logo. * Image 92: award-favourable-brand. * Image 93: award-quality-tourism…",
+        "score": 0.78314424
+      },
+      {
+        "title": "追觅发布X50 Ultra，这是一台长「腿」的扫地机",
+        "url": "https://zhuanlan.zhihu.com/p/16961173806",
+        "snippet": "X50 Ultra 的最高吸力可达20000Pa，比前代X40 Ultra 高了8000Pa，在作业完成后，X50 Ultra 会返回配对的多功能基站，这个基站配备3.2 升集尘盒、4.5 升净水箱",
+        "score": 0.7067782
+      },
+      {
+        "title": "【Dreame 追覓科技】momo獨家價！X50 Ultra五重升降AI ...",
+        "url": "https://www.momoshop.com.tw/product/14484776",
+        "snippet": "Dreame 追覓科技贈品圖類型掃拖二合一功能APP搖控、WIFI傳輸、通話、視訊、智慧聯網、語音聲控、無線搖控、場景模式、自動斷電",
+        "score": 0.7038554
+      }
+    ],
+    "rawResponse": {
+      "query": "追觅 Dreame X50 Ultra",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://www.dreametech.com.hk/products/dreame-x50-ultra-robot-vacuum",
+          "title": "追覓 DREAME X50 Ultra 五重升降 AI 全能頂配掃地機",
+          "content": "追覓 DREAME X50 Ultra 五重升降 AI 全能頂配掃地機. 定價  HK$6,499.00. :   HK$6,499.00/每項. ###### 觀看影片. 9.00am - 6.00pm (星期一至五). ## 產品 Product. ### 您之前看過. ## 讓我們保持聯絡. ## 您的購物車. ## Recommendations. ## 小計. There are no products in comparison list. Please select at least 2 products to compare. We were looking for a new air fryer, gave the DREAME one a chance, and have to say it transformed the way we cook. The glass containers and the device's ease of use make it a daily cooking tool in our household. 自從用咗pro leap後 屋企除咗乾淨咗 仲可以多咗時間陪寵物 一舉兩得！. 追覓 DREAME Aqua10 Roller 滾筒式活水掃地機. 追覓 DREAME Glory Uni 高速護髮風筒 - 送護髮順滑風嘴.",
+          "score": 0.8201387,
+          "raw_content": null
+        },
+        {
+          "url": "https://mall.dreame.tech/product/768",
+          "title": "追觅商城-商品",
+          "content": "X50 Ultra 增强版扫拖洗一体自清洁扫地机器人. ¥0. ¥12999.00. 专属管家. 需要协助购买？ 咨询追觅专享客服. 图片. 产品介绍. 3D. ​. 【限】限时咨询客服有好礼.",
+          "score": 0.81133276,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.fortress.com.hk/zh-hk/product/x50-ultra-%E4%BA%94%E9%87%8D%E5%8D%87%E9%99%8D-ai-%E5%85%A8%E8%83%BD%E9%A0%82%E9%85%8D%E6%8E%83%E5%9C%B0%E6%A9%9F/p/BP_13582345?variant=13582345",
+          "title": "Dreame 追覓 X50 Ultra 五重升降 AI 全能頂配掃地機 | Fortress 豐澤",
+          "content": "【夏日折慶大開催】獨家 + 創抵價產品低至 34 折！門市網店同步搶購，30 日包退換 ‧ 極速送貨，了解更多 >下載App店舖位置. ### 你好, 需要幫忙嗎? #### 豐澤產品專員. #### 豐澤客服團隊. Image 5: 185_ftr_sitelogo_zt.pngImage 6: 185_ftr_sitelogo_zt.png. MSI Claw 8 EX AI+ 電競手提遊戲機. iPhone 17/ 17 Pro / Air 系列. Image 9: Samsung-Orig-Wordmark-BLACK-RGB. Image 12: 1.mi-LOGO-. _Image 14: icon\\_express_ 滿$500免標準運費 | 最快2小時內送貨或自取 | 700+個自提點. Image 21: FTRHK-13582345-TOP-zoom. Image 27: FTRHK-13582345-FRONT-thumbnail. Image 33Image 34Image 35Image 36Image 37. *   Image 41: icon-ai-comment 評論. Video 1Image 42Image 43Image 44Image 45Image 46. 20,000Pa 自研強勁低噪風機，獨家潛望式升降雷達，0纏繞氣旋雙滾刷模組，\"AI視覺+3D 結構光+夜視補光燈 APP 顯示識別200+項障礙物，\"✅ 最高80°熱水洗拖布 四檔溫度調節 重污拖布，自動洗 2 遍\". 這款產品清潔力極佳，能徹底拖淨地板與角落。它讓顧客擺脫日常清潔，省時省力，數週無需頻繁干預。AI導航避障精準，自清潔、自集塵、自烘乾等功能高效實用。用戶讚賞其運作安靜、智能越障，遙控與預約清潔功能也十分便利，整體設計美觀且易於使用。. The AI navigation avoids obstacles like shoes and cords perfectly. The mopping function actually works well, and the self-cleaning, self-emptying, and self-drying features mean I truly don't have to do anything for weeks. It's the most complete robot vacuum I've ever owned. *   Image 88: O2O2024-3awards-GOLD. *   Image 91: 20-caring-company-logo. *   Image 92: award-favourable-brand. *   Image 93: award-quality-tourism-services. 立即下載豐澤APP，享受無縫的O+O(線下及線上)購物體驗。了解更多豐澤APP. Copyright © 2026 Fortress All rights reserved. 這些 Cookie 是網站運行所必需的，並且無法關閉。它們幫助我們使我們的網站可用，使您能夠瀏覽網站並使用其功能. 這些 Cookie 幫助我們增強網站上的功能，提供個人化體驗，並通過了解訪問者如何訪問網站和瀏覽網站來改善我們網站的客戶體驗。在某些網頁上，我們與第三方供應商合作以改進頁面的功能。當資料被匯總時，該資訊是匿名的。關閉這些功能可能意味著網站的某些區域可能無法正常運作。. ### Cookie 清單. Image 111: Powered by Onetrust.",
+          "score": 0.78314424,
+          "raw_content": null
+        },
+        {
+          "url": "https://zhuanlan.zhihu.com/p/16961173806",
+          "title": "追觅发布X50 Ultra，这是一台长「腿」的扫地机",
+          "content": "X50 Ultra 的最高吸力可达20000Pa，比前代X40 Ultra 高了8000Pa，在作业完成后，X50 Ultra 会返回配对的多功能基站，这个基站配备3.2 升集尘盒、4.5 升净水箱",
+          "score": 0.7067782,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.momoshop.com.tw/product/14484776",
+          "title": "【Dreame 追覓科技】momo獨家價！X50 Ultra五重升降AI ...",
+          "content": "Dreame 追覓科技贈品圖類型掃拖二合一功能APP搖控、WIFI傳輸、通話、視訊、智慧聯網、語音聲控、無線搖控、場景模式、自動斷電",
+          "score": 0.7038554,
+          "raw_content": null
+        }
+      ],
+      "response_time": 1.13,
+      "request_id": "1ae684dd-113c-4974-b592-cdafdcf558bf"
+    }
+  }
+}

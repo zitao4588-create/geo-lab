@@ -1,0 +1,87 @@
+{
+  "case": {
+    "id": "N1",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "exact_entity",
+    "query": "栖栈清单",
+    "expected_terms": [],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  "response": {
+    "provider": "anysearch",
+    "query": "栖栈清单",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:24:59.753Z",
+    "latencyMs": 7038,
+    "results": [
+      {
+        "title": "技术栈清单 - 千千寰宇 - 博客园",
+        "url": "https://www.cnblogs.com/johnnyzen/p/12953609.html",
+        "snippet": "技术栈清单. 目录. 1 数据库. 关系型数据库; NoSQL DB:=Non-Relation DB(非关系型数据库); 大数据型数据库; SQL性能优化. 2 Java技术栈. Java SE; Java EE; Java EE 及中间 ...Read more"
+      },
+      {
+        "title": "技术栈汇总",
+        "url": "https://blog.csdn.net/Listennnn/article/details/147303756",
+        "snippet": "Apr 17, 2025 — Spring, MyBatis, JPA, Junit：Java 技术栈，主要用于企业级后端开发。 Flask, Django：Python 的Web 框架，适合快速搭建后端接口或AI模型部署。 .NET：C# 的 ...Read more"
+      },
+      {
+        "title": "程序员需掌握的常用技术栈和工具清单",
+        "url": "https://zhuanlan.zhihu.com/p/405001512",
+        "snippet": "Aug 30, 2021 — 开发一个普通管理系统，会用到SprinBoot+MyBatis+Spring+Mysql+Redis+RabbitMq+Nginx+Vue+Shiro+html+等等，这些技术合起来就可以称为技术栈。 大致分为： ...Read more"
+      },
+      {
+        "title": "fullstack tutorial - 全栈开发指南",
+        "url": "https://frank-lam.github.io/fullstack-tutorial",
+        "snippet": "包含阅读清单，学习课程两部分. web应用开发标准流程. Talking. 本仓库致力于成为一个全栈开发爱好者的学习指南，给初学者一个更明确的学习方向，同时也是对自己技能的强化 ...Read more"
+      },
+      {
+        "title": "Next Stack 技术栈联盟",
+        "url": "https://www.nextstack.club",
+        "snippet": "Next Stack技术联盟，诣在聚集各自领域的先进产品的代表，为下一代世界领先的基础软件服务努力拼搏，向全球用户提供有竞争力的软件产品服务，赢得全球用户的赞誉和口碑。"
+      }
+    ],
+    "rawResponse": {
+      "code": 0,
+      "message": "success",
+      "request_id": "67eda75b-dbfe-4e27-84f0-8d90fcdc5caf",
+      "data": {
+        "results": [
+          {
+            "title": "技术栈清单 - 千千寰宇 - 博客园",
+            "url": "https://www.cnblogs.com/johnnyzen/p/12953609.html",
+            "snippet": "技术栈清单. 目录. 1 数据库. 关系型数据库; NoSQL DB:=Non-Relation DB(非关系型数据库); 大数据型数据库; SQL性能优化. 2 Java技术栈. Java SE; Java EE; Java EE 及中间 ...Read more",
+            "content": "![博客园logo](//assets.cnblogs.com/logo.svg) ![搜索](//assets.cnblogs.com/icons/search.svg) ![搜索](//assets.cnblogs.com/icons/enter.svg) ![搜索](//assets.cnblogs.com/icons/search.svg) ![搜索](//assets.cnblogs.com/icons/search.svg) ![写随笔](//assets.cnblogs.com/icons/newpost.svg) ![我的博客](//assets.cnblogs.com/icons/myblog.svg) ![短消息](//assets.cnblogs.com/icons/message.svg) ![简洁模式](//assets.cnblogs.com/icons/lite-mode-on.svg) ![用户头像](//assets.cnblogs.com/icons/avatar-default.svg) ![返回主页](/skins/custom/images/logo.gif) # [千千寰宇](https://www.cnblogs.com/johnnyzen) ## 大数据与Java软件开发从业者，数智化转型实践者。[【好物推荐】](https://www.cnblogs.com/johnnyzen/p/19033027) # [技术栈清单](https://www.cnblogs.com/johnnyzen/p/12953609.html \"发布于 2020-05-24 23:43\") # 1 数据库 ## 关系型数据库 ## NoSQL DB:=Non-Relation DB(非关系型数据库) ## 大数据型数据库 ## SQL性能优化 # 2 Java技术栈 ## Java SE ## Java EE ## Java EE 及 中间件 # 3 大数据技术栈 # 4 项目/版本工程管理技术栈 # X 推荐文献 ![QQ沟通交流群](https://blog-static.cnblogs.com/files/johnnyzen/cnblogs-qq-group-qrcode.gif?t=1679679148) ![](https://img2024.cnblogs.com/blog/35695/202606/35695-20260609221536870-1777800795.webp) ### 公告 ![](//assets.cnblogs.com/images/ghs.png)"
+          },
+          {
+            "title": "技术栈汇总",
+            "url": "https://blog.csdn.net/Listennnn/article/details/147303756",
+            "snippet": "Apr 17, 2025 — Spring, MyBatis, JPA, Junit：Java 技术栈，主要用于企业级后端开发。 Flask, Django：Python 的Web 框架，适合快速搭建后端接口或AI模型部署。 .NET：C# 的 ...Read more"
+          },
+          {
+            "title": "程序员需掌握的常用技术栈和工具清单",
+            "url": "https://zhuanlan.zhihu.com/p/405001512",
+            "snippet": "Aug 30, 2021 — 开发一个普通管理系统，会用到SprinBoot+MyBatis+Spring+Mysql+Redis+RabbitMq+Nginx+Vue+Shiro+html+等等，这些技术合起来就可以称为技术栈。 大致分为： ...Read more"
+          },
+          {
+            "title": "fullstack tutorial - 全栈开发指南",
+            "url": "https://frank-lam.github.io/fullstack-tutorial",
+            "snippet": "包含阅读清单，学习课程两部分. web应用开发标准流程. Talking. 本仓库致力于成为一个全栈开发爱好者的学习指南，给初学者一个更明确的学习方向，同时也是对自己技能的强化 ...Read more"
+          },
+          {
+            "title": "Next Stack 技术栈联盟",
+            "url": "https://www.nextstack.club",
+            "snippet": "Next Stack技术联盟，诣在聚集各自领域的先进产品的代表，为下一代世界领先的基础软件服务努力拼搏，向全球用户提供有竞争力的软件产品服务，赢得全球用户的赞誉和口碑。",
+            "content": "![Next Stack](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*H470RaoGk98AAAAAAAAAAAAADiGDAQ/original) # Next Stack 技术栈联盟 ![pclogo](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*3r24QK0D6CsAAAAAAAAAAAAADiGDAQ/original) ![h5logo](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*uCBBS4cXAYoAAAAAAAAAAAAADiGDAQ/original) ## 关于 Next Stack 技术联盟 这些年来，随着基础软件的创业者不断的涌现，中国也出现了很多优秀的产品，缔造这些产品的创业者们不仅仅只是为了去实现国产替代的时代任务，他们把眼光放得更长远，我们的产品也可以走出中国，走向世界，让中国优秀的基础软件在世界的舞台上与全球的优秀产品竞争。 然而，面向全球市场是极具挑战的，这一路上会有很多困难，每一个技术创业者不能都成为孤胆英雄，我们需要携手共进。为此我们发起了「Next Stack」技术联盟。该技术联盟是个非盈利组织，让大家聚集在一起，一起面对挑战，一起克服困难，一起享受成长。同时也向包括中国在内的所有工程师和最终客户传递一个清晰的声音，我们在为下一代世界领先的基础软件服务努力拼搏，是为了更好的创造客户价值，提升工程师体验，让中国软件更受全世界的尊重，让这个世界变得更美好。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*5WGrRrn4JiUAAAAAAAAAAAAADiGDAQ/original) 是各自领域的先进产品的代表，能引领相关领域技术发展，能和世界上同领域其他的领先者竞争。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*RLU2QI5uTRgAAAAAAAAAAAAADiGDAQ/original) 独立基础软件产品，提供全面开放的服务提供能力，可以放在全球任何云计算平台，任何位置使用的产品。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*aKmCRJbUk5YAAAAAAAAAAAAADiGDAQ/original) 经过头部互联网公司的极致场景打磨验证，与主流技术栈结合，可以为客户提供可靠的软件服务。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*ajmbRocg_ccAAAAAAAAAAAAADiGDAQ/original) 能向全球用户提供有竞争力的软件产品服务，能赢得海外用户的赞誉和口碑。 ## 联盟初始成员 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*UJ8NT4EF7WEAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*g4XUQLAvyNwAAAAAAAAAAAAADiGDAQ/original) 观测云作为国内首个现代化的监控观测产品，支持超过 400+ 云服务和技术栈的集成，提供面向全球的观测数据接入与分析。协助工程师了解在线应用程序的运行情况，优化用户体验和提升整体系统的可靠性。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*1STiTJVM-cYAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*1STiTJVM-cYAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*7YbIQ7C6jcwAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*g4XUQLAvyNwAAAAAAAAAAAAADiGDAQ/original) OceanBase 为完全自主研发的原生分布式数据库。一体化架构，同时满足TP与AP工作负载的需求，支持多样化数据模型的需求，简化数据架构。已连续 10 余年稳定支撑双 11，并助力 2000+ 客户实现关键业务系统升级。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*1STiTJVM-cYAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*Kkn2QoaG11IAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*g4XUQLAvyNwAAAAAAAAAAAAADiGDAQ/original) AutoMQ 是新一代基于云重新设计的 Kafka。它在完全兼容 Apache Kafka 的基础上，通过将存储分离至对象存储，相比 Apache Kafka 可降低 90% 的成本，实现了秒级自动弹性，为用户提供低成本、低延迟、高可用、高性能和无限容量的流存储能力。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*1STiTJVM-cYAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*HxXvRb8re7cAAAAAAAAAAAAADiGDAQ/original) ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*g4XUQLAvyNwAAAAAAAAAAAAADiGDAQ/original) Bytebase 是全球领先的开源数据库 DevSecOps 解决方案，为开发，安全，DBA 和平台工程团队打造。也是唯一被 CNCF Landscape 和 Platform Engineering 组织同时收录的数据库工具产品。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*1STiTJVM-cYAAAAAAAAAAAAADiGDAQ/original) ## Next Stack 的宗旨与目标 构建开放、共享、协同的技术创新生态，推动国产新技术的突破和产业升级 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*lR4gTbqHLMgAAAAAAAAAAAAADiGDAQ/original) 联盟内成员单位应在产品商业化中充分考虑技术集成，充分整合国产新技术能力，产生积极的示范效应。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*FIWbSYvSiUsAAAAAAAAAAAAADiGDAQ/original) 联盟将建立生态共享平台，促进成员间的业务交流与合作，形成良性互动的技术发展环境。 ![](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*_3fjT4e2Yk0AAAAAAAAAAAAADiGDAQ/original) 通过技术集成和应用示范，联盟将助力成员企业实现产品升级和品牌升级，增强市场竞争力。 ## 加入联盟 我们欢迎更多优秀的企业，加入 Next Stack 技术联盟，和我们一起开创基础软件行业的美好未来！ ![成员资格](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*OtzoTKQbG00AAAAAAAAAAAAADiGDAQ/original) 如果您对 Next Stack 技术联盟感兴趣，请联系联盟的初始成员来推荐您。 ![全球化 多基础设施支持](https://mdn.alipayobjects.com/huamei_22khvb/afts/img/A*YmKqR4hyJUwAAAAAAAAAAAAADiGDAQ/original) Next Stack 技术联盟 版权所有"
+          }
+        ],
+        "metadata": {
+          "total_results": 5,
+          "search_time_ms": 6251
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "platform": "doubao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "豆包网页端“快速”模式（页面未显示具体模型）",
+  "captured_at": "2026-07-13T11:26:43.203Z",
+  "entity": "支付宝",
+  "entity_role": "positive_control",
+  "prompt_id": "P3",
+  "prompt": "请比较支付宝和微信支付在核心功能、适用人群、主要限制和可信依据上的差异。无法核验的内容请明确标注不确定，不要根据名称猜测。",
+  "answer": "正在收集 PPT 素材\n用户需要一份关于支付宝和微信支付差异的对比分析。\n核心对比维度已经明确：核心功能、适用人群、主要限制和可信依据。\n为了确保信息的准确性和时效性（当前时间为 2026 年 7 月），我需要通过搜索来获取最新的数据和官方信息。\n我将把用户的需求整合成一个详细的搜索指令，以便获取全面、可靠的对比资料。\n指令将包含以下要点：\n对比对象：支付宝和微信支付。\n对比维度：核心功能、适用人群、主要限制、可信依据。\n特殊要求：明确标注不确定信息，不猜测。\n时间背景：需要反映最新的市场情况。\n因此，我将调用工具来执行搜索。\nPPT 素材收集",
+  "searched_web": false,
+  "search_trace": "",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/doubao/alipay__P3.png"
+}

@@ -1,0 +1,79 @@
+{
+  "reportId": "diag_mrjeje38_ey9xig",
+  "recordedAt": "2026-07-13T15:53:29.903Z",
+  "pageAuditDurationMs": 1,
+  "samplingDurationMs": 27504,
+  "publicWebStatus": "success",
+  "publicWebDurationMs": 17046,
+  "totalDurationMs": 27535,
+  "providers": [
+    {
+      "provider": "deepseek",
+      "models": [
+        "deepseek-v4-pro"
+      ],
+      "promptCount": 10,
+      "successCount": 9,
+      "failureCount": 1,
+      "successRate": 0.9,
+      "fallbackCount": 0,
+      "failureTypes": {
+        "timeout": 1
+      },
+      "p50LatencyMs": 11606,
+      "p95LatencyMs": 14841,
+      "slowestPromptId": "P020",
+      "lastRealSuccessAt": "2026-07-13T15:53:14.162Z"
+    },
+    {
+      "provider": "hy3",
+      "models": [
+        "hy3"
+      ],
+      "promptCount": 10,
+      "successCount": 10,
+      "failureCount": 0,
+      "successRate": 1,
+      "fallbackCount": 0,
+      "failureTypes": {},
+      "p50LatencyMs": 5425,
+      "p95LatencyMs": 8675,
+      "slowestPromptId": "P015",
+      "lastRealSuccessAt": "2026-07-13T15:53:11.671Z"
+    },
+    {
+      "provider": "qwen",
+      "models": [
+        "qwen3.7-plus"
+      ],
+      "promptCount": 10,
+      "successCount": 10,
+      "failureCount": 0,
+      "successRate": 1,
+      "fallbackCount": 0,
+      "failureTypes": {},
+      "p50LatencyMs": 9691,
+      "p95LatencyMs": 11870,
+      "slowestPromptId": "P005",
+      "lastRealSuccessAt": "2026-07-13T15:53:19.062Z"
+    },
+    {
+      "provider": "doubao",
+      "models": [
+        "doubao-seed-2-0-lite-260215"
+      ],
+      "promptCount": 10,
+      "successCount": 8,
+      "failureCount": 2,
+      "successRate": 0.8,
+      "fallbackCount": 0,
+      "failureTypes": {
+        "timeout": 2
+      },
+      "p50LatencyMs": 8384,
+      "p95LatencyMs": 15738,
+      "slowestPromptId": "P015",
+      "lastRealSuccessAt": "2026-07-13T15:53:12.068Z"
+    }
+  ]
+}

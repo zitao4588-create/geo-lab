@@ -1,0 +1,99 @@
+{
+  "case": {
+    "id": "N3",
+    "entity_id": "qizhan_checklist",
+    "entity": "栖栈清单",
+    "role": "negative_control",
+    "query_type": "competitor_context",
+    "query": "栖栈清单 PackPoint 旅行打包清单应用",
+    "expected_terms": [
+      "PackPoint"
+    ],
+    "expected_official_domains": [],
+    "must_not_invent_entity": true
+  },
+  "response": {
+    "provider": "tavily",
+    "query": "栖栈清单 PackPoint 旅行打包清单应用",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:26:38.204Z",
+    "latencyMs": 2695,
+    "results": [
+      {
+        "title": "PackPoint 行李打包清单，旅游的好伴侣 - App Store - Apple",
+        "url": "https://apps.apple.com/us/app/packpoint-%E8%A1%8C%E6%9D%8E%E6%89%93%E5%8C%85%E6%B8%85%E5%8D%95-%E6%97%85%E6%B8%B8%E7%9A%84%E5%A5%BD%E4%BC%B4%E4%BE%A3/id896337401?l=zh-Hans-CN",
+        "snippet": "PackPoint 是一款智能打包应用,能为旅游爱好者列出行李打包清单。PackPoint 会基于旅途的长短、目的地天气以及旅途中计划的活动,告诉您需要打包的装备。",
+        "score": 0.80698997
+      },
+      {
+        "title": "喜来登与PackPoint的行李管理 - Google Play 上的应用",
+        "url": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint&hl=zh",
+        "snippet": "## 关于此应用. PackPoint 是为专业旅游爱好者而设的免费旅行打包清单管理器和打包规划师。PackPoint 会基于旅途的长短、目的地天气、以及旅途中计划的活动，帮助您整理需要打包的行李装备。. 您的打包清单创建并整理好后，PackPoint 会将其存储，在您的朋友及家人需要帮助打包行李时，您可以分享该清单。. - 查看 PackPoint 内的“自定”菜单，以了解 PackPoint Premium 版的功能. - 将 PackPoint 与 TripIt 关联，以自动创建行李打包清单！. 请访问 http://ideas.packpnt.com 或发送电子邮件到 info@packpnt.com. 在 Facebook 上为我们点赞 https://www.facebook.com/packpoint. 关注我们的 Twitter https://twitter.com/packpnt. ## 数据安全. 安全始于了解开发者如何收集和分享数据。数据隐私保护和安全措施可能会因您的使用情况、所在地区和用户年龄而异。此类信息由开发者提供，可能会随时间更新。. 应用活动、应用信息和性能和设备 ID 或其他 ID. ## 评分和评价. ## 新变化. - Add ability to import/export lists for premium users. - Fix for users unable to restore premium. ## 应用支持. 2976 E State St Ste 120 Pmb 2078 Eagle, ID 83616-6394 United States. HOME TASKER - CLEANING SCHEDULE ORGANIZER LTD.",
+        "score": 0.76427686
+      },
+      {
+        "title": "PackPoint : 出差旅游该带什么？这个App 都帮你想好了#iOS ...",
+        "url": "https://www.ifanr.com/app/898055",
+        "snippet": "Aug 31, 2017 — PackPoint 是一款自动整理旅行物品清单的app。只需输入目的地、行程安排，它就会给出物品携带建议，把你的旅行前夜从对收拾行李的焦虑中解救出来。",
+        "score": 0.71496695
+      },
+      {
+        "title": "PackPoint 行李打包清單，旅遊的好伴侶 - App Store",
+        "url": "https://apps.apple.com/mo/app/packpoint-%E8%A1%8C%E6%9D%8E%E6%89%93%E5%8C%85%E6%B8%85%E5%96%AE-%E6%97%85%E9%81%8A%E7%9A%84%E5%A5%BD%E4%BC%B4%E4%BE%B6/id896337401?see-all=customers-also-bought-apps&platform=iphone",
+        "snippet": "PackPoint 行李打包清單,旅遊的好伴侶… 旅行清單, Tripsy: Travel Planner & Guide Trip Plan. This - Trip Packing List 檢視 TravelSpend: Travel Budget App",
+        "score": 0.62523276
+      },
+      {
+        "title": "軟科技：出國行李清單怎麼列？《 Packpoint 》App 幫你搞定",
+        "url": "https://www.cool3c.com/article/134209",
+        "snippet": "Apr 11, 2018 — 每次要出國時，最頭疼的其中一件事就是行李的打包清單了；這款PackPoint 行李打包清單App，會根據你去的國家、時間，以及你的性別、出國的目的（旅行、商務等）， ...Read more",
+        "score": 0.52203226
+      }
+    ],
+    "rawResponse": {
+      "query": "栖栈清单 PackPoint 旅行打包清单应用",
+      "follow_up_questions": null,
+      "answer": null,
+      "images": [],
+      "results": [
+        {
+          "url": "https://apps.apple.com/us/app/packpoint-%E8%A1%8C%E6%9D%8E%E6%89%93%E5%8C%85%E6%B8%85%E5%8D%95-%E6%97%85%E6%B8%B8%E7%9A%84%E5%A5%BD%E4%BC%B4%E4%BE%A3/id896337401?l=zh-Hans-CN",
+          "title": "PackPoint 行李打包清单，旅游的好伴侣 - App Store - Apple",
+          "content": "PackPoint 是一款智能打包应用,能为旅游爱好者列出行李打包清单。PackPoint 会基于旅途的长短、目的地天气以及旅途中计划的活动,告诉您需要打包的装备。",
+          "score": 0.80698997,
+          "raw_content": null
+        },
+        {
+          "url": "https://play.google.com/store/apps/details?id=com.YRH.PackPoint&hl=zh",
+          "title": "喜来登与PackPoint的行李管理 - Google Play 上的应用",
+          "content": "## 关于此应用. PackPoint 是为专业旅游爱好者而设的免费旅行打包清单管理器和打包规划师。PackPoint 会基于旅途的长短、目的地天气、以及旅途中计划的活动，帮助您整理需要打包的行李装备。. 您的打包清单创建并整理好后，PackPoint 会将其存储，在您的朋友及家人需要帮助打包行李时，您可以分享该清单。. - 查看 PackPoint 内的“自定”菜单，以了解 PackPoint Premium 版的功能. - 将 PackPoint 与 TripIt 关联，以自动创建行李打包清单！. 请访问 http://ideas.packpnt.com 或发送电子邮件到 info@packpnt.com. 在 Facebook 上为我们点赞 https://www.facebook.com/packpoint. 关注我们的 Twitter https://twitter.com/packpnt. ## 数据安全. 安全始于了解开发者如何收集和分享数据。数据隐私保护和安全措施可能会因您的使用情况、所在地区和用户年龄而异。此类信息由开发者提供，可能会随时间更新。. 应用活动、应用信息和性能和设备 ID 或其他 ID. ## 评分和评价. ## 新变化. - Add ability to import/export lists for premium users. - Fix for users unable to restore premium. ## 应用支持. 2976 E State St Ste 120 Pmb 2078 Eagle, ID 83616-6394 United States. HOME TASKER - CLEANING SCHEDULE ORGANIZER LTD.",
+          "score": 0.76427686,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.ifanr.com/app/898055",
+          "title": "PackPoint : 出差旅游该带什么？这个App 都帮你想好了#iOS ...",
+          "content": "Aug 31, 2017 — PackPoint 是一款自动整理旅行物品清单的app。只需输入目的地、行程安排，它就会给出物品携带建议，把你的旅行前夜从对收拾行李的焦虑中解救出来。",
+          "score": 0.71496695,
+          "raw_content": null
+        },
+        {
+          "url": "https://apps.apple.com/mo/app/packpoint-%E8%A1%8C%E6%9D%8E%E6%89%93%E5%8C%85%E6%B8%85%E5%96%AE-%E6%97%85%E9%81%8A%E7%9A%84%E5%A5%BD%E4%BC%B4%E4%BE%B6/id896337401?see-all=customers-also-bought-apps&platform=iphone",
+          "title": "PackPoint 行李打包清單，旅遊的好伴侶 - App Store",
+          "content": "PackPoint 行李打包清單,旅遊的好伴侶… 旅行清單, Tripsy: Travel Planner & Guide Trip Plan. This - Trip Packing List 檢視 TravelSpend: Travel Budget App",
+          "score": 0.62523276,
+          "raw_content": null
+        },
+        {
+          "url": "https://www.cool3c.com/article/134209",
+          "title": "軟科技：出國行李清單怎麼列？《 Packpoint 》App 幫你搞定",
+          "content": "Apr 11, 2018 — 每次要出國時，最頭疼的其中一件事就是行李的打包清單了；這款PackPoint 行李打包清單App，會根據你去的國家、時間，以及你的性別、出國的目的（旅行、商務等）， ...Read more",
+          "score": 0.52203226,
+          "raw_content": null
+        }
+      ],
+      "response_time": 1.68,
+      "request_id": "0f765c87-c37c-442d-aa18-4fa7dd295979"
+    }
+  }
+}

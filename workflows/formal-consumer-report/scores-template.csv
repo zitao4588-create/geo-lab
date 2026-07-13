@@ -1,0 +1,1 @@
+entity,prompt_id,platform,client,model_or_mode,answer_status,searched_web,search_process_visible,entity_recognition,spontaneous_mention,mention_position,factual_accuracy,major_hallucination,citations_present,citations_valid,official_source_present,raw_answer_path,screenshot_path,evaluator_note

@@ -13,6 +13,8 @@
     "build:server": "tsc -p tsconfig.server.json",
     "release:scan": "node scripts/scan-release-artifacts.mjs dist/client",
     "release:precheck": "npm run build && node scripts/release-precheck.mjs",
+    "canary:search": "npm run build:server && node scripts/run-search-provider-canary.mjs",
+    "canary:search:evaluate": "npm run build:server && node scripts/evaluate-search-canary.mjs",
     "test": "npm run build:server && node --test test/*.test.mjs",
     "test:wechat-webview": "npm run build && node test/wechat-webview-qa.mjs",
     "start": "node dist/server/server/index.js"

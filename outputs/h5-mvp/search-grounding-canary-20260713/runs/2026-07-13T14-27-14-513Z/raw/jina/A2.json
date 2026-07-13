@@ -1,0 +1,818 @@
+{
+  "case": {
+    "id": "A2",
+    "entity_id": "alipay",
+    "entity": "支付宝",
+    "role": "positive_control",
+    "query_type": "official_source",
+    "query": "支付宝 官网 官方",
+    "expected_terms": [
+      "支付宝",
+      "Alipay"
+    ],
+    "expected_official_domains": [
+      "alipay.cn"
+    ]
+  },
+  "response": {
+    "provider": "jina",
+    "query": "支付宝 官网 官方",
+    "status": "success",
+    "searchedAt": "2026-07-13T14:28:18.544Z",
+    "latencyMs": 9854,
+    "results": [
+      {
+        "title": "支付宝",
+        "url": "https://www.alipay.com/",
+        "snippet": "支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。"
+      },
+      {
+        "title": "支付宝开发者社区-学习提问互动交流开放社区",
+        "url": "https://open.alipay.com/portal/forum",
+        "snippet": "支付宝开放社区，作为支付宝开发者开发支付宝小程序、支付宝生活号、网页移动应用过程中碰到问题相互交流、经验文章分享的社区平台"
+      },
+      {
+        "title": "支付宝开放平台",
+        "url": "https://open.alipay.com/",
+        "snippet": "支付宝开放平台基于支付宝的海量用户，将强大的支付、营销、数据能力，通过接口等形式开放给第三方合作伙伴，帮助第三方合作伙伴创建更具竞争力的应用"
+      },
+      {
+        "title": "注册 - 支付宝",
+        "url": "https://www.alipay.com/user/reg_select.htm",
+        "snippet": "欢迎免费注册支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还款等生活服务应用；为广大为从事电子商务的网站提供支付产品/支付服务的在线订购和技术支持等服务，帮助商家快速接入支付工具，高效、安全、快捷地开展电子商务。"
+      },
+      {
+        "title": "支付宝 - Google Play 上的应用",
+        "url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+        "snippet": "蚂蚁集团旗下支付宝，是服务10亿用户的全球领先数字支付与服务业数字化开放平台，为消费者、商家提供便捷安全支付服务，提供超1000多种生活服务。"
+      }
+    ],
+    "rawResponse": {
+      "code": 200,
+      "status": 200,
+      "data": [
+        {
+          "title": "支付宝",
+          "url": "https://www.alipay.com/",
+          "description": "支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。",
+          "content": "![Image 1](https://img.alicdn.com/tfs/TB1DeJxnAY2gK0jSZFgXXc5OFXa-86-64.png)\n\n我已有支付宝账户[快速登录](https://auth.alipay.com/login/index.htm?goto=https%3A%2F%2Fwww.alipay.com%2F)\n\n[我是服务商](https://www.alipay.com/)[我是开发者](https://www.alipay.com/)[我是商家用户 我是支付宝商家 我是口碑商家](https://www.alipay.com/)[我是机构用户](https://www.alipay.com/)[我是个人用户](https://www.alipay.com/)\n\n*   [蚂蚁集团](https://www.antgroup.com/)\n*   |\n*   [服务商平台](https://p.alipay.com/portal/home.htm)\n*   |\n*   [支付宝](https://www.alipay.com/)\n*   |\n*   [余额宝](https://yebprod.alipay.com/yeb/index.htm)\n*   |\n*   [蚂蚁商家中心](https://b.alipay.com/?ynsrc=zhuzhanA)\n*   |\n*   [芝麻信用](https://www.zmxy.com.cn/#/home)\n*   |\n*   [蚂蚁微贷](https://loan.mybank.cn/)\n*   |\n*   [网商银行](https://www.mybank.cn/index.htm)\n*   |\n*   [开放平台](https://open.alipay.com/)\n*   |\n*   [诚征英才](https://talent.antgroup.com/)\n*   |\n*   [联系我们](https://ab.alipay.com/i/lianxi.htm)\n*   |\n\n[经营许可证编号：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)[ICP备案号：沪ICP备15027489号-2](https://beian.miit.gov.cn/)[![Image 2](https://mdn.alipayobjects.com/huamei_dzkre1/afts/img/A*IM_uQL9DhicAAAAAQBAAAAgAeu-XAQ/original)沪公网安备31011502400925](https://beian.mps.gov.cn/#/query/webSearch?code=31011502400925)",
+          "metadata": {
+            "viewport": "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0",
+            "baidu-site-verification": "OyUb4RVdSe",
+            "google-site-verification": "w558w9pAuBKGToxYeisT6x7mBMEC4YengxILNxXag68",
+            "renderer": "webkit",
+            "keywords": "支付宝,电子支付/网上支付/安全支付/手机支付,安全购物/网络购物付款/付款/收款,水电煤缴费/信用卡还款/AA收款,支付宝网站",
+            "description": "支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。",
+            "tern-framework-version": "S090011745095"
+          },
+          "external": {
+            "icon": {
+              "https://mdn.alipayobjects.com/rms/afts/file/A*7EyORZxdNDkAAAAAAAAAAAAAARQnAQ": {},
+              "https://img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico": {
+                "type": "image/x-icon"
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 567
+          }
+        },
+        {
+          "title": "支付宝开发者社区-学习提问互动交流开放社区",
+          "url": "https://open.alipay.com/portal/forum",
+          "description": "支付宝开放社区，作为支付宝开发者开发支付宝小程序、支付宝生活号、网页移动应用过程中碰到问题相互交流、经验文章分享的社区平台",
+          "content": "WeaveFox 作为一款面向普通创作者、个人开发者与非技术用户，免费、零门槛的应用创作平台，用户无需编写任何代码，只需通过自然语言描述自己的需求，即可快速将想法落地为可运行、可部署、可分享的全栈 Web 应用。 2026年6月，WeaveFox 宣布正式支持支付宝支付服务。此次支付宝支付能力的接入\n\n![Image 1](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*qky8RJ1SnHUAAAAAdyAAAAgAevx4AQ/original)\n\n各位AI开发者，你好！👋 支付宝开放平台正在全面升级 AI社区版块。我们不只想做一个“公告栏”，更想打造一个真正属于AI开发者、创作者、服务商 的“实战+成长”型社区。 但问题是——什么样的社区，才是你理想中的AI社区？ 答案不在我们手里，而在你手里。 所以，这次我们决定：把定义权交给你。 🧠\n\n![Image 2](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*oMWZQ6wSRBEAAAAAgBAAAAgAevx4AQ/original)\n\n2026-05-07\n\n0 11 2741\n\n👉没有奖品，但你的文章会被几千、上万人看到，并成为社区的第一批AI内容基石。 各位开发者： 我们正在从「小程序技术社区」走向一个全新的 「支付宝 AI 」 社区。它延续了原有的纯粹：没有其他，只谈技术。 这一次，内容方向从小程序转向 AI。 这不是小程序社区的延续，而是一次从 0 到 1 的重新开\n\n![Image 3](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*gr98TY3Kok0AAAAATjAAAAgAevx4AQ/original)\n\n各位AI开发者，你的智能体开始赚钱了吗？ 过去一年，我们在Coze、百炼、魔搭等平台见证了无数惊艳的AI应用诞生。但有一个问题始终困扰着个人开发者：跑通了产品，却卡在变现。支付，历来是实现商业闭环的重要能力。移动互联网时代，APP和小程序开发者可以通过API接口快速接入和部署支付能力。AI智能体带来\n\n![Image 4](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*4_X8TJk_z4YAAAAAYSAAAAgAevx4AQ/original)\n\n主要内容 Spring 脚手架搭建 在本地和测试环境搭建 Spring 脚手架，并了解 CI/CD 环境中的注意事项 主要工程 GUI 工程 https://github.com/spring-io/start.spring.io 主要模块 start-client: 前端模块，JS（React J\n\n1️⃣全球最快AI视频生成火了，5秒让老黄马斯克拥抱，Made in China 量子位｜阅读原文 就在刚刚，全球最快的AI视频生成，正式来袭！有多快呢？数个1、2、3、4、5（五秒钟），啪的一下，一个高质量的AI视频就生成出来了。划重点：这次还不只是速度，这个国产AI还做到了把声音还给视频——是人\n\n![Image 5](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*VckATa0GvNYAAAAAAAAAAAAAevx4AQ/original)\n\n江河入海，知识涌动，这是我参与江海计划的第2篇 1.计算机硬件的基本组成 1.1早期冯诺伊曼机 1.1.1各部分作用 输入设备：将计信息换成机器能够识别的形式 存储器：存放数据和程序 运算器：实现算数运算和逻辑运算 输出设备：将结果转换成人们熟悉的形式 控制器：指挥程序运行（控制器可以解析存储器中的\n\n2024-12-09\n\n0 0 101\n\n江海入海，知识涌动，这是我参与江海计划的第4篇 >🎬 博客主页：[博主链接](https://blog.csdn.net/m0_64361522?spm=1010.2135.3001.5343) >🎥 本文由 M malloc 原创，首发于 CSDN🙉 >🎄 学习专栏推荐：LeetCode刷\n\n江海入海，知识涌动，这是我参与江海计划的第4篇 0.平衡搜索二叉树概念 为什么在会了搜索二叉树之后,还需要学习平衡搜索二叉树呢？在搜索二叉树部分,并没有要求树保持平衡,仅需遵循左小右大即可. 若往树中插入有序或者接近有序的值,会出现下面这种情况,退化为单支树. 这样的搜索树就完全没有效率可言,他的时\n\n我“AI”发文 6 今天，我们就来深入探讨 CNN 在手写数字识别中的实现细节。\n\n大型语言模型（LLM）的进步推动了代码生成辅助到自主编码代理的范式转变，催生了一种名为“Vibe Coding”的新型开发方法。在这种方法中，开发者通过观察结果而非逐行理解代码来验证人工智能生成的实现。尽管Vibe Coding具有变革性的潜力，但其有效性仍未得到充分探索。实证研究表明，该方法会导致\n\n![Image 6](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*ep5JS7PwiwMAAAAAUQAAAAgAevx4AQ/original)\n\n模型上下文协议 (MCP) 引入了一项标准规范，定义了基于基础模型 (FM) 的代理如何通过调用工具与外部系统交互。然而，为了理解工具的用途和特性，FM 依赖于自然语言工具描述，因此这些描述是指导 FM 为给定的（子）任务选择最佳工具并向工具传递正确参数的关键组成部分。尽管这些描述中的缺陷或错误可能\n\n![Image 7](https://gw.alipayobjects.com/v/mrch_developerops/afts/video/A*47_pSqy7SxkAAAAAQ7AAAAgAevx4AQ/original)\n\n江河入海，知识涌动，这是我参与江海计划的第8篇 一、数据驱动的商业闭环 支付宝小程序数据体系日均处理千亿级事件，主要针对埋点和回流 // 小程序端数据埋点 my.reportAnalytics('product_view', { item_id: 'SKU_123', category: '\n\n江河入海，知识涌动，这是我参与江海计划的第三篇。 目录 IP协议报头 报头分离和向上交付 四位版本 8位服务类型 16位总长度 八位生存时间 16位标识一行 网段划分 DHCP 私有IP范围 公网划分之CIDR 特殊的IP地址 缓解IP地址不够用的方法 NAT技术 代理服务器 NAT和代理服务器的区\n\n2024-12-26\n\n0 0 102\n\n江河入海，知识涌动，这是我参与江海计划的第25篇 文章目录 makefile自动化构建工具 makefile背景 简单认识makefile 依赖关系与依赖方法 生成项目 清理项目 ACM时间 语法补充 .PHONY修饰 特殊符号替换 Makefile的推导过程 总结 前言： 在windows下，很多\n\n![Image 8](https://mdn.alipay.com/mrch_developerops/afts/file/A*JjdTSruBRAIAAAAAAAAAAAAADvx4AQ)\n\n2024-02-28\n\n0 0 101\n\n江海入海，知识涌动，这是我参与江海计划的第18篇。 在 SAP UI5 开发中，命名空间（namespace）是一个重要的概念，它用于组织和管理 UI5 应用的资源、模块和库。命名空间提供了一种结构化的方式来命名和引用 UI5 应用的各个部分，以避免命名冲突并使开发更具可维护性。在本文中，我将详细解\n\n【MySQL】学习如何通过DQL进行数据库数据的条件查询\n\n![Image 9](https://mdn.alipay.com/mrch_developerops/afts/file/A*eIQBSbkZBCsAAAAAAAAAAAAADvx4AQ)\n\n江海入海，知识涌动，这是我参与江海计划的第3篇 >🎬 博客主页：[博主链接](https://blog.csdn.net/m0_64361522?spm=1010.2135.3001.5343) >🎥 本文由 M malloc 原创，首发于 CSDN🙉 >🎄 学习专栏推荐：LeetCode刷\n\n在科技的星辰大海中，人工智能（AI）宛如一颗璀璨的新星，正以前所未有的速度照亮我们生活的每一个角落。从智能语音助手贴心陪伴，到智能医疗精准诊断，AI 带来的便利与创新让我们的生活日新月异。 然而，在这光芒背后，一场关于信息安全的 “暗战” 悄然打响。AI 系统处理和存储着海量的个人隐私、商业机密和国\n\n我\"AI\"发文，第十篇 OpenAI：人工智能领域的创新先锋与变革力量 在当今科技飞速发展的时代，人工智能（AI）已成为推动各行业变革的核心驱动力。而 OpenAI，作为 AI 领域的佼佼者，以其卓越的研究成果和创新应用，吸引了全球的目光，正引领着人工智能技术迈向新的高度，深刻改变着人们的生活与工作",
+          "publishedTime": "Mon, 12 Jul 2021 10:38:05 GMT",
+          "metadata": {
+            "viewport": "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0",
+            "tern-framework-version": "S090011745095",
+            "google-site-verification": "2ta8BYq1tQ4UDoAwDIaZYwETKvrnpO49pgkrRiqM9PE",
+            "google": "notranslate",
+            "keywords": "支付宝开放社区，支付宝开发者社区，支付宝小程序，小程序，支付宝开放平台，支付宝，支付宝账号，支付宝小程序api，蚂蚁开放平台，开发者，小程序开发，小程序api，前端，后端",
+            "description": "支付宝开放社区，作为支付宝开发者开发支付宝小程序、支付宝生活号、网页移动应用过程中碰到问题相互交流、经验文章分享的社区平台",
+            "og:title": "支付宝开发者社区-学习提问互动交流开放社区",
+            "og:url": "https://developers.alipay.com/portal/forum",
+            "og:image": "https://img.alicdn.com/imgextra/i3/O1CN015WST0s1JMuo288dhK_!!6000000001015-0-tps-750-750.jpg",
+            "og:description": "支付宝开放社区，作为支付宝开发者开发支付宝小程序、支付宝生活号、网页移动应用过程中碰到问题相互交流、经验文章分享的社区平台"
+          },
+          "external": {
+            "prefetch": {
+              "https://gw.alipayobjects.com/render/p/yuyan/180020010001210095/umi.ee68043e.js": {
+                "as": "script",
+                "crossorigin": "anonymous"
+              },
+              "https://gw.alipayobjects.com/render/p/yuyan/180020010001210095/umi.86aca0f7.css": {
+                "as": "style"
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/32613e85-async.28bb0a6e.js": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_2-async.530f51ff.css": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_2-async.c9f39c56.js": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/common-async.8d7048e1.css": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/common-async.86342db2.js": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_0-async.952a3e57.css": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_0-async.380450c6.js": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_1-async.c794b573.css": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/vendors_1-async.bbb43225.js": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/6d1f3159-async.d07ffd3c.css": {
+                "as": "style",
+                "crossorigin": ""
+              },
+              "https://render.alipay.com/p/yuyan/180020010001210095/6d1f3159-async.3c50cc04.js": {
+                "as": "style",
+                "crossorigin": ""
+              }
+            },
+            "icon": {
+              "https://mdn.alipayobjects.com/huamei_llciku/afts/img/A*ofPZSqIRTxYAAAAAAAAAAAAADsTiAQ/original": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 3012
+          }
+        },
+        {
+          "title": "支付宝开放平台",
+          "url": "https://open.alipay.com/",
+          "description": "支付宝开放平台基于支付宝的海量用户，将强大的支付、营销、数据能力，通过接口等形式开放给第三方合作伙伴，帮助第三方合作伙伴创建更具竞争力的应用",
+          "content": "[![Image 1: 支付宝](https://mdn.alipayobjects.com/huamei_r48i2l/afts/img/A*IOPwSY89vAcAAAAAAAAAAAAADqWPAQ/original)](https://open.alipay.com/)\n\n*   [首页](https://open.alipay.com/)\n\n*   [文档中心](https://open.alipay.com/)\n\n*   [API](https://open.alipay.com/api)\n\n*   [解决方案](https://open.alipay.com/portal/solution/solution-center/home?portal=O)\n\n*   [学堂](https://open.alipay.com/portal/college)\n\n*   [社区](https://open.alipay.com/portal/forum)\n\n![Image 2: search-icon](https://mdn.alipayobjects.com/huamei_vasq7e/afts/img/A*KNFDRKK6ii0AAAAAAAAAAAAADiZ9AQ/original)\n\n[控制台](https://open.alipay.com/develop/manage)[注册](https://open.alipay.com/portal/register)\n\n登录\n\n[AI智能体商业信任协议上线 揭秘如何“一句话让AI帮忙买奶茶” 查看详情](https://open.alipay.com/portal/forum/post/234201012)\n\n*   支付宝AI开放平台开启邀测\n\n诚邀商家及服务商体验 \n*   WeaveFox支持支付宝支付\n\n创意/知识/服务，让想法落地并变现 \n*   2026电商AI挑战赛\n\n百万奖项，寻找「电商+AI」新星 \n*   AI智能体商业信任协议上线\n\n揭秘如何“一句话让AI帮忙买奶茶” \n\n平台公告\n\n[关于2026年春节期间小程序、生活号、服务等审核服务时间调整通知](https://open.alipay.com/portal/forum/post/235401011)\n\n开发接入\n\n### 小程序开发\n\n自主开发小程序，共享支付宝流量\n\n[开发工具](https://opendocs.alipay.com/mini/ide)[开发文档](https://opendocs.alipay.com/mini)\n\n### 第三方应用开发\n\n服务商通过第三方应用构建服务能力\n\n[开发工具](https://opendocs.alipay.com/isv/03l221)[开发文档](https://opendocs.alipay.com/isv)\n\n### 网页/移动应用开发\n\n将网站/移动App应用接入支付、会员等多样支付宝能力\n\n[开发工具](https://opendocs.alipay.com/open/009ys9)[开发文档](https://opendocs.alipay.com/open/01bxlm)\n\n### IoT开发\n\n支付宝IoT，快速接入硬件服务能力\n\n[服务组件](https://opendocs.alipay.com/iot/05dlbf?pathHash=e175e130)[开发文档](https://opendocs.alipay.com/iot/05gnnj?pathHash=c5bf686f)\n\n### 小游戏开发\n\n即点即玩，轻松实现拉新、留存\n\n[开发工具](https://opendocs.alipay.com/mini-game/094n6m)[开发文档](https://opendocs.alipay.com/mini-game/08tzon)\n\n### 生活号\n\n支付宝生活号，让内容转化更高效\n\n[操作指南](https://opendocs.alipay.com/b/03awbs)[规则规范](https://opendocs.alipay.com/b/0a96me)",
+          "publishedTime": "Mon, 12 Jul 2021 10:38:05 GMT",
+          "metadata": {
+            "viewport": "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0",
+            "bm_app_id": [
+              "null",
+              "null"
+            ],
+            "bm_sprint_id": [
+              "S090011766349",
+              "S090011766349"
+            ],
+            "data-aspm": [
+              "a316",
+              "a316"
+            ],
+            "data-bizType": [
+              "pcwallet",
+              "pcwallet"
+            ],
+            "tern-framework-version": "S090011745095",
+            "description": "支付宝开放平台基于支付宝的海量用户，将强大的支付、营销、数据能力，通过接口等形式开放给第三方合作伙伴，帮助第三方合作伙伴创建更具竞争力的应用",
+            "keywords": "小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,SDK,小程序开发者工具,密钥管理,小程序CLI,API集成工具集,小程序全息检测,小程序监控,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,SDK,小程序开发者工具,密钥管理,小程序CLI,API集成工具集,小程序全息检测,小程序监控,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,SDK,小程序开发者工具,密钥管理,小程序CLI,API集成工具集,小程序全息检测,小程序监控,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,SDK,小程序开发者工具,密钥管理,小程序CLI,API集成工具集,小程序全息检测,小程序监控,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,支付宝,小程序开发,入门,开放平台,小程序开发,入门,开放平台,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝,小程序开发,入门,实战,小程序云,小程序开发,入门,开放平台,支付宝"
+          },
+          "external": {
+            "icon": {
+              "https://mdn.alipayobjects.com/huamei_llciku/afts/img/A*ofPZSqIRTxYAAAAAAAAAAAAADsTiAQ/original": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 902
+          }
+        },
+        {
+          "title": "注册 - 支付宝",
+          "url": "https://www.alipay.com/user/reg_select.htm",
+          "description": "欢迎免费注册支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还款等生活服务应用；为广大为从事电子商务的网站提供支付产品/支付服务的在线订购和技术支持等服务，帮助商家快速接入支付工具，高效、安全、快捷地开展电子商务。",
+          "content": "[![Image 1: 支付宝-注册](https://gw.alipayobjects.com/mdn/rms_7e962d/afts/img/A*yCL8TrkjIx8AAAAAAAAAAAAAARQnAQ)](https://www.alipay.com/ \"支付宝-注册\")**注册**\n\n[登录](https://auth.alipay.com/login/index.htm?needTransfer=true&goto=http://memberprod.alipay.com/account/reg/index.htm)_-_[注册](https://lab.alipay.com/user/reg/index.htm)_|_\n\n[我的支付宝](https://lab.alipay.com/user/i.htm)\n\n*   [账户管理](https://lab.alipay.com/user/assets/index.htm)\n*   [交易记录](https://lab.alipay.com/consume/record/index.htm)\n*   [安全中心](https://securitycenter.alipay.com/sc/index.htm)\n*   [应用中心](https://app.alipay.com/)\n\n_|_[服务大厅](http://help.alipay.com/)_|_[提建议](https://egg.alipay.com/)_|_\n\n[更多](https://www.alipay.com/user/reg_select.htm#)\n\n*   [无线支付](http://mobile.alipay.com/ \"无线支付\")\n*   [理财专区](https://financeprod.alipay.com/account/finance/index.htm \"理财专区\")\n*   [商家服务](https://b.alipay.com/newIndex.htm?src=person_alipay_001 \"商家服务\")\n*   [返回支付宝首页](https://www.alipay.com/ \"返回支付宝首页\")\n\n1.   - _y_ _1_ 创建账户 \n2.   - _y_ _2_ 设置身份信息 \n3.   - _y_ _3_ 设置支付方式 \n4.   - _y_ __ 成功 \n\n*   [个人账户](https://memberprod.alipay.com/account/reg/index.htm)\n*   [企业账户](https://memberprod.alipay.com/account/reg/enterpriseIndex.htm?scene=mp)\n\n注册\n\n国籍/地区 [中国大陆](https://www.alipay.com/user/reg_select.htm#)\n\n手机号 86\n\n短信校验码 \n\n获取验证码\n\n校验码短信已发送到你的手机上，有效时间为10分钟，请及时查收。 发送短信失败。 \n\n正在提交信息\n\n[使用邮箱注册](https://memberprod.alipay.com/account/reg/email.htm)\n\n非中国大陆手机号\n\n请通过支付宝APP进行注册\n\n更安全、更便捷、享受服务\n\n去支付宝APP注册\n\n更安全·更快捷·享服务\n\n仍在电脑上用手机号/邮箱注册，点击切换\n\n## 注册支付宝，开启支付新旅程\n\n### 支付通畅无阻\n\n100+家合作银行\n\n### 网购安心无忧\n\n3大安全保障\n\n### 在家也能缴费还款\n\n35个生活应用\n\n[ICP证：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)\n\n memberprod-43-109 \n\nonlineServer\n\n*   中国大陆 86\n*   阿森松岛 247\n*   安道尔 376\n*   阿联酋 971\n*   阿富汗 93\n*   安圭拉 1264\n*   阿尔巴尼亚 355\n*   亚美尼亚 374\n*   安哥拉 244\n*   安提瓜和巴布达 1268\n*   阿根廷 54\n*   阿鲁巴 297\n*   美属萨摩亚 1684\n*   奥地利 43\n*   澳大利亚 61\n*   奥兰群岛 358\n*   阿塞拜疆 994\n*   波斯尼亚和黑塞哥维那 387\n*   巴哈马 1242\n*   巴林 973\n*   巴巴多斯 1246\n*   孟加拉国 880\n*   比利时 32\n*   伯利兹 501\n*   贝宁 229\n*   保加利亚 359\n*   不丹 975\n*   圣巴泰勒米 590\n*   百慕大 1441\n*   玻利维亚 591\n*   荷兰加勒比区 599\n*   巴西 55\n*   文莱 673\n*   布基纳法索 226\n*   布隆迪 257\n*   博茨瓦纳 267\n*   白俄罗斯 375\n*   加拿大 1\n*   喀麦隆 237\n*   佛得角 238\n*   科科斯群岛 61\n*   中非共和国 236\n*   刚果（布）242\n*   瑞士 41\n*   乍得 235\n*   科特迪瓦 225\n*   智利 56\n*   哥伦比亚 57\n*   科摩罗 269\n*   库克群岛 682\n*   哥斯达黎加 506\n*   克罗地亚 385\n*   库拉索 599\n*   圣诞岛 61\n*   塞浦路斯 357\n*   捷克 420\n*   开曼群岛 1345\n*   德国 49\n*   吉布提 253\n*   丹麦 45\n*   多米尼克 1767\n*   多米尼加共和国 1809\n*   多米尼加共和国 1849\n*   多米尼加共和国 1829\n*   阿尔及利亚 213\n*   刚果共和国 243\n*   东帝汶 670\n*   厄瓜多尔 593\n*   爱沙尼亚 372\n*   埃及 20\n*   西撒哈拉 212\n*   萨尔瓦多 503\n*   赤道几内亚 240\n*   厄立特里亚 291\n*   西班牙 34\n*   荷属圣马丁 1721\n*   埃塞俄比亚 251\n*   法罗群岛 298\n*   芬兰 358\n*   斐济 679\n*   福克兰群岛 500\n*   法国 33\n*   法属波利尼西亚 689\n*   加蓬 241\n*   冈比亚 220\n*   英国 44\n*   格鲁吉亚 995\n*   法属圭亚那 594\n*   格恩西岛 44\n*   加纳 233\n*   直布罗陀 350\n*   瓜德罗普岛 590\n*   希腊 30\n*   格陵兰岛 299\n*   关岛 1671\n*   危地马拉 502\n*   几内亚比绍 245\n*   几内亚 224\n*   圭亚那 592\n*   格林纳达 1473\n*   海地 509\n*   中国香港 852\n*   洪都拉斯 504\n*   匈牙利 36\n*   冰岛 354\n*   印度尼西亚 62\n*   爱尔兰 353\n*   以色列 972\n*   马恩岛 44\n*   印度 91\n*   英属印度洋领地 246\n*   伊拉克 964\n*   意大利 39\n*   牙买加 1876\n*   泽西岛 44\n*   约旦 962\n*   日本 81\n*   肯尼亚 254\n*   吉尔吉斯坦 996\n*   柬埔寨 855\n*   基里巴斯 686\n*   圣基茨和尼维斯 1869\n*   韩国 82\n*   科威特 965\n*   哈萨克斯坦 7\n*   拉脱维亚 371\n*   圣卢西亚 1758\n*   黎巴嫩 961\n*   莱索托 266\n*   利比里亚 231\n*   利比亚 218\n*   列支敦士登 423\n*   斯里兰卡 94\n*   立陶宛 370\n*   卢森堡 352\n*   老挝 856\n*   摩洛哥 212\n*   马其顿 389\n*   马达加斯加 261\n*   马拉维 265\n*   马尔代夫 960\n*   马里 223\n*   马耳他 356\n*   毛里塔尼亚 222\n*   毛里求斯 230\n*   黑山共和国 382\n*   法属圣马丁 590\n*   马绍尔群岛 692\n*   密克罗尼西亚 691\n*   马里亚纳群岛 1670\n*   蒙古 976\n*   中国澳门 853\n*   摩尔多瓦 373\n*   摩纳哥 377\n*   蒙特斯拉特岛 1664\n*   莫桑比克 258\n*   马提尼克群岛 596\n*   墨西哥 52\n*   马来西亚 60\n*   缅甸 95\n*   纳米比亚 264\n*   新喀里多尼亚 687\n*   尼泊尔 977\n*   诺福克岛 672\n*   尼日利亚 234\n*   尼加拉瓜 505\n*   尼日尔 227\n*   荷兰 31\n*   挪威 47\n*   瑙鲁 674\n*   纽埃 683\n*   新西兰 64\n*   阿曼 968\n*   帕劳 680\n*   巴勒斯坦 970\n*   巴拿马 507\n*   巴布亚新几内亚 675\n*   巴拉圭 595\n*   秘鲁 51\n*   菲律宾 63\n*   巴基斯坦 92\n*   波兰 48\n*   圣皮埃尔和密克隆 508\n*   波多黎各 1939\n*   波多黎各 1787\n*   葡萄牙 351\n*   卡塔尔 974\n*   留尼汪 262\n*   罗马尼亚 40\n*   塞尔维亚 381\n*   俄罗斯 7\n*   卢旺达 250\n*   沙特阿拉伯 966\n*   圣马力诺 378\n*   苏丹 249\n*   瑞典 46\n*   塞内加尔 221\n*   塞舌尔 248\n*   新加坡 65\n*   圣赫勒拿 290\n*   塞拉利昂 232\n*   斯瓦尔巴特和扬马延 47\n*   斯洛伐克 421\n*   斯洛文尼亚 386\n*   所罗门群岛 677\n*   索马里 252\n*   南苏丹 211\n*   圣多美及普林西比 239\n*   苏里南 597\n*   斯威士兰 268\n*   塔吉克斯坦 992\n*   坦桑尼亚 255\n*   特克斯和凯科斯群岛 1649\n*   泰国 66\n*   托克劳 690\n*   突尼斯 216\n*   多哥 228\n*   汤加 676\n*   土耳其 90\n*   特立尼达和多巴哥 1868\n*   土库曼斯坦 993\n*   美属维京群岛 1340\n*   图瓦卢 688\n*   中国台湾 886\n*   乌克兰 380\n*   乌干达 256\n*   乌拉圭 598\n*   美国 1\n*   乌兹别克斯坦 998\n*   梵蒂冈 379\n*   圣文森特和格林纳丁斯 1784\n*   委内瑞拉 58\n*   英属维尔京群岛 1284\n*   越南 84\n*   瓦努阿图 678\n*   瓦利斯和富图纳 681\n*   萨摩亚 685\n*   也门 967\n*   马约特 262\n*   南非 27\n*   赞比亚 260\n*   津巴布韦 263\n\n*   中国大陆\n*   中国香港\n*   中国澳门\n*   中国台湾\n\n*   亚洲\n*   欧洲\n*   美洲\n*   非洲\n*   大洋洲\n\n*   Cambodia（柬埔寨）\n*   India（印度）\n*   Indonesia（印度尼西亚）\n*   Israel（以色列）\n*   Japan（日本）\n*   Jordan（约旦）\n*   Kyrgyzstan（吉尔吉斯斯坦）\n*   Malaysia（马来西亚）\n*   Maldives（马尔代夫）\n*   Mongolia（蒙古）\n*   Philippines（菲律宾）\n*   Qatar（卡塔尔）\n*   Saudi Arabia（沙特阿拉伯）\n*   Singapore（新加坡）\n*   South Korea（韩国）\n*   Sri Lanka（斯里兰卡）\n*   Turkey（土耳其）\n*   Thailand（泰国）\n*   United Arab Emirates（阿联酋）\n*   Vietnam（越南）\n*   Austria（奥地利）\n*   Belarus（白俄罗斯）\n*   Belgium（比利时）\n*   Bulgaria（保加利亚）\n*   Denmark（丹麦）\n*   Estonia（爱沙尼亚）\n*   Finland（芬兰）\n*   France（法国）\n*   Germany（德国）\n*   Greece（希腊）\n*   Hungary（匈牙利）\n*   Ireland（爱尔兰）\n*   Italy（意大利）\n*   Lithuania（立陶宛）\n*   Luxembourg（卢森堡）\n*   Netherlands（荷兰）\n*   Norway（挪威）\n*   Poland（波兰）\n*   Portugal（葡萄牙）\n*   Romania（罗马尼亚）\n*   Russia（俄罗斯）\n*   Serbia（塞尔维亚）\n*   Spain（西班牙）\n*   Sweden（瑞典）\n*   Switzerland（瑞士）\n*   Ukraine（乌克兰）\n*   United Kingdom（英国）\n*   Argentina（阿根廷）\n*   Bahamas（巴哈马）\n*   Belize（伯利兹）\n*   Brazil（巴西）\n*   Canada（加拿大）\n*   Chile（智利）\n*   Colombia（哥伦比亚）\n*   Mexico（墨西哥）\n*   Panama（巴拿马）\n*   Peru（秘鲁）\n*   United States（美国）\n*   Venezuela（委内瑞拉）\n*   Virgin Islands, British（英属维尔京群岛）\n*   Egypt（埃及）\n*   Morocco（摩洛哥）\n*   Nigeria（尼日利亚）\n*   Seychelles（塞舌尔）\n*   South Africa（南非）\n*   Tunisia（突尼斯）\n*   Australia（澳大利亚）\n*   New Zealand（新西兰）",
+          "metadata": {
+            "keywords": "会员注册,支付宝免费注册,支付宝注册,开通支付宝,注册支付宝账户,手机号码注册/Email注册,网上支付/网购付款/在线支付/在线付款",
+            "description": "欢迎免费注册支付宝，支付宝-全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验以及转账收款/水电煤缴费/信用卡还款等生活服务应用；为广大为从事电子商务的网站提供支付产品/支付服务的在线订购和技术支持等服务，帮助商家快速接入支付工具，高效、安全、快捷地开展电子商务。"
+          },
+          "external": {
+            "icon": {
+              "https://i.alipayobjects.com/common/favicon/favicon.ico": {
+                "type": "image/x-icon"
+              }
+            },
+            "dns-prefetch": {
+              "https://a.alipayobjects.com/": {},
+              "https://app.alipay.com/": {},
+              "https://my.alipay.com/": {},
+              "https://lab.alipay.com/": {},
+              "https://cashier.alipay.com/": {},
+              "https://financeprod.alipay.com/": {},
+              "https://shenghuo.alipay.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 4442
+          }
+        },
+        {
+          "title": "支付宝 - Google Play 上的应用",
+          "url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+          "description": "蚂蚁集团旗下支付宝，是服务10亿用户的全球领先数字支付与服务业数字化开放平台，为消费者、商家提供便捷安全支付服务，提供超1000多种生活服务。",
+          "content": "[游戏](https://play.google.com/store/games)[应用](https://play.google.com/store/apps)[影视](https://play.google.com/store/movies)[图书](https://play.google.com/store/books)[儿童](https://play.google.com/store/apps/category/FAMILY)\n\n[google_logo Play](https://play.google.com/store/games)\n\n游戏 应用 影视 图书 儿童 none\n\n_search_\n\n_help\\_outline_\n\n![Image 1](https://fonts.gstatic.com/s/i/productlogos/avatar_anonymous/v4/web-32dp/logo_avatar_anonymous_color_1x_web_32dp.png)\n\n*   使用 Google 账号登录\n\n*   _play\\_apps_ 内容库和设备\n*   _payment_ 付款和订阅\n*   _reviews_ 我的 Play 活动\n*   _redeem_ 优惠\n*   Play Pass\n\n*   Google Play 个性化功能\n*   _settings_ 设置\n\n[隐私权政策](https://policies.google.com/privacy) • [服务条款](https://myaccount.google.com/termsofservice)\n\n[游戏](https://play.google.com/store/games)[应用](https://play.google.com/store/apps)[影视](https://play.google.com/store/movies)[图书](https://play.google.com/store/books)[儿童](https://play.google.com/store/apps/category/FAMILY)\n\n![Image 2: 图标图片](https://play-lh.googleusercontent.com/raf2k-_bwYkIcVNR0qL1n1VAGnusnflf9SuXOBZJ227X1eB8ILjS9G3ddIla5DbKi2nUw1QN_ibzYnX58UpEmZI=w240-h480-rw)![Image 3: 图标图片](https://play-lh.googleusercontent.com/raf2k-_bwYkIcVNR0qL1n1VAGnusnflf9SuXOBZJ227X1eB8ILjS9G3ddIla5DbKi2nUw1QN_ibzYnX58UpEmZI=w240-h480-rw)\n\n![Image 4: 图标图片](https://play-lh.googleusercontent.com/raf2k-_bwYkIcVNR0qL1n1VAGnusnflf9SuXOBZJ227X1eB8ILjS9G3ddIla5DbKi2nUw1QN_ibzYnX58UpEmZI=w240-h480-rw)\n\n# 支付宝\n\n[Alipay (Hangzhou) Technology Co. Ltd](https://play.google.com/store/apps/developer?id=Alipay+%28Hangzhou%29+Technology+Co.+Ltd)\n\n2.6 _star_\n\n8.28万条评价\n\n![Image 5: 内容分级](https://play-lh.googleusercontent.com/xl04GurQer374yogi24hRkvUcXtMStMOcOo86Sprmrid9j6wQHF0d9xMh73CwUEg57lbsGIwpOXgrJ927Q=w48-h16-rw)\n\n青少年\n\n_info_\n\n1,000万+\n\n次下载\n\n安装\n\n分享\n\n添加到心愿单\n\n![Image 6: 内容分级](https://play-lh.googleusercontent.com/xl04GurQer374yogi24hRkvUcXtMStMOcOo86Sprmrid9j6wQHF0d9xMh73CwUEg57lbsGIwpOXgrJ927Q=s38-rw)\n\n青少年\n\n用户互动、分享位置、应用内购买\n\n[了解详情](https://support.google.com/googleplay?p=appgame_ratings)\n\n![Image 7: 屏幕截图图片](https://play-lh.googleusercontent.com/lAzsgPuLPQZpG2Yrj3qiVquVNPhpbkcstmKPxXF-vnR1gIZXkmmxWe1QxQtNuiIMr1pl4L2WxHc-_OBNwfBYXQ=w526-h296-rw)\n\n![Image 8: 屏幕截图图片](https://play-lh.googleusercontent.com/FV5J9bWnk46boNwgA1BKH8O0JDQv8VIwQQeBZdFayQ5ImbZJxBk2T1w1kg7e40o7_6C58tZDlL1d99LILZh9ag=w526-h296-rw)\n\n![Image 9: 屏幕截图图片](https://play-lh.googleusercontent.com/0dvaztmeQdNOmZ-UgASCvGzf_vMm9G513jTlX8MeQUrH3ymihUFbcohEqL-_CbFdeZ7ZAGnkrY2X1BullFSPUks=w526-h296-rw)\n\n![Image 10: 屏幕截图图片](https://play-lh.googleusercontent.com/A8bHM74NmQBYlKpY_C5QkIhffjg8_a46GIXHhFOX64votkEP-td7S68AYeKraAErS72dYg8ZM-A_Mt8qQH1o=w526-h296-rw)\n\n![Image 11: 屏幕截图图片](https://play-lh.googleusercontent.com/5y3IYgpcSfrV74mOR5qmshgz8kwz5iH6GzZewNsAMymPjuGyv7Z-CNuql6S6m3rgPkIr9TiBR6hpix-nXdw3Gg=w526-h296-rw)\n\n## 关于此应用\n\n_arrow\\_forward_\n\n蚂蚁集团旗下支付宝，是全球领先的数字支付开放平台与服务业数字化开放平台，已经服务10亿用户。我们面向消费者、商家提供便捷、安全的数字支付服务，面向合作伙伴持续开放技术、产品，助力实现数字化升级。\n\n目前，商家、机构合作伙伴通过支付宝APP为消费者提供政务办事、扫码点单、生活缴费等超过1000种生活服务。\n\n更新日期\n\n2026年5月20日\n\n财务[](https://play.google.com/store/apps/category/FINANCE)\n\n## 数据安全\n\n_arrow\\_forward_[](https://play.google.com/store/apps/datasafety?id=com.eg.android.AlipayGphone)\n\n安全始于了解开发者如何收集和分享数据。数据隐私保护和安全措施可能会因您的使用情况、所在地区和用户年龄而异。此类信息由开发者提供，可能会随时间更新。\n\n![Image 12: 图标图片](https://play-lh.googleusercontent.com/iFstqoxDElUVv4T3KxkxP3OTcuFvWF5ZQQjT7aIxy4n2uaVigCCykxeG6EZV9FQ10X1itPj1oORm=s20-rw)\n\n不与第三方分享任何数据\n\n[详细了解](https://support.google.com/googleplay?p=data-safety&hl=zh)开发者如何声明数据分享事宜\n\n![Image 13: 图标图片](https://play-lh.googleusercontent.com/12USW7aflgz466ifDehKTnMoAep_VHxDmKJ6jEBoDZWCSefOC-ThRX14Mqe0r8KF9XCzrpMqJts=s20-rw)\n\n此应用可能会收集这些类型的数据\n\n位置信息、个人信息和另外 5 种数据\n\n![Image 14: 图标图片](https://play-lh.googleusercontent.com/W5DPtvB8Fhmkn5LbFZki_OHL3ZI1Rdc-AFul19UK4f7np2NMjLE5QquD6H0HAeEJ977u3WH4yaQ=s20-rw)\n\n数据在传输过程中会加密\n\n![Image 15: 图标图片](https://play-lh.googleusercontent.com/ohRyQRA9rNfhp7xLW0MtW1soD8SEX45Oec7MyH3FaxtukWUG_6GKVpvh3JiugzryLi7Bia02HPw=s20-rw)\n\n您可以要求开发者删除数据\n\n查看详情[](https://play.google.com/store/apps/datasafety?id=com.eg.android.AlipayGphone)\n\n## 评分和评价\n\n评分和评价已经过验证 _info\\_outline_\n\n_arrow\\_forward_\n\n评分和评价已经过验证 _info\\_outline_\n\n_phone\\_android_ 手机\n\n_laptop_ Chromebook\n\n_tablet\\_android_ 平板电脑\n\n2.6\n\n8.17万条评价\n\n5\n\n4\n\n3\n\n2\n\n1\n\n![Image 16](https://play-lh.googleusercontent.com/a/ACg8ocJp_0K7wFfPqsadcKBIZSaMb2dVEZ2qoeg6T3jCVYd7cDf0dw=s32-rw-mo)\n\nyin huhu\n\n_more\\_vert_\n\n*   举报不当评价\n\n2026年7月2日\n\n一个支付宝，个人信息就根本没有了，各种跳转app、小程序，每一个都后台读取设备信息。国产软件都这样，这就是落后的原因，根本就不会让人感觉能放心使用，以点观面其他只会更严重\n\n1 人认为该评价有用\n\n您认为该评价有用吗？\n\n是\n\n否\n\n![Image 17](https://play-lh.googleusercontent.com/a-/ALV-UjWt83McJEP2vOjvi7JSyR6lw-us8bR-tnycKaJlzc93t3H497o=s32-rw)\n\nJIANG JIANG\n\n_more\\_vert_\n\n*   举报不当评价\n*   显示评价记录\n\n2026年7月4日\n\n真的是拉垮完了，评价完了，哦，现在余额宝提现都不给直接提了。又是输入密码，又是扫脸，又是上下左右眨眼张嘴，又是要接那该死的，机器人电话去给他输入个验证。 神经�� 本来只想提一部分的，现在全提完了，后面基金我也找个时间全提了。神经吧。同一个身份实名的支付宝余额宝跟银行卡提现出来跟我说有操作风险，让我接到电话里说我有异常支付，支付个毛线啊，对你们是支付，对我自己是提现啊。 ———————————————————— 我忍你很久了，到底会不会做app啊？每次指纹支付都无法正确识别，都要让我手动输入密码。蚂蚁的水平行不行啊？会不会做啊？三星这问题是一天两天了吗？国内别的app都可以啊，就你们不行。我真服了，拿着工资一天到晚干啥呢？研究怎么给用户塞广告，怎么给用户莫名其妙的改ui布局吗？？？\n\n1 人认为该评价有用\n\n您认为该评价有用吗？\n\n是\n\n否\n\n![Image 18](https://play-lh.googleusercontent.com/a-/ALV-UjVaPWOWytSeDyEIeVG6453XAWgH2hb7V5VKfP8mwgJQLS5OC14=s32-rw)\n\nMU YU\n\n_more\\_vert_\n\n*   举报不当评价\n*   显示评价记录\n\n2026年5月14日\n\n1.广告太多，弹窗太多； 2.获取手机权限太多 3.在某些界面上隐藏默认开其它业务或服务的按钮，稍不注意就开通了。\n\n16 人认为该评价有用\n\n您认为该评价有用吗？\n\n是\n\n否\n\n查看所有评价\n\n## 新变化\n\n支付宝最新版来啦！本次更新：\n\n多项细节优化，体验更流畅。\n\n[_flag_ 举报不当内容](https://support.google.com/googleplay/?p=report_content)\n\n![Image 19: 内容分级](https://play-lh.googleusercontent.com/xl04GurQer374yogi24hRkvUcXtMStMOcOo86Sprmrid9j6wQHF0d9xMh73CwUEg57lbsGIwpOXgrJ927Q=s38-rw)\n\n青少年\n\n用户互动、分享位置、应用内购买\n\n[了解详情](https://support.google.com/googleplay?p=appgame_ratings)\n\n## 应用支持\n\n_expand\\_more_\n\n[_public_ 网站](http://mobile.alipay.com/)\n\n[_email_ 支持团队邮箱 suchang.sc@antfin.com](mailto:suchang.sc@antfin.com)\n\n[_shield_ 隐私权政策](https://ds.alipay.com/fd-ig3hu7fu/index.html)\n\n开发者信息\n\n 支付宝（杭州）数字服务技术有限公司 \n\n yanjin.xx@antgroup.com \n\n 中国 浙江省杭州市 西湖区西溪路543-569号(单号连续)1幢2号楼5层518室 邮政编码: 310023 \n\n +86 139 1144 5019 \n\n## 类似应用\n\n_arrow\\_forward_[](https://play.google.com/store/apps/collection/cluster?gsr=SmRqGEFkNWd6M3pqSDdFc3YrbTZ3V2hKRFE9PcICRAofChtjb20uZWcuYW5kcm9pZC5BbGlwYXlHcGhvbmUQBxgIMAE4AEoVCAEQABoJ5pSv5LuY5a6dIAAoADAAUABYAWAAsBIA:S:ANO1ljKcSC8)\n\n[![Image 20: 缩略图](https://play-lh.googleusercontent.com/dsQ_iB6i-B_FSmgaOpLA-FmHC5U7pjqzV7P6FFr0USeKEl2Y7LqsLQIEeqhjweXHMLUKBF_WOf2TmMOxcYcT=s64-rw) WeChat WeChat 2.9 _star_](https://play.google.com/store/apps/details?id=com.tencent.mm)\n\n[![Image 21: 缩略图](https://play-lh.googleusercontent.com/E9tTBuzm2sUsPZe5cJpqLUysZjECAfRixgmXjJKDk4bx-iSBD5v1tHTr1hGNgsJVG3BXqK6QHAaGK3aSjkpDGT0=s64-rw) imToken: BTC & ETH 钱包 IMTOKEN PTE.LTD. 4.3 _star_](https://play.google.com/store/apps/details?id=im.token.app)\n\n[![Image 22: 缩略图](https://play-lh.googleusercontent.com/hlynFSSrJ7u8duxSPKBWs-hd7hbHaOwCYn5jsAwcvWtD0Bl22B4rXss7Ecrat70v58wQRB1R3Ry-GEef0P_ZI9U=s64-rw) TokenPocket：安全的比特币 & 加密货币多链钱包 TP Global Ltd 4.4 _star_](https://play.google.com/store/apps/details?id=vip.mytokenpocket)\n\n[![Image 23: 缩略图](https://play-lh.googleusercontent.com/9SeHb3IaNFm7sXRQmWZaL5MHqVn4qcBGz12sPgjBisZCFMyZPOCXUFOZIttUu-CiTqQz3alXL7jxxGW1Y4fn=s64-rw) PayPal PayPal Mobile 4.2 _star_](https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile)\n\n[![Image 24: 缩略图](https://play-lh.googleusercontent.com/mHu57jpNFzrVVIT3jMeprI5wewzN2wLz49dGpQ2vodG6mpnmzL2EvEKu-cT3prIVaJKPvaItQQ-E1Nxjv7ns9Q=s64-rw) 火币HTX—加密货币交易所，比特币(BTC)/以太坊交易平台 Huobi 4.0 _star_](https://play.google.com/store/apps/details?id=pro.huobi)\n\n[![Image 25: 缩略图](https://play-lh.googleusercontent.com/gg_0o8hHdN0cWeAfC9JD4mQzcPNtfv0W8to5XMfC2xMeqAtvZ1mFfCF8F7aZb0rVx-cs3kuhAZaX6OQ2WJ1tYw=s64-rw) Naver Papago - AI 翻译 NAVER Corp. 4.5 _star_](https://play.google.com/store/apps/details?id=com.naver.labs.translator)\n\n[_flag_ 举报不当内容](https://support.google.com/googleplay/?p=report_content)\n\nGoogle Play\n\n[Play Pass](https://play.google.com/store/pass/getstarted)\n\n[Play Points](https://play.google.com/store/points/enroll)\n\n[礼品卡](https://play.google.com/about/giftcards)\n\n[兑换](https://play.google.com/redeem)\n\n[退款政策](https://support.google.com/googleplay/answer/134336)\n\n儿童与家庭\n\n[家长指南](https://support.google.com/googleplay?p=pff_parentguide)\n\n[家庭共享](https://support.google.com/googleplay/answer/7007852)\n\n[服务条款](https://play.google.com/intl/zh_us/about/play-terms.html)\n\n[隐私权](https://policies.google.com/privacy)\n\n[关于 Google Play](https://support.google.com/googleplay/?p=about_play)\n\n[开发者](http://developer.android.com/index.html)\n\n[Google Store](https://store.google.com/?playredirect=true&utm_source=play&utm_medium=google_oo&utm_campaign=GS106288)\n\n![Image 26](https://ssl.gstatic.com/store/images/regionflags/us.png)\n\n美国 (中文)",
+          "metadata": {
+            "lang": "zh",
+            "referrer": "origin",
+            "viewport": "width=device-width, initial-scale=1",
+            "mobile-web-app-capable": "yes",
+            "apple-mobile-web-app-capable": "yes",
+            "google-site-verification": [
+              "sBw2N8uateIzRr93vmFze5MF_35vMk5F1wG04L5JcJE",
+              "PJKdyVFC5jlu_l8Wo_hirJkhs1cmitmn44fgpOc3zFc"
+            ],
+            "robots": "NOODP",
+            "og:type": "website",
+            "og:url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+            "twitter:url": "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh",
+            "og:title": "支付宝 - Google Play 上的应用",
+            "description": "蚂蚁集团旗下支付宝，是服务10亿用户的全球领先数字支付与服务业数字化开放平台，为消费者、商家提供便捷安全支付服务，提供超1000多种生活服务。",
+            "og:image": "https://play-lh.googleusercontent.com/raf2k-_bwYkIcVNR0qL1n1VAGnusnflf9SuXOBZJ227X1eB8ILjS9G3ddIla5DbKi2nUw1QN_ibzYnX58UpEmZI",
+            "twitter:card": "summary_large_image",
+            "twitter:site": "@GooglePlay",
+            "twitter:title": "支付宝 - Google Play 上的应用",
+            "twitter:description": "蚂蚁集团旗下支付宝，是服务10亿用户的全球领先数字支付与服务业数字化开放平台，为消费者、商家提供便捷安全支付服务，提供超1000多种生活服务。",
+            "twitter:image": "https://play-lh.googleusercontent.com/raf2k-_bwYkIcVNR0qL1n1VAGnusnflf9SuXOBZJ227X1eB8ILjS9G3ddIla5DbKi2nUw1QN_ibzYnX58UpEmZI=w600-h300-pc0xffffff-pd",
+            "appstore:developer_url": "http://mobile.alipay.com",
+            "appstore:bundle_id": "com.eg.android.AlipayGphone",
+            "appstore:store_id": "com.eg.android.AlipayGphone"
+          },
+          "external": {
+            "preconnect": {
+              "https://www.gstatic.com/": {}
+            },
+            "search": {
+              "https://play.google.com/opensearch.xml": {
+                "type": "application/opensearchdescription+xml",
+                "title": "Google Play"
+              }
+            },
+            "icon": {
+              "https://www.gstatic.com/android/market_images/web/favicon_v3.ico": {}
+            },
+            "canonical": {
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh": {}
+            },
+            "alternate": {
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone": {
+                "hreflang": "x-default"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_US": {
+                "hreflang": "en-US"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=af": {
+                "hreflang": "af"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=am": {
+                "hreflang": "am"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ar": {
+                "hreflang": "ar"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=as": {
+                "hreflang": "as"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=az": {
+                "hreflang": "az"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=be": {
+                "hreflang": "be"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=bg": {
+                "hreflang": "bg"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=bn": {
+                "hreflang": "bn"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=bs": {
+                "hreflang": "bs"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ca": {
+                "hreflang": "ca"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=cs": {
+                "hreflang": "cs"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=da": {
+                "hreflang": "da"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=de": {
+                "hreflang": "de"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=de_AT": {
+                "hreflang": "de-AT"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=de_CH": {
+                "hreflang": "de-CH"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=el": {
+                "hreflang": "el"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en": {
+                "hreflang": "en"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_AU": {
+                "hreflang": "en-AU"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_CA": {
+                "hreflang": "en-CA"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_GB": {
+                "hreflang": "en-GB"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_IE": {
+                "hreflang": "en-IE"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_IN": {
+                "hreflang": "en-IN"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_NZ": {
+                "hreflang": "en-NZ"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_SG": {
+                "hreflang": "en-SG"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_ZA": {
+                "hreflang": "en-ZA"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es": {
+                "hreflang": "es"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_419": {
+                "hreflang": "es-419"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_AR": {
+                "hreflang": "es-AR"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_BO": {
+                "hreflang": "es-BO"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_CL": {
+                "hreflang": "es-CL"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_CO": {
+                "hreflang": "es-CO"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_CR": {
+                "hreflang": "es-CR"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_DO": {
+                "hreflang": "es-DO"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_EC": {
+                "hreflang": "es-EC"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_GT": {
+                "hreflang": "es-GT"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_HN": {
+                "hreflang": "es-HN"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_MX": {
+                "hreflang": "es-MX"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_NI": {
+                "hreflang": "es-NI"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_PA": {
+                "hreflang": "es-PA"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_PE": {
+                "hreflang": "es-PE"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_PR": {
+                "hreflang": "es-PR"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_PY": {
+                "hreflang": "es-PY"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_SV": {
+                "hreflang": "es-SV"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_US": {
+                "hreflang": "es-US"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_UY": {
+                "hreflang": "es-UY"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=es_VE": {
+                "hreflang": "es-VE"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=et": {
+                "hreflang": "et"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=eu": {
+                "hreflang": "eu"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fa": {
+                "hreflang": "fa"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fi": {
+                "hreflang": "fi"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fil": {
+                "hreflang": "fil"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fr": {
+                "hreflang": "fr"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fr_CA": {
+                "hreflang": "fr-CA"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=fr_CH": {
+                "hreflang": "fr-CH"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=gl": {
+                "hreflang": "gl"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=gsw": {
+                "hreflang": "gsw"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=gu": {
+                "hreflang": "gu"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=he": {
+                "hreflang": "he"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=hi": {
+                "hreflang": "hi"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=hr": {
+                "hreflang": "hr"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=hu": {
+                "hreflang": "hu"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=hy": {
+                "hreflang": "hy"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=id": {
+                "hreflang": "id"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=is": {
+                "hreflang": "is"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=it": {
+                "hreflang": "it"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ja": {
+                "hreflang": "ja"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ka": {
+                "hreflang": "ka"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=kk": {
+                "hreflang": "kk"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=km": {
+                "hreflang": "km"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=kn": {
+                "hreflang": "kn"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ko": {
+                "hreflang": "ko"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ky": {
+                "hreflang": "ky"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ln": {
+                "hreflang": "ln"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=lo": {
+                "hreflang": "lo"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=lt": {
+                "hreflang": "lt"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=lv": {
+                "hreflang": "lv"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=mk": {
+                "hreflang": "mk"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ml": {
+                "hreflang": "ml"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=mn": {
+                "hreflang": "mn"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=mr": {
+                "hreflang": "mr"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ms": {
+                "hreflang": "ms"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=my": {
+                "hreflang": "my"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=no": {
+                "hreflang": "no"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ne": {
+                "hreflang": "ne"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=nl": {
+                "hreflang": "nl"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=or": {
+                "hreflang": "or"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=pa": {
+                "hreflang": "pa"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=pl": {
+                "hreflang": "pl"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=pt": {
+                "hreflang": "pt"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=pt_BR": {
+                "hreflang": "pt-BR"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=pt_PT": {
+                "hreflang": "pt-PT"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ro": {
+                "hreflang": "ro"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ru": {
+                "hreflang": "ru"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=si": {
+                "hreflang": "si"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sk": {
+                "hreflang": "sk"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sl": {
+                "hreflang": "sl"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sq": {
+                "hreflang": "sq"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sr": {
+                "hreflang": "sr"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sr_Latn": {
+                "hreflang": "sr-Latn"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sv": {
+                "hreflang": "sv"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=sw": {
+                "hreflang": "sw"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ta": {
+                "hreflang": "ta"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=te": {
+                "hreflang": "te"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=th": {
+                "hreflang": "th"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=tr": {
+                "hreflang": "tr"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=uk": {
+                "hreflang": "uk"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ur": {
+                "hreflang": "ur"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=uz": {
+                "hreflang": "uz"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=vi": {
+                "hreflang": "vi"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh": {
+                "hreflang": "zh"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh_CN": {
+                "hreflang": "zh-CN"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh_HK": {
+                "hreflang": "zh-HK"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zh_TW": {
+                "hreflang": "zh-TW"
+              },
+              "https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=zu": {
+                "hreflang": "zu"
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 4540
+          }
+        },
+        {
+          "title": "Alipay+ | Connecting Global Brands with Mobile Consumers",
+          "url": "https://www.alipayplus.com/",
+          "description": "Alipay+ supports global mobile payment solutions, serving millions of businesses of all sizes. Consumers can pay like locals anywhere using their preferred payment methods, such as e-wallets.",
+          "content": "![Image 1: banner-0](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/15/pmU3nfO/banner-image-1.webp)\n\n![Image 2: banner-1](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/15/7qFasDG/banner-image-2.webp)\n\n![Image 3: banner-2](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/15/pKP9pfB/banner-image-3.webp)\n\n![Image 4: banner-3](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/15/mhOLDyn/banner-image-4.webp)\n\nThe unified gateway for the world's leading payment methods\n\nThe unified wallet gateway for cross-border payment and digital services, connecting global merchants with billions of mobile users worldwide\n\n2\n\nB+\n\nConsumers\n\n50\n\nMobile payment providers\n\n10\n\n+\n\nNational switches\n\n220+\n\nMarkets\n\n150\n\nM+\n\nQR merchants\n\n150\n\nM+\n\nNFC merchants\n\nOne integration. Global interoperability.\n\nAlipay+ is the unified wallet gateway, connecting global merchants to a wide variety of payment methods used by billions of mobile users through a single integration. Consumers can pay using their preferred method, merchants can engage more customers with AI‑powered digital solutions and tailored rewards, and mobile payment providers can harness our advanced wallet tech to build the next generation of super apps — creating a seamless, innovative ecosystem for all.\n\n![Image 5: Brand Title](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/24/n9sCeer/tagline.png)\n\nPay easily across borders with your trusted home wallet — wherever you see ![Image 6: Alipay Plus Consumers](https://www.alipayplus.com/_next/static/media/aplus-logo-with-zhi.9ff6facd.svg).\n\n![Image 7: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/bef7ad26-6033-4550-8edf-14918a5a6ada.svg)\n\n![Image 8: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/066683a7-238c-4dc7-94c8-d46617c3858b.svg)\n\n![Image 9: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fd32991c-48ba-469e-bf92-75bc381ae414.png)\n\n![Image 10: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/27/QbWBqvH/Picture-9.png)\n\n![Image 11: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7bf666e8-9eb6-495b-80bc-5931e60323ff.png)\n\n![Image 12: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/236998fa-21d0-4c7e-a56b-444915304872.svg)\n\n![Image 13: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/28027b08-4340-4ec7-b5da-1dbd69343876.png)\n\n![Image 14: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/ee4f9fcd-b983-4a0d-9581-45e88ceae064.svg)\n\n![Image 15: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/283199aa-c759-4b92-b062-6b34a9b3c104.svg)\n\n![Image 16: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/2c3da5b0-94a5-4798-b4e7-8df1fc6c7d4d.svg)\n\n![Image 17: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fc28d367-8944-4cad-a20a-2931128fb0c0.png)\n\n![Image 18: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/457b8484-af5e-4892-a74c-eeb8e9210bd3.png)\n\n![Image 19: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/d264acc3-a3fd-4ade-8c7f-e894788c6a7b.svg)\n\n![Image 20: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/eIFX0qk/Picture-2.png)\n\n![Image 21: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/pOIhoVr/Picture-6.png)\n\n![Image 22: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/44XylLA/Picture-4.png)\n\n![Image 23: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/5anvSor/Picture-1.png)\n\n![Image 24: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/S46IPHA/CD0C245B-9FC7-4D7A-8F41-333E0E60D9BD.png)\n\n![Image 25: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/2dVI2sq/AE0037F6-48B3-4C28-B1A6-68180EFEE232.png)\n\n![Image 26: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/h8d7Yqa/Margin-3.svg)\n\n![Image 27: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/oTsP5QV/Margin-2.svg)\n\n![Image 28: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/bef7ad26-6033-4550-8edf-14918a5a6ada.svg)\n\n![Image 29: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/066683a7-238c-4dc7-94c8-d46617c3858b.svg)\n\n![Image 30: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fd32991c-48ba-469e-bf92-75bc381ae414.png)\n\n![Image 31: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/27/QbWBqvH/Picture-9.png)\n\n![Image 32: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7bf666e8-9eb6-495b-80bc-5931e60323ff.png)\n\n![Image 33: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/236998fa-21d0-4c7e-a56b-444915304872.svg)\n\n![Image 34: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/28027b08-4340-4ec7-b5da-1dbd69343876.png)\n\n![Image 35: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/ee4f9fcd-b983-4a0d-9581-45e88ceae064.svg)\n\n![Image 36: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/283199aa-c759-4b92-b062-6b34a9b3c104.svg)\n\n![Image 37: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/2c3da5b0-94a5-4798-b4e7-8df1fc6c7d4d.svg)\n\n![Image 38: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fc28d367-8944-4cad-a20a-2931128fb0c0.png)\n\n![Image 39: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/457b8484-af5e-4892-a74c-eeb8e9210bd3.png)\n\n![Image 40: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/d264acc3-a3fd-4ade-8c7f-e894788c6a7b.svg)\n\n![Image 41: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/eIFX0qk/Picture-2.png)\n\n![Image 42: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/pOIhoVr/Picture-6.png)\n\n![Image 43: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/44XylLA/Picture-4.png)\n\n![Image 44: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/5anvSor/Picture-1.png)\n\n![Image 45: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/S46IPHA/CD0C245B-9FC7-4D7A-8F41-333E0E60D9BD.png)\n\n![Image 46: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/2dVI2sq/AE0037F6-48B3-4C28-B1A6-68180EFEE232.png)\n\n![Image 47: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/h8d7Yqa/Margin-3.svg)\n\n![Image 48: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/oTsP5QV/Margin-2.svg)\n\n![Image 49: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/bef7ad26-6033-4550-8edf-14918a5a6ada.svg)\n\n![Image 50: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/066683a7-238c-4dc7-94c8-d46617c3858b.svg)\n\n![Image 51: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fd32991c-48ba-469e-bf92-75bc381ae414.png)\n\n![Image 52: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/27/QbWBqvH/Picture-9.png)\n\n![Image 53: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7bf666e8-9eb6-495b-80bc-5931e60323ff.png)\n\n![Image 54: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/236998fa-21d0-4c7e-a56b-444915304872.svg)\n\n![Image 55: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/28027b08-4340-4ec7-b5da-1dbd69343876.png)\n\n![Image 56: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/ee4f9fcd-b983-4a0d-9581-45e88ceae064.svg)\n\n![Image 57: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/283199aa-c759-4b92-b062-6b34a9b3c104.svg)\n\n![Image 58: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/2c3da5b0-94a5-4798-b4e7-8df1fc6c7d4d.svg)\n\n![Image 59: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fc28d367-8944-4cad-a20a-2931128fb0c0.png)\n\n![Image 60: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/457b8484-af5e-4892-a74c-eeb8e9210bd3.png)\n\n![Image 61: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/d264acc3-a3fd-4ade-8c7f-e894788c6a7b.svg)\n\n![Image 62: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/eIFX0qk/Picture-2.png)\n\n![Image 63: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/pOIhoVr/Picture-6.png)\n\n![Image 64: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/44XylLA/Picture-4.png)\n\n![Image 65: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/5anvSor/Picture-1.png)\n\n![Image 66: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/S46IPHA/CD0C245B-9FC7-4D7A-8F41-333E0E60D9BD.png)\n\n![Image 67: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/2dVI2sq/AE0037F6-48B3-4C28-B1A6-68180EFEE232.png)\n\n![Image 68: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/h8d7Yqa/Margin-3.svg)\n\n![Image 69: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/oTsP5QV/Margin-2.svg)\n\n![Image 70: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/bef7ad26-6033-4550-8edf-14918a5a6ada.svg)\n\n![Image 71: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/066683a7-238c-4dc7-94c8-d46617c3858b.svg)\n\n![Image 72: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fd32991c-48ba-469e-bf92-75bc381ae414.png)\n\n![Image 73: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/27/QbWBqvH/Picture-9.png)\n\n![Image 74: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7bf666e8-9eb6-495b-80bc-5931e60323ff.png)\n\n![Image 75: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/236998fa-21d0-4c7e-a56b-444915304872.svg)\n\n![Image 76: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/28027b08-4340-4ec7-b5da-1dbd69343876.png)\n\n![Image 77: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/ee4f9fcd-b983-4a0d-9581-45e88ceae064.svg)\n\n![Image 78: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/283199aa-c759-4b92-b062-6b34a9b3c104.svg)\n\n![Image 79: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/2c3da5b0-94a5-4798-b4e7-8df1fc6c7d4d.svg)\n\n![Image 80: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/fc28d367-8944-4cad-a20a-2931128fb0c0.png)\n\n![Image 81: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/457b8484-af5e-4892-a74c-eeb8e9210bd3.png)\n\n![Image 82: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/d264acc3-a3fd-4ade-8c7f-e894788c6a7b.svg)\n\n![Image 83: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/eIFX0qk/Picture-2.png)\n\n![Image 84: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/pOIhoVr/Picture-6.png)\n\n![Image 85: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/44XylLA/Picture-4.png)\n\n![Image 86: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/5anvSor/Picture-1.png)\n\n![Image 87: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/S46IPHA/CD0C245B-9FC7-4D7A-8F41-333E0E60D9BD.png)\n\n![Image 88: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/2dVI2sq/AE0037F6-48B3-4C28-B1A6-68180EFEE232.png)\n\n![Image 89: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/h8d7Yqa/Margin-3.svg)\n\n![Image 90: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/01/oTsP5QV/Margin-2.svg)\n\n![Image 91: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c7fda299-7072-4a03-867a-cdaa341e778d.svg)\n\n![Image 92: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7db65dad-928e-4d8b-ae28-dbd58b83bbfc.png)\n\n![Image 93: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/28/5bdb2f74-a0ec-4df3-bc78-42043a5a2ef3.svg)\n\n![Image 94: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/36475087-688b-4c16-8474-8d4c10e72e9e.svg)\n\n![Image 95: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/df2bfefd-998c-4baf-ae9b-7fb0d9ef2c98.svg)\n\n![Image 96: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/4c0aec5c-ad60-4bd9-b95a-26a344b60344.svg)\n\n![Image 97: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c549e05a-6127-4eae-b9c5-38f52ef2a4bc.svg)\n\n![Image 98: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/12a8bde1-a34a-4ff2-8448-eeaa63b5c2e2.svg)\n\n![Image 99: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c2a3caf6-1538-474e-b870-6cdd4443ff64.png)\n\n![Image 100: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/95b50f15-6844-4e64-945e-5478c44e5c1e.svg)\n\n![Image 101: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/zZCdvSw/Margin.png)\n\n![Image 102: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/852fdd9f-8cc2-4054-9c94-fa86e9d15c57.svg)\n\n![Image 103: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/e49f374a-fb8c-4b1c-af8e-2e060312e7e8.svg)\n\n![Image 104: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/a9a8ebaf-a940-4cad-8e9d-207e9262a84f.svg)\n\n![Image 105: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/3ynYPOq/Picture-5.png)\n\n![Image 106: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/q12Fd8q/Picture-7.png)\n\n![Image 107: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/vKQcsJK/Picture-3.png)\n\n![Image 108: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/k4bB6f9/Picture-8.png)\n\n![Image 109: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/NGZakx6/71C02FA0-2F38-4F66-938C-EFA36413C2B4.png)\n\n![Image 110: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/31/S6mibL1/1774852445800-23680136-56ea-4da5-baf4-d4a55bae7e37.png)\n\n![Image 111: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/03/lA3j7qG/tuceng_1.svg)\n\n![Image 112: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c7fda299-7072-4a03-867a-cdaa341e778d.svg)\n\n![Image 113: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7db65dad-928e-4d8b-ae28-dbd58b83bbfc.png)\n\n![Image 114: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/28/5bdb2f74-a0ec-4df3-bc78-42043a5a2ef3.svg)\n\n![Image 115: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/36475087-688b-4c16-8474-8d4c10e72e9e.svg)\n\n![Image 116: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/df2bfefd-998c-4baf-ae9b-7fb0d9ef2c98.svg)\n\n![Image 117: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/4c0aec5c-ad60-4bd9-b95a-26a344b60344.svg)\n\n![Image 118: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c549e05a-6127-4eae-b9c5-38f52ef2a4bc.svg)\n\n![Image 119: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/12a8bde1-a34a-4ff2-8448-eeaa63b5c2e2.svg)\n\n![Image 120: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c2a3caf6-1538-474e-b870-6cdd4443ff64.png)\n\n![Image 121: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/95b50f15-6844-4e64-945e-5478c44e5c1e.svg)\n\n![Image 122: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/zZCdvSw/Margin.png)\n\n![Image 123: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/852fdd9f-8cc2-4054-9c94-fa86e9d15c57.svg)\n\n![Image 124: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/e49f374a-fb8c-4b1c-af8e-2e060312e7e8.svg)\n\n![Image 125: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/a9a8ebaf-a940-4cad-8e9d-207e9262a84f.svg)\n\n![Image 126: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/3ynYPOq/Picture-5.png)\n\n![Image 127: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/q12Fd8q/Picture-7.png)\n\n![Image 128: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/vKQcsJK/Picture-3.png)\n\n![Image 129: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/k4bB6f9/Picture-8.png)\n\n![Image 130: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/NGZakx6/71C02FA0-2F38-4F66-938C-EFA36413C2B4.png)\n\n![Image 131: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/31/S6mibL1/1774852445800-23680136-56ea-4da5-baf4-d4a55bae7e37.png)\n\n![Image 132: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/03/lA3j7qG/tuceng_1.svg)\n\n![Image 133: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c7fda299-7072-4a03-867a-cdaa341e778d.svg)\n\n![Image 134: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7db65dad-928e-4d8b-ae28-dbd58b83bbfc.png)\n\n![Image 135: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/28/5bdb2f74-a0ec-4df3-bc78-42043a5a2ef3.svg)\n\n![Image 136: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/36475087-688b-4c16-8474-8d4c10e72e9e.svg)\n\n![Image 137: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/df2bfefd-998c-4baf-ae9b-7fb0d9ef2c98.svg)\n\n![Image 138: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/4c0aec5c-ad60-4bd9-b95a-26a344b60344.svg)\n\n![Image 139: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c549e05a-6127-4eae-b9c5-38f52ef2a4bc.svg)\n\n![Image 140: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/12a8bde1-a34a-4ff2-8448-eeaa63b5c2e2.svg)\n\n![Image 141: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c2a3caf6-1538-474e-b870-6cdd4443ff64.png)\n\n![Image 142: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/95b50f15-6844-4e64-945e-5478c44e5c1e.svg)\n\n![Image 143: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/zZCdvSw/Margin.png)\n\n![Image 144: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/852fdd9f-8cc2-4054-9c94-fa86e9d15c57.svg)\n\n![Image 145: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/e49f374a-fb8c-4b1c-af8e-2e060312e7e8.svg)\n\n![Image 146: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/a9a8ebaf-a940-4cad-8e9d-207e9262a84f.svg)\n\n![Image 147: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/3ynYPOq/Picture-5.png)\n\n![Image 148: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/q12Fd8q/Picture-7.png)\n\n![Image 149: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/vKQcsJK/Picture-3.png)\n\n![Image 150: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/k4bB6f9/Picture-8.png)\n\n![Image 151: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/NGZakx6/71C02FA0-2F38-4F66-938C-EFA36413C2B4.png)\n\n![Image 152: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/31/S6mibL1/1774852445800-23680136-56ea-4da5-baf4-d4a55bae7e37.png)\n\n![Image 153: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/03/lA3j7qG/tuceng_1.svg)\n\n![Image 154: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c7fda299-7072-4a03-867a-cdaa341e778d.svg)\n\n![Image 155: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/7db65dad-928e-4d8b-ae28-dbd58b83bbfc.png)\n\n![Image 156: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/28/5bdb2f74-a0ec-4df3-bc78-42043a5a2ef3.svg)\n\n![Image 157: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/06/25/36475087-688b-4c16-8474-8d4c10e72e9e.svg)\n\n![Image 158: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/df2bfefd-998c-4baf-ae9b-7fb0d9ef2c98.svg)\n\n![Image 159: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/4c0aec5c-ad60-4bd9-b95a-26a344b60344.svg)\n\n![Image 160: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c549e05a-6127-4eae-b9c5-38f52ef2a4bc.svg)\n\n![Image 161: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/12a8bde1-a34a-4ff2-8448-eeaa63b5c2e2.svg)\n\n![Image 162: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/c2a3caf6-1538-474e-b870-6cdd4443ff64.png)\n\n![Image 163: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/95b50f15-6844-4e64-945e-5478c44e5c1e.svg)\n\n![Image 164: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/zZCdvSw/Margin.png)\n\n![Image 165: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/852fdd9f-8cc2-4054-9c94-fa86e9d15c57.svg)\n\n![Image 166: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/e49f374a-fb8c-4b1c-af8e-2e060312e7e8.svg)\n\n![Image 167: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/2025/04/27/a9a8ebaf-a940-4cad-8e9d-207e9262a84f.svg)\n\n![Image 168: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/3ynYPOq/Picture-5.png)\n\n![Image 169: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/q12Fd8q/Picture-7.png)\n\n![Image 170: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/vKQcsJK/Picture-3.png)\n\n![Image 171: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2025/11/25/k4bB6f9/Picture-8.png)\n\n![Image 172: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/20/NGZakx6/71C02FA0-2F38-4F66-938C-EFA36413C2B4.png)\n\n![Image 173: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/03/31/S6mibL1/1774852445800-23680136-56ea-4da5-baf4-d4a55bae7e37.png)\n\n![Image 174: Wallet Partner Logo](https://cdn.marmot-cloud.com/storage/intl_website/2026/04/03/lA3j7qG/tuceng_1.svg)\n\nWho we work with\n\nMerchants\n\nPowering more cross-border transactions globally, with digital tools, rewards and promotions to engage more customers\n\nAcquiring service providers\n\nA one-time integration for multiple payment methods, enabling your merchants to access billions of global users\n\nMobile payment providers\n\nConnect with a global merchant network and offer your users more convenience when making cross-border payments\n\nGoogle Play is proud to partner with Alipay+, an innovator in the payments industry, to enable consumers to easily purchase digital content on our platform and developers to securely distribute their apps to the world. We look forward to deepening our partnership and finding new ways to create value for our users.\n\nDerek Lee\n\nDirector of Retail & Payments Activation - South & East Asia\n\n![Image 175](https://cdn.marmot-cloud.com/storage/2023/8/23/74a978b1-9f38-4604-ab85-2af6ae6729de.png)\n\nSweet success from\n\nsurviving to thriving\n\n\"I started using Alipay+ and now I feel brave enough to go and sell in the tourist areas.\"\n\nSee how digitisation helped Numwan reach more customers with newfound confidence.\n\n00:00\n\n00:00\n\nAnt International Sustainability Report 2025\n\n#### Explore Alipay+'s commitment to empowering local economies through cross-border travel\n\n![Image 176](https://cdn.marmot-cloud.com/storage/intl_website/2026/05/15/epYOq1A/Visual.png)\n\n![Image 177: Contact us background](https://cdn.marmot-cloud.com/storage/intl_website/2025/07/14/Moiwwg2/cta-1920.svg)\n\nGet started with\n\n![Image 178: Alipay Plus Consumers](https://www.alipayplus.com/_next/static/media/aplus-logo-with-zhi.9ff6facd.svg)",
+          "metadata": {
+            "lang": "en-US",
+            "viewport": "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no",
+            "data-aspm": "a2237",
+            "data-bizType": "darazpay",
+            "description": "Alipay+ supports global mobile payment solutions, serving millions of businesses of all sizes. Consumers can pay like locals anywhere using their preferred payment methods, such as e-wallets.",
+            "og:title": "Alipay+ | Connecting Global Brands with Mobile Consumers",
+            "og:description": "Alipay+ supports global mobile payment solutions, serving millions of businesses of all sizes. Consumers can pay like locals anywhere using their preferred payment methods, such as e-wallets.",
+            "og:url": "https://www.alipayplus.com/",
+            "og:image": "https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/A4p9W3b/aplus-logo.png",
+            "og:type": "website",
+            "twitter:card": "summary_large_image",
+            "twitter:title": "Alipay+ | Connecting Global Brands with Mobile Consumers",
+            "twitter:description": "Alipay+ supports global mobile payment solutions, serving millions of businesses of all sizes. Consumers can pay like locals anywhere using their preferred payment methods, such as e-wallets.",
+            "twitter:image": "https://cdn.marmot-cloud.com/storage/intl_website/2025/08/01/A4p9W3b/aplus-logo.png"
+          },
+          "external": {
+            "preload": {
+              "https://cdn.marmot-cloud.com/storage/intl_website/2025/08/15/pmU3nfO/banner-image-1.webp": {
+                "as": "image"
+              },
+              "https://www.alipayplus.com/_next/static/media/aplus-logo-with-zhi.9ff6facd.svg": {
+                "as": "image"
+              },
+              "https://www.alipayplus.com/_next/static/chunks/webpack-a04e9260e0f19b10.js": {
+                "as": "script",
+                "fetchpriority": "low"
+              },
+              "https://ur.alipay.com/tracert_a2237.js": {
+                "as": "script"
+              }
+            },
+            "icon": {
+              "https://cdn.marmot-cloud.com/page/intl-aplus-portal/favicon.ico": {}
+            },
+            "dns-prefetch": {
+              "https://cdn.marmot-cloud.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 8933
+          }
+        },
+        {
+          "title": "服务大厅-支付宝",
+          "url": "https://help.alipay.com/",
+          "description": "",
+          "content": "*   [](http://abc.alipay.com/jiniance/index.htm)欢迎使用支付宝！\n*   [登录](https://auth.alipay.com/login/index.htm?needTransfer=true&goto=http://help.alipay.com/hall/index.htm)-[注册](https://lab.alipay.com/user/reg/index.htm)\n_|_*   [我的支付宝](https://my.alipay.com/)\n_|_*   [安全中心](https://securitycenter.alipay.com/sc/index.htm)\n_|_*   [服务大厅](http://help.alipay.com/lab/index.htm)__\n*   __\n\n[](https://www.alipay.com/ \"支付宝首页\")\n\n[服务大厅](https://cshall.alipay.com/hall/index.htm)[切换到企业版 >](https://cshall.alipay.com/enterprise/index.htm)\n\n*   __[首页](https://cshall.alipay.com/hall/index.htm)◆◆\n*   __[常见问题](https://cshall.alipay.com/lab/question.htm)◆◆\n*   __[自助服务](https://cshall.alipay.com/lab/selfHelp.htm)◆◆\n\n![Image 1](blob:http://localhost/df0837275ed86fecfde9d24d913aa8b2)\n\nInitializing...\n\n请选择您遇到的问题：\n\n更换问题\n\n*   需要关注\n*   我的账户\n*   付款及退款\n*   余额宝和花呗\n*   活动与红包\n\n*   [__『快速获得智能服务』](https://help.alipay.com/#)\n*   [__ 父母的支付宝入门手册](https://help.alipay.com/#)\n*   [__ 退款金额不可用](https://help.alipay.com/#)\n*   [__ 退款去向及进度查询](https://help.alipay.com/#)\n*   [__ 银行卡收支明细如何查](https://help.alipay.com/#)\n*   [__ 支付密码忘记怎么办](https://help.alipay.com/#)\n*   [__ 登录密码忘记怎么办](https://help.alipay.com/#)\n*   [__ 手机号码如何修改](https://help.alipay.com/#)\n*   [__ 账户因风险无法登录](https://help.alipay.com/#)\n*   [__ 支付没有到账](https://help.alipay.com/#)\n\n![Image 2: 付款方式](https://i.alipayobjects.com/i/localhost/png/201409/3Ov3kHbpW9.png)\n\n付款\n\n方式\n\n*   [快捷支付（含卡通）](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237708&pcateId=237707)\n*   [余额宝相关](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237760&pcateId=237707)\n*   [蚂蚁花呗](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237761&pcateId=237707)\n*   [信用卡支付](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237764&pcateId=237707)\n*   [支付宝账户余额](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237762&pcateId=237707)\n*   [网上银行](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237763&pcateId=237707)\n*   [找人代付](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237701&pcateId=237698)\n*   [更多>](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237707&pcateId=237328#A5)\n\n![Image 3: 应用中心](https://i.alipayobjects.com/i/localhost/png/201409/3Ov6EPlK9t.png)\n\n应用\n\n中心\n\n*   [缴费](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238019&pcateId=238016)\n*   [还款](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238018&pcateId=238016)\n*   [买火车票](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238022&pcateId=238016)\n*   [买汽车票](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238021&pcateId=238016)\n*   [转账到银行卡](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237700&pcateId=237698)\n*   [转账到支付宝账户](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237699&pcateId=237698)\n*   [保险、理财](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238017&pcateId=238016)\n*   [更多>](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=238016&pcateId=237328#A12)\n\n![Image 4: 支付宝APP](https://i.alipayobjects.com/i/localhost/png/201409/3Ov18b5osn.png)\n\n支付宝\n\nAPP\n\n*   [支付宝APP我的应用](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237864&pcateId=237853)\n*   [支付宝APP付款方式](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237863&pcateId=237853)\n*   [支付宝APP账户资产](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237862&pcateId=237853)\n*   [支付宝APP账户设置](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237860&pcateId=237853)\n*   [支付宝APP服务](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237866&pcateId=237853)\n*   [支付宝APP账单](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237861&pcateId=237853)\n*   [支付宝APP安全](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237865&pcateId=237853)\n*   [介绍与注册](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237859&pcateId=237853)\n\n![Image 5: 账户资产](https://i.alipayobjects.com/i/localhost/png/201409/3OvAQbuvXZ.png)\n\n账户\n\n资产\n\n*   [充值](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237621&pcateId=237620)\n*   [提现](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237622&pcateId=237620)\n*   [余额宝](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237760&pcateId=237707)\n*   [集分宝](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237624&pcateId=237620)\n*   [交易记录](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237802&pcateId=237801)\n*   [充值记录](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237803&pcateId=237801)\n*   [提现记录](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237804&pcateId=237801)\n*   [红包相关](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237623&pcateId=237620)\n\n![Image 6: 账户设置](https://i.alipayobjects.com/i/localhost/png/201409/3Ov9VIlH9h.png)\n\n账户\n\n设置\n\n*   [手机服务](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237659&pcateId=237654)\n*   [账户密码](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237656&pcateId=237654)\n*   [实名认证](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237655&pcateId=237654)\n*   [账户登录名](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237684&pcateId=237657)\n*   [账户信息修改](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237658&pcateId=237654)\n*   [账户信息管理](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237657&pcateId=237654)\n*   [联系人](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237661&pcateId=237654)\n*   [更多>](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237654&pcateId=237328#A3)\n\n![Image 7: 安全中心](https://i.alipayobjects.com/i/localhost/png/201409/3Ov5m2263R.png)\n\n安全\n\n中心\n\n*   [手机安全设置](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237836&pcateId=237830)\n*   [安全控件](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237831&pcateId=237830)\n*   [安全保护问题](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237834&pcateId=237830)\n*   [手机安全设置](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237836&pcateId=237830)\n*   [安全策略](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237835&pcateId=237830)\n*   [支付盾](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237833&pcateId=237830)\n*   [更多>](https://cshall.alipay.com/lab/cateQuestion.htm?cateId=237830&pcateId=237328#A9)\n\n[更多问题分类 >](https://cshall.alipay.com/lab/question.htm)\n\n## 常用自助服务:\n\n*   [![Image 8](https://i.alipayobjects.com/i/localhost/png/201409/3Q65OuVVa9.png)激活账户](https://memberprod.alipay.com/account/reg/index.htm)\n*   [![Image 9](https://i.alipayobjects.com/i/localhost/png/201409/3Q5zXslVoT.png)修改邮箱名](https://self.alipay.com/selfhelp/loginName/unlogin/index.htm)\n*   [![Image 10](https://i.alipayobjects.com/i/localhost/png/201409/3Q601EipRd.png)重置登录密码](https://self.alipay.com/selfhelp/passwordfind/index.htm?type=Q)\n*   [![Image 11](https://i.alipayobjects.com/i/localhost/png/201409/3Q60V72laP.png)重置支付密码](https://self.alipay.com/selfhelp/passwordfind/index.htm?type=P)\n*   [![Image 12](https://i.alipayobjects.com/i/localhost/png/201409/3Q67EMHkyT.png)取消数字证书](https://securitycenter.alipay.com/cert/manage.htm)\n*   [![Image 13](https://i.alipayobjects.com/i/localhost/png/201409/3Q67fFbDEz.png)修改手机号码](https://accounts.alipay.com/console/dispatch.htm?scene_code=modifyMobile&site=1&page_type=fullpage)\n\n## 联系我们:\n\n### 在线客服\n\n拿出手机打开【支付宝】app\n\n扫一扫下方二维码接入客服服务\n\n![Image 14](https://gw.alipayobjects.com/mdn/pa_custsrv/afts/img/A*_7n3Sb0azoAAAAAAAAAAAABkARQnAQ)\n\n### 热线电话\n\n主要服务时间：8:00 - 24:00\n\n中国内地服务热线：95188转1\n\n中国港澳台及海外服务热线：+86 571 95188\n\n花呗、借呗：95188转2\n\n网商业务（含网商贷）：95188转3\n\n投诉与意见反馈：95188，我们将在一个工作日内响应处理\n\n### 提建议\n\n如果您对我们的产品有任何想法\n\n或者建议，欢迎提出\n\n[提建议](https://egg.alipay.com/)\n\n[__ 举报网站](https://110.alipay.com/sc/report.htm)[__ 快速挂失](https://110.alipay.com/safety/emergency/index.htm)[_󰄄_ 联系淘宝](https://consumerservice.taobao.com/?spm=a21pu.8253647.754895749.1.aoItYB)[__ 口碑帮助](https://help.koubei.com/)\n\n[诚征英才](https://talent.antgroup.com/home)_|_[联系我们](https://ab.alipay.com/i/lianxi.htm \"联系我们\")_|_[International Business](https://global.alipay.com/ \"International Business\")\n\n[ICP证：合字B2-20190046](https://ur.alipay.com/dbusKq4oaHb1u5x8nKEoW)\n\n cshall-43-12 \n\nonlineServer\n\nonlineServer",
+          "metadata": {
+            "renderer": "webkit",
+            "data-aspm": "a86",
+            "keywords": "",
+            "description": "",
+            "ABTest": ""
+          },
+          "external": {
+            "icon": {
+              "https://i.alipayobjects.com/common/favicon/favicon.ico": {
+                "type": "image/x-icon"
+              }
+            },
+            "dns-prefetch": {
+              "https://a.alipayobjects.com/": {},
+              "https://app.alipay.com/": {},
+              "https://my.alipay.com/": {},
+              "https://lab.alipay.com/": {},
+              "https://cashier.alipay.com/": {},
+              "https://financeprod.alipay.com/": {},
+              "https://shenghuo.alipay.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "",
+          "usage": {
+            "tokens": 3339
+          }
+        },
+        {
+          "title": "登录中心 － 支付宝",
+          "url": "https://auth.alipay.com/login/homeB.htm?redirectType=parent",
+          "description": "",
+          "content": "## 登录支付宝\n\n__\n\n__\n\n点此选择密码控件登录\n\n[忘记登录密码？](https://accounts.alipay.com/console/dispatch.htm?scene_code=resetQueryPwd&page_type=fullpage&site=1)\n\n[淘宝会员登录](https://login.taobao.com/member/login.jhtml?style=alipay&goto=https%3A%2F%2Flab.alipay.com%3A443%2Fuser%2Fnavigate.htm%3Fsign_from%3D3000 \"淘宝会员登录\")[账户激活](https://memberprod.alipay.com/account/reg/index.htm \"账户激活\")[免费注册](https://memberprod.alipay.com/account/reg/index.htm \"免费注册\")\n\n### 欢迎回来\n\n检测到您已经登录的账户：\n\n[进入支付宝](https://auth.alipay.com/login/homeB.htm?redirectType=parent#)\n\n[使用其他账号登录](https://auth.alipay.com/login/homeB.htm?redirectType=parent#)\n\n[](https://auth.alipay.com/login/homeB.htm?redirectType=parent# \"扫码登录\")\n\n## 扫码登录\n\n二维码出错\n\n二维码失效\n\n![Image 1](https://t.alipayobjects.com/images/rmsweb/T1HEXhXfdcXXXXXXXX.png)\n\n扫码成功\n\n![Image 2](https://t.alipayobjects.com/images/rmsweb/T1HEXhXfdcXXXXXXXX.png)\n\n已确认\n\n请使用手机支付宝扫码\n\n[使用帮助](https://cshall.alipay.com/lab/help_detail.htm?help_id=23427066 \"使用帮助\")_|_[账户激活](https://memberprod.alipay.com/account/reg/index.htm \"账户激活\")",
+          "metadata": {
+            "description": "",
+            "keywords": "",
+            "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          },
+          "external": {
+            "icon": {
+              "https://img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico": {
+                "type": "image/x-icon"
+              }
+            },
+            "dns-prefetch": {
+              "https://a.alipayobjects.com/": {},
+              "https://app.alipay.com/": {},
+              "https://my.alipay.com/": {},
+              "https://lab.alipay.com/": {},
+              "https://cashier.alipay.com/": {},
+              "https://financeprod.alipay.com/": {},
+              "https://shenghuo.alipay.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 423
+          }
+        },
+        {
+          "title": "手机支付宝-支付宝 知托付！",
+          "url": "https://wap.alipay.com/index.htm",
+          "description": "中国最大的第三方电子支付服务提供商",
+          "content": "### 10.5.8版本说明 (2023-08-03)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.5.6版本说明 (2023-07-27)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.5.0版本说明 (2023-07-12)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.96版本说明 (2023-06-29)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.90版本说明 (2023-06-14)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.86版本说明 (2023-06-02)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.80版本说明 (2023-05-17)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.76版本说明 (2023-04-24)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.70版本说明 (2023-04-07)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.66版本说明 (2023-03-23)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.60版本说明 (2023-03-10)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.50版本说明 (2023-02-08)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.36版本说明 (2022-12-30)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.30版本说明 (2022-12-15)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.20版本说明 (2022-11-29)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.10版本说明 (2022-10-31)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.3.0版本说明 (2022-09-19)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.96版本说明 (2022-08-31)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.90版本说明 (2022-08-16)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.86版本说明 (2022-08-04)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.76版本说明 (2022-07-04)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.71版本说明 (2022-06-17)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.65版本说明 (2022-05-27)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.64版本说明 (2022-05-27)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.63版本说明 (2022-05-19)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.62版本说明 (2022-05-06)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.60版本说明 (2022-04-18)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.59版本说明 (2022-04-01)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.53版本说明 (2022-01-07)\n\n支付宝最新版来啦！本次更新：\n\n 1.集五福，福相伴。五福，马上到！\n\n 2.解决部分已知问题，优化多项细节，体验更流畅。\n\n### 10.2.50版本说明 (2021-12-20)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.36版本说明 (2021-10-20)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.33版本说明 (2021-9-17)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.30版本说明 (2021-8-30)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.28版本说明 (2021-7-23)\n\n支付宝最新版来啦！本次更新：\n\n 长辈模式：字大图标大 使用更简单。\n\n### 10.2.26版本说明 (2021-6-18)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.23版本说明 (2021-5-17)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.20版本说明 (2021-4-23)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.18版本说明 (2021-3-26)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n### 10.2.15版本说明 (2021-2-28)\n\n支付宝最新版来啦！本次更新：\n\n “出行”服务升级，可以查询、购买机票。\n\n### 10.2.13版本说明 (2021-1-23)\n\n支付宝最新版来啦！本次更新：\n\n 集五福，过福年！2021新春享更多玩法！\n\n### 10.2.12版本说明 (2021-1-11)\n\n支付宝最新版来啦！本次更新：\n\n 1. 集五福，过福年！升级至最新版，2021年新春享更多玩法。敬请期待！\n\n 2. iOS用户可在支付宝搜苹果，登录“Apple专区”生活号，领取果粉专属福利，每周都有专享红包。\n\n### 10.2.10版本说明 (2020-12-15)\n\n支付宝最新版来啦！本次更新：\n\n \"iOS14小组件”：新增可以添加到手机桌面的小组件「支付宝」「蚂蚁森林」「蚂蚁庄园」「行情看板」，仅iOS14及以上的系统版本可用。添加方法：在桌面长按空白处→点击左上角+号→列表中找到支付宝→添加喜欢的小组件\n\n### 10.2.6版本说明 (2020-10-17)\n\n支付宝最新版来啦！本次更新：\n\n 首页“扫一扫——识物”：对准物体拍照识别，快速获取商品、植物、动物、汽车的相关信息。\n\n### 10.2.3版本说明 (2020-09-22)\n\n支付宝最新版来啦！本次更新：\n\n 1. 首页“付钱”“收钱”合并，使用更方便。\n\n 2. 首页新增“出行”，搭公交、乘地铁、坐火车、骑单车、网约车，出行更便捷。\n\n 3. 花呗金升级，做任务赚花呗金，抵扣花呗还款额，会花能省，持家小能手就是你。\n\n### 10.2.0版本说明 (2020-08-21)\n\n支付宝最新版来啦！本次更新：\n\n 1. 首页“付钱”“收钱”合并，使用更方便。\n\n 2. 首页新增“出行”，搭公交、乘地铁、坐火车、骑单车、网约车，出行更便捷。\n\n 3. 花呗金升级，做任务赚花呗金，抵扣花呗还款额，会花能省，持家小能手就是你。\n\n### 10.1.99版本说明 (2020-07-24)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.98版本说明 (2020-06-28)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.95版本说明 (2020-05-26)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.92版本说明 (2020-04-22)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.90版本说明 (2020-03-26)\n\n支付宝最新版来啦！本次更新：\n\n 多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.88版本说明 (2020-03-10)\n\n支付宝最新版来啦！本次更新：\n\n 1、支付宝品牌色全新升级，更亲和、更明快。\n\n 2、“财富”频道更名为“理财”，理财就上支付宝，安全方便又省心。\n\n 3、多项细节优化，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.87版本说明 (2020-02-07)\n\n支付宝最新版来啦！本次更新：\n\n 多项性能优化，启动更快，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.85版本说明 (2020-01-08)\n\n支付宝最新版来啦！本次更新：\n\n 多项性能优化，启动更快，体验更流畅。\n\n 为了获得更好的用户体验，支付宝会在 App Store 中定期更新，建议打开 iPhone 手机「设置」-「 iTunes Store 与 App Store 」-「自动下载的项目」，确保第一时间体验更好的支付宝。\n\n### 10.1.82版本说明 (2019-12-22)\n\n支付宝最新版来啦！本次更新：\n\n 「支付宝会员」更新！原来的等级积分，更名为「成长值」。攒成长值，升会员等级！\n\n 支付宝积分更好用！用积分兑换权益，不影响会员等级。底部功能栏还能查看兑换记录。\n\n### 10.1.182版本说明 (2019-12-20)\n\n支付宝最新版来啦！本次更新：\n\n 「支付宝会员」更新！原来的等级积分，更名为「成长值」。攒成长值，升会员等级！\n\n 支付宝积分更好用！用积分兑换权益，不影响会员等级。底部功能栏还能查看兑换记录。\n\n### 10.1.10版本说明 (2017-12-27)\n\n1、全新「财富」上线，资产详情一目了然，产品服务智能推荐，享受一站式财富管理体验；\n\n 2、「赚钱红包」年末再加码！支付宝发红包你赚赏金，朋友领到红包并使用，赏金马上进账！天天可发，多发多赚！\n\n### 10.0.20版本说明 (2017-08-02)\n\n1、无现金“奖��金”，8月1日至8月8日每天用支付宝到实体门店付款2元以上，当日第2/3/4/笔付款都有资格参与抽“黄金”活动；\n\n 2、个人中心改版，个人信息更清晰\n\n### 10.0.18版本说明 (2017-06-22)\n\n1、新增桌面快捷方式设置，一键启动“收钱”、“付钱”；(仅Android客户端)；\n\n 2、AA收款全新升级，通知到人，自动提醒，收款无忧；\n\n 3、该版本支持Android 4.3及以上系统。(仅Android客户端)；\n\n### 10.0.12版本说明 (2017-04-21)\n\n1、首页改版，最大支持11个应用编辑；\n\n 2、卡包改版，卡、券、票、证件分类展示；\n\n 3、到位首页焕新颜，生活服务so easy；\n\n 4、余额宝首页改版，理财内容更丰富。\n\n### 10.0.0版本说明 (2016-12-22)\n\n1、“红包”全新改版，新增AR实景红包，实现藏红包、找红包、红包地图多种玩法；\n\n 2、“扫一扫”新增“AR扫”入口，快速便捷找红包。\n\n### 9.9.7版本说明 (2016-11-24)\n\n1、口碑1212优惠5折起，吃喝玩乐全搞定！\n\n 2、口碑新增“人气眼”，展示周边最火的店，人气越高越火爆；\n\n 3、口碑首页商户动态发布，新增美食、玩乐分类，评论参与互动；\n\n 4、口碑推出一键预约手艺人，作品评价一目了然；\n\n 5、支付宝“到位”占领全国；\n\n 6、朋友聊天支持发送gif图片；\n\n 7、生活圈发动态，支持in照片美化;\n\n 8、“我的”页面全新改版。\n\n### 9.9.3版本说明 (2016-09-28)\n\n1、愚人节的“到位”终于上线了，各个城市正陆续开通中；\n\n 2、口碑频道栏目全新上线，为您推荐最新、最热的品质好店，吃喝玩乐玩转生活；\n\n 3、口碑店铺页全新改版，商家相册、推荐菜一目了然，使用更方便；\n\n 4、校园生活改版，新增话题模块，以及社团、兼职、学生惠等服务；\n\n 5、支持城市服务搜索，公积金查询、违章查询等一搜即得。\n\n### 9.9.2版本说明 (2016-09-08)\n\n1、首页生活动态排版优化；\n\n 2、朋友聊天新增可发送图片涂鸦功能；\n\n 3、新增聚宝基金购买功能；\n\n 4、校园圈功能优化；\n\n 5、国际口碑已覆盖超过20个境外城市，5万余家商户；\n\n 6、行走捐支持更多安卓机型。\n\n### 9.9版本说明 (2016-08-10)\n\n1、首页全新改版，首创服务主动找人新鲜体验；\n\n 2、新增智能语音助手，一秒触达百种服务应用；\n\n 3、个人主页升级，朋友信息更丰富。\n\n### 9.6.10版本说明 (2016-07-18)\n\n1、淘票票－影城权益卡支持更多城市和影院；\n\n 2、淘票票－视觉优化，风格更加美观；\n\n 3、新增下拉通知插件，支付更迅速。\n\n### 9.6.9版本说明 (2016-06-29)\n\n1、完善了无障碍辅助功能，感谢无障碍联盟提供解决方案建议，感谢windflower、余修付、蓝色天空三位视障用户协助测试；\n\n 2、修复已知bug。\n\n### 9.6.6版本说明 (2016-05-10)\n\n1、优化扫一扫识别效果，识别速度更快；\n\n 2、新增下拉通知插件，支付转账更迅速；（仅iOS客户端）\n\n 3、响应央行监管要求，保障用户权益，优化服务体验；\n\n 4、修复已知bug。\n\n### 9.6.0版本说明 (2016-04-15)\n\n1、口碑频道全新改版，推荐更贴心，内容更丰富；\n\n 2、商家详情页全新改版，优惠买单更方便；\n\n 3、生活圈写动态，支持纯文字分享；\n\n 4、修复已知bug。\n\n### 9.5.3版本说明 (2016-03-04)\n\n1、新增［咻一咻］功能，寻找附近的商户和朋友；\n\n 2、新增［吱口令］功能，在支付宝轻松添加好友、建群；\n\n 3、群红包新增［中文口令］，个人定制夸人夸己不再愁；\n\n 4、整体性能优化，修复已知BUG；\n\n 5、该版本仅Android 4.0.3以上系统支持；\n\n### 9.5.1版本说明 (2016-01-13)\n\n1、年账单终于来了，盘点2015，看我的生活有多花样；\n\n 2、新增［拜年红包］，小额吉利红包发发发，群发拜年就用它；\n\n 3、群红包新增［中文口令］，个人定制夸人夸己不再愁；\n\n 4、新增［咻一咻］功能，寻找附近的商户和朋友；\n\n 5、新增［吱口令］功能，在支付宝轻松添加好友、进群；\n\n 6、优化刷脸登录体验，开通更简单，点头登录只需一秒。（仅iOS客户端）\n\n### 9.3版本说明 (2015-11-17)\n\n1、数万商超、丽人商家现已加入口碑“豪华套餐“；\n\n 2、新增[在线优惠买单]，输入金额即可买单，划算不用算；\n\n 3、新增[商圈]功能，附近商圈品牌、优惠尽在掌握；\n\n 4、余额宝收支明细升级，收入、消费明白得不要不要的；\n\n 5、新增[刷脸注册开通]，支持刷脸登录（iPhone 5及以上、小米3及以上、三星i9300/ i9500等设备支持）；\n\n 6、生活圈：新增[附近现场]，视频拍摄支持美颜滤镜；\n\n 7、整体性能优化，修复已知BUG。\n\n### 9.2版本说明 (2015-10-15)\n\n1、国际化的支付宝，支持简体中文、繁体中文、英文3种语言切换；\n\n 2、增加生活圈，支持将视频和照片分享给朋友；\n\n 3、聊天增加「阅后即焚」，不再惧怕说错话；\n\n 4、页面布局优化，「卡券」功能移至首页，「我的信息」移至「财富」；\n\n 5、适配iPhone6s/6s Plus，增加3D Touch操作。（仅iOS客户端）\n\n### 9.1版本说明 (2015-09-18)\n\n1、收款更便捷，扫一扫二维码，直接转账；\n\n 2、绑卡功能优化，支持港澳台及海外用户绑定境内银行卡；\n\n 3、用户体验升级，视障用户也可使用支付宝。（仅iOS客户端）\n\n### 9.0版本说明 (2015-07-08)\n\n1、新增商家服务，买单打折尽享优惠；\n\n 2、新增社交功能，群聊群付更方便；\n\n 3、新增亲情账户，家庭专属理财服务；\n\n 4、财富全新改版，信用财富一目了然；\n\n 5、首页新增个人信息，点击头像即可查看。",
+          "metadata": {
+            "keywords": "支付宝/支付宝客户端/支付宝手机客户端/手机支付宝/手机支付宝客户端/快捷支付/手机支付,支付宝下载/手机支付宝下载/支付宝客户端下载/支付宝手机客户端下载/手机支付宝客户端下载",
+            "description": "中国最大的第三方电子支付服务提供商",
+            "ABTest": "",
+            "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          },
+          "external": {
+            "icon": {
+              "https://i.alipayobjects.com/common/favicon/favicon.ico": {
+                "type": "image/x-icon"
+              }
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 6350
+          }
+        },
+        {
+          "title": "Login - Alipay",
+          "url": "https://globalprod.alipay.com/login/global.htm;",
+          "description": "China's leading third-party online payment solution, providing an easy, safe and secure way for millions of individuals and businesses to make and receive payments on the Internet.",
+          "content": "[About Alipay](https://ab.alipay.com/i/jieshao.htm#en)|[Join Us](https://job.alipay.com/recruit/index.htm)|[Contact Us](https://b.alipay.com/forex/forexIntent.htm)\n\nCopyright 2004-2016 ALIPAY.COM. All Rights Reserved.\n\nauthcenter-43-25584",
+          "warning": "",
+          "metadata": {
+            "description": "China's leading third-party online payment solution, providing an easy, safe and secure way for millions of individuals and businesses to make and receive payments on the Internet.",
+            "keywords": "Alipay, Cross-border website payment/Cross-border Mobile Payment/Express Payment/Express Login"
+          },
+          "external": {
+            "icon": {
+              "https://img.alicdn.com/tfs/TB1qEwuzrj1gK0jSZFOXXc7GpXa-32-32.ico": {
+                "type": "image/x-icon"
+              }
+            },
+            "dns-prefetch": {
+              "https://a.alipayobjects.com/": {},
+              "https://app.alipay.com/": {},
+              "https://my.alipay.com/": {},
+              "https://lab.alipay.com/": {},
+              "https://cashier.alipay.com/": {},
+              "https://financeprod.alipay.com/": {},
+              "https://shenghuo.alipay.com/": {}
+            }
+          },
+          "httpStatus": 200,
+          "httpStatusText": "OK",
+          "usage": {
+            "tokens": 77
+          }
+        }
+      ],
+      "meta": {
+        "usage": {
+          "tokens": 32585
+        }
+      }
+    }
+  }
+}

@@ -64,7 +64,7 @@ try {
   await page.locator('#field-city input').fill('西安');
   await page.locator('#field-targetCustomers input').fill('需要微信内查看报告的测试人员');
   await page.getByRole('button', { name: '生成 GEO 分析报告' }).click();
-  await page.getByRole('heading', { name: 'GEO 分析成果报告' }).waitFor({ timeout: 20_000 });
+  await page.getByRole('heading', { name: 'AI 可见度初步诊断报告' }).waitFor({ timeout: 20_000 });
   assert.match(page.url(), /\?report=diag_/u);
   assert.equal(await page.evaluate(() => history.state?.screen), 'result');
   await page.getByText(/1 个模型真实采样/u).first().waitFor();
@@ -72,7 +72,7 @@ try {
   const reportUrl = page.url();
 
   await page.reload({ waitUntil: 'networkidle' });
-  await page.getByRole('heading', { name: 'GEO 分析成果报告' }).waitFor();
+  await page.getByRole('heading', { name: 'AI 可见度初步诊断报告' }).waitFor();
   assert.equal(page.url(), reportUrl);
   await page.evaluate(() => {
     Object.defineProperty(navigator, 'clipboard', { configurable: true, value: undefined });
@@ -87,7 +87,7 @@ try {
     window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
     document.dispatchEvent(new Event('visibilitychange'));
   });
-  await page.getByRole('heading', { name: 'GEO 分析成果报告' }).waitFor();
+  await page.getByRole('heading', { name: 'AI 可见度初步诊断报告' }).waitFor();
 
   await page.goBack();
   await page.getByRole('heading', { name: '填写业务资料' }).waitFor();
@@ -107,7 +107,7 @@ try {
   const androidErrors = [];
   androidPage.on('console', (message) => { if (message.type() === 'error') androidErrors.push(message.text()); });
   await androidPage.goto(reportUrl, { waitUntil: 'networkidle' });
-  await androidPage.getByRole('heading', { name: 'GEO 分析成果报告' }).waitFor();
+  await androidPage.getByRole('heading', { name: 'AI 可见度初步诊断报告' }).waitFor();
   assert.equal(await hasHorizontalOverflow(androidPage), false);
   assert.equal(await androidPage.evaluate(() => getComputedStyle(document.documentElement).colorScheme), 'light');
   assert.equal(androidErrors.length, 0, androidErrors.join('\n'));

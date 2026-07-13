@@ -1,0 +1,13 @@
+[
+  {
+    "id": "SC1",
+    "case_id": "A2",
+    "reason": "运行后通过支付宝官方页面确认 alipay.com 与 open.alipay.com 均为官方域名；原 cases.json 仅列 alipay.cn，白名单过窄。查询文本和原始响应不变，仅对所有 provider 统一扩展官方域名评分。",
+    "accepted_official_domains": ["alipay.cn", "alipay.com"],
+    "official_evidence": [
+      "https://www.alipay.cn/",
+      "https://open.alipay.com/",
+      "https://payservice.alipay.com/"
+    ]
+  }
+]

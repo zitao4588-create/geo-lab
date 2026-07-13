@@ -1,0 +1,15 @@
+{
+  "platform": "doubao_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "豆包网页端“快速”模式（页面未显示具体模型）",
+  "captured_at": "2026-07-13T11:27:46.157Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P1",
+  "prompt": "栖栈清单是什么？请只回答你能够确认的信息。如果不能确认，请明确说不知道。不要根据品牌名称猜测。",
+  "answer": "搜索 2 个关键词，参考 9 篇资料\n不知道",
+  "searched_web": true,
+  "search_trace": "搜索 2 个关键词，参考 9 篇资料",
+  "links": [],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/doubao/qizhan_checklist__P1.png"
+}

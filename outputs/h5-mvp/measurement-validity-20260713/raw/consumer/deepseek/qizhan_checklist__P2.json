@@ -1,0 +1,60 @@
+{
+  "platform": "deepseek_consumer",
+  "client": "Chrome web",
+  "model_or_mode": "DeepSeek 快速模式（默认；未手动开启智能搜索）",
+  "captured_at": "2026-07-13T11:02:31.771Z",
+  "entity": "栖栈清单",
+  "entity_role": "negative_control",
+  "prompt_id": "P2",
+  "prompt": "我正在寻找能帮助经常出差或自由行、容易遗漏行李和行程事项的旅行者解决生成并核对行李、证件和行程清单，减少旅行遗漏的旅行行李与行程清单应用。请列出你会优先考虑的 3—5 个具体产品或服务，并分别说明理由。不要反问。",
+  "answer": "基于你的需求，我会优先推荐以下产品：\n\nCUFABA：功能全面，能一站式解决你的核心痛点。它的特色是利用AI根据目的地和活动项目智能生成个性化行李清单，同时内置了“城市指北”功能，提供实时天气和生活指数，帮你根据实际情况调整行李-\n7\n。另外，它强大的旅程信息管理和团队协作功能，非常适合需要管理复杂行程的用户-\n7\n。\n\n出行gogo：专注解决“遗漏”问题，体验直观。它的核心是智能行李清单，提供预设模板和实时打包进度追踪-\n1\n。最有特色的功能是支持桌面小组件，无需打开App就能在手机桌面查看和追踪打包进度，一目了然-\n1\n。同时它也集成了行程规划、旅费记录和天气显示功能，是轻量高效的选择-\n1\n。\n\nTripZen：如果你更需要一个强大的“行程管家”，这个应用很合适。它可以通过转发预订邮件自动导入航班、酒店等信息，集中管理所有行程细节-\n6\n。其AI能快速生成完整行程规划，并支持离线查看，在国际旅行或信号不好时非常实用-\n6\n，能大大减轻规划负担。\n\nPack, Repeat (打包清單)：在“打包”这一环节做得极其专业。它内置了超过400种常见旅行物品和30多个精选分类，能根据目的地、日期、天气和旅行类型，利用AI生成智能打包建议-\n10\n。清单支持按行李或同行者分类整理，并且可以复制和分享，适合有反复打包需求的商务出差或家庭旅行-\n10\n。\n\nGooh旅記：一款兼具“攻略”和“清单”功能的综合型应用。它的特色在于AI规划功能，输入目的地和时间就能生成专属旅行计划，并内置海量精品行程攻略供一键复用-\n9\n。同时它也具备完善的行李清单和旅游账本功能，对于需要从零开始规划行程的自由行用户会很有帮助-\n9\n。",
+  "searched_web": true,
+  "search_trace": "已阅读 12 个网页",
+  "links": [
+    {
+      "href": "https://apps.apple.com/lt/app/cufaba/id6466400952",
+      "text": "-\n7"
+    },
+    {
+      "href": "https://apps.apple.com/lt/app/cufaba/id6466400952",
+      "text": "-\n7"
+    },
+    {
+      "href": "https://apps.apple.com/cn/app/%E5%87%BA%E8%A1%8Cgogo/id6754779604",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://apps.apple.com/cn/app/%E5%87%BA%E8%A1%8Cgogo/id6754779604",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://apps.apple.com/cn/app/%E5%87%BA%E8%A1%8Cgogo/id6754779604",
+      "text": "-\n1"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.leftventures.tripzen&hl=zh",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://play.google.com/store/apps/details?id=com.leftventures.tripzen&hl=zh",
+      "text": "-\n6"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/%E6%89%93%E5%8C%85%E6%B8%85%E5%96%AE-pack-repeat/id6473901846",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://apps.apple.com/mo/app/%E6%89%93%E5%8C%85%E6%B8%85%E5%96%AE-pack-repeat/id6473901846",
+      "text": "-\n10"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/gooh%E6%97%85%E8%A8%98-%E6%97%85%E9%81%8A%E6%94%BB%E7%95%A5%E8%A3%BD%E4%BD%9C-%E8%A1%8C%E7%A8%8B%E8%B7%AF%E7%B7%9A%E6%97%85%E8%A1%8C%E8%A8%88%E5%8A%83%E5%8A%A9%E6%89%8B/id6479474700?l=zh-Hant-TW",
+      "text": "-\n9"
+    },
+    {
+      "href": "https://apps.apple.com/us/app/gooh%E6%97%85%E8%A8%98-%E6%97%85%E9%81%8A%E6%94%BB%E7%95%A5%E8%A3%BD%E4%BD%9C-%E8%A1%8C%E7%A8%8B%E8%B7%AF%E7%B7%9A%E6%97%85%E8%A1%8C%E8%A8%88%E5%8A%83%E5%8A%A9%E6%89%8B/id6479474700?l=zh-Hant-TW",
+      "text": "-\n9"
+    }
+  ],
+  "screenshot_path": "/Users/qzt/Developer/geo-lab/outputs/h5-mvp/measurement-validity-20260713/raw/consumer/deepseek/qizhan_checklist__P2.png"
+}

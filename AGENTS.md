@@ -44,3 +44,11 @@ For a new ChatGPT/Codex session in this project:
 4. Read `sources/source-index.md`.
 5. Read only the source files relevant to the task.
 
+## Formal Consumer Report Workflow
+
+When the user asks to execute a “正式 AI 可见度详细报告”, “正式消费端报告”, or equivalent customer report:
+
+1. Read `workflows/formal-consumer-report/WORKFLOW.md` completely before collecting data.
+2. Treat that workflow as separate from the free H5. The H5 preliminary score must not substitute for consumer-side evidence.
+3. Use fresh consumer sessions, preserve complete answers and screenshots, and keep API samples clearly separated from consumer results.
+4. Never import browser cookies, bypass login or CAPTCHA, purchase services, deploy, or publish without explicit authorization.
