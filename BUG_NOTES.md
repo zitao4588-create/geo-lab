@@ -328,3 +328,33 @@ Symptom: `/report/diag_mri2hznd_fg6z69` returned HTTP 200 but showed the start s
 Cause: the server correctly returned the SPA fallback, while the frontend's implemented share contract reads `?report=<id>`.
 
 Fix: production visual acceptance used `/?report=diag_mri2hznd_fg6z69`. Both viewports loaded the real 54-point report with no overflow or console errors/warnings. No product code change was needed.
+
+## 2026-07-13: Final Typecheck Was Started From The Repository Root
+
+Symptom: one combined static-check command returned npm `ENOENT` for `/Users/qzt/Developer/geo-lab/package.json`.
+
+Cause: `npm run typecheck` was invoked from the repository root, while the package root is `apps/ai-exposure-check-h5/`.
+
+Fix: stopped after classifying the path error and reran the full validation once from the H5 package directory.
+
+Verification: typecheck, 81/81 tests, build, release precheck, bundle secret scan, and `git diff --check` all passed from the correct directory.
+
+## 2026-07-13: GitHub HTTPS Credentials Were Invalid During Final Sync
+
+Symptom: `git fetch origin --prune` returned `could not read Username for https://github.com`; `gh auth status` reported the active token invalid.
+
+Cause: the repository remote uses HTTPS and the local GitHub CLI credential is no longer valid.
+
+Handling: created the verified local commit and deployed that exact build, but did not claim fetch, push, or tag success. Do not change the remote URL or embed a token as a workaround.
+
+Next verification: after the user restores GitHub authentication, fetch origin, confirm no divergence, push main, then create and push the production release tag.
+
+## 2026-07-13: Production Environment Cleanup Needed Separate Approval
+
+Symptom: the attempt to back up production `.env` and remove five deprecated variable lines was rejected by the safety approval layer before execution.
+
+Cause: editing a production credential environment file requires a separate explicit confirmation, even though the deployed code and project example no longer use those variables.
+
+Handling: did not retry or use an indirect workaround. The old variable names remain in production `.env`, mode 600, but release `20260713132053` ignores them; health and the controlled report prove Hy3 and Doubao sample without the legacy gates.
+
+Next verification: after separate user approval, create a mode 600 backup, remove only the five exact deprecated keys, restart the service, and recheck 4/4 health without printing values.

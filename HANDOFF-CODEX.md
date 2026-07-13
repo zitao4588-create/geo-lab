@@ -1,8 +1,24 @@
 # Codex 交接文档
 
-交接日期：2026-07-10
-交接人：Codex（本轮完成报告提交恢复可靠性、生产部署与真实受控验收）
+交接日期：2026-07-13
+交接人：Codex（本轮完成后台收敛、微信 WebView 适配、生产部署与四 provider 真实受控验收）
 阅读顺序建议：本文档 → `AGENTS.md` → `PROJECT_CONTEXT.md` → `TODO.md` → 按任务读源码
+
+---
+
+## 0. 2026-07-13 最新恢复点（本节覆盖下方会变化的历史状态）
+
+- 唯一工程路径仍为 `/Users/qzt/Developer/geo-lab`；H5 在 `apps/ai-exposure-check-h5/`。`main` 已在本地以 `--ff-only` 吸收 `codex/ai-exposure-optimization-g1-g4`，代码提交为 `3d73d12`。旧功能分支保留，未删除。
+- GitHub 同步未完成：`origin` 使用 HTTPS，本机 `gh` token 已失效，`git fetch`/push 无法认证。本地 `main` 相对最后已知 `origin/main` ahead 6；必须先恢复 GitHub 登录，再 fetch 核对是否出现新分叉，之后才能 push main 和 release tag。
+- 当前生产 release：`20260713132053`；回滚点：`20260713012534`。systemd `ai-exposure-check-h5` active，Node 仅监听 `127.0.0.1:3020`，公网入口仍为 `https://exposure.playgamelab.cn`。
+- 后台主链路已收敛为一个 `POST /api/diagnoses`：输入检查 → 一次 PageAudit/来源核验 → 422 时不消耗 quota/不调模型 → 限流 → 采样 → 确定性评分与持久化。旧 preflight endpoint、二次 polish、表单 contact 字段均已删除。
+- `deepseek.ts` 已移动为 `src/server/providers/sampling.ts`；只服务测试的 `sourceCandidates` 已移到 `test/support/`；重复业务类型判断和文本规范化已收敛到 `src/server/domain.ts`。
+- Hy3、Doubao 的采样资格只由独立开关 + key 是否已配置决定。生产 health 当前为 4 configured / 4 enabled / 4 samplingAllowed；旧成本闸门变量仍存在服务器 `.env`，但新代码不读取。安全审批要求用户对生产 `.env` 清理再次单独确认，禁止绕过。
+- 唯一新生产验收报告：`diag_mris3shz_57fkg2`，40/40 成功；DeepSeek、Hy3、Qwen、Doubao 各 10/10，0 failure、0 fallback，总耗时约 35.7 秒。同 request ID 重放返回 HTTP 200 和同一报告；部署后只有 1 个新诊断文件和 1 条生成事件。
+- 报告、evidence、Markdown、HTML、JSON evidence package 全部 200，敏感扫描未发现内部 request ID、归因字段、联系方式或密钥形态。生产 390×844 浏览器检查无横向溢出、控制台 0 error/0 warning。
+- 微信 WebView 本地自动化覆盖 iOS/Android 微信 UA、返回栈、切后台恢复、刷新/分享回流和复制 fallback；最终代码通过 81/81 测试、typecheck、build、release precheck 和 bundle secret scan。
+- 微信公众号 JSSDK 模块和签名接口已部署，但生产 AppID/AppSecret 均未配置，账号类型、认证状态、分享权限和 JS 安全域名也未核验。因此当前只能诚实声称普通分享/复制 fallback 可用；不能声称好友/朋友圈 JSSDK 或 iOS/Android 真机已通过。账号后台与凭证写入必须再次明确授权。
+- 当前完成等级：后台与核心报告链路本地 C2、生产 C4；微信通用 fallback 已部署并通过浏览器验收，JSSDK 真机验收未完成；没有真实用户反馈、持续数据或业务结果，因此不是 C5。
 
 ---
 

@@ -2,6 +2,13 @@
 
 ## Immediate
 
+- 2026-07-13 AI曝光体检后台/微信 H5 收敛已部署到 release `20260713132053`：单 POST、单 PageAudit、动态 provider 数、微信返回/恢复/复制 fallback、JSSDK 隔离模块与唯一四 provider 生产报告均已验证；回滚点为 `20260713012534`。
+- 恢复 GitHub 认证后执行：`git fetch origin` → 确认 main 无新分叉 → push main → 创建并 push 对应 release tag。当前本地代码提交 `3d73d12`，远端同步未完成，禁止写成已 push。
+- 如需彻底删除生产 `.env` 中已废弃的 polish/Hy3/Doubao 成本闸门变量，先取得用户对“修改生产环境文件”的再次明确确认。新代码已忽略这些变量，不影响当前 4/4 采样。
+- 微信公众号 JSSDK 账号侧仍待用户确认：公众号类型与认证状态、AppID/AppSecret 管理权限、好友/朋友圈分享接口权限、`exposure.playgamelab.cn` JS 接口安全域名。未满足前只保留普通分享 fallback；不得写成 JSSDK 已上线。
+- 账号条件满足并获外部修改授权后，完成微信开发者工具、真实 iOS 微信、真实 Android 微信、好友分享、朋友圈分享、卡片图文和 `?report=<id>` 回流验收。
+- 获取首批真实用户走查、咨询转化或使用反馈，才能从核心链路 C4 进入 C5；当前唯一生产报告是受控验收，不是用户数据或商业结果。
+
 - Completed 2026-07-11 DeepSeek free-tier fallback release:
   - added `deepseek-v4-pro -> deepseek-v4-flash -> failed sample` routing without legacy-model fallback,
   - limited fallback to explicit quota/access/rate-limit/model-unavailable errors; timeout, `5xx`, and empty answers do not cross models,

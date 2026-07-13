@@ -353,3 +353,17 @@ Remaining risks:
 - Report/evidence/Markdown/HTML/evidence-package endpoints and the public report UI all passed. All four surfaces show 54/100; public artifacts contain neither the request ID nor the internal source label.
 - Production visual checks at 390×844 and 1440×1000 showed the real report, evidence boundary and model conflicts with no overflow or console errors/warnings.
 - G4 and the total optimization Loop are C4, not C5: the core report/recovery/export flow is usable, but there is no real-user feedback, sustained trend data or business outcome yet. Evidence: `outputs/h5-mvp/optimization-loop/g4-production-c4-operations/production-acceptance.md`.
+
+2026-07-13 AI曝光体检后台与微信 H5 收敛（本地 C2、核心生产 C4）：
+
+- 本地 `main` 以 fast-forward 统一到 G1-G4 生产代码，并新增提交 `3d73d12`。旧功能分支和用户未跟踪文件均保留；GitHub HTTPS/`gh` 凭据失效，远端 fetch/push/tag 尚未完成。
+- 诊断入口收敛为一个 `POST /api/diagnoses`。输入或来源不足返回 422，且在限流与 provider 采样之前停止；同一次提交只执行一次权威 PageAudit。
+- 删除 dormant report polish、表单联系方式字段和重复 preflight endpoint；采样模块按真实职责移动到 `src/server/providers/sampling.ts`，实验候选来源工具移到测试目录，公共业务类型/文本规范化集中到 `src/server/domain.ts`。
+- Hy3、Doubao 不再受人工确认/到期变量控制；四 provider 保留独立开关、fallback、错误分类、持久限流和紧急停用。health 分离 `configured`、`enabled`、`samplingAllowed` 与最近真实成功，且不再把 key 存在写成 key 已验证有效。
+- 前端模型数来自 health 或本次报告；start → form → loading → result 使用可恢复 history，报告 `?report=<id>` 可刷新与分享回流；补齐微信 WebView 页面缓存/切后台恢复、复制兼容、长按二维码/复制微信号和固定浅色策略。
+- 新增隔离的微信公众号 JSSDK 服务端签名与缓存模块、严格 URL allowlist，以及前端官方 `jweixin-1.6.0.js` 分享配置。生产缺少 AppID/AppSecret 和账号侧确认，因此当前只启用普通分享 fallback，不宣称 JSSDK 已上线。
+- 本地最终验证：typecheck、build、release precheck、bundle secret scan、`git diff --check` 均通过；全量测试 81/81；iOS/Android 微信 UA 自动化无溢出与控制台错误。
+- 生产 release `20260713132053` 替换 `20260713012534`（保留回滚）。systemd active，Node 仅监听 `127.0.0.1:3020`，静态页面、robots、sitemap、health 全部 200，health 为 4 configured / 4 enabled / 4 samplingAllowed。
+- 唯一新生产报告 `diag_mris3shz_57fkg2` 完成 40/40 真实采样，四 provider 各 10/10；同 request ID 重放返回同一报告。公开报告、证据与三种导出未发现 request ID、内部归因、联系方式或密钥泄露。
+- 生产 `.env` 仍保留旧成本闸门/polish 变量名，但新代码不读取。安全审批要求用户再次单独确认后才能清理环境文件；不得绕过。
+- 核心产品达到 C4，但微信公众号真机好友/朋友圈分享、真实用户反馈和业务结果未验证，因此 JSSDK 部分未达 C4，项目整体不是 C5。

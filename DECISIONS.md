@@ -513,3 +513,41 @@ Boundary:
 - Same request ID replay may recover the persisted report but must not create another report.
 - The short cost permission expires automatically; future production sampling requires new evidence or explicit cost authorization.
 - No API Key value, account detail, source IP or billing data is written to project files.
+
+## 2026-07-13: Let Provider Switch Plus Configured Key Control Sampling
+
+Decision: remove time-bounded manual cost gates from Hy3 and Doubao sampling eligibility. All four providers use an independent enable switch plus configured key; emergency disable, model fallback, failure classification, persistent rate limits, and billing/authorization monitoring remain.
+
+Reason: the user explicitly accepted possible real model charges and asked runtime claims to reflect the actual executable path. Expired manual timestamps made configured, enabled providers look unavailable even when the user had authorized real calls.
+
+Boundary:
+
+- `configured` proves only that a key is present; it does not prove the key is currently valid.
+- `enabled + configured` allows a request; `lastRealSuccessAt` and the latest operation prove only the recorded real run.
+- Hy3/Doubao may incur paid usage. Unexpected billing, quota, authorization, or quality signals require disabling that provider and restarting the service.
+- Legacy environment variable names can be removed only after separate approval to edit the production environment file; the new code does not read them.
+
+## 2026-07-13: Keep WeChat JSSDK Optional And Server-Isolated
+
+Decision: deploy an allowlisted server-side JSSDK signature/cache module and modern share-data calls, while keeping the H5 fully usable through ordinary link-copy and WeChat menu guidance when account prerequisites or credentials are missing.
+
+Reason: WeChat WebView recovery and generic sharing can ship independently, but authenticated friend/timeline card configuration requires account permissions, a JS security domain, AppID/AppSecret, and real-device validation.
+
+Boundary:
+
+- AppSecret, access token, and jsapi ticket never enter the repository, browser bundle, logs, reports, or acceptance output.
+- The signature endpoint accepts only HTTPS URLs on `exposure.playgamelab.cn`, keeps the query, removes the hash, and returns only public signature parameters.
+- No OAuth, OpenID, login, payment, profile, or follower data is introduced.
+- Until account and true-device checks pass, documentation must say “fallback deployed, JSSDK not configured,” not “WeChat sharing launched.”
+
+## 2026-07-13: Use One Authoritative Diagnosis POST
+
+Decision: make `POST /api/diagnoses` the only diagnosis entry. It performs deterministic input checks, one PageAudit/source assessment, quota consumption, real provider sampling, deterministic scoring, and persistence in that order.
+
+Reason: the previous client preflight plus formal POST duplicated network PageAudit and could make the user wait twice for the same source evidence.
+
+Boundary:
+
+- 422 input/source rejection occurs before quota and provider sampling.
+- Persisted/in-flight idempotency recovery remains ahead of fresh work and returns the same report.
+- No database, queue, worker, microservice, login, payment, Docker, or admin backend is added.
