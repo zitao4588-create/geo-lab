@@ -345,9 +345,9 @@ Symptom: `git fetch origin --prune` returned `could not read Username for https:
 
 Cause: the repository remote uses HTTPS and the local GitHub CLI credential is no longer valid.
 
-Handling: created the verified local commit and deployed that exact build, but did not claim fetch, push, or tag success. Do not change the remote URL or embed a token as a workaround.
+Handling: created the verified local commit and deployed that exact build without claiming premature sync success. After the user authorized Codex to handle login, used GitHub CLI's official device flow; no token was pasted into commands, logs, or project files. The GitHub credential file reports mode 600.
 
-Next verification: after the user restores GitHub authentication, fetch origin, confirm no divergence, push main, then create and push the production release tag.
+Verification: `gh auth status` reports the intended account and HTTPS protocol; fetch reported `origin/main...main = 0/7`; `git push origin main` advanced `02f162e..b4c17e0`, and the new tag `ai-exposure-check-h5-20260713132053` was pushed successfully.
 
 ## 2026-07-13: Production Environment Cleanup Needed Separate Approval
 

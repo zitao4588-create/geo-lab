@@ -356,7 +356,7 @@ Remaining risks:
 
 2026-07-13 AI曝光体检后台与微信 H5 收敛（本地 C2、核心生产 C4）：
 
-- 本地 `main` 以 fast-forward 统一到 G1-G4 生产代码，并新增提交 `3d73d12`。旧功能分支和用户未跟踪文件均保留；GitHub HTTPS/`gh` 凭据失效，远端 fetch/push/tag 尚未完成。
+- `main` 以 fast-forward 统一到 G1-G4 生产代码，并新增功能提交 `3d73d12` 与 release 状态提交 `b4c17e0`。GitHub CLI 重新授权后，fetch 证明远端无新分叉，`main` 与注解 tag `ai-exposure-check-h5-20260713132053` 均已推送；旧功能分支和用户未跟踪文件保留。
 - 诊断入口收敛为一个 `POST /api/diagnoses`。输入或来源不足返回 422，且在限流与 provider 采样之前停止；同一次提交只执行一次权威 PageAudit。
 - 删除 dormant report polish、表单联系方式字段和重复 preflight endpoint；采样模块按真实职责移动到 `src/server/providers/sampling.ts`，实验候选来源工具移到测试目录，公共业务类型/文本规范化集中到 `src/server/domain.ts`。
 - Hy3、Doubao 不再受人工确认/到期变量控制；四 provider 保留独立开关、fallback、错误分类、持久限流和紧急停用。health 分离 `configured`、`enabled`、`samplingAllowed` 与最近真实成功，且不再把 key 存在写成 key 已验证有效。

@@ -9,7 +9,7 @@
 ## 0. 2026-07-13 最新恢复点（本节覆盖下方会变化的历史状态）
 
 - 唯一工程路径仍为 `/Users/qzt/Developer/geo-lab`；H5 在 `apps/ai-exposure-check-h5/`。`main` 已在本地以 `--ff-only` 吸收 `codex/ai-exposure-optimization-g1-g4`，代码提交为 `3d73d12`。旧功能分支保留，未删除。
-- GitHub 同步未完成：`origin` 使用 HTTPS，本机 `gh` token 已失效，`git fetch`/push 无法认证。本地 `main` 相对最后已知 `origin/main` ahead 6；必须先恢复 GitHub 登录，再 fetch 核对是否出现新分叉，之后才能 push main 和 release tag。
+- GitHub 同步已恢复：通过 GitHub CLI 官方 device flow 重新授权，凭据文件 mode 600；fetch 确认 `origin/main...main = 0/7`、无远端分叉后，`main` 已从 `02f162e` 推送到 `b4c17e0`，注解 tag `ai-exposure-check-h5-20260713132053` 也已推送。旧功能分支保留，未删除。
 - 当前生产 release：`20260713132053`；回滚点：`20260713012534`。systemd `ai-exposure-check-h5` active，Node 仅监听 `127.0.0.1:3020`，公网入口仍为 `https://exposure.playgamelab.cn`。
 - 后台主链路已收敛为一个 `POST /api/diagnoses`：输入检查 → 一次 PageAudit/来源核验 → 422 时不消耗 quota/不调模型 → 限流 → 采样 → 确定性评分与持久化。旧 preflight endpoint、二次 polish、表单 contact 字段均已删除。
 - `deepseek.ts` 已移动为 `src/server/providers/sampling.ts`；只服务测试的 `sourceCandidates` 已移到 `test/support/`；重复业务类型判断和文本规范化已收敛到 `src/server/domain.ts`。
