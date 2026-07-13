@@ -358,3 +358,41 @@ Cause: editing a production credential environment file requires a separate expl
 Handling: did not retry or use an indirect workaround. The old variable names remain in production `.env`, mode 600, but release `20260713132053` ignores them; health and the controlled report prove Hy3 and Doubao sample without the legacy gates.
 
 Next verification: after separate user approval, create a mode 600 backup, remove only the five exact deprecated keys, restart the service, and recheck 4/4 health without printing values.
+
+## 2026-07-13: WeChat Developer Console Could Not Be Controlled Directly
+
+Symptom: the computer-control session stopped when opening the current WeChat developer-platform console URL, so Codex could not safely inspect or modify the logged-in account through browser automation.
+
+Handling: did not retry the blocked route or use an indirect login/cookie path. The user supplied screenshots of interface permissions and basic account information; those screenshots were used only for read-only prerequisite verification.
+
+Result: the account was confirmed as personal and not certified, with the JS interface security domain unset. Account-side JSSDK setup was paused by user decision; no credential or account configuration was changed. This is an external account prerequisite, not an H5 product-code failure.
+
+## 2026-07-13: Sandbox Blocked Integration-Test Loopback Listener
+
+Symptom: the first final `npm test` run passed 73 assertions but eight integration tests failed with `listen EPERM` on `127.0.0.1`.
+
+Cause: the managed sandbox denied the temporary loopback listeners used by the fake provider and integration server; no product assertion failed.
+
+Fix: reran the unchanged test suite in the approved local environment where loopback listening is permitted.
+
+Verification: all 81/81 tests passed. Typecheck, release precheck 13/13, bundle secret scan, documentation secret-shape scan, and `git diff --check` also passed.
+
+## 2026-07-14: Historical Server Name Was Not A Local SSH Alias
+
+Symptom: the first read-only production check used `VM-0-3-ubuntu` and failed with hostname resolution error.
+
+Cause: that value is the server hostname shown by systemd/journal output, while the actual local SSH config alias is `lighthouse-lab`.
+
+Fix: inspected `~/.ssh/config`, switched to the configured alias, and did not guess or write the server IP into project files.
+
+Verification: `lighthouse-lab` returned the current release, systemd state, health, environment-file permissions and server capacity; deployment and rollback preparation then completed through that alias.
+
+## 2026-07-14: Raw Research Evidence Fails Generic Whitespace Check
+
+Symptom: the final repository-wide `git diff --cached --check` reported trailing spaces and extra EOF lines in API answers, consumer answers, webpage extraction snapshots and generated report HTML.
+
+Cause: those files preserve third-party/model output verbatim. Normalizing them would silently alter the raw evidence required by the measurement protocol.
+
+Handling: kept raw evidence unchanged and ran strict diff checks only on authored code, workflow, decision, score and deployment files. The authored-file check passed. The staged-path secret-shape scan returned no matches.
+
+Verification: typecheck, 92/92 tests, release precheck, 15-file browser bundle secret scan and authored-file diff check all passed. No production model call was made during closeout.

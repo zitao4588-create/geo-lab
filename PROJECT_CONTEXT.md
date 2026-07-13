@@ -361,9 +361,21 @@ Remaining risks:
 - 删除 dormant report polish、表单联系方式字段和重复 preflight endpoint；采样模块按真实职责移动到 `src/server/providers/sampling.ts`，实验候选来源工具移到测试目录，公共业务类型/文本规范化集中到 `src/server/domain.ts`。
 - Hy3、Doubao 不再受人工确认/到期变量控制；四 provider 保留独立开关、fallback、错误分类、持久限流和紧急停用。health 分离 `configured`、`enabled`、`samplingAllowed` 与最近真实成功，且不再把 key 存在写成 key 已验证有效。
 - 前端模型数来自 health 或本次报告；start → form → loading → result 使用可恢复 history，报告 `?report=<id>` 可刷新与分享回流；补齐微信 WebView 页面缓存/切后台恢复、复制兼容、长按二维码/复制微信号和固定浅色策略。
-- 新增隔离的微信公众号 JSSDK 服务端签名与缓存模块、严格 URL allowlist，以及前端官方 `jweixin-1.6.0.js` 分享配置。生产缺少 AppID/AppSecret 和账号侧确认，因此当前只启用普通分享 fallback，不宣称 JSSDK 已上线。
+- 新增隔离的微信公众号 JSSDK 服务端签名与缓存模块、严格 URL allowlist，以及前端官方 `jweixin-1.6.0.js` 分享配置。后续账号核验确认现有公众号为个人主体、暂未认证，且 JS 接口安全域名未设置，不满足本项目好友/朋友圈自定义分享验收条件；用户决定暂停账号侧接入。生产未写入 AppID/AppSecret、未修改公众号配置，当前只启用普通分享 fallback，不宣称 JSSDK 已上线。
 - 本地最终验证：typecheck、build、release precheck、bundle secret scan、`git diff --check` 均通过；全量测试 81/81；iOS/Android 微信 UA 自动化无溢出与控制台错误。
 - 生产 release `20260713132053` 替换 `20260713012534`（保留回滚）。systemd active，Node 仅监听 `127.0.0.1:3020`，静态页面、robots、sitemap、health 全部 200，health 为 4 configured / 4 enabled / 4 samplingAllowed。
 - 唯一新生产报告 `diag_mris3shz_57fkg2` 完成 40/40 真实采样，四 provider 各 10/10；同 request ID 重放返回同一报告。公开报告、证据与三种导出未发现 request ID、内部归因、联系方式或密钥泄露。
 - 生产 `.env` 仍保留旧成本闸门/polish 变量名，但新代码不读取。安全审批要求用户再次单独确认后才能清理环境文件；不得绕过。
-- 核心产品达到 C4，但微信公众号真机好友/朋友圈分享、真实用户反馈和业务结果未验证，因此 JSSDK 部分未达 C4，项目整体不是 C5。
+- 核心产品达到 C4；公众号 JSSDK 因账号条件不足而按既定停止条件暂停，不阻塞普通微信 H5 使用。真实用户反馈和业务结果仍未验证，因此项目整体不是 C5。
+
+## 2026-07-14 测量有效性、联网候选发现与双层产品路线
+
+- 完成 4 个外部实体、4 条统一提示词、4 个 API provider 与 4 个消费端的测量有效性验证。API 为 64 个主样本（63 成功、1 超时），消费端为 64 次独立新会话（57 条可评分、7 条异常），完整原始回答和截图保存在 `outputs/h5-mvp/measurement-validity-20260713/`。
+- 判定为 C/红色：两个目标实体严格品牌认知方向一致仅 2/8，冲突 5/8、不可比较 1/8；离线 API 不能代表 DeepSeek、通义、腾讯元宝和豆包消费端默认体验。该结论否定的是代表性承诺，不是否定品牌认知与公开证据诊断需求。
+- 产品路线拆成两层：免费 H5 只做“四模型 API 品牌认知 + 已提交页面审计 + 公开网页候选发现”的初步诊断；正式客户报告使用 `workflows/formal-consumer-report/WORKFLOW.md`，必须采集四消费端独立新会话、截图、完整回答、来源核验和人工评分。
+- H5 新增 backend-only 搜索适配器和 canary 工具。火山方舟与 AnySearch 在诊断外层和四模型并行；候选 URL 去重后只进入“公开证据可发现度”，不自动升级为 `verified_external`。Tavily/Jina 适配保留但生产未启用。
+- 搜索 canary 没有任何 provider 通过原定全部硬门槛。AnySearch 12/12 成功、火山开通后单条 30 秒窗口成功；隔离整链路 canary 在 27.535 秒生成完整报告结构，但只完成 37/40 个模型回答，因此不能证明生产 P95 或 30 秒稳定达标。
+- 生产 release `20260714004607` 已部署，替换 `20260713132053`（保留回滚）。health 为四模型 4 configured / 4 samplingAllowed，火山与 AnySearch 均 active；静态页、既有报告、evidence 与三种导出全部 200，关键构建文件本地/线上哈希一致。
+- 本轮未为发布验收提交新的生产诊断 POST，也未额外调用四模型。新搜索增强 release 完成等级为 C3；四模型 + 两路搜索的真实整单成功率、总耗时和合并评分仍待首份自然用户报告验证。
+- 最终代码与证据提交为 `c85f9ef`，已推送到私有 `origin/main`。本地验证通过：typecheck、92/92 tests、release precheck、15 个前端文件密钥扫描与核心 authored-file diff check。
+- AnySearch 匿名接口生产连通返回 200，但公开商业使用条款和长期免费稳定性仍未被本轮技术验收确认；火山联网可能增加模型 token 消耗。出现授权、额度、费用或稳定性异常时，应独立关闭对应搜索开关。

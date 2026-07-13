@@ -551,3 +551,43 @@ Boundary:
 - 422 input/source rejection occurs before quota and provider sampling.
 - Persisted/in-flight idempotency recovery remains ahead of fresh work and returns the same report.
 - No database, queue, worker, microservice, login, payment, Docker, or admin backend is added.
+
+## 2026-07-13: Pause WeChat JSSDK Account Integration
+
+Decision: stop the account-side WeChat JSSDK integration for the current release and keep the deployed ordinary share/copy fallback as the supported WeChat path.
+
+Reason: screenshots from the WeChat developer platform confirmed that the existing public account is personal and not certified, while its JS interface security domain is unset. The visible basic server API permissions do not establish the friend/timeline custom-share permission required by this release. The user chose not to pursue this account path now.
+
+Boundary:
+
+- No AppID/AppSecret was written to production and no public-account configuration was changed.
+- The isolated signature module may remain dormant; missing credentials must continue to degrade safely without blocking diagnosis or report viewing.
+- Resume only with an account that demonstrably has the required sharing permission, a configured `exposure.playgamelab.cn` JS security domain, explicit authorization for account changes, and real iOS/Android WeChat acceptance.
+- Do not describe the fallback as native JSSDK sharing or count the paused true-device checks as passed.
+
+## 2026-07-14: Split Free H5 Diagnosis From Formal Consumer-Side Reports
+
+Decision: keep the free H5 as a multi-model API brand-recognition and public-evidence preliminary diagnosis, while moving formal customer work into a separate Codex workflow based on fresh DeepSeek, 通义, 腾讯元宝, and 豆包 consumer sessions plus source verification and human scoring.
+
+Reason: the measurement-validity run found only 2/8 strict target recognition pairs aligned, 5/8 conflicted, and 1/8 was not comparable. Consumer products automatically searched in many answers while the measured APIs were offline, producing opposite conclusions about whether products existed and what they did.
+
+Boundary:
+
+- The H5 score is an `初步诊断分`, not consumer exposure, search ranking, or stable recommendation position.
+- API non-mention cannot be sold as proof that the consumer product does not expose or recommend the brand.
+- Formal reports require preserved consumer answers, screenshots, citations, source-map verification, controls, and human evaluation; the API report cannot be promoted into a formal report automatically.
+- A consumer answer is still a point-in-time observation, not a stable platform ranking.
+
+## 2026-07-14: Use Volcengine Plus AnySearch Only For Candidate Discovery
+
+Decision: run Volcengine Web Search and AnySearch in parallel with the four H5 model providers, merge and deduplicate candidate URLs, and score only public-evidence discoverability. Keep candidates outside verified facts until PageAudit or manual verification supports them.
+
+Reason: candidate discovery improves the free H5's usefulness without repeating the invalid claim that API sampling represents consumer search. The search canary showed AnySearch was useful for candidate URLs and Volcengine could return grounded citations inside the 30-second engineering window, but no provider passed all original hard gates.
+
+Boundary:
+
+- Search remains backend-only; keys and anonymous-provider details never enter the browser bundle.
+- Candidate titles, snippets and URLs keep `suggested_supplement` status and cannot prove product facts by themselves.
+- Production enables only Volcengine and AnySearch. Tavily and Jina remain available adapters, not production sources.
+- AnySearch anonymous commercial terms and long-term free stability remain unverified. Volcengine search may add model-token cost; either source must be independently disabled on billing, authorization, quota, or reliability anomalies.
+- The 30-second SLA is an internal engineering target. One 27.535-second canary with 37/40 model successes is not a public performance promise or P95 proof.

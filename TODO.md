@@ -2,12 +2,17 @@
 
 ## Immediate
 
-- 2026-07-13 AI曝光体检后台/微信 H5 收敛已部署到 release `20260713132053`：单 POST、单 PageAudit、动态 provider 数、微信返回/恢复/复制 fallback、JSSDK 隔离模块与唯一四 provider 生产报告均已验证；回滚点为 `20260713012534`。
-- GitHub 同步已完成：官方 device flow 重新授权后，fetch 确认远端无新分叉；`main` 已推送到 `b4c17e0`，注解 tag `ai-exposure-check-h5-20260713132053` 已推送。
-- 如需彻底删除生产 `.env` 中已废弃的 polish/Hy3/Doubao 成本闸门变量，先取得用户对“修改生产环境文件”的再次明确确认。新代码已忽略这些变量，不影响当前 4/4 采样。
-- 微信公众号 JSSDK 账号侧仍待用户确认：公众号类型与认证状态、AppID/AppSecret 管理权限、好友/朋友圈分享接口权限、`exposure.playgamelab.cn` JS 接口安全域名。未满足前只保留普通分享 fallback；不得写成 JSSDK 已上线。
-- 账号条件满足并获外部修改授权后，完成微信开发者工具、真实 iOS 微信、真实 Android 微信、好友分享、朋友圈分享、卡片图文和 `?report=<id>` 回流验收。
-- 获取首批真实用户走查、咨询转化或使用反馈，才能从核心链路 C4 进入 C5；当前唯一生产报告是受控验收，不是用户数据或商业结果。
+- [x] 完成 API ↔ 消费端测量有效性验证并保留 128 个单元的原始证据；判定 C/红色，停止把离线 API 解释为消费端曝光或排名。
+- [x] 建立免费 H5 与正式客户报告的双层路线；正式消费端报告固定工作流和模板位于 `workflows/formal-consumer-report/`。
+- [x] H5 接入 backend-only 火山 + AnySearch 并行候选发现、初步诊断分、原始搜索 evidence 与显著消费端边界文案；功能与证据提交 `c85f9ef` 已推送到 `origin/main`。
+- [x] 部署生产 release `20260714004607`，保留 `20260713132053` 回滚；health 4/4 模型允许采样、2/2 搜索来源 active，公网只读 smoke 通过。
+- [ ] **当前下一步只做一个动作：**出现首个合格客户实体时，严格按 `workflows/formal-consumer-report/WORKFLOW.md` 跑 1 份内部 dry run，验证消费端证据采集、来源核验、人工评分和交付质量；不把 H5 报告直接升级为正式报告。
+- 被动观察首份自然 H5 提交的总耗时、四模型成功率、火山/AnySearch 状态和候选合并结果；这不是额外制造测试报告的授权。
+- AnySearch 匿名接口当前可用，但公开商业条款与长期免费稳定性待核查；火山联网需继续观察 token 与免费额度。异常时独立关闭对应开关。
+- 非阻塞维护：如需彻底删除生产 `.env` 中已废弃的 polish/Hy3/Doubao 成本闸门变量，先取得用户对“修改生产环境文件”的再次明确确认。新代码已忽略这些变量，不影响当前 4/4 采样或本次完成状态。
+- 微信公众号 JSSDK 账号侧接入已暂停：2026-07-13 用户截图确认现有公众号为个人主体、暂未认证，且 JS 接口安全域名未设置；用户决定先不做原生分享。生产未写入公众号凭证、未修改账号配置，继续保留普通分享/复制 fallback，不得写成 JSSDK 已上线。
+- 仅在未来换用具备好友/朋友圈自定义分享权限的已认证公众号、并重新取得外部修改授权后，才恢复安全域名、服务端凭证和微信开发者工具/iOS/Android 真机分享验收；这不是当前发布阻塞项。
+- 获取首批真实用户走查、咨询转化或正式报告反馈，才能进入 C5；当前证据仍是受控测试，不是用户数据或商业结果。
 
 - Completed 2026-07-11 DeepSeek free-tier fallback release:
   - added `deepseek-v4-pro -> deepseek-v4-flash -> failed sample` routing without legacy-model fallback,

@@ -34,6 +34,15 @@ The current goal is not to clone GEOFlow as a heavy CMS. The first practical pro
 5. Generate `diag-report.json`, `GEO diagnosis report.html`, and an `evidence/` folder.
 6. Convert findings into page/content/monitoring actions.
 
+## Current Product Split
+
+As of 2026-07-14, the product has two deliberately separate measurement layers:
+
+1. The free H5 runs the current four model APIs, audits submitted public pages, and uses backend-only Volcengine plus AnySearch candidate discovery to produce an `初步诊断分`. Search candidates are leads, not verified facts.
+2. A formal customer report follows `workflows/formal-consumer-report/WORKFLOW.md`: fresh DeepSeek, 通义, 腾讯元宝, and 豆包 consumer sessions, complete screenshots and answers, public-source verification, and human scoring.
+
+The 2026-07-13 measurement-validity study returned decision C/red: offline API sampling did not represent the corresponding consumer products reliably. Therefore neither the H5 score nor an API non-mention may be described as consumer-side exposure, search ranking, or stable recommendation position.
+
 ## Evidence Labels
 
 Use these labels in every analysis:
@@ -53,4 +62,3 @@ The initial snapshot includes:
 - The fridge-radar GEO diagnosis HTML and JSON sample.
 
 See `sources/source-index.md` for the full list.
-
