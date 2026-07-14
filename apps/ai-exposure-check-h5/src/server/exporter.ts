@@ -1,9 +1,13 @@
 import type { AiProviderStatus, AiSample, DiagnosisInput, DiagnosisReport, PageAuditResult } from '../shared/types.js';
+import { getReportScorePresentation } from '../shared/reportPresentation.js';
 import type { WebSearchResponse } from './providers/webSearch.js';
 
 export function renderReportMarkdown(report: DiagnosisReport) {
   const credibility = report.stages.credibility;
-  const scoreLabel = credibility?.scoreStatus === 'withheld' ? '暂不评分（证据不足）' : `${report.score}/100（${report.scoreLevel}）`;
+  const scorePresentation = getReportScorePresentation(report);
+  const scoreLabel = scorePresentation.scoreStatus === 'withheld'
+    ? '暂不评分（证据不足）'
+    : `${scorePresentation.displayedScore}/100（${scorePresentation.scoreLevel}）`;
   const sourceLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'source');
   const infrastructureLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'infrastructure');
   return `# ${report.brand} AI 可见度初步诊断报告
@@ -104,7 +108,8 @@ ${report.evidencePolicy.notes}
 
 export function renderReportHtml(report: DiagnosisReport) {
   const credibility = report.stages.credibility;
-  const scoreWithheld = credibility?.scoreStatus === 'withheld';
+  const scorePresentation = getReportScorePresentation(report);
+  const scoreWithheld = scorePresentation.scoreStatus === 'withheld';
   const sourceLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'source');
   const infrastructureLabel = pageAuditLabel(report.stages.infrastructure.pageAudit, 'infrastructure');
   const dimensionRows = report.stages.score.dimensions
@@ -176,7 +181,7 @@ export function renderReportHtml(report: DiagnosisReport) {
   <main>
     <header>
       <h1>${escapeHtml(report.brand)} AI 可见度初步诊断报告</h1>
-      <div class="score">${scoreWithheld ? '暂不评分' : report.score}<small>${scoreWithheld ? ' · 证据不足' : `/100 · ${escapeHtml(report.scoreLevel)}`}</small></div>
+      <div class="score">${scoreWithheld ? '暂不评分' : scorePresentation.displayedScore}<small>${scoreWithheld ? ' · 证据不足' : `/100 · ${escapeHtml(scorePresentation.scoreLevel)}`}</small></div>
       <p>${escapeHtml(report.summary)}</p>
       <div class="meta">
         <span>报告 ID：${escapeHtml(report.id)}</span>
@@ -211,6 +216,7 @@ export function buildEvidencePackage(
   providerStatuses: AiProviderStatus[],
   publicWebResponses?: WebSearchResponse[]
 ) {
+  const scorePresentation = getReportScorePresentation(report);
   return {
     reportId: report.id,
     generatedAt: new Date().toISOString(),
@@ -225,8 +231,8 @@ export function buildEvidencePackage(
     },
     report: {
       score: report.score,
-      displayedScore: report.stages.credibility?.scoreStatus === 'withheld' ? null : report.score,
-      scoreLevel: report.scoreLevel,
+      displayedScore: scorePresentation.displayedScore,
+      scoreLevel: scorePresentation.scoreLevel,
       summary: report.summary,
       credibility: report.stages.credibility,
       dimensions: report.stages.score.dimensions,

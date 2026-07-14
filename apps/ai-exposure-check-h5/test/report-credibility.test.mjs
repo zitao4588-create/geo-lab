@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { assessDiagnosisInput, classifyAnswer, inferBusinessType } from '../dist/server/server/credibility.js';
 import { sanitizeProviderError } from '../dist/server/server/providers/sampling.js';
 import { buildFinalGeoReport, buildPromptUniverse } from '../dist/server/server/rules.js';
 import { buildEvidencePackage, renderReportHtml, renderReportMarkdown } from '../dist/server/server/exporter.js';
+import { getReportScorePresentation } from '../dist/server/shared/reportPresentation.js';
 
 const providers = [
   { provider: 'deepseek', model: 'controlled', status: 'sampled', promptCount: 1, successCount: 1, failureCount: 0, note: 'controlled' }
@@ -161,6 +163,32 @@ test('Markdown, HTML, and evidence package expose the same credibility values', 
   assert.deepEqual(evidence.report.credibility, report.stages.credibility);
   assert.match(markdown, new RegExp(`字符串出现率：${Math.round(report.stages.credibility.stringMentionRate * 1000) / 10}%`, 'u'));
   assert.match(html, new RegExp(`字符串出现率 ${Math.round(report.stages.credibility.stringMentionRate * 1000) / 10}%`, 'u'));
+});
+
+test('one available report exposes the same final score on every report surface without a transient count-up value', async () => {
+  const input = softwareInput({ links: 'https://fridge.example.com', samplePrompts: ['冰箱小雷达是什么？'] });
+  const prompt = buildPromptUniverse(input)[0];
+  const samples = [{ prompt, provider: 'qwen', model: 'controlled', status: 'success', sampledAt: new Date().toISOString(), latencyMs: 1, answer: '冰箱小雷达是家庭食材库存与临期提醒微信小程序。' }];
+  const report = buildFinalGeoReport(input, samples, officialAudit(), providers);
+  const presentation = getReportScorePresentation(report);
+  const markdown = renderReportMarkdown(report);
+  const html = renderReportHtml(report);
+  const evidence = buildEvidencePackage(input, report, samples, officialAudit(), providers);
+
+  assert.equal(presentation.scoreStatus, 'available');
+  assert.equal(presentation.displayedScore, report.score);
+  assert.equal(presentation.scoreLevel, report.scoreLevel);
+  assert.equal(presentation.riskLevel, report.riskLevel);
+  assert.match(markdown, new RegExp(`初步诊断分：${report.score}/100（${report.scoreLevel}）`, 'u'));
+  assert.match(html, new RegExp(`<div class="score">${report.score}<small>/100 · ${report.scoreLevel}</small></div>`, 'u'));
+  assert.equal(evidence.report.score, report.score);
+  assert.equal(evidence.report.displayedScore, report.score);
+  assert.equal(evidence.report.scoreLevel, report.scoreLevel);
+
+  const clientSource = await readFile(new URL('../src/client/App.tsx', import.meta.url), 'utf8');
+  assert.match(clientSource, /<strong>\{scorePresentation\.displayedScore\}<\/strong>/u);
+  assert.match(clientSource, /riskMeta\(scorePresentation\.riskLevel\)/u);
+  assert.doesNotMatch(clientSource, /displayScore|setDisplayScore|requestAnimationFrame\(tick\)/u);
 });
 
 test('submitted-source trust and site-infrastructure completeness stay separate across report surfaces', () => {

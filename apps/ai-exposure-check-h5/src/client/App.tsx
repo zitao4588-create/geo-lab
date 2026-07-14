@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Input, Toast } from 'tdesign-mobile-react';
+import { getReportScorePresentation } from '../shared/reportPresentation';
 import type { AiProvider, DiagnosisInput, DiagnosisReport, EvidenceLabel, InputAssessment, RiskLevel, ScoreDimension } from '../shared/types';
 import { ApiError, createDiagnosis, getDiagnosis, getHealth } from './api';
 import { configureWechatShare } from './wechat';
@@ -134,10 +135,6 @@ function buildFormSignature(input: DiagnosisInput) {
     source: (input.source || '').trim(),
     samplePrompts: (input.samplePrompts || []).map((prompt) => prompt.trim())
   });
-}
-
-function prefersReducedMotion() {
-  return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 async function copyText(value: string) {
@@ -702,11 +699,11 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   const [consultOpen, setConsultOpen] = useState(false);
   const [copyFallbackText, setCopyFallbackText] = useState('');
   const [showBar, setShowBar] = useState(false);
-  const [displayScore, setDisplayScore] = useState(() => (prefersReducedMotion() ? report.score : 0));
   const coverRef = useRef<HTMLDivElement | null>(null);
   const ctaRef = useRef<HTMLDivElement | null>(null);
-  const risk = riskMeta(report.riskLevel);
-  const scoreDeg = Math.round((report.score / 100) * 360);
+  const scorePresentation = getReportScorePresentation(report);
+  const risk = riskMeta(scorePresentation.riskLevel);
+  const scoreDeg = Math.round(((scorePresentation.displayedScore ?? 0) / 100) * 360);
   const sampledProviders = report.stages.aiSearch.providerBreakdown.filter(
     (provider) => provider.status === 'sampled' || provider.status === 'partial'
   );
@@ -720,25 +717,7 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
   const auditTargets = report.stages.infrastructure.pageAudit.targets.slice(0, 8);
   const publicWeb = report.stages.publicWeb;
   const credibility = report.stages.credibility;
-  const scoreWithheld = credibility?.scoreStatus === 'withheld';
-
-  useEffect(() => {
-    if (prefersReducedMotion()) {
-      setDisplayScore(report.score);
-      return undefined;
-    }
-    let raf = 0;
-    const started = performance.now();
-    const duration = 900;
-    const tick = (now: number) => {
-      const progress = Math.min(1, (now - started) / duration);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayScore(Math.round(eased * report.score));
-      if (progress < 1) raf = window.requestAnimationFrame(tick);
-    };
-    raf = window.requestAnimationFrame(tick);
-    return () => window.cancelAnimationFrame(raf);
-  }, [report.score]);
+  const scoreWithheld = scorePresentation.scoreStatus === 'withheld';
 
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return undefined;
@@ -805,12 +784,12 @@ function ResultScreen({ report, onRestart }: { report: DiagnosisReport; onRestar
         ) : (
           <div className="cover-ring">
             <div>
-              <strong>{displayScore}</strong>
+              <strong>{scorePresentation.displayedScore}</strong>
               <small>/ 100</small>
             </div>
           </div>
         )}
-        <span className="cover-chip">{scoreWithheld ? '低证据 · 需要补充资料' : `${report.scoreLevel} · ${risk.label}`}</span>
+        <span className="cover-chip">{scoreWithheld ? '低证据 · 需要补充资料' : `${scorePresentation.scoreLevel} · ${risk.label}`}</span>
         <p className="cover-summary">
           {scoreWithheld
             ? `本次成功采样 ${report.aiMeta.successCount}/${report.aiMeta.promptCount}，但证据或模型覆盖不足，因此暂不评分。`
@@ -1209,7 +1188,8 @@ function StepHeader({ current }: { current: 1 | 2 | 3 }) {
 }
 
 function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
-  const scoreWithheld = report?.stages.credibility?.scoreStatus === 'withheld';
+  const scorePresentation = report ? getReportScorePresentation(report) : null;
+  const scoreWithheld = scorePresentation?.scoreStatus === 'withheld';
   return (
     <aside className="desktop-preview" aria-hidden="true">
       <div>
@@ -1218,7 +1198,7 @@ function DesktopPreview({ report }: { report: DiagnosisReport | null }) {
       </div>
       <div className="preview-panel">
         <span>AI曝光体检</span>
-        <h2>{report ? (scoreWithheld ? '证据不足 · 暂不评分' : `${report.score}分 · ${report.scoreLevel}`) : '提交业务资料，生成初步诊断'}</h2>
+        <h2>{report ? (scoreWithheld ? '证据不足 · 暂不评分' : `${scorePresentation?.displayedScore}分 · ${scorePresentation?.scoreLevel}`) : '提交业务资料，生成初步诊断'}</h2>
         <p>{report
           ? (scoreWithheld ? '当前证据或模型覆盖不足，报告已降低置信度并暂停展示总分。' : report.summary)
           : '报告会保留 API 采样、公开候选来源、评分拆解和下一步执行路线。'}</p>
