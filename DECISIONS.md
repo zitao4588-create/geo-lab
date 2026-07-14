@@ -591,3 +591,15 @@ Boundary:
 - Production enables only Volcengine and AnySearch. Tavily and Jina remain available adapters, not production sources.
 - AnySearch anonymous commercial terms and long-term free stability remain unverified. Volcengine search may add model-token cost; either source must be independently disabled on billing, authorization, quota, or reliability anomalies.
 - The 30-second SLA is an internal engineering target. One 27.535-second canary with 37/40 model successes is not a public performance promise or P95 proof.
+
+## 2026-07-15: Never Animate The Numeric Report Score
+
+Decision: render the final user-facing report number immediately and animate only the decorative score ring. Use one shared report-presentation contract for score availability, displayed score, score level, and risk level across the H5 and all exports.
+
+Reason: the former 900ms count-up exposed transient values such as 42/43 during refresh even though the persisted report, summary, API, and exports all contained 61. A point-in-time screenshot could therefore look like a scoring conflict and undermine report credibility.
+
+Boundary:
+
+- This changes presentation only; it does not alter the scoring algorithm, thresholds, stored reports, provider samples, or source evidence.
+- The diagnosis API remains the canonical report source. Exporters may normalize its presentation but must not independently calculate a different score.
+- Presentation-only release acceptance must reuse an existing report and avoid a new diagnosis POST unless separate production-call authorization is given.

@@ -396,3 +396,23 @@ Cause: those files preserve third-party/model output verbatim. Normalizing them 
 Handling: kept raw evidence unchanged and ran strict diff checks only on authored code, workflow, decision, score and deployment files. The authored-file check passed. The staged-path secret-shape scan returned no matches.
 
 Verification: typecheck, 92/92 tests, release precheck, 15-file browser bundle secret scan and authored-file diff check all passed. No production model call was made during closeout.
+
+## 2026-07-15: Refresh Score Count-Up Created A False Cross-Surface Conflict
+
+Symptom: the stable report, API, summary and exports showed 61, while a refresh screenshot captured 42/43 in the cover ring and the desktop preview simultaneously showed 61.
+
+Cause: the cover number animated from 0 to the final score over 900ms. The screenshot captured an intermediate frame; there were not two persisted scores or two scoring algorithms.
+
+Fix: added a shared report-presentation contract and rendered the final numeric score immediately. The decorative ring animation remains, while Markdown, HTML and evidence package now use the same presentation mapping.
+
+Verification: the regression covers report presentation and all three exports; the complete suite passes 93/93. Local and production Playwright checks show 61 on initial load and refresh, with refresh history containing only 61 and no console errors or warnings.
+
+## 2026-07-15: Sandbox Loopback And zsh PATH Caused Two Non-Product Validation Failures
+
+Symptom: the first complete local test run had 10 integration failures with `listen EPERM` on `127.0.0.1`; the first public-smoke loop then reported `command not found: curl` before sending any request.
+
+Cause: the managed sandbox blocked temporary loopback listeners. Separately, the smoke loop reused zsh's special `path` array name, which rewrote command lookup; this repeated the already documented shell pitfall.
+
+Handling: reran the unchanged test suite in the approved local environment and invoked `/usr/bin/curl` explicitly for the public smoke. No product code was changed for either environment failure.
+
+Verification: the unchanged suite passes 93/93, and all 16 public pages/report/evidence/export GET checks return 200. The release itself remained healthy throughout the corrected checks.

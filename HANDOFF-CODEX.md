@@ -1,20 +1,21 @@
 # Codex 交接文档
 
-交接日期：2026-07-14
+交接日期：2026-07-15
 
-交接范围：AI曝光体检测量有效性、联网候选发现、免费 H5 与正式报告分层、生产发布和 GitHub 同步。
+交接范围：AI曝光体检测量有效性、真实环境 E2E、免费 H5 与正式报告分层、分数一致性修复、生产发布和 GitHub 同步。
 
 阅读顺序：本文档 → `AGENTS.md` → `README.md` → `PROJECT_CONTEXT.md` → `TODO.md` → 按任务读取证据或源码。
 
 ## 0. 最新恢复点
 
 - 唯一项目路径：`/Users/qzt/Developer/geo-lab`；H5 位于 `apps/ai-exposure-check-h5/`。
-- 当前分支：`main`。功能、研究证据和正式报告工作流提交为 `c85f9ef`，已推送到私有 `origin/main`；本交接文档与状态文件由其后的 closeout 文档提交同步。
-- 当前生产 release：`20260714004607`；上一 release `20260713132053` 保留回滚。服务 `ai-exposure-check-h5.service` 为 active，Node 仅监听 `127.0.0.1:3020`，公网入口为 `https://exposure.playgamelab.cn`。
+- 当前分支：`main`。分数一致性功能提交为 `369ea56`；本交接文档与状态文件由其后的 closeout 文档提交同步并推送到私有 `origin/main`。
+- 当前生产 release：`20260715023611`；上一 release `20260714004607` 保留回滚。服务 `ai-exposure-check-h5.service` 为 active，Node 仅监听 `127.0.0.1:3020`，公网入口为 `https://exposure.playgamelab.cn`。
 - 生产 health：DeepSeek、Hy3、Qwen、Doubao 为 4 configured / 4 samplingAllowed；Volcengine 与 AnySearch 两个公开网页候选来源均 active。
-- 本轮发布未提交新的生产 `POST /api/diagnoses`，未新增生产报告，也未为发布验收额外调用四模型。
-- 新 release 的静态页、既有报告、evidence、Markdown、HTML、evidence package 均返回 200；服务端入口、前端入口和主 JS bundle 的本地/线上 SHA-256 一致。
-- 本地最终验证：typecheck、92/92 tests、release precheck、15 个前端文件密钥扫描和 authored-file diff check 通过。
+- 本轮修复发布未提交新的生产 `POST /api/diagnoses`，未新增生产报告，也未调用模型或搜索。
+- 新 release 的静态页、既有报告、evidence、Markdown、HTML、evidence package 均返回 200；服务端入口、共享展示模块、前端入口和主 JS bundle 的本地/线上 SHA-256 一致。
+- 本地最终验证：typecheck、93/93 tests、build、release precheck、15 个前端文件密钥扫描和 authored-file diff check 通过。
+- 生产真实浏览器复用既有报告 `diag_mrkv2jj7_tb6z1c`：首次加载和刷新均显示封面 61、桌面预览“61分 · 一般”；刷新变化历史只有一次 61，控制台 0 error / 0 warning。
 - 原始 API/消费端回答、截图、搜索返回和生成报告保持逐字不变，因此原始 evidence 中的尾随空格不做格式化。
 
 ## 1. 当前产品结论
@@ -49,6 +50,16 @@
 - 使用四消费端独立新会话、完整回答、截图、链接、公开来源逐条核验和人工评分。
 - 每次只处理一个实体，最多 40 次消费端交互；不导入 Cookie、不绕过验证码、不购买、不自动对外发送。
 - H5 报告只能作为背景材料，不能自动升级成正式报告。
+
+### 1.3 真实环境 E2E 结论
+
+2026-07-14 至 2026-07-15 用 Cubox、徕芬 Mini、遇见长安赛格店走真实 H5 和四消费端协议：
+
+- H5 创建 2/3 份生产报告；遇见长安因当前营业状态冲突在提交前按停止条件终止。两份完成报告耗时 34.921 秒和 27.979 秒，fallback 均为 0。
+- 消费端共执行 67 次提交/允许重开动作；120 个计划单元中 64 个有效、1 个失败、55 个 missing，只有 Cubox 达到 40/40 完整回答。
+- 判定：Cubox“带保留可交付”；徕芬 Mini、遇见长安赛格店“不可交付”。主要阻断是消费端域名访问/截图不完整、规格或门店范围污染，以及动态营业状态无法由一手来源确认。
+- 正式工作流能发现 H5 看不到的同名实体污染、无效引用和条款编造，方法本身有交付价值；当前优先客户应是有稳定官网、帮助中心和清晰产品边界的软件产品。
+- 真实运行证据保存在未纳入 Git 的 `outputs/customer-reports/`。原总结中的 42/43 与 61 被后续复查定位为刷新时数字递增的中间帧；修复后线上只显示最终 61。
 
 ## 2. H5 联网候选发现实现
 
@@ -88,30 +99,29 @@
 - 限流保持每 IP 每小时 1 份、全局每天 30 份；单实例状态持久化，客户端标识只保存加盐哈希。
 - AnySearch 匿名接口已从生产服务器验证 HTTP 200，但长期稳定性和公开商业使用条款尚未被技术验收证明。
 - Volcengine 搜索调用可能产生额外模型 token；出现收费、额度、授权或稳定性异常时，独立关闭对应搜索开关并重启服务。
-- 新搜索 release 当前为 C3：代码已部署并完成只读公网验收；因为没有新生产报告，四模型 + 两路搜索整单仍未达到新的 C4 证据。
+- 搜索增强 release 已有两份真实生产整单证据；本次分数一致性 release 是既有 C4 核心流程的维护发布。没有真实客户反馈、付费或业务结果，因此仍不是 C5。
 
 回滚需要同时恢复 release 和部署前环境文件：
 
 ```bash
-cp /opt/playgamelab/ai-exposure-check-h5/.env.before-20260714004607 /opt/playgamelab/ai-exposure-check-h5/.env
-ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260713132053 /opt/playgamelab/ai-exposure-check-h5/current
+cp /opt/playgamelab/ai-exposure-check-h5/.env.before-20260715023611 /opt/playgamelab/ai-exposure-check-h5/.env
+ln -sfn /opt/playgamelab/ai-exposure-check-h5/releases/20260714004607 /opt/playgamelab/ai-exposure-check-h5/current
 sudo systemctl restart ai-exposure-check-h5.service
 ```
 
 ## 5. 当前唯一下一步
 
-出现首个合格客户实体时，只跑 1 份内部正式报告 dry run：严格按 `workflows/formal-consumer-report/WORKFLOW.md` 采集四消费端、核验来源、评分并做交付质量检查。
+在四消费端访问和截图链路都可用后，只跑 1 个有稳定官网与帮助中心的软件产品，原样复跑正式协议；有效回答和一一对应截图均达到 75% 后，再决定是否对外销售完整报告。
 
-不要再用 AI曝光体检或冰箱小雷达自身做这一轮目标实体，不扩大 H5 API 测试，不公开宣传测量有效性结果。
-
-首份自然 H5 提交只做被动运营观察：记录总耗时、模型成功率、火山/AnySearch 状态和候选合并结果；这不是主动制造生产报告的授权。
+暂不先扩到实体产品或本地服务，不用 API 补消费端缺口，不公开宣传稳定排名或推荐提升。首份自然 H5 提交继续只做被动运营观察。
 
 ## 6. 仍未解决
 
 - 四模型 + 两路搜索生产整单能否稳定在 30 秒内完成。
 - AnySearch 匿名公开商业条款和长期免费可用性。
 - Volcengine 联网与模型 token 的实际生产扣费边界。
-- 正式报告工作流是否能在真实客户实体上稳定完成并产生愿意付费的价值。
+- 四消费端访问与截图链路能否稳定达到 75% 证据完整率；当前 3 份中只有 Cubox 回答覆盖达标，且元宝缺截图。
+- 正式报告的事实与风险清单已证明有内部交付价值，但真实客户是否愿意付费仍未验证。
 - 真实用户咨询、转化、复购或业务结果；项目整体仍不是 C5。
 - 微信公众号 JSSDK 账号侧接入继续暂停：现有公众号为个人主体、未认证、JS 安全域名未设置。只支持普通分享/复制 fallback。
 
@@ -121,6 +131,7 @@ sudo systemctl restart ai-exposure-check-h5.service
 
 - `.playwright-cli/`
 - `marketing/posters/poster-square-no-url.png`
+- `outputs/customer-reports/`
 - `outputs/h5-mvp/source-recognition-hardening-20260712/stage-b-runtime/`
 
 禁止批量删除；如需处理，先逐项判断归属。
@@ -135,4 +146,4 @@ curl -sS https://exposure.playgamelab.cn/api/health
 ssh lighthouse-lab 'systemctl is-active ai-exposure-check-h5.service; readlink -f /opt/playgamelab/ai-exposure-check-h5/current'
 ```
 
-预期：`origin/main` 包含 `c85f9ef` 和其后的 closeout 文档提交；公网 200；systemd active；current 指向 `20260714004607`；health 显示四模型允许采样、Volcengine 与 AnySearch active。
+预期：`origin/main` 包含 `369ea56` 和其后的 closeout 文档提交；公网 200；systemd active；current 指向 `20260715023611`；health 显示四模型允许采样、Volcengine 与 AnySearch active。
