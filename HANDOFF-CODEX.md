@@ -9,12 +9,13 @@
 ## 0. 最新恢复点
 
 - 唯一项目路径：`/Users/qzt/Developer/geo-lab`；H5 位于 `apps/ai-exposure-check-h5/`。
-- 当前分支：`main`。分数一致性功能提交为 `369ea56`；本交接文档与状态文件由其后的 closeout 文档提交同步并推送到私有 `origin/main`。
-- 当前生产 release：`20260715023611`；上一 release `20260714004607` 保留回滚。服务 `ai-exposure-check-h5.service` 为 active，Node 仅监听 `127.0.0.1:3020`，公网入口为 `https://exposure.playgamelab.cn`。
+- 当前分支：`main`。一跳官方页面发现功能提交为 `68aeddc`，已推送到私有 `origin/main`；本交接文档与证据由其后的 closeout 文档提交同步。
+- 当前生产 release：`20260715140741`；上一 release `20260715023611` 保留回滚。服务 `ai-exposure-check-h5.service` 为 active，Node 仅监听 `127.0.0.1:3020`，公网入口为 `https://exposure.playgamelab.cn`。
 - 生产 health：DeepSeek、Hy3、Qwen、Doubao 为 4 configured / 4 samplingAllowed；Volcengine 与 AnySearch 两个公开网页候选来源均 active。
 - 本轮修复发布未提交新的生产 `POST /api/diagnoses`，未新增生产报告，也未调用模型或搜索。
-- 新 release 的静态页、既有报告、evidence、Markdown、HTML、evidence package 均返回 200；服务端入口、共享展示模块、前端入口和主 JS bundle 的本地/线上 SHA-256 一致。
-- 本地最终验证：typecheck、93/93 tests、build、release precheck、15 个前端文件密钥扫描和 authored-file diff check 通过。
+- 新 release 的 11 个静态页、既有报告、evidence、Markdown、HTML、evidence package 路径均返回 200；`pageAudit.js` 本地/线上 SHA-256 一致。
+- 本地最终验证：typecheck、96/96 tests、build、release precheck 13/13、18 个前端与本次证据文件密钥扫描和 authored-file diff check 通过。
+- 生产 `current` 构建的无网络隔离断言确认 flomo 可发现 `help.flomoapp.com` 帮助与隐私入口；没有创建第 4 份生产报告，真实站点基建分和建议文本仍未验证。
 - 生产真实浏览器复用既有报告 `diag_mrkv2jj7_tb6z1c`：首次加载和刷新均显示封面 61、桌面预览“61分 · 一般”；刷新变化历史只有一次 61，控制台 0 error / 0 warning。
 - 原始 API/消费端回答、截图、搜索返回和生成报告保持逐字不变，因此原始 evidence 中的尾随空格不做格式化。
 
@@ -146,4 +147,4 @@ curl -sS https://exposure.playgamelab.cn/api/health
 ssh lighthouse-lab 'systemctl is-active ai-exposure-check-h5.service; readlink -f /opt/playgamelab/ai-exposure-check-h5/current'
 ```
 
-预期：`origin/main` 包含 `369ea56` 和其后的 closeout 文档提交；公网 200；systemd active；current 指向 `20260715023611`；health 显示四模型允许采样、Volcengine 与 AnySearch active。
+预期：`origin/main` 包含 `68aeddc` 和其后的 closeout 文档提交；公网 200；systemd active；current 指向 `20260715140741`；health 显示四模型允许采样、Volcengine 与 AnySearch active。

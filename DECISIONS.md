@@ -603,3 +603,17 @@ Boundary:
 - This changes presentation only; it does not alter the scoring algorithm, thresholds, stored reports, provider samples, or source evidence.
 - The diagnosis API remains the canonical report source. Exporters may normalize its presentation but must not independently calculate a different score.
 - Presentation-only release acceptance must reuse an existing report and avoid a new diagnosis POST unless separate production-call authorization is given.
+
+## 2026-07-15: Discover Only Conservative One-Hop Official Site Pages
+
+Decision: allow PageAudit to follow one-hop privacy, help and FAQ links from the submitted page only when the destination stays inside a conservative submitted-site boundary. Keep the original fixed-path checks as fallback.
+
+Reason: a product can legitimately host documentation and privacy policy on an official help subdomain, as flomo does, while hard-coded paths on the marketing hostname create false missing-page recommendations.
+
+Boundary:
+
+- A submitted root or `www` root may discover its subdomains; a submitted subdomain may discover only itself and deeper subdomains.
+- Unrelated domains, suffix-spoofed hosts, sibling tenants on shared hosting and redirects outside the boundary never become `verified_external`.
+- Discovery stays one hop and only covers privacy/help/FAQ in this release; it is not a general crawler.
+- Submitted-page and discovery fetches share the original PageAudit timeout budget.
+- Production acceptance can use the deployed compiled module plus in-memory fixtures; it must not create an extra production report merely to prove deployment.

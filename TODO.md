@@ -291,3 +291,11 @@
 - [x] G4 local L2: production-candidate reliability, persistent quota protection, latency/observability, release precheck and dual-viewport QA.
 - [x] G4 production C4: commit/push, release `20260713012534`, one production report, same-ID recovery, query/evidence/exports, operations metrics and dual-viewport report verification passed.
 - [ ] G4 post-closeout: after the short Tencent/Volcengine permission window expires, keep fail-close until a future run receives new explicit cost authorization; do not treat this acceptance as proof that calls were free.
+
+## 2026-07-15 flomo one-hop official-page discovery
+
+- [x] Discover one-hop privacy/help/FAQ links within the submitted-site boundary and retain fixed-path fallback.
+- [x] Reject unrelated domains, suffix spoofing, shared-host sibling tenants and redirects outside the submitted-site boundary.
+- [x] Pass typecheck, 96/96 tests, release precheck 13/13, staged diff check and 18-file secret scan.
+- [x] Commit and push `68aeddc`; deploy release `20260715140741`; pass isolated server assertion, public read-only smoke and real-browser existing-report checks.
+- [ ] If another production report is later authorized within the product limit, confirm flomo's real page-audit targets, site-infrastructure score and recommendation text; do not create a fourth report solely for this maintenance release.

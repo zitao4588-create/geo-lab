@@ -416,3 +416,19 @@ Cause: the managed sandbox blocked temporary loopback listeners. Separately, the
 Handling: reran the unchanged test suite in the approved local environment and invoked `/usr/bin/curl` explicitly for the public smoke. No product code was changed for either environment failure.
 
 Verification: the unchanged suite passes 93/93, and all 16 public pages/report/evidence/export GET checks return 200. The release itself remained healthy throughout the corrected checks.
+
+## 2026-07-15: flomo Live Audit Was Blocked By DNS/SSRF Safety Boundary
+
+Symptom: the local real-network PageAudit first returned `ENOTFOUND` in the sandbox; outside the sandbox, the machine's DNS path resolved the target into an address classified as private or reserved, so all targets failed closed.
+
+Handling: did not add a private-host allowlist, pin an IP, disable DNS recheck or weaken SSRF validation. Verified the current public page structure separately and used captured in-memory HTML for the regression and deployed-module assertion.
+
+Result: the implementation and production compiled module recognize the official one-hop help/privacy URLs, but a real production flomo report was not created; its resulting site score and recommendation text remain unverified.
+
+## 2026-07-15: Release Evidence Scan Used One Extra Parent Directory
+
+Symptom: the first combined release scan passed its 13 precheck assertions, then the optional evidence scan returned `ENOENT` for `/Users/qzt/Developer/outputs/...`.
+
+Cause: from `apps/ai-exposure-check-h5`, the command used `../../../outputs` instead of the repository-relative `../../outputs`.
+
+Fix: reran only the failed evidence scan with the corrected path. It scanned 18 files and returned zero findings; the unchanged full test suite then passed 96/96.

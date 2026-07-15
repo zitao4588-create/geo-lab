@@ -387,3 +387,12 @@ Remaining risks:
 - 本地验证通过 typecheck、build、release precheck、93/93 tests、前端构建密钥扫描和 authored-file diff check。真实浏览器首次加载与刷新都显示封面 61、桌面预览“61分 · 一般”，刷新期观察到的分数变化历史只有一次 61，控制台 0 error / 0 warning。
 - 功能提交 `369ea56`。生产 release `20260715023611` 替换 `20260714004607`（保留回滚）；systemd active，公共页面、既有报告、evidence 与三种导出全部 200，四个关键发布文件本地/线上 SHA-256 一致。
 - 发布验证复用既有报告 `diag_mrkv2jj7_tb6z1c`，没有提交新的生产诊断 POST，没有新增报告，也没有触发模型或搜索调用。该轮属于既有 C4 核心流程的维护发布，不构成 C5 用户反馈或商业结果。
+
+## 2026-07-15 H5 一跳官方页面发现修复（C4 维护发布）
+
+- PageAudit 先读取用户提交官网的一跳链接，再在保守站点边界内发现隐私、帮助和 FAQ 页面；根域可接受官方子域，已提交子域只接受自身及更深子域。无合格入口时继续使用原固定路径 fallback。
+- 拒绝无关跨域、后缀伪装、共享托管兄弟租户和跳转出站点边界的页面；提交页与发现页共享原页面审计超时预算，不扩大模型整单 SLA。
+- 功能提交 `68aeddc` 已推送到私有 `origin/main`。本地 typecheck、96/96 tests、release precheck 13/13、18 文件敏感信息扫描与 authored-file diff check 通过。
+- 生产 release `20260715140741` 替换 `20260715023611`（保留回滚）。systemd active，公网 11 个静态/既有报告/evidence/export 路径全部 200，health 为 4 configured / 4 samplingAllowed 且两路搜索 active。
+- 生产 `current` 构建通过无网络、无落盘、无模型调用的 flomo 隔离 PageAudit 断言；真实浏览器首页和既有 61 分报告可用，控制台 0 error / 0 warning。
+- 本轮没有生产诊断 POST，`latestOperation.recordedAt` 未变化；因此真实生产抓取 flomo 后的站点基建分与建议文本仍未验证。证据：`outputs/h5-mvp/flomo-one-hop-discovery-20260715/`。
