@@ -39,10 +39,17 @@ interface AuditSpec {
   kind: 'html' | 'text' | 'xml';
 }
 
+type DiscoverableAuditId = 'privacy' | 'faq';
+
+interface SubmittedAuditResult {
+  target: PageAuditTarget;
+  discoveredUrls: Partial<Record<DiscoverableAuditId, string>>;
+}
+
 const discoverySpecs: AuditSpec[] = [
   { id: 'privacy', name: '隐私政策页', path: '/privacy.html', requiredFacts: ['privacy', 'data'], kind: 'html' },
   { id: 'features', name: '功能说明页', path: '/features/', requiredFacts: ['feature', 'category'], kind: 'html' },
-  { id: 'faq', name: 'FAQ/常见问题', path: '/faq/', requiredFacts: ['faq', 'privacy'], kind: 'html' },
+  { id: 'faq', name: 'FAQ/常见问题', path: '/faq/', requiredFacts: ['faq'], kind: 'html' },
   { id: 'geo-case', name: 'GEO 自证案例', path: '/geo-case/', requiredFacts: ['geo', 'brand'], kind: 'html' },
   { id: 'robots', name: 'robots.txt', path: '/robots.txt', requiredFacts: ['sitemap'], kind: 'text' },
   { id: 'sitemap', name: 'sitemap.xml', path: '/sitemap.xml', requiredFacts: ['home', 'privacy', 'faq'], kind: 'xml' },
@@ -74,10 +81,20 @@ export async function auditSubmittedPages(input: DiagnosisInput, options: PageAu
   const parsed = new URL(submittedUrl);
   const baseUrl = `${parsed.protocol}//${parsed.host}`;
   const facts = buildFactDictionary(input);
-  const targets = await Promise.all([
-    auditSubmittedUrl(submittedUrl, input, options),
-    ...discoverySpecs.map((spec) => auditDiscoveredUrl(baseUrl, spec, facts, options))
-  ]);
+  const auditDeadlineAt = Date.now() + (options.timeoutMs ?? 8_000);
+  const submittedAudit = await auditSubmittedUrl(submittedUrl, input, withRemainingAuditTime(options, auditDeadlineAt));
+  const discoveryOptions = withRemainingAuditTime(options, auditDeadlineAt);
+  const discoveredTargets = await Promise.all(discoverySpecs.map((spec) => {
+    const discoveredUrl = isDiscoverableAuditId(spec.id) ? submittedAudit.discoveredUrls[spec.id] : undefined;
+    return auditDiscoveredUrl(
+      discoveredUrl ?? new URL(spec.path, baseUrl).toString(),
+      spec,
+      facts,
+      discoveryOptions,
+      discoveredUrl ? { submittedUrl, discoveredFromSubmittedPage: true } : undefined
+    );
+  }));
+  const targets = [submittedAudit.target, ...discoveredTargets];
   const summary = summarizeTargets(targets);
   const submittedSourceScore = scoreSubmittedSource(targets[0]);
   const siteInfrastructureScore = scoreTargets(targets.slice(1));
@@ -96,7 +113,15 @@ export async function auditSubmittedPages(input: DiagnosisInput, options: PageAu
   };
 }
 
-async function auditSubmittedUrl(url: string, input: DiagnosisInput, options: PageAuditOptions): Promise<PageAuditTarget> {
+function withRemainingAuditTime(options: PageAuditOptions, deadlineAt: number): PageAuditOptions {
+  const configuredTimeout = options.timeoutMs ?? 8_000;
+  return {
+    ...options,
+    timeoutMs: Math.max(1, Math.min(configuredTimeout, deadlineAt - Date.now()))
+  };
+}
+
+async function auditSubmittedUrl(url: string, input: DiagnosisInput, options: PageAuditOptions): Promise<SubmittedAuditResult> {
   const startedAt = new Date().toISOString();
   try {
     const resource = await fetchAuditResource(url, 'html', options);
@@ -124,51 +149,62 @@ async function auditSubmittedUrl(url: string, input: DiagnosisInput, options: Pa
     ];
 
     return {
-      id: 'submitted',
-      name: '用户提交入口',
-      url,
-      status,
-      httpStatus: resource.status,
-      contentType: resource.contentType,
-      title,
-      description,
-      canonicalUrl,
-      matchedFacts,
-      missingFacts,
-      notes,
-      fetchedAt: resource.fetchedAt,
-      evidenceLabel: okHttp ? 'verified_external' : 'suggested_supplement',
-      sourceRelation,
-      scopeRelation,
-      submitted: true,
-      finalUrl: resource.finalUrl,
-      contentHash: resource.contentHash,
-      matchedEvidence: buildMatchedEvidence(visibleText, matchedFacts, input),
-      freshness: resource.freshness,
-      sourceUpdatedAt: resource.sourceUpdatedAt,
-      renderMode: resource.renderMode
+      target: {
+        id: 'submitted',
+        name: '用户提交入口',
+        url,
+        status,
+        httpStatus: resource.status,
+        contentType: resource.contentType,
+        title,
+        description,
+        canonicalUrl,
+        matchedFacts,
+        missingFacts,
+        notes,
+        fetchedAt: resource.fetchedAt,
+        evidenceLabel: okHttp ? 'verified_external' : 'suggested_supplement',
+        sourceRelation,
+        scopeRelation,
+        submitted: true,
+        finalUrl: resource.finalUrl,
+        contentHash: resource.contentHash,
+        matchedEvidence: buildMatchedEvidence(visibleText, matchedFacts, input),
+        freshness: resource.freshness,
+        sourceUpdatedAt: resource.sourceUpdatedAt,
+        renderMode: resource.renderMode
+      },
+      discoveredUrls: discoverOneHopAuditUrls(html, resource.finalUrl, url)
     };
   } catch (error) {
     return {
-      id: 'submitted',
-      name: '用户提交入口',
-      url,
-      status: 'failed',
-      matchedFacts: [],
-      missingFacts: ['页面可访问性', '实体关系', '业务范围'],
-      notes: [error instanceof Error ? safeError(error.message) : '抓取失败'],
-      fetchedAt: startedAt,
-      evidenceLabel: 'suggested_supplement',
-      sourceRelation: 'unknown',
-      scopeRelation: 'unknown',
-      submitted: true,
-      freshness: 'invalid'
+      target: {
+        id: 'submitted',
+        name: '用户提交入口',
+        url,
+        status: 'failed',
+        matchedFacts: [],
+        missingFacts: ['页面可访问性', '实体关系', '业务范围'],
+        notes: [error instanceof Error ? safeError(error.message) : '抓取失败'],
+        fetchedAt: startedAt,
+        evidenceLabel: 'suggested_supplement',
+        sourceRelation: 'unknown',
+        scopeRelation: 'unknown',
+        submitted: true,
+        freshness: 'invalid'
+      },
+      discoveredUrls: {}
     };
   }
 }
 
-async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Record<string, string[]>, options: PageAuditOptions): Promise<PageAuditTarget> {
-  const url = new URL(spec.path, baseUrl).toString();
+async function auditDiscoveredUrl(
+  url: string,
+  spec: AuditSpec,
+  facts: Record<string, string[]>,
+  options: PageAuditOptions,
+  discovery?: { submittedUrl: string; discoveredFromSubmittedPage: boolean }
+): Promise<PageAuditTarget> {
   const fetchedAt = new Date().toISOString();
 
   try {
@@ -180,8 +216,11 @@ async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Recor
     const matchedFacts = findMatchedFacts(visibleText, spec.requiredFacts, facts);
     const missingFacts = spec.requiredFacts.filter((fact) => !matchedFacts.includes(fact));
     const okHttp = resource.status >= 200 && resource.status < 300;
-    const status = !okHttp ? 'missing' : missingFacts.length === 0 ? 'ok' : 'warn';
+    const staysOnSubmittedSite = !discovery || isWithinSubmittedSite(resource.finalUrl, discovery.submittedUrl);
+    const status = !okHttp ? 'missing' : !staysOnSubmittedSite ? 'warn' : missingFacts.length === 0 ? 'ok' : 'warn';
     const notes = buildNotes(spec, resource.status, matchedFacts, missingFacts);
+    if (discovery?.discoveredFromSubmittedPage) notes.unshift('从用户提交页的一跳官方链接发现。');
+    if (!staysOnSubmittedSite) notes.push('跳转后超出用户提交站点的注册域，未作为已核验官方页面。');
 
     return {
       id: spec.id,
@@ -196,7 +235,7 @@ async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Recor
       missingFacts,
       notes,
       fetchedAt: resource.fetchedAt,
-      evidenceLabel: okHttp ? 'verified_external' : 'suggested_supplement',
+      evidenceLabel: okHttp && staysOnSubmittedSite ? 'verified_external' : 'suggested_supplement',
       sourceRelation: status === 'ok' ? 'entity_matched' : 'unknown',
       scopeRelation: status === 'ok' ? 'matched' : 'unknown',
       finalUrl: resource.finalUrl,
@@ -222,6 +261,80 @@ async function auditDiscoveredUrl(baseUrl: string, spec: AuditSpec, facts: Recor
       freshness: 'invalid'
     };
   }
+}
+
+function discoverOneHopAuditUrls(html: string, pageUrl: string, submittedUrl: string): Partial<Record<DiscoverableAuditId, string>> {
+  const best = new Map<DiscoverableAuditId, { url: string; score: number }>();
+  for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/giu)) {
+    const attributes = match[1] ?? '';
+    const hrefMatch = attributes.match(/\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'<>`]+))/iu);
+    const href = hrefMatch?.[1] ?? hrefMatch?.[2] ?? hrefMatch?.[3];
+    if (!href) continue;
+    let candidate: URL;
+    try {
+      candidate = new URL(href, pageUrl);
+    } catch {
+      continue;
+    }
+    if ((candidate.protocol !== 'http:' && candidate.protocol !== 'https:') || candidate.username || candidate.password) continue;
+    if (!isWithinSubmittedSite(candidate.toString(), submittedUrl)) continue;
+    candidate.hash = '';
+    const label = `${candidate.hostname} ${candidate.pathname} ${htmlToText(match[2] ?? '')}`;
+    for (const id of ['privacy', 'faq'] as const) {
+      const score = scoreDiscoveredLink(id, label);
+      if (score <= 0) continue;
+      const current = best.get(id);
+      if (!current || score > current.score || (score === current.score && candidate.toString().length < current.url.length)) {
+        best.set(id, { url: candidate.toString(), score });
+      }
+    }
+  }
+  return Object.fromEntries([...best.entries()].map(([id, value]) => [id, value.url]));
+}
+
+function scoreDiscoveredLink(id: DiscoverableAuditId, label: string) {
+  const normalized = normalizeCompactText(label);
+  if (id === 'privacy') {
+    const direct = normalized.match(/privacy|隐私政策|隐私保护|个人信息保护/giu)?.length ?? 0;
+    const dataPolicy = /data[-_/ ]?(?:policy|privacy)|数据政策/iu.test(label) ? 1 : 0;
+    return direct * 3 + dataPolicy * 2;
+  }
+  if (/privacy|隐私政策|个人信息保护/iu.test(label)) return 0;
+  const direct = normalized.match(/faq|常见问题|帮助中心|使用指南|帮助|文档/giu)?.length ?? 0;
+  const hostSignal = /^(?:help|support|docs)\./iu.test(new URL(`https://${label.trim().split(/\s+/u)[0]}`).hostname) ? 1 : 0;
+  return direct * 3 + hostSignal;
+}
+
+function isDiscoverableAuditId(value: string): value is DiscoverableAuditId {
+  return value === 'privacy' || value === 'faq';
+}
+
+function isWithinSubmittedSite(candidateUrl: string, submittedUrl: string) {
+  try {
+    const candidateHost = normalizeSiteHostname(new URL(candidateUrl).hostname);
+    const submittedHost = normalizeSiteHostname(new URL(submittedUrl).hostname);
+    const submittedWithoutWww = submittedHost.replace(/^www\./u, '');
+    const rootDomain = registrableDomain(submittedWithoutWww);
+    const boundary = submittedWithoutWww === rootDomain ? rootDomain : submittedWithoutWww;
+    const candidateWithoutWww = candidateHost.replace(/^www\./u, '');
+    return candidateWithoutWww === boundary || candidateWithoutWww.endsWith(`.${boundary}`);
+  } catch {
+    return false;
+  }
+}
+
+function registrableDomain(hostname: string) {
+  const normalized = normalizeSiteHostname(hostname).replace(/^www\./u, '');
+  if (isIP(normalized) || !normalized.includes('.')) return normalized;
+  const labels = normalized.split('.').filter(Boolean);
+  if (labels.length <= 2) return labels.join('.');
+  const secondLevelCountrySuffixes = new Set(['ac', 'co', 'com', 'edu', 'gov', 'net', 'org']);
+  const usesSecondLevelCountrySuffix = labels.at(-1)?.length === 2 && secondLevelCountrySuffixes.has(labels.at(-2) ?? '');
+  return labels.slice(usesSecondLevelCountrySuffix ? -3 : -2).join('.');
+}
+
+function normalizeSiteHostname(hostname: string) {
+  return hostname.toLowerCase().replace(/\.$/u, '');
 }
 
 function extractSubmittedUrls(links: string) {

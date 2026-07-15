@@ -85,6 +85,73 @@ test('does not bind an unrelated URL to the submitted entity', async () => {
   });
 });
 
+test('discovers one-hop privacy and help pages on an official sibling subdomain', async () => {
+  const homepage = `<!doctype html><html><head>
+    <title>flomo 浮墨笔记</title>
+    <meta name="description" content="卡片笔记与个人知识记录工具">
+  </head><body>
+    <main>flomo 浮墨笔记 软件 功能 产品入口</main>
+    <a href="https://help.flomoapp.com/">帮助中心</a>
+    <a href="https://help.flomoapp.com/privacy.html">隐私政策</a>
+  </body></html>`;
+  const help = '<html><head><title>flomo 101 帮助中心</title></head><body>flomo 常见问题 FAQ 功能 使用指南 隐私</body></html>';
+  const privacy = '<html><head><title>flomo 隐私政策</title></head><body>flomo 隐私 个人信息 数据处理说明</body></html>';
+
+  await withFetch(htmlRoutes({
+    'https://flomoapp.com/': homepage,
+    'https://help.flomoapp.com/': help,
+    'https://help.flomoapp.com/privacy.html': privacy
+  }), async () => {
+    const audit = await auditSubmittedPages(flomoInput());
+    const privacyTarget = audit.targets.find((target) => target.id === 'privacy');
+    const faqTarget = audit.targets.find((target) => target.id === 'faq');
+    assert.equal(privacyTarget?.url, 'https://help.flomoapp.com/privacy.html');
+    assert.equal(privacyTarget?.status, 'ok');
+    assert.equal(faqTarget?.url, 'https://help.flomoapp.com/');
+    assert.equal(faqTarget?.status, 'ok');
+  });
+});
+
+test('does not discover privacy or help links outside the submitted registrable domain', async () => {
+  const homepage = `<!doctype html><html><head>
+    <title>flomo 浮墨笔记</title>
+    <meta name="description" content="卡片笔记与个人知识记录工具">
+  </head><body>
+    <main>flomo 浮墨笔记 软件 功能 产品入口</main>
+    <a href="https://privacy.example.net/flomo">隐私政策</a>
+    <a href="https://help.flomoapp.com.evil.example/">帮助中心</a>
+  </body></html>`;
+
+  await withFetch(htmlRoutes({ 'https://flomoapp.com/': homepage }), async () => {
+    const audit = await auditSubmittedPages(flomoInput());
+    const privacyTarget = audit.targets.find((target) => target.id === 'privacy');
+    const faqTarget = audit.targets.find((target) => target.id === 'faq');
+    assert.equal(privacyTarget?.url, 'https://flomoapp.com/privacy.html');
+    assert.equal(faqTarget?.url, 'https://flomoapp.com/faq/');
+    assert.equal(privacyTarget?.status, 'missing');
+    assert.equal(faqTarget?.status, 'missing');
+  });
+});
+
+test('does not cross tenant boundaries on a shared hosting domain', async () => {
+  const homepage = `<!doctype html><html><head>
+    <title>flomo 浮墨笔记</title>
+    <meta name="description" content="卡片笔记与个人知识记录工具">
+  </head><body>
+    <main>flomo 浮墨笔记 软件 功能 产品入口</main>
+    <a href="https://tenant-b.github.io/privacy.html">隐私政策</a>
+    <a href="https://tenant-b.github.io/help/">帮助中心</a>
+  </body></html>`;
+
+  await withFetch(htmlRoutes({ 'https://tenant-a.github.io/': homepage }), async () => {
+    const audit = await auditSubmittedPages(flomoInput({ links: 'https://tenant-a.github.io/' }));
+    const privacyTarget = audit.targets.find((target) => target.id === 'privacy');
+    const faqTarget = audit.targets.find((target) => target.id === 'faq');
+    assert.equal(privacyTarget?.url, 'https://tenant-a.github.io/privacy.html');
+    assert.equal(faqTarget?.url, 'https://tenant-a.github.io/faq/');
+  });
+});
+
 function physicalInput(overrides = {}) {
   return {
     businessName: '松下大锤子2.0剃须刀',
@@ -109,6 +176,20 @@ function localInput(overrides = {}) {
     links: 'https://www.haidilao.com/serve/storeSearch',
     competitors: '同类产品',
     confirmedBusinessType: 'local_service',
+    ...overrides
+  };
+}
+
+function flomoInput(overrides = {}) {
+  return {
+    businessName: 'flomo 浮墨笔记',
+    description: '帮助知识工作者快速记录、回顾和检索碎片想法的卡片笔记工具',
+    industry: '卡片笔记与个人知识记录工具',
+    city: '全国',
+    targetCustomers: '经常通过微信、手机和电脑记录灵感的知识工作者',
+    links: 'https://flomoapp.com/',
+    competitors: 'Notion',
+    confirmedBusinessType: 'software_or_miniprogram',
     ...overrides
   };
 }
